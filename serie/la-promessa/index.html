@@ -174,6 +174,34 @@ aside li { margin-bottom: 9px; font-size: 15px; line-height: 1.4; }
   border-radius: 6px; font-weight: 600; font-size: 15px; }
 .bottone:hover { background: var(--brand-dark); text-decoration: none; }
 
+/* archivio completo: la scala che porta il crawler in fondo al catalogo */
+.archivio { max-width: 900px; }
+.archivio .salti { display: flex; flex-wrap: wrap; gap: 8px 10px; margin: 18px 0 30px;
+  padding-bottom: 18px; border-bottom: 2px solid var(--bordo); }
+.archivio .salti a { font-size: 14px; padding: 5px 11px; border: 1px solid var(--bordo);
+  border-radius: 20px; }
+.archivio .salti a:hover { background: var(--brand); color: #fff; text-decoration: none;
+  border-color: var(--brand); }
+.archivio h2 { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap;
+  margin: 36px 0 12px; font-size: 21px; scroll-margin-top: 60px; }
+.archivio h2 .quanti { font-size: 13px; font-weight: 400; color: var(--testo-tenue); }
+.archivio .elenco { list-style: none; margin: 0; padding: 0; }
+.archivio .elenco li { display: flex; gap: 14px; align-items: baseline;
+  padding: 7px 0; border-bottom: 1px solid var(--bordo); font-size: 16px; }
+.archivio .elenco a { flex: 1; }
+.archivio .elenco time { font-size: 13px; color: var(--testo-tenue); white-space: nowrap; }
+
+/* paginazione numerata: senza i numeri, l'ultima pagina di Terra Amara era
+   a tredici clic di distanza dalla prima */
+.pagine { display: flex; flex-wrap: wrap; gap: 6px; align-items: center;
+  justify-content: center; margin: 30px 0 6px; }
+.pagine a, .pagine span.qui { min-width: 38px; padding: 7px 10px; text-align: center;
+  border: 1px solid var(--bordo); border-radius: 6px; font-size: 15px; }
+.pagine span.qui { background: var(--brand); color: #fff; border-color: var(--brand);
+  font-weight: 600; }
+.pagine a:hover { background: var(--sfondo-tenue); text-decoration: none; }
+.pagine .salto { border: 0; color: var(--testo-tenue); padding: 7px 2px; min-width: 0; }
+
 /* pagine di servizio */
 .pagina { max-width: 760px; }
 .pagina h1 { font-size: 32px; }
@@ -308,12 +336,13 @@ if(l.length){el.src=l.shift();el.dataset.fb=JSON.stringify(l)}else{el.onerror=nu
     <div class="quando">14 agosto 2026</div>
   </div>
 </article></div>
-<nav class="pagine" style="display:flex;gap:14px;align-items:center;justify-content:center;margin:30px 0 6px;font-size:15px"><span style="color:var(--testo-tenue)">pagina 1 di 10</span><a class="bottone" href="https://serietvfans.com/serie/la-promessa/2/">Più vecchie »</a></nav>
+<nav class="pagine" aria-label="Pagine dell'archivio"><span class="qui">1</span><a href="https://serietvfans.com/serie/la-promessa/2/">2</a><a href="https://serietvfans.com/serie/la-promessa/3/">3</a><a href="https://serietvfans.com/serie/la-promessa/4/">4</a><a href="https://serietvfans.com/serie/la-promessa/5/">5</a><a href="https://serietvfans.com/serie/la-promessa/6/">6</a><a href="https://serietvfans.com/serie/la-promessa/7/">7</a><a href="https://serietvfans.com/serie/la-promessa/8/">8</a><a href="https://serietvfans.com/serie/la-promessa/9/">9</a><a href="https://serietvfans.com/serie/la-promessa/10/">10</a><a href="https://serietvfans.com/serie/la-promessa/2/" rel="next">Più vecchie »</a></nav>
 </div></main>
 <footer><div class="wrap">
   <strong>Serie TV Fans</strong> — Anticipazioni e trame delle soap turche e spagnole
   <div class="fserie"><a href="/serie/endless-love/">Endless Love</a><a href="/serie/la-promessa/">La Promessa</a><a href="/serie/terra-amara/">Terra Amara</a><a href="/serie/forbidden-fruit/">Forbidden Fruit</a><a href="/serie/far-away/">Far Away</a><a href="/serie/il-paradiso-delle-signore/">Il Paradiso delle Signore</a><a href="/serie/my-home-my-destiny/">My Home My Destiny</a><a href="/serie/hercai/">Hercai</a><a href="/serie/la-ragazza-e-lufficiale/">La Ragazza e l&#x27;Ufficiale</a><a href="/serie/la-rosa-della-vendetta/">La Rosa della Vendetta</a><a href="/serie/segreti-di-famiglia/">Segreti di Famiglia</a><a href="/serie/un-posto-al-sole/">Un Posto al Sole</a></div>
   <div class="flegali">
+    <a href="/archivio/">Archivio completo</a>
     <a href="/chi-siamo/">Chi siamo</a>
     <a href="/contatti/">Contatti</a>
     <a href="/privacy/">Privacy</a>
