@@ -195,6 +195,38 @@ main { padding: 26px 0 40px; }
   border: 1px solid var(--bordo); border-radius: 8px; padding: 12px 16px; margin: 0 0 22px;
   font-size: 15px; }
 .onda .tv { font-size: 18px; line-height: 1.4; }
+.intro-serie p { margin: 0 0 12px; }
+.intro-serie p:last-child { margin-bottom: 0; }
+
+/* ── contenuto pillar della pagina serie ────────────────────────────────────
+   Prima qui c'era solo la griglia di schede: 545 parole, nessun H2. Questa
+   pagina intercetta «<serie> anticipazioni» — la query di testa — e si prende
+   il 52% delle impressioni del sito, quindi il testo che arriva prima
+   dell'elenco e' la cosa piu' letta che pubblichiamo. Larghezza di riga tenuta
+   a 68ch come negli articoli: qui si legge, non si scorre. */
+.pillar { max-width: 68ch; margin: 0 0 26px; }
+.pillar h2 { font-family: var(--serif); font-size: 23px; line-height: 1.25;
+  margin: 26px 0 10px; }
+.pillar p { margin: 0 0 12px; line-height: 1.65; }
+.pillar ul { margin: 0 0 12px; padding-left: 22px; }
+.pillar li { margin: 0 0 5px; line-height: 1.6; }
+.titolo-elenco { font-family: var(--serif); font-size: 23px; margin: 30px 0 16px;
+  padding-top: 20px; border-top: 1px solid var(--bordo); }
+
+/* «Da leggere prima»: l'uscita rapida verso i pezzi che rispondono davvero.
+   Sta in alto perche' chi arriva da Google ha gia' una domanda in testa. */
+.migliori { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 8px; padding: 14px 18px 16px; margin: 0 0 24px; max-width: 68ch; }
+.migliori h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .6px;
+  color: var(--testo-tenue); margin: 0 0 10px; font-family: inherit; font-weight: 700; }
+.migliori ul { margin: 0; padding-left: 20px; }
+.migliori li { margin: 0 0 7px; line-height: 1.45; }
+.migliori li:last-child { margin-bottom: 0; }
+
+/* Rimando al sito gemello, quando la serie appartiene all'altro dominio. */
+.gemello { border-left: 3px solid var(--accento); background: var(--sfondo-tenue);
+  padding: 12px 16px; margin: 0 0 24px; max-width: 68ch; }
+.gemello p { margin: 0; font-size: 15px; line-height: 1.55; }
 
 /* condividi */
 .condividi { display: flex; gap: 10px; align-items: center; margin: 26px 0 6px; flex-wrap: wrap; }
@@ -286,7 +318,7 @@ if(l.length){el.src=l.shift();el.dataset.fb=JSON.stringify(l)}else{el.onerror=nu
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">venerdì 28 agosto 2026</span>
+  <span class="oggi">sabato 29 agosto 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -298,8 +330,12 @@ if(l.length){el.src=l.shift();el.dataset.fb=JSON.stringify(l)}else{el.onerror=nu
 <main><div class="wrap">
 <div class="briciole"><a href="/">Home</a> › Segreti di Famiglia</div>
 <h1 style="font-size:32px;margin:0 0 10px">Segreti di Famiglia: anticipazioni e trame</h1>
-<p style="color:var(--testo-tenue);margin:0 0 18px">Tutte le anticipazioni di Segreti di Famiglia pubblicate su Serie TV Fans, dalla più recente.</p>
+<div class="intro-serie"><p>Chi cerca Segreti di Famiglia anticipazioni vuole quasi sempre due cose: capire dove si è fermato e sapere come va a finire un caso rimasto aperto. In questa pagina raccogliamo tutte le trame che pubblichiamo sulla serie turca, dalla più recente alla più vecchia: riassunti delle puntate, anticipazioni e approfondimenti sui passaggi che spostano le indagini. Sotto trovi l'elenco completo degli articoli; qui sopra le informazioni di base, utili sia a chi la sta seguendo sia a chi la recupera adesso dall'inizio. La serie è conclusa, quindi il quadro qui sotto resta valido: non ci sono puntate nuove che possano smentirlo.</p></div>
+<div class="onda"><span class="tv">📺</span><span><strong>Segreti di Famiglia</strong> — Rete 4 · in streaming su Mediaset Infinity</span></div>
 
+
+<section class="pillar"><h2>Di cosa parla Segreti di Famiglia</h2><p>Segreti di Famiglia è una serie turca, titolo originale <em>Yargı</em>, andata in onda dal 2021 al 2024 sulla rete Kanal D. İlgaz Kaya è un pubblico ministero che mette la legge davanti a tutto, anche alla famiglia. Ceylin Erguvan è un'avvocata che per arrivare alla verità prende ogni scorciatoia disponibile. Finiscono dalla stessa parte per il motivo peggiore: İnci, la sorella minore di Ceylin, viene uccisa, e il principale sospettato è Çınar, il fratello minore di İlgaz.</p><p>Da quel caso la serie tira un filo che arriva ai padri di entrambi e a colpe vecchie di anni. È un legal drama vero, con processi e prove, ma il tribunale serve soprattutto a mettere due famiglie una di fronte all'altra.</p></section><section class="pillar"><h2>Chi ha ucciso İnci in Segreti di Famiglia</h2><p>È la domanda che regge la prima parte della serie, e la risposta non è Çınar. A uccidere İnci è stato Engin Tilmen, dopo una lite degenerata. A coprirlo interviene la famiglia, con l'avvocato Yekta Tilmen che lavora per far sparire le tracce.</p><p>Ceylin ci arriva mettendo insieme dettagli minimi, non un colpo di scena: mobili sostituiti di fresco, un orecchino, oggetti che qualcuno ha provato a bruciare. È il modo in cui la serie ragiona per tutte e tre le stagioni, e vale come avvertimento per chi guarda: si vince sui particolari, quasi mai sulle confessioni.</p></section><section class="pillar"><h2>Come finisce Segreti di Famiglia</h2><p>La terza stagione chiude sui protagonisti più che su un caso. İlgaz e Ceylin sono sposati e hanno figli; nel giardino della casa nuova viene trovato un cadavere sepolto e si ritrovano loro stessi sotto indagine, l'ultimo giro di una storia che li ha sempre messi dalla parte sbagliata del tavolo.</p><p>Nell'epilogo İlgaz diventa procuratore capo, Yekta lascia lo studio legale a Ceylin, la famiglia si allarga ancora. Non tutti arrivano in fondo: Mert muore. È una chiusura che preferisce sistemare le persone invece di lasciare un mistero aperto.</p></section><section class="pillar"><h2>Il cast di Segreti di Famiglia</h2><p>La coppia al centro di tutto è quella formata da Pınar Deniz e Kaan Urgancıoğlu, che restano in scena dalla prima all'ultima puntata. Questi gli attori principali e i personaggi che interpretano:</p><ul><li><strong>Pınar Deniz</strong> è Ceylin Erguvan, l'avvocata</li><li><strong>Kaan Urgancıoğlu</strong> è İlgaz Kaya, il pubblico ministero</li><li><strong>Mehmet Yılmaz Ak</strong> è Pars Seçkin</li><li><strong>Uğur Polat</strong> è Yekta Tilmen, l'avvocato di famiglia dei Tilmen</li><li><strong>Uğur Aslan</strong> è Eren Duman, il poliziotto che lavora sui casi</li><li><strong>Beren Nur Karadiş</strong> è Defne Kaya, la sorella di İlgaz</li></ul><p>In italiano Ceylin ha la voce di Eleonora Reti e İlgaz quella di Raffaele Carpentieri.</p></section><section class="pillar"><h2>Quante puntate ha Segreti di Famiglia</h2><p>In Turchia sono novantacinque episodi divisi in tre stagioni: trentaquattro la prima, ventinove la seconda, trentadue la terza. In Italia gli stessi episodi sono stati spezzati in puntate più corte e diventano trecentotto, cioè centoundici, novantasei e centouno. Un episodio turco vale poco più di tre puntate italiane, quindi i numeri che circolano in rete non coincidono quasi mai fra loro. Nel 2023 la serie ha vinto l'International Emmy come miglior telenovela.</p></section><section class="pillar"><h2>Dove vedere Segreti di Famiglia in TV e in streaming</h2><p>In Italia Segreti di Famiglia va in onda su <strong>Rete 4</strong>, nel day-time, e in streaming su <strong>Mediaset Infinity</strong>, dove restano disponibili le puntate già trasmesse. Non è la prima volta che passa da noi: era arrivata su Canale 5 nel 2024 ed è poi tornata su Rete 4, prima con le puntate già viste e poi con quelle inedite, fino alla seconda stagione trasmessa in chiaro. Non scriviamo un orario: la fascia è cambiata più volte e un orario sbagliato lasciato in pagina è peggio di nessun orario, quindi per il giorno preciso conviene controllare il palinsesto. Gli episodi turchi sono tutti girati, quindi la storia ha già una fine: qui sotto la ricostruiamo puntata per puntata.</p></section>
+<h2 class="titolo-elenco">Tutte le anticipazioni di Segreti di Famiglia</h2>
 <div class="griglia"><article class="scheda">
   <a href="/segreti-di-famiglia/segreti-di-famiglia-ceylin-recupera-dalla-spazzatura-lo-spazzolino-che-ilgaz-ave/"><div class="foto"><img src="https://i.ytimg.com/vi/BRxPNp4LTrw/hqdefault.jpg" alt="Segreti di Famiglia" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/segreti-di-famiglia.svg&quot;]' onerror="imgFb(this)"></div></a>
   <div class="corpo">

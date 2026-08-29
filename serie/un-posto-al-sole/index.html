@@ -195,6 +195,38 @@ main { padding: 26px 0 40px; }
   border: 1px solid var(--bordo); border-radius: 8px; padding: 12px 16px; margin: 0 0 22px;
   font-size: 15px; }
 .onda .tv { font-size: 18px; line-height: 1.4; }
+.intro-serie p { margin: 0 0 12px; }
+.intro-serie p:last-child { margin-bottom: 0; }
+
+/* ── contenuto pillar della pagina serie ────────────────────────────────────
+   Prima qui c'era solo la griglia di schede: 545 parole, nessun H2. Questa
+   pagina intercetta «<serie> anticipazioni» — la query di testa — e si prende
+   il 52% delle impressioni del sito, quindi il testo che arriva prima
+   dell'elenco e' la cosa piu' letta che pubblichiamo. Larghezza di riga tenuta
+   a 68ch come negli articoli: qui si legge, non si scorre. */
+.pillar { max-width: 68ch; margin: 0 0 26px; }
+.pillar h2 { font-family: var(--serif); font-size: 23px; line-height: 1.25;
+  margin: 26px 0 10px; }
+.pillar p { margin: 0 0 12px; line-height: 1.65; }
+.pillar ul { margin: 0 0 12px; padding-left: 22px; }
+.pillar li { margin: 0 0 5px; line-height: 1.6; }
+.titolo-elenco { font-family: var(--serif); font-size: 23px; margin: 30px 0 16px;
+  padding-top: 20px; border-top: 1px solid var(--bordo); }
+
+/* «Da leggere prima»: l'uscita rapida verso i pezzi che rispondono davvero.
+   Sta in alto perche' chi arriva da Google ha gia' una domanda in testa. */
+.migliori { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 8px; padding: 14px 18px 16px; margin: 0 0 24px; max-width: 68ch; }
+.migliori h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .6px;
+  color: var(--testo-tenue); margin: 0 0 10px; font-family: inherit; font-weight: 700; }
+.migliori ul { margin: 0; padding-left: 20px; }
+.migliori li { margin: 0 0 7px; line-height: 1.45; }
+.migliori li:last-child { margin-bottom: 0; }
+
+/* Rimando al sito gemello, quando la serie appartiene all'altro dominio. */
+.gemello { border-left: 3px solid var(--accento); background: var(--sfondo-tenue);
+  padding: 12px 16px; margin: 0 0 24px; max-width: 68ch; }
+.gemello p { margin: 0; font-size: 15px; line-height: 1.55; }
 
 /* condividi */
 .condividi { display: flex; gap: 10px; align-items: center; margin: 26px 0 6px; flex-wrap: wrap; }
@@ -286,7 +318,7 @@ if(l.length){el.src=l.shift();el.dataset.fb=JSON.stringify(l)}else{el.onerror=nu
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">venerdì 28 agosto 2026</span>
+  <span class="oggi">sabato 29 agosto 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -298,8 +330,12 @@ if(l.length){el.src=l.shift();el.dataset.fb=JSON.stringify(l)}else{el.onerror=nu
 <main><div class="wrap">
 <div class="briciole"><a href="/">Home</a> › Un Posto al Sole</div>
 <h1 style="font-size:32px;margin:0 0 10px">Un Posto al Sole: anticipazioni e trame</h1>
-<p class="intro-serie">Le anticipazioni di Un Posto al Sole seguono le storie di Palazzo Palladini e dei suoi abitanti: le tensioni tra famiglie, i ritorni improvvisi, le indagini e i sentimenti che a Napoli non restano mai nascosti a lungo. Qui trovi tutte le trame che pubblichiamo sulla soap, dalla più recente: anticipazioni settimanali con il dettaglio delle singole puntate e i momenti che decidono le storyline principali. Le aggiorniamo appena arrivano le trame ufficiali della settimana successiva.</p>
+<div class="intro-serie"><p>Chi cerca Un Posto al Sole anticipazioni di solito vuole sapere che cosa succede a Palazzo Palladini nei prossimi giorni, senza aspettare la messa in onda. In questa pagina raccogliamo tutte le trame che pubblichiamo sulla soap, dalla più recente alla più vecchia: le anticipazioni settimanali con il dettaglio delle singole puntate e i passaggi che decidono le storyline principali. Sotto trovi l'elenco completo degli articoli; qui sopra le informazioni di base su una soap che va avanti dal 1996, utili sia a chi la segue da sempre sia a chi la riprende dopo anni e non sa più chi sta con chi.</p></div>
 <div class="onda"><span class="tv">📺</span><span><strong>Un Posto al Sole</strong> — Rai 3, dal lunedì al venerdì · in streaming su RaiPlay</span></div>
+
+
+<section class="pillar"><h2>Di cosa parla Un Posto al Sole</h2><p>Un Posto al Sole è la soap italiana più longeva: la prima puntata è andata in onda il 21 ottobre 1996 su Rai 3. Il punto di partenza è il format australiano di <em>Neighbours</em>, il vicinato come motore di tutto, ma l'ambientazione è napoletana: Palazzo Palladini, a Posillipo, con il golfo e il Vesuvio dalle finestre.</p><p>Le storie nascono nel condominio e nei posti che ci girano attorno: la guardiola del portiere, le famiglie che abitano ai piani, le aziende che passano di mano. Accanto alle vicende sentimentali la soap ha sempre tenuto un filo di cronaca e di temi sociali, raccontati con più durezza di quanto ci si aspetti dal genere.</p></section><section class="pillar"><h2>Il cast storico di Un Posto al Sole</h2><p>Cinque attori sono in scena fin dalla prima puntata del 1996:</p><ul><li><strong>Patrizio Rispo</strong> è Raffaele Giordano, il portiere di Palazzo Palladini</li><li><strong>Luisa Amatucci</strong> è Silvia Graziani</li><li><strong>Alberto Rossi</strong> è Michele Saviani</li><li><strong>Marzio Honorato</strong> è Renato Poggi</li><li><strong>Germano Bellavia</strong> è Guido Del Bue</li></ul><p>Attorno a loro si sono aggiunti volti diventati altrettanto riconoscibili: Nina Soldano è Marina Giordano dal 2003, Riccardo Polizzy Carbonelli è Roberto Ferri, Luca Turco è Niko Poggi, Maurizio Aiello è Alberto Palladini. Il ricambio è continuo, ma il nucleo del palazzo regge dalla prima puntata.</p></section><section class="pillar"><h2>Dove vedere Un Posto al Sole in TV e in streaming</h2><p>Un Posto al Sole va in onda su <strong>Rai 3</strong>, dal lunedì al venerdì, e si rivede in streaming su <strong>RaiPlay</strong>, che tiene a catalogo anche le puntate già trasmesse. Non indichiamo l'orario: la fascia si sposta per dirette, eventi e speciali, e un orario sbagliato scritto qui sarebbe peggio di nessun orario. Una cosa sola conviene tenere a mente: la soap conosce delle pause di programmazione, e un buco nel palinsesto non vuol dire che la storia si sia fermata.</p></section><section class="pillar"><h2>Quante puntate ha Un Posto al Sole</h2><p>Migliaia, ed è il conto che continua a salire: Un Posto al Sole va in onda dal <strong>21 ottobre 1996</strong> a cinque puntate a settimana, quasi ininterrottamente, il che la rende la soap italiana più longeva. Ogni puntata dura tra i venti e i venticinque minuti. Non esiste una divisione in stagioni come nelle serie: si conta per numero di puntata, ed è il motivo per cui le anticipazioni si organizzano per settimana e per data, non per episodio.</p></section><section class="pillar"><h2>Dove si gira Un Posto al Sole</h2><p>Gli interni si girano al Centro di produzione Rai di Napoli, dove sono ricostruiti gli appartamenti, la guardiola e gli altri ambienti fissi. Gli esterni di Palazzo Palladini sono quelli di Villa Volpicelli, una villa monumentale sulla costa di Posillipo che da fuori somiglia a un piccolo castello: è una proprietà privata, non un set costruito per la soap. Le altre riprese in esterna si fanno in giro per la città, ed è una delle ragioni per cui Napoli finisce per essere un personaggio della storia.</p></section>
+<h2 class="titolo-elenco">Tutte le anticipazioni di Un Posto al Sole</h2>
 <div class="griglia"><article class="scheda">
   <a href="/un-posto-al-sole/un-posto-al-sole-7-11-agosto-damiano-scopre-che-manuel-potrebbe-avere-una-pistol/"><div class="foto"><img src="https://i.ytimg.com/vi/fe5U8RI3j_w/hqdefault.jpg" alt="Un Posto al Sole" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/un-posto-al-sole.svg&quot;]' onerror="imgFb(this)"></div></a>
   <div class="corpo">

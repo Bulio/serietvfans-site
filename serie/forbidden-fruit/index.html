@@ -195,6 +195,38 @@ main { padding: 26px 0 40px; }
   border: 1px solid var(--bordo); border-radius: 8px; padding: 12px 16px; margin: 0 0 22px;
   font-size: 15px; }
 .onda .tv { font-size: 18px; line-height: 1.4; }
+.intro-serie p { margin: 0 0 12px; }
+.intro-serie p:last-child { margin-bottom: 0; }
+
+/* ── contenuto pillar della pagina serie ────────────────────────────────────
+   Prima qui c'era solo la griglia di schede: 545 parole, nessun H2. Questa
+   pagina intercetta «<serie> anticipazioni» — la query di testa — e si prende
+   il 52% delle impressioni del sito, quindi il testo che arriva prima
+   dell'elenco e' la cosa piu' letta che pubblichiamo. Larghezza di riga tenuta
+   a 68ch come negli articoli: qui si legge, non si scorre. */
+.pillar { max-width: 68ch; margin: 0 0 26px; }
+.pillar h2 { font-family: var(--serif); font-size: 23px; line-height: 1.25;
+  margin: 26px 0 10px; }
+.pillar p { margin: 0 0 12px; line-height: 1.65; }
+.pillar ul { margin: 0 0 12px; padding-left: 22px; }
+.pillar li { margin: 0 0 5px; line-height: 1.6; }
+.titolo-elenco { font-family: var(--serif); font-size: 23px; margin: 30px 0 16px;
+  padding-top: 20px; border-top: 1px solid var(--bordo); }
+
+/* «Da leggere prima»: l'uscita rapida verso i pezzi che rispondono davvero.
+   Sta in alto perche' chi arriva da Google ha gia' una domanda in testa. */
+.migliori { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 8px; padding: 14px 18px 16px; margin: 0 0 24px; max-width: 68ch; }
+.migliori h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .6px;
+  color: var(--testo-tenue); margin: 0 0 10px; font-family: inherit; font-weight: 700; }
+.migliori ul { margin: 0; padding-left: 20px; }
+.migliori li { margin: 0 0 7px; line-height: 1.45; }
+.migliori li:last-child { margin-bottom: 0; }
+
+/* Rimando al sito gemello, quando la serie appartiene all'altro dominio. */
+.gemello { border-left: 3px solid var(--accento); background: var(--sfondo-tenue);
+  padding: 12px 16px; margin: 0 0 24px; max-width: 68ch; }
+.gemello p { margin: 0; font-size: 15px; line-height: 1.55; }
 
 /* condividi */
 .condividi { display: flex; gap: 10px; align-items: center; margin: 26px 0 6px; flex-wrap: wrap; }
@@ -286,7 +318,7 @@ if(l.length){el.src=l.shift();el.dataset.fb=JSON.stringify(l)}else{el.onerror=nu
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">venerdì 28 agosto 2026</span>
+  <span class="oggi">sabato 29 agosto 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -298,10 +330,14 @@ if(l.length){el.src=l.shift();el.dataset.fb=JSON.stringify(l)}else{el.onerror=nu
 <main><div class="wrap">
 <div class="briciole"><a href="/">Home</a> › Forbidden Fruit</div>
 <h1 style="font-size:32px;margin:0 0 10px">Forbidden Fruit: anticipazioni e trame</h1>
-<p class="intro-serie">Le anticipazioni di Forbidden Fruit ruotano attorno a due sorelle opposte, Yıldız e Zeynep, e al mondo dell&#x27;alta società di Istanbul in cui una vuole entrare a ogni costo e l&#x27;altra prova a restare onesta: ambizione, tradimenti, matrimoni di convenienza e amicizie che si rompono per soldi. Qui trovi tutte le trame che pubblichiamo sulla serie turca, dalla più recente, con le anticipazioni settimanali e i riassunti delle puntate.</p>
+<div class="intro-serie"><p>Chi cerca Forbidden Fruit anticipazioni di solito vuole due cose: sapere che cosa succede nelle puntate in arrivo e capire a che punto è la storia. In questa pagina ci sono tutte e due. Qui sotto trovi l'elenco completo delle trame che pubblichiamo sulla serie turca, dalla più recente alla più vecchia: le anticipazioni settimanali con il riassunto giorno per giorno, i passaggi singoli che spostano gli equilibri fra le famiglie e le schede sui personaggi. Sopra l'elenco, invece, abbiamo messo le risposte alle domande che tornano ogni volta: di cosa parla, chi sono gli attori, dove si vedono le puntate, quante sono davvero e come si chiude la storia in Turchia. Sono informazioni stabili, che non cambiano di settimana in settimana.</p></div>
 <div class="onda"><span class="tv">📺</span><span><strong>Forbidden Fruit</strong> — Canale 5 · in streaming su Mediaset Infinity</span></div>
+
+<nav class="migliori" aria-label="Le anticipazioni più approfondite"><h2>Da leggere prima</h2><ul><li><a href="/forbidden-fruit/forbidden-fruit-chi-e-davvero-zeynep-la-sorella-per-bene-che-ha-finito-peggio-di-yildiz/">Forbidden Fruit: chi è davvero Zeynep, la sorella «per bene» che ha finito peggio di Yildiz</a></li><li><a href="/forbidden-fruit/forbidden-fruit-chi-e-davvero-sahika-perche-ha-puntato-alle-quote-e-non-al-matrimonio/">Forbidden Fruit, chi è davvero Şahika: perché ha puntato alle quote e non al matrimonio</a></li><li><a href="/forbidden-fruit/forbidden-fruit-chi-e-yildiz-la-cameriera-pagata-da-ender-per-sedurre-halit-e-come-finisce/">Forbidden Fruit, chi è Yıldız: la cameriera pagata da Ender per sedurre Halit, e come finisce</a></li><li><a href="/forbidden-fruit/forbidden-fruit-feride-accusa-yldz-davanti-al-bambino-perche-ha-scelto-proprio-i/">Forbidden Fruit, Feride accusa Yıldız davanti al bambino: perché ha scelto proprio il giorno della fusione</a></li></ul></nav>
+<section class="pillar"><h2>Di cosa parla Forbidden Fruit</h2><p>Il titolo originale è <em>Yasak Elma</em>, cioè «mela proibita». La storia parte da due sorelle che vivono a Istanbul e non hanno soldi: <strong>Yıldız</strong> fa la cameriera in un ristorante dove mangiano i ricchi, <strong>Zeynep</strong> lavora come assistente in un'azienda. A Yıldız arriva una proposta da Ender, la moglie dell'imprenditore Halit Argun: sedurre suo marito, in cambio di denaro. Yıldız accetta, il piano le sfugge di mano e finisce per sposare Halit davvero. Da quel momento la serie racconta due cose insieme: che cosa si è disposti a fare per entrare nell'alta società di Istanbul, e quanto costa restarci. Matrimoni di convenienza, quote societarie, alleanze che durano una stagione e amicizie che si rompono per soldi.</p></section><section class="pillar"><h2>Il cast di Forbidden Fruit: chi sono gli attori</h2><p>Nei ruoli principali della serie recitano:</p><ul><li><strong>Eda Ece</strong> è Yıldız Yılmaz, la sorella che vuole entrare nel mondo dei ricchi.</li><li><strong>Şevval Sam</strong> è Ender Çelebi, la donna che mette in moto tutta la vicenda.</li><li><strong>Talat Bulut</strong> è Halit Argun, marito di Ender e capo della holding di famiglia.</li><li><strong>Sevda Erginci</strong> è Zeynep Yılmaz, la sorella che lavora in ufficio.</li><li><strong>Onur Tuna</strong> è Alihan Taşdemir, l'uomo d'affari che compra l'azienda dove lavora Zeynep.</li><li><strong>Berk Oktay</strong> è Çağatay Kuyucu.</li><li><strong>Murat Aygen</strong> è Doğan Yıldırım.</li></ul><p>La serie è ambientata e girata a Istanbul, e in Turchia è andata in onda sull'emittente Fox.</p></section><section class="pillar"><h2>Dove vedere Forbidden Fruit in TV e in streaming</h2><p>In Italia Forbidden Fruit va in onda su <strong>Canale 5</strong>. Le puntate si rivedono poi in streaming su <strong>Mediaset Infinity</strong>, gratis e senza abbonamento, insieme a quelle già trasmesse: è il modo più semplice per recuperare se si è persa una settimana. Non indichiamo l'orario di messa in onda, e non è una dimenticanza: la collocazione nel palinsesto pomeridiano cambia spesso e un orario sbagliato scritto in pagina è peggio di nessun orario. Chi vuole sapere in anticipo che cosa succede può leggere le trame nell'elenco qui sotto, che pubblichiamo prima della messa in onda italiana.</p></section><section class="pillar"><h2>Quante puntate ha Forbidden Fruit</h2><p>In Turchia la serie è composta da <strong>177 episodi divisi in sei stagioni</strong>, andati in onda dal 19 marzo 2018 al 5 giugno 2023. Quel numero però non corrisponde a quello che si sente dire in Italia, e la ragione è tecnica. Gli episodi turchi durano circa due ore l'uno, mentre lo slot italiano è molto più breve: ogni episodio originale viene quindi spezzato in più puntate, e la numerazione italiana corre molto più veloce di quella turca. Quando si legge di «puntata 300» o «puntata 400» ci si riferisce alla suddivisione italiana, non ai 177 episodi originali. Mettere a confronto i due conteggi è il modo più rapido per farsi un'idea sbagliata di quanto manchi alla fine.</p></section><section class="pillar"><h2>Come finisce Forbidden Fruit</h2><p>In patria la serie è già conclusa: l'ultimo episodio, il 177°, è andato in onda il 5 giugno 2023. La messa in onda italiana è però molto più indietro di quel punto, quindi il finale vero non è ancora arrivato da noi e chi promette di raccontarlo parla quasi sempre di un finale di stagione, non della fine della storia. Una cosa si può dire senza rovinare niente: la serie comincia come una guerra tra Yıldız ed Ender e arriva all'ultima puntata con loro due ancora al centro della scena, dopo cinque anni di alleanze rotte e rifatte. Tutto quello che succede prima, puntata per puntata, è nell'elenco qui sotto.</p></section>
+<h2 class="titolo-elenco">Tutte le anticipazioni di Forbidden Fruit</h2>
 <div class="griglia"><article class="scheda">
-  <a href="/forbidden-fruit/forbidden-fruit-chi-e-davvero-zeynep-la-sorella-per-bene-che-ha-finito-peggio-di-yildiz/"><div class="foto"><img src="/Users/giulianopuggioni/Desktop/Claude/YOUTUBE_API/serietvfans/batch_nuovoformato/imgs_videoNF62/it_034.jpg" alt="Forbidden Fruit" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/forbidden-fruit.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <a href="/forbidden-fruit/forbidden-fruit-chi-e-davvero-zeynep-la-sorella-per-bene-che-ha-finito-peggio-di-yildiz/"><div class="foto"></div></a>
   <div class="corpo">
     <span class="serie">Forbidden Fruit</span>
     <h3><a href="/forbidden-fruit/forbidden-fruit-chi-e-davvero-zeynep-la-sorella-per-bene-che-ha-finito-peggio-di-yildiz/">Forbidden Fruit: chi è davvero Zeynep, la sorella «per bene» che ha finito peggio di Yildiz</a></h3>

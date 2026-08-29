@@ -195,6 +195,38 @@ main { padding: 26px 0 40px; }
   border: 1px solid var(--bordo); border-radius: 8px; padding: 12px 16px; margin: 0 0 22px;
   font-size: 15px; }
 .onda .tv { font-size: 18px; line-height: 1.4; }
+.intro-serie p { margin: 0 0 12px; }
+.intro-serie p:last-child { margin-bottom: 0; }
+
+/* ── contenuto pillar della pagina serie ────────────────────────────────────
+   Prima qui c'era solo la griglia di schede: 545 parole, nessun H2. Questa
+   pagina intercetta «<serie> anticipazioni» — la query di testa — e si prende
+   il 52% delle impressioni del sito, quindi il testo che arriva prima
+   dell'elenco e' la cosa piu' letta che pubblichiamo. Larghezza di riga tenuta
+   a 68ch come negli articoli: qui si legge, non si scorre. */
+.pillar { max-width: 68ch; margin: 0 0 26px; }
+.pillar h2 { font-family: var(--serif); font-size: 23px; line-height: 1.25;
+  margin: 26px 0 10px; }
+.pillar p { margin: 0 0 12px; line-height: 1.65; }
+.pillar ul { margin: 0 0 12px; padding-left: 22px; }
+.pillar li { margin: 0 0 5px; line-height: 1.6; }
+.titolo-elenco { font-family: var(--serif); font-size: 23px; margin: 30px 0 16px;
+  padding-top: 20px; border-top: 1px solid var(--bordo); }
+
+/* «Da leggere prima»: l'uscita rapida verso i pezzi che rispondono davvero.
+   Sta in alto perche' chi arriva da Google ha gia' una domanda in testa. */
+.migliori { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 8px; padding: 14px 18px 16px; margin: 0 0 24px; max-width: 68ch; }
+.migliori h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .6px;
+  color: var(--testo-tenue); margin: 0 0 10px; font-family: inherit; font-weight: 700; }
+.migliori ul { margin: 0; padding-left: 20px; }
+.migliori li { margin: 0 0 7px; line-height: 1.45; }
+.migliori li:last-child { margin-bottom: 0; }
+
+/* Rimando al sito gemello, quando la serie appartiene all'altro dominio. */
+.gemello { border-left: 3px solid var(--accento); background: var(--sfondo-tenue);
+  padding: 12px 16px; margin: 0 0 24px; max-width: 68ch; }
+.gemello p { margin: 0; font-size: 15px; line-height: 1.55; }
 
 /* condividi */
 .condividi { display: flex; gap: 10px; align-items: center; margin: 26px 0 6px; flex-wrap: wrap; }
@@ -291,7 +323,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">venerdì 28 agosto 2026</span>
+  <span class="oggi">sabato 29 agosto 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -341,7 +373,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <h2>Perché conta: i soldi di Marina dentro un reato</h2>
 <p>Il punto non è il colpo di scena, è la firma che ci sta sotto. Quei soldi Marina li aveva dati per un motivo preciso — comprarsi la sparizione di Lara da Napoli — e ora scopre che sono serviti a finanziare un&#x27;adozione illegale. Vuol dire che la persona che in questa storia si è sempre sentita la parte lesa è finita, senza saperlo, dentro il fascicolo. E cambia anche la natura dell&#x27;esame genetico annunciato da Roberto: non è più una domanda privata sulla paternità di Tommaso, è un accertamento che, una volta fatto, nessuno dei tre può più rimettere nel cassetto. Il fatto che Lara corra da Filippo dice il resto: da sola non ha più nessuna carta, e per restare a galla deve allargare il numero di persone coinvolte.</p>
   </div>
-  
+  <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=fe5U8RI3j_w" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/fe5U8RI3j_w/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>UN POSTO AL SOLE Anticipazioni Puntate 7-11 Agosto 2023</span></a></li><li><a href="https://www.youtube.com/watch?v=ujCcVdDWKfs" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/ujCcVdDWKfs/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>UN POSTO AL SOLE Anticipazioni 8 Agosto: Nunzio Sceglie Ada?</span></a></li><li><a href="https://www.youtube.com/watch?v=ZFadSAlnJtI" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/ZFadSAlnJtI/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>Un Posto al Sole, Anticipazioni Settimana 22-26 Luglio 2024: Riavvicinamento Tra Rossella e Nun</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Rossella arriverà davvero all&#x27;altare? Ditecelo nei commenti.</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=PL2joXKgA2M">Dite la vostra nei commenti al video</a>.</p></div>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=Un Posto al Sole, settembre: Roberto scopre che Tommaso è stato adottato illegalmente da Lara — con i soldi che le aveva dato Marina — https://serietvfans.com/un-posto-al-sole/un-posto-al-sole-settembre-roberto-scopre-che-tommaso-e-stato-adottato-illegalme/" rel="nofollow noopener" target="_blank">WhatsApp</a>

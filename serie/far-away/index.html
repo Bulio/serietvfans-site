@@ -195,6 +195,38 @@ main { padding: 26px 0 40px; }
   border: 1px solid var(--bordo); border-radius: 8px; padding: 12px 16px; margin: 0 0 22px;
   font-size: 15px; }
 .onda .tv { font-size: 18px; line-height: 1.4; }
+.intro-serie p { margin: 0 0 12px; }
+.intro-serie p:last-child { margin-bottom: 0; }
+
+/* ── contenuto pillar della pagina serie ────────────────────────────────────
+   Prima qui c'era solo la griglia di schede: 545 parole, nessun H2. Questa
+   pagina intercetta «<serie> anticipazioni» — la query di testa — e si prende
+   il 52% delle impressioni del sito, quindi il testo che arriva prima
+   dell'elenco e' la cosa piu' letta che pubblichiamo. Larghezza di riga tenuta
+   a 68ch come negli articoli: qui si legge, non si scorre. */
+.pillar { max-width: 68ch; margin: 0 0 26px; }
+.pillar h2 { font-family: var(--serif); font-size: 23px; line-height: 1.25;
+  margin: 26px 0 10px; }
+.pillar p { margin: 0 0 12px; line-height: 1.65; }
+.pillar ul { margin: 0 0 12px; padding-left: 22px; }
+.pillar li { margin: 0 0 5px; line-height: 1.6; }
+.titolo-elenco { font-family: var(--serif); font-size: 23px; margin: 30px 0 16px;
+  padding-top: 20px; border-top: 1px solid var(--bordo); }
+
+/* «Da leggere prima»: l'uscita rapida verso i pezzi che rispondono davvero.
+   Sta in alto perche' chi arriva da Google ha gia' una domanda in testa. */
+.migliori { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 8px; padding: 14px 18px 16px; margin: 0 0 24px; max-width: 68ch; }
+.migliori h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .6px;
+  color: var(--testo-tenue); margin: 0 0 10px; font-family: inherit; font-weight: 700; }
+.migliori ul { margin: 0; padding-left: 20px; }
+.migliori li { margin: 0 0 7px; line-height: 1.45; }
+.migliori li:last-child { margin-bottom: 0; }
+
+/* Rimando al sito gemello, quando la serie appartiene all'altro dominio. */
+.gemello { border-left: 3px solid var(--accento); background: var(--sfondo-tenue);
+  padding: 12px 16px; margin: 0 0 24px; max-width: 68ch; }
+.gemello p { margin: 0; font-size: 15px; line-height: 1.55; }
 
 /* condividi */
 .condividi { display: flex; gap: 10px; align-items: center; margin: 26px 0 6px; flex-wrap: wrap; }
@@ -286,7 +318,7 @@ if(l.length){el.src=l.shift();el.dataset.fb=JSON.stringify(l)}else{el.onerror=nu
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">venerdì 28 agosto 2026</span>
+  <span class="oggi">sabato 29 agosto 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -298,8 +330,12 @@ if(l.length){el.src=l.shift();el.dataset.fb=JSON.stringify(l)}else{el.onerror=nu
 <main><div class="wrap">
 <div class="briciole"><a href="/">Home</a> › Far Away</div>
 <h1 style="font-size:32px;margin:0 0 10px">Far Away: anticipazioni e trame</h1>
-<p class="intro-serie">Le anticipazioni di Far Away raccolgono le trame che pubblichiamo sulla serie, dalla più recente alla più vecchia: riassunti delle puntate, anticipazioni settimanali e i passaggi che cambiano le storyline. Seguiamo le puntate originali, quindi qui trovi gli sviluppi prima che arrivino da noi.</p>
-<div class="onda"><span class="tv">📺</span><span><strong>Far Away</strong> — Serie turca · le nostre anticipazioni arrivano dalle puntate originali</span></div>
+<div class="intro-serie"><p>Chi cerca Far Away anticipazioni vuole quasi sempre sapere una cosa sola: che cosa succede nelle puntate che devono ancora arrivare. In questa pagina c'è l'elenco completo delle trame che pubblichiamo sulla serie turca, dalla più recente alla più vecchia: riassunti delle puntate, anticipazioni settimanali, schede sui personaggi e sui passaggi che cambiano davvero le storyline. Seguiamo gli episodi originali, quindi qui gli sviluppi si leggono prima. Sopra l'elenco abbiamo messo le risposte alle domande che ci arrivano più spesso: di cosa parla la serie, chi sono gli attori, dove la si segue, quante puntate sono e come finisce. Sono informazioni che restano valide, e che quindi non serve rincorrere ogni settimana.</p></div>
+<div class="onda"><span class="tv">📺</span><span><strong>Far Away</strong> — Canale 5 · in streaming su Mediaset Infinity</span></div>
+
+<nav class="migliori" aria-label="Le anticipazioni più approfondite"><h2>Da leggere prima</h2><ul><li><a href="/far-away/far-away-perche-alya-lascia-cihan-il-giorno-del-matrimonio/">Far Away: perché Alya lascia Cihan il giorno del matrimonio</a></li><li><a href="/far-away/far-away-perche-cihan-ha-fermato-alya-la-decisione-che-sta-spaccando-gli-albora/">Far Away, perché Cihan ha fermato Alya: la decisione che sta spaccando gli Albora</a></li><li><a href="/far-away/far-away-chi-dona-il-fegato-a-nare-perche-il-trapianto-salta-la-notte-prima-e-ch/">Far Away, chi dona il fegato a Nare: perché il trapianto salta la notte prima e chi resta come unico donatore possibile</a></li><li><a href="/far-away/far-away-chi-e-davvero-sadakat-il-segreto-su-boran-che-ha-tenuto-nascosto-per-tu/">Far Away, chi è davvero Sadakat: il segreto sul padre di Boran e cosa chiede a Cihan per tacere</a></li></ul></nav>
+<section class="pillar"><h2>Di cosa parla Far Away</h2><p>Il titolo originale è <em>Uzak Şehir</em>, «città lontana». <strong>Alya</strong> vive in Canada con il marito e il figlio piccolo, <strong>Deniz</strong>, e del passato di lui sa pochissimo: la famiglia è rimasta in Turchia e i rapporti si sono interrotti da anni. Quando il marito muore, Alya decide di rispettarne l'ultima volontà e di riportarlo a <strong>Mardin</strong>, la città della famiglia Albora. Quello che doveva essere un viaggio per una sepoltura diventa il suo ingresso dentro una famiglia acquisita che non conosce e da cui non riesce più a ripartire. Da lì in avanti la storia è il tentativo di Alya di proteggere se stessa e il bambino dentro una casa piena di segreti, molti dei quali riguardano proprio la morte del marito.</p></section><section class="pillar"><h2>Il cast di Far Away: chi sono gli attori</h2><p>Nei ruoli principali della serie recitano:</p><ul><li><strong>Sinem Ünsal</strong> è Alya Albora, la protagonista.</li><li><strong>Ozan Akbaba</strong> è Cihan Albora, il perno maschile della storia.</li><li><strong>Gonca Cilasun</strong> è Sadakat Albora.</li><li><strong>Müfit Kayacan</strong> è Ecmel Albora, la figura attorno a cui ruotano diversi dei segreti di famiglia.</li><li><strong>Atakan Özkaya</strong> è Kaya Albora.</li><li><strong>Sahra Şaş</strong> è Nare Albora.</li><li><strong>Ferit Kaya</strong> è Demir Baybars.</li><li><strong>Kuzey Gezer</strong> è Deniz, il figlio di Alya.</li></ul><p>La serie è ambientata a Mardin, città del sud-est della Turchia, ed è lì che si svolge quasi tutta la vicenda.</p></section><section class="pillar"><h2>Dove vedere Far Away in TV e in streaming</h2><p>In Italia Far Away va in onda su <strong>Canale 5</strong>, dove è arrivata il 3 giugno 2026, e le puntate si rivedono in streaming su <strong>Mediaset Infinity</strong>, che tiene a catalogo anche gli episodi già trasmessi. Non scriviamo un orario: la serie ha già cambiato collocazione più di una volta e un orario sbagliato lasciato in pagina è peggio di nessun orario, quindi per il giorno preciso conviene guardare il palinsesto. Il titolo originale, <em>Uzak Şehir</em>, va in onda in Turchia su <strong>Kanal D</strong> dall'11 novembre 2024: le anticipazioni che pubblichiamo arrivano da quelle puntate, ed è il motivo per cui qui gli sviluppi della storia si leggono prima che vadano in onda da noi. L'elenco qui sotto si allunga appena esce una trama nuova.</p></section><section class="pillar"><h2>Quante puntate ha Far Away</h2><p>Un numero definitivo non esiste ancora, perché in Turchia la serie è tuttora in produzione: finché la produzione va avanti, il conto degli episodi cresce. C'è poi una seconda ragione per cui i numeri che si leggono in giro non tornano mai. Gli episodi originali sono lunghissimi, oltre due ore l'uno, mentre le puntate che si vedono in italiano durano una frazione di quel tempo: ogni episodio turco viene diviso in più puntate. Le due numerazioni quindi non sono confrontabili, e chi mette a confronto un «episodio» con una «puntata» ottiene per forza un risultato sbagliato. È il motivo per cui non si può dire quante puntate manchino alla fine: chi lo dice se lo sta inventando.</p></section><section class="pillar"><h2>Come finisce Far Away</h2><p>La risposta onesta è che il finale non esiste. <em>Uzak Şehir</em> è cominciata in Turchia l'11 novembre 2024 e non è ancora arrivata alla conclusione: non c'è un ultimo episodio girato, quindi non c'è nessun finale da raccontare. Qualunque articolo o video prometta di rivelare come finisce Far Away sta parlando di un finale di stagione, di una previsione, o di niente. Lo scriviamo volentieri perché su questa ricerca è facilissimo prendere in giro chi cerca: basta un titolo assertivo e il click arriva comunque. Quello che si può dire davvero è a che punto è la storia, ed è esattamente quello che trovi nelle trame qui sotto.</p></section>
+<h2 class="titolo-elenco">Tutte le anticipazioni di Far Away</h2>
 <div class="griglia"><article class="scheda">
   <a href="/far-away/far-away-chi-e-mariam-il-nome-sulla-chiavetta-di-boran-che-mine-usa-per-dividere/"><div class="foto"><img src="https://i.ytimg.com/vi/-1mSuZOzD7Q/hqdefault.jpg" alt="Far Away" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/far-away.svg&quot;]' onerror="imgFb(this)"></div></a>
   <div class="corpo">
@@ -315,7 +351,7 @@ if(l.length){el.src=l.shift();el.dataset.fb=JSON.stringify(l)}else{el.onerror=nu
     <div class="quando">26 agosto 2026</div>
   </div>
 </article><article class="scheda">
-  <a href="/far-away/far-away-perche-alya-lascia-cihan-il-giorno-del-matrimonio/"><div class="foto"><img src="/Users/giulianopuggioni/Desktop/Claude/YOUTUBE_API/serietvfans/batch_nuovoformato/imgs_videoNF60/web_216.jpg" alt="Far Away" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/far-away.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <a href="/far-away/far-away-perche-alya-lascia-cihan-il-giorno-del-matrimonio/"><div class="foto"><img src="https://i.ytimg.com/vi/zgCB-EzaXCE/hqdefault.jpg" alt="Far Away" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/far-away.svg&quot;]' onerror="imgFb(this)"></div></a>
   <div class="corpo">
     <span class="serie">Far Away</span>
     <h3><a href="/far-away/far-away-perche-alya-lascia-cihan-il-giorno-del-matrimonio/">Far Away: perché Alya lascia Cihan il giorno del matrimonio</a></h3>
