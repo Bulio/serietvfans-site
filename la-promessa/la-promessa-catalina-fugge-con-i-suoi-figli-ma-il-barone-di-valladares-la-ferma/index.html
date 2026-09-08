@@ -21,7 +21,7 @@
 <link rel="alternate" type="application/rss+xml" title="Serie TV Fans" href="/feed.xml">
 <link rel="preconnect" href="https://i.ytimg.com">
 <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin>
-<link rel="dns-prefetch" href="https://www.youtube-nocookie.com">
+
 <style>:root {
   --brand: #7b1e2b;
   --brand-dark: #5a141f;
@@ -216,6 +216,9 @@ aside .yt-box .bottone { display: block; }
 .altri-video span { font-size: 14.5px; line-height: 1.35; }
 .altri-video a:hover span { text-decoration: underline; }
 .video .nota { font-size: 14px; color: var(--testo-tenue); padding-top: 8px; }
+.video.in-arrivo .telaio img { position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; opacity: .92; }
+.video.in-arrivo .nota { font-size: 15px; color: var(--testo); }
 
 /* facade del video: miniatura statica, il player YouTube (1 MB) si carica
    solo al click. L'immagine occupa esattamente il riquadro gia' riservato,
@@ -359,15 +362,11 @@ footer .fserie, footer .flegali { display: flex; flex-wrap: wrap; gap: 8px 16px;
 </style>
 <script>function imgFb(el){var l=[];try{l=JSON.parse(el.dataset.fb||"[]")}catch(e){}
 if(l.length){el.src=l.shift();el.dataset.fb=JSON.stringify(l)}else{el.onerror=null}}</script>
-<script>function ytGo(b){var f=document.createElement("iframe");
-f.src="https://www.youtube-nocookie.com/embed/"+b.dataset.yt+"?autoplay=1";
-f.title=b.getAttribute("aria-label")||"Video";
-f.allow="accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture";
-f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
+
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7778653397776213" crossorigin="anonymous"></script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "96259d7e67ce47fba4573364859712a6"}'></script>
 <script>(function(){var f=0;function go(){if(f)return;f=1;(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","y3rpoig6jk");}["pointerdown","keydown","touchstart","scroll"].forEach(function(v){addEventListener(v,go,{once:1,passive:1})});setTimeout(go,2500)})();</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "La Promessa, Catalina fugge con i suoi figli, ma il Barone di Valladares la ferma: rischia di perderli per sempre", "datePublished": "2026-07-28", "dateModified": "2026-08-29", "description": "Catalina ha preparato tutto in silenzio: due valigie, i documenti dei bambini, un cocchio pronto all'alba. Non vuole più aspettare un giorno di più dentro quelle mura, perché sa che restare significa mettere a rischio la vita dei suoi figli. Ma.", "inLanguage": "it-IT", "mainEntityOfPage": "https://serietvfans.com/la-promessa/la-promessa-catalina-fugge-con-i-suoi-figli-ma-il-barone-di-valladares-la-ferma/", "image": ["https://i.ytimg.com/vi/4116hnPG2eI/maxresdefault.jpg"], "author": {"@type": "Organization", "name": "Serie TV Fans", "url": "https://serietvfans.com/chi-siamo/"}, "publisher": {"@type": "Organization", "name": "Serie TV Fans", "logo": {"@type": "ImageObject", "url": "https://serietvfans.com/favicon.svg"}}, "video": {"@type": "VideoObject", "name": "LA PROMESSA — Catalina fugge con i suoi figli, ma il Barone di Valladares la ferma: rischia di perderli per sempre", "description": "Catalina ha preparato tutto in silenzio: due valigie, i documenti dei bambini, un cocchio pronto all'alba. Non vuole più aspettare un giorno di più dentro quelle mura, perché sa che restare significa mettere a rischio la vita dei suoi figli. Ma.", "thumbnailUrl": "https://i.ytimg.com/vi/4116hnPG2eI/maxresdefault.jpg", "uploadDate": "2026-07-28T12:00:00Z", "embedUrl": "https://www.youtube.com/embed/4116hnPG2eI"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "La Promessa, Catalina fugge con i suoi figli, ma il Barone di Valladares la ferma: rischia di perderli per sempre", "datePublished": "2026-07-28", "dateModified": "2026-08-29", "description": "Catalina ha preparato tutto in silenzio: due valigie, i documenti dei bambini, un cocchio pronto all'alba. Non vuole più aspettare un giorno di più dentro quelle mura, perché sa che restare significa mettere a rischio la vita dei suoi figli. Ma.", "inLanguage": "it-IT", "mainEntityOfPage": "https://serietvfans.com/la-promessa/la-promessa-catalina-fugge-con-i-suoi-figli-ma-il-barone-di-valladares-la-ferma/", "image": ["https://i.ytimg.com/vi/4116hnPG2eI/maxresdefault.jpg"], "author": {"@type": "Organization", "name": "Serie TV Fans", "url": "https://serietvfans.com/chi-siamo/"}, "publisher": {"@type": "Organization", "name": "Serie TV Fans", "logo": {"@type": "ImageObject", "url": "https://serietvfans.com/favicon.svg"}}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://serietvfans.com/"}, {"@type": "ListItem", "position": 2, "name": "La Promessa", "item": "https://serietvfans.com/serie/la-promessa/"}, {"@type": "ListItem", "position": 3, "name": "La Promessa, Catalina fugge con i suoi figli, ma il Barone di Valladares la ferma: rischia di perderli per sempre"}]}</script>
 </head>
 <body>
@@ -392,20 +391,9 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
   <div class="onda"><span class="tv">📺</span><span><strong>La Promessa</strong> — Rete 4 · in streaming su Mediaset Infinity</span></div>
   
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-  <div class="video">
-  <div class="telaio">
-    <button type="button" class="avvia" data-yt="4116hnPG2eI"
-      aria-label="Riproduci il video: La Promessa, Catalina fugge con i suoi figli, ma il Barone di Valladares la ferma: rischia di perderli per sempre" onclick="ytGo(this)">
-      <img src="https://i.ytimg.com/vi/4116hnPG2eI/maxresdefault.jpg" alt="La Promessa, Catalina fugge con i suoi figli, ma il Barone di Valladares la ferma: rischia di perderli per sempre" width="1280" height="720"
-        srcset="https://i.ytimg.com/vi/4116hnPG2eI/hqdefault.jpg 480w, https://i.ytimg.com/vi/4116hnPG2eI/sddefault.jpg 640w, https://i.ytimg.com/vi/4116hnPG2eI/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
-        decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/4116hnPG2eI/hqdefault.jpg&quot;, &quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)">
-      <span class="tasto" aria-hidden="true"></span>
-    </button>
-  </div>
-  <p class="nota">Il video con tutte le anticipazioni, sul canale Serie TV Fans.</p>
-  <noscript><p class="nota"><a href="https://www.youtube.com/watch?v=4116hnPG2eI"
-    rel="noopener">Guarda il video su YouTube</a>.</p></noscript>
+  <div class="video in-arrivo">
+  <div class="telaio"><img src="/fallback/la-promessa.svg" alt="La Promessa" width="1280" height="720" decoding="async"></div>
+  <p class="nota">Il video con tutte le anticipazioni arriva a breve sul canale Serie TV Fans. <a href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1" rel="noopener">Iscriviti per non perderlo</a>.</p>
 </div>
   <div class="corpo">
   <p><strong>Catalina ha preparato tutto in silenzio: due valigie, i documenti dei bambini, un cocchio pronto all&#x27;alba. Non vuole più aspettare un giorno di più dentro quelle mura, perché sa che restare significa mettere a rischio la vita dei suoi figli. Ma proprio mentre sta per lasciare per sempre il palazzo de La Promessa, una figura le sbarra la strada: il Barone di Valladares. E quello che le dice in quel momento non è solo una minaccia, è un avvertimento che potrebbe costarle tutto quello che ha di più caro.</strong></p>

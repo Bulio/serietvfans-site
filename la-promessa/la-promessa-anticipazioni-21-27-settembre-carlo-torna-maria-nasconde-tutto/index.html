@@ -21,7 +21,7 @@
 <link rel="alternate" type="application/rss+xml" title="Serie TV Fans" href="/feed.xml">
 <link rel="preconnect" href="https://i.ytimg.com">
 <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin>
-<link rel="dns-prefetch" href="https://www.youtube-nocookie.com">
+
 <style>:root {
   --brand: #7b1e2b;
   --brand-dark: #5a141f;
@@ -216,6 +216,9 @@ aside .yt-box .bottone { display: block; }
 .altri-video span { font-size: 14.5px; line-height: 1.35; }
 .altri-video a:hover span { text-decoration: underline; }
 .video .nota { font-size: 14px; color: var(--testo-tenue); padding-top: 8px; }
+.video.in-arrivo .telaio img { position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; opacity: .92; }
+.video.in-arrivo .nota { font-size: 15px; color: var(--testo); }
 
 /* facade del video: miniatura statica, il player YouTube (1 MB) si carica
    solo al click. L'immagine occupa esattamente il riquadro gia' riservato,
@@ -359,15 +362,11 @@ footer .fserie, footer .flegali { display: flex; flex-wrap: wrap; gap: 8px 16px;
 </style>
 <script>function imgFb(el){var l=[];try{l=JSON.parse(el.dataset.fb||"[]")}catch(e){}
 if(l.length){el.src=l.shift();el.dataset.fb=JSON.stringify(l)}else{el.onerror=null}}</script>
-<script>function ytGo(b){var f=document.createElement("iframe");
-f.src="https://www.youtube-nocookie.com/embed/"+b.dataset.yt+"?autoplay=1";
-f.title=b.getAttribute("aria-label")||"Video";
-f.allow="accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture";
-f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
+
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7778653397776213" crossorigin="anonymous"></script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "96259d7e67ce47fba4573364859712a6"}'></script>
 <script>(function(){var f=0;function go(){if(f)return;f=1;(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","y3rpoig6jk");}["pointerdown","keydown","touchstart","scroll"].forEach(function(v){addEventListener(v,go,{once:1,passive:1})});setTimeout(go,2500)})();</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto", "datePublished": "2026-09-07", "dateModified": "2026-09-07", "description": "Anticipazioni e trame delle puntate di La Promessa da lunedì 14 a venerdì 18 settembre 2026.", "inLanguage": "it-IT", "mainEntityOfPage": "https://serietvfans.com/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/", "image": ["https://serietvfans.com/fallback/la-promessa.svg"], "author": {"@type": "Organization", "name": "Serie TV Fans", "url": "https://serietvfans.com/chi-siamo/"}, "publisher": {"@type": "Organization", "name": "Serie TV Fans", "logo": {"@type": "ImageObject", "url": "https://serietvfans.com/favicon.svg"}}, "video": {"@type": "VideoObject", "name": "LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto", "description": "Anticipazioni e trame delle puntate di La Promessa da lunedì 14 a venerdì 18 settembre 2026.", "thumbnailUrl": "https://serietvfans.com/fallback/la-promessa.svg", "uploadDate": "2026-09-07T12:00:00Z", "embedUrl": "https://www.youtube.com/embed/Rp8VhxDiDSk"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto", "datePublished": "2026-09-07", "dateModified": "2026-09-07", "description": "Anticipazioni e trame delle puntate di La Promessa da lunedì 14 a venerdì 18 settembre 2026.", "inLanguage": "it-IT", "mainEntityOfPage": "https://serietvfans.com/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/", "image": ["https://serietvfans.com/fallback/la-promessa.svg"], "author": {"@type": "Organization", "name": "Serie TV Fans", "url": "https://serietvfans.com/chi-siamo/"}, "publisher": {"@type": "Organization", "name": "Serie TV Fans", "logo": {"@type": "ImageObject", "url": "https://serietvfans.com/favicon.svg"}}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://serietvfans.com/"}, {"@type": "ListItem", "position": 2, "name": "La Promessa", "item": "https://serietvfans.com/serie/la-promessa/"}, {"@type": "ListItem", "position": 3, "name": "LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto"}]}</script>
 </head>
 <body>
@@ -392,18 +391,9 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
   <div class="onda"><span class="tv">📺</span><span><strong>La Promessa</strong> — Rete 4 · in streaming su Mediaset Infinity</span></div>
   
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-  <div class="video">
-  <div class="telaio">
-    <button type="button" class="avvia" data-yt="Rp8VhxDiDSk"
-      aria-label="Riproduci il video: LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto" onclick="ytGo(this)">
-      <img src="/fallback/la-promessa.svg" alt="LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto" width="1280" height="720"
-        decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/Rp8VhxDiDSk/hqdefault.jpg&quot;, &quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)">
-      <span class="tasto" aria-hidden="true"></span>
-    </button>
-  </div>
-  <p class="nota">Il video con tutte le anticipazioni, sul canale Serie TV Fans.</p>
-  <noscript><p class="nota"><a href="https://www.youtube.com/watch?v=Rp8VhxDiDSk"
-    rel="noopener">Guarda il video su YouTube</a>.</p></noscript>
+  <div class="video in-arrivo">
+  <div class="telaio"><img src="/fallback/la-promessa.svg" alt="La Promessa" width="1280" height="720" decoding="async"></div>
+  <p class="nota">Il video con tutte le anticipazioni esce <strong>martedì 15 settembre alle 11:00</strong> sul canale Serie TV Fans. <a href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1" rel="noopener">Iscriviti per non perderlo</a>.</p>
 </div>
   <div class="corpo">
   
