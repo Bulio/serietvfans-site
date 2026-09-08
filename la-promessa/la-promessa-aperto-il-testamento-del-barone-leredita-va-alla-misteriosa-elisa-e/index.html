@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/la-promessa/">La Promessa</a> › La Promessa, aperto il testamento del Barone: l&#x27;eredità va alla misteriosa Elisa — e Cruz arriva a tentare l&#x27;omicidio</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/la-promessa/">La Promessa</a>
   <h1>La Promessa, aperto il testamento del Barone: l&#x27;eredità va alla misteriosa Elisa — e Cruz arriva a tentare l&#x27;omicidio</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Il testamento del defunto Barone Juan è un terremoto: il denaro va a Elisa de Grazalema, una Baronessa sconosciuta a tutti. Tra i dubbi crescenti di Manuel sul suo passato, la gravidanza di Pía e il tè avvelenato, Cruz precipita fino al gesto che la porterà in sanatorio.</p><ol><li><a href="#c1">Il testamento che gela Cruz: chi è Elisa de Grazalema?</a></li><li><a href="#c2">I dubbi di Manuel: «Non mi hanno detto la verità»</a></li><li><a href="#c3">Pía, la gravidanza scoperta e la rivolta delle domestiche</a></li><li><a href="#c4">Elisa alla Promessa: l&#x27;amante di Lorenzo e il tè avvelenato</a></li><li><a href="#c5">Il tentato strangolamento e il sanatorio</a></li><li><a href="#c6">Perché Manuel comincia a indagare su Jimena</a></li><li><a href="#c7">Quale scontro travolge Pía e la servitù</a></li><li><a href="#c8">Cosa nasconde davvero la Baronessa Elisa de Grazalema</a></li><li><a href="#c9">Come Cruz tenta di eliminare la rivale Elisa</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>La Promessa</strong> — Rete 4 · in streaming su Mediaset Infinity</span></div>
   
-  <p class="occhiello">Il testamento del defunto Barone Juan è un terremoto: il denaro va a Elisa de Grazalema, una Baronessa sconosciuta a tutti. Tra i dubbi crescenti di Manuel sul suo passato, la gravidanza di Pía e il tè avvelenato, Cruz precipita fino al gesto che la porterà in sanatorio.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: La Promessa, aperto il testamento del Barone: l&#x27;eredità va alla misteriosa Elisa — e Cruz arriva a tentare l&#x27;omicidio" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/RBLvjPsxH4k/maxresdefault.jpg" alt="La Promessa, aperto il testamento del Barone: l&#x27;eredità va alla misteriosa Elisa — e Cruz arriva a tentare l&#x27;omicidio" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/RBLvjPsxH4k/hqdefault.jpg 480w, https://i.ytimg.com/vi/RBLvjPsxH4k/sddefault.jpg 640w, https://i.ytimg.com/vi/RBLvjPsxH4k/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/RBLvjPsxH4k/hqdefault.jpg&quot;, &quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,47 +409,69 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>Tutti si aspettavano che l&#x27;eredità risollevasse le finanze della tenuta. Nessuno immaginava che il nome scritto sul testamento avrebbe scatenato la guerra più feroce mai vista alla Promessa.</strong></p>
-  <h2>Il testamento che gela Cruz: chi è Elisa de Grazalema?</h2>
+  <h2 id="c1">Il testamento che gela Cruz: chi è Elisa de Grazalema?</h2>
 <p>Trascorso il tempo legale dalla scomparsa del Barone Juan, Alonso e Cruz ottengono finalmente l&#x27;autorizzazione ad aprire il testamento. Ma le speranze di risollevare le casse della tenuta durano il tempo della lettura: i palazzi vanno alle figlie come previsto, mentre la parte più sostanziosa — il denaro contante — è destinata a Elisa de Grazalema, una misteriosa Baronessa che nessuno conosce. Cruz resta senza parole: perché suo padre ha lasciato tutto a una sconosciuta? Don Alonso si mette subito sulle sue tracce, deciso a scoprire quale legame la unisse al Barone.</p>
-<h2>I dubbi di Manuel: «Non mi hanno detto la verità»</h2>
+<h2 id="c2">I dubbi di Manuel: «Non mi hanno detto la verità»</h2>
 <p>Mentre le nozze con Jimena si avvicinano, Manuel è sempre più tormentato. Mette alle strette Rómulo, che alla fine gli rivela una verità inattesa: non ha mai avuto intenzione di abbandonare l&#x27;aviazione — al contrario, prima dell&#x27;incidente lavorava a progetti ambiziosi. È l&#x27;opposto di ciò che gli è stato raccontato, e la scoperta apre una crepa: con il passare dei giorni Manuel si rende conto di non provare alcun affetto per la donna che ha sposato, mentre Jana osserva da lontano, sorpresa da quella freddezza. Le sue indagini su Jimena non si fermano più.</p>
-<h2>Pía, la gravidanza scoperta e la rivolta delle domestiche</h2>
+<h2 id="c3">Pía, la gravidanza scoperta e la rivolta delle domestiche</h2>
 <p>Intanto la marchesa scopre che Pía è incinta e che non ha mai rispettato l&#x27;accordo di interrompere la gravidanza. La notizia si diffonde, e con essa i dubbi su chi sia il padre. María Fernández e Teresa si schierano apertamente con la governante, pronte a sfidare perfino Cruz; Don Alonso minaccia le domestiche ribelli, ma la loro solidarietà è più forte delle minacce. In cucina, intanto, esplode la guerra tra Candela e Simona dopo la confessione shock di quest&#x27;ultima — suo marito, ubriaco, uccise il marito di Candela — con il povero Lope nel ruolo di mediatore di una pace che sembra impossibile.</p>
-<h2>Elisa alla Promessa: l&#x27;amante di Lorenzo e il tè avvelenato</h2>
+<h2 id="c4">Elisa alla Promessa: l&#x27;amante di Lorenzo e il tè avvelenato</h2>
 <p>Cruz decide di invitare Elisa alla tenuta per studiarla da vicino, ma la convivenza è veleno puro: le battute taglienti della Baronessa e le sue confidenze con Alonso esasperano la marchesa giorno dopo giorno. Le rivelazioni intanto si accumulano: Elisa emerge come amante segreta di Lorenzo, e si arriva perfino a ipotizzare che possa essere la madre biologica di Manuel. Fuori controllo, Cruz chiede a Petra di avvelenarle il tè. Ma Lorenzo, insospettito, ha già messo in guardia l&#x27;amante: quando la tazza le viene offerta, Elisa rifiuta con un sorriso gentile. Il piano è saltato, e Cruz lo sa.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Il tentato strangolamento e il sanatorio</h2>
+<h2 id="c5">Il tentato strangolamento e il sanatorio</h2>
 <p>La rabbia della marchesa esplode nel gesto più insensato: si avventa su Elisa e tenta di strangolarla. Le urla attirano Don Alonso, che piomba nella stanza e ferma la moglie colta in flagrante tentato omicidio. L&#x27;ultimatum del marchese è durissimo: se Cruz vuole conservare il suo posto di moglie — e la reputazione della famiglia — dovrà ricoverarsi in sanatorio, per capire se soffra di un disturbo e diventare meno pericolosa per chi la circonda. Cruz accetta il destino impostole e lascia la tenuta: con lei lontana, Elisa è al sicuro. Ma i segreti della Baronessa restano tutti da svelare — e il ritorno della marchesa, prima o poi, arriverà.</p>
-<h2>Perché Manuel comincia a indagare su Jimena</h2>
+<h2 id="c6">Perché Manuel comincia a indagare su Jimena</h2>
 <p>Mentre si avvicina il momento delle nozze con Jimena, il giovane Manuel vive giorni segnati da un profondo tormento interiore. Deciso a capire la verità sul proprio passato, il ragazzo sceglie di mettere alle strette Rómulo per ottenere finalmente risposte chiare. Il maggiordomo gli rivela un dettaglio del tutto inatteso: prima del terribile incidente, Manuel lavorava con enorme passione a progetti d&#x27;aviazione estremamente ambiziosi e non aveva alcuna intenzione di abbandonare il volo. Questa rivelazione smentisce totalmente la versione dei fatti che gli era stata raccontata dalla famiglia, instillando in lui un dubbio devastante che cambia radicalmente il suo atteggiamento verso la futura sposa.</p>
 <p>La scoperta della bugia costruita attorno al suo passato fa crollare ogni certezza nel cuore di Manuel. Con il passare del tempo, il ragazzo si rende conto di non provare alcun sentimento sincero di affetto nei confronti di Jimena, la donna che ha accettato di sposare senza conoscere l&#x27;intera storia. A osservare questa distanza crescente c&#x27;è Jana, la quale nota da lontano la freddezza del giovane e resta sorpresa da una reazione così distaccata. Determinato a scoprire fino a che punto sia stato ingannato, Manuel decide di non fermare le sue indagini personali sulla figura di Jimena e sulle menzogne della propria famiglia.</p>
-<h2>Quale scontro travolge Pía e la servitù</h2>
+<h2 id="c7">Quale scontro travolge Pía e la servitù</h2>
 <p>La vita all&#x27;interno della tenuta viene travolta da un nuovo scandalo quando la marchesa Cruz scopre la gravidanza di Pía. La governante non ha infatti rispettato l&#x27;accordo pattuito che la obbligava a interrompere la gestazione, scatenando la rabbia dei nobili e facendo diffondere rapidamente pettegolezzi sui possibili sospetti relativi all&#x27;identità del padre. Di fronte alle minacce dirette da parte di Don Alonso, la servitù dimostra un&#x27;inattesa compattezza: María Fernández e Teresa scelgono di schierarsi apertamente dalla parte della governante, pronte a sfidare persino la marchesa pur di proteggere la loro collega in un momento così delicato.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>Nel frattempo, l&#x27;ambiente della cucina diventa il teatro di uno scontro parallelo altrettanto feroce a causa di una confessione shock. Simona rivela infatti che il proprio marito, agendo in uno stato di forte ubriachezza, si è reso responsabile dell&#x27;uccisione del marito di Candela. Questa agghiacciante verità fa esplodere una vera e propria guerra personale tra le due donne, distruggendo ogni equilibrio lavorativo. Il povero Lope si ritrova suo malgrado nel difficile ruolo di mediatore, cercando disperatamente di riportare la serenità tra le cuoche, anche se il raggiungimento di una pace duratura appare fin da subito un&#x27;impresa impossibile.</p>
-<h2>Cosa nasconde davvero la Baronessa Elisa de Grazalema</h2>
+<h2 id="c8">Cosa nasconde davvero la Baronessa Elisa de Grazalema</h2>
 <p>L&#x27;apertura del testamento del defunto Barone Juan rappresenta un momento di grande svolta per le finanze della famiglia nobile. Trascorso il tempo previsto dalla legge dalla sua improvvisa scomparsa, Don Alonso e Cruz ottengono il permesso legale di leggere le ultime volontà, sperando che le sostanze del Barone possano finalmente risanare le casse prosciugate della tenuta. Sebbene i palazzi vengano assegnati alle figlie come si aspettavano tutti, la sorpresa amara riguarda il denaro contante: l&#x27;intera somma liquida viene destinata a Elisa de Grazalema, un&#x27;inaspettata Baronessa di cui nessuno all&#x27;interno della residenza ha mai sentito parlare prima.</p>
 <p>Sconcertata dal gesto di suo padre, Cruz non riesce a spiegarsi per quale motivo l&#x27;uomo abbia deciso di favorire una sconosciuta a scapito della propria famiglia. Per fare chiarezza, Don Alonso si attiva immediatamente per rintracciare la misteriosa donna e comprendere quale legame segreto la legasse al defunto. Una volta invitata alla tenuta per essere studiata da vicino, Elisa dimostra una personalità pungente: le sue battute taglienti e la confidenza che mostra verso il marchese infastidiscono la padrona di casa, mentre emergono indiscrezioni sul suo ruolo di amante segreta di Lorenzo e persino l&#x27;ipotesi che sia la madre biologica di Manuel.</p>
-<h2>Come Cruz tenta di eliminare la rivale Elisa</h2>
+<h2 id="c9">Come Cruz tenta di eliminare la rivale Elisa</h2>
 <p>Esausta dalla presenza invadente della rivale e dalle continue provocazioni quotidiane, la marchesa Cruz decide di ricorrere a un piano estremo per sbarazzarsi definitivamente della Baronessa. La nobile ordina alla fedele Petra di versare del veleno all&#x27;interno del tè destinato a Elisa. Tuttavia, il complotto orchestrato nell&#x27;ombra viene vanificato dal tempestivo intervento di Lorenzo. L&#x27;uomo, essendosi insospettito per tempo, mette in guardia la sua amante segreta sul pericolo imminente. Così, quando la bevanda le viene servita, Elisa rifiuta la tazza sfoggiando un sorriso gentile e vanificando l&#x27;attentato progettato dalla marchesa.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>La rabbia incontrollabile della padrona di casa esplode violentemente poco dopo, quando la donna si avventa fisicamente su Elisa tentando di strangolarla a mani nude. Le urla disperate della vittima richiamano Don Alonso, che irrompe nella stanza e blocca la moglie mentre sta commettendo il tentativo di omicidio. Di fronte a tanta follia, il marchese pone un ultimatum categorico: per salvare la reputazione familiare, Cruz deve farsi ricoverare in un sanatorio per verificare le sue condizioni mentali. La marchesa accetta la punizione e lascia la Promessa, mettendo temporaneamente al sicuro Elisa, i cui oscuri segreti restano ancora del tutto da svelare.</p>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=EhdrvID62l4" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/EhdrvID62l4/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni 4-7 Dicembre: Jimena prepara cena romantica | Arriva Elisa de Grazale</span></a></li><li><a href="https://www.youtube.com/watch?v=vFhZwxDv-nQ" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/vFhZwxDv-nQ/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni: Eredità Barone, Curro tra Cruz e Lorenzo!</span></a></li><li><a href="https://www.youtube.com/watch?v=Gr2Ggp5vtlM" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/Gr2Ggp5vtlM/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA - 6 Settembre: Arriva Romulo! Manuel esce dal coma!</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Cosa nasconde davvero Elisa de Grazalema? E il ricovero di Cruz è giustizia o l&#x27;inizio di una vendetta ancora peggiore?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=RBLvjPsxH4k">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di La Promessa</h2><div class="griglia"><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/"><div class="foto"><img src="https://i.ytimg.com/vi/Rp8VhxDiDSk/hqdefault.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></h3>
+    <div class="quando">7 settembre 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/"><div class="foto"><img src="https://i.ytimg.com/vi/8JHt6ogwxQw/hqdefault.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Ángela beve tutto, Curro sfonda la porta</a></h3>
+    <div class="quando">6 settembre 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/"><div class="foto"><img src="/img/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Curro nasconde Ángela, Lorenzo furioso</a></h3>
+    <div class="quando">6 settembre 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=La Promessa, aperto il testamento del Barone: l&#x27;eredità va alla misteriosa Elisa — e Cruz arriva a tentare l&#x27;omicidio — https://serietvfans.com/la-promessa/la-promessa-aperto-il-testamento-del-barone-leredita-va-alla-misteriosa-elisa-e/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/la-promessa/la-promessa-aperto-il-testamento-del-barone-leredita-va-alla-misteriosa-elisa-e/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/la-promessa/la-promessa-aperto-il-testamento-del-barone-leredita-va-alla-misteriosa-elisa-e/&text=La Promessa, aperto il testamento del Barone: l&#x27;eredità va alla misteriosa Elisa — e Cruz arriva a tentare l&#x27;omicidio" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">LA PROMESSA Anticipazioni 25-29 Settembre: Finalmente Aperto Testamento</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=RBLvjPsxH4k">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di La Promessa</h3><ol class="numerata"><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Ángela beve tutto, Curro sfonda la porta</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Curro nasconde Ángela, Lorenzo furioso</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>LA PROMESSA Anticipazioni 25-29 Settembre: Finalmente Aperto Testamento</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su La Promessa</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-3-6-settembre-maria-affronta-la-gravidanza-da-sola/">La Promessa anticipazioni 3-6 settembre: Maria affronta la gravidanza da sola</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-carlo-arriva-maria-trema/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Carlo arriva, Maria trema</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/far-away/far-away-anticipazioni-dal-31-agosto-al-4-settembre-chi-ha-donato-il-fegato-a-nare/">Far Away, anticipazioni dal 31 agosto al 4 settembre: chi ha donato il fegato a Nare, e perché adesso sta male lui</a></li><li><a href="/far-away/far-away-dal-31-agosto-la-madre-di-alya-sapeva-tutto-non-ricordo/">Far Away Dal 31 Agosto: la madre di Alya sapeva tutto — «non ricordo»</a></li><li><a href="/forbidden-fruit/forbidden-fruit-dal-31-agosto-il-conto-a-nome-di-halit-che-e-morto/">Forbidden Fruit Dal 31 Agosto: il conto a nome di Halit, che è morto</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

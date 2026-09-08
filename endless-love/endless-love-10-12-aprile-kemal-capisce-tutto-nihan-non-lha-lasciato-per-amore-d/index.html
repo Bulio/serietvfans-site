@@ -4,15 +4,15 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Endless Love 10-12 aprile, Kemal capisce tutto</title>
-<meta name="description" content="Nelle puntate dal 10 al 12 aprile la verità comincia a bucare la corazza di cinque anni di silenzio: sorpresi da Emir nella casa che sognavano di…">
+<meta name="description" content="Endless Love: Kemal osserva Emir con Nihan e capisce che quel matrimonio non è mai stato amore. La frase di lei che gli apre gli occhi, e cosa cambia tra…">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://serietvfans.com/endless-love/endless-love-10-12-aprile-kemal-capisce-tutto-nihan-non-lha-lasciato-per-amore-d/">
 <meta property="og:title" content="Endless Love 10-12 aprile, Kemal capisce tutto">
-<meta property="og:description" content="Nelle puntate dal 10 al 12 aprile la verità comincia a bucare la corazza di cinque anni di silenzio: sorpresi da Emir nella casa che sognavano di…">
+<meta property="og:description" content="Endless Love: Kemal osserva Emir con Nihan e capisce che quel matrimonio non è mai stato amore. La frase di lei che gli apre gli occhi, e cosa cambia tra…">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Serie TV Fans">
 <meta property="og:url" content="https://serietvfans.com/endless-love/endless-love-10-12-aprile-kemal-capisce-tutto-nihan-non-lha-lasciato-per-amore-d/">
-<meta property="og:image" content="https://i.ytimg.com/vi/UPDga1QQVtU/maxresdefault.jpg">
+<meta property="og:image" content="https://serietvfans.com/img/endless-love-10-12-aprile-kemal-capisce-tutto-nihan-non-lha-lasciato-per-amore-d.jpg">
 <meta property="og:locale" content="it_IT">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#7b1e2b">
@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -318,12 +367,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7778653397776213" crossorigin="anonymous"></script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "96259d7e67ce47fba4573364859712a6"}'></script>
 <script>(function(){var f=0;function go(){if(f)return;f=1;(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","y3rpoig6jk");}["pointerdown","keydown","touchstart","scroll"].forEach(function(v){addEventListener(v,go,{once:1,passive:1})});setTimeout(go,2500)})();</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Endless Love 10-12 aprile, Kemal capisce tutto: Nihan non l'ha lasciato per amore di Emir — «Vivo in un incubo da cinque anni»", "datePublished": "2026-08-14", "dateModified": "2026-09-04", "description": "Nelle puntate dal 10 al 12 aprile la verità comincia a bucare la corazza di cinque anni di silenzio: sorpresi da Emir nella casa che sognavano di condividere, Kemal osserva il modo violento con cui il rivale stringe la mano di Nihan e capisce che quel matrimonio non è mai stato una scelta d'amore. Lei, poco prima, gli aveva preso la mano: «Vivo in un incubo da cinque anni, e spero che sia tu a svegliarmi».", "inLanguage": "it-IT", "mainEntityOfPage": "https://serietvfans.com/endless-love/endless-love-10-12-aprile-kemal-capisce-tutto-nihan-non-lha-lasciato-per-amore-d/", "image": ["https://i.ytimg.com/vi/UPDga1QQVtU/maxresdefault.jpg"], "author": {"@type": "Organization", "name": "Serie TV Fans", "url": "https://serietvfans.com/chi-siamo/"}, "publisher": {"@type": "Organization", "name": "Serie TV Fans", "logo": {"@type": "ImageObject", "url": "https://serietvfans.com/favicon.svg"}}, "video": {"@type": "VideoObject", "name": "KEMAL SCONVOLTO, HA CAPITO TUTTO! NIHAN HA DOVUTO LASCIARLO? - Endless Love", "description": "Nelle puntate dal 10 al 12 aprile la verità comincia a bucare la corazza di cinque anni di silenzio: sorpresi da Emir nella casa che sognavano di condividere, Kemal osserva il modo violento con cui il rivale stringe la mano di Nihan e capisce che quel matrimonio non è mai stato una scelta d'amore. Lei, poco prima, gli aveva preso la mano: «Vivo in un incubo da cinque anni, e spero che sia tu a svegliarmi».", "thumbnailUrl": "https://i.ytimg.com/vi/UPDga1QQVtU/maxresdefault.jpg", "uploadDate": "2026-08-14T12:00:00Z", "embedUrl": "https://www.youtube.com/embed/UPDga1QQVtU"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Endless Love 10-12 aprile, Kemal capisce tutto: Nihan non l'ha lasciato per amore di Emir — «Vivo in un incubo da cinque anni»", "datePublished": "2026-08-14", "dateModified": "2026-09-08", "description": "Endless Love: Kemal osserva Emir con Nihan e capisce che quel matrimonio non è mai stato amore. La frase di lei che gli apre gli occhi, e cosa cambia tra loro.", "inLanguage": "it-IT", "mainEntityOfPage": "https://serietvfans.com/endless-love/endless-love-10-12-aprile-kemal-capisce-tutto-nihan-non-lha-lasciato-per-amore-d/", "image": ["https://serietvfans.com/img/endless-love-10-12-aprile-kemal-capisce-tutto-nihan-non-lha-lasciato-per-amore-d.jpg"], "author": {"@type": "Organization", "name": "Serie TV Fans", "url": "https://serietvfans.com/chi-siamo/"}, "publisher": {"@type": "Organization", "name": "Serie TV Fans", "logo": {"@type": "ImageObject", "url": "https://serietvfans.com/favicon.svg"}}, "video": {"@type": "VideoObject", "name": "KEMAL SCONVOLTO, HA CAPITO TUTTO! NIHAN HA DOVUTO LASCIARLO? - Endless Love", "description": "Endless Love: Kemal osserva Emir con Nihan e capisce che quel matrimonio non è mai stato amore. La frase di lei che gli apre gli occhi, e cosa cambia tra loro.", "thumbnailUrl": "https://serietvfans.com/img/endless-love-10-12-aprile-kemal-capisce-tutto-nihan-non-lha-lasciato-per-amore-d.jpg", "uploadDate": "2026-08-14T12:00:00Z", "embedUrl": "https://www.youtube.com/embed/UPDga1QQVtU"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://serietvfans.com/"}, {"@type": "ListItem", "position": 2, "name": "Endless Love", "item": "https://serietvfans.com/serie/endless-love/"}, {"@type": "ListItem", "position": 3, "name": "Endless Love 10-12 aprile, Kemal capisce tutto: Nihan non l'ha lasciato per amore di Emir — «Vivo in un incubo da cinque anni»"}]}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,19 +385,18 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/endless-love/">Endless Love</a> › Endless Love 10-12 aprile, Kemal capisce tutto: Nihan non l&#x27;ha lasciato per amore di Emir — «Vivo in un incubo da cinque anni»</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/endless-love/">Endless Love</a>
   <h1>Endless Love 10-12 aprile, Kemal capisce tutto: Nihan non l&#x27;ha lasciato per amore di Emir — «Vivo in un incubo da cinque anni»</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 8 settembre 2026</span><span>6 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Endless Love: Kemal osserva Emir con Nihan e capisce che quel matrimonio non è mai stato amore. La frase di lei che gli apre gli occhi, e cosa cambia tra loro.</p><ol><li><a href="#c1">La casa dei sogni e la confessione interrotta</a></li><li><a href="#c2">Cinque anni prima: chi erano Kemal e Nihan quando tutto si è fermato</a></li><li><a href="#c3">Il patto anti-Emir e il giardino sotto la finestra</a></li><li><a href="#c4">Leyla, la messaggera — e la ferita che non si chiude</a></li><li><a href="#c5">Il ricattatore colpisce ancora e Galip affronta il figlio</a></li><li><a href="#c6">Perché conta: da qui in poi Kemal non combatte più un rivale in amore</a></li><li><a href="#c7">Come Leyla influenza le scelte segrete di Kemal</a></li><li><a href="#c8">Cosa nasconde Emir nella cassetta di sicurezza</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>Endless Love</strong> — Serie conclusa in Italia · le puntate su Mediaset Infinity</span></div>
-  
-  <p class="occhiello">Nelle puntate dal 10 al 12 aprile la verità comincia a bucare la corazza di cinque anni di silenzio: sorpresi da Emir nella casa che sognavano di condividere, Kemal osserva il modo violento con cui il rivale stringe la mano di Nihan e capisce che quel matrimonio non è mai stato una scelta d&#x27;amore. Lei, poco prima, gli aveva preso la mano: «Vivo in un incubo da cinque anni, e spero che sia tu a svegliarmi».</p>
+  <figure class="copertina"><img src="/img/endless-love-10-12-aprile-kemal-capisce-tutto-nihan-non-lha-lasciato-per-amore-d.jpg" alt="Endless Love"><figcaption>Immagine d&#x27;ambiente — Endless Love</figcaption></figure>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
     <button type="button" class="avvia" data-yt="UPDga1QQVtU"
       aria-label="Riproduci il video: Endless Love 10-12 aprile, Kemal capisce tutto: Nihan non l&#x27;ha lasciato per amore di Emir — «Vivo in un incubo da cinque anni»" onclick="ytGo(this)">
-      <img src="https://i.ytimg.com/vi/UPDga1QQVtU/maxresdefault.jpg" alt="Endless Love 10-12 aprile, Kemal capisce tutto: Nihan non l&#x27;ha lasciato per amore di Emir — «Vivo in un incubo da cinque anni»" width="1280" height="720"
-        srcset="https://i.ytimg.com/vi/UPDga1QQVtU/hqdefault.jpg 480w, https://i.ytimg.com/vi/UPDga1QQVtU/sddefault.jpg 640w, https://i.ytimg.com/vi/UPDga1QQVtU/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+      <img src="/img/endless-love-10-12-aprile-kemal-capisce-tutto-nihan-non-lha-lasciato-per-amore-d.jpg" alt="Endless Love 10-12 aprile, Kemal capisce tutto: Nihan non l&#x27;ha lasciato per amore di Emir — «Vivo in un incubo da cinque anni»" width="1280" height="720"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/UPDga1QQVtU/hqdefault.jpg&quot;, &quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,42 +407,64 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>La contromossa d&#x27;affari più elegante di Kemal: un patto firmato da tutti i soci dell&#x27;appalto — se Emir lo estromette, nessuno lavorerà più con l&#x27;azienda Kozcuoğlu.</strong></p>
-  <h2>La casa dei sogni e la confessione interrotta</h2>
+  <h2 id="c1">La casa dei sogni e la confessione interrotta</h2>
 <p>Il faccia a faccia avviene nel luogo più simbolico: la casa che Nihan e Kemal sognavano di condividere. Lei non trattiene le lacrime; lui, ferito ma saldo, pretende di sapere se è vero ciò che ha detto la bambina — che Nihan, pur sposata, ha continuato a pensarlo e piangerlo. La risposta arriva con un gesto: Nihan gli prende la mano e confessa di desiderare ancora il suo amore, di vivere «in un incubo da cinque anni» e di sperare che sia lui a risvegliarla. Proprio allora arriva Emir: minacce velate a Kemal — «non perdono chi tocca ciò che è mio» — e la mano di Nihan stretta con una violenza che Kemal registra, e che gli cambia la prospettiva: forse Nihan non l&#x27;ha mai lasciato per amore.</p>
-<h2>Cinque anni prima: chi erano Kemal e Nihan quando tutto si è fermato</h2>
+<h2 id="c2">Cinque anni prima: chi erano Kemal e Nihan quando tutto si è fermato</h2>
 <p>Per misurare il peso di quella frase serve sapere da dove arrivano i due. Kemal è un ingegnere, e a Istanbul è rientrato dichiarando apertamente cosa era venuto a fare: togliere ai Kozcuoğlu, un tassello alla volta, il potere su cui poggiano. Prima di tornare si era fatto un nome a Zonguldak, dove lo fermano ancora per strada: in miniera, il giorno dell&#x27;incidente, tirò fuori vive parecchie persone. Nihan è la donna che aveva amato e perduto: ha sposato Emir non per un sentimento ma per tenere la propria famiglia al riparo da uno scandalo, e da allora vive dentro un matrimonio in cui non esce di casa senza permesso. Emir, dal canto suo, quel matrimonio se l&#x27;è costruito con un ricatto, ed è l&#x27;erede della holding: considera Kemal un&#x27;ossessione personale molto prima che un concorrente.</p>
-<h2>Il patto anti-Emir e il giardino sotto la finestra</h2>
+<h2 id="c3">Il patto anti-Emir e il giardino sotto la finestra</h2>
 <p>Sul fronte degli affari, Kemal gioca d&#x27;anticipo: a un pranzo cruciale con Asu propone ai soci dell&#x27;appalto per la centrale elettrica un accordo blindato — se Emir romperà i rapporti con la sua impresa, nessun partner potrà collaborare con l&#x27;azienda Kozcuoğlu. Firma unanime. Emir lo scopre nel modo peggiore, in riunione, mentre sul fronte privato Kemal compra la casa accanto a quella di Nihan (con Vildan che scopre inorridita il nuovo vicino) e si spinge fin sotto la sua finestra, costretto a ritirarsi per la presenza della madre di lei.</p>
-<h2>Leyla, la messaggera — e la ferita che non si chiude</h2>
+<h2 id="c4">Leyla, la messaggera — e la ferita che non si chiude</h2>
 <p>Terrorizzata dagli informatori di Emir, Nihan sceglie una via indiretta: chiede a Leyla di convincere Kemal a smettere di cercarla, per proteggere entrambe le famiglie. Ma la zia capisce che dietro la separazione c&#x27;è ben altro e ribalta l&#x27;incarico: avverte Kemal del pericolo e gli suggerisce di parlarle in segreto. Nel colloquio tra le due donne riaffiora anche la ferita di Leyla — il giorno delle nozze mai celebrate, il tradimento di Önder con la sorella Vildan incinta, la maledizione scagliata sui due. Intanto Kemal, in silenzio, fa da mediatore per il nuovo lavoro di Nihan come insegnante di pittura per bambini: all&#x27;incontro della fondazione, quella sera, ci sarà anche lui.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Il ricattatore colpisce ancora e Galip affronta il figlio</h2>
+<h2 id="c5">Il ricattatore colpisce ancora e Galip affronta il figlio</h2>
 <p>La tenaglia su Emir si stringe: un nuovo video della notte dell&#x27;omicidio arriva via corriere, Galip assiste alla scena e pretende di vedere il contenuto — ingannato solo grazie a una chiavetta «vuota» e alla sua scarsa dimestichezza tecnologica. Il confronto padre-figlio arriva comunque, davanti alla banca dove Emir nasconde i video: Galip lo accusa di trascurare l&#x27;impero per una faida inutile, Emir replica rinfacciandogli di aver sacrificato la madre all&#x27;ambizione — e i due sfiorano le mani. Con Asu che si presenta gelosa da Kemal («con Nihan è un capitolo chiuso», mente lui) e Ozan che ruba un bacio a una Zeynep in fuga, la matassa è pronta a esplodere.</p>
-<h2>Perché conta: da qui in poi Kemal non combatte più un rivale in amore</h2>
+<h2 id="c6">Perché conta: da qui in poi Kemal non combatte più un rivale in amore</h2>
 <p>Fino a questo momento l&#x27;uomo si era mosso da innamorato tradito, e un innamorato tradito è prevedibile: chiede spiegazioni, si allontana, torna. Da quando registra la violenza di quella stretta al polso, però, la sua lettura cambia genere — non c&#x27;è una donna che ha scelto un altro, c&#x27;è una donna trattenuta. Il che sposta anche il campo di battaglia. La firma unanime dei soci toglie a Emir lo strumento con cui ha sempre punito, cioè l&#x27;esclusione dagli affari; gli resta solo la leva privata, lo scandalo che pende sulla famiglia di Nihan. Ed è la ragione per cui, da queste puntate in avanti, ogni passo di Kemal verso di lei alza il prezzo che paga lei. Anche la mossa difensiva è andata storta: la messaggera incaricata di allontanarlo ha fatto l&#x27;esatto contrario.</p>
-<h2>Come Leyla influenza le scelte segrete di Kemal</h2>
+<h2 id="c7">Come Leyla influenza le scelte segrete di Kemal</h2>
 <p>La figura di Leyla emerge con una forza determinante nella vita dei due protagonisti, poiché la donna porta con sé un passato segnato dal tradimento subito proprio all&#x27;interno della famiglia. Il giorno delle sue nozze fu infranto dall&#x27;inganno di Önder e dalla gravidanza di Vildan, un trauma profondo che l&#x27;ha portata a scagliare una vera e propria maledizione sui due. Quando Nihan le affida il compito di allontanare il giovane ingegnere per proteggere tutti dalle ritorsioni dei Kozcuoğlu, la zia sceglie di non piegarsi alla paura. Comprendendo che il legame tra i due giovani nasconde una sofferenza ben più profonda, decide di stravolgere la richiesta originale e spinge l&#x27;uomo a cercare un confronto nascosto.</p>
 <p>Questa scelta apre scenari del tutto inaspettati nel fragile equilibrio tra i personaggi, trasformando la zia nell&#x27;unica vera alleata capace di comprendere il pericolo reale. Nel frattempo Kemal si muove con cautela anche sul piano personale, arrivando a fare da mediatore per permettere a Nihan di iniziare la sua nuova attività come insegnante di pittura per bambini. Il legame tra loro si nutre di incontri apparentemente casuali, come quello previsto alla serata della fondazione, mentre la presenza ingombrante di Vildan continua a fare da ostacolo. La madre di Nihan, infatti, rimane inorridita nel momento in cui scopre che il nuovo vicino di casa è proprio il ragazzo venuto dal passato di sua figlia.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Cosa nasconde Emir nella cassetta di sicurezza</h2>
+<h2 id="c8">Cosa nasconde Emir nella cassetta di sicurezza</h2>
 <p>L&#x27;impero economico dei Kozcuoğlu scricchiola sotto la pressione di ricatti misteriosi che rischiano di distruggere la reputazione della famiglia. Un nuovo video legato alla notte dell&#x27;omicidio viene recapitato tramite un corriere e rischia di far crollare tutto il castello di menzogne costruito negli anni. Galip assiste alla consegna della busta e pretende immediatamente di vederne il contenuto, ma l&#x27;erede della holding riesce a ingannarlo sfruttando la scarsa dimestichezza del padre con la tecnologia. Mostrandogli una semplice chiavetta priva di file, l&#x27;uomo guadagna tempo, ma non riesce a evitare un durissimo scontro aperto proprio davanti alla struttura bancaria dove tiene custoditi i filmati compromettenti per la famiglia.</p>
 <p>In quel drammatico confronto tra padre e figlio emergono tutte le crepe di un rapporto costruito sul potere e sul risentimento personale. Galip accusa apertamente l&#x27;erede di mettere a rischio la solidità della holding per inseguire una faida privata senza sbocco, mentre la risposta del giovane è un attacco frontale che rievoca il sacrificio della madre sull&#x27;altare dell&#x27;ambizione. Il clima si surriscalda a tal punto che i due arrivano quasi a uno scontro fisico, sfiorando le mani con violenza. Sullo sfondo di questa guerra familiare si intrecciano le manovre di Asu, mossa dalla gelosia, e l&#x27;inaspettata fuga di Zeynep, che si ritrova al centro delle attenzioni di Ozan.</p>
   </div>
-  <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=cno6OSoK05E" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/cno6OSoK05E/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>GRANDE PROVA D&#x27;AMORE DI NIHAN, SALVA KEMAL DA EMIR - Endless Love Anticipazioni 6-7-8 Maggio</span></a></li><li><a href="https://www.youtube.com/watch?v=fYG-S8pBOlE" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/fYG-S8pBOlE/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>KEMAL, DOLCE RIVINCITA! VENDETTA SU EMIR INISEME A NIHAN - Endless Love Anticipazioni 19 e 20 A</span></a></li><li><a href="https://www.youtube.com/watch?v=4i8geqzVovo" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/4i8geqzVovo/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>EMIR GELA ANCORA NIHAN: &quot;TI PIACE LA NOSTRA NUOVA CASA, AMORE?&quot; - Anticipazioni Endless Love Tu</span></a></li></ul></div>
+  <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=PKGHCiCVYIw" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/PKGHCiCVYIw/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>ENDLESS LOVE Anticipazioni 16 Marzo: Kemal torna dopo 5 anni ! Nihan non crede a i suoi occhi</span></a></li><li><a href="https://www.youtube.com/watch?v=cno6OSoK05E" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/cno6OSoK05E/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>GRANDE PROVA D&#x27;AMORE DI NIHAN, SALVA KEMAL DA EMIR - Endless Love Anticipazioni 6-7-8 Maggio</span></a></li><li><a href="https://www.youtube.com/watch?v=fYG-S8pBOlE" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/fYG-S8pBOlE/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>KEMAL, DOLCE RIVINCITA! VENDETTA SU EMIR INISEME A NIHAN - Endless Love Anticipazioni 19 e 20 A</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Ora che Kemal ha capito che Nihan è prigioniera e non innamorata, quale sarà la sua prima mossa? E il ricattatore di Emir — chi lo tiene sotto scacco così da vicino?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=UPDga1QQVtU">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di Endless Love</h2><div class="griglia"><article class="scheda">
+  <a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/"><div class="foto"><img src="https://i.ytimg.com/vi/DSiProJJ1ls/hqdefault.jpg" alt="Endless Love" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/"><div class="foto"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/"><div class="foto"><img src="https://i.ytimg.com/vi/uu2oAzTOWQU/hqdefault.jpg" alt="Endless Love" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></h3>
+    <div class="quando">25 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=Endless Love 10-12 aprile, Kemal capisce tutto: Nihan non l&#x27;ha lasciato per amore di Emir — «Vivo in un incubo da cinque anni» — https://serietvfans.com/endless-love/endless-love-10-12-aprile-kemal-capisce-tutto-nihan-non-lha-lasciato-per-amore-d/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/endless-love/endless-love-10-12-aprile-kemal-capisce-tutto-nihan-non-lha-lasciato-per-amore-d/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/endless-love/endless-love-10-12-aprile-kemal-capisce-tutto-nihan-non-lha-lasciato-per-amore-d/&text=Endless Love 10-12 aprile, Kemal capisce tutto: Nihan non l&#x27;ha lasciato per amore di Emir — «Vivo in un incubo da cinque anni»" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">KEMAL SCONVOLTO, HA CAPITO TUTTO! NIHAN HA DOVUTO LASCIARLO? - Endless Love</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=UPDga1QQVtU">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di Endless Love</h3><ol class="numerata"><li><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></li><li><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></li><li><a href="/endless-love/endless-love-chi-e-galip-kozcuoglu-le-due-volte-in-cui-nihan-e-stata-venduta/">Endless Love, chi è Galip Kozcuoğlu: le due volte in cui Nihan è stata venduta</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-zeynep-soydere-perche-emir-lha-scelta-e-cosa-ha-distrutto/">Endless Love, chi è davvero Zeynep Soydere: perché Emir l&#x27;ha scelta e cosa ha distrutto</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>KEMAL SCONVOLTO, HA CAPITO TUTTO! NIHAN HA DOVUTO LASCIARLO? - Endless Love</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su Endless Love</h3><ul><li><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></li><li><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></li><li><a href="/endless-love/endless-love-chi-e-galip-kozcuoglu-le-due-volte-in-cui-nihan-e-stata-venduta/">Endless Love, chi è Galip Kozcuoğlu: le due volte in cui Nihan è stata venduta</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-zeynep-soydere-perche-emir-lha-scelta-e-cosa-ha-distrutto/">Endless Love, chi è davvero Zeynep Soydere: perché Emir l&#x27;ha scelta e cosa ha distrutto</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

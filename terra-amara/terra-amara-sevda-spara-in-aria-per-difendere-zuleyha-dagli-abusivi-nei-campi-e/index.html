@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/terra-amara/">Terra Amara</a> › Terra Amara, Sevda spara in aria per difendere Züleyha dagli abusivi nei campi — e Fikret sistema Ümit nella villa con piscina di Demir</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/terra-amara/">Terra Amara</a>
   <h1>Terra Amara, Sevda spara in aria per difendere Züleyha dagli abusivi nei campi — e Fikret sistema Ümit nella villa con piscina di Demir</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Un uomo coltiva le terre abbandonate degli Yaman senza permesso, convinto che «la moglie di Demir non se ne accorgerà mai». Züleyha ci va di persona, viene derisa, e a chiudere la questione è Sevda con un fucile e due colpi in aria. Nella stessa settimana Fekeli va all&#x27;albergo a riprendersi Müjgan e il piccolo Kerem Ali, e il piano di Fikret su Ümit fa un salto di qualità: Demir in persona le offre una delle sue ville.</p><ol><li><a href="#c1">«Non è la vera padrona di queste terre»</a></li><li><a href="#c2">Fekeli va a riprendersi Müjgan in albergo</a></li><li><a href="#c3">La villa con la piscina: il piano procede</a></li><li><a href="#c4">I pugni sulla lapide</a></li><li><a href="#c5">Come Sevda difende l&#x27;autorità di Züleyha nei campi</a></li><li><a href="#c6">Perché Fekeli decide di ritrovare Müjgan in albergo</a></li><li><a href="#c7">Quale strategia unisce Fikret e Ümit contro Demir</a></li><li><a href="#c8">Cosa scopre Fekeli sulle azioni segrete di Fikret</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>Terra Amara</strong> — Serie conclusa in Italia · tutte le puntate su Mediaset Infinity</span></div>
   
-  <p class="occhiello">Un uomo coltiva le terre abbandonate degli Yaman senza permesso, convinto che «la moglie di Demir non se ne accorgerà mai». Züleyha ci va di persona, viene derisa, e a chiudere la questione è Sevda con un fucile e due colpi in aria. Nella stessa settimana Fekeli va all&#x27;albergo a riprendersi Müjgan e il piccolo Kerem Ali, e il piano di Fikret su Ümit fa un salto di qualità: Demir in persona le offre una delle sue ville.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: Terra Amara, Sevda spara in aria per difendere Züleyha dagli abusivi nei campi — e Fikret sistema Ümit nella villa con piscina di Demir" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/-qR-P0t2mV0/maxresdefault.jpg" alt="Terra Amara, Sevda spara in aria per difendere Züleyha dagli abusivi nei campi — e Fikret sistema Ümit nella villa con piscina di Demir" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/-qR-P0t2mV0/hqdefault.jpg 480w, https://i.ytimg.com/vi/-qR-P0t2mV0/sddefault.jpg 640w, https://i.ytimg.com/vi/-qR-P0t2mV0/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/-qR-P0t2mV0/hqdefault.jpg&quot;, &quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,45 +409,67 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>Fikret prende a pugni la lapide di Adnan Yaman — e qualcuno lo vede.</strong></p>
-  <h2>«Non è la vera padrona di queste terre»</h2>
+  <h2 id="c1">«Non è la vera padrona di queste terre»</h2>
 <p>Sevda torna dal paese con una notizia che tocca Züleyha nel punto più esposto: un uomo sta coltivando i campi abbandonati della tenuta senza aver chiesto niente a nessuno, e in giro racconta che la moglie di Demir non è capace di occuparsi delle terre e non se ne accorgerà mai. Sevda le consiglia di risolverla da sola — se interviene Demir, la sua autorità ne esce distrutta. Züleyha ci va, gli ordina di prendere la famiglia e andarsene, e si sente rispondere con una risata. Poi arriva Sevda con un fucile, spara qualche colpo in aria e li mette in fuga tutti, avvertendoli che quella donna è la legittima padrona della tenuta. A cose fatte le dice la frase che conta: hai dimostrato di avere il coraggio che serve.</p>
-<h2>Fekeli va a riprendersi Müjgan in albergo</h2>
+<h2 id="c2">Fekeli va a riprendersi Müjgan in albergo</h2>
 <p>Behice si è portata via Müjgan e Kerem Ali in un albergo di lusso in attesa di trasferirsi a Istanbul, e ha liquidato Fekeli con la cosa più crudele che potesse dirgli — quel bambino non è suo nipote, non ne ha il sangue, e Yılmaz non lo aveva mai adottato legalmente. Ma quando l&#x27;eredità si rivela un&#x27;illusione, Fekeli va all&#x27;albergo di persona. Zittisce Behice che tenta di intromettersi e parla direttamente a Müjgan: le dice che le ha voluto bene dal primo giorno, che quella resta casa sua e che Yılmaz gli aveva affidato suo figlio. Müjgan chiede perdono in lacrime — per lei Fekeli sarà sempre come un padre — e lui accetta le scuse senza fingere che il dolore sia passato, ponendo una sola condizione: che Behice smetta di condizionarle la vita.</p>
-<h2>La villa con la piscina: il piano procede</h2>
+<h2 id="c3">La villa con la piscina: il piano procede</h2>
 <p>L&#x27;agente immobiliare propone a Demir di affittare a Ümit, nuovo primario dell&#x27;ospedale, uno dei suoi appartamenti; lui risponde che sono troppo piccoli per lei e le offre una delle sue ville con piscina. Ümit lo ringrazia al telefono, lui minimizza — è il minimo per chi si occupa della gente di Çukurova. Quando Fikret vede la casa capisce che l&#x27;impressione è stata ottima, e ammette che era esattamente l&#x27;obiettivo: le dice di non farsi scrupoli se si avvicina a Demir, perché quel matrimonio è agli sgoccioli. Ümit lo avverte del rischio di innamorarsi davvero, lui ribatte che il pericolo vale anche per lei. E quando Demir si presenta con un regalo, Fikret resta a osservare la scena da dietro una porta.</p>
-<h2>I pugni sulla lapide</h2>
+<h2 id="c4">I pugni sulla lapide</h2>
 <p>Con una scusa Fikret evita di accompagnare Fekeli in azienda e va invece alla tomba di Adnan Yaman, che guarda con un odio che non riesce più a nascondere, prima di colpire la lastra di marmo a pugni. C&#x27;è un testimone: un uomo lo vede e va a raccontare tutto a Fekeli, aggiungendo di averlo visto tornare anche il mattino dopo. Fekeli resta senza parole e si fa la domanda che regge tutta la stagione — che cosa lega Fikret ad Adnan Yaman? Intanto Behice, alla riunione del comitato, si vanta della grande casa che le aspetta a Istanbul, finché Şermin non svela alle altre dame la verità sui suoi conti e la lascia lì, umiliata davanti a tutte.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Come Sevda difende l&#x27;autorità di Züleyha nei campi</h2>
+<h2 id="c5">Come Sevda difende l&#x27;autorità di Züleyha nei campi</h2>
 <p>La tranquillità della tenuta Yaman viene turbata quando un uomo si insedia abusivamente nei terreni abbandonati per coltivarli senza alcuna autorizzazione. Con atteggiamento sprezzante, l&#x27;intruso si dice convinto che la moglie di Demir non si accorgerà mai della sua presenza e che non sia comunque in grado di gestire i beni di famiglia. Venuta a conoscenza dei fatti al suo ritorno dal paese, Sevda comprende immediatamente il pericolo per l&#x27;immagine della tenuta e consiglia a Züleyha di intervenire personalmente. Un eventuale intervento diretto di Demir finirebbe infatti per minare l&#x27;autorità della giovane donna. Quando Züleyha affronta l&#x27;uomo chiedendogli di andarsene con la famiglia, viene accolta soltanto da una risata derisoria.</p>
 <p>La svolta decisiva avviene con l&#x27;arrivo di Sevda, la quale si presenta sul posto imbracciando un fucile ed esplode due colpi in aria per ristabilire l&#x27;ordine. Il gesto drastico mette immediatamente in fuga tutti gli abusivi presenti sui campi. Sevda ne approfitta per dichiarare apertamente davanti a tutti che Züleyha è la sola e legittima padrona dell&#x27;intera tenuta Yaman. A mente fredda, dopo aver scacciato gli intrusi, Sevda si rivolge con affetto alla giovane per congratularsi con lei, sottolineando come abbia saputo dimostrare tutto il coraggio necessario per difendere il proprio ruolo e la reputazione della famiglia di fronte alle provocazioni.</p>
-<h2>Perché Fekeli decide di ritrovare Müjgan in albergo</h2>
+<h2 id="c6">Perché Fekeli decide di ritrovare Müjgan in albergo</h2>
 <p>Il rapporto tra la famiglia Fekeli e Müjgan viene messo a dura prova dalla fuga orchestrata da Behice, che trascina la nipote e il piccolo Kerem Ali in un albergo di lusso con l&#x27;intento di trasferirsi definitivamente a Istanbul. Per allontanare ogni ingerenza, Behice ferisce profondamente Fekeli affermando che il bambino non ha il suo stesso sangue e ricordandogli che Yılmaz non lo aveva mai adottato legalmente. Tuttavia, le mire della donna crollano nel momento in cui l&#x27;eredità sperata si rivela soltanto un&#x27;illusione priva di consistenza. Di fronte al fallimento dei loro piani finanziari, Fekeli sceglie di intervenire di persona e si presenta direttamente nella struttura per affrontare la situazione.</p>
 <p>Una volta giunto in albergo, Fekeli zittisce immediatamente Behice per impedirle di intromettersi e preferisce rivolgere la propria attenzione esclusivamente a Müjgan. Con parole toccanti le ricorda di averle voluto bene fin dal primo momento, ribadendo che quella casa continuerà a essere la sua e che Yılmaz gli aveva affidato il piccolo Kerem Ali prima di morire. Sopraffatta dall&#x27;emozione, Müjgan scoppia in lacrime e chiede perdono, confermando che per lei Fekeli rappresenterà sempre una figura paterna. Fekeli accetta le scuse senza nascondere il dolore provato, ponendo però una condizione imprescindibile: Müjgan deve smettere una volta per tutte di farsi condizionare da Behice.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Quale strategia unisce Fikret e Ümit contro Demir</h2>
+<h2 id="c7">Quale strategia unisce Fikret e Ümit contro Demir</h2>
 <p>La trappola tesa ai danni di Demir Yaman prosegue attraverso le mosse calcolate di Fikret e Ümit, nuovo primario dell&#x27;ospedale. Quando l&#x27;agente immobiliare propone a Demir di affittare alla dottoressa uno dei suoi appartamenti, l&#x27;uomo rifiuta la soluzione ritenendola inadeguata e decide di offrirle direttamente una delle sue lussuose ville con piscina. Ümit lo ringrazia al telefono per la grande disponibilità dimostrata, ma Demir minimizza il gesto affermando che si tratta del minimo indispensabile per chi si dedica alla salute della popolazione di Çukurova. La generosa offerta rappresenta esattamente il varco che Fikret sperava di aprire nel sistema difensivo del suo avversario.</p>
 <p>Dopo aver visitato la villa, Fikret esprime grande soddisfazione per l&#x27;esito della manovra e spinge Ümit ad approfittare della situazione per avvicinarsi sempre di più a Demir. Fikret assicura alla complice di non doversi fare alcun problema morale, poiché considera quel matrimonio ormai giunto al capolinea. Di fronte ai dubbi di Ümit sul rischio di farsi coinvolgere sentimentalmente, Fikret ribatte che il pericolo di innamorarsi riguarda entrambi. La tensione drammatica raggiunge il culmine quando Demir si presenta di persona alla villa per consegnare un regalo, mentre Fikret rimane nascosto dietro una porta a osservare in silenzio ogni singolo movimento.</p>
-<h2>Cosa scopre Fekeli sulle azioni segrete di Fikret</h2>
+<h2 id="c8">Cosa scopre Fekeli sulle azioni segrete di Fikret</h2>
 <p>Il comportamento enigmatico di Fikret comincia a sollevare forti dubbi quando il giovane inventa una scusa per evitare di accompagnare Fekeli negli uffici dell&#x27;azienda. In realtà, il suo unico obiettivo è recarsi presso la tomba di Adnan Yaman, verso cui nutre un odio profondo che fatica a contenere. Giunto al cimitero, Fikret sfoga tutta la sua rabbia repressa scagliandosi contro la lapide di marmo e colpendola ripetutamente a pugni. La sua furia non rimane però un segreto: un testimone assiste all&#x27;episodio e nota la presenza del ragazzo anche la mattina successiva, decidendo così di raccontare ogni dettagliato particolare a Fekeli.</p>
 <p>La sconvolgente rivelazione lascia Fekeli completamente senza parole e sbalordito, spingendolo a porsi interrogativi angustianti sul legame nascosto che possa unire Fikret alla memoria di Adnan Yaman. Nel frattempo, le vicende del paese vedono Behice protagonista di un&#x27;amara umiliazione pubblica durante una riunione del comitato. Mentre la donna si vanta con ostentazione della grande dimora che la attende a Istanbul, Şermin interviene per smascherare la verità sui suoi conti correnti davanti a tutte le dame presenti. L&#x27;intervento di Şermin lascia Behice profondamente ferita e ridicolizzata di fronte alla società cittadina.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=93euSjZDoJU" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/93euSjZDoJU/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TERRA AMARA Anticipazioni: Sevda disperata pronta ad uccidersi per Umit | Demir spara a Fekeli</span></a></li><li><a href="https://www.youtube.com/watch?v=3mK34UxxkgQ" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/3mK34UxxkgQ/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TERRA AMARA Anticipazioni Turche: Kerem Alì rapito, Villa Yaman pignorata! Non c&#x27;è pace per i Y</span></a></li><li><a href="https://www.youtube.com/watch?v=2iGCIt57fdw" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/2iGCIt57fdw/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TERRA AMARA - SPOILER  -  Demir spara a Fekeli!</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Sevda con il fucile: la scena più bella della stagione o Züleyha doveva cavarsela da sola?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=-qR-P0t2mV0">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di Terra Amara</h2><div class="griglia"><article class="scheda">
+  <a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/"><div class="foto"><img src="/img/terra-amara-la-trama-completa-e-come-finisce.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></h3>
+    <div class="quando">30 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/"><div class="foto"><img src="https://i.ytimg.com/vi/_ypSJU-x7LY/hqdefault.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/"><div class="foto"><img src="https://i.ytimg.com/vi/B_MLx-0yh6M/hqdefault.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=Terra Amara, Sevda spara in aria per difendere Züleyha dagli abusivi nei campi — e Fikret sistema Ümit nella villa con piscina di Demir — https://serietvfans.com/terra-amara/terra-amara-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/terra-amara/terra-amara-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/terra-amara/terra-amara-la-trama-completa-e-come-finisce/&text=Terra Amara, Sevda spara in aria per difendere Züleyha dagli abusivi nei campi — e Fikret sistema Ümit nella villa con piscina di Demir" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">TERRA AMARA Anticipazioni 2-6 Ottobre: Gioie e Dolori in Villa mentre Fikret continua</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=-qR-P0t2mV0">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di Terra Amara</h3><ol class="numerata"><li><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></li><li><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></li><li><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></li><li><a href="/terra-amara/terra-amara-come-finisce-davvero-zuleyha-vince-tutto-e-resta-sola/">Terra Amara: come finisce davvero, Züleyha vince tutto e resta sola</a></li><li><a href="/terra-amara/terra-amara-come-muore-demir-yaman-chi-ha-dato-lordine-e-perche-doveva-essere-un-rapimento/">Terra Amara, come muore Demir Yaman: chi ha dato l&#x27;ordine e perché doveva essere un rapimento</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>TERRA AMARA Anticipazioni 2-6 Ottobre: Gioie e Dolori in Villa mentre Fikret continua</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su Terra Amara</h3><ul><li><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></li><li><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></li><li><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></li><li><a href="/terra-amara/terra-amara-come-finisce-davvero-zuleyha-vince-tutto-e-resta-sola/">Terra Amara: come finisce davvero, Züleyha vince tutto e resta sola</a></li><li><a href="/terra-amara/terra-amara-come-muore-demir-yaman-chi-ha-dato-lordine-e-perche-doveva-essere-un-rapimento/">Terra Amara, come muore Demir Yaman: chi ha dato l&#x27;ordine e perché doveva essere un rapimento</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

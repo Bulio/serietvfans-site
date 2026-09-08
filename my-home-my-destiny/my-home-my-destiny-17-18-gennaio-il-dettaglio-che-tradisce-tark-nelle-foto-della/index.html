@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/my-home-my-destiny/">My Home My Destiny</a> › My Home My Destiny 17-18 gennaio, il dettaglio che tradisce Tarık: nelle foto della nomina di Zeynep lui non c&#x27;è, e a farle togliere è stato il suo avvocato</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/my-home-my-destiny/">My Home My Destiny</a>
   <h1>My Home My Destiny 17-18 gennaio, il dettaglio che tradisce Tarık: nelle foto della nomina di Zeynep lui non c&#x27;è, e a farle togliere è stato il suo avvocato</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Zeynep viene presentata come nuova dirigente e le foto della serata finiscono ovunque. Barış le guarda una per una e nota una cosa che nessun altro ha notato: in nessuna compare Tarık.</p><ol><li><a href="#c1">Le foto in cui Tarık non c&#x27;è</a></li><li><a href="#c2">Chi sono davvero Tarık e Nesrin</a></li><li><a href="#c3">La riunione e il nome a sorpresa</a></li><li><a href="#c4">Il rancore di Nesrin, raccontato a Meltem</a></li><li><a href="#c5">Il gioco della bottiglia e la mano che Barış non lascia</a></li><li><a href="#c6">Perché conta: le foto sono l&#x27;unico errore che un impostore non può evitare</a></li><li><a href="#c7">Come Tekin e Gülbin sono riusciti ad infiltrarsi</a></li><li><a href="#c8">Perché il passato tra Sakine e Nermin guida Nesrin</a></li><li><a href="#c9">Cosa accade tra Barış e Nesrin durante la serata</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>My Home My Destiny</strong> — Serie conclusa in Italia · le puntate su Mediaset Infinity</span></div>
   
-  <p class="occhiello">Zeynep viene presentata come nuova dirigente e le foto della serata finiscono ovunque. Barış le guarda una per una e nota una cosa che nessun altro ha notato: in nessuna compare Tarık.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: My Home My Destiny 17-18 gennaio, il dettaglio che tradisce Tarık: nelle foto della nomina di Zeynep lui non c&#x27;è, e a farle togliere è stato il suo avvocato" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/3dgpoMHeWVs/sddefault.jpg" alt="My Home My Destiny 17-18 gennaio, il dettaglio che tradisce Tarık: nelle foto della nomina di Zeynep lui non c&#x27;è, e a farle togliere è stato il suo avvocato" width="640" height="480"
         srcset="https://i.ytimg.com/vi/3dgpoMHeWVs/hqdefault.jpg 480w, https://i.ytimg.com/vi/3dgpoMHeWVs/sddefault.jpg 640w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/3dgpoMHeWVs/hqdefault.jpg&quot;, &quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,46 +409,68 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>Nella stessa serata Tarık propone «sua sorella» Nesrin come responsabile delle risorse umane.</strong></p>
-  <h2>Le foto in cui Tarık non c&#x27;è</h2>
+  <h2 id="c1">Le foto in cui Tarık non c&#x27;è</h2>
 <p>A colazione Barış sorride guardando le immagini della sera prima, quelle in cui Zeynep viene annunciata come nuova dirigente. Poi si ferma: tra tutte quelle pubblicate, non ce n&#x27;è una in cui compaia Tarık. Va a informarsi e scopre che a chiederne il ritiro è stato l&#x27;avvocato di Tarık, su richiesta esplicita del diretto interessato — che dopo l&#x27;intervista di Zeynep si rifiuta categoricamente di farsi fotografare ancora. Un uomo che passa le giornate a piacere a tutti e poi sparisce dalle foto: Barış non ci mette molto a capire che qualcosa non torna, e affida a Savaş il compito di indagare a fondo su di lui.</p>
-<h2>Chi sono davvero Tarık e Nesrin</h2>
+<h2 id="c2">Chi sono davvero Tarık e Nesrin</h2>
 <p>Il sospetto di Barış non è la gelosia di un uomo innamorato: è fondato, e la serie lo conferma su entrambi i fronti. L&#x27;uomo che si presenta come Tarık si chiama in realtà Tekin ed è un complice al soldo di Ekrem — il padre adottivo di Zeynep — e della sua amante Meltem — la stessa ragione per cui l&#x27;azienda in cui dichiara di aver lavorato, quando la si va a cercare, sembra non esistere. E la sorella che propone come responsabile delle risorse umane non è una sorella: è Gülbin, che a Istanbul si è presentata con il nome falso di Nesrin. Due identità inventate che, nel giro di una riunione, entrano insieme nell&#x27;azienda che Zeynep ha appena preso in mano.</p>
-<h2>La riunione e il nome a sorpresa</h2>
+<h2 id="c3">La riunione e il nome a sorpresa</h2>
 <p>In azienda Zeynep guida la sua prima riunione con i vertici, presenta Barış come consulente legale e Tarık come consigliere personale, e stabilisce la nuova rotta. Resta un solo posto da riempire, quello di responsabile delle risorse umane — e Tarık annuncia di avere già la persona giusta. Lo rivela poco dopo, arrivando al ristorante proprio mentre Barış stava confidando a Zeynep i suoi dubbi su di lui: il nome è quello di sua sorella Nesrin, che finge di cadere dalle nuvole. A Zeynep la proposta sembra ottima. A Barış molto meno.</p>
-<h2>Il rancore di Nesrin, raccontato a Meltem</h2>
+<h2 id="c4">Il rancore di Nesrin, raccontato a Meltem</h2>
 <p>In privato, con Meltem, Nesrin lascia intravedere da dove viene il suo astio. Non ce l&#x27;ha solo con Sakine: ce l&#x27;ha anche con Nermin e con Zeynep. Racconta che quando era bambina Nermin aveva proposto a Sakine di occuparsi di lei, e che Sakine rifiutò scegliendo di crescere Zeynep. Da lì il resto — la convinzione di essere stata scartata, la vita meravigliosa data a un&#x27;altra, e il rimprovero che Zeynep, una volta cresciuta, non sia mai andata a cercarla.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Il gioco della bottiglia e la mano che Barış non lascia</h2>
+<h2 id="c5">Il gioco della bottiglia e la mano che Barış non lascia</h2>
 <p>La serata si divide in due tavoli: al ristorante Tarık incanta Sakine e Sultan a colpi di complimenti, ma quando comincia a spiegare ad Ali Rıza come dovrebbe cucinare e servire, la simpatia si incrina di colpo. A casa di Barış, invece, Nesrin recita la parte della ragazza perfetta e non convince nessuno, a partire da Emine. Poi propone il gioco della bottiglia e, quando esce Barış, lo obbliga a ballare con lei. Bastano pochi minuti: lui la lascia lì, va da Zeynep e le dice davanti a tutti quello che prova. Emine coglie in pieno lo sguardo deluso di Nesrin — e capisce che i suoi sospetti erano fondati.</p>
-<h2>Perché conta: le foto sono l&#x27;unico errore che un impostore non può evitare</h2>
+<h2 id="c6">Perché conta: le foto sono l&#x27;unico errore che un impostore non può evitare</h2>
 <p>Un&#x27;identità falsa regge benissimo una conversazione, una cena, perfino un colloquio: basta studiare le risposte. Non regge un archivio. Una fotografia pubblicata è un documento che continua a circolare senza che il soggetto possa più controllarlo, e che chiunque, in qualsiasi momento, può confrontare con un volto e un nome. Per questo il ritiro chiesto dall&#x27;avvocato è insieme la mossa più necessaria e la più autolesionista: è l&#x27;unica cosa che poteva fare, ed è esattamente il gesto che ha messo Barış sulla pista giusta. Da quel momento non indaga più su un&#x27;antipatia, ma su una discrepanza — e affida il lavoro a Savaş, che di mestiere le discrepanze le trova.</p>
-<h2>Come Tekin e Gülbin sono riusciti ad infiltrarsi</h2>
+<h2 id="c7">Come Tekin e Gülbin sono riusciti ad infiltrarsi</h2>
 <p>L&#x27;ingresso di nuovi personaggi nell&#x27;azienda guidata da Zeynep è il risultato di un piano ben strutturato, ideato da Ekrem, padre adottivo della ragazza, e dalla sua amante Meltem. L&#x27;uomo che si presenta con il nome di Tarık si chiama in realtà Tekin ed è un loro complice prezzolato, la cui finta carriera è stata costruita indicando un&#x27;azienda risultata inesistente ai controlli. Insieme a lui agisce Gülbin, che si fa chiamare Nesrin fingendosi sua sorella. Entrambi usano identità inventate per inserirsi rapidamente nell&#x27;ambiente lavorativo della protagonista, sfruttando ogni occasione per guadagnare ruoli di responsabilità all&#x27;interno della società appena riorganizzata.</p>
 <p>Nel corso della prima riunione ufficiale con la dirigenza, Zeynep assegna gli incarichi fondamentali, introducendo Barış come consulente legale e nominando Tarık nel ruolo di proprio consigliere personale. Rimasta scoperta la posizione di responsabile delle risorse umane, Tarık afferma di conoscere la persona ideale per coprire il posto. Poco dopo, al ristorante, presenta la presunta sorella Nesrin, la quale simula sorpresa per la proposta ricevuta. Mentre Zeynep giudica ottima l&#x27;idea di inserire la ragazza nella struttura aziendale, Barış manifesta da subito forte perplessità, insospettito dai modi e dalla fretta con cui la nomina viene caldeggiata.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Perché il passato tra Sakine e Nermin guida Nesrin</h2>
+<h2 id="c8">Perché il passato tra Sakine e Nermin guida Nesrin</h2>
 <p>Le motivazioni che spingono Nesrin ad agire contro i protagonisti risalgono a una ferita mai rimarginata dell&#x27;infanzia, emersa chiaramente durante un colloquio privato con Meltem. La ragazza prova un profondo astio non soltanto nei confronti di Sakine, ma anche verso Nermin e Zeynep. All&#x27;origine del suo risentimento c&#x27;è la proposta fatta a suo tempo da Nermin a Sakine, alla quale aveva offerto di prendersi cura di lei quando era bambina. La scelta di Sakine di rifiutare quell&#x27;offerta per dedicarsi esclusivamente alla crescita di Zeynep ha segnato l&#x27;inizio di una catena di incomprensioni e risentimenti.</p>
 <p>Sentendosi rifiutata e scartata, Nesrin ha sviluppato la convinzione di essere stata privata della possibilità di vivere un&#x27;esistenza felice, mentre osservava da lontano la vita meravigliosa riservata all&#x27;altra ragazza. A questa amarezza si unisce l&#x27;intimo rimprovero rivolto a Zeynep, colpevole a suo parere di non essersi mai preoccupata di cercarla dopo essere diventata grande. Nel confidare queste dolorose verità a Meltem, la giovane mostra quanto la rabbia per il passato influenzi ogni sua mossa attuale, trasformando il desiderio di rivalsa nell&#x27;unico motore delle sue azioni all&#x27;interno dell&#x27;azienda.</p>
-<h2>Cosa accade tra Barış e Nesrin durante la serata</h2>
+<h2 id="c9">Cosa accade tra Barış e Nesrin durante la serata</h2>
 <p>La serata si divide in due contesti differenti: al ristorante Tarık cerca di accattivarsi Sakine e Sultan con continui complimenti, ma finisce per urtare Ali Rıza quando pretende di spiegargli come cucinare e servire. A casa di Barış, invece, Nesrin prova a mostrare un&#x27;immagine impeccabile che non convince nessuno, a partire da Emine che resta molto scettica. Per sbloccare la situazione la ragazza propone il gioco della bottiglia e, quando la sorte indica Barış, lo forza a ballare con lei. L&#x27;uomo però resiste solo pochi minuti prima di allontanarsi per dichiarare i suoi sentimenti a Zeynep davanti a tutti.</p>
 <p>Il gesto palese di Barış fa crollare la maschera della ragazza, lasciando trasparire una profonda delusione che non sfugge allo sguardo attento di Emine, ormai del tutto sicura che i propri sospetti siano fondati. Nel frattempo l&#x27;attenzione dell&#x27;avvocato rimane concentrata anche sulle foto ufficiali della nomina di Zeynep, dalle quali Tarık è sparito per scelta del suo legale dopo l&#x27;intervista della nuova dirigente. Notando questa palese anomalia in un uomo solitamente desideroso di approvazione, Barış capisce che dietro l&#x27;identità del consigliere si nasconde un inganno e decide di affidare a Savaş il compito di indagare a fondo.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=GeWd-fLP07M" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/GeWd-fLP07M/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>MY HOME MY DESTINY Anticipazioni 12 Gennaio: Zeynep, un raggio di luce prima di cadere in trapp</span></a></li><li><a href="https://www.youtube.com/watch?v=HfdParn8GSE" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/HfdParn8GSE/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>MY HOME MY DESTINY Anticipazioni 10-11 Gennaio: Incredibili ritorni dal passato! Attenzione Zey</span></a></li><li><a href="https://www.youtube.com/watch?v=N7WqJ0smNXE" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/N7WqJ0smNXE/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>MY HOME MY DESTINY Anticipazioni 8-9 Gennaio:Mehdi muore per salvarla | Zeynep devastata dal do</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Barış è l&#x27;unico che ci sta vedendo chiaro?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=3dgpoMHeWVs">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di My Home My Destiny</h2><div class="griglia"><article class="scheda">
+  <a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/"><div class="foto"><img src="/img/my-home-my-destiny-la-trama-completa-e-come-finisce.jpg" alt="My Home My Destiny" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">My Home My Destiny</span>
+    <h3><a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/">My Home My Destiny: la trama completa e come finisce</a></h3>
+    <div class="quando">30 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/"><div class="foto"><img src="https://i.ytimg.com/vi/-djleIeCLQs/hqdefault.jpg" alt="My Home My Destiny" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">My Home My Destiny</span>
+    <h3><a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/">My Home My Destiny, Zeynep ferma l&#x27;aborto di Benal in sala operatoria senza sapere che il padre è Mehdi</a></h3>
+    <div class="quando">17 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/"><div class="foto"><img src="https://i.ytimg.com/vi/gxL0o63Nhqw/hqdefault.jpg" alt="My Home My Destiny" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">My Home My Destiny</span>
+    <h3><a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/">My Home My Destiny, anticipazioni del 17 novembre: Özlem indaga su Zeynep e scopre tutto, Nuh diventa autista di Barış e qualcuno manomette i macchinari di Bekir</a></h3>
+    <div class="quando">16 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=My Home My Destiny 17-18 gennaio, il dettaglio che tradisce Tarık: nelle foto della nomina di Zeynep lui non c&#x27;è, e a farle togliere è stato il suo avvocato — https://serietvfans.com/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/&text=My Home My Destiny 17-18 gennaio, il dettaglio che tradisce Tarık: nelle foto della nomina di Zeynep lui non c&#x27;è, e a farle togliere è stato il suo avvocato" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">My Home My Destiny anticipazioni 17 e 18 gennaio</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=3dgpoMHeWVs">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di My Home My Destiny</h3><ol class="numerata"><li><a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/">My Home My Destiny: la trama completa e come finisce</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/">My Home My Destiny, Zeynep ferma l&#x27;aborto di Benal in sala operatoria senza sapere che il padre è Mehdi</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/">My Home My Destiny, anticipazioni del 17 novembre: Özlem indaga su Zeynep e scopre tutto, Nuh diventa autista di Barış e qualcuno manomette i macchinari di Bekir</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-guida-alla-serie-chi-sono-demet-ozdemir-e-ibrahim-celikkol-qu/">My Home My Destiny: guida alla serie, il cast, i personaggi e quante puntate sono</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-1-dicembre-gli-spari-davanti-alla-vecchia-casa-zeynep-tra-le/">My Home My Destiny 1° dicembre, gli spari davanti alla vecchia casa: Zeynep tra le due madri quando l&#x27;uomo in moto estrae la pistola</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>My Home My Destiny anticipazioni 17 e 18 gennaio</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su My Home My Destiny</h3><ul><li><a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/">My Home My Destiny: la trama completa e come finisce</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/">My Home My Destiny, Zeynep ferma l&#x27;aborto di Benal in sala operatoria senza sapere che il padre è Mehdi</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/">My Home My Destiny, anticipazioni del 17 novembre: Özlem indaga su Zeynep e scopre tutto, Nuh diventa autista di Barış e qualcuno manomette i macchinari di Bekir</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-guida-alla-serie-chi-sono-demet-ozdemir-e-ibrahim-celikkol-qu/">My Home My Destiny: guida alla serie, il cast, i personaggi e quante puntate sono</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-1-dicembre-gli-spari-davanti-alla-vecchia-casa-zeynep-tra-le/">My Home My Destiny 1° dicembre, gli spari davanti alla vecchia casa: Zeynep tra le due madri quando l&#x27;uomo in moto estrae la pistola</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

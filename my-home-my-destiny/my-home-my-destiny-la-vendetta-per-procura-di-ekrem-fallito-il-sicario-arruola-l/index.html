@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/my-home-my-destiny/">My Home My Destiny</a> › My Home My Destiny, la vendetta per procura di Ekrem: fallito il sicario, arruola la sorella segreta di Zeynep — il ritorno dopo 20 anni è un&#x27;arma</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/my-home-my-destiny/">My Home My Destiny</a>
   <h1>My Home My Destiny, la vendetta per procura di Ekrem: fallito il sicario, arruola la sorella segreta di Zeynep — il ritorno dopo 20 anni è un&#x27;arma</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Perso il controllo della Lotus Group tornata a Nermin, Ekrem tenta prima la via più brutale — far uccidere Zeynep — e quando il complice viene arrestato cambia strategia: usare il passato. Dai tempi in cui Sakine faceva la domestica conosce il segreto di famiglia perfetto: una figlia scappata a 15 anni e mai cercata per vent&#x27;anni. Il rancore di Gülbin diventa la sua arma più sofisticata.</p><ol><li><a href="#c1">Prima il piombo, poi la psicologia</a></li><li><a href="#c2">Chi è Ekrem, e perché conosce i segreti di quella famiglia</a></li><li><a href="#c3">Il reclutamento: vent&#x27;anni di abbandono come leva</a></li><li><a href="#c4">L&#x27;infiltrazione al vertice: il «fratello» Tarık</a></li><li><a href="#c5">Il crollo: arresti, il messaggio di Ekrem e l&#x27;anello</a></li><li><a href="#c6">Perché conta: il piano salta, il segreto che ha usato resta aperto</a></li><li><a href="#c7">Come Ekrem ha trasformato la rabbia in un piano</a></li><li><a href="#c8">Cosa spinge Barış a proteggere Zeynep dai sospetti</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>My Home My Destiny</strong> — Serie conclusa in Italia · le puntate su Mediaset Infinity</span></div>
   
-  <p class="occhiello">Perso il controllo della Lotus Group tornata a Nermin, Ekrem tenta prima la via più brutale — far uccidere Zeynep — e quando il complice viene arrestato cambia strategia: usare il passato. Dai tempi in cui Sakine faceva la domestica conosce il segreto di famiglia perfetto: una figlia scappata a 15 anni e mai cercata per vent&#x27;anni. Il rancore di Gülbin diventa la sua arma più sofisticata.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: My Home My Destiny, la vendetta per procura di Ekrem: fallito il sicario, arruola la sorella segreta di Zeynep — il ritorno dopo 20 anni è un&#x27;arma" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/CEWBqoYrOCE/maxresdefault.jpg" alt="My Home My Destiny, la vendetta per procura di Ekrem: fallito il sicario, arruola la sorella segreta di Zeynep — il ritorno dopo 20 anni è un&#x27;arma" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/CEWBqoYrOCE/hqdefault.jpg 480w, https://i.ytimg.com/vi/CEWBqoYrOCE/sddefault.jpg 640w, https://i.ytimg.com/vi/CEWBqoYrOCE/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/CEWBqoYrOCE/hqdefault.jpg&quot;, &quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,42 +409,64 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>La differenza tra un sicario e una sorella ferita: il primo colpisce il corpo, la seconda entra nel cuore — e Gülbin, con il falso nome e un finto fratello consulente, arriva dritta al vertice dell&#x27;azienda.</strong></p>
-  <h2>Prima il piombo, poi la psicologia</h2>
+  <h2 id="c1">Prima il piombo, poi la psicologia</h2>
 <p>La rabbia di Ekrem per la Lotus Group tornata nelle mani di Nermin — con tutti i suoi profitti — parte nel modo più diretto: un piano per eliminare Zeynep, sfumato con l&#x27;arresto del complice. È allora che l&#x27;uomo capisce che l&#x27;arma migliore non si compra: si trova negli archivi di famiglia. Grazie agli anni in cui Sakine lavorava come domestica da Nermin, Ekrem conosce dettagli intimi del passato — compresa l&#x27;esistenza di Gülbin, la sorella maggiore che Zeynep non ha mai conosciuto.</p>
-<h2>Chi è Ekrem, e perché conosce i segreti di quella famiglia</h2>
+<h2 id="c2">Chi è Ekrem, e perché conosce i segreti di quella famiglia</h2>
 <p>La domanda che si fa chi arriva adesso è come faccia un uomo in fuga a sapere una cosa che nemmeno Zeynep sa. La risposta sta nel posto che occupava. Zeynep è cresciuta in casa sua: Ekrem è il padre adottivo, il marito di Nermin, l&#x27;uomo che per anni ha avuto in mano la Lotus Group e che quella famiglia l&#x27;ha vista da dentro, ai tavoli e nei corridoi. Non è mai stato un padre tenero: il matrimonio con Mehdi lo trattò da errore da correggere, e per la ragazza aveva progetti che non contemplavano quel genero. Nel frattempo conduceva una doppia vita con Meltem, e fu proprio Mehdi a sorprenderlo in un locale in atteggiamenti che non lasciavano dubbi. L&#x27;ultimo tassello riguarda Sakine, la madre naturale di Zeynep: prima di ritrovare la figlia lavorava come domestica in casa di Nermin. È lì che il passato di quella donna è passato sotto gli occhi di Ekrem, ed è lì che lui ha preso l&#x27;arma che userà vent&#x27;anni dopo.</p>
-<h2>Il reclutamento: vent&#x27;anni di abbandono come leva</h2>
+<h2 id="c3">Il reclutamento: vent&#x27;anni di abbandono come leva</h2>
 <p>Gülbin scappò di casa a 15 anni, e per i successivi venti Sakine non la cercò mai. Quel dente avvelenato è la leva perfetta: Ekrem la convince ad allearsi con lui e con l&#x27;amante Meltem, e la ragazza arriva a Istanbul sotto il falso nome di Nesrin. La strategia d&#x27;aggancio è chirurgica: presenza costante ma invisibile — al funerale di Mehdi, fuori dalla casa del lutto — e poi il «salvataggio» al passaggio pedonale che le apre le porte del cuore di una Zeynep devastata, più incline a confidarsi con una sconosciuta che con la famiglia opprimente.</p>
-<h2>L&#x27;infiltrazione al vertice: il «fratello» Tarık</h2>
+<h2 id="c4">L&#x27;infiltrazione al vertice: il «fratello» Tarık</h2>
 <p>Quando Zeynep, in crisi di fiducia alla vigilia della nomina ad amministratrice delegata, si sfoga con l&#x27;amica, scatta la seconda fase: Nesrin le presenta il «fratello» Tarık, esperto tessile, che l&#x27;azienda assume come consulente. In realtà si chiama Tekin ed è il fidanzato di Gülbin: il commando di Ekrem è dentro la Lotus Group. L&#x27;unico a non fidarsi è Barış, che blinda Zeynep con un contratto e — con Savaş e l&#x27;investigatore Emre — comincia a scavare dietro le due maschere.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Il crollo: arresti, il messaggio di Ekrem e l&#x27;anello</h2>
+<h2 id="c5">Il crollo: arresti, il messaggio di Ekrem e l&#x27;anello</h2>
 <p>La rete si strappa in un giorno solo: Tekin e Meltem vengono arrestati, la polizia cerca la donna dal nome falso, e Nesrin — ignara — accompagna Zeynep al matrimonio di Sultan. Mentre Barış confessa tutto in giardino, arriva il messaggio di Ekrem che la avvisa degli arresti. Ma a smascherarla non è la polizia: è Sakine, che da giorni vede nella ragazza il volto della figlia perduta. La segue fuori, pronuncia il suo nome — «Gülbin» — e le lacrime, insieme all&#x27;anello al dito, chiudono ogni dubbio. La vendetta di Ekrem si dissolve: resta una madre davanti a vent&#x27;anni di silenzio, e due sorelle che si scoprono nel modo peggiore.</p>
-<h2>Perché conta: il piano salta, il segreto che ha usato resta aperto</h2>
+<h2 id="c6">Perché conta: il piano salta, il segreto che ha usato resta aperto</h2>
 <p>Gli arresti chiudono l&#x27;operazione, non la ferita che ha reso possibile. Ekrem non ha inventato nulla: ha solo trovato un vuoto già esistente e ci ha soffiato dentro. Una figlia andata via a quindici anni e mai cercata per vent&#x27;anni è un fatto della famiglia Göksu, non una manovra aziendale, e adesso quel fatto è sul tavolo di tutti. Sakine dovrà spiegare a due figlie perché una l&#x27;ha ritrovata e l&#x27;altra no; Zeynep dovrà decidere cosa fare di una sorella che le è entrata in casa mentendo su ogni cosa tranne, forse, il rancore. Quanto a chi ha acceso la miccia, resta fuori portata: si è rifugiato in un paese che non concede l&#x27;estradizione, e la sola traccia che ha lasciato passa dalla gravidanza della sua compagna e da una visita medica. Il mandante è al sicuro, il danno è rimasto qui.</p>
-<h2>Come Ekrem ha trasformato la rabbia in un piano</h2>
+<h2 id="c7">Come Ekrem ha trasformato la rabbia in un piano</h2>
 <p>La perdita improvvisa della Lotus Group e dei suoi ricchi profitti in favore di Nermin spinge Ekrem a tentare un&#x27;azione disperata, organizzando un attentato contro la vita della giovane Zeynep. Quando il complice incaricato dell&#x27;omicidio finisce sotto arresto, l&#x27;uomo capisce di dover cambiare radicalmente strategia per riprendere il potere perduto. Sfruttando gli anni in cui la madre naturale Sakine lavorava come domestica nella casa di Nermin, l&#x27;ex marito attinge a piene mani dai ricordi e dai segreti più intimi della famiglia. In questo modo rispolvera l&#x27;esistenza di Gülbin, la primogenita scappata di casa a soli quindici anni e mai cercata da nessuno per ben venti lunghi anni. Quella ferita mai rimarginata diventa la base perfetta per costruire una terribile vendetta psicologica.</p>
 <p>Per concretizzare il suo piano, Ekrem convince Gülbin ad allearsi con lui e con la compagna Meltem, sfruttando appieno il profondo rancore covato dalla ragazza verso la propria famiglia d&#x27;origine. La giovane arriva a Istanbul spacciandosi per Nesrin e inizia un&#x27;infiltrazione attenta, presentandosi prima al funerale di Mehdi e poi inscenando un provvidenziale salvataggio al passaggio pedonale. Guadagnata la fiducia della sorella, Nesrin introduce nel piano il fidanzato Tekin, presentandolo come suo fratello Tarık ed esperto del settore tessile. Grazie a questa messinscena, l&#x27;uomo viene immediatamente assunto come consulente all&#x27;interno della Lotus Group, permettendo al commando di posizionarsi strategicamente al vertice dell&#x27;azienda proprio alla vigilia della nomina ufficiale della nuova amministratrice delegata.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Cosa spinge Barış a proteggere Zeynep dai sospetti</h2>
+<h2 id="c8">Cosa spinge Barış a proteggere Zeynep dai sospetti</h2>
 <p>Mentre la fragile Zeynep cerca conforto nella finta amica durante un momento di profonda crisi professionale, Barış nutre fin dal primo istante forti perplessità sulla reale identità dei due presunti fratelli. Il manager decide quindi di blindare la ragazza con un rigoroso vincolo contrattuale, evitando così mosse affrettate che potrebbero compromettere la gestione aziendale. Contemporaneamente, insieme al fratello Savaş e con il supporto prezioso dell&#x27;investigatore privato Emre, l&#x27;uomo avvia un&#x27;indagine approfondita per scavare nel passato delle due maschere. Questa intrapresa investigativa porta rapidamente alla luce la cospirazione orchestrata da Ekrem, culminando nell&#x27;arresto simultaneo di Tekin e della complice Meltem prima che il piano di conquista economica possa essere completato del tutto.</p>
 <p>Il momento decisivo della vicenda si consuma durante i festeggiamenti per il matrimonio di Sultan, dove Nesrin accompagna Zeynep del tutto ignara del crollo imminente della rete. Mentre Barış rivela la verità nel giardino della location, la ragazza riceve un messaggio urgente da Ekrem che la avverte degli arresti appena avvenuti. Tuttavia, a smascherare definitivamente l&#x27;infiltrata è Sakine, che riconosce sul volto della giovane i tratti della figlia perduta vent&#x27;anni prima. La visione dell&#x27;anello al dito e le lacrime sincere segnano la fine dell&#x27;inganno, costringendo Sakine a confrontarsi con l&#x27;abbandono passato. Nel frattempo, l&#x27;ideatore di questa macchinazione riesce a mettersi al sicuro rifugiandosi in uno stato privo di estradizione, lasciando dietro di sé soltanto una traccia legata alla gravidanza.</p>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=3pNC4m0SrQ8" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/3pNC4m0SrQ8/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>MY HOME MY DESTINY Anticipazioni Turchia: Zeynep scopre la figlia segreta di Ekrem!</span></a></li><li><a href="https://www.youtube.com/watch?v=Bgwa2XXcjkc" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/Bgwa2XXcjkc/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>MY HOME MY DESTINY Anticipazioni: Incredibile ritorno nella vita di Zeynep dopo 20 anni! Chi sa</span></a></li><li><a href="https://www.youtube.com/watch?v=ft6wQrd9rDE" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/ft6wQrd9rDE/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>MY HOME MY DESTINY Anticipazioni 23-24 Ottobre: Zeynep, Nermin e Sakine scoprono la verità! Sho</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Ekrem ha trasformato una ferita di famiglia in un&#x27;arma: chi è il vero colpevole — lui, o il silenzio ventennale di Sakine? E Zeynep riuscirà a vedere nella sorella qualcosa oltre l&#x27;inganno?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=CEWBqoYrOCE">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di My Home My Destiny</h2><div class="griglia"><article class="scheda">
+  <a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/"><div class="foto"><img src="/img/my-home-my-destiny-la-trama-completa-e-come-finisce.jpg" alt="My Home My Destiny" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">My Home My Destiny</span>
+    <h3><a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/">My Home My Destiny: la trama completa e come finisce</a></h3>
+    <div class="quando">30 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/"><div class="foto"><img src="https://i.ytimg.com/vi/-djleIeCLQs/hqdefault.jpg" alt="My Home My Destiny" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">My Home My Destiny</span>
+    <h3><a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/">My Home My Destiny, Zeynep ferma l&#x27;aborto di Benal in sala operatoria senza sapere che il padre è Mehdi</a></h3>
+    <div class="quando">17 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/"><div class="foto"><img src="https://i.ytimg.com/vi/gxL0o63Nhqw/hqdefault.jpg" alt="My Home My Destiny" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">My Home My Destiny</span>
+    <h3><a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/">My Home My Destiny, anticipazioni del 17 novembre: Özlem indaga su Zeynep e scopre tutto, Nuh diventa autista di Barış e qualcuno manomette i macchinari di Bekir</a></h3>
+    <div class="quando">16 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=My Home My Destiny, la vendetta per procura di Ekrem: fallito il sicario, arruola la sorella segreta di Zeynep — il ritorno dopo 20 anni è un&#x27;arma — https://serietvfans.com/my-home-my-destiny/my-home-my-destiny-la-vendetta-per-procura-di-ekrem-fallito-il-sicario-arruola-l/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/my-home-my-destiny/my-home-my-destiny-la-vendetta-per-procura-di-ekrem-fallito-il-sicario-arruola-l/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/my-home-my-destiny/my-home-my-destiny-la-vendetta-per-procura-di-ekrem-fallito-il-sicario-arruola-l/&text=My Home My Destiny, la vendetta per procura di Ekrem: fallito il sicario, arruola la sorella segreta di Zeynep — il ritorno dopo 20 anni è un&#x27;arma" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">MY HOME MY DESTINY SPOILER: RITORNO CLAMOROSO DOPO 20 ANNI! CHI SARÀ?</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=CEWBqoYrOCE">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di My Home My Destiny</h3><ol class="numerata"><li><a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/">My Home My Destiny: la trama completa e come finisce</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/">My Home My Destiny, Zeynep ferma l&#x27;aborto di Benal in sala operatoria senza sapere che il padre è Mehdi</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/">My Home My Destiny, anticipazioni del 17 novembre: Özlem indaga su Zeynep e scopre tutto, Nuh diventa autista di Barış e qualcuno manomette i macchinari di Bekir</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-guida-alla-serie-chi-sono-demet-ozdemir-e-ibrahim-celikkol-qu/">My Home My Destiny: guida alla serie, il cast, i personaggi e quante puntate sono</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-1-dicembre-gli-spari-davanti-alla-vecchia-casa-zeynep-tra-le/">My Home My Destiny 1° dicembre, gli spari davanti alla vecchia casa: Zeynep tra le due madri quando l&#x27;uomo in moto estrae la pistola</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>MY HOME MY DESTINY SPOILER: RITORNO CLAMOROSO DOPO 20 ANNI! CHI SARÀ?</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su My Home My Destiny</h3><ul><li><a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/">My Home My Destiny: la trama completa e come finisce</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/">My Home My Destiny, Zeynep ferma l&#x27;aborto di Benal in sala operatoria senza sapere che il padre è Mehdi</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/">My Home My Destiny, anticipazioni del 17 novembre: Özlem indaga su Zeynep e scopre tutto, Nuh diventa autista di Barış e qualcuno manomette i macchinari di Bekir</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-guida-alla-serie-chi-sono-demet-ozdemir-e-ibrahim-celikkol-qu/">My Home My Destiny: guida alla serie, il cast, i personaggi e quante puntate sono</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-1-dicembre-gli-spari-davanti-alla-vecchia-casa-zeynep-tra-le/">My Home My Destiny 1° dicembre, gli spari davanti alla vecchia casa: Zeynep tra le due madri quando l&#x27;uomo in moto estrae la pistola</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

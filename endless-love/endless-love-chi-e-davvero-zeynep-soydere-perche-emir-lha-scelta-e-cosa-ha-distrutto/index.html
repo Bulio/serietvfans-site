@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/endless-love/">Endless Love</a> › Endless Love, chi è davvero Zeynep Soydere: perché Emir l&#x27;ha scelta e cosa ha distrutto</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/endless-love/">Endless Love</a>
   <h1>Endless Love, chi è davvero Zeynep Soydere: perché Emir l&#x27;ha scelta e cosa ha distrutto</h1>
-  <div class="firma">Redazione Serie TV Fans · domenica 23 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-23">domenica 23 agosto 2026</time></span><span>aggiornato il 3 settembre 2026</span><span>6 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">A mandare in pezzi la famiglia Soydere non è stato Emir Kozcuoğlu con tutti i suoi soldi, ma una ragazza che quei soldi non li aveva mai avuti e li voleva troppo.</p><ol><li><a href="#c1">Il personaggio più pericoloso di Endless Love</a></li><li><a href="#c2">Chi sono i Soydere</a></li><li><a href="#c3">La fame che Emir sa riconoscere</a></li><li><a href="#c4">Non era Zeynep l&#x27;obiettivo</a></li><li><a href="#c5">La cerniera di tutta la storia</a></li><li><a href="#c6">Il matrimonio con Ozan</a></li><li><a href="#c7">La cosa più crudele della serie</a></li><li><a href="#c8">Perché Zeynep divide il pubblico</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>Endless Love</strong> — Serie conclusa in Italia · le puntate su Mediaset Infinity</span></div>
   
-  <p class="occhiello">A mandare in pezzi la famiglia Soydere non è stato Emir Kozcuoğlu con tutti i suoi soldi, ma una ragazza che quei soldi non li aveva mai avuti e li voleva troppo.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: Endless Love, chi è davvero Zeynep Soydere: perché Emir l&#x27;ha scelta e cosa ha distrutto" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/0W2iQAEUF9s/maxresdefault.jpg" alt="Endless Love, chi è davvero Zeynep Soydere: perché Emir l&#x27;ha scelta e cosa ha distrutto" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/0W2iQAEUF9s/hqdefault.jpg 480w, https://i.ytimg.com/vi/0W2iQAEUF9s/sddefault.jpg 640w, https://i.ytimg.com/vi/0W2iQAEUF9s/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/0W2iQAEUF9s/hqdefault.jpg&quot;, &quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,17 +409,17 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>Chi l&#x27;avrebbe mai detto che il personaggio più pericoloso di Endless Love non fosse un ricco, non fosse un potente, e non avesse nemmeno un piano.</strong></p>
-  <h2>Il personaggio più pericoloso di Endless Love</h2>
+  <h2 id="c1">Il personaggio più pericoloso di Endless Love</h2>
 <p>Chi l&#x27;avrebbe detto che a mandare in pezzi la famiglia Soydere non sarebbe stato Emir Kozcuoğlu con tutti i suoi soldi, ma una ragazza che quei soldi non li aveva mai avuti e li voleva troppo.</p>
 <p>Sto parlando di Zeynep. La sorella di Kemal.</p>
 <p>E oggi vi racconto la cosa che di Zeynep non si dice mai, perché è più comodo raccontarla in un altro modo. La versione comoda è che Emir ha sedotto Zeynep. Che l&#x27;ha vista, l&#x27;ha voluta, l&#x27;ha presa e poi l&#x27;ha buttata via.</p>
 <p>Non è andata così. Zeynep non è stata sedotta da Emir.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>E la differenza tra le due parole è tutto il personaggio, perché se sei stata sedotta sei una vittima e basta, ma se sei stata scelta vuol dire che qualcuno ti ha studiata prima. Vuol dire che sapeva già dove premere. E vuol dire, e qui viene il difficile, che quel punto dove premere ce l&#x27;avevi davvero.</p>
-<h2>Chi sono i Soydere</h2>
+<h2 id="c2">Chi sono i Soydere</h2>
 <p>Se conoscete Endless Love e avete già una vostra opinione su Zeynep Soydere, tenetela lì e vediamo alla fine se è ancora la stessa. Su Endless Love torniamo spesso, perché è la serie più richiesta di tutte.</p>
 <p>Due parole per chi non ha visto tutto.</p>
-<h2>La fame che Emir sa riconoscere</h2>
+<h2 id="c3">La fame che Emir sa riconoscere</h2>
 <p>Endless Love, in Turchia Kara Sevda, è la storia di Kemal Soydere e Nihan. Lui viene da una famiglia normale, lei sposa Emir Kozcuoğlu, che è l&#x27;uomo più ricco e più spietato della serie. E attorno a questo triangolo ruota tutto.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>I Soydere sono quattro. Ci sono i genitori, c&#x27;è Kemal, e c&#x27;è Zeynep. La sorella minore.</p>
@@ -379,31 +429,31 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>E la domanda è: quanto ci mette un uomo come Emir ad accorgersi di una cosa così?</p>
 <p>Risposta: pochissimo. E qui entriamo nel punto vero.</p>
-<h2>Non era Zeynep l&#x27;obiettivo</h2>
+<h2 id="c4">Non era Zeynep l&#x27;obiettivo</h2>
 <p>Emir Kozcuoğlu ha un obiettivo, e non è Zeynep. Il suo obiettivo è distruggere Kemal. Ma Emir non è uno che affronta un nemico di petto quando può smontarlo da dentro, e il suo piano per la famiglia Soydere è esattamente questo: farla a pezzi mettendo i fratelli l&#x27;uno contro l&#x27;altro.</p>
 <p>Per farlo gli serve qualcuno dentro quella casa. Non un complice pagato, che si può comprare e quindi si può ricomprare. Gli serve una persona che entri in casa Soydere con le proprie gambe, che sieda a quel tavolo di diritto, e che voglia una cosa che lui può darle.</p>
 <p>Zeynep è l&#x27;unica che risponde a tutti e tre i requisiti.</p>
 <p>Guardatela così, e vi accorgete che quello che succede dopo non è una storia d&#x27;amore andata male. È un reclutamento.</p>
 <p>Emir usa il desiderio di Zeynep di ricchezza e di fama. Lo usa come si usa una leva: sa che c&#x27;è, sa dove appoggiarsi, e spinge. Il rapporto tra loro nasce da lì. E finisce con Zeynep incinta di lui.</p>
-<h2>La cerniera di tutta la storia</h2>
+<h2 id="c5">La cerniera di tutta la storia</h2>
 <p>Fermiamoci, perché quella gravidanza è la cerniera di tutta la storia. Non è un incidente sentimentale ai margini della trama: è il momento in cui Zeynep smette di poter tornare indietro. Da quel punto in avanti qualunque cosa faccia, dirlo o non dirlo, la mette contro suo fratello.</p>
 <p>Ed è esattamente il risultato che Emir voleva ottenere.</p>
 <p>Su Zeynep il pubblico di Endless Love si spacca in due da sempre, e non si è mai messo d&#x27;accordo.</p>
 <p>Zeynep è una vittima di Emir, oppure è complice di quello che ha fatto alla sua famiglia? Vittima, oppure complice: una terza risposta non c&#x27;è.</p>
 <p>Torniamo a Zeynep, perché adesso arriva la parte in cui prende in mano la situazione lei. Ed è la parte che le si ritorce contro.</p>
 <p>Zeynep viene messa da parte. E una donna ferita, in questa serie, non piange e basta: reagisce. Solo che reagisce con l&#x27;unica arma che ha imparato guardando gli altri, cioè usare una persona per arrivare a un&#x27;altra.</p>
-<h2>Il matrimonio con Ozan</h2>
+<h2 id="c6">Il matrimonio con Ozan</h2>
 <p>Zeynep inganna Ozan. E Ozan, ricordiamocelo, è il fratello gemello di Nihan.</p>
 <p>Lo porta al matrimonio. E il motivo per cui lo fa non è l&#x27;amore per Ozan: è entrare in quella villa. Vivere dentro la casa dove la vita è quella che lei ha sempre voluto, e da lì far ingelosire Emir.</p>
 <p>Il matrimonio tra Zeynep e Ozan esplode dentro la casa di Nihan come una bomba. Perché non è un matrimonio: è una persona che entra in una famiglia portandosi dentro il piano di qualcun altro, e un ragazzo che si è innamorato di una donna che sta usando il suo cognome come una chiave.</p>
 <p>E per un momento Zeynep è contenta dello scandalo che ha provocato, soprattutto per l&#x27;effetto che fa su Emir.</p>
 <p>Ma i suoi piani non funzionano come sperava, e non funzionano fin dal primo momento.</p>
-<h2>La cosa più crudele della serie</h2>
+<h2 id="c7">La cosa più crudele della serie</h2>
 <p>Qui c&#x27;è la cosa più crudele che Endless Love fa a questo personaggio. Zeynep entra nella villa e scopre che stare dentro non è come guardarla da fuori. Ha ottenuto l&#x27;indirizzo, non la vita. E soprattutto: Emir non torna. Perché Emir non l&#x27;ha mai voluta. L&#x27;ha usata quando gli serviva dentro casa Soydere, e adesso che è dentro casa di Nihan continua a fare danno anche da lì, gratis, senza che lui debba muovere un dito.</p>
 <p>Ed è per questo che all&#x27;inizio vi ho detto scelta e non sedotta.</p>
 <p>Una donna sedotta viene ingannata su chi sia l&#x27;uomo. Zeynep viene ingannata su chi sia lei. Emir non le ha raccontato di essere buono: le ha raccontato che con lui poteva diventare qualcosa, e quella era l&#x27;unica bugia a cui lei non sapeva resistere.</p>
 <p>Adesso la parte in cui ragiono ad alta voce, e ve lo dico chiaro: da qui non sono fatti, è una mia lettura.</p>
-<h2>Perché Zeynep divide il pubblico</h2>
+<h2 id="c8">Perché Zeynep divide il pubblico</h2>
 <p>Secondo me il vero motivo per cui Zeynep divide così tanto il pubblico è che è l&#x27;unico personaggio della serie che agisce come agiremmo noi. Kemal è più giusto di noi, Nihan è più sacrificale di noi, Emir è più spietato di noi. Zeynep no. Zeynep è invidiosa, orgogliosa, e vuole una vita migliore. Non è un mostro: è la persona normale messa dentro una storia dove tutti gli altri sono estremi.</p>
 <p>Ed è per questo che dà fastidio. Perché è l&#x27;unica di cui, guardandola, non puoi dire con sicurezza che tu avresti fatto diversamente.</p>
 <p>Ora, una cosa che resta aperta e che meriterebbe un capitolo tutto suo.</p>
@@ -412,19 +462,41 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=7uCG90SL3e0" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/7uCG90SL3e0/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>EMIR FURIOSO CON ZEYNEP, FA&#x27; SALTARE IL PIANO DIABOLICO - Endless Love Anticipazioni 23 Aprile</span></a></li><li><a href="https://www.youtube.com/watch?v=8FRoVyH_1iU" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/8FRoVyH_1iU/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>NIHAN SCONVOLTA, SCOPRE CHE SUO FRATELLO E&#x27; INNOCENTE, è stato Emir! Endless Love Anticipazioni</span></a></li><li><a href="https://www.youtube.com/watch?v=BcT_OlWtJFo" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/BcT_OlWtJFo/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>ASU SALVA ZEYNEP DA EMIR, IL BAMBINO E&#x27; SALVO! Anticipazioni Endless Love</span></a></li></ul></div>
   
+  <section class="correlati-serie"><h2>Altre anticipazioni di Endless Love</h2><div class="griglia"><article class="scheda">
+  <a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/"><div class="foto"><img src="https://i.ytimg.com/vi/DSiProJJ1ls/hqdefault.jpg" alt="Endless Love" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/"><div class="foto"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/"><div class="foto"><img src="https://i.ytimg.com/vi/uu2oAzTOWQU/hqdefault.jpg" alt="Endless Love" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></h3>
+    <div class="quando">25 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=Endless Love, chi è davvero Zeynep Soydere: perché Emir l&#x27;ha scelta e cosa ha distrutto — https://soapoperaitalia.com/endless-love/endless-love-la-trama-completa-perche-nihan-sposa-emir-e-come-finisce/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://soapoperaitalia.com/endless-love/endless-love-la-trama-completa-perche-nihan-sposa-emir-e-come-finisce/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://soapoperaitalia.com/endless-love/endless-love-la-trama-completa-perche-nihan-sposa-emir-e-come-finisce/&text=Endless Love, chi è davvero Zeynep Soydere: perché Emir l&#x27;ha scelta e cosa ha distrutto" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">ENDLESS LOVE: Zeynep non è stata sedotta da Emir, è stata scelta 😱</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=0W2iQAEUF9s">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di Endless Love</h3><ol class="numerata"><li><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></li><li><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></li><li><a href="/endless-love/endless-love-chi-e-galip-kozcuoglu-le-due-volte-in-cui-nihan-e-stata-venduta/">Endless Love, chi è Galip Kozcuoğlu: le due volte in cui Nihan è stata venduta</a></li><li><a href="/endless-love/chi-era-davvero-asu-in-endless-love-la-figlia-segreta-di-galip-e-il-piano-nascosto/">Chi era davvero Asu in Endless Love: la figlia segreta di Galip e il piano nascosto</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>ENDLESS LOVE: Zeynep non è stata sedotta da Emir, è stata scelta 😱</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su Endless Love</h3><ul><li><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></li><li><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></li><li><a href="/endless-love/endless-love-chi-e-galip-kozcuoglu-le-due-volte-in-cui-nihan-e-stata-venduta/">Endless Love, chi è Galip Kozcuoğlu: le due volte in cui Nihan è stata venduta</a></li><li><a href="/endless-love/chi-era-davvero-asu-in-endless-love-la-figlia-segreta-di-galip-e-il-piano-nascosto/">Chi era davvero Asu in Endless Love: la figlia segreta di Galip e il piano nascosto</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/terra-amara/">Terra Amara</a> › Terra Amara, il regalo di Demir ad Adnan: gli dà il nome del vero padre — poi la villa va a fuoco e lui spara a Fekeli</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/terra-amara/">Terra Amara</a>
   <h1>Terra Amara, il regalo di Demir ad Adnan: gli dà il nome del vero padre — poi la villa va a fuoco e lui spara a Fekeli</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Alla festa di compleanno del bambino, Demir prende la parola davanti a tutti e annuncia il gesto che nessuno si aspettava: da quel giorno suo figlio si chiamerà Yılmaz Adnan, portando il nome del padre biologico. L&#x27;applauso è generale, Fekeli si commuove, Züleyha lo abbraccia. Ma la serata precipita quando Gaffur irrompe urlando: il fienile della villa è in fiamme. Demir accusa Fikret senza prove, e il giorno dopo, dopo un durissimo faccia a faccia con Fekeli, gli spara al petto davanti a tutti in azienda.</p><ol><li><a href="#c1">Il rifiuto di Müjgan e le parole di Fekeli</a></li><li><a href="#c2">«Da oggi si chiamerà Yılmaz Adnan»</a></li><li><a href="#c3">Il fienile in fiamme</a></li><li><a href="#c4">Gli spari in azienda</a></li><li><a href="#c5">Come Fekeli convince Müjgan a partecipare al compleanno</a></li><li><a href="#c6">Cosa spinge Demir ad annunciare il nuovo nome</a></li><li><a href="#c7">Perche&#x27; l&#x27;incendio al fienile scatena il sospetto di Demir</a></li><li><a href="#c8">Quale tragica conseguenza produce la rabbia di Demir</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>Terra Amara</strong> — Serie conclusa in Italia · tutte le puntate su Mediaset Infinity</span></div>
   
-  <p class="occhiello">Alla festa di compleanno del bambino, Demir prende la parola davanti a tutti e annuncia il gesto che nessuno si aspettava: da quel giorno suo figlio si chiamerà Yılmaz Adnan, portando il nome del padre biologico. L&#x27;applauso è generale, Fekeli si commuove, Züleyha lo abbraccia. Ma la serata precipita quando Gaffur irrompe urlando: il fienile della villa è in fiamme. Demir accusa Fikret senza prove, e il giorno dopo, dopo un durissimo faccia a faccia con Fekeli, gli spara al petto davanti a tutti in azienda.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: Terra Amara, il regalo di Demir ad Adnan: gli dà il nome del vero padre — poi la villa va a fuoco e lui spara a Fekeli" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/2iGCIt57fdw/maxresdefault.jpg" alt="Terra Amara, il regalo di Demir ad Adnan: gli dà il nome del vero padre — poi la villa va a fuoco e lui spara a Fekeli" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/2iGCIt57fdw/hqdefault.jpg 480w, https://i.ytimg.com/vi/2iGCIt57fdw/sddefault.jpg 640w, https://i.ytimg.com/vi/2iGCIt57fdw/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/2iGCIt57fdw/hqdefault.jpg&quot;, &quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,45 +409,67 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>La lezione di Fekeli a Müjgan prima della festa: «Non ti chiedo di dimenticare, ma di lasciar andare — anche Demir e Yılmaz ci sono riusciti».</strong></p>
-  <h2>Il rifiuto di Müjgan e le parole di Fekeli</h2>
+  <h2 id="c1">Il rifiuto di Müjgan e le parole di Fekeli</h2>
 <p>La puntata si apre in casa Fekeli: Müjgan non si è nemmeno cambiata per la festa, e alla domanda del vecchio risponde che non intende partecipare — bastano loro due ad accompagnare Kerem Ali. Fekeli non la costringe, ma le ricorda che Adnan è suo nipote e fratello del bambino, e le pone la domanda che pesa: non è arrivato il momento di lasciar andare il rancore? Lei confessa che rivedere certe persone significa rivivere sofferenze mai superate; lui replica che non le chiede di dimenticare, ma che per crescere i figli in un ambiente sereno bisogna imparare a convivere — e che perfino Demir e Yılmaz avevano seppellito il loro odio. Alla fine Müjgan cede e va a prepararsi.</p>
-<h2>«Da oggi si chiamerà Yılmaz Adnan»</h2>
+<h2 id="c2">«Da oggi si chiamerà Yılmaz Adnan»</h2>
 <p>Al club, dopo la torta e le candeline spente insieme a Üzüm, Demir chiede la parola. Ringrazia gli ospiti, ricorda di aver già intestato ai figli parte dei suoi beni e spiega di aver accolto Adnan come suo, pur sapendo di chi fosse figlio, dandogli il nome di suo padre. Poi l&#x27;annuncio: da quel giorno il bambino porterà anche il nome del padre biologico. L&#x27;applauso riempie la sala, Fekeli si riempie d&#x27;orgoglio e Züleyha corre ad abbracciarlo. A guardare la scena in disparte, con la tristezza dipinta in volto, c&#x27;è Ümit — arrivata alla festa su invito personale di Züleyha nonostante il divieto di Demir, come gli spiegherà poco dopo per evitare sospetti.</p>
-<h2>Il fienile in fiamme</h2>
+<h2 id="c3">Il fienile in fiamme</h2>
 <p>La festa viene spezzata dall&#x27;irruzione di Gaffur, che urla di un disastro alla villa e poi sviene: il fienile è in fiamme. Tutti corrono e trovano la struttura distrutta, ma per fortuna qualcuno era all&#x27;interno quando il fuoco è divampato ed è riuscito a dare l&#x27;allarme in tempo per salvare il resto della proprietà. Züleyha tira un sospiro di sollievo — nessuno si è fatto male — mentre Demir non ha dubbi su chi sia il responsabile: Fikret.</p>
-<h2>Gli spari in azienda</h2>
+<h2 id="c4">Gli spari in azienda</h2>
 <p>Il giorno dopo Demir intercetta Fekeli in città e pretende di sapere dove si trovi il nipote. Il vecchio rifiuta lo scontro, lui lo provoca — non può definirsi suo zio se non è in grado di controllarlo — e il confronto degenera: si rinfacciano le calunnie sulla madre di Fikret e quelle su Adnan Yaman, finché Fekeli non lo definisce vigliacco e se ne va. Demir lo segue fino all&#x27;azienda e, davanti a tutti i presenti terrorizzati, gli spara ripetutamente al petto. L&#x27;uomo cade a terra: un gesto che, dopo la giornata più bella per la famiglia, riapre la faida nel modo più sanguinoso possibile.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Come Fekeli convince Müjgan a partecipare al compleanno</h2>
+<h2 id="c5">Come Fekeli convince Müjgan a partecipare al compleanno</h2>
 <p>La decisione di presentarsi al compleanno del piccolo Adnan nasce da un confronto intenso all&#x27;interno della casa di Fekeli. Müjgan appare inizialmente contraria e sceglie di non cambiarsi d&#x27;abito, proponendo al vecchio di accompagnare da soli il piccolo Kerem Ali. Per la giovane donna, ritrovare determinati volti significa riaprire sofferenze mai superate. Fekeli, senza ricorrere alla costrizione, le ricorda che Adnan è suo nipote e fratello del bambino, ponendole la questione del rancore accumulato. Questo richiamo agli affetti spinge infine la madre a riconsiderare la sua posizione iniziale per garantire un momento sereno ai più piccoli della famiglia.</p>
 <p>Il discorso del vecchio tocca temi profondi per la crescita dei bambini. L&#x27;uomo spiega con chiarezza che non le sta chiedendo di dimenticare quanto accaduto nel passato, bensì di imparare a lasciar andare il rancore per crescere i figli in un ambiente sereno. Per dimostrare che un cambiamento sia possibile, Fekeli ricorda come persino Demir e Yılmaz fossero stati capaci di sotterrare il loro odio reciproco. Di fronte a queste parole ricche di saggezza ed equilibrio, Müjgan decide di cedere e va a prepararsi per partecipare. La sua presenza rappresenta un passo importante verso la serenità.</p>
-<h2>Cosa spinge Demir ad annunciare il nuovo nome</h2>
+<h2 id="c6">Cosa spinge Demir ad annunciare il nuovo nome</h2>
 <p>Durante la festa organizzata al club per la celebre ricorrenza, Demir prende la parola subito dopo il momento della torta e delle candeline spente insieme alla piccola Üzüm. L&#x27;uomo ringrazia pubblicamente tutti gli ospiti presenti e ricorda di aver già intestato ai suoi figli una parte consistente dei propri beni. Spiega poi di aver accolto Adnan come se fosse suo fin dal primo giorno, pur essendo a conoscenza di chi fosse il padre biologico e avendogli dato il nome di suo padre. Questo intervento serve a ribadire davanti all&#x27;intera comunità il suo forte ed immutato legame affettivo.</p>
 <p>L&#x27;annuncio del nuovo nome rappresenta il momento più toccante della serata: da quel giorno il bambino si chiamerà Yılmaz Adnan, portando anche il nome del padre biologico. La decisione suscita un applauso generale nella sala, mentre Fekeli si commuove e Züleyha corre ad abbracciare il marito. Tuttavia, a guardare la scena in disparte c&#x27;è Ümit, arrivata al club su invito personale di Züleyha nonostante il divieto espresso da Demir. La donna spiegherà in seguito la situazione per evitare sospetti, mentre sul suo volto si legge una profonda tristezza per la felicità altrui durante tutta la festa.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Perche&#x27; l&#x27;incendio al fienile scatena il sospetto di Demir</h2>
+<h2 id="c7">Perche&#x27; l&#x27;incendio al fienile scatena il sospetto di Demir</h2>
 <p>Il clima felice della festa viene interrotto dall&#x27;irruzione improvvisa di Gaffur, che urla parlando di un disastro alla villa e poi sviene per la grande tensione. Tutti i presenti corrono verso la proprietà e trovano la struttura del fienile completamente distrutta dalle fiamme. Fortunatamente, qualcuno presente all&#x27;interno al momento dell&#x27;incendio è riuscito a dare l&#x27;allarme in tempo, salvando il resto della tenuta da danni peggiori. Züleyha tira un grande sospiro di sollievo constatando che nessuno si è fatto male nel rogo, ma la tranquillità dura pochissimo a causa dei sospetti che iniziano ad emergere tra i proprietari.</p>
 <p>Demir non mostra alcun dubbio sulla matrice del disastro e accusa immediatamente Fikret di essere il responsabile, pur non avendo alcuna prova concreta in merito. Il giorno successivo, Yaman intercetta Fekeli in città per pretendere di sapere dove si nasconda il nipote. Di fronte al rifiuto del vecchio di cercare uno scontro, Demir lo provoca affermando che non può definirsi suo zio se non riesce a controllarlo. La discussione degenera rapidamente quando entrambi iniziano a rinfacciarsi le calunnie relative alla madre di Fikret e a quelle riguardanti Adnan Yaman, arrivando a un durissimo faccia a faccia.</p>
-<h2>Quale tragica conseguenza produce la rabbia di Demir</h2>
+<h2 id="c8">Quale tragica conseguenza produce la rabbia di Demir</h2>
 <p>Il confronto verbale tra i due uomini si inasprisce quando Fekeli definisce il suo interlocutore un vigliacco e decide di allontanarsi a piedi. Demir non intende fermarsi e lo segue fino all&#x27;azienda di famiglia. Davanti a tutti i presenti completamente terrorizzati, Yaman estrae l&#x27;arma e spara ripetutamente al petto di Fekeli, facendolo crollare a terra gravemente ferito. Questo gesto d&#x27;impulsività cancella in un attimo l&#x27;atmosfera distesa della sera prima, riaprendo in modo sanguinoso la faida familiare proprio quando sembrava essere stato trovato un punto d&#x27;incontro tra le fazioni e una nuova serenità per tutti i protagonisti.</p>
 <p>L&#x27;aggressione consumata in azienda segna una rottura drammatica per tutta la comunità, spazzando via le speranze di pace nate dopo il gesto compiuto nei confronti del piccolo Adnan. Le conseguenze degli spari si annunciano devastanti per l&#x27;equilibrio dei personaggi coinvolti nella vicenda. La giornata che doveva essere ricordata come la più bella per la famiglia si trasforma così in una tragedia imprevista, lasciando tutti nell&#x27;angoscia per le condizioni di Fekeli e per quello che potrebbe accadere dopo un atto così estremo compiuto alla luce del sole di fronte a numerosi testimoni spaventati dall&#x27;accaduto.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=HGY8mQN4C-8" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/HGY8mQN4C-8/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TERRA AMARA Anticipazioni: Demir spara a Fekeli! Perchè?</span></a></li><li><a href="https://www.youtube.com/watch?v=93euSjZDoJU" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/93euSjZDoJU/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TERRA AMARA Anticipazioni: Sevda disperata pronta ad uccidersi per Umit | Demir spara a Fekeli</span></a></li><li><a href="https://www.youtube.com/watch?v=Ab7N47k7LYg" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/Ab7N47k7LYg/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TERRA AMARA Anticipazioni: Fekeli e Fikret, drammatico faccia a faccia!</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Il gesto di Demir con il nome del bambino era sincero o l&#x27;ennesima mossa per tenersi Züleyha? E cosa lo ha portato a sparare a Fekeli senza uno straccio di prova?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=2iGCIt57fdw">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di Terra Amara</h2><div class="griglia"><article class="scheda">
+  <a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/"><div class="foto"><img src="/img/terra-amara-la-trama-completa-e-come-finisce.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></h3>
+    <div class="quando">30 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/"><div class="foto"><img src="https://i.ytimg.com/vi/_ypSJU-x7LY/hqdefault.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/"><div class="foto"><img src="https://i.ytimg.com/vi/B_MLx-0yh6M/hqdefault.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=Terra Amara, il regalo di Demir ad Adnan: gli dà il nome del vero padre — poi la villa va a fuoco e lui spara a Fekeli — https://serietvfans.com/terra-amara/terra-amara-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/terra-amara/terra-amara-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/terra-amara/terra-amara-la-trama-completa-e-come-finisce/&text=Terra Amara, il regalo di Demir ad Adnan: gli dà il nome del vero padre — poi la villa va a fuoco e lui spara a Fekeli" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">TERRA AMARA - SPOILER - Demir spara a Fekeli!</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=2iGCIt57fdw">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di Terra Amara</h3><ol class="numerata"><li><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></li><li><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></li><li><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></li><li><a href="/terra-amara/terra-amara-come-finisce-davvero-zuleyha-vince-tutto-e-resta-sola/">Terra Amara: come finisce davvero, Züleyha vince tutto e resta sola</a></li><li><a href="/terra-amara/terra-amara-come-muore-demir-yaman-chi-ha-dato-lordine-e-perche-doveva-essere-un-rapimento/">Terra Amara, come muore Demir Yaman: chi ha dato l&#x27;ordine e perché doveva essere un rapimento</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>TERRA AMARA - SPOILER - Demir spara a Fekeli!</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su Terra Amara</h3><ul><li><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></li><li><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></li><li><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></li><li><a href="/terra-amara/terra-amara-come-finisce-davvero-zuleyha-vince-tutto-e-resta-sola/">Terra Amara: come finisce davvero, Züleyha vince tutto e resta sola</a></li><li><a href="/terra-amara/terra-amara-come-muore-demir-yaman-chi-ha-dato-lordine-e-perche-doveva-essere-un-rapimento/">Terra Amara, come muore Demir Yaman: chi ha dato l&#x27;ordine e perché doveva essere un rapimento</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

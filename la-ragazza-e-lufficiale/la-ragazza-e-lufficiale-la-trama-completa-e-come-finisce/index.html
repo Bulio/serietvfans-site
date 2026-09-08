@@ -12,7 +12,7 @@
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Serie TV Fans">
 <meta property="og:url" content="https://serietvfans.com/la-ragazza-e-lufficiale/la-ragazza-e-lufficiale-la-trama-completa-e-come-finisce/">
-<meta property="og:image" content="https://serietvfans.com/social.svg">
+<meta property="og:image" content="https://serietvfans.com/img/la-ragazza-e-lufficiale-la-trama-completa-e-come-finisce.jpg">
 <meta property="og:locale" content="it_IT">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#7b1e2b">
@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -314,12 +363,12 @@ if(l.length){el.src=l.shift();el.dataset.fb=JSON.stringify(l)}else{el.onerror=nu
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7778653397776213" crossorigin="anonymous"></script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "96259d7e67ce47fba4573364859712a6"}'></script>
 <script>(function(){var f=0;function go(){if(f)return;f=1;(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","y3rpoig6jk");}["pointerdown","keydown","touchstart","scroll"].forEach(function(v){addEventListener(v,go,{once:1,passive:1})});setTimeout(go,2500)})();</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "La Ragazza e l'Ufficiale: la trama completa e come finisce", "datePublished": "2026-08-30", "dateModified": "2026-09-03", "description": "Tutta la storia in ordine, da Pietrogrado all'addio al porto. Qui trovate i passaggi che contano: come si conoscono Seyit e Şura e chi li presenta, perché finiscono a Istanbul, chi ha davvero sterminato la famiglia di lui, il biglietto strappato che li allontana su un fatto mai accaduto, il matrimonio con Mürvet, la resa dei conti con Petro e quanto di tutto questo è successo per davvero.", "inLanguage": "it-IT", "mainEntityOfPage": "https://serietvfans.com/la-ragazza-e-lufficiale/la-ragazza-e-lufficiale-la-trama-completa-e-come-finisce/", "image": [], "author": {"@type": "Organization", "name": "Serie TV Fans", "url": "https://serietvfans.com/chi-siamo/"}, "publisher": {"@type": "Organization", "name": "Serie TV Fans", "logo": {"@type": "ImageObject", "url": "https://serietvfans.com/favicon.svg"}}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "La Ragazza e l'Ufficiale: la trama completa e come finisce", "datePublished": "2026-08-30", "dateModified": "2026-09-08", "description": "Tutta la storia in ordine, da Pietrogrado all'addio al porto. Qui trovate i passaggi che contano: come si conoscono Seyit e Şura e chi li presenta, perché finiscono a Istanbul, chi ha davvero sterminato la famiglia di lui, il biglietto strappato che li allontana su un fatto mai accaduto, il matrimonio con Mürvet, la resa dei conti con Petro e quanto di tutto questo è successo per davvero.", "inLanguage": "it-IT", "mainEntityOfPage": "https://serietvfans.com/la-ragazza-e-lufficiale/la-ragazza-e-lufficiale-la-trama-completa-e-come-finisce/", "image": ["https://serietvfans.com/img/la-ragazza-e-lufficiale-la-trama-completa-e-come-finisce.jpg"], "author": {"@type": "Organization", "name": "Serie TV Fans", "url": "https://serietvfans.com/chi-siamo/"}, "publisher": {"@type": "Organization", "name": "Serie TV Fans", "logo": {"@type": "ImageObject", "url": "https://serietvfans.com/favicon.svg"}}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://serietvfans.com/"}, {"@type": "ListItem", "position": 2, "name": "La Ragazza e l'Ufficiale", "item": "https://serietvfans.com/serie/la-ragazza-e-lufficiale/"}, {"@type": "ListItem", "position": 3, "name": "La Ragazza e l'Ufficiale: la trama completa e come finisce"}]}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -332,56 +381,82 @@ if(l.length){el.src=l.shift();el.dataset.fb=JSON.stringify(l)}else{el.onerror=nu
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/la-ragazza-e-lufficiale/">La Ragazza e l&#x27;Ufficiale</a> › La Ragazza e l&#x27;Ufficiale: la trama completa e come finisce</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/la-ragazza-e-lufficiale/">La Ragazza e l&#x27;Ufficiale</a>
   <h1>La Ragazza e l&#x27;Ufficiale: la trama completa e come finisce</h1>
-  <div class="firma">Redazione Serie TV Fans · domenica 30 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-30">domenica 30 agosto 2026</time></span><span>aggiornato il 8 settembre 2026</span><span>8 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Tutta la storia in ordine, da Pietrogrado all&#x27;addio al porto. Qui trovate i passaggi che contano: come si conoscono Seyit e Şura e chi li presenta, perché finiscono a Istanbul, chi ha davvero sterminato la famiglia di lui, il biglietto strappato che li allontana su un fatto mai accaduto, il matrimonio con Mürvet, la resa dei conti con Petro e quanto di tutto questo è successo per davvero.</p><ol><li><a href="#c1">Chi sono Kurt Seyit e Şura e come si incontrano</a></li><li><a href="#c2">Perché la famiglia di Seyit viene sterminata</a></li><li><a href="#c3">Chi è Petro e perché riesce a separare Seyit e Şura</a></li><li><a href="#c4">Chi è Mürvet e perché Seyit la sposa</a></li><li><a href="#c5">Come finisce La Ragazza e l&#x27;Ufficiale</a></li><li><a href="#c6">Quanto c&#x27;è di vero nella storia di Kurt Seyit e Şura</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>La Ragazza e l&#x27;Ufficiale</strong> — Serie conclusa in Italia · le puntate su Mediaset Infinity</span></div>
-  <figure class="copertina"><img src="/fallback/la-ragazza-e-lufficiale.svg" alt="La Ragazza e l&#x27;Ufficiale" width="1280" height="720"><figcaption>La Ragazza e l&#x27;Ufficiale</figcaption></figure>
-  <p class="occhiello">Tutta la storia in ordine, da Pietrogrado all&#x27;addio al porto. Qui trovate i passaggi che contano: come si conoscono Seyit e Şura e chi li presenta, perché finiscono a Istanbul, chi ha davvero sterminato la famiglia di lui, il biglietto strappato che li allontana su un fatto mai accaduto, il matrimonio con Mürvet, la resa dei conti con Petro e quanto di tutto questo è successo per davvero.</p>
+  <figure class="copertina"><img src="/img/la-ragazza-e-lufficiale-la-trama-completa-e-come-finisce.jpg" alt="La Ragazza e l&#x27;Ufficiale"><figcaption>Immagine d&#x27;ambiente — La Ragazza e l&#x27;Ufficiale</figcaption></figure>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   
   <div class="corpo">
   <p><strong>La Ragazza e l&#x27;Ufficiale non finisce con Seyit e Şura insieme: lei parte in nave da Istanbul e lui la guarda salpare senza farsi vedere, dopo aver ucciso Petro seppellendolo vivo nella fossa che il rivale aveva scavato per Alya. Nell&#x27;epilogo, ambientato nel 1928, Seyit è sposato con Mürvet e ha una bambina.</strong></p>
-  <h2>Chi sono Kurt Seyit e Şura e come si incontrano</h2>
+  <h2 id="c1">Chi sono Kurt Seyit e Şura e come si incontrano</h2>
 <p>Kurt Seyit Eminof è un ufficiale della Guardia Imperiale russa, tataro di Crimea, figlio di una famiglia benestante. Şura è Alexandra Verjenskaya, nobile russa, la più giovane di casa. Si conoscono a Pietrogrado, dove Şura si trova con la sorella maggiore Valentina per far curare il padre malato. A presentarli è un vecchio commilitone di Seyit, Petro Borinsky. L&#x27;attrazione è immediata, e quel dettaglio conta: l&#x27;uomo che li fa incontrare è lo stesso che passerà anni a separarli.</p>
 <p>Sono anni in cui una storia d&#x27;amore non è mai soltanto una storia d&#x27;amore. Lui è un musulmano di Crimea in uniforme zarista, lei una nobile ortodossa: le due famiglie hanno ragioni diverse per opporsi, e la Storia le travolge entrambe prima ancora che la discussione arrivi a una conclusione.</p>
 <p>La rivoluzione russa spazza via il mondo in cui i due si erano conosciuti. I Verjenskij perdono tutto, la Crimea di Seyit diventa un posto in cui restare significa morire, e la coppia è costretta a fuggire. La meta è Istanbul, che in quegli anni è una città occupata dalle truppe straniere e piena di russi bianchi scappati come loro. È lì che si sposta il baricentro della serie: nei salotti e nelle lavanderie del quartiere di Pera.</p>
-<h2>Perché la famiglia di Seyit viene sterminata</h2>
+<h2 id="c2">Perché la famiglia di Seyit viene sterminata</h2>
 <p>Il lutto che pesa su tutto il resto arriva dalla Crimea. La famiglia di Seyit viene sterminata, e il fratello minore Osman gli muore tra le braccia. Per tutta la serie Seyit crede che dietro quel massacro ci sia il capitano Billy, l&#x27;ufficiale britannico della Istanbul occupata che lo odia apertamente. È una convinzione che regge fino alle ultime puntate, e per un motivo semplice: il colpevole vero gli sta accanto come amico.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>A Istanbul, intanto, Seyit ricomincia da zero. Lavora, si lega ad Ahmet Yahya che gestisce l&#x27;hotel Cheref, resta accanto all&#x27;amico più caro Celil Kamilof, e finisce per aiutare i gruppi della Resistenza che portano armi al movimento nazionale in Anatolia. Sono le missioni che lo tengono lontano da Şura per settimane intere, e ogni assenza diventa spazio buono per qualcun altro.</p>
 <p>Nello stesso quartiere si muove Alya, una nobile russa in fuga che a Istanbul lavora come lavandaia. All&#x27;inizio è un personaggio di contorno; nella seconda parte della storia diventa il perno di tutto, perché è lei a mettere insieme i pezzi che Seyit non è mai riuscito a mettere insieme da solo.</p>
-<h2>Chi è Petro e perché riesce a separare Seyit e Şura</h2>
+<h2 id="c3">Chi è Petro e perché riesce a separare Seyit e Şura</h2>
 <p>Petro Borinsky è l&#x27;amico d&#x27;infanzia, il commilitone, l&#x27;uomo che ha presentato Şura a Seyit. È anche l&#x27;antagonista della serie, e il suo metodo non è la violenza: è la precisione. Intercetta, sottrae, sistema le cose in modo che l&#x27;altro veda quello che deve vedere.</p>
 <p>L&#x27;inganno che decide tutto è piccolo. Prima di partire per una missione, Seyit manda a Şura delle rose con un biglietto. Petro strappa il biglietto e fa in modo che Seyit veda i fiori gettati via, così che creda di essere stato rifiutato. Da lì i due si allontanano su un fatto che non è mai accaduto: lui non scrive e non torna perché si sente respinto, lei non ha nulla da perdonare perché non ha mai ricevuto niente. Nessuno dei due ha motivo di verificare. Passano due mesi, e in quei due mesi Petro le sta accanto.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>Quello che Petro prova per Şura, però, non è nemmeno amore. In privato arriva a definire quel legame un obbligo. Il fidanzamento e poi il matrimonio annunciato servono a lui, non a lei, e la stessa Şura confesserà alla sorella di aver accettato soprattutto per ripicca.</p>
-<h2>Chi è Mürvet e perché Seyit la sposa</h2>
+<h2 id="c4">Chi è Mürvet e perché Seyit la sposa</h2>
 <p>Mürvet, che tutti chiamano Murka, entra nella storia quando quella tra Seyit e Şura sembra ormai chiusa. Seyit ne chiede la mano e si sente rispondere di no da Emine, che gli rinfaccia di avere già un&#x27;altra donna nel cuore. Poi arriva una sparatoria davanti al carcere: Seyit viene colpito, e a fermare il proiettile è un portafoto di metallo che tiene addosso. Dentro la cornice forata c&#x27;è la fotografia di Şura, e a trovarla mentre lo veglia è proprio Mürvet.</p>
 <p>Le nozze si celebrano lo stesso. Şura irrompe nella sala un attimo prima del sì, vede l&#x27;anello già al dito di Mürvet e capisce di essere arrivata tardi; quella stessa notte crolla, con una paralisi temporanea alle gambe che il medico attribuisce allo stress. Il matrimonio nasce già stanco: Seyit parte per l&#x27;Anatolia ad addestrare soldati, sta via trentun giorni, e Mürvet gli manda una lettera in cui chiede il divorzio perché è evidente che non la ama.</p>
 <p>Il divorzio non si fa. Seyit torna, sceglie per lei un ciondolo in gioielleria e le propone di ricominciare davvero, e lei accetta. È in quella stessa gioielleria che incrocia Şura per l&#x27;ultima volta da uomo libero: lei gli chiede se l&#x27;abbia lasciata quando suo padre lo spinse a sposare una ragazza turca o quando la tragedia colpì la sua famiglia, e lui le risponde che la sofferenza vera è stata non essere mai creduto.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Come finisce La Ragazza e l&#x27;Ufficiale</h2>
+<h2 id="c5">Come finisce La Ragazza e l&#x27;Ufficiale</h2>
 <p>Il finale si regge su tre scene. La prima è la verità su Petro. Alya arriva alla porta di Seyit con le prove in mano, lo vede sereno accanto a Mürvet e per un attimo esita, poi parla: il mandante dello sterminio della famiglia di Seyit, della morte dei suoi amici e di Osman è Petro. Messo alle strette, Petro confessa una colpa dopo l&#x27;altra.</p>
 <p>La seconda è la vendetta, ed è la scena più dura della serie. Petro rapisce Alya, le spara alle gambe e la getta in una fossa scavata come una tomba. Seyit arriva in tempo, lo disarma con un colpo alla mano e mette in salvo Alya. Poi resta solo con lui: un colpo a ogni spalla, uno a ogni gamba, e la pala. Mentre ricopre la fossa pensa alla propria famiglia, sterminata e sepolta allo stesso modo. Petro finisce sepolto vivo.</p>
 <p>La terza è l&#x27;addio al porto. Şura decide di lasciare Istanbul per sempre. Prima di partire passa a salutare Seyit e Mürvet e augura alla loro unione di essere felice, senza rancore. Poi sale a bordo con la sorella Valentina, cerca Seyit con lo sguardo e, mentre la nave si stacca dalla banchina, sussurra che è il suo unico amore. Lui è lì, nascosto in un angolo, e sceglie il silenzio. Sarà Valentina, più tardi, a dirgli la frase che non aveva capito: Şura lo amava più di quanto lui potesse amare lei, e partendo lo ha protetto.</p>
 <p>C&#x27;è poi la tragedia di Güzide, sorpresa dal marito Ahmet Yahya mentre confessa a Celil di non aver mai amato nessun altro: lei si para davanti alla pistola per salvare Celil, e Yahya, capendo quanto quell&#x27;amore sia vero, rivolge l&#x27;arma contro se stesso. Infine il salto temporale. Nel 1923 le truppe straniere lasciano il paese, e nel 1928 ritroviamo Seyit sposato con Mürvet e con una bambina in braccio. Ricompare anche il fratello Mahmut, che credeva perduto, e da Amasya arriva la lettera di Celil e Güzide: hanno chiamato il figlio Seyit.</p>
-<h2>Quanto c&#x27;è di vero nella storia di Kurt Seyit e Şura</h2>
+<h2 id="c6">Quanto c&#x27;è di vero nella storia di Kurt Seyit e Şura</h2>
 <p>La serie è tratta dal romanzo di Nermin Bezmen, che di Kurt Seyit è la nipote. Non è una ricostruzione fatta da fuori: è una storia raccontata da dentro la famiglia, con le testimonianze dirette raccolte dalla nonna Murka, cioè dalla seconda moglie di Seyit. Kurt Seyit e Alexandra Verjenskaya sono esistiti davvero.</p>
 <p>Su un punto la fiction si prende una libertà. Nella realtà i due si separarono e presero strade diverse, ma continuarono per un certo periodo a scriversi lettere, un particolare che sullo schermo non c&#x27;è. Şura, dopo la separazione, incontrò un altro uomo e si sposò. Seyit sposò Murka e con lei visse anni pieni: è la nipote stessa a insistere su questo, contro la lettura romantica di chi immagina un uomo rimasto per sempre altrove. Gli ultimi anni furono duri: durante un viaggio di lavoro in Anatolia Seyit si ammalò di tubercolosi, negli anni della Seconda guerra mondiale le cure erano un peso enorme, e Murka andò a lavorare in un calzificio per pagarle. Morì nel 1945.</p>
 <p>Per i riferimenti: l&#x27;originale si intitola Kurt Seyit ve Şura, è una produzione Ay Yapım diretta da Hilal Saral e scritta da Ece Yörenç, ed è andata in onda su Star TV in Turchia nel 2014, per ventuno episodi divisi in due stagioni. Seyit è Kıvanç Tatlıtuğ, Şura è Farah Zeynep Abdullah, Petro è Birkan Sokullu e Mürvet è Fahriye Evcen. Un dettaglio che i lettori italiani chiedono spesso: proprio su questo set Tatlıtuğ conobbe la costumista Başak Dizer, che sposò nel 2016 e da cui ha avuto un figlio, chiamato Kurt.</p>
   </div>
   
   <div class="riquadro"><h3>E secondo voi?</h3><p>Secondo voi Seyit ha fatto bene a restare nascosto al porto invece di fermarla?</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di La Ragazza e l&#x27;Ufficiale</h2><div class="griglia"><article class="scheda">
+  <a href="/la-ragazza-e-lufficiale/chi-e-kvanc-tatltug-il-seyit-de-la-ragazza-e-lufficiale-dal-basket-ai-record-tv/"><div class="foto"><img src="/img/chi-e-kvanc-tatltug-il-seyit-de-la-ragazza-e-lufficiale-dal-basket-ai-record-tv.jpg" alt="La Ragazza e l&#x27;Ufficiale" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-ragazza-e-lufficiale.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Ragazza e l&#x27;Ufficiale</span>
+    <h3><a href="/la-ragazza-e-lufficiale/chi-e-kvanc-tatltug-il-seyit-de-la-ragazza-e-lufficiale-dal-basket-ai-record-tv/">Chi è Kıvanç Tatlıtuğ, il Seyit de La Ragazza e l&#x27;Ufficiale: dal basket ai record TV, la moglie Başak e il figlio chiamato come il suo personaggio</a></h3>
+    <div class="quando">14 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/la-ragazza-e-lufficiale/la-ragazza-e-lufficiale-episodi-34-36-petro-strappa-il-biglietto-di-seyit-e-fa-c/"><div class="foto"><img src="https://i.ytimg.com/vi/xs4EmthhMN0/hqdefault.jpg" alt="La Ragazza e l&#x27;Ufficiale" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-ragazza-e-lufficiale.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Ragazza e l&#x27;Ufficiale</span>
+    <h3><a href="/la-ragazza-e-lufficiale/la-ragazza-e-lufficiale-episodi-34-36-petro-strappa-il-biglietto-di-seyit-e-fa-c/">La Ragazza e l&#x27;Ufficiale, episodi 34-36: Petro strappa il biglietto di Seyit e fa credere a Şura che sia stata lei a rifiutare le rose</a></h3>
+    <div class="quando">14 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/la-ragazza-e-lufficiale/la-ragazza-e-lufficiale-il-gran-finale-laddio-straziante-di-seyit-e-sura-al-port/"><div class="foto"><img src="https://i.ytimg.com/vi/GvgRO-35ero/hqdefault.jpg" alt="La Ragazza e l&#x27;Ufficiale" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-ragazza-e-lufficiale.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Ragazza e l&#x27;Ufficiale</span>
+    <h3><a href="/la-ragazza-e-lufficiale/la-ragazza-e-lufficiale-il-gran-finale-laddio-straziante-di-seyit-e-sura-al-port/">La Ragazza e l&#x27;Ufficiale, il gran finale: l&#x27;addio straziante di Seyit e Şura al porto e la fine terribile di Petro</a></h3>
+    <div class="quando">14 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=La Ragazza e l&#x27;Ufficiale: la trama completa e come finisce — https://serietvfans.com/la-ragazza-e-lufficiale/la-ragazza-e-lufficiale-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/la-ragazza-e-lufficiale/la-ragazza-e-lufficiale-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/la-ragazza-e-lufficiale/la-ragazza-e-lufficiale-la-trama-completa-e-come-finisce/&text=La Ragazza e l&#x27;Ufficiale: la trama completa e come finisce" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  
-  <div class="box"><h3>Ancora su La Ragazza e l&#x27;Ufficiale</h3><ul><li><a href="/la-ragazza-e-lufficiale/chi-e-kvanc-tatltug-il-seyit-de-la-ragazza-e-lufficiale-dal-basket-ai-record-tv/">Chi è Kıvanç Tatlıtuğ, il Seyit de La Ragazza e l&#x27;Ufficiale: dal basket ai record TV, la moglie Başak e il figlio chiamato come il suo personaggio</a></li><li><a href="/la-ragazza-e-lufficiale/la-ragazza-e-lufficiale-episodi-34-36-petro-strappa-il-biglietto-di-seyit-e-fa-c/">La Ragazza e l&#x27;Ufficiale, episodi 34-36: Petro strappa il biglietto di Seyit e fa credere a Şura che sia stata lei a rifiutare le rose</a></li><li><a href="/la-ragazza-e-lufficiale/la-ragazza-e-lufficiale-il-gran-finale-laddio-straziante-di-seyit-e-sura-al-port/">La Ragazza e l&#x27;Ufficiale, il gran finale: l&#x27;addio straziante di Seyit e Şura al porto e la fine terribile di Petro</a></li><li><a href="/la-ragazza-e-lufficiale/la-ragazza-e-lufficiale-la-storia-vera-dietro-la-serie-kurt-seyit-e-sura-esistit/">La Ragazza e l&#x27;Ufficiale, la storia vera dietro la serie: Kurt Seyit e Şura esistiti davvero, e il romanzo scritto dalla nipote</a></li><li><a href="/la-ragazza-e-lufficiale/la-ragazza-e-lufficiale-penultima-puntata-alya-giustizia-billy-con-un-colpo-attu/">La Ragazza e l&#x27;Ufficiale, penultima puntata: Alya giustizia Billy con un colpo attutito dal cuscino — e Şura sviene tra le braccia di Seyit leggendo la lettera sulla famiglia scomparsa</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
+  <div class="box"><h3>Ultime di La Ragazza e l&#x27;Ufficiale</h3><ol class="numerata"><li><a href="/la-ragazza-e-lufficiale/chi-e-kvanc-tatltug-il-seyit-de-la-ragazza-e-lufficiale-dal-basket-ai-record-tv/">Chi è Kıvanç Tatlıtuğ, il Seyit de La Ragazza e l&#x27;Ufficiale: dal basket ai record TV, la moglie Başak e il figlio chiamato come il suo personaggio</a></li><li><a href="/la-ragazza-e-lufficiale/la-ragazza-e-lufficiale-episodi-34-36-petro-strappa-il-biglietto-di-seyit-e-fa-c/">La Ragazza e l&#x27;Ufficiale, episodi 34-36: Petro strappa il biglietto di Seyit e fa credere a Şura che sia stata lei a rifiutare le rose</a></li><li><a href="/la-ragazza-e-lufficiale/la-ragazza-e-lufficiale-il-gran-finale-laddio-straziante-di-seyit-e-sura-al-port/">La Ragazza e l&#x27;Ufficiale, il gran finale: l&#x27;addio straziante di Seyit e Şura al porto e la fine terribile di Petro</a></li><li><a href="/la-ragazza-e-lufficiale/la-ragazza-e-lufficiale-la-storia-vera-dietro-la-serie-kurt-seyit-e-sura-esistit/">La Ragazza e l&#x27;Ufficiale, la storia vera dietro la serie: Kurt Seyit e Şura esistiti davvero, e il romanzo scritto dalla nipote</a></li><li><a href="/la-ragazza-e-lufficiale/la-ragazza-e-lufficiale-penultima-puntata-alya-giustizia-billy-con-un-colpo-attu/">La Ragazza e l&#x27;Ufficiale, penultima puntata: Alya giustizia Billy con un colpo attutito dal cuscino — e Şura sviene tra le braccia di Seyit leggendo la lettera sulla famiglia scomparsa</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>Ogni anticipazione, prima in video sul canale Serie TV Fans</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
+  </div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

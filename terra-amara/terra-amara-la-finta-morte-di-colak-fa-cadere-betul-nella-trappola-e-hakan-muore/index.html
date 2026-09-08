@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/terra-amara/">Terra Amara</a> › Terra Amara, la finta morte di Çolak fa cadere Betül nella trappola — e Hakan muore al posto di Züleyha: il proiettile che chiude la saga</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/terra-amara/">Terra Amara</a>
   <h1>Terra Amara, la finta morte di Çolak fa cadere Betül nella trappola — e Hakan muore al posto di Züleyha: il proiettile che chiude la saga</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>8 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Il tratto finale della quarta stagione è un crescendo di trappole e sparatorie: Betül rapisce Çolak e tenta di uccidere Züleyha, ma sbaglia il colpo — e le sue due vittime designate si alleano per distruggerla con una messinscena perfetta: la finta morte dell&#x27;uomo d&#x27;affari, l&#x27;eredità-esca e l&#x27;umiliazione pubblica davanti a tutta Çukurova. Intanto Hakan orchestra l&#x27;evasione di Abdülkadir, perde Züleyha per le sue bugie e, proprio quando lascia la città, torna indietro per fare da scudo al proiettile di Betül: muore tra le braccia del suo grande amore.</p><ol><li><a href="#c1">L&#x27;evasione di Abdülkadir: il blocco stradale e la grotta</a></li><li><a href="#c2">La trappola di Betül fallisce — e nasce l&#x27;alleanza impensabile</a></li><li><a href="#c3">La messinscena: Çolak «muore» e Betül si prende tutto</a></li><li><a href="#c4">Il proiettile nel petto: Hakan muore tra le braccia di Züleyha</a></li><li><a href="#c5">Come Abdülkadir e Vahap pianificano la fuga</a></li><li><a href="#c6">Perché Betül ed Şermin credono di aver vinto</a></li><li><a href="#c7">Cosa spinge Hakan a sacrificare la propria vita</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>Terra Amara</strong> — Serie conclusa in Italia · tutte le puntate su Mediaset Infinity</span></div>
   
-  <p class="occhiello">Il tratto finale della quarta stagione è un crescendo di trappole e sparatorie: Betül rapisce Çolak e tenta di uccidere Züleyha, ma sbaglia il colpo — e le sue due vittime designate si alleano per distruggerla con una messinscena perfetta: la finta morte dell&#x27;uomo d&#x27;affari, l&#x27;eredità-esca e l&#x27;umiliazione pubblica davanti a tutta Çukurova. Intanto Hakan orchestra l&#x27;evasione di Abdülkadir, perde Züleyha per le sue bugie e, proprio quando lascia la città, torna indietro per fare da scudo al proiettile di Betül: muore tra le braccia del suo grande amore.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: Terra Amara, la finta morte di Çolak fa cadere Betül nella trappola — e Hakan muore al posto di Züleyha: il proiettile che chiude la saga" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/VyQjj5xI_Gw/maxresdefault.jpg" alt="Terra Amara, la finta morte di Çolak fa cadere Betül nella trappola — e Hakan muore al posto di Züleyha: il proiettile che chiude la saga" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/VyQjj5xI_Gw/hqdefault.jpg 480w, https://i.ytimg.com/vi/VyQjj5xI_Gw/sddefault.jpg 640w, https://i.ytimg.com/vi/VyQjj5xI_Gw/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/VyQjj5xI_Gw/hqdefault.jpg&quot;, &quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,25 +409,25 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>Il capolavoro della beffa: Betül scopre dall&#x27;avvocato che il suo matrimonio con Çolak era una finzione — non è mai stata sposata, e l&#x27;eredità non esiste.</strong></p>
-  <h2>L&#x27;evasione di Abdülkadir: il blocco stradale e la grotta</h2>
+  <h2 id="c1">L&#x27;evasione di Abdülkadir: il blocco stradale e la grotta</h2>
 <p>Mentre Fikret si gode il ruolo di eroe per aver consegnato alla giustizia l&#x27;assassino di Fekeli, Hakan lavora nell&#x27;ombra per l&#x27;amico che gli ha salvato la vita più volte. Il piano scatta durante un trasferimento dal carcere, chiesto da Abdülkadir dopo un accoltellamento senza gravi conseguenze: gli uomini di Hakan organizzano un blocco stradale, i soldati cadono nell&#x27;imboscata e Keskin fugge su un&#x27;auto guidata da Vahap fino a una grotta tra le montagne. Hakan gioca su due tavoli: si presenta da Fikret con il procuratore giurando di collaborare alle ricerche, mentre fornisce false piste e avverte il fuggitivo. Ma Züleyha, che aveva deciso di ridargli fiducia, scopre tutto — e stavolta è lei a informare le autorità.</p>
-<h2>La trappola di Betül fallisce — e nasce l&#x27;alleanza impensabile</h2>
+<h2 id="c2">La trappola di Betül fallisce — e nasce l&#x27;alleanza impensabile</h2>
 <p>Betül intanto prepara la doppia vendetta: fa rapire Çolak dai suoi uomini, si congeda dalla madre con la pistola di lui in borsa e tende l&#x27;agguato a Züleyha per ucciderla e incolpare il marito. Ma sbaglia il colpo e la preda le sfugge. Il destino fa il resto: Çolak riesce a liberarsi dalla prigionia e Züleyha lo trova in mezzo alla strada. Lui le confessa le intenzioni di Betül, e i due nemici giurati decidono di unire le forze: per porre fine all&#x27;avvocato serve una trappola più grande della sua.</p>
-<h2>La messinscena: Çolak «muore» e Betül si prende tutto</h2>
+<h2 id="c3">La messinscena: Çolak «muore» e Betül si prende tutto</h2>
 <p>Il piano è teatro puro: Çolak viene «colpito al petto» in mezzo alla strada, davanti a decine di testimoni, e Gaffur diffonde la notizia della morte. Betül e Şermin escono dal nascondiglio convinte di essere ricche: l&#x27;avvocato si impossessa dei beni, maltratta i dipendenti, passeggia vittoriosa per Çukurova e cerca perfino il confronto con Züleyha. Poi la mazzata: il suo avvocato le rivela che non è mai stata sposata — il matrimonio con Çolak era una finzione, l&#x27;eredità non esiste. E quando l&#x27;uomo d&#x27;affari «risorge» trionfante, Betül impazzisce: cacciata dalla villa, disprezzata da tutta Çukurova, di nuovo in strada con la madre, senza soldi e senza niente. L&#x27;umiliazione di quella sera trasforma la sua rabbia in una sentenza: ucciderà Züleyha.</p>
-<h2>Il proiettile nel petto: Hakan muore tra le braccia di Züleyha</h2>
+<h2 id="c4">Il proiettile nel petto: Hakan muore tra le braccia di Züleyha</h2>
 <p>L&#x27;epilogo è da tragedia greca. Züleyha, stanca delle bugie, caccia Hakan dalla sua vita; lui, consapevole che il suo passato sarà sempre un ostacolo, saluta e lascia Çukurova. Ma Betül, ormai senza nulla da perdere, ruba un&#x27;auto e spara a Züleyha: Hakan si getta sulla traiettoria, prende il proiettile nel petto e muore tra le braccia della donna che ama. Dopo aver sepolto tutti gli uomini della sua vita, Züleyha si appoggia a Fikret — felice accanto a Zeynep — e capisce che l&#x27;amore non fa per lei. Betül in fuga finisce nel magazzino dei fratelli Keskin, temendo il peggio, mentre da Smirne Çolak sparge il veleno più crudele: sarebbe stata Züleyha a comprare Betül per uccidere il marito ed ereditarne la fortuna.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Come Abdülkadir e Vahap pianificano la fuga</h2>
+<h2 id="c5">Come Abdülkadir e Vahap pianificano la fuga</h2>
 <p>Abdülkadir si trova recluso in carcere per l&#x27;assassinio di Fekeli, dopo essere stato consegnato alla giustizia da Fikret, il quale si gode pienamente il momento vestendo i panni dell&#x27;eroe. La permanenza dell&#x27;assassino dietro le sbarre subisce però un&#x27;improvvisa svolta quando viene coinvolto in un accoltellamento che non gli provoca gravi conseguenze fisiche. Sfruttando questo episodio, Abdülkadir chiede e ottiene di essere trasferito presso un&#x27;altra struttura carceraria. Lungo il tragitto entra in azione la rete di salvataggio orchestrata nell&#x27;ombra da Hakan, pronto a rischiare ogni cosa pur di restituire la libertà all&#x27;amico fedele che in passato gli ha salvato la vita in molteplici occasioni drammatiche.</p>
 <p>Il piano per liberare il prigioniero viene portato a termine dagli uomini di Hakan, che organizzano con efficacia un blocco stradale per arrestare la corsa del convoglio. I soldati incaricati della scorta cadono nell&#x27;imboscata senza riuscire a fermare l&#x27;azione dei malviventi, permettendo a Keskin di fuggire a bordo di un&#x27;auto guidata da suo fratello Vahap. La corsa dell&#x27;autovettura prosegue senza sosta fino a raggiungere una grotta nascosta tra le montagne, dove il latitante trova un rifugio momentaneo. In questo luogo protetto, il fuggitivo rimane in attesa di istruzioni mentre le autorità locali tentano di ricostruire i dettagli dell&#x27;evasione.</p>
 <p>Per proteggere la posizione dell&#x27;amico, Hakan sceglie di giocare su due tavoli paralleli ingannando chi sta conducendo le indagini sulla fuga. L&#x27;uomo si presenta ufficialmente davanti a Fikret e al procuratore giurando solennemente di voler collaborare alle ricerche, ma in realtà fornisce piste completamente false per depistare gli inquirenti. Contemporaneamente invia avvertimenti continui al latitante nascosto nella grotta. Il suo piano sembra funzionare fino a quando Züleyha, che aveva faticosamente deciso di concedergli nuovamente la sua fiducia, intuisce l&#x27;inganno e scopre le sue menzogne, scegliendo senza esitazione di informare le autorità per fare chiarezza sulla vicenda.</p>
-<h2>Perché Betül ed Şermin credono di aver vinto</h2>
+<h2 id="c6">Perché Betül ed Şermin credono di aver vinto</h2>
 <p>Prima di sferrare l&#x27;attacco contro la sua nemica storica, Betül organizza un piano articolato per coprire le sue tracce e ottenere il massimo guadagno economico. La donna ordina ai propri uomini di rapire Çolak, poi si congeda dalla madre Şermin portando con sé la pistola rubata all&#x27;uomo d&#x27;affari. L&#x27;obiettivo dell&#x27;avvocato è compiere un agguato ai danni di Züleyha per eliminarla fisicamente, facendo poi ricadere l&#x27;intera colpa del delitto sul marito prigioniero. Tuttavia il piano fallisce miseramente poiché Betül sbaglia il colpo da arma da fuoco, lasciando che la vittima designata riesca a mettersi in salvo e incontri Çolak, sfuggito da solo alla prigionia.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>Dopo essersi incontrati lungo la strada, Züleyha e Çolak decidono di mettere da parte la rivalità per punire la comune nemica con una trappola ancora più grande. Con la complicità di Gaffur, il quale si occupa di diffondere capillarmente la notizia del decesso dell&#x27;imprenditore colpito al petto davanti a testimoni, la messinscena ha inizio. Betül e Şermin, convinte che la finta morte dell&#x27;uomo sia reale e che il patrimonio sia ormai loro, escono dal nascondiglio per prendere possesso dei beni. L&#x27;avvocato inizia a maltrattare i dipendenti, passeggia trionfante per tutta Çukurova e cerca persino lo scontro verbale diretto con Züleyha.</p>
 <p>La certezza di aver conquistato la ricchezza svanisce del tutto quando l&#x27;avvocato di Betül le comunica una notizia sconvolgente per le sue ambizioni. Il matrimonio celebrato con Çolak era infatti solo una finzione priva di valore legale, di conseguenza l&#x27;eredità tanto desiderata non existe. Quando l&#x27;uomo d&#x27;affari ricompare pubblicamente rivendicando la propria posizione, Betül viene cacciata dalla villa in modo umiliante. Ormai priva di soldi, disprezzata da tutta Çukurova e costretta a tornare in strada insieme a sua madre Şermin, la donna perde del tutto la ragione e matura il proposito di uccidere Züleyha ad ogni costo.</p>
-<h2>Cosa spinge Hakan a sacrificare la propria vita</h2>
+<h2 id="c7">Cosa spinge Hakan a sacrificare la propria vita</h2>
 <p>Stanca dell&#x27;ennesima catena di inganni e menzogne, Züleyha decide di cacciare definitivamente Hakan dalla propria vita, interrompendo qualsiasi legame affettivo con lui. L&#x27;uomo, consapevole che i segreti e la pericolosità del suo passato costituiranno sempre un ostacolo insuperabile, accetta la decisione e si prepara a lasciare per sempre Çukurova. Proprio mentre si dispone a salutare la città, la situazione precipita improvvisamente a causa dell&#x27;odio cieco di Betül. La donna, ormai senza più nulla da perdere dopo essere stata disonorata, ruba un&#x27;automobile e si dirige verso Züleyha armata di pistola, determinata a porre fine alla vita della sua rivale.</p>
 <p>Quando Betül individua il bersaglio e preme il grilletto, Hakan intuisce la minaccia e si getta istintivamente lungo la traiettoria del colpo da arma da fuoco. Facendo da scudo umano con il proprio corpo, l&#x27;uomo assorbe il proiettile destinato a Züleyha, venendo raggiunto in pieno petto. Il gesto eroico gli costa la vita e Hakan spira tra le braccia del suo grande amore. Successivamente Züleyha si trova a dover seppellire l&#x27;ennesimo uomo della sua tormentata esistenza, giungendo alla conclusione che l&#x27;amore non fa per lei, mentre cerca conforto in Fikret, felice al fianco di Zeynep.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
@@ -385,19 +435,41 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=DQAKvIiYzSk" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/DQAKvIiYzSk/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TERRA AMARA Anticipazioni: Hakan, il nuovo e ultimo amore di Züleyha?</span></a></li><li><a href="https://www.youtube.com/watch?v=r2dcqDQ8yVU" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/r2dcqDQ8yVU/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TERRA AMARA Anticipazioni 29-30 Gennaio: Fikret e Hakan litigano ancora per amore | Betul trema</span></a></li><li><a href="https://www.youtube.com/watch?v=U3CBXFBrhuA" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/U3CBXFBrhuA/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TERRA AMARA Anticipazioni: Zuleyha rapisce Hakan e lo minaccia con una pistola!</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>La morte di Hakan è il finale che meritava o la serie gli ha negato la redenzione? E la finta morte di Çolak è stata la vendetta più elegante di tutta Terra Amara?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=VyQjj5xI_Gw">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di Terra Amara</h2><div class="griglia"><article class="scheda">
+  <a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/"><div class="foto"><img src="/img/terra-amara-la-trama-completa-e-come-finisce.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></h3>
+    <div class="quando">30 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/"><div class="foto"><img src="https://i.ytimg.com/vi/_ypSJU-x7LY/hqdefault.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/"><div class="foto"><img src="https://i.ytimg.com/vi/B_MLx-0yh6M/hqdefault.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=Terra Amara, la finta morte di Çolak fa cadere Betül nella trappola — e Hakan muore al posto di Züleyha: il proiettile che chiude la saga — https://serietvfans.com/terra-amara/terra-amara-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/terra-amara/terra-amara-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/terra-amara/terra-amara-la-trama-completa-e-come-finisce/&text=Terra Amara, la finta morte di Çolak fa cadere Betül nella trappola — e Hakan muore al posto di Züleyha: il proiettile che chiude la saga" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">Terra Amara: Betül nella trappola di Züleyha e Çolak</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=VyQjj5xI_Gw">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di Terra Amara</h3><ol class="numerata"><li><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></li><li><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></li><li><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></li><li><a href="/terra-amara/terra-amara-come-finisce-davvero-zuleyha-vince-tutto-e-resta-sola/">Terra Amara: come finisce davvero, Züleyha vince tutto e resta sola</a></li><li><a href="/terra-amara/terra-amara-come-muore-demir-yaman-chi-ha-dato-lordine-e-perche-doveva-essere-un-rapimento/">Terra Amara, come muore Demir Yaman: chi ha dato l&#x27;ordine e perché doveva essere un rapimento</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>Terra Amara: Betül nella trappola di Züleyha e Çolak</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su Terra Amara</h3><ul><li><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></li><li><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></li><li><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></li><li><a href="/terra-amara/terra-amara-come-finisce-davvero-zuleyha-vince-tutto-e-resta-sola/">Terra Amara: come finisce davvero, Züleyha vince tutto e resta sola</a></li><li><a href="/terra-amara/terra-amara-come-muore-demir-yaman-chi-ha-dato-lordine-e-perche-doveva-essere-un-rapimento/">Terra Amara, come muore Demir Yaman: chi ha dato l&#x27;ordine e perché doveva essere un rapimento</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

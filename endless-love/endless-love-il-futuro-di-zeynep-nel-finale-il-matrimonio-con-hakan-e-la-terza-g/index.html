@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/endless-love/">Endless Love</a> › Endless Love, il futuro di Zeynep nel finale: il matrimonio con Hakan e la terza gravidanza, quattro anni dopo l&#x27;esplosione</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/endless-love/">Endless Love</a>
   <h1>Endless Love, il futuro di Zeynep nel finale: il matrimonio con Hakan e la terza gravidanza, quattro anni dopo l&#x27;esplosione</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>8 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Il salto temporale di quattro anni nel finale di serie regala a Zeynep il destino che nessuno le pronosticava: dopo aver perso Ozan, due gravidanze e la reputazione, sposa l&#x27;unico uomo che l&#x27;ha amata davvero senza condizioni e aspetta il terzo figlio. La sua parabola — dalla ragazza sedotta dal titolo di «signora Kozcuoğlu» alla donna che trova pace in una famiglia costruita da zero — è uno degli archi più potenti della serie, e si chiude con una carezza al pancione durante una cena a casa di Nihan.</p><ol><li><a href="#c1">Da aspirante attrice a pedina della vendetta</a></li><li><a href="#c2">Le due gravidanze perdute e il senso di colpa</a></li><li><a href="#c3">L&#x27;uomo che l&#x27;ha amata quando non conveniva</a></li><li><a href="#c4">Quattro anni dopo: la cena a casa di Nihan</a></li><li><a href="#c5">Come Asu e Tarik hanno cambiato il destino di Ozan</a></li><li><a href="#c6">Perche Emir voleva ostacolare il matrimonio di Hakan</a></li><li><a href="#c7">Cosa accade quattro anni dopo la morte di Kemal</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>Endless Love</strong> — Serie conclusa in Italia · le puntate su Mediaset Infinity</span></div>
   
-  <p class="occhiello">Il salto temporale di quattro anni nel finale di serie regala a Zeynep il destino che nessuno le pronosticava: dopo aver perso Ozan, due gravidanze e la reputazione, sposa l&#x27;unico uomo che l&#x27;ha amata davvero senza condizioni e aspetta il terzo figlio. La sua parabola — dalla ragazza sedotta dal titolo di «signora Kozcuoğlu» alla donna che trova pace in una famiglia costruita da zero — è uno degli archi più potenti della serie, e si chiude con una carezza al pancione durante una cena a casa di Nihan.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: Endless Love, il futuro di Zeynep nel finale: il matrimonio con Hakan e la terza gravidanza, quattro anni dopo l&#x27;esplosione" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/EMOvNTEbQF4/maxresdefault.jpg" alt="Endless Love, il futuro di Zeynep nel finale: il matrimonio con Hakan e la terza gravidanza, quattro anni dopo l&#x27;esplosione" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/EMOvNTEbQF4/hqdefault.jpg 480w, https://i.ytimg.com/vi/EMOvNTEbQF4/sddefault.jpg 640w, https://i.ytimg.com/vi/EMOvNTEbQF4/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/EMOvNTEbQF4/hqdefault.jpg&quot;, &quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,25 +409,25 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>La verità che la scagionò: Ozan non morì per mano sua — fu avvelenato da Asu, e Tarık, tentando di inscenare un suicidio per coprire tutto, lo trovò ancora vivo diventando un assassino involontario.</strong></p>
-  <h2>Da aspirante attrice a pedina della vendetta</h2>
+  <h2 id="c1">Da aspirante attrice a pedina della vendetta</h2>
 <p>Zeynep entra in scena come una ragazza semplice con sogni grandi quanto il cielo: vuole fare l&#x27;attrice, ha accanto Salih e una vita già tracciata. È l&#x27;arrivo di Emir a mandare tutto in frantumi, aprendole le porte di un mondo di sfarzo e potere che con le sue sole forze non avrebbe mai raggiunto. Quando scopre di essere stata soltanto uno strumento di vendetta contro Kemal, la reazione non è il pianto ma il calcolo: sposa Ozan — il punto debole di Emir — per entrare nella famiglia Sezin e colpire dall&#x27;interno. Quella che doveva essere una prigione dorata diventa il palcoscenico della sua ribellione.</p>
-<h2>Le due gravidanze perdute e il senso di colpa</h2>
+<h2 id="c2">Le due gravidanze perdute e il senso di colpa</h2>
 <p>Il destino, però, le presenta un conto altissimo. È convinta che il bambino che porta in grembo sia di Emir; alla fine della prima stagione il test del DNA rivela che è di Ozan. Poi la valanga: Ozan muore in circostanze misteriose, lei perde il bambino e si convince di essere responsabile della sua morte — nel loro ultimo, feroce scontro era arrivata a un gesto disperato con un cuscino. Una seconda gravidanza, stavolta con Emir, si spegne dopo un incidente stradale. Ostracizzata da tutti, considerata colpevole, Zeynep tocca il fondo dell&#x27;isolamento — mentre la verità sulla morte di Ozan è molto più oscura di quanto chiunque sospetti.</p>
-<h2>L&#x27;uomo che l&#x27;ha amata quando non conveniva</h2>
+<h2 id="c3">L&#x27;uomo che l&#x27;ha amata quando non conveniva</h2>
 <p>La luce arriva da Hakan, l&#x27;unica persona che l&#x27;ha amata incondizionatamente: si era offerto di sposarla perfino quando aspettava il figlio di Emir. Il loro cammino verso l&#x27;altare, però, viene spezzato all&#x27;ultimo — Emir minaccia Hakan pur di mantenere il controllo su Zeynep, e lui, sotto pressione, si tira indietro. Un dolore che paradossalmente diventa il punto di maturazione della coppia: Zeynep capisce finalmente il valore di un amore che resiste agli ostacoli invece di comprarli, e i due ricostruiscono il rapporto su fondamenta più sincere.</p>
-<h2>Quattro anni dopo: la cena a casa di Nihan</h2>
+<h2 id="c4">Quattro anni dopo: la cena a casa di Nihan</h2>
 <p>Dopo la morte di Kemal ed Emir nell&#x27;esplosione, la serie compie un salto temporale di quattro anni e ci mostra i sopravvissuti che hanno avuto il tempo di guarire. La scena chiave è una cena a casa di Nihan: Deniz, ormai cinquenne, è circondata dall&#x27;affetto dei nonni e degli zii, con Leyla e Ayhan tra i volti di una famiglia allargata che ha resistito a tutto. E lì trova posto anche Zeynep, finalmente sposata con Hakan e in attesa del terzo figlio, che accarezza il pancione con una serenità impensabile per la donna delle prime stagioni. È il messaggio con cui Endless Love chiude il sipario: anche dopo le tempeste più feroci si può riscrivere il proprio destino.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Come Asu e Tarik hanno cambiato il destino di Ozan</h2>
+<h2 id="c5">Come Asu e Tarik hanno cambiato il destino di Ozan</h2>
 <p>La drammatica fine di Ozan ha rappresentato per lungo tempo un macigno insopportabile sulla coscienza di Zeynep, convinta che il proprio gesto disperato con un cuscino durante l&#x27;ultimo scontro fosse stato la causa scatenante della tragedia. La verità emersa successivamente ha però dimostrato una realtà del tutto diversa e priva di colpe dirette per la giovane. In realtà era stata Asu ad avvelenare il ragazzo, muovendo fili nell&#x27;ombra per portare a termine i suoi oscuri propositi. Zeynep, credendosi colpevole di un atto atroce, era precipitata in un isolamento totale, rifiutata da chiunque e travolta dal rimorso per una morte che in verità era stata pianificata freddamente da un&#x27;altra persona nell&#x27;ombra della storia.</p>
 <p>A complicare ulteriormente il quadro della vicenda fu l&#x27;intervento di Tarık, il quale cercò disperatamente di coprire le tracce di quanto accaduto inscenando un finto suicidio. Il giovane si trovò però di fronte a un risvolto inaspettato quando, nel tentativo di allestire la messa in scena, scoprì che Ozan era ancora in vita. Trasformatosi così in un assassino suo malgrado, Tarık portò a compimento la tragedia senza sapere che il destino del ragazzo era già stato compromesso dal veleno inoculato da Asu. Il successivo disvelamento di questa catena di eventi portò finalmente alla completa riabilitazione di Zeynep, liberandola dall&#x27;infamante accusa di aver ucciso l&#x27;uomo che aveva sposato.</p>
 <p>Questa dolorosa parentesi legata alla perdita di Ozan si era sommata alle sofferenze vissute da Zeynep sul piano personale e sentimentale. La ragazza aveva dovuto fare i conti non solo con la scomparsa del marito, ma anche con l&#x27;interruzione della sua prima gravidanza, iniziata sotto l&#x27;ombra dei dubbi sulla paternità e confermata come opera di Ozan solo grazie al test del DNA finale. Quella doppia ferita, insieme all&#x27;ostracismo sociale subìto quando tutti la credevano un&#x27;assassina spietata, ha costituito il punto più basso della sua esistenza, spingendola verso un profondo e totale isolamento emotivo prima che la verità venisse finalmente alla luce e le restituisse la dignità.</p>
-<h2>Perche Emir voleva ostacolare il matrimonio di Hakan</h2>
+<h2 id="c6">Perche Emir voleva ostacolare il matrimonio di Hakan</h2>
 <p>Il rapporto tra Hakan e Zeynep è stato messo a durissima prova dalla costante e tossica ingerenza di Emir, incapace di rinunciare al dominio psicologico sulla donna. Hakan era stato l&#x27;unico uomo disposto ad amarla senza alcuna condizione, arrivando perfino a offrirsi di prenderla in sposa quando la giovane attendeva il figlio nato dalla relazione con Kozcuoğlu. Tuttavia, il potente rivale non poteva tollerare che Zeynep trovasse la felicità accanto a un altro uomo e affrancasse definitivamente la propria vita dal suo controllo. Per questa ragione, Emir ha usato ogni mezzo a sua disposizione per intimidire il poliziotto e spezzare la loro unione prima che arrivassero all&#x27;altare.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>Ricorrendo a dirette e pesanti minacce, Emir è riuscito a far leva sulle fragilità della situazione, spingendo Hakan a fare un passo indietro nel momento cruciale del loro percorso di coppia. Quella decisione, dettata da una fortissima pressione esterna, aveva provocato un brusco arresto nelle nozze e un grande dolore in Zeynep. Ciononostante, il temporaneo allontanamento ha permesso ai due di comprendere la profondità e la sincerità del loro sentimento. Invece di cedere alle manipolazioni di chi credeva di poter comprare ogni cosa, Zeynep e Hakan hanno scelto di ricostruire il loro legame passo dopo passo, ponendo basi autentiche che hanno resistito al tempo.</p>
 <p>Il tragico epilogo della seconda gravidanza di Zeynep, perduta a causa di un grave incidente stradale mentre portava in grembo il bambino di Emir, ha segnato un ulteriore momento di dolorosa transizione. Libera ormai dal legame biologico e psicologico con il suo aguzzino, la donna ha potuto finalmente riconoscere in Hakan un rifugio sicuro e un uomo con cui progettare un avvenire solido. Il sentimento maturato tra i due si è rivelato l&#x27;unico in grado di resistere alle tempeste, permettendo a Zeynep di lasciarsi alle spalle un passato fatto di ambizioni sbagliate e di promesse illusorie per abbracciare un affetto sincero e disinteressato.</p>
-<h2>Cosa accade quattro anni dopo la morte di Kemal</h2>
+<h2 id="c7">Cosa accade quattro anni dopo la morte di Kemal</h2>
 <p>La drammatica uscita di scena di Kemal ed Emir, rimasti entrambi uccisi in una devastante esplosione, ha segnato un punto di non ritorno decisivo per le vite di tutti i protagonisti della soap. Quell&#x27;evento tragico e definitivo ha posto fine alla violenta faida che per anni aveva insanguinato la storia, consentendo ai superstiti di avviare un lungo percorso di pacificazione e guarigione dalle tante ferite accumulate. Il salto temporale di quattro anni mostra una realtà completamente trasformata, in cui il dolore ha lasciato gradualmente il posto a una ritrovata serenità quotidiana, consentendo ai personaggi di ricostruire i propri affetti su basi del tutto nuove.</p>
 <p>Simbolo di questo nuovo equilibrio ritrovato è la grande cena organizzata a casa di Nihan, un momento di riunione familiare a cui partecipano tutti i volti cari rimasti. In questo contesto pieno di calore, la piccola Deniz ha ormai raggiunto l&#x27;età di cinque anni ed è circondata dal costante affetto dei nonni e degli zii. A completare il quadro di una famiglia allargata che è riuscita a superare le tempeste più difficili si aggiungono le presenze rassicuranti di Leyla e Ayhan, testimoni di un cammino di rinascita condiviso che ha unito tutti in un abbraccio protettivo attorno alla bambina.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
@@ -385,19 +435,41 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=kuM4bABYER8" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/kuM4bABYER8/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>SCONVOLGENTE SCOPERTA DI NIHAN: ZEYNEP ASPETTA UN FIGLIO DA EMIR! Anticipazioni Endless Love</span></a></li><li><a href="https://www.youtube.com/watch?v=ATUeClRfbwg" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/ATUeClRfbwg/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>NIHAN SCONVOLTA DALLA SCOPERTA, COME PUO&#x27; AVER FATTO QUESTO?Anticipazioni Endless Love 30 April</span></a></li><li><a href="https://www.youtube.com/watch?v=zcN8pCjOSFc" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/zcN8pCjOSFc/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>NIHAN PICCHIA ZEYNEP: &quot;HAI UCCISO OZAN! - ZEYNEP PERDE IL BAMBINO? Anticipazioni Endless Love</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Zeynep si è meritata il lieto fine o alcune sue scelte restano imperdonabili? E il salto di quattro anni è stato il modo giusto per chiudere la serie?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=EMOvNTEbQF4">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di Endless Love</h2><div class="griglia"><article class="scheda">
+  <a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/"><div class="foto"><img src="https://i.ytimg.com/vi/DSiProJJ1ls/hqdefault.jpg" alt="Endless Love" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/"><div class="foto"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/"><div class="foto"><img src="https://i.ytimg.com/vi/uu2oAzTOWQU/hqdefault.jpg" alt="Endless Love" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></h3>
+    <div class="quando">25 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=Endless Love, il futuro di Zeynep nel finale: il matrimonio con Hakan e la terza gravidanza, quattro anni dopo l&#x27;esplosione — https://soapoperaitalia.com/endless-love/endless-love-la-trama-completa-perche-nihan-sposa-emir-e-come-finisce/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://soapoperaitalia.com/endless-love/endless-love-la-trama-completa-perche-nihan-sposa-emir-e-come-finisce/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://soapoperaitalia.com/endless-love/endless-love-la-trama-completa-perche-nihan-sposa-emir-e-come-finisce/&text=Endless Love, il futuro di Zeynep nel finale: il matrimonio con Hakan e la terza gravidanza, quattro anni dopo l&#x27;esplosione" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">IL FUTURO DI ZEYNEP: SPOSA HAKAN E TERZA GRAVIDANZA - Anticipazioni 2^ Stagione</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=EMOvNTEbQF4">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di Endless Love</h3><ol class="numerata"><li><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></li><li><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></li><li><a href="/endless-love/endless-love-chi-e-galip-kozcuoglu-le-due-volte-in-cui-nihan-e-stata-venduta/">Endless Love, chi è Galip Kozcuoğlu: le due volte in cui Nihan è stata venduta</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-zeynep-soydere-perche-emir-lha-scelta-e-cosa-ha-distrutto/">Endless Love, chi è davvero Zeynep Soydere: perché Emir l&#x27;ha scelta e cosa ha distrutto</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>IL FUTURO DI ZEYNEP: SPOSA HAKAN E TERZA GRAVIDANZA - Anticipazioni 2^ Stagione</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su Endless Love</h3><ul><li><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></li><li><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></li><li><a href="/endless-love/endless-love-chi-e-galip-kozcuoglu-le-due-volte-in-cui-nihan-e-stata-venduta/">Endless Love, chi è Galip Kozcuoğlu: le due volte in cui Nihan è stata venduta</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-zeynep-soydere-perche-emir-lha-scelta-e-cosa-ha-distrutto/">Endless Love, chi è davvero Zeynep Soydere: perché Emir l&#x27;ha scelta e cosa ha distrutto</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

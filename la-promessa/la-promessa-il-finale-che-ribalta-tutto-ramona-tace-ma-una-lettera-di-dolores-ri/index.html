@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/la-promessa/">La Promessa</a> › La Promessa, il finale che ribalta tutto: Ramona tace, ma una lettera di Dolores rivela a Curro che don Alonso è suo padre</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/la-promessa/">La Promessa</a>
   <h1>La Promessa, il finale che ribalta tutto: Ramona tace, ma una lettera di Dolores rivela a Curro che don Alonso è suo padre</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Il finale di stagione spagnolo costruisce l&#x27;attesa attorno all&#x27;arrivo di Ramona, la donna che dovrebbe finalmente svelare il passato di Dolores — e poi la ribalta: lei sceglie il silenzio, lasciando Curro e Jana in un limbo ancora più profondo. La verità arriva da un&#x27;altra parte: frugando tra le vecchie carte di famiglia, Curro trova una lettera scritta dalla madre. Quello che vi legge cambia tutto — l&#x27;uomo che ha sempre chiamato zio, il marchese don Alonso, è suo padre.</p><ol><li><a href="#c1">L&#x27;attesa costruita attorno a Ramona</a></li><li><a href="#c2">Il colpo di scena: il silenzio</a></li><li><a href="#c3">Chi è Ramona, e perché il suo silenzio pesa così tanto</a></li><li><a href="#c4">La lettera di Dolores</a></li><li><a href="#c5">Cosa cambia per Curro, Jana e Cruz</a></li><li><a href="#c6">Perché conta: la verità smette di dipendere da una persona</a></li><li><a href="#c7">Come Curro trova la lettera nascosta tra le carte</a></li><li><a href="#c8">Perché la marchesa Cruz odia profondamente il giovane Curro</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>La Promessa</strong> — Rete 4 · in streaming su Mediaset Infinity</span></div>
   
-  <p class="occhiello">Il finale di stagione spagnolo costruisce l&#x27;attesa attorno all&#x27;arrivo di Ramona, la donna che dovrebbe finalmente svelare il passato di Dolores — e poi la ribalta: lei sceglie il silenzio, lasciando Curro e Jana in un limbo ancora più profondo. La verità arriva da un&#x27;altra parte: frugando tra le vecchie carte di famiglia, Curro trova una lettera scritta dalla madre. Quello che vi legge cambia tutto — l&#x27;uomo che ha sempre chiamato zio, il marchese don Alonso, è suo padre.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: La Promessa, il finale che ribalta tutto: Ramona tace, ma una lettera di Dolores rivela a Curro che don Alonso è suo padre" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/3VEAofMw41I/maxresdefault.jpg" alt="La Promessa, il finale che ribalta tutto: Ramona tace, ma una lettera di Dolores rivela a Curro che don Alonso è suo padre" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/3VEAofMw41I/hqdefault.jpg 480w, https://i.ytimg.com/vi/3VEAofMw41I/sddefault.jpg 640w, https://i.ytimg.com/vi/3VEAofMw41I/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/3VEAofMw41I/hqdefault.jpg&quot;, &quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,25 +409,25 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>La rivelazione riscrive anche Cruz: l&#x27;odio apparentemente immotivato verso Curro nasce dal tradimento del marito — quel ragazzo è la ferita fatta persona.</strong></p>
-  <h2>L&#x27;attesa costruita attorno a Ramona</h2>
+  <h2 id="c1">L&#x27;attesa costruita attorno a Ramona</h2>
 <p>Le settimane che precedono l&#x27;epilogo sono un crescendo: indizi, false piste, ogni sguardo e ogni silenzio letti come possibili rivelazioni. Al centro c&#x27;è l&#x27;arrivo a Luján di Ramona, la figura misteriosa che ha custodito il passato di Dolores e che tutti — personaggi e pubblico — considerano ormai la chiave dell&#x27;enigma sull&#x27;origine di Curro. La tensione nella comunità raggiunge livelli febbrili, con la sensazione che basti una frase per far crollare l&#x27;intero castello di segreti.</p>
-<h2>Il colpo di scena: il silenzio</h2>
+<h2 id="c2">Il colpo di scena: il silenzio</h2>
 <p>E invece Ramona sceglie di non parlare. Si chiude in un silenzio assordante e si tiene per sé le chiavi di quel passato, capovolgendo ogni aspettativa costruita fino a quel momento. Per Curro e Jana è la sensazione più frustrante possibile: essere a un passo dalla verità e ritrovarsi più lontani di prima. Restano solo domande — perché tace? È paura, lealtà verso qualcuno, o un calcolo personale? — che diventano il carburante delle teorie dei fan in attesa della stagione successiva.</p>
-<h2>Chi è Ramona, e perché il suo silenzio pesa così tanto</h2>
+<h2 id="c3">Chi è Ramona, e perché il suo silenzio pesa così tanto</h2>
 <p>Ramona non è una comparsa misteriosa arrivata per fare scena: è la donna che fece da balia a entrambi i bambini nei loro primi anni, e l&#x27;amica con cui Dolores condivideva tutto, compresi i segreti che riguardavano i suoi figli. È l&#x27;unica persona ancora viva che li ha visti insieme prima della separazione, e in passato aveva perfino chiesto di poter vedere con i propri occhi il segno che il piccolo Marcos portava sul petto, per avere la certezza. Il suo non è dunque un silenzio di chi non sa: è una scelta di chi sa tutto.</p>
-<h2>La lettera di Dolores</h2>
+<h2 id="c4">La lettera di Dolores</h2>
 <p>Quando sembra tutto perduto, la svolta arriva dal luogo più semplice: frugando tra le vecchie carte di famiglia, Curro trova una lettera scritta di pugno da sua madre. Le parole di una donna scomparsa da anni squarciano il buio, e la verità che ne emerge è di quelle che riscrivono una serie intera: don Alonso, marchese di Luján, l&#x27;uomo che tutti a Luján — Curro compreso — hanno sempre chiamato zio, è in realtà suo padre.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Cosa cambia per Curro, Jana e Cruz</h2>
+<h2 id="c5">Cosa cambia per Curro, Jana e Cruz</h2>
 <p>Le conseguenze sono enormi. Il rapporto con Jana, fondato su un legame di sangue che credevano definito, va ripensato da capo; e Curro deve capire come portare quel cognome dentro una famiglia che non lo ha mai riconosciuto. Ma soprattutto la scoperta rilegge un personaggio: l&#x27;astio apparentemente inspiegabile di Cruz verso il ragazzo trova finalmente una radice — Curro è la prova vivente del tradimento del marito, la ferita più dolorosa fatta persona. Un dettaglio che rende la marchesa molto più complessa di come era stata giudicata fino a quel momento.</p>
-<h2>Perché conta: la verità smette di dipendere da una persona</h2>
+<h2 id="c6">Perché conta: la verità smette di dipendere da una persona</h2>
 <p>Finché la chiave era Ramona, chiunque avesse interesse a tenerla chiusa aveva un solo lavoro da fare: convincerla, spaventarla o farla sparire — ed era già successo. Una lettera è un&#x27;altra cosa. Non si intimidisce, non cambia versione, non ha paura di nessuno. Ma è anche un oggetto, e un oggetto si può bruciare: da questo momento a Luján esiste un pezzo di carta che vale un cognome, e più di una persona ha ottime ragioni per volerlo trovare per prima. C&#x27;è poi un effetto collaterale che riguarda Cruz: sapere perché la marchesa detesta Curro la rende, per la prima volta, prevedibile. E un avversario prevedibile è un avversario che si può anticipare.</p>
-<h2>Come Curro trova la lettera nascosta tra le carte</h2>
+<h2 id="c7">Come Curro trova la lettera nascosta tra le carte</h2>
 <p>Dopo la grande delusione provocata dall&#x27;inatteso silenzio di Ramona, per Curro e Jana la situazione sembrava arrivata a un punto di totale stallamento. Senza le risposte della donna che custodiva i ricordi di Dolores, i due ragazzi si sono ritrovati smarriti e privi di una guida sicura. Tuttavia, la determinazione del ragazzo non si è spenta di fronte all&#x27;ostacolo. Deciso a fare luce sul proprio passato ad ogni costo, il giovane ha iniziato a cercare autonomamente indicazioni concrete all&#x27;interno del palazzo. Frugando con pazienza tra le vecchie carte di famiglia conservate a Luján, si è imbattuto in un documento inaspettato. In mezzo a quei documenti dimenticati, è emersa una confessione scritta proprio dalla madre scomparsa tanti anni prima.</p>
 <p>Le parole vergate di pugno da Dolores hanno squarciato anni di dubbi e bugie, rivelando una verità sconvolgente per l&#x27;intera dinastia. Fino a quel momento, infatti, il ragazzo aveva sempre creduto che il marchese don Alonso fosse soltanto suo zio. Leggere la confessione materna ha cambiato ogni prospettiva: il padrone di casa è in realtà suo padre biologico, frutto di un legame segreto con Dolores. Questa scoperta spiazza completamente il giovane, costretto a ridisegnare la propria identità all&#x27;interno della tenuta. Sapere di portare il sangue di Alonso stravolge la sua posizione sociale e affettiva, trasformando un rapporto zio e nipote in un legame di paternità mai riconosciuto ma scritto nero su bianco.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>La rivelazione contenuta nel testo ha ripercussioni immediate anche sul legame tra Curro e Jana. I due giovani avevano costruito la loro alleanza sulla ricerca della verità, convinti che la pista portasse esclusivamente a svelare cosa fosse accaduto alla madre. Ora però il loro legame di sangue deve essere reinterpretato alla luce della nuova parentela con la nobile famiglia dei Luján. Sapere che don Alonso è il padre di Curro cambia la mappa degli affetti e delle responsabilità condivise. Jana si trova a dover affiancare il fratello in un percorso del tutto nuovo, sapendo che questa certezza rappresenta un&#x27;arma a doppio taglio, capace di proteggerli o di distruggere definitivamente i loro equilibri.</p>
-<h2>Perché la marchesa Cruz odia profondamente il giovane Curro</h2>
+<h2 id="c8">Perché la marchesa Cruz odia profondamente il giovane Curro</h2>
 <p>L&#x27;astio costante dimostrato dalla marchesa Cruz nei confronti di Curro ha finalmente trovato una spiegazione logica e dolorosa. Per molto tempo, il comportamento ostile della nobildonna era apparso come una cattiveria del tutto ingiustificata verso un semplice nipote. La scoperta della lettera di Dolores ribalta questa percezione, mostrando una ferita mai rimarginata nel matrimonio della marchesa. Curro incarna fisicamente l&#x27;infedeltà di don Alonso e la sua presenza a palazzo è un promemoria costante del tradimento subito. L&#x27;odio di Cruz non nasce dunque da un semplice capriccio, ma dal dolore di vedere ogni giorno la prova vivente della relazione segreta tra suo marito e l&#x27;antica serva.</p>
 <p>A differenza della testimonianza orale di Ramona, che poteva essere condizionata, spaventata o zittita, la lettera rappresenta una prova materiale estremamente pericolosa. Un documento scritto non modifica la propria versione e non soffre la paura delle minacce, trasformandosi in una minaccia costante per la stabilità della nobile casa. Tuttavia, trattandosi di un semplice foglio di carta, la lettera resta vulnerabile al rischio di essere distrutta o bruciata da chi ha interesse a proteggere l&#x27;onore dei Luján. Adesso che la motivazione dell&#x27;ostilità della marchesa è chiara, le sue mosse diventano prevedibili per chi cerca di proteggere il ragazzo, permettendo di anticipare le sue possibili reazioni.</p>
 <p>Il valore di quella carta diventa ancora più evidente se confrontato con la scelta di Ramona di chiudersi nel silenzio più assoluto. La balia che aveva accudito Marcos e Jana nei loro primi anni di vita, conoscendo il segno distintivo sul petto del piccolo, ha preferito tacere e tenersi i segreti. Il suo atteggiamento reticente ha spinto Curro a cercare risposte altrove, arrivando alla lettera che vale l&#x27;assegnazione di un cognome importante. Ora che il passato di Dolores è riemerso chiaramente dalle sue stesse parole, l&#x27;equilibrio a Luján dipende interamente da chi riuscirà a controllare quel foglio scritto, mentre la figura di Cruz appare per la prima volta vulnerabile alle conseguenze del passato.</p>
@@ -385,19 +435,41 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=HkbV1EdlMYE" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/HkbV1EdlMYE/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni: Ramona è decisa! Darà a Jana e Curro la lettera di Dolores! Ci riusc</span></a></li><li><a href="https://www.youtube.com/watch?v=GmD3Dm5W2eo" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/GmD3Dm5W2eo/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni: Ramona darà la lettera di Dolores a Jana e Curro? Scopriranno la ver</span></a></li><li><a href="https://www.youtube.com/watch?v=3cDNweyU_C0" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/3cDNweyU_C0/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni: Curro scopre lo scioccante segreto di Ramona! Lo dirà a Jana?</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Avevate intuito che dietro l&#x27;origine di Curro ci fosse don Alonso o sospettavate di qualcun altro? E perché secondo voi Ramona ha scelto di tacere?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=3VEAofMw41I">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di La Promessa</h2><div class="griglia"><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/"><div class="foto"><img src="https://i.ytimg.com/vi/Rp8VhxDiDSk/hqdefault.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></h3>
+    <div class="quando">7 settembre 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/"><div class="foto"><img src="https://i.ytimg.com/vi/8JHt6ogwxQw/hqdefault.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Ángela beve tutto, Curro sfonda la porta</a></h3>
+    <div class="quando">6 settembre 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/"><div class="foto"><img src="/img/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Curro nasconde Ángela, Lorenzo furioso</a></h3>
+    <div class="quando">6 settembre 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=La Promessa, il finale che ribalta tutto: Ramona tace, ma una lettera di Dolores rivela a Curro che don Alonso è suo padre — https://serietvfans.com/la-promessa/la-promessa-il-finale-che-ribalta-tutto-ramona-tace-ma-una-lettera-di-dolores-ri/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/la-promessa/la-promessa-il-finale-che-ribalta-tutto-ramona-tace-ma-una-lettera-di-dolores-ri/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/la-promessa/la-promessa-il-finale-che-ribalta-tutto-ramona-tace-ma-una-lettera-di-dolores-ri/&text=La Promessa, il finale che ribalta tutto: Ramona tace, ma una lettera di Dolores rivela a Curro che don Alonso è suo padre" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">LA PROMESSA Anticipazioni Spagnole: Curro ha scoperto finalmente chi è suo padre</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=3VEAofMw41I">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di La Promessa</h3><ol class="numerata"><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Ángela beve tutto, Curro sfonda la porta</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Curro nasconde Ángela, Lorenzo furioso</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>LA PROMESSA Anticipazioni Spagnole: Curro ha scoperto finalmente chi è suo padre</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su La Promessa</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-3-6-settembre-maria-affronta-la-gravidanza-da-sola/">La Promessa anticipazioni 3-6 settembre: Maria affronta la gravidanza da sola</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-carlo-arriva-maria-trema/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Carlo arriva, Maria trema</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/far-away/far-away-anticipazioni-dal-31-agosto-al-4-settembre-chi-ha-donato-il-fegato-a-nare/">Far Away, anticipazioni dal 31 agosto al 4 settembre: chi ha donato il fegato a Nare, e perché adesso sta male lui</a></li><li><a href="/far-away/far-away-dal-31-agosto-la-madre-di-alya-sapeva-tutto-non-ricordo/">Far Away Dal 31 Agosto: la madre di Alya sapeva tutto — «non ricordo»</a></li><li><a href="/forbidden-fruit/forbidden-fruit-dal-31-agosto-il-conto-a-nome-di-halit-che-e-morto/">Forbidden Fruit Dal 31 Agosto: il conto a nome di Halit, che è morto</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

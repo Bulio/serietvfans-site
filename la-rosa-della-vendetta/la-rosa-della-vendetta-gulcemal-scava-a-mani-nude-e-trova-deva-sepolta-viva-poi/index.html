@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/la-rosa-della-vendetta/">La Rosa della Vendetta</a> › La Rosa della Vendetta, Gülcemal scava a mani nude e trova Deva sepolta viva — poi le taglia il filo dell&#x27;aquilone: «Non sei mai stata importante»</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/la-rosa-della-vendetta/">La Rosa della Vendetta</a>
   <h1>La Rosa della Vendetta, Gülcemal scava a mani nude e trova Deva sepolta viva — poi le taglia il filo dell&#x27;aquilone: «Non sei mai stata importante»</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">La scena più angosciante della serie: Gülcemal scava disperatamente nel terreno e stringe tra le braccia una Deva esanime, sepolta viva — e il soffio di vita torna appena in tempo. Ma il sollievo dura poco: convinto che il rapimento sia stato orchestrato da Deva insieme a Zafer, la fa trasferire in una stanza lontana dalla sua e le nega ogni parola. Quando lei prova a riconquistarlo facendo volare un aquilone — il simbolo della sua infanzia spezzata — lui taglia il filo e la gela: «Qualsiasi gesto affettuoso era solo un calcolo».</p><ol><li><a href="#c1">Il salvataggio e il perdono impensabile</a></li><li><a href="#c2">Il sospetto che avvelena tutto</a></li><li><a href="#c3">L&#x27;aquilone tagliato e la ferita d&#x27;infanzia</a></li><li><a href="#c4">Armağan, la lettera nella cassaforte e la trappola dell&#x27;appalto</a></li><li><a href="#c5">Come Gülcemal scopre il doppio gioco di Zafer</a></li><li><a href="#c6">Perché l&#x27;aquilone di Deva ferisce Gülcemal</a></li><li><a href="#c7">Cosa spinge Armağan a voltare le spalle a Zafer</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>La Rosa della Vendetta</strong> — Serie conclusa in Italia · le puntate su Mediaset Infinity</span></div>
   
-  <p class="occhiello">La scena più angosciante della serie: Gülcemal scava disperatamente nel terreno e stringe tra le braccia una Deva esanime, sepolta viva — e il soffio di vita torna appena in tempo. Ma il sollievo dura poco: convinto che il rapimento sia stato orchestrato da Deva insieme a Zafer, la fa trasferire in una stanza lontana dalla sua e le nega ogni parola. Quando lei prova a riconquistarlo facendo volare un aquilone — il simbolo della sua infanzia spezzata — lui taglia il filo e la gela: «Qualsiasi gesto affettuoso era solo un calcolo».</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: La Rosa della Vendetta, Gülcemal scava a mani nude e trova Deva sepolta viva — poi le taglia il filo dell&#x27;aquilone: «Non sei mai stata importante»" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/q37HOod6Sjs/maxresdefault.jpg" alt="La Rosa della Vendetta, Gülcemal scava a mani nude e trova Deva sepolta viva — poi le taglia il filo dell&#x27;aquilone: «Non sei mai stata importante»" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/q37HOod6Sjs/hqdefault.jpg 480w, https://i.ytimg.com/vi/q37HOod6Sjs/sddefault.jpg 640w, https://i.ytimg.com/vi/q37HOod6Sjs/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/q37HOod6Sjs/hqdefault.jpg&quot;, &quot;/fallback/la-rosa-della-vendetta.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,25 +409,25 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>Il dettaglio che spiega quel gesto: il giorno in cui il padre morì, Gülcemal e Gülendam erano fuori a far volare l&#x27;aquilone che lui aveva regalato loro — e lo persero.</strong></p>
-  <h2>Il salvataggio e il perdono impensabile</h2>
+  <h2 id="c1">Il salvataggio e il perdono impensabile</h2>
 <p>Gülcemal ritrova Deva sotto la terra e la porta al sicuro senza lasciarla sola un secondo. La sete di vendetta contro gli uomini che l&#x27;hanno quasi uccisa brucia forte, ma davanti alle suppliche di lei accade l&#x27;impensabile: li risparmia, tradendo ogni suo principio. Tornano a casa insieme, accolti con sollievo da tutti, e Deva racconta l&#x27;orrore di essere stata sepolta viva. Il racconto scuote anche Mert, che poco dopo tenterà un bacio e verrà respinto con fermezza — Deva non vuole più avere nulla a che fare con lui.</p>
-<h2>Il sospetto che avvelena tutto</h2>
+<h2 id="c2">Il sospetto che avvelena tutto</h2>
 <p>La tregua si spezza quando Gülcemal scopre il doppio gioco dietro gli accordi con gli italiani: dietro c&#x27;è Zafer. Da quel momento è convinto che Deva abbia collaborato con lei per ordine suo, e che perfino il rapimento sia stato messo in scena. Le fa togliere le cose dalla stanza, la manda a dormire lontano, la tratta con freddezza glaciale. Deva, che intanto si accorge di provare qualcosa per lui, non capisce il motivo di quel muro. Una sera, nascosto nell&#x27;ombra, lui la ascolta raccontare a una bambina — trasformando la fiaba nella propria storia — di come il suo cuore si sia aperto all&#x27;amore per lui: resta in silenzio e si allontana, e i due si cercano nel buio senza incontrarsi mai.</p>
-<h2>L&#x27;aquilone tagliato e la ferita d&#x27;infanzia</h2>
+<h2 id="c3">L&#x27;aquilone tagliato e la ferita d&#x27;infanzia</h2>
 <p>Deva prova la carta più simbolica: fa volare un aquilone sperando di riconquistarlo. Non poteva sapere quanto quel gioco pesi: Gülendam le aveva appena raccontato che il giorno della morte del padre lei e il fratello erano fuori con l&#x27;aquilone regalato da lui, lo persero, e al rientro trovarono l&#x27;uomo senza vita. Gülcemal, sopraffatto, taglia brutalmente il filo. E quando Deva gli chiede conto della distanza, la risposta è una lama: non l&#x27;ha mai considerata importante, ogni gesto affettuoso era solo calcolo, ed è libera di andarsene.</p>
-<h2>Armağan, la lettera nella cassaforte e la trappola dell&#x27;appalto</h2>
+<h2 id="c4">Armağan, la lettera nella cassaforte e la trappola dell&#x27;appalto</h2>
 <p>Intanto arriva Armağan, fratellastro in fuga dalla madre Zafer, convinto che Gülcemal sia suo fratello per parte di padre; con İpek organizza la ricerca della verità, e dalla cassaforte di Zafer esce una lettera indirizzata a Mustafa che lo accusa di aver abbandonato la famiglia. E c&#x27;è la partita più grande: la gara d&#x27;appalto che Zafer vince all&#x27;ultimo con un rilancio si rivela una trappola. Gülcemal la convoca davanti a un tavolo coperto di denaro — il pagamento per liberarla dall&#x27;impegno con gli italiani — e le rivela di aver scoperto il suo doppio gioco: «Prendi i soldi, ti serviranno dopo che ti avrò distrutta». Quando lei ordina ad Armağan di seguirla, il ragazzo rifiuta e sceglie il fratello.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Come Gülcemal scopre il doppio gioco di Zafer</h2>
+<h2 id="c5">Come Gülcemal scopre il doppio gioco di Zafer</h2>
 <p>La tensione nella storia si accende quando Gülcemal porta alla luce le manovre segrete nascoste dietro la trattativa con gli italiani. Scoprire che Zafer gestiva quei fili trasforma la sua gratitudine verso Deva in un profondo e velenoso sospetto. Il protagonista si convince infatti che la ragazza non sia una vittima, bensì un&#x27;alleata della sua nemica, arrivando persino a pensare che l&#x27;orribile rapimento e il seppellimento siano stati solo una messa in scena organizzata a tavolino per ingannarlo. Questa drammatica convinzione lo spinge a un cambio repentino di rotta, stravolgendo equilibri e sentimenti che sembravano ormai consolidati all&#x27;interno della grande dimora.</p>
 <p>Di fronte a questa presunta oscurità, Gülcemal reagisce isolando Deva in modo drastico. Le fa ritirare ogni singolo oggetto dalla stanza che condividevano e ordina il suo trasferimento definitivo in una camera molto lontana dalla propria. Per la giovane inizia un periodo di totale incomprensione e doloroso isolamento, poiché non riesce a cogliere le ragioni di tanta freddezza proprio nel momento in cui sta comprendendo i suoi veri sentimenti. Il distacco diventa invalicabile, scandito da sguardi gelidi e da un silenzio punitivo che cancella ogni traccia dell&#x27;intimità costruita nei giorni passati al sicuro.</p>
 <p>In questa atmosfera carica di sofferenza, il destino regala un momento di struggente vicinanza mancata. Nascosto nelle ombre della casa, Gülcemal ascolta la ragazza raccontare a una bambina una fiaba che descrive perfettamente il suo percorso interiore e la nascita del suo amore. Nonostante le parole di Deva rivelino la verità del suo cuore aperto, l&#x27;uomo sceglie di non mostrarsi e si allontana nel buio senza dire nulla. Entrambi continuano così a cercarsi a distanza, prigionieri di un malinteso che impedisce loro di trovarsi davvero e di superare le reciproche barriere.</p>
-<h2>Perché l&#x27;aquilone di Deva ferisce Gülcemal</h2>
+<h2 id="c6">Perché l&#x27;aquilone di Deva ferisce Gülcemal</h2>
 <p>Per comprendere la violenta reazione al gesto di Deva, occorre risalire al doloroso passato della famiglia. Gülendam aveva infatti confidato alla ragazza un ricordo d&#x27;infanzia legato al giorno in cui morì loro padre. In quell&#x27;occasione, lei e il fratello si trovavano all&#x27;aperto a giocare proprio con l&#x27;aquilone regalato dal genitore, che finirono per smarrire. Al loro rientro a casa, ad attenderli c&#x27;era la scoperta più tragica: l&#x27;uomo era privo di vita. Quel giocattolo è diventato così per il protagonista il simbolo indelebile di un dolore mai superato e di un trauma che ha segnato la sua esistenza.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>Ignorando la portata distruttiva di quel ricordo, Deva sceglie di far volare un aquilone come tentativo estremo per riavvicinarsi e spezzare il muro di distacco. La vista dell&#x27;oggetto che campeggia nel cielo provoca in Gülcemal una reazione di immediato rifiuto e sopraffazione emotiva. Con un gesto secco e brutale, l&#x27;uomo taglia il filo, spezzando simbolicamente quell&#x27;ultimo ponte di speranza. La sua azione evidenzia quanto la ferita legata alla figura paterna sia ancora aperta e come l&#x27;ombra del passato sia in grado di travolgere ogni speranza di riconciliazione tra i due protagonisti.</p>
 <p>Quando Deva lo affronta per chiedergli il motivo di tanta crudeltà e di un&#x27;ulteriore distanza, la risposta di Gülcemal è spietata come una lama. L&#x27;uomo le dichiara con freddezza di non averla mai considerata una persona importante, aggiungendo che qualsiasi precedente gesto affettuoso nei suoi confronti era stato guidato soltanto dal calcolo personale. Per chiudere definitivamente il discorso e ribadire la sua indifferenza, le dice che è ormai del tutto libera di andarsene dalla casa, lasciandola sola con la consapevolezza di aver perso ogni punto di riferimento all&#x27;interno della dimora.</p>
-<h2>Cosa spinge Armağan a voltare le spalle a Zafer</h2>
+<h2 id="c7">Cosa spinge Armağan a voltare le spalle a Zafer</h2>
 <p>Parallelamente si sviluppa la vicenda di Armağan, il fratellastro in fuga dalla madre Zafer. Il giovane giunge sul posto convinto che Gülcemal sia suo fratello per parte di padre e decide di fare chiarezza sul passato. Unendo le forze con İpek, organizza una ricerca della verità che li porta fino alla cassaforte di Zafer. Da quel nascondiglio emerge un documento cruciale: una lettera indirizzata a Mustafa nella quale l&#x27;uomo viene esplicitamente accusato di aver abbandonato la propria famiglia. Questo ritrovamento getta una nuova luce sui segreti familiari e spinge il ragazzo a mettere in discussione ogni certezza.</p>
 <p>Lo scontro economico tra le due parti raggiunge il culmine con la gara d&#x27;appalto che Zafer riesce a vincere all&#x27;ultimo momento grazie a un rilancio disperato. Ciò che la donna non sa è che si tratta di una trappola orchestrata da Gülcemal. Il protagonista la convoca di fronte a un tavolo ricoperto di denaro, la somma necessaria per liberarla dall&#x27;impegno preso con gli italiani, e le rivela di aver scoperto ogni sua manovra sotterranea. Le sue parole sono una minaccia aperta: le dice di prendere quei soldi perché le serviranno quando avrà completato la sua opera di distruzione.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
@@ -385,19 +435,41 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
   </div>
   
   <div class="riquadro"><h3>E secondo voi?</h3><p>Gülcemal si pentirà di aver tagliato quel filo quando scoprirà che Deva era innocente? E la lettera trovata nella cassaforte dice davvero quello che Armağan e Deva credono?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=q37HOod6Sjs">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di La Rosa della Vendetta</h2><div class="griglia"><article class="scheda">
+  <a href="/la-rosa-della-vendetta/la-rosa-della-vendetta-la-trama-completa-e-come-finisce/"><div class="foto"><img src="/img/la-rosa-della-vendetta-la-trama-completa-e-come-finisce.jpg" alt="La Rosa della Vendetta" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-rosa-della-vendetta.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Rosa della Vendetta</span>
+    <h3><a href="/la-rosa-della-vendetta/la-rosa-della-vendetta-la-trama-completa-e-come-finisce/">La Rosa della Vendetta: la trama completa e come finisce</a></h3>
+    <div class="quando">30 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/la-rosa-della-vendetta/la-rosa-della-vendetta-2-ibrahim-sgancia-la-bomba-su-gulcemal-deva-e-la-figlia-d/"><div class="foto"><img src="https://i.ytimg.com/vi/ImfmMm09KBE/hqdefault.jpg" alt="La Rosa della Vendetta" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-rosa-della-vendetta.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Rosa della Vendetta</span>
+    <h3><a href="/la-rosa-della-vendetta/la-rosa-della-vendetta-2-ibrahim-sgancia-la-bomba-su-gulcemal-deva-e-la-figlia-d/">La Rosa della Vendetta 2, İbrahim sgancia la bomba su Gülcemal: «Deva è la figlia di Mustafa Pehlivan» — il suo peggior nemico</a></h3>
+    <div class="quando">14 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/la-rosa-della-vendetta/la-rosa-della-vendetta-deva-sceglie-di-restare-con-gulcemal-davanti-a-tutti-il-c/"><div class="foto"><img src="https://i.ytimg.com/vi/KtmC90jZt8A/hqdefault.jpg" alt="La Rosa della Vendetta" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-rosa-della-vendetta.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Rosa della Vendetta</span>
+    <h3><a href="/la-rosa-della-vendetta/la-rosa-della-vendetta-deva-sceglie-di-restare-con-gulcemal-davanti-a-tutti-il-c/">La Rosa della Vendetta, Deva sceglie di restare con Gülcemal davanti a tutti — il consiglio del padre e il ritorno di Mert che la fa svenire</a></h3>
+    <div class="quando">14 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=La Rosa della Vendetta, Gülcemal scava a mani nude e trova Deva sepolta viva — poi le taglia il filo dell&#x27;aquilone: «Non sei mai stata importante» — https://serietvfans.com/la-rosa-della-vendetta/la-rosa-della-vendetta-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/la-rosa-della-vendetta/la-rosa-della-vendetta-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/la-rosa-della-vendetta/la-rosa-della-vendetta-la-trama-completa-e-come-finisce/&text=La Rosa della Vendetta, Gülcemal scava a mani nude e trova Deva sepolta viva — poi le taglia il filo dell&#x27;aquilone: «Non sei mai stata importante»" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">TERRIBILE MOMENTO PER GULCEMAL! TROVA DEVA SEPOLTA VIVA, E&#x27; ARRIVATO IN TEMPO?</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=q37HOod6Sjs">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di La Rosa della Vendetta</h3><ol class="numerata"><li><a href="/la-rosa-della-vendetta/la-rosa-della-vendetta-la-trama-completa-e-come-finisce/">La Rosa della Vendetta: la trama completa e come finisce</a></li><li><a href="/la-rosa-della-vendetta/la-rosa-della-vendetta-2-ibrahim-sgancia-la-bomba-su-gulcemal-deva-e-la-figlia-d/">La Rosa della Vendetta 2, İbrahim sgancia la bomba su Gülcemal: «Deva è la figlia di Mustafa Pehlivan» — il suo peggior nemico</a></li><li><a href="/la-rosa-della-vendetta/la-rosa-della-vendetta-deva-sceglie-di-restare-con-gulcemal-davanti-a-tutti-il-c/">La Rosa della Vendetta, Deva sceglie di restare con Gülcemal davanti a tutti — il consiglio del padre e il ritorno di Mert che la fa svenire</a></li><li><a href="/la-rosa-della-vendetta/la-rosa-della-vendetta-deva-scopre-la-verita-sulle-origini-di-gulcemal-non-e-fig/">La Rosa della Vendetta, Deva scopre la verità sulle origini di Gülcemal: non è figlio di Mustafa — e il segreto di Zafer spiega tutta la sua freddezza</a></li><li><a href="/la-rosa-della-vendetta/la-rosa-della-vendetta-deva-spara-a-gulcemal-e-poi-gli-salva-la-vita-e-davanti-a/">La Rosa della Vendetta, Deva spara a Gülcemal e poi gli salva la vita — e davanti agli italiani sceglie lui: «Sono qui per mia scelta»</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>TERRIBILE MOMENTO PER GULCEMAL! TROVA DEVA SEPOLTA VIVA, E&#x27; ARRIVATO IN TEMPO?</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su La Rosa della Vendetta</h3><ul><li><a href="/la-rosa-della-vendetta/la-rosa-della-vendetta-la-trama-completa-e-come-finisce/">La Rosa della Vendetta: la trama completa e come finisce</a></li><li><a href="/la-rosa-della-vendetta/la-rosa-della-vendetta-2-ibrahim-sgancia-la-bomba-su-gulcemal-deva-e-la-figlia-d/">La Rosa della Vendetta 2, İbrahim sgancia la bomba su Gülcemal: «Deva è la figlia di Mustafa Pehlivan» — il suo peggior nemico</a></li><li><a href="/la-rosa-della-vendetta/la-rosa-della-vendetta-deva-sceglie-di-restare-con-gulcemal-davanti-a-tutti-il-c/">La Rosa della Vendetta, Deva sceglie di restare con Gülcemal davanti a tutti — il consiglio del padre e il ritorno di Mert che la fa svenire</a></li><li><a href="/la-rosa-della-vendetta/la-rosa-della-vendetta-deva-scopre-la-verita-sulle-origini-di-gulcemal-non-e-fig/">La Rosa della Vendetta, Deva scopre la verità sulle origini di Gülcemal: non è figlio di Mustafa — e il segreto di Zafer spiega tutta la sua freddezza</a></li><li><a href="/la-rosa-della-vendetta/la-rosa-della-vendetta-deva-spara-a-gulcemal-e-poi-gli-salva-la-vita-e-davanti-a/">La Rosa della Vendetta, Deva spara a Gülcemal e poi gli salva la vita — e davanti agli italiani sceglie lui: «Sono qui per mia scelta»</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

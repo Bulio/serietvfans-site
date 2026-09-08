@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Segreti di Famiglia: anticipazioni e trame | Serie TV Fans</title>
-<meta name="description" content="Segreti di Famiglia anticipazioni: Chi ha ucciso Engin in Segreti di Famiglia: la verità sulla morte di Engin… Trame aggiornate al 3 settembre 2026.">
+<meta name="description" content="Segreti di Famiglia anticipazioni: Chi ha ucciso Engin in Segreti di Famiglia: la verità sulla morte di Engin… Trame aggiornate al 7 settembre 2026.">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://serietvfans.com/serie/segreti-di-famiglia/">
 <meta property="og:title" content="Segreti di Famiglia: anticipazioni e trame | Serie TV Fans">
-<meta property="og:description" content="Segreti di Famiglia anticipazioni: Chi ha ucciso Engin in Segreti di Famiglia: la verità sulla morte di Engin… Trame aggiornate al 3 settembre 2026.">
+<meta property="og:description" content="Segreti di Famiglia anticipazioni: Chi ha ucciso Engin in Segreti di Famiglia: la verità sulla morte di Engin… Trame aggiornate al 7 settembre 2026.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Serie TV Fans">
 <meta property="og:url" content="https://serietvfans.com/serie/segreti-di-famiglia/">
@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -318,7 +367,7 @@ if(l.length){el.src=l.shift();el.dataset.fb=JSON.stringify(l)}else{el.onerror=nu
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -337,7 +386,7 @@ if(l.length){el.src=l.shift();el.dataset.fb=JSON.stringify(l)}else{el.onerror=nu
 <section class="pillar"><h2>Di cosa parla Segreti di Famiglia</h2><p>Segreti di Famiglia è una serie turca, titolo originale <em>Yargı</em>, andata in onda dal 2021 al 2024 sulla rete Kanal D. İlgaz Kaya è un pubblico ministero che mette la legge davanti a tutto, anche alla famiglia. Ceylin Erguvan è un'avvocata che per arrivare alla verità prende ogni scorciatoia disponibile. Finiscono dalla stessa parte per il motivo peggiore: İnci, la sorella minore di Ceylin, viene uccisa, e il principale sospettato è Çınar, il fratello minore di İlgaz.</p><p>Da quel caso la serie tira un filo che arriva ai padri di entrambi e a colpe vecchie di anni. È un legal drama vero, con processi e prove, ma il tribunale serve soprattutto a mettere due famiglie una di fronte all'altra.</p></section><section class="pillar"><h2>Chi ha ucciso İnci in Segreti di Famiglia</h2><p>È la domanda che regge la prima parte della serie, e la risposta non è Çınar. A uccidere İnci è stato Engin Tilmen, dopo una lite degenerata. A coprirlo interviene la famiglia, con l'avvocato Yekta Tilmen che lavora per far sparire le tracce.</p><p>Ceylin ci arriva mettendo insieme dettagli minimi, non un colpo di scena: mobili sostituiti di fresco, un orecchino, oggetti che qualcuno ha provato a bruciare. È il modo in cui la serie ragiona per tutte e tre le stagioni, e vale come avvertimento per chi guarda: si vince sui particolari, quasi mai sulle confessioni.</p></section><section class="pillar"><h2>Come finisce Segreti di Famiglia</h2><p>La terza stagione chiude sui protagonisti più che su un caso. İlgaz e Ceylin sono sposati e hanno figli; nel giardino della casa nuova viene trovato un cadavere sepolto e si ritrovano loro stessi sotto indagine, l'ultimo giro di una storia che li ha sempre messi dalla parte sbagliata del tavolo.</p><p>Nell'epilogo İlgaz diventa procuratore capo, Yekta lascia lo studio legale a Ceylin, la famiglia si allarga ancora. Non tutti arrivano in fondo: Mert muore. È una chiusura che preferisce sistemare le persone invece di lasciare un mistero aperto.</p></section><section class="pillar"><h2>Il cast di Segreti di Famiglia</h2><p>La coppia al centro di tutto è quella formata da Pınar Deniz e Kaan Urgancıoğlu, che restano in scena dalla prima all'ultima puntata. Questi gli attori principali e i personaggi che interpretano:</p><ul><li><strong>Pınar Deniz</strong> è Ceylin Erguvan, l'avvocata</li><li><strong>Kaan Urgancıoğlu</strong> è İlgaz Kaya, il pubblico ministero</li><li><strong>Mehmet Yılmaz Ak</strong> è Pars Seçkin</li><li><strong>Uğur Polat</strong> è Yekta Tilmen, l'avvocato di famiglia dei Tilmen</li><li><strong>Uğur Aslan</strong> è Eren Duman, il poliziotto che lavora sui casi</li><li><strong>Beren Nur Karadiş</strong> è Defne Kaya, la sorella di İlgaz</li></ul><p>In italiano Ceylin ha la voce di Eleonora Reti e İlgaz quella di Raffaele Carpentieri.</p></section><section class="pillar"><h2>Quante puntate ha Segreti di Famiglia</h2><p>In Turchia sono novantacinque episodi divisi in tre stagioni: trentaquattro la prima, ventinove la seconda, trentadue la terza. In Italia gli stessi episodi sono stati spezzati in puntate più corte e diventano trecentotto, cioè centoundici, novantasei e centouno. Un episodio turco vale poco più di tre puntate italiane, quindi i numeri che circolano in rete non coincidono quasi mai fra loro. Nel 2023 la serie ha vinto l'International Emmy come miglior telenovela.</p></section><section class="pillar"><h2>Dove vedere Segreti di Famiglia in TV e in streaming</h2><p>In Italia Segreti di Famiglia va in onda su <strong>Rete 4</strong>, nel day-time, e in streaming su <strong>Mediaset Infinity</strong>, dove restano disponibili le puntate già trasmesse. Non è la prima volta che passa da noi: era arrivata su Canale 5 nel 2024 ed è poi tornata su Rete 4, prima con le puntate già viste e poi con quelle inedite, fino alla seconda stagione trasmessa in chiaro. Non scriviamo un orario: la fascia è cambiata più volte e un orario sbagliato lasciato in pagina è peggio di nessun orario, quindi per il giorno preciso conviene controllare il palinsesto. Gli episodi turchi sono tutti girati, quindi la storia ha già una fine: qui sotto la ricostruiamo puntata per puntata.</p></section>
 <h2 class="titolo-elenco">Tutte le anticipazioni di Segreti di Famiglia</h2>
 <div class="griglia"><article class="scheda">
-  <a href="/segreti-di-famiglia/chi-ha-ucciso-engin-in-segreti-di-famiglia/"><div class="foto"></div></a>
+  <a href="/segreti-di-famiglia/chi-ha-ucciso-engin-in-segreti-di-famiglia/"><div class="foto"><img src="/img/chi-ha-ucciso-engin-in-segreti-di-famiglia.jpg" alt="Segreti di Famiglia" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/segreti-di-famiglia.svg&quot;]' onerror="imgFb(this)"></div></a>
   <div class="corpo">
     <span class="serie">Segreti di Famiglia</span>
     <h3><a href="/segreti-di-famiglia/chi-ha-ucciso-engin-in-segreti-di-famiglia/">Chi ha ucciso Engin in Segreti di Famiglia: la verità sulla morte di Engin Tilmen e il piano che nessuno aveva previsto</a></h3>

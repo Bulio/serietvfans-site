@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/endless-love/">Endless Love</a> › Endless Love, Emir firma finalmente il divorzio: Kemal lo mette davanti alla scelta «la tua azienda o Nihan» — e lui cede con una minaccia</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/endless-love/">Endless Love</a>
   <h1>Endless Love, Emir firma finalmente il divorzio: Kemal lo mette davanti alla scelta «la tua azienda o Nihan» — e lui cede con una minaccia</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>8 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Per anni Emir ha tenuto Nihan legata a sé prima con il ricatto su Ozan, poi con la minaccia di portarle via Deniz. La firma che la libera arriva solo quando Kemal riesce a colpirlo nell&#x27;unico punto che gli interessa davvero: i soldi.</p><ol><li><a href="#c1">Le catene: prima Ozan, poi Deniz</a></li><li><a href="#c2">Il crollo dei Kozcuoğlu</a></li><li><a href="#c3">Chi è Deniz, la bambina usata come seconda catena</a></li><li><a href="#c4">Nihan entra in consiglio e il piano salta</a></li><li><a href="#c5">«Amore, finalmente sei libera»</a></li><li><a href="#c6">Perché conta: gli toglie la leva, non la volontà</a></li><li><a href="#c7">Come Galip Kozcuoglu finisce arrestato travolto dai suoi crimini</a></li><li><a href="#c8">Perché Emir sequestra Nihan prima dell assemblea della holding</a></li><li><a href="#c9">Come Kemal incastra Emir con la miniera illegale</a></li><li><a href="#c10">Cosa accade a Nihan dopo l ultimo ricatto</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>Endless Love</strong> — Serie conclusa in Italia · le puntate su Mediaset Infinity</span></div>
   
-  <p class="occhiello">Per anni Emir ha tenuto Nihan legata a sé prima con il ricatto su Ozan, poi con la minaccia di portarle via Deniz. La firma che la libera arriva solo quando Kemal riesce a colpirlo nell&#x27;unico punto che gli interessa davvero: i soldi.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: Endless Love, Emir firma finalmente il divorzio: Kemal lo mette davanti alla scelta «la tua azienda o Nihan» — e lui cede con una minaccia" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/1XvC8W7Vrr0/maxresdefault.jpg" alt="Endless Love, Emir firma finalmente il divorzio: Kemal lo mette davanti alla scelta «la tua azienda o Nihan» — e lui cede con una minaccia" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/1XvC8W7Vrr0/hqdefault.jpg 480w, https://i.ytimg.com/vi/1XvC8W7Vrr0/sddefault.jpg 640w, https://i.ytimg.com/vi/1XvC8W7Vrr0/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/1XvC8W7Vrr0/hqdefault.jpg&quot;, &quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,49 +409,71 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>«La prossima volta che firmerò qualcosa, sarà con il tuo sangue.»</strong></p>
-  <h2>Le catene: prima Ozan, poi Deniz</h2>
+  <h2 id="c1">Le catene: prima Ozan, poi Deniz</h2>
 <p>Nihan aveva accettato di sposare Emir sotto la minaccia che, in caso contrario, lui avrebbe consegnato alla polizia la prova che il fratello Ozan aveva ucciso una donna. Anche dopo la morte di Ozan la trappola non si è aperta: Emir ha semplicemente cambiato leva, e ogni volta che lei parlava di divorzio le rispondeva che le avrebbe tolto la bambina. Una prigione senza sbarre, tenuta in piedi per anni da due nomi.</p>
-<h2>Il crollo dei Kozcuoğlu</h2>
+<h2 id="c2">Il crollo dei Kozcuoğlu</h2>
 <p>La svolta arriva quando tutto attorno a Emir comincia a franare nello stesso momento. Il padre Galip finisce in carcere, accusato di tentato omicidio ai danni di Leyla e di traffico illecito di rifiuti radioattivi. Asu viene ricoverata in un reparto psichiatrico. E soprattutto la holding di famiglia scivola verso il fallimento: servono capitali, e per ottenerli Emir deve convocare il consiglio di amministrazione. È qui che compie l&#x27;ultimo errore — segrega Nihan e la costringe a firmargli una delega per votare al posto suo con le sue azioni.</p>
-<h2>Chi è Deniz, la bambina usata come seconda catena</h2>
+<h2 id="c3">Chi è Deniz, la bambina usata come seconda catena</h2>
 <p>Deniz è la figlia di Nihan e Kemal, anche se per lungo tempo nessuno dei due ha potuto dirlo ad alta voce — Kemal stesso lo ha scoperto molto dopo la sua nascita. Per Emir quella bambina non è mai stata una figlia da crescere: è stata la sostituzione perfetta della minaccia su Ozan, un motivo nuovo per tenere Nihan dentro casa quando quello vecchio si era consumato. Non è nemmeno rimasta una minaccia teorica: a un certo punto Emir arriverà a farla sparire per davvero. Ecco perché la parola «divorzio», in questa storia, per anni non ha mai voluto dire libertà.</p>
-<h2>Nihan entra in consiglio e il piano salta</h2>
+<h2 id="c4">Nihan entra in consiglio e il piano salta</h2>
 <p>Kemal la libera in tempo, e quando Nihan si presenta di persona all&#x27;assemblea il piano di Emir si sbriciola davanti a tutti. A quel punto il confronto diventa diretto: o firma il divorzio, e alcune banche procederanno con i pagamenti che tengono in piedi la holding, oppure guarda l&#x27;azienda affondare e si prepara al carcere. Emir all&#x27;inizio non si scompone; Kemal allora mette sul tavolo quello che ha scoperto sul riciclaggio di denaro attraverso una miniera illegale, e la partita si chiude lì.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>«Amore, finalmente sei libera»</h2>
+<h2 id="c5">«Amore, finalmente sei libera»</h2>
 <p>Emir firma, ma alzando lo sguardo avverte Kemal che quella non è una resa: è l&#x27;inizio di una guerra più grande, e la prossima firma la metterà con il suo sangue. Kemal non replica. Prende il documento, raggiunge Nihan e glielo mette in mano dicendole che è libera. Lei piange, lo abbraccia e gli dice che adesso, con Deniz, sono davvero una famiglia — e che un giorno la bambina dovrà sapere che tutto questo suo padre l&#x27;ha fatto per loro. La libertà è arrivata, ma nessuno dei due ha l&#x27;ingenuità di credere che Emir si fermi qui.</p>
-<h2>Perché conta: gli toglie la leva, non la volontà</h2>
+<h2 id="c6">Perché conta: gli toglie la leva, non la volontà</h2>
 <p>Il potere di Emir si è sempre retto su cose che nessuno poteva verificare: un delitto insabbiato, una minaccia sussurrata, un ricatto che valeva finché restava privato. Il consiglio di amministrazione è il primo luogo in cui questo sistema non funziona, perché lì contano le firme e le banche guardano le carte. Perdere Nihan davanti a quel tavolo non gli costa una moglie, gli costa il metodo. E quando promette che la prossima firma la metterà col sangue non sta facendo retorica da sconfitto: sta dicendo che, esaurite le leve, gli resta soltanto la violenza. Nihan è libera sulla carta, ed è la prima volta che tra lei e Emir non c&#x27;è più nulla da negoziare — che è insieme la buona e la cattiva notizia.</p>
-<h2>Come Galip Kozcuoglu finisce arrestato travolto dai suoi crimini</h2>
+<h2 id="c7">Come Galip Kozcuoglu finisce arrestato travolto dai suoi crimini</h2>
 <p>La caduta del regno dei Kozcuoğlu comincia nel momento in cui i crimini commessi da Galip vengono a galla, distruggendo l&#x27;impunità di cui la famiglia aveva goduto per anni. Il padre di Emir finisce infatti in carcere con accuse gravissime, che vanno dal tentato omicidio nei confronti di Leyla al coinvolgimento diretto in un traffico illecito di rifiuti radioattivi. Questo arresto scuote dalle fondamenta l&#x27;intera struttura familiare, privando Emir del suo punto di riferimento strategico e gettando un&#x27;ombra indelebile sulla reputazione dei Kozcuoğlu. Senza l&#x27;aiuto del padre, il giovane imprenditore si ritrova impreparato ad affrontare le pesanti conseguenze legali e finanziarie che travolgono improvvisamente la sua vita.</p>
 <p>A complicare ulteriormente il quadro familiare interviene il tracollo emotivo di Asu, la quale viene ricoverata d&#x27;urgenza in un reparto psichiatrico. Con il padre dietro le sbarre e la sorella fuori dai giochi, Emir rimane completamente solo a gestire la crisi della holding, che scivola rapidamente verso un inarrestabile fallimento. Le banche fermano le linee di credito e pretendono immediate garanzie finanziarie per erogare i capitali indispensabili alla sopravvivenza della società. Per cercare di bloccare questo disastro e trovare i fondi necessari, Emir si vede costretto a convocare d&#x27;urgenza un consiglio di amministrazione, pur sapendo di non avere più la forza economica di un tempo.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Perché Emir sequestra Nihan prima dell assemblea della holding</h2>
+<h2 id="c8">Perché Emir sequestra Nihan prima dell assemblea della holding</h2>
 <p>Sapendo di aver bisogno dei voti necessari in assemblea per approvare le manovre finanziarie, Emir tenta un ultimo gesto disperato sequestrando Nihan prima della riunione. La donna possiede infatti un pacchetto di azioni fondamentale per raggiungere la maggioranza prescritta dalle banche. Per questo motivo, Emir la chiude in uno stato di segregazione con l&#x27;obiettivo di obbligarla a firmare una delega che gli consenta di votare a suo nome. Nel suo disegno criminoso, l&#x27;imprenditore è convinto che tenendo Nihan lontana dalle telecamere potrà utilizzare le sue quote societarie per approvare i piani di salvataggio della holding, ignorando che Kemal sta già muovendosi per rintracciare la donna e salvarla.</p>
 <p>L&#x27;intervento tempestivo di Kemal manda all&#x27;aria il piano di Emir, permettendo a Nihan di liberarsi e di raggiungere in tempo la sede del consiglio di amministrazione. L&#x27;ingresso improvviso della donna durante l&#x27;assemblea lascia tutti i presenti stupefatti e vanifica istantaneamente la delega estorta con la forza. Presentandosi di persona al tavolo delle trattative, Nihan riprende il pieno controllo dei propri diritti di voto, impedendo al marito di disporre dei suoi titoli azionari. Questa mossa allo scoperto fa crollare definitivamente la strategia di Emir, costringendolo a prendere atto che ogni tentativo di manipolare la moglie è ormai fallito e che la resa di fronte a Kemal è inevitabile.</p>
-<h2>Come Kemal incastra Emir con la miniera illegale</h2>
+<h2 id="c9">Come Kemal incastra Emir con la miniera illegale</h2>
 <p>Quando Nihan si presenta personalmente alla riunione dell&#x27;assemblea, annullando la delega che le era stata estorta con la forza, la posizione negoziale di Emir subisce un colpo immediato. Tuttavia, l&#x27;imprenditore rifiuta inizialmente di cedere e cerca di mantenere un atteggiamento freddo davanti ai presenti. La svolta decisiva avviene quando Kemal sfodera l&#x27;arma finale che ha preparato contro di lui: le prove schiaccianti del riciclaggio di denaro condotto attraverso l&#x27;utilizzo di una miniera illegale. Messo di fronte all&#x27;evidenza dei suoi illeciti finanziari, Emir capisce di non avere più alcuna via di fuga di fronte alla giustizia e alle banche, le quali esigono trasparenza assoluta prima di sbloccare i pagamenti necessari per la società.</p>
 <p>Con le prove del riciclaggio sul tavolo, Kemal pone il suo avversario di fronte a un ricatto privo di alternative: accettare la firma del divorzio oppure osservare il definitivo fallimento della holding di famiglia e prepararsi all&#x27;arresto. Per la prima volta nella sua vita, Emir viene privato della possibilità di manipolare gli eventi a suo favore, poiché le banche osservano rigidamente i documenti legali. Messo alle strette tra la prospettiva del carcere e la perdita del controllo su Nihan, l&#x27;uomo sceglie di salvare la propria azienda. Apponendo quella firma tanto sofferta, accetta la sconfitta contabile ma accompagna il gesto con una terribile minaccia diretta al suo nemico di sempre.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Cosa accade a Nihan dopo l ultimo ricatto</h2>
+<h2 id="c10">Cosa accade a Nihan dopo l ultimo ricatto</h2>
 <p>Ottenuto il documento ufficiale firmato da Emir, Kemal raggiunge immediatamente Nihan per consegnarle l&#x27;atto che sancisce la fine della sua prigionia coniugale. Nel momento in cui riceve tra le mani quel foglio, la donna scoppia in un pianto liberatorio, stringendosi in un abbraccio intenso con l&#x27;uomo che ha lottato per salvarla. Consapevole di aver finalmente spezzato le catene che l&#x27;avevano legata a un matrimonio forzato, Nihan dichiara che lei, Kemal e la piccola Deniz costituiscono ormai una vera famiglia. La donna sottolinea anche il desiderio che un giorno la bambina venga a conoscenza di tutti i sacrifici compiuti da suo padre per regalare loro la tanto desiderata libertà.</p>
 <p>Nonostante il grande sollievo per il divorzio ottenuto, né Nihan né Kemal cadono nell&#x27;errore di considerare conclusa la minaccia rappresentata da Emir. L&#x27;imprenditore ha infatti chiarito senza mezzi termini che la sua resa è solo temporanea e che la prossima firma verrà apposta con il sangue. Avendo perso il potere di condizionare la moglie attraverso i ricatti del passato, a Emir rimane esclusivamente la strada della violenza diretta. Questa consapevolezza lascia un&#x27;ombra sul futuro dei due innamorati: la libertà contabile e legale è stata finalmente raggiunta, ma il confronto con un avversario che non ha più nulla da negoziare rischia di diventare ancora più pericoloso e imprevedibile.</p>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=d8pXN6Gghdg" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/d8pXN6Gghdg/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>NIHAN RIESCE A FUGGIRE DA EMIR E DA&#x27; ALLA LUCE DENIZ, FIGLIA DI KEMAL! Anticipazioni Endless Lo</span></a></li><li><a href="https://www.youtube.com/watch?v=LoTLqdE7rVU" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/LoTLqdE7rVU/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>INCREDIBILE KEMAL! RIESCE A FAR ARRESTARE OZAN ED EMIR, TUTTO FINITO? Anticipazioni Endless Lov</span></a></li><li><a href="https://www.youtube.com/watch?v=QXpcDyhWhGw" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/QXpcDyhWhGw/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>EMIR PAZZO FURIOSO! RAPISCE DENIZ E COSTRINGE NIHAN A SPARARE A KEMAL PER RIAVERLA! Endless Lov</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Emir manterrà la minaccia?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=1XvC8W7Vrr0">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di Endless Love</h2><div class="griglia"><article class="scheda">
+  <a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/"><div class="foto"><img src="https://i.ytimg.com/vi/DSiProJJ1ls/hqdefault.jpg" alt="Endless Love" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/"><div class="foto"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/"><div class="foto"><img src="https://i.ytimg.com/vi/uu2oAzTOWQU/hqdefault.jpg" alt="Endless Love" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></h3>
+    <div class="quando">25 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=Endless Love, Emir firma finalmente il divorzio: Kemal lo mette davanti alla scelta «la tua azienda o Nihan» — e lui cede con una minaccia — https://soapoperaitalia.com/endless-love/endless-love-la-trama-completa-perche-nihan-sposa-emir-e-come-finisce/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://soapoperaitalia.com/endless-love/endless-love-la-trama-completa-perche-nihan-sposa-emir-e-come-finisce/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://soapoperaitalia.com/endless-love/endless-love-la-trama-completa-perche-nihan-sposa-emir-e-come-finisce/&text=Endless Love, Emir firma finalmente il divorzio: Kemal lo mette davanti alla scelta «la tua azienda o Nihan» — e lui cede con una minaccia" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">Endless Love, come Nihan riesce finalmente a divorziare da Emir</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=1XvC8W7Vrr0">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di Endless Love</h3><ol class="numerata"><li><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></li><li><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></li><li><a href="/endless-love/endless-love-chi-e-galip-kozcuoglu-le-due-volte-in-cui-nihan-e-stata-venduta/">Endless Love, chi è Galip Kozcuoğlu: le due volte in cui Nihan è stata venduta</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-zeynep-soydere-perche-emir-lha-scelta-e-cosa-ha-distrutto/">Endless Love, chi è davvero Zeynep Soydere: perché Emir l&#x27;ha scelta e cosa ha distrutto</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>Endless Love, come Nihan riesce finalmente a divorziare da Emir</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su Endless Love</h3><ul><li><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></li><li><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></li><li><a href="/endless-love/endless-love-chi-e-galip-kozcuoglu-le-due-volte-in-cui-nihan-e-stata-venduta/">Endless Love, chi è Galip Kozcuoğlu: le due volte in cui Nihan è stata venduta</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-zeynep-soydere-perche-emir-lha-scelta-e-cosa-ha-distrutto/">Endless Love, chi è davvero Zeynep Soydere: perché Emir l&#x27;ha scelta e cosa ha distrutto</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

@@ -12,7 +12,7 @@
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Serie TV Fans">
 <meta property="og:url" content="https://serietvfans.com/la-promessa/la-promessa-anticipazioni-dal-31-agosto-al-4-settembre-2026/">
-<meta property="og:image" content="https://serietvfans.com/social.svg">
+<meta property="og:image" content="https://serietvfans.com/img/la-promessa-anticipazioni-dal-31-agosto-al-4-settembre-2026.jpg">
 <meta property="og:locale" content="it_IT">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#7b1e2b">
@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -314,12 +363,12 @@ if(l.length){el.src=l.shift();el.dataset.fb=JSON.stringify(l)}else{el.onerror=nu
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7778653397776213" crossorigin="anonymous"></script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "96259d7e67ce47fba4573364859712a6"}'></script>
 <script>(function(){var f=0;function go(){if(f)return;f=1;(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","y3rpoig6jk");}["pointerdown","keydown","touchstart","scroll"].forEach(function(v){addEventListener(v,go,{once:1,passive:1})});setTimeout(go,2500)})();</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "La Promessa, anticipazioni dal 31 agosto al 4 settembre 2026", "datePublished": "2026-08-30", "dateModified": "2026-09-03", "description": "Anticipazioni e trame delle puntate di La Promessa da lunedì 31 a venerdì 4 settembre 2026.", "inLanguage": "it-IT", "mainEntityOfPage": "https://serietvfans.com/la-promessa/la-promessa-anticipazioni-dal-31-agosto-al-4-settembre-2026/", "image": [], "author": {"@type": "Organization", "name": "Serie TV Fans", "url": "https://serietvfans.com/chi-siamo/"}, "publisher": {"@type": "Organization", "name": "Serie TV Fans", "logo": {"@type": "ImageObject", "url": "https://serietvfans.com/favicon.svg"}}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "La Promessa, anticipazioni dal 31 agosto al 4 settembre 2026", "datePublished": "2026-08-30", "dateModified": "2026-09-08", "description": "Anticipazioni e trame delle puntate di La Promessa da lunedì 31 a venerdì 4 settembre 2026.", "inLanguage": "it-IT", "mainEntityOfPage": "https://serietvfans.com/la-promessa/la-promessa-anticipazioni-dal-31-agosto-al-4-settembre-2026/", "image": ["https://serietvfans.com/img/la-promessa-anticipazioni-dal-31-agosto-al-4-settembre-2026.jpg"], "author": {"@type": "Organization", "name": "Serie TV Fans", "url": "https://serietvfans.com/chi-siamo/"}, "publisher": {"@type": "Organization", "name": "Serie TV Fans", "logo": {"@type": "ImageObject", "url": "https://serietvfans.com/favicon.svg"}}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://serietvfans.com/"}, {"@type": "ListItem", "position": 2, "name": "La Promessa", "item": "https://serietvfans.com/serie/la-promessa/"}, {"@type": "ListItem", "position": 3, "name": "La Promessa, anticipazioni dal 31 agosto al 4 settembre 2026"}]}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -332,11 +381,12 @@ if(l.length){el.src=l.shift();el.dataset.fb=JSON.stringify(l)}else{el.onerror=nu
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/la-promessa/">La Promessa</a> › La Promessa, anticipazioni dal 31 agosto al 4 settembre 2026</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/la-promessa/">La Promessa</a>
   <h1>La Promessa, anticipazioni dal 31 agosto al 4 settembre 2026</h1>
-  <div class="firma">Redazione Serie TV Fans · domenica 30 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-30">domenica 30 agosto 2026</time></span><span>aggiornato il 8 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Anticipazioni e trame delle puntate di La Promessa da lunedì 31 a venerdì 4 settembre 2026.</p></div>
   <div class="onda"><span class="tv">📺</span><span><strong>La Promessa</strong> — Rete 4 · in streaming su Mediaset Infinity</span></div>
-  <figure class="copertina"><img src="/fallback/la-promessa.svg" alt="La Promessa" width="1280" height="720"><figcaption>La Promessa</figcaption></figure>
-  <p class="occhiello">Anticipazioni e trame delle puntate di La Promessa da lunedì 31 a venerdì 4 settembre 2026.</p>
+  <figure class="copertina"><img src="/img/la-promessa-anticipazioni-dal-31-agosto-al-4-settembre-2026.jpg" alt="La Promessa"><figcaption>Immagine d&#x27;ambiente — La Promessa</figcaption></figure>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   
   <div class="corpo">
@@ -398,18 +448,43 @@ if(l.length){el.src=l.shift();el.dataset.fb=JSON.stringify(l)}else{el.onerror=nu
 <p>Lorenzo annuncia in pubblico le nozze con Angela e le vuole entro un mese. Cristóbal ha bisogno di due valletti e ottiene il permesso da Alonso. Fra i due assunti c&#x27;è Carlo Castejón. Maria lo evita, poi confessa a Samuel e a Pia che è lui il padre. Samuel le dice di parlargli. Maria rimanda, convinta che lui non la ricordi. Carlo invece ricorda tutto, e le dice che si sono solo divertiti. Spera di restare alla Promessa anche dopo il matrimonio. Corteggia le altre domestiche. Samuel gli fa le pulci su ogni errore. E Maria decide di conoscerlo meglio, per capire se può fare il padre.</p>
 <p>Restano tre cose precise, e si decidono nelle puntate successive. Che cosa succede quando Cristóbal deve decidere se tenere Carlo dopo le nozze. Come reagisce Pia, che finora ha ascoltato e basta, e che di figli avuti fuori dal matrimonio se ne intende più di chiunque altro in questa casa. E che cosa risponde Maria alla proposta di Samuel, perché quella proposta è ancora lì, sul tavolo, e nessuno l&#x27;ha ritirata.</p>
   </div>
-  <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=nhKYc56Y74k" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/nhKYc56Y74k/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA - Trame e Momenti Speciali: Matrimonio ed Eredità</span></a></li><li><a href="https://www.youtube.com/watch?v=C8f5yiZFb6U" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/C8f5yiZFb6U/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA ANTICIPAZIONI : Trame dal 17 al 23 giugno 2023 - Lola  confessa e muore!</span></a></li><li><a href="https://www.youtube.com/watch?v=Huo7D4YNQWE" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/Huo7D4YNQWE/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni 18-22 Settembre: La Settimana delle verità svelate! Pia sviene!</span></a></li></ul></div>
+  <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=C8f5yiZFb6U" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/C8f5yiZFb6U/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA ANTICIPAZIONI : Trame dal 17 al 23 giugno 2023 - Lola  confessa e muore!</span></a></li><li><a href="https://www.youtube.com/watch?v=Huo7D4YNQWE" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/Huo7D4YNQWE/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni 18-22 Settembre: La Settimana delle verità svelate! Pia sviene!</span></a></li><li><a href="https://www.youtube.com/watch?v=Wa_iP6VL4bc" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/Wa_iP6VL4bc/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni trame dal 8 al 14 luglio 2023: L&#x27; Hangar va&#x27; a fuoco!</span></a></li></ul></div>
   
+  <section class="correlati-serie"><h2>Altre anticipazioni di La Promessa</h2><div class="griglia"><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/"><div class="foto"><img src="https://i.ytimg.com/vi/Rp8VhxDiDSk/hqdefault.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></h3>
+    <div class="quando">7 settembre 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/"><div class="foto"><img src="https://i.ytimg.com/vi/8JHt6ogwxQw/hqdefault.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Ángela beve tutto, Curro sfonda la porta</a></h3>
+    <div class="quando">6 settembre 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/"><div class="foto"><img src="/img/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Curro nasconde Ángela, Lorenzo furioso</a></h3>
+    <div class="quando">6 settembre 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=La Promessa, anticipazioni dal 31 agosto al 4 settembre 2026 — https://serietvfans.com/la-promessa/la-promessa-anticipazioni-dal-31-agosto-al-4-settembre-2026/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/la-promessa/la-promessa-anticipazioni-dal-31-agosto-al-4-settembre-2026/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/la-promessa/la-promessa-anticipazioni-dal-31-agosto-al-4-settembre-2026/&text=La Promessa, anticipazioni dal 31 agosto al 4 settembre 2026" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  
-  <div class="box"><h3>Ancora su La Promessa</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-3-6-settembre-maria-affronta-la-gravidanza-da-sola/">La Promessa anticipazioni 3-6 settembre: Maria affronta la gravidanza da sola</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-carlo-arriva-maria-trema/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Carlo arriva, Maria trema</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/far-away/far-away-anticipazioni-dal-31-agosto-al-4-settembre-chi-ha-donato-il-fegato-a-nare/">Far Away, anticipazioni dal 31 agosto al 4 settembre: chi ha donato il fegato a Nare, e perché adesso sta male lui</a></li><li><a href="/far-away/far-away-dal-31-agosto-la-madre-di-alya-sapeva-tutto-non-ricordo/">Far Away Dal 31 Agosto: la madre di Alya sapeva tutto — «non ricordo»</a></li><li><a href="/forbidden-fruit/forbidden-fruit-dal-31-agosto-il-conto-a-nome-di-halit-che-e-morto/">Forbidden Fruit Dal 31 Agosto: il conto a nome di Halit, che è morto</a></li></ul></div>
+  <div class="box"><h3>Ultime di La Promessa</h3><ol class="numerata"><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Ángela beve tutto, Curro sfonda la porta</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Curro nasconde Ángela, Lorenzo furioso</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>Ogni anticipazione, prima in video sul canale Serie TV Fans</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
+  </div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

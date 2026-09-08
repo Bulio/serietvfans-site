@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/la-promessa/">La Promessa</a> › La Promessa, chi è davvero Jana Expósito: il vero nome Mariana, i 15 anni nell&#x27;ombra e la teoria su Ramona, l&#x27;ex suora che l&#x27;ha cresciuta</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/la-promessa/">La Promessa</a>
   <h1>La Promessa, chi è davvero Jana Expósito: il vero nome Mariana, i 15 anni nell&#x27;ombra e la teoria su Ramona, l&#x27;ex suora che l&#x27;ha cresciuta</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Ricostruzione completa del passato più misterioso della soap: Jana si chiama in realtà Mariana, nata a Luján tra il 1892 e il 1893, figlia di Dolores. A 5 anni vide gli uomini incappucciati del Barone uccidere la madre e rapire il fratello Marcos — ribattezzato Curro. Dei 15 anni successivi si sa pochissimo: la capanna di Ramona, la casa del dottor Teodoro, e una cultura fuori dal comune che ha alimentato la teoria più discussa: e se Jana fosse ricca?</p><ol><li><a href="#c1">La notte del 1898: l&#x27;origine di tutto</a></li><li><a href="#c2">Chi era Dolores, la donna da cui comincia tutto</a></li><li><a href="#c3">La teoria della ricchezza: perché non regge</a></li><li><a href="#c4">Ramona, l&#x27;ex suora: la madre putativa</a></li><li><a href="#c5">Il dottor Teodoro: infermiera, non dottoressa</a></li><li><a href="#c6">E se Dolores non fosse morta quella notte?</a></li><li><a href="#c7">Come Curro ha cambiato il destino di Mariana</a></li><li><a href="#c8">Perché Ramona ha aiutato la giovane Jana con Pía</a></li><li><a href="#c9">Cosa legava davvero Dolores alla signora Eugenia</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>La Promessa</strong> — Rete 4 · in streaming su Mediaset Infinity</span></div>
   
-  <p class="occhiello">Ricostruzione completa del passato più misterioso della soap: Jana si chiama in realtà Mariana, nata a Luján tra il 1892 e il 1893, figlia di Dolores. A 5 anni vide gli uomini incappucciati del Barone uccidere la madre e rapire il fratello Marcos — ribattezzato Curro. Dei 15 anni successivi si sa pochissimo: la capanna di Ramona, la casa del dottor Teodoro, e una cultura fuori dal comune che ha alimentato la teoria più discussa: e se Jana fosse ricca?</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: La Promessa, chi è davvero Jana Expósito: il vero nome Mariana, i 15 anni nell&#x27;ombra e la teoria su Ramona, l&#x27;ex suora che l&#x27;ha cresciuta" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/mokP3hSDsuc/maxresdefault.jpg" alt="La Promessa, chi è davvero Jana Expósito: il vero nome Mariana, i 15 anni nell&#x27;ombra e la teoria su Ramona, l&#x27;ex suora che l&#x27;ha cresciuta" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/mokP3hSDsuc/hqdefault.jpg 480w, https://i.ytimg.com/vi/mokP3hSDsuc/sddefault.jpg 640w, https://i.ytimg.com/vi/mokP3hSDsuc/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/mokP3hSDsuc/hqdefault.jpg&quot;, &quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,46 +409,68 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>L&#x27;indizio che ha acceso i sospetti: all&#x27;inizio della serie Jana non sapeva né pulire né servire — come chi non ha mai fatto la domestica in vita sua.</strong></p>
-  <h2>La notte del 1898: l&#x27;origine di tutto</h2>
+  <h2 id="c1">La notte del 1898: l&#x27;origine di tutto</h2>
 <p>I fatti confermati dalla serie disegnano una tragedia precisa: Mariana cresce con la madre Dolores — cameriera personale di Eugenia — tra un villaggio e la tenuta dei marchesi. Nel 1898, a 5 anni, gli uomini armati e incappucciati mandati dal Barone irrompono in casa per rapire il fratellino Marcos: nella fuga Dolores viene uccisa, e la bambina consegna il fratello con una promessa — lo avrebbe ritrovato. Quindici anni dopo, nel 1913, torna a Luján sotto il falso nome di Jana Expósito: missione, verità e giustizia. Marcos intanto è diventato Curro.</p>
-<h2>Chi era Dolores, la donna da cui comincia tutto</h2>
+<h2 id="c2">Chi era Dolores, la donna da cui comincia tutto</h2>
 <p>Di Jana si è detto molto; di sua madre quasi niente, ed è lì che i conti tornano. Dolores era la cameriera personale di Eugenia, e questo spiega un dettaglio che sembra minore e non lo è: non viveva a palazzo. Viveva con i due bambini in un&#x27;abitazione fuori dalla tenuta, da domestica esterna, e varcava quel portone solo nei periodi in cui la sua signora era presente — motivo per cui la sua vita privata, e i suoi figli, sono rimasti invisibili a metà della servitù. Il marito, il padre di Mariana, era morto anni prima: cresceva due figli da sola, dentro un mondo in cui chi serviva non aveva nessuno a proteggerlo. La notte degli incappucciati fu lei a indicare alla bambina dove correre, la capanna di Ramona: l&#x27;ultima decisione da madre, presa in pochi secondi.</p>
-<h2>La teoria della ricchezza: perché non regge</h2>
+<h2 id="c3">La teoria della ricchezza: perché non regge</h2>
 <p>Il dettaglio che ha scatenato i fan: al suo arrivo Jana non sapeva svolgere i compiti domestici — mai fatto la serva prima — alimentando l&#x27;ipotesi di origini nobili o di una fortuna nascosta, magari capace di salvare la tenuta dalla bancarotta. Ma la teoria si scontra con la logica: perché mai una Jana ricca dovrebbe salvare la famiglia che le ha distrutto la vita? E la stessa interprete, Ana Garcés, ha descritto il personaggio come radicato nella sua «componente operaia oppressa». La cultura di Jana ha una spiegazione più interessante del denaro.</p>
-<h2>Ramona, l&#x27;ex suora: la madre putativa</h2>
+<h2 id="c4">Ramona, l&#x27;ex suora: la madre putativa</h2>
 <p>La chiave dei 15 anni mancanti sarebbe Ramona: la donna della capanna indicata da Dolores come rifugio la notte della tragedia. La teoria la identifica con l&#x27;ex suora esperta di ostetricia a cui Jana si rivolse per Pía: sarebbe stata lei a crescere Mariana, insegnandole le erbe, i rimedi, l&#x27;assistenza alle partorienti — e quella coscienza dei diritti delle donne e dei poveri che fa di Jana la paladina più battagliera della tenuta, più ancora di Catalina.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Il dottor Teodoro: infermiera, non dottoressa</h2>
+<h2 id="c5">Il dottor Teodoro: infermiera, non dottoressa</h2>
 <p>L&#x27;ultimo tassello è la casa del dottor Teodoro, il medico moderno presso cui Jana afferma di aver lavorato: più che una serva, probabilmente un&#x27;assistente-infermiera con accesso alla biblioteca e ai metodi più avanzati — il che spiegherebbe istruzione e competenze mediche. Da scartare invece l&#x27;ipotesi «Jana medico sotto mentite spoglie»: gli anni di studio non tornano con la sua età, e lei stessa ha dichiarato il sogno di diventare ostetrica. Il quadro finale è coerente: non una ricca ereditiera, ma una sopravvissuta istruita dalle donne che l&#x27;hanno salvata — e armata di una missione che nessuna fortuna potrebbe comprare.</p>
-<h2>E se Dolores non fosse morta quella notte?</h2>
+<h2 id="c6">E se Dolores non fosse morta quella notte?</h2>
 <p>È la domanda che ribalta ogni ricostruzione, compresa quella che avete appena letto, e non nasce dai fan: nasce dall&#x27;unica persona che c&#x27;era. Dopo mille reticenze, Ramona arriva a pronunciare la frase impensabile — la madre creduta morta sarebbe ancora viva. Se è vero, i quindici anni nell&#x27;ombra cambiano completamente di segno: Jana non sarebbe la sopravvissuta di una strage, ma la figlia cresciuta a poche ore di strada da una madre che qualcuno le ha tenuta nascosta. E cambia il movente di tutta la storia, perché fingere una morte è molto più complicato che provocarla: vuol dire che a qualcuno serviva che Dolores non parlasse, ma nemmeno che sparisse del tutto. Tenetela da parte, questa ipotesi: alla Promessa le verità di questo peso arrivano sempre tardi, e quasi sempre da chi sta per andarsene.</p>
-<h2>Come Curro ha cambiato il destino di Mariana</h2>
+<h2 id="c7">Come Curro ha cambiato il destino di Mariana</h2>
 <p>La vita della piccola Mariana, nata a Luján tra il 1892 e il 1893, è cambiata per sempre durante la tragica notte del 1898. In quel drammatico momento la bambina aveva soltanto cinque anni quando gli uomini armati e incappucciati inviati dal Barone hanno fatto irruzione per rapire il fratellino Marcos. La madre Dolores ha cercato la fuga insieme ai figli ma è stata uccisa mentre cercavano di salvarsi. Prima che la situazione precipitasse del tutto, la piccola Mariana ha dovuto consegnare il fratello al gruppo di assalitori, facendo però una promessa solenne: lo avrebbe ritrovato a ogni costo prima o poi.</p>
 <p>Quel bambino rapito durante l&#x27;attacco degli incappucciati è stato poi ribattezzato con il nome di Curro, crescendo lontano dalla sua vera famiglia. Mariana, per mantenere la parola data, ha atteso ben quindici anni vissuti lontano dai riflettori prima di fare il suo ritorno a Luján nel 1913. Per non farsi riconoscere, la ragazza ha scelto di adottare l&#x27;identità falsa di Jana Expósito, facendosi assumere come domestica nella tenuta dei marchesi. La sua presenza lì non è affatto casuale, ma rappresenta il punto di partenza per compiere la sua missione principale: cercare la verità sul passato e ottenere finalmente la giusta giustizia per sua madre.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Perché Ramona ha aiutato la giovane Jana con Pía</h2>
+<h2 id="c8">Perché Ramona ha aiutato la giovane Jana con Pía</h2>
 <p>Nel corso della storia, la misteriosa figura di Ramona si rivela essere una chiave di svolta fondamentale per comprendere dove Jana abbia ottenuto la sua preparazione. Ramona è infatti un&#x27;ex suora con una grande esperienza nel campo dell&#x27;ostetricia che vive nella capanna indicata da Dolores durante la fuga. È proprio a lei che la protagonista decide di rivolgersi quando si trova a dover gestire la delicata situazione riguardante Pía. L&#x27;anziana donna ha fatto da madre putativa a Mariana durante i quindici anni nell&#x27;ombra, insegnandole a conoscere le erbe medicinali, i rimedi naturali e i segreti per l&#x27;assistenza diretta alle partorienti durante i momenti più complessi.</p>
 <p>Oltre al sapere pratico trasmesso attraverso l&#x27;uso dei rimedi naturali, Ramona ha trasmesso alla ragazza una profonda coscienza legata ai diritti delle donne e dei ceti più poveri. Questo insegnamento ha reso la giovane domestica la paladina più battagliera dell&#x27;intera tenuta, persino più determinata di Catalina nell&#x27;affrontare le ingiustizie quotidiane. A completare la sua formazione è stata poi la permanenza nella casa del dottor Teodoro, dove Jana ha lavorato come assistente-infermiera. Quell&#x27;esperienza le ha consentito di consultare liberamente una biblioteca moderna e apprendere metodi avanzati, coltivando apertamente il desiderio e il sogno di diventare un giorno una vera ostetrica.</p>
-<h2>Cosa legava davvero Dolores alla signora Eugenia</h2>
+<h2 id="c9">Cosa legava davvero Dolores alla signora Eugenia</h2>
 <p>Per comprendere a fondo le ragioni del dramma, occorre analizzare la figura di Dolores e il suo rapporto professionale con Eugenia. Dolores lavorava come cameriera personale della nobile donna, ma la sua organizzazione familiare presentava caratteristiche del tutto particolari per l&#x27;epoca. La madre di Mariana non risiedeva all&#x27;interno del palazzo principale insieme al resto del personale di servizio, ma abitava con i suoi due bambini in un&#x27;abitazione esterna situata lontano dalla tenuta. Questa sistemazione le permetteva di varcare i cancelli della residenza unicamente nei periodi in cui la sua signora era presente, rendendo la vita dei suoi figli completamente invisibile a gran parte della servitù.</p>
 <p>La donna si trovava a crescere da sola Mariana e il piccolo Marcos poiché il marito era deceduto diversi anni prima. In un contesto sociale spietato, dove i domestici non potevano contare su alcuna protezione, Dolores ha affrontato enormi difficoltà fino alla fatidica notte dell&#x27;aggressione del Barone. Di fronte al pericolo imminente, la madre ha scelto di indicare alla bambina la capanna di Ramona come unico rifugio sicuro, compiendo il suo ultimo atto materno. I sospetti sorti in seguito sulle sue reali sorti, alimentati dalle parole pronunciate da Ramona, suggeriscono che Dolores potrebbe non essere morta quella notte, lasciando aperto un enigma inquietante sulle sue trame.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=HMRZRG9J6xA" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/HMRZRG9J6xA/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni Spoiler Teoria: Ramona confessa a Jana che Dolores è viva! Abel innam</span></a></li><li><a href="https://www.youtube.com/watch?v=ofbjsGhxwLw" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/ofbjsGhxwLw/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni e Teorie: E se Jana Scoprisse che Curro è fratello di......</span></a></li><li><a href="https://www.youtube.com/watch?v=GmD3Dm5W2eo" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/GmD3Dm5W2eo/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni: Ramona darà la lettera di Dolores a Jana e Curro? Scopriranno la ver</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Vi convince la teoria di Ramona come madre putativa di Jana o credete ancora alla pista della ricchezza nascosta? E quando la serie svelerà i 15 anni mancanti?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=mokP3hSDsuc">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di La Promessa</h2><div class="griglia"><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/"><div class="foto"><img src="https://i.ytimg.com/vi/Rp8VhxDiDSk/hqdefault.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></h3>
+    <div class="quando">7 settembre 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/"><div class="foto"><img src="https://i.ytimg.com/vi/8JHt6ogwxQw/hqdefault.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Ángela beve tutto, Curro sfonda la porta</a></h3>
+    <div class="quando">6 settembre 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/"><div class="foto"><img src="/img/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Curro nasconde Ángela, Lorenzo furioso</a></h3>
+    <div class="quando">6 settembre 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=La Promessa, chi è davvero Jana Expósito: il vero nome Mariana, i 15 anni nell&#x27;ombra e la teoria su Ramona, l&#x27;ex suora che l&#x27;ha cresciuta — https://serietvfans.com/la-promessa/la-promessa-chi-e-davvero-jana-exposito-il-vero-nome-mariana-i-15-anni-nellombra/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/la-promessa/la-promessa-chi-e-davvero-jana-exposito-il-vero-nome-mariana-i-15-anni-nellombra/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/la-promessa/la-promessa-chi-e-davvero-jana-exposito-il-vero-nome-mariana-i-15-anni-nellombra/&text=La Promessa, chi è davvero Jana Expósito: il vero nome Mariana, i 15 anni nell&#x27;ombra e la teoria su Ramona, l&#x27;ex suora che l&#x27;ha cresciuta" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">LA PROMESSA - SPOILER E TEORIE - JANA IN REALTÀ È RICCA?</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=mokP3hSDsuc">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di La Promessa</h3><ol class="numerata"><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Ángela beve tutto, Curro sfonda la porta</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Curro nasconde Ángela, Lorenzo furioso</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>LA PROMESSA - SPOILER E TEORIE - JANA IN REALTÀ È RICCA?</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su La Promessa</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-3-6-settembre-maria-affronta-la-gravidanza-da-sola/">La Promessa anticipazioni 3-6 settembre: Maria affronta la gravidanza da sola</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-carlo-arriva-maria-trema/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Carlo arriva, Maria trema</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/far-away/far-away-anticipazioni-dal-31-agosto-al-4-settembre-chi-ha-donato-il-fegato-a-nare/">Far Away, anticipazioni dal 31 agosto al 4 settembre: chi ha donato il fegato a Nare, e perché adesso sta male lui</a></li><li><a href="/far-away/far-away-dal-31-agosto-la-madre-di-alya-sapeva-tutto-non-ricordo/">Far Away Dal 31 Agosto: la madre di Alya sapeva tutto — «non ricordo»</a></li><li><a href="/forbidden-fruit/forbidden-fruit-dal-31-agosto-il-conto-a-nome-di-halit-che-e-morto/">Forbidden Fruit Dal 31 Agosto: il conto a nome di Halit, che è morto</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

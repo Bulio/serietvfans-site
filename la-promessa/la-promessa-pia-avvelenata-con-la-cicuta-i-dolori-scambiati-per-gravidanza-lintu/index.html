@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/la-promessa/">La Promessa</a> › La Promessa, Pía avvelenata con la cicuta: i dolori scambiati per gravidanza, l&#x27;intuizione di Jana e i sospetti su Petra</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/la-promessa/">La Promessa</a>
   <h1>La Promessa, Pía avvelenata con la cicuta: i dolori scambiati per gravidanza, l&#x27;intuizione di Jana e i sospetti su Petra</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Nel finale della prima stagione spagnola, i malori della governante si rivelano ben più di un disturbo da gravidanza: il medico conferma l&#x27;avvelenamento e le raccomanda di non bere da bicchieri lasciati incustoditi. A insospettirsi per prima è Jana, che nota come i dolori arrivino in momenti senza alcuna logica; poi Teresa fa il nome della sostanza — la cicuta — e quello della principale sospettata: Petra, che si difende negando con forza pur ammettendo di odiare Pía.</p><ol><li><a href="#c1">Il segreto che Pía si porta dietro</a></li><li><a href="#c2">Petra, Pía e un posto solo: chi è chi nelle cucine della Promessa</a></li><li><a href="#c3">I dolori che non tornano</a></li><li><a href="#c4">La conferma del medico: qualcuno la vuole morta</a></li><li><a href="#c5">Petra si difende: «Non sono un&#x27;assassina»</a></li><li><a href="#c6">Un&#x27;avvelenata, in quella casa, non fa una denuncia</a></li><li><a href="#c7">Come Pía e Jana hanno protetto Teresa dal barone</a></li><li><a href="#c8">Perché Petra insidia il ruolo di Pía alla tenuta</a></li><li><a href="#c9">Cosa nasconde la vicinanza tra Petra e Gregorio</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>La Promessa</strong> — Rete 4 · in streaming su Mediaset Infinity</span></div>
   
-  <p class="occhiello">Nel finale della prima stagione spagnola, i malori della governante si rivelano ben più di un disturbo da gravidanza: il medico conferma l&#x27;avvelenamento e le raccomanda di non bere da bicchieri lasciati incustoditi. A insospettirsi per prima è Jana, che nota come i dolori arrivino in momenti senza alcuna logica; poi Teresa fa il nome della sostanza — la cicuta — e quello della principale sospettata: Petra, che si difende negando con forza pur ammettendo di odiare Pía.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: La Promessa, Pía avvelenata con la cicuta: i dolori scambiati per gravidanza, l&#x27;intuizione di Jana e i sospetti su Petra" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/XOjagg8yj9M/maxresdefault.jpg" alt="La Promessa, Pía avvelenata con la cicuta: i dolori scambiati per gravidanza, l&#x27;intuizione di Jana e i sospetti su Petra" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/XOjagg8yj9M/hqdefault.jpg 480w, https://i.ytimg.com/vi/XOjagg8yj9M/sddefault.jpg 640w, https://i.ytimg.com/vi/XOjagg8yj9M/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/XOjagg8yj9M/hqdefault.jpg&quot;, &quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,46 +409,68 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>Il sospetto che apre uno scenario diverso: qualcuno ha visto Petra spazzolare la giacca di Gregorio e avvicinarsi a lui dopo le nozze — forse il bersaglio non è solo il posto di Pía.</strong></p>
-  <h2>Il segreto che Pía si porta dietro</h2>
+  <h2 id="c1">Il segreto che Pía si porta dietro</h2>
 <p>Per capire cosa la circonda bisogna ricordare da dove viene: il barone, l&#x27;uomo che aveva abusato più volte di lei, aveva cominciato a insidiare anche Teresa con regali sempre più costosi. Quando stava per aggredirla, fu Pía a fermarlo per sempre. Da lì la messinscena costruita con Jana — un finto incidente d&#x27;auto e il corpo spedito in un burrone — e le indagini che non hanno mai portato a loro, nonostante Cruz avesse messo a disposizione ogni risorsa. La governante ha continuato a lavorare alla tenuta, ha sposato Gregorio e aspetta un bambino.</p>
-<h2>Petra, Pía e un posto solo: chi è chi nelle cucine della Promessa</h2>
+<h2 id="c2">Petra, Pía e un posto solo: chi è chi nelle cucine della Promessa</h2>
 <p>Il titolo di Petra non è quello che sembra: alla tenuta non dirige nessuno, sta accanto alla marchesa come dama di compagnia. La differenza pesa più di quanto sembri, perché non risponde alla governante ma direttamente a Cruz, ed è l&#x27;unica del piano di sotto che possa parlare male di una superiore davanti a tutti senza temere conseguenze. Il posto che vorrebbe, per sua stessa ammissione, è occupato dalla donna che sta male. Pía, dall&#x27;altra parte, quella casa la manda avanti da una vita: gli orari della servitù, l&#x27;ordine delle camere e ciò che entra in cucina dipendono da lei, ed è la persona a cui i domestici si rivolgono quando qualcosa va storto. Ecco perché il sospetto attecchisce da solo: in quelle cucine c&#x27;è una sola persona che dalla scomparsa di Pía avrebbe qualcosa di concreto da guadagnare.</p>
-<h2>I dolori che non tornano</h2>
+<h2 id="c3">I dolori che non tornano</h2>
 <p>I malori cominciano a impedirle di lavorare come prima, e la spiegazione più comoda — è la gravidanza — convince tutti tranne Jana. La ragazza nota che i dolori arrivano senza alcun criterio: da seduta, mentre discute con Rómulo, in momenti che nulla hanno a che fare con lo stomaco o con il bambino. Vede il corpo di Pía indebolirsi fino alle vertigini, esattamente come il giorno delle nozze con Gregorio. Comincia a cercare risposte sui libri della biblioteca senza trovarne, finché non ne parla con Teresa — che ha già lo stesso sospetto.</p>
-<h2>La conferma del medico: qualcuno la vuole morta</h2>
+<h2 id="c4">La conferma del medico: qualcuno la vuole morta</h2>
 <p>Ricoverata e sottoposta ad accertamenti, Pía riceve la diagnosi che gela la tenuta: si tratta di avvelenamento, e la sostanza è la cicuta. Il medico le raccomanda di non bere da bicchieri lasciati incustoditi e di diffidare di qualsiasi cosa le venga offerta, perché qualcuno la sta avvelenando con regolarità. Lei condivide la scoperta con le amiche più fidate del palazzo, e la servitù passa in pochi giorni dalla preoccupazione alla caccia al colpevole.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Petra si difende: «Non sono un&#x27;assassina»</h2>
+<h2 id="c5">Petra si difende: «Non sono un&#x27;assassina»</h2>
 <p>Il nome che circola è uno solo: Petra, il braccio destro della marchesa, capace di ogni cattiveria. Lei però si difende con forza — non accetta un&#x27;accusa tanto infamante e chiede quale motivo avrebbe per uccidere Pía. Ammette apertamente di odiarla e di desiderare che lasci La Promessa, ma nega di volerle fare del male; Candela la definisce una pessima collega, senza però riuscire a dimostrare nulla. E c&#x27;è un dettaglio che sposta il movente: qualcuno l&#x27;ha vista spazzolare la giacca di Gregorio e avvicinarsi a lui con insolito trasporto dopo il matrimonio. Che l&#x27;obiettivo non sia soltanto il posto da governante? Pía, intanto, comincia a stare meglio — e giura di scoprire chi le vuole tanto male.</p>
-<h2>Un&#x27;avvelenata, in quella casa, non fa una denuncia</h2>
+<h2 id="c6">Un&#x27;avvelenata, in quella casa, non fa una denuncia</h2>
 <p>La diagnosi del medico è anche la misura di quanto Pía sia sola. Nessuno chiama la Guardia Civil, nessuno interroga nessuno, e l&#x27;unica difesa che le viene consegnata è una regola da applicare da sé: non bere da bicchieri lasciati incustoditi, non accettare nulla da nessuno. Continuerà a lavorare dove ha sempre lavorato, diffidando di ogni tazza che le viene porta. Il sospetto, intanto, fa un danno tutto suo: senza prove il piano di sotto si divide da solo, e una persona accusata che non può discolparsi diventa più pericolosa di prima, non meno. E se il movente non fosse il posto da governante ma Gregorio — come lascia intendere chi ha visto Petra spazzolargli la giacca — allora cambiare governante non salverebbe nessuno: il pericolo dormirebbe nella stessa stanza della vittima.</p>
-<h2>Come Pía e Jana hanno protetto Teresa dal barone</h2>
+<h2 id="c7">Come Pía e Jana hanno protetto Teresa dal barone</h2>
 <p>La difficile situazione vissuta da Teresa con il barone rappresenta un passaggio fondamentale per capire la grande solidarietà nata tra le lavoratrici della tenuta. L&#x27;uomo aveva iniziato a insidiare la giovane con doni sempre più preziosi, fino a tentare un&#x27;aggressione diretta. L&#x27;intervento di Pía ha fermato per sempre l&#x27;aggressore, salvando la ragazza. Per evitare gravi conseguenze, la governante e Jana hanno organizzato una messinscena simulando un incidente d&#x27;auto e facendo finire il corpo nel burrone. Nonostante le ingenti risorse messe in campo da Cruz per le ricerche, la verità non è mai emersa.</p>
 <p>Questo drammatico antecedente ha consolidato un legame di profonda fiducia tra le inservienti, spingendole a tutelarsi reciprocamente davanti a ogni pericolo. Dopo aver superato quella crisi, Pía ha cercato di ritrovare la stabilità sposando Gregorio e preparando l&#x27;arrivo del suo bambino. Tuttavia, la serenità si è subito interrotta a causa dell&#x27;insorgere di forti e continui malori. Notando che i dolori arrivavano in momenti privi di senso, perfino mentre la donna parlava con Rómulo, Jana si è insospettita e ha iniziato a cercare risposte nei libri della biblioteca per comprendere la vera origine del problema.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Perché Petra insidia il ruolo di Pía alla tenuta</h2>
+<h2 id="c8">Perché Petra insidia il ruolo di Pía alla tenuta</h2>
 <p>All&#x27;interno del palazzo, Petra occupa una posizione unica in qualità di dama di compagnia di Cruz, rispondendo soltanto alla marchesa e non alla governante. Questo le consente di parlare male delle superiori senza temere sanzioni, alimentando un clima di costante tensione. La donna non ha mai nascosto il desiderio di prendere il posto di Pía, e il giudizio espresso da Candela, che la considera una pessima collega, ha rafforzato i sospetti su di lei. Quando il medico ha confermato l&#x27;avvelenamento da cicuta, la servitù ha subito pensato a un suo coinvolgimento diretto nella vicenda.</p>
 <p>Accusata da tutti, Petra si è difesa negando con forza di essere un&#x27;assassina e pretendendo di sapere quale vantaggio avrebbe da un crimine simile. Pur ammettendo apertamente il proprio odio per la rivale e l&#x27;aspirazione a vederla allontanata dalla struttura, la donna nega ogni addebito. Nel frattempo, le raccomandazioni del medico impongono a Pía di non bere mai da bicchieri lasciati incustoditi e di rifiutare qualsiasi sostanza offerta. Senza l&#x27;intervento della Guardia Civil, la vittima si trova isolata a dover gestire da sola una minaccia costante mentre cerca di riprendersi.</p>
-<h2>Cosa nasconde la vicinanza tra Petra e Gregorio</h2>
+<h2 id="c9">Cosa nasconde la vicinanza tra Petra e Gregorio</h2>
 <p>I sospetti sulla vicenda si sono ulteriormente complicati dopo la testimonianza di chi ha notato comportamenti insoliti subito dopo le nozze. Petra è stata infatti vista spazzolare la giacca di Gregorio e mostrare verso di lui un trasporto del tutto inatteso. Questa vicinanza suggerisce che il movente dell&#x27;avvelenamento potrebbe non limitarsi alla semplice conquista del ruolo di governante, ma coinvolgere dinamiche personali ben più intralciate. Se l&#x27;obiettivo fosse legato al matrimonio, per la vittima la situazione diventerebbe ancora più drammatica, poiché il pericolo risiederebbe direttamente nella sua stessa stanza.</p>
 <p>La mancanza di prove concrete continua a dividere gravemente il personale del piano di sotto, creando un clima di diffidenza reciproca che danneggia tutti. Mentre Pía mostra primi segni di miglioramento e promette a se stessa di individuare il responsabile, l&#x27;incertezza rende ogni gesto quotidiano fonte di grande apprensione. Una persona accusata senza possibilità di discolparsi diventa ancora più imprevedibile e pericolosa per la stabilità dell&#x27;intera servitù. Tra timori taciuti e alleanze segrete, la convivenza all&#x27;interno della tenuta resta fortemente compromessa dall&#x27;ombra della cicuta e da troppi interrogativi irrisolti.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   </div>
-  <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=eZfduWKpv3Q" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/eZfduWKpv3Q/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni Spagna: Finalmente svelato il nome del padre di Jana, che è.....</span></a></li><li><a href="https://www.youtube.com/watch?v=S6buAl8j5sk" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/S6buAl8j5sk/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni: Jana ritrova in un Convento il figlio di Pia rapito da Petra e Cruz!</span></a></li><li><a href="https://www.youtube.com/watch?v=Aqfy2Co4X2o" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/Aqfy2Co4X2o/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni 1-3 Novembre: Jana riuscirà a fermare il matrimonio?</span></a></li></ul></div>
+  <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=eZfduWKpv3Q" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/eZfduWKpv3Q/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni Spagna: Finalmente svelato il nome del padre di Jana, che è.....</span></a></li><li><a href="https://www.youtube.com/watch?v=Aqfy2Co4X2o" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/Aqfy2Co4X2o/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni 1-3 Novembre: Jana riuscirà a fermare il matrimonio?</span></a></li><li><a href="https://www.youtube.com/watch?v=JY3mexNp4Us" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/JY3mexNp4Us/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>JANA SALVA IL FIGLIO DI PIA! CRUZ E PETRA LO AVEVANO RAPITO - Anticipazioni La Promessa</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>È stata davvero Petra o c&#x27;è qualcun altro dietro l&#x27;avvelenamento? E cosa c&#x27;entra Gregorio in tutto questo?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=XOjagg8yj9M">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di La Promessa</h2><div class="griglia"><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/"><div class="foto"><img src="https://i.ytimg.com/vi/Rp8VhxDiDSk/hqdefault.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></h3>
+    <div class="quando">7 settembre 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/"><div class="foto"><img src="https://i.ytimg.com/vi/8JHt6ogwxQw/hqdefault.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Ángela beve tutto, Curro sfonda la porta</a></h3>
+    <div class="quando">6 settembre 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/"><div class="foto"><img src="/img/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Curro nasconde Ángela, Lorenzo furioso</a></h3>
+    <div class="quando">6 settembre 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=La Promessa, Pía avvelenata con la cicuta: i dolori scambiati per gravidanza, l&#x27;intuizione di Jana e i sospetti su Petra — https://serietvfans.com/la-promessa/la-promessa-pia-avvelenata-con-la-cicuta-i-dolori-scambiati-per-gravidanza-lintu/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/la-promessa/la-promessa-pia-avvelenata-con-la-cicuta-i-dolori-scambiati-per-gravidanza-lintu/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/la-promessa/la-promessa-pia-avvelenata-con-la-cicuta-i-dolori-scambiati-per-gravidanza-lintu/&text=La Promessa, Pía avvelenata con la cicuta: i dolori scambiati per gravidanza, l&#x27;intuizione di Jana e i sospetti su Petra" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">LA PROMESSA - Spoiler Finale di Stagione: PIA AVVELENATA!</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=XOjagg8yj9M">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di La Promessa</h3><ol class="numerata"><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Ángela beve tutto, Curro sfonda la porta</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Curro nasconde Ángela, Lorenzo furioso</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>LA PROMESSA - Spoiler Finale di Stagione: PIA AVVELENATA!</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su La Promessa</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-3-6-settembre-maria-affronta-la-gravidanza-da-sola/">La Promessa anticipazioni 3-6 settembre: Maria affronta la gravidanza da sola</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-carlo-arriva-maria-trema/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Carlo arriva, Maria trema</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/far-away/far-away-anticipazioni-dal-31-agosto-al-4-settembre-chi-ha-donato-il-fegato-a-nare/">Far Away, anticipazioni dal 31 agosto al 4 settembre: chi ha donato il fegato a Nare, e perché adesso sta male lui</a></li><li><a href="/far-away/far-away-dal-31-agosto-la-madre-di-alya-sapeva-tutto-non-ricordo/">Far Away Dal 31 Agosto: la madre di Alya sapeva tutto — «non ricordo»</a></li><li><a href="/forbidden-fruit/forbidden-fruit-dal-31-agosto-il-conto-a-nome-di-halit-che-e-morto/">Forbidden Fruit Dal 31 Agosto: il conto a nome di Halit, che è morto</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

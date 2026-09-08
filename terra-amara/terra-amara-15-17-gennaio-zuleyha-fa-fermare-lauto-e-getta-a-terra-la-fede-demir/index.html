@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/terra-amara/">Terra Amara</a> › Terra Amara 15-17 gennaio, Züleyha fa fermare l&#x27;auto e getta a terra la fede: «Demir mi disse che se l&#x27;avessi tolta mi avrebbe tagliato il dito»</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/terra-amara/">Terra Amara</a>
   <h1>Terra Amara 15-17 gennaio, Züleyha fa fermare l&#x27;auto e getta a terra la fede: «Demir mi disse che se l&#x27;avessi tolta mi avrebbe tagliato il dito»</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Sulla strada per Mersin, Züleyha racconta per la prima volta a qualcuno cosa sono stati davvero quegli anni. E arriva a togliersi l&#x27;anello nuziale in mezzo a un attacco di panico.</p><ol><li><a href="#c1">La confessione in macchina</a></li><li><a href="#c2">L&#x27;auto americana comprata a metà prezzo</a></li><li><a href="#c3">A Isparta, con Abdülkadir alle calcagna</a></li><li><a href="#c4">Il pranzo che serve a chiudere le bocche</a></li><li><a href="#c5">Perché Züleyha decide di liberarsi della fede di Demir</a></li><li><a href="#c6">Come Şermin ottiene la macchina da Abdülkadir</a></li><li><a href="#c7">Cosa scoprono Lütfiye e Saniye durante il viaggio</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>Terra Amara</strong> — Serie conclusa in Italia · tutte le puntate su Mediaset Infinity</span></div>
   
-  <p class="occhiello">Sulla strada per Mersin, Züleyha racconta per la prima volta a qualcuno cosa sono stati davvero quegli anni. E arriva a togliersi l&#x27;anello nuziale in mezzo a un attacco di panico.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: Terra Amara 15-17 gennaio, Züleyha fa fermare l&#x27;auto e getta a terra la fede: «Demir mi disse che se l&#x27;avessi tolta mi avrebbe tagliato il dito»" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/-8bsOyjIquE/maxresdefault.jpg" alt="Terra Amara 15-17 gennaio, Züleyha fa fermare l&#x27;auto e getta a terra la fede: «Demir mi disse che se l&#x27;avessi tolta mi avrebbe tagliato il dito»" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/-8bsOyjIquE/hqdefault.jpg 480w, https://i.ytimg.com/vi/-8bsOyjIquE/sddefault.jpg 640w, https://i.ytimg.com/vi/-8bsOyjIquE/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/-8bsOyjIquE/hqdefault.jpg&quot;, &quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,25 +409,25 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>Nel frattempo Lütfiye e Saniye vanno a Isparta a cercare la verità su Fekeli — e vengono seguite.</strong></p>
-  <h2>La confessione in macchina</h2>
+  <h2 id="c1">La confessione in macchina</h2>
 <p>Durante il viaggio, Züleyha comincia a raccontare: la fame patita davanti alla villa degli Yaman quando arrivò a Çukurova, poi Demir che la separò da Yılmaz e la costrinse a sposarlo, e tutto quello che ne è seguito, compresi gli anni lontano dai figli. A un certo punto prova a sfilarsi la fede in modo quasi compulsivo, e spiega perché non lo aveva mai fatto: quando gliela mise al dito, Demir le disse che se avesse provato a toglierla le avrebbe tagliato il dito. La crisi di panico arriva lì. Hakan accosta, la lascia scendere e le sta accanto mentre lei scaglia l&#x27;anello a terra; poi la abbraccia senza dire niente.</p>
-<h2>L&#x27;auto americana comprata a metà prezzo</h2>
+<h2 id="c2">L&#x27;auto americana comprata a metà prezzo</h2>
 <p>Ad Adana, Şermin si presenta all&#x27;autosalone di Abdülkadir con Füsun e si innamora di una vistosa macchina americana. Quando lui capisce di avere davanti la madre di Betül, le fa uno sconto enorme — da trentaduemilacinquecento lire a ventimila — e le dice pure di pagare con comodo. Şermin, entusiasta, si fa portare forbici e aceto e si libera davanti a tutti dell&#x27;ingessatura alla gamba, poi si mette al volante e se ne va. Abdülkadir, incredulo, spiega a Bedir il motivo dello sconto. Più tardi Lütfiye e Saniye notano che quell&#x27;auto non è parcheggiata davanti a casa ma nascosta tra gli alberi, e Saniye comincia a farsi domande: con quali soldi l&#x27;ha comprata, visto che è Betül a gestire l&#x27;azienda per procura?</p>
-<h2>A Isparta, con Abdülkadir alle calcagna</h2>
+<h2 id="c3">A Isparta, con Abdülkadir alle calcagna</h2>
 <p>Şermin, senza rendersene conto, gli serve l&#x27;informazione più pericolosa: Lütfiye e Saniye stanno andando a Isparta a scoprire cosa sia successo a Fekeli, che era andato lì per capire chi fosse davvero Mehmet Kara. Abdülkadir cambia colore, se ne va e lungo la strada raggiunge l&#x27;auto di Lütfiye e con una manovra improvvisa la fa sbandare — lei riesce a rientrare in carreggiata per un soffio e crede a un pirata della strada. A Isparta le due donne entrano nel negozio dove Fekeli era stato e il proprietario sta per raccontare cosa gli aveva detto, quando Abdülkadir irrompe fingendo sorpresa e, con uno sguardo che vale un ordine, gli fa dire la versione che conviene a lui.</p>
-<h2>Il pranzo che serve a chiudere le bocche</h2>
+<h2 id="c4">Il pranzo che serve a chiudere le bocche</h2>
 <p>Poi le invita a pranzo con un&#x27;insistenza a cui non si può dire di no, e le porta proprio nel ristorante in cui Fekeli aveva cenato. Chiama il proprietario, gli fa confermare che Fekeli aveva chiesto di Mehmet e gli fa ripetere la stessa versione — investimenti, persona rispettabile. L&#x27;uomo, intimidito, esegue, ma lascia cadere un dettaglio che nessuno gli aveva chiesto: quella sera Fekeli era pallidissimo e non aveva toccato il cibo. Abdülkadir chiude la faccenda dicendosi convinto che Fekeli, una volta conosciuto Mehmet, si fosse tranquillizzato. Nel frattempo Züleyha e Hakan arrivano a Smirne e scoprono che la famiglia che cercavano si è trasferita: lei decide comunque di proseguire.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Perché Züleyha decide di liberarsi della fede di Demir</h2>
+<h2 id="c5">Perché Züleyha decide di liberarsi della fede di Demir</h2>
 <p>Il viaggio verso Mersin si trasforma per Züleyha nell&#x27;occasione per confidare per la prima volta i dettagli più dolorosi della sua vita. Nel lungo percorso in auto, la donna ripercorre il momento in cui arrivò a Çukurova patendo la fame davanti ai cancelli della villa degli Yaman. La sua esistenza cambiò radicalmente quando Demir decise di separarla brutalmente da Yılmaz, costringendola a un matrimonio mai desiderato. Da quel giorno sono iniziati anni segnati da profonde sofferenze, culminati nel dolore insopportabile di dover restare lontana dai propri figli. Questo doloroso racconto fa riaffiorare traumi del passato mai del tutto superati, fino a provocare un momento di grandissima tensione psicologica.</p>
 <p>Mentre si trova ancora sulla strada verso Mersin, la narrazione del passato spinge Züleyha verso un gesto dettato dalla disperazione e dall&#x27;ansia accumulata. La donna inizia a tentare di sfilarsi l&#x27;anello nuziale in modo compulsivo, rivelando finalmente il motivo per cui non lo aveva mai fatto prima. Quando le mise la fede al dito, Demir la minacciò esplicitamente, dicendole che se avesse osato toglierla le avrebbe tagliato il dito. Questo ricordo terrificante spalanca le porte a un tremendo attacco di panico proprio dentro l&#x27;abitacolo, rendendo del tutto impossibile proseguire la marcia in quelle condizioni e costringendo il suo compagno di viaggio a intervenire immediatamente.</p>
 <p>Di fronte all&#x27;evidente attacco di panico di Züleyha, Hakan reagisce accostando l&#x27;automobile a bordo strada per permetterle di scendere. Fuori dal veicolo, la donna trova la forza di compiere il gesto simbolico di scagliare la fede a terra, liberandosi finalmente del ricordo dell&#x27;oppressione di Demir. Hakan sceglie di non fare domande e non pronuncia alcuna parola, limitandosi a offrirle un abbraccio silenzioso ma consolatorio in un momento di enorme fragilità. Dopo questo episodio drammatico sulla via per Mersin, i due proseguono il loro cammino arrivando fino a Smirne, dove scoprono che la famiglia che stavano cercando si è ormai trasferita altrove.</p>
-<h2>Come Şermin ottiene la macchina da Abdülkadir</h2>
+<h2 id="c6">Come Şermin ottiene la macchina da Abdülkadir</h2>
 <p>La vicenda dell&#x27;acquisto dell&#x27;automobile ad Adana prende il via quando Şermin si reca insieme all&#x27;amica Füsun presso l&#x27;autosalone gestito da Abdülkadir. L&#x27;attenzione della donna viene immediatamente catturata da una vistosa e lussuosa macchina americana, di cui si innamora al primo sguardo. Non appena Abdülkadir capisce che la cliente davanti a lui è la madre di Betül, decide di cogliere l&#x27;opportunità per ingraziarsela con una proposta commerciale incredibilmente vantaggiosa. L&#x27;uomo applica uno sconto enorme al prezzo originario del veicolo, abbassando la cifra da trentaduemilacinquecento lire a sole ventimila lire, e concedendole persino la possibilità di saldare il debito con estrema calma.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>L&#x27;entusiasmo per il grandissimo sconto ottenuto spinge Şermin a compiere un gesto clamoroso davanti agli occhi di tutti i presenti nell&#x27;autosalone. La donna si fa portare immediatamente delle forbici e dell&#x27;aceto, utilizzandoli per rimuovere da sola e senza alcuna esitazione l&#x27;ingessatura che portava alla gamba. Libera dal gesso, Şermin sale subito al volante della vistosa vettura americana e si allontana soddisfatta. Abdülkadir, rimasto incredulo di fronte a quella scena surreale insieme al suo collaboratore Bedir, spiega proprio a quest&#x27;ultimo quali siano le reali motivazioni che lo hanno spinto ad applicare un prezzo così favorevole per quella vendita automobilistica.</p>
 <p>Tornata a casa, Şermin decide di non lasciare la nuova auto americana parcheggiata bene in vista davanti all&#x27;abitazione, preferendo nasconderla con cura tra gli alberi vicini. Questo strano comportamento non sfugge all&#x27;attenzione di Lütfiye e Saniye, che notano subito il veicolo nascosto nella vegetazione. Saniye comincia immediatamente a porsi serie domande sulla provenienza dei soldi usati per un acquisto così dispendioso. La donna trova la situazione estremamente sospetta, sapendo bene che in quel momento è Betül a gestire l&#x27;intera azienda familiare attraverso una procura, e chiedendosi come sia stato possibile reperire una somma simile per una macchina d&#x27;epoca.</p>
-<h2>Cosa scoprono Lütfiye e Saniye durante il viaggio</h2>
+<h2 id="c7">Cosa scoprono Lütfiye e Saniye durante il viaggio</h2>
 <p>L&#x27;inconsapevole Şermin rivela ad Abdülkadir un dettaglio fondamentale, spiegando che Lütfiye e Saniye si stanno mettendo in viaggio verso Isparta. La loro missione nasce dalla volontà di scoprire la verità su ciò che è accaduto a Fekeli, il quale si era recato in quella città proprio per indagare sulla reale identità di Mehmet Kara. Allarmato dalla notizia, Abdülkadir si mette subito sulle loro tracce lungo la strada e compie una manovra improvvisa per far sbandare la vettura guidata da Lütfiye. La donna riesce a mantenere il controllo dell&#x27;auto ed evitare l&#x27;impatto soltanto per un soffio, convincendosi erroneamente di essere stata vittima di un pirata della strada.</p>
 <p>Una volta giunte a Isparta, Lütfiye e Saniye entrano nel negozio che Fekeli aveva visitato durante le sue indagini su Mehmet Kara. Il proprietario del locale si mostra inizialmente disposto a rivelare quanto gli era stato detto, ma l&#x27;improvvisa irruzione di Abdülkadir cambia radicalmente la situazione. Facendo finta di essere sorpreso di incontrarle lì, l&#x27;uomo lancia al negoziante uno sguardo minaccioso che equivale a un ordine perentorio, costringendolo a raccontare una versione dei fatti totalmente addomesticata e comoda per lui. Successivamente, Abdülkadir insiste in modo opprimente per invitare le due donne a pranzo nel medesimo ristorante frequentato da Fekeli.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
@@ -385,19 +435,41 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=B1n4Z8o5Rrw" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/B1n4Z8o5Rrw/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TERRA AMARA Anticipazioni: Tutta la verità sulla morte del padre di Demir! Così muore Adnan!</span></a></li><li><a href="https://www.youtube.com/watch?v=NhTWy-R4aEY" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/NhTWy-R4aEY/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TERRA AMARA Puntata 25 Gennaio (pome e sera): Demir è ufficialmente morto, Zuleyha sviene!</span></a></li><li><a href="https://www.youtube.com/watch?v=ORCPU6DxshY" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/ORCPU6DxshY/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TERRA AMARA Anticipazioni: Demir disperato sta per fare una pazzia, qualcuno riuscirà a fermarl</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Lütfiye e Saniye si accorgeranno di essere state ingannate?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=-8bsOyjIquE">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di Terra Amara</h2><div class="griglia"><article class="scheda">
+  <a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/"><div class="foto"><img src="/img/terra-amara-la-trama-completa-e-come-finisce.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></h3>
+    <div class="quando">30 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/"><div class="foto"><img src="https://i.ytimg.com/vi/_ypSJU-x7LY/hqdefault.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/"><div class="foto"><img src="https://i.ytimg.com/vi/B_MLx-0yh6M/hqdefault.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=Terra Amara 15-17 gennaio, Züleyha fa fermare l&#x27;auto e getta a terra la fede: «Demir mi disse che se l&#x27;avessi tolta mi avrebbe tagliato il dito» — https://serietvfans.com/terra-amara/terra-amara-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/terra-amara/terra-amara-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/terra-amara/terra-amara-la-trama-completa-e-come-finisce/&text=Terra Amara 15-17 gennaio, Züleyha fa fermare l&#x27;auto e getta a terra la fede: «Demir mi disse che se l&#x27;avessi tolta mi avrebbe tagliato il dito»" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">Terra Amara anticipazioni 15-17 gennaio</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=-8bsOyjIquE">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di Terra Amara</h3><ol class="numerata"><li><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></li><li><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></li><li><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></li><li><a href="/terra-amara/terra-amara-come-finisce-davvero-zuleyha-vince-tutto-e-resta-sola/">Terra Amara: come finisce davvero, Züleyha vince tutto e resta sola</a></li><li><a href="/terra-amara/terra-amara-come-muore-demir-yaman-chi-ha-dato-lordine-e-perche-doveva-essere-un-rapimento/">Terra Amara, come muore Demir Yaman: chi ha dato l&#x27;ordine e perché doveva essere un rapimento</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>Terra Amara anticipazioni 15-17 gennaio</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su Terra Amara</h3><ul><li><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></li><li><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></li><li><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></li><li><a href="/terra-amara/terra-amara-come-finisce-davvero-zuleyha-vince-tutto-e-resta-sola/">Terra Amara: come finisce davvero, Züleyha vince tutto e resta sola</a></li><li><a href="/terra-amara/terra-amara-come-muore-demir-yaman-chi-ha-dato-lordine-e-perche-doveva-essere-un-rapimento/">Terra Amara, come muore Demir Yaman: chi ha dato l&#x27;ordine e perché doveva essere un rapimento</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

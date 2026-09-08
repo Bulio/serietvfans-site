@@ -12,7 +12,7 @@
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Serie TV Fans">
 <meta property="og:url" content="https://serietvfans.com/forbidden-fruit/forbidden-fruit-che-fine-fa-zehra-perche-resta-lunica-libera/">
-<meta property="og:image" content="https://serietvfans.com/social.svg">
+<meta property="og:image" content="https://serietvfans.com/img/forbidden-fruit-che-fine-fa-zehra-perche-resta-lunica-libera.jpg">
 <meta property="og:locale" content="it_IT">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#7b1e2b">
@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -314,12 +363,12 @@ if(l.length){el.src=l.shift();el.dataset.fb=JSON.stringify(l)}else{el.onerror=nu
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7778653397776213" crossorigin="anonymous"></script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "96259d7e67ce47fba4573364859712a6"}'></script>
 <script>(function(){var f=0;function go(){if(f)return;f=1;(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","y3rpoig6jk");}["pointerdown","keydown","touchstart","scroll"].forEach(function(v){addEventListener(v,go,{once:1,passive:1})});setTimeout(go,2500)})();</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Forbidden Fruit, che fine fa Zehra: perché resta l'unica libera mentre le altre finiscono in cella", "datePublished": "2026-08-29", "dateModified": "2026-08-29", "description": "Che fine fa Zehra in Forbidden Fruit: la moglie di Mert firma la denuncia che manda in cella Yıldız, Ender e Şahika, poi accetta di ritirarla quando Hasan Ali va a convincerla — e quel ripensamento cambia la proprietà della holding. Resta libera, resta sposata a Mert, resta padrona delle quote che in tre hanno provato a farsi cedere. Il resto del suo destino non è ancora stato scritto, e lo diciamo invece di inventarlo.", "inLanguage": "it-IT", "mainEntityOfPage": "https://serietvfans.com/forbidden-fruit/forbidden-fruit-che-fine-fa-zehra-perche-resta-lunica-libera/", "image": [], "author": {"@type": "Organization", "name": "Serie TV Fans", "url": "https://serietvfans.com/chi-siamo/"}, "publisher": {"@type": "Organization", "name": "Serie TV Fans", "logo": {"@type": "ImageObject", "url": "https://serietvfans.com/favicon.svg"}}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Forbidden Fruit, che fine fa Zehra: perché resta l'unica libera mentre le altre finiscono in cella", "datePublished": "2026-08-29", "dateModified": "2026-09-08", "description": "Che fine fa Zehra in Forbidden Fruit: la moglie di Mert firma la denuncia che manda in cella Yıldız, Ender e Şahika, poi accetta di ritirarla quando Hasan Ali va a convincerla — e quel ripensamento cambia la proprietà della holding. Resta libera, resta sposata a Mert, resta padrona delle quote che in tre hanno provato a farsi cedere. Il resto del suo destino non è ancora stato scritto, e lo diciamo invece di inventarlo.", "inLanguage": "it-IT", "mainEntityOfPage": "https://serietvfans.com/forbidden-fruit/forbidden-fruit-che-fine-fa-zehra-perche-resta-lunica-libera/", "image": ["https://serietvfans.com/img/forbidden-fruit-che-fine-fa-zehra-perche-resta-lunica-libera.jpg"], "author": {"@type": "Organization", "name": "Serie TV Fans", "url": "https://serietvfans.com/chi-siamo/"}, "publisher": {"@type": "Organization", "name": "Serie TV Fans", "logo": {"@type": "ImageObject", "url": "https://serietvfans.com/favicon.svg"}}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://serietvfans.com/"}, {"@type": "ListItem", "position": 2, "name": "Forbidden Fruit", "item": "https://serietvfans.com/serie/forbidden-fruit/"}, {"@type": "ListItem", "position": 3, "name": "Forbidden Fruit, che fine fa Zehra: perché resta l'unica libera mentre le altre finiscono in cella"}]}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -332,59 +381,85 @@ if(l.length){el.src=l.shift();el.dataset.fb=JSON.stringify(l)}else{el.onerror=nu
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/forbidden-fruit/">Forbidden Fruit</a> › Forbidden Fruit, che fine fa Zehra: perché resta l&#x27;unica libera mentre le altre finiscono in cella</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/forbidden-fruit/">Forbidden Fruit</a>
   <h1>Forbidden Fruit, che fine fa Zehra: perché resta l&#x27;unica libera mentre le altre finiscono in cella</h1>
-  <div class="firma">Redazione Serie TV Fans · sabato 29 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-29">sabato 29 agosto 2026</time></span><span>aggiornato il 8 settembre 2026</span><span>11 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Che fine fa Zehra in Forbidden Fruit: la moglie di Mert firma la denuncia che manda in cella Yıldız, Ender e Şahika, poi accetta di ritirarla quando Hasan Ali va a convincerla — e quel ripensamento cambia la proprietà della holding. Resta libera, resta sposata a Mert, resta padrona delle quote che in tre hanno provato a farsi cedere. Il resto del suo destino non è ancora stato scritto, e lo diciamo invece di inventarlo.</p><ol><li><a href="#c1">Che fine fa Zehra in Forbidden Fruit</a></li><li><a href="#c2">Perché Zehra è l&#x27;unica delle quattro rimasta libera</a></li><li><a href="#c3">Che cosa succede alla denuncia firmata da Zehra</a></li><li><a href="#c4">Come restano i conti fra Zehra e Yıldız</a></li><li><a href="#c5">Che cosa lega ancora Zehra a Ender e a Şahika</a></li><li><a href="#c6">Cosa resta delle quote ereditate dal padre</a></li><li><a href="#c7">Come finisce la storia di Zehra: cosa sappiamo e cosa no</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>Forbidden Fruit</strong> — Canale 5 · in streaming su Mediaset Infinity</span></div>
-  <figure class="copertina"><img src="/fallback/forbidden-fruit.svg" alt="Forbidden Fruit" width="1280" height="720"><figcaption>Forbidden Fruit</figcaption></figure>
-  <p class="occhiello">Che fine fa Zehra in Forbidden Fruit: la moglie di Mert firma la denuncia che manda in cella Yıldız, Ender e Şahika, poi accetta di ritirarla quando Hasan Ali va a convincerla — e quel ripensamento cambia la proprietà della holding. Resta libera, resta sposata a Mert, resta padrona delle quote che in tre hanno provato a farsi cedere. Il resto del suo destino non è ancora stato scritto, e lo diciamo invece di inventarlo.</p>
+  <figure class="copertina"><img src="/img/forbidden-fruit-che-fine-fa-zehra-perche-resta-lunica-libera.jpg" alt="Forbidden Fruit"><figcaption>Immagine d&#x27;ambiente — Forbidden Fruit</figcaption></figure>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   
   <div class="corpo">
   <p><strong>Zehra non muore, non sparisce e non finisce in manette: quando le altre tre donne di casa Argun vengono arrestate, lei è l&#x27;unica rimasta fuori. Ed è anche il punto in cui la sua storia si ferma, perché un epilogo vero e proprio non è ancora stato raccontato.</strong></p>
-  <h2>Che fine fa Zehra in Forbidden Fruit</h2>
+  <h2 id="c1">Che fine fa Zehra in Forbidden Fruit</h2>
 <p>La risposta breve è che Zehra non esce di scena. Non muore, non viene arrestata, non lascia Istanbul: quando la vicenda della morte di Halit Argun arriva al punto di rottura e tre donne finiscono nella stessa cella, lei è l&#x27;unica delle quattro rimasta fuori. Ed è rimasta fuori perché è dalla sua parte che arriva l&#x27;accusa. È Zehra a firmare la denuncia contro Yıldız ed Ender per la morte di Halit, ed è ancora Zehra ad accettare di ritirarla quando Hasan Ali va a cercarla per spegnere lo scandalo. Fra quella firma e quel ripensamento cambia la proprietà di una holding intera.</p>
 <p>La risposta lunga è più scomoda, e conviene dirla subito: il destino di Zehra, nel racconto arrivato fin qui, non è chiuso. Non c&#x27;è una scena d&#x27;addio, non c&#x27;è un aereo, non c&#x27;è una condanna. C&#x27;è una donna che era considerata il pezzo più fragile del tavolo e che si ritrova, senza che nessuno l&#x27;abbia vista arrivare, con in mano la cosa più pericolosa che circoli in quella casa: la verità su come è nata l&#x27;accusa. Qui sotto rimettiamo in fila cosa le è successo davvero, che cosa resta aperto con Yıldız, con Ender e con Şahika, e dove esattamente si ferma quello che sappiamo.</p>
 <p>Una precisazione per chi arriva adesso: Zehra è la figlia di un socio ormai defunto dell&#x27;Argun Holding, ha ereditato dal padre delle quote societarie che non aveva chiesto di avere, ed è la moglie di Mert. Se quello che cercate è la sua storia dall&#x27;inizio — la scoperta sulla tata, il matrimonio che si svuota, il passaggio da moglie tradita a figura temuta — quel ritratto lo abbiamo già scritto a parte, ed è il pezzo intitolato «chi è davvero Zehra, la moglie tradita diventata la più pericolosa». Questa pagina risponde a un&#x27;altra domanda: non chi è, ma dove va a finire.</p>
-<h2>Perché Zehra è l&#x27;unica delle quattro rimasta libera</h2>
+<h2 id="c2">Perché Zehra è l&#x27;unica delle quattro rimasta libera</h2>
 <p>Il giorno del matrimonio di Yıldız è il momento in cui tutta la storia di Zehra si vede in una scena sola. Mentre nella sala si alzano i calici, le manette scattano davanti a tutti: Yıldız viene portata via accusata di omicidio, ed Ender e Şahika finiscono nella stessa vicenda giudiziaria. Tre donne, una porta di cella che si chiude, la stessa luce fredda addosso. Zehra è nella sala anche lei, e nessuno la guarda.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>Non è un caso, ed è il meccanismo su cui questa serie ha costruito il personaggio. In casa Argun tutti si guardano le spalle da Ender, da Şahika e ormai anche da Yıldız. Nessuno ha mai pensato di doversi guardare le spalle da Zehra, perché per mesi è stata trattata come una comparsa dentro una storia che riguardava anche lei. Şahika, quando ha avuto bisogno di qualcuno che mettesse la firma al posto suo, non ha scelto a caso: ha scelto la persona che nessuno sorvegliava. Il risultato è che l&#x27;unica che poteva colpire senza essere vista è anche l&#x27;unica che, a colpo fatto, resta fuori dal fascicolo.</p>
 <p>Restare libera, però, in questa vicenda non vuol dire restare fuori. Vuol dire diventare l&#x27;unica persona che sa esattamente come è nata quell&#x27;accusa, e sapere una cosa del genere in casa Argun vale più di qualunque pacchetto azionario. Da quel momento Zehra smette di essere la moglie di qualcuno e diventa un problema di sicurezza per chiunque abbia partecipato al piano.</p>
-<h2>Che cosa succede alla denuncia firmata da Zehra</h2>
+<h2 id="c3">Che cosa succede alla denuncia firmata da Zehra</h2>
 <p>Qui c&#x27;è il passaggio che quasi tutti si perdono, ed è il vero snodo del suo destino. L&#x27;inchiesta non regge, e non regge per colpa sua. Hasan Ali, che prima di ogni altra cosa è un uomo d&#x27;affari e sa benissimo che un&#x27;indagine per omicidio con tre donne legate alla holding è veleno puro per un gruppo industriale, si muove per spegnere l&#x27;incendio e va a convincere proprio Zehra a ritirare la denuncia. È la mossa decisiva: senza la parte che accusa, l&#x27;intero impianto giudiziario si sfalda.</p>
 <p>Il punto è cosa succede prima che lui si muova. Prima di attivarsi, Hasan Ali chiede a Ender e a Şahika di cedergli le loro quote societarie, e glielo presenta come un passaggio tecnico: vi tolgo dal capitale così la stampa non può collegarvi al procedimento, ve le restituisco quando lo scandalo sarà passato. Firmano. E la conseguenza è che il controllo della holding cambia mani non per una battaglia in consiglio, ma per una firma messa e poi ritirata da una donna che quel consiglio non aveva mai preso sul serio.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>Vale la pena fermarsi un attimo su questo, perché è la cosa più importante che si possa dire sul personaggio. Zehra ha spostato gli equilibri dell&#x27;Argun Holding due volte in pochi giorni, e in nessuna delle due volte era seduta al tavolo dove si decideva. La prima firmando quando gliel&#x27;ha chiesto Şahika, la seconda ritirando quando gliel&#x27;ha chiesto Hasan Ali. È una posizione di potere enorme e allo stesso tempo fragilissima, perché fin qui è sempre stato qualcun altro a scegliere il momento in cui usarla.</p>
-<h2>Come restano i conti fra Zehra e Yıldız</h2>
+<h2 id="c4">Come restano i conti fra Zehra e Yıldız</h2>
 <p>Aperti, e sbilanciati tutti dalla stessa parte. Fra le due c&#x27;è prima di tutto un errore mai rimediato: convinta che dietro la scelta della tata di suo figlio ci fosse Yıldız e non suo marito, Zehra l&#x27;ha affrontata in pubblico, davanti a colleghe e conoscenti, accusandola di essersi intromessa nella sua famiglia. Yıldız di quella storia non sapeva assolutamente nulla. Il vero responsabile, Mert, ha guardato la scena da lontano senza dire una parola, lasciando che due donne innocenti si scontrassero al posto suo.</p>
 <p>Su quell&#x27;accusa non è mai arrivato un chiarimento. Non c&#x27;è, nel racconto arrivato fin qui, la scena in cui Zehra scopre di aver preso di mira la persona sbagliata e va a dirglielo. Al contrario: la volta successiva in cui il suo nome incrocia quello di Yıldız è la denuncia che le fa scattare le manette ai polsi nel giorno delle sue nozze. Due colpi, entrambi partiti da una donna con cui Yıldız non aveva niente in sospeso.</p>
 <p>È anche il motivo per cui questo conto resta il più minaccioso di tutti per Zehra. Yıldız ha già dimostrato di saper reggere l&#x27;urto e di ricordarsi di chi le ha fatto del male, e in più adesso ha molto meno da perdere di prima: il testamento di Halit ha destinato a una fondazione, fino alla maggiore età, la quota che doveva andare al bambino, e l&#x27;appoggio economico su cui aveva costruito ogni alleanza è saltato. Una persona senza rete che scopre chi ha firmato contro di lei è la cosa più pericolosa che possa capitare a chi quella firma l&#x27;ha messa.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Che cosa lega ancora Zehra a Ender e a Şahika</h2>
+<h2 id="c5">Che cosa lega ancora Zehra a Ender e a Şahika</h2>
 <p>Con Ender il rapporto è quasi paradossale: non c&#x27;è mai stato un vero motivo personale. Ender non le aveva fatto niente, non era in guerra con lei, non le aveva portato via nulla. Si è ritrovata dentro un&#x27;accusa di omicidio perché serviva un nome accanto a quello di Yıldız, e ne è uscita avendo ceduto le proprie quote per non affondare con lo scandalo. Nel bilancio della vicenda è la persona che ha pagato di più il gesto di Zehra pur avendoci a che fare di meno.</p>
 <p>Con Şahika il conto è di natura diversa, e molto più pericoloso. Şahika non è un&#x27;alleata: è la persona che l&#x27;ha usata. E l&#x27;aveva già presa di mira prima, quando aveva capito che il vero ostacolo alla sua ascesa non era più Ender ma proprio le quote ereditate da Zehra. Aveva organizzato una cena presentandola come una cortesia e aveva affidato a Mert il compito di convincere la moglie a cedere una parte di quel potere azionario, arrivando a far capire che una semplice delega non sarebbe più bastata.</p>
 <p>Quella sera è andata male, ed è l&#x27;unico momento in cui vediamo Zehra dire di no in faccia a qualcuno che conta: quelle quote non sono soltanto sue, appartengono anche a sua sorella Lila, sono l&#x27;eredità del padre e non le regala a nessuno, marito compreso. Şahika ha richiuso il discorso liquidandolo come una sciocchezza nata per sbaglio, ma è il suo metodo di sempre: individuare la persona più vulnerabile della famiglia, avvicinarsi con gentilezza e aspettare il momento fragile. Aver dovuto rivedere i tempi non significa aver cambiato obiettivo. Quelle quote restano dove sono, e Şahika sa esattamente dove.</p>
-<h2>Cosa resta delle quote ereditate dal padre</h2>
+<h2 id="c6">Cosa resta delle quote ereditate dal padre</h2>
 <p>Le quote sono il vero motivo per cui la storia di Zehra non può chiudersi in silenzio, ed è utile contare quante persone diverse hanno provato a metterci sopra le mani. Şahika, con la cena e l&#x27;incarico dato a Mert. Hasan Ali, che già alla cena della fusione la interroga sul ruolo che vorrebbe avere in azienda, si prende nota di tutto e, facendo il punto sui nuovi soci, la archivia come l&#x27;elemento più facile da piegare. E Mert, che a casa liquida le sue domande su quali documenti dovrà firmare come semplici procedure amministrative, chiedendole ancora una volta di fidarsi.</p>
 <p>Il matrimonio con Mert è l&#x27;ultimo tassello di questo quadro, e nel nostro racconto viene descritto per quello che è: un&#x27;unione che a lui torna comoda nel momento esatto in cui gli serve mostrarsi stabile e affidabile davanti al consiglio di famiglia, dopo aver consegnato alla polizia il proprio complice Kerim e aver preso la guida della holding. Ma il dettaglio che vale la pena tenere è un altro: non tutti credono che Zehra si sia lasciata trascinare. La freddezza con cui accetta ogni condizione imposta dal marito fa pensare che stia giocando una partita sua, convinta di poter controllare un uomo che fino a poco tempo prima nessuno considerava pericoloso.</p>
 <p>Nel mezzo di tutto questo c&#x27;è l&#x27;unica cosa che Zehra ha provato a costruirsi da sola, e non è un pacchetto azionario: la proposta di Asuman di aprire insieme un locale tutto loro, un progetto che non avesse niente a che fare con Mert, con la villa e con gli uomini che hanno sempre deciso al posto suo. Se cercate il punto in cui il personaggio potrebbe ancora salvarsi, non è nella holding. È lì.</p>
-<h2>Come finisce la storia di Zehra: cosa sappiamo e cosa no</h2>
+<h2 id="c7">Come finisce la storia di Zehra: cosa sappiamo e cosa no</h2>
 <p>Mettiamo il confine dove va messo, perché su questo tipo di domande è l&#x27;unica cosa onesta da fare. Quello che è raccontato e verificato è questo: Zehra è la firma che ha fatto scattare l&#x27;arresto, è l&#x27;unica delle quattro donne coinvolte a essere rimasta libera, è la persona che Hasan Ali ha convinto a ritirare la denuncia facendo crollare l&#x27;impianto dell&#x27;accusa, ed è tuttora sposata a Mert e proprietaria, insieme alla sorella Lila, delle quote lasciate dal padre. Fin qui non ci sono ipotesi: sono fatti della trama.</p>
 <p>Quello che invece non sappiamo è come finisce. Non c&#x27;è, nel materiale arrivato fin qui, un epilogo del personaggio: nessuna morte, nessuna partenza, nessun arresto, nessuna scena in cui paga o viene perdonata per quello che ha fatto. Le anticipazioni non si sono ancora pronunciate su cosa deciderà di fare con quello che sa, e chiunque vi racconti il contrario sta riempiendo un vuoto con la fantasia. Restano indizi, e li segnaliamo per quello che sono: la posizione di forza che ha guadagnato nei confronti di Mert, il segreto sull&#x27;origine della denuncia e il fatto che tre persone molto più potenti di lei abbiano tutte, per motivi diversi, un interesse a saperla zitta.</p>
 <p>Se dovessimo indicare il punto da cui guardare per capire dove andrà a finire, non è il tribunale e non è il consiglio d&#x27;amministrazione. È la stanza in cui Zehra si trova da sola con Mert, l&#x27;uomo che l&#x27;ha lasciata sbagliare bersaglio in pubblico pur di non esporsi, e che adesso è sposato a una donna che ha imparato proprio da lui come si manovra restando nell&#x27;ombra. Il giorno in cui lui capirà fino a che punto sua moglie è cambiata senza che se ne accorgesse, la storia di Zehra avrà finalmente una direzione. Fino ad allora, la risposta corretta alla domanda «che fine fa Zehra» è che è ancora in piedi, è libera, e sa più di tutti gli altri.</p>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=iFem-1ygTJY" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/iFem-1ygTJY/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>FORBIDDEN FRUIT: il patto tra YILDIZ, ENDER e SAHIKA crolla, tutte e tre finiscono in CELLA 😱</span></a></li><li><a href="https://www.youtube.com/watch?v=77UUe5TlOI8" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/77UUe5TlOI8/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>FORBIDDEN FRUIT: ENDER muore — il segreto che punisce Şahika per sempre 😢</span></a></li><li><a href="https://www.youtube.com/watch?v=Fkpf_Jxwk0c" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/Fkpf_Jxwk0c/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>FORBIDDEN FRUIT: il patto tra YILDIZ, ENDER e ŞAHIKA crolla — tutte tradite 😨</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Secondo voi Zehra userà quello che sa contro Mert, o continuerà a tenerselo come assicurazione? Quando Yıldız scoprirà chi ha firmato la denuncia, con chi ve la prendereste: con Zehra o con chi l&#x27;ha convinta a farlo?</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di Forbidden Fruit</h2><div class="griglia"><article class="scheda">
+  <a href="/forbidden-fruit/forbidden-fruit-dal-31-agosto-il-conto-a-nome-di-halit-che-e-morto/"><div class="foto"><img src="/img/forbidden-fruit-dal-31-agosto-il-conto-a-nome-di-halit-che-e-morto.jpg" alt="Forbidden Fruit" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/forbidden-fruit.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Forbidden Fruit</span>
+    <h3><a href="/forbidden-fruit/forbidden-fruit-dal-31-agosto-il-conto-a-nome-di-halit-che-e-morto/">Forbidden Fruit Dal 31 Agosto: il conto a nome di Halit, che è morto</a></h3>
+    <div class="quando">31 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/forbidden-fruit/forbidden-fruit-halit-e-vivo-o-e-morto-perche-al-funerale-si-sente-sono-vivo/"><div class="foto"><img src="/img/forbidden-fruit-halit-e-vivo-o-e-morto-perche-al-funerale-si-sente-sono-vivo.jpg" alt="Forbidden Fruit" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/forbidden-fruit.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Forbidden Fruit</span>
+    <h3><a href="/forbidden-fruit/forbidden-fruit-halit-e-vivo-o-e-morto-perche-al-funerale-si-sente-sono-vivo/">Forbidden Fruit, Halit è vivo o è morto: perché al funerale qualcuno sente «sono vivo»</a></h3>
+    <div class="quando">29 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/forbidden-fruit/forbidden-fruit-chi-e-davvero-zeynep-la-sorella-per-bene-che-ha-finito-peggio-di-yildiz/"><div class="foto"><img src="https://i.ytimg.com/vi/oZ7UQzlz0uM/hqdefault.jpg" alt="Forbidden Fruit" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/forbidden-fruit.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Forbidden Fruit</span>
+    <h3><a href="/forbidden-fruit/forbidden-fruit-chi-e-davvero-zeynep-la-sorella-per-bene-che-ha-finito-peggio-di-yildiz/">Forbidden Fruit: chi è davvero Zeynep, la sorella «per bene» che ha finito peggio di Yıldız</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=Forbidden Fruit, che fine fa Zehra: perché resta l&#x27;unica libera mentre le altre finiscono in cella — https://serietvfans.com/forbidden-fruit/forbidden-fruit-che-fine-fa-zehra-perche-resta-lunica-libera/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/forbidden-fruit/forbidden-fruit-che-fine-fa-zehra-perche-resta-lunica-libera/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/forbidden-fruit/forbidden-fruit-che-fine-fa-zehra-perche-resta-lunica-libera/&text=Forbidden Fruit, che fine fa Zehra: perché resta l&#x27;unica libera mentre le altre finiscono in cella" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  
-  <div class="box"><h3>Ancora su Forbidden Fruit</h3><ul><li><a href="/forbidden-fruit/forbidden-fruit-dal-31-agosto-il-conto-a-nome-di-halit-che-e-morto/">Forbidden Fruit Dal 31 Agosto: il conto a nome di Halit, che è morto</a></li><li><a href="/forbidden-fruit/forbidden-fruit-halit-e-vivo-o-e-morto-perche-al-funerale-si-sente-sono-vivo/">Forbidden Fruit, Halit è vivo o è morto: perché al funerale qualcuno sente «sono vivo»</a></li><li><a href="/forbidden-fruit/forbidden-fruit-chi-e-davvero-zeynep-la-sorella-per-bene-che-ha-finito-peggio-di-yildiz/">Forbidden Fruit: chi è davvero Zeynep, la sorella «per bene» che ha finito peggio di Yıldız</a></li><li><a href="/forbidden-fruit/forbidden-fruit-cosa-dice-il-testamento-di-halit-la-quota-del-bambino-va-a-una-f/">Forbidden Fruit, cosa dice il testamento di Halit: la quota del bambino va a una fondazione, e Mert tradisce Kerim</a></li><li><a href="/forbidden-fruit/forbidden-fruit-ender-ha-mandato-lei-yildiz-da-suo-marito-e-ha-perso-tutto/">Forbidden Fruit: Ender ha mandato lei Yıldız da suo marito, e ha perso tutto</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
+  <div class="box"><h3>Ultime di Forbidden Fruit</h3><ol class="numerata"><li><a href="/forbidden-fruit/forbidden-fruit-dal-31-agosto-il-conto-a-nome-di-halit-che-e-morto/">Forbidden Fruit Dal 31 Agosto: il conto a nome di Halit, che è morto</a></li><li><a href="/forbidden-fruit/forbidden-fruit-halit-e-vivo-o-e-morto-perche-al-funerale-si-sente-sono-vivo/">Forbidden Fruit, Halit è vivo o è morto: perché al funerale qualcuno sente «sono vivo»</a></li><li><a href="/forbidden-fruit/forbidden-fruit-chi-e-davvero-zeynep-la-sorella-per-bene-che-ha-finito-peggio-di-yildiz/">Forbidden Fruit: chi è davvero Zeynep, la sorella «per bene» che ha finito peggio di Yıldız</a></li><li><a href="/forbidden-fruit/forbidden-fruit-cosa-dice-il-testamento-di-halit-la-quota-del-bambino-va-a-una-f/">Forbidden Fruit, cosa dice il testamento di Halit: la quota del bambino va a una fondazione, e Mert tradisce Kerim</a></li><li><a href="/forbidden-fruit/forbidden-fruit-ender-ha-mandato-lei-yildiz-da-suo-marito-e-ha-perso-tutto/">Forbidden Fruit: Ender ha mandato lei Yıldız da suo marito, e ha perso tutto</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>Ogni anticipazione, prima in video sul canale Serie TV Fans</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
+  </div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

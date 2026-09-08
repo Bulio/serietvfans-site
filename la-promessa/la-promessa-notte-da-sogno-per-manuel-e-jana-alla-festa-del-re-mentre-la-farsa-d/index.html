@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/la-promessa/">La Promessa</a> › La Promessa, notte da sogno per Manuel e Jana alla festa del re — mentre la farsa di Jimena crolla e Ramona rivela il segreto su Dolores</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/la-promessa/">La Promessa</a>
   <h1>La Promessa, notte da sogno per Manuel e Jana alla festa del re — mentre la farsa di Jimena crolla e Ramona rivela il segreto su Dolores</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Dalle puntate spagnole de La Promessa: il ballo a sorpresa di Manuel per Jana, la festa in giardino di Alfonso XIII, la bugia della gravidanza di Jimena che si sgretola, il fidanzamento di Martina con don Antonio e il segreto che Ramona custodiva da anni su Dolores.</p><ol><li><a href="#c1">Il bambino di Pía e il bacio al convento</a></li><li><a href="#c2">La farsa di Jimena si sgretola</a></li><li><a href="#c3">La festa del re: due coppie, due segreti</a></li><li><a href="#c4">Ramona rompe il silenzio: il segreto su Dolores</a></li><li><a href="#c5">Il servizio tra amori e partenze</a></li><li><a href="#c6">Come Manuel e Jana affrontano i pericoli della tenuta</a></li><li><a href="#c7">Perche&#x27; Jimena rischia di perdere tutto davanti a Manuel</a></li><li><a href="#c8">Cosa spinge Martina e Curro a valutare la fuga</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>La Promessa</strong> — Rete 4 · in streaming su Mediaset Infinity</span></div>
   
-  <p class="occhiello">Dalle puntate spagnole de La Promessa: il ballo a sorpresa di Manuel per Jana, la festa in giardino di Alfonso XIII, la bugia della gravidanza di Jimena che si sgretola, il fidanzamento di Martina con don Antonio e il segreto che Ramona custodiva da anni su Dolores.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: La Promessa, notte da sogno per Manuel e Jana alla festa del re — mentre la farsa di Jimena crolla e Ramona rivela il segreto su Dolores" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/TZ4n9kQp4A4/maxresdefault.jpg" alt="La Promessa, notte da sogno per Manuel e Jana alla festa del re — mentre la farsa di Jimena crolla e Ramona rivela il segreto su Dolores" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/TZ4n9kQp4A4/hqdefault.jpg 480w, https://i.ytimg.com/vi/TZ4n9kQp4A4/sddefault.jpg 640w, https://i.ytimg.com/vi/TZ4n9kQp4A4/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/TZ4n9kQp4A4/hqdefault.jpg&quot;, &quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,45 +409,67 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>Tra il salvataggio del bambino di Pía al convento e la festa in giardino del re, le puntate spagnole regalano la serata più romantica della stagione — e la rivelazione che Jana aspettava da una vita.</strong></p>
-  <h2>Il bambino di Pía e il bacio al convento</h2>
+  <h2 id="c1">Il bambino di Pía e il bacio al convento</h2>
 <p>La settimana si apre con la missione più delicata: Jana, Abel e Manuel raggiungono il convento di Villalquino decisi a salvare il bambino di Pía, con Manuel che inventa una falsa identità per intrattenere le suore. L&#x27;obiettivo viene raggiunto, ma l&#x27;euforia del momento porta Abel a baciare Jana — proprio sotto gli occhi di Manuel. Al rientro, la povera Pía dovrà imparare a conciliare il ritorno al lavoro con la cura del piccolo, aiutata con affetto dai colleghi, mentre i sospetti su chi aveva localizzato il bambino si stringono attorno a Feliciano: sarà Teresa a confessare a Pía che l&#x27;indizio veniva da lui, e la governante gli proibirà di avvicinarsi al neonato, arrivando ad accusare apertamente lui e Petra del rapimento.</p>
-<h2>La farsa di Jimena si sgretola</h2>
+<h2 id="c2">La farsa di Jimena si sgretola</h2>
 <p>Per Jimena il cerchio si stringe. La madre le suggerisce di fingere un aborto per uscire dalla menzogna della gravidanza, approfittando dell&#x27;assenza dei Luján per la festa in giardino — ma un cambio di programma dell&#x27;ultimo minuto riporta Manuel a palazzo e manda il piano in fumo. Poi la scoperta fatale: nonostante il divieto imposto a Teresa di parlarne, la voce degli assorbenti sporchi di sangue trovati nel suo bagno si diffonde a macchia d&#x27;olio, e Manuel finisce per scoprire tutto. L&#x27;ultima carta è la visita di Abel: il medico conclude che la gravidanza procede normalmente. Ha stretto un patto con Jimena per prolungare la menzogna, o è riuscita a ingannare anche lui?</p>
-<h2>La festa del re: due coppie, due segreti</h2>
+<h2 id="c3">La festa del re: due coppie, due segreti</h2>
 <p>Alla Granja de San Ildefonso, la festa in giardino di re Alfonso XIII riserva ai Luján un&#x27;umiliazione: tutti li ignorano, perché Margarita ha sparso la voce che si sono imbucati — uno scherno che Cruz non riuscirà a perdonare. Ma è anche la serata dei cuori: Martina, che soffre nel sentirsi un trofeo nelle mani di don Antonio de Carvajal y Cifuentes, ritrova il respiro in un ballo appartato con Curro, e i due si confessano finalmente il loro amore. Lontano da lì, Manuel organizza per Jana un ballo a sorpresa: una serata da sogno per i due innamorati, con il pericolo di essere scoperti sempre in agguato.</p>
 <p>Il romanticismo però ha i giorni contati: Martina, pressata dai genitori, ha accettato la proposta di matrimonio di don Antonio — che intanto ha curiosato nel suo passato interrogando i cugini, ferendola profondamente. Curro, incapace di vederla scivolare via, le propone un ultimo, disperato tentativo di fuga: hanno ancora una possibilità di essere felici, la coglieranno?</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Ramona rompe il silenzio: il segreto su Dolores</h2>
+<h2 id="c4">Ramona rompe il silenzio: il segreto su Dolores</h2>
 <p>Il ritorno di Ramona scuote palazzo — Petra lo annuncia a una Cruz già esasperata — ed è da lei che arriva la svolta più attesa: dopo che Curro l&#x27;ha pressata fino a farle perdere le staffe (con Jana costretta a intervenire per evitare il peggio), la donna abbassa finalmente la guardia e rivela a Jana un segreto su sua madre Dolores custodito per anni, capace di cambiarle per sempre la vita. E non è l&#x27;unico mistero: Petra, rimasta sola con il piccolo Dieguito, confessa a mezza voce qualcosa che ha tenuto per sé da sempre — qualcosa che nemmeno la sua amata Cruz conosce.</p>
-<h2>Il servizio tra amori e partenze</h2>
+<h2 id="c5">Il servizio tra amori e partenze</h2>
 <p>In cucina e nei corridoi la vita non si ferma: Teresa e Feliciano sono sempre più vicini, Lope osserva con preoccupazione l&#x27;avvicinamento tra Maria e Salvador, e quest&#x27;ultimo — convinto ad accettare il denaro per l&#x27;operazione agli occhi — parte per Cordova accompagnato proprio da Maria, grazie a un permesso ottenuto da Catalina. Candela, infine, riceve dalla vita una sorpresa che non aspettava: la proposta di matrimonio di don Carlos, davanti alla quale — dice — si sente troppo grande per sposarsi. Ma qualcosa le farà cambiare prospettiva per sempre.</p>
-<h2>Come Manuel e Jana affrontano i pericoli della tenuta</h2>
+<h2 id="c6">Come Manuel e Jana affrontano i pericoli della tenuta</h2>
 <p>La complessa intesa tra Manuel e Jana si sviluppa attraverso momenti di fortissima tensione e gesti di profonda devozione. Quando i due giovani si sono organizzati insieme ad Abel per raggiungere il convento di Villalquino con l&#x27;obiettivo di trarre in salvo il piccolo erede di Pía, l&#x27;erede dei Luján non ha esitato a inventare un&#x27;identità fittizia per depistare le suore e consentire l&#x27;operazione. Tuttavia, la riuscita della missione ha fatto da sfondo a un imprevisto riavvicinamento tra la cameriera e il medico. Il bacio scambiato al convento tra Abel e Jana, avvenuto sotto lo sguardo del giovane nobile, ha segnato un punto di svolta significativo negli equilibri affettivi.</p>
 <p>Nonostante l&#x27;amarezza di quel momento e l&#x27;ombra costante della propria posizione sociale, la passione di Manuel per Jana trova modo di riemergere in contesti del tutto inaspettati. Approfittando dell&#x27;evento mondano organizzato alla Granja de San Ildefonso in onore del sovrano Alfonso XIII, il rampollo ha ideato per la ragazza un romantico ballo a sorpresa, regalando alla coppia una parentesi da sogno lontana dai vincoli quotidiani. Questa notte indimenticabile dimostra quanto il legame sia profondo, ma lascia anche intravedere i gravi rischi che entrambi corrono nel mantenere viva una relazione segreta all&#x27;interno di una tenuta ricca di sospetti, sguardi indiscreti e crescenti rivalità.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Perche&#x27; Jimena rischia di perdere tutto davanti a Manuel</h2>
+<h2 id="c7">Perche&#x27; Jimena rischia di perdere tutto davanti a Manuel</h2>
 <p>La posizione di Jimena si fa sempre più precaria a causa di una rete di inganni strutturata sulla propria finta gravidanza. Su consiglio della madre, la donna aveva pianificato di simulare un improvviso aborto approfittando dell&#x27;assenza dei marchesi per la festa in giardino con il re. Il ritorno inaspettato di Manuel alla tenuta ha tuttavia distrutto questa strategia, trasformando il piano orchestrato in un pericoloso boomerang. A peggiorare drasticamente il quadro si aggiunge il ritrovamento nel suo bagno di assorbenti sporchi di sangue, un dettaglio intimo e compromettente che doveva rimanere riservato, ma che nonostante le raccomandazioni si è diffuso rapidamente fino a giungere all&#x27;attenzione del marito.</p>
 <p>Messa di fronte alla necessità di sostenere la propria versione, la donna vede la situazione complicarsi ulteriormente dopo l&#x27;intervento diretto del dottor Abel. Il medico, chiamato a esaminare la paziente per chiarire il quadro clinico, giunge a una conclusione inattesa dichiarando che la gestione della gravidanza sta procedendo in modo assolutamente regolare. Questo verdetto lascia aperti drammatici interrogativi sul reale ruolo del dottore nella vicenda. Resta infatti da chiarire se il professionista sia stato abilmente raggirato dalle manovre della nobildonna oppure se tra i due sia stato stretto un patto segreto per prolungare una menzogna dalle conseguenze potenzialmente devastanti.</p>
-<h2>Cosa spinge Martina e Curro a valutare la fuga</h2>
+<h2 id="c8">Cosa spinge Martina e Curro a valutare la fuga</h2>
 <p>L&#x27;atmosfera vissuta durante la festa estiva reale alla Granja de San Ildefonso mette a nudo la profonda crisi emotiva di Martina. La giovane aristocratica si ritrova stretta nella morsa delle pressanti ambizioni dei propri genitori, che l&#x27;hanno spinta ad accettare formale proposta di matrimonio da parte di don Antonio de Carvajal y Cifuentes. Sentendosi trattata alla stregua di un mero trofeo espositivo, Martina vive con enorme disagio anche le indagini personali condotte dal promesso sposo, il quale ha ferito la sua sensibilità interrogando i cugini sul suo passato per far luce sui suoi trascorsi prima dell&#x27;imminente unione.</p>
 <p>In questo clima di costante oppressione, la parentesi appartata condivisa con Curro durante il ricevimento reale rappresenta per la ragazza l&#x27;unica vera occasione per ritrovare la serenità e confidare i propri sentimenti. La reciproca confessione d&#x27;amore riaccende la speranza nel cuore del giovane, il quale rifiuta l&#x27;idea di vederla legata a un uomo che non ama. Consapevole dell&#x27;imminenza delle nozze e delle pressioni sociali esercitate dalla famiglia, Curro decide di proporle una disperata fuga insieme, offrendo alla nobildonna un&#x27;ultima reale possibilità di conquistare la libertà e vivere un futuro autentico lontano dalle imposizioni convenzionali.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=txYiM7ZUw5g" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/txYiM7ZUw5g/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni: Manuel Ricorda Tutto! Prima notte di Passione con Jana!</span></a></li><li><a href="https://www.youtube.com/watch?v=-kCitJo8Ijk" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/-kCitJo8Ijk/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni: Manuel ricorda di aver conosciuto Dolores! Jana scioccata!</span></a></li><li><a href="https://www.youtube.com/watch?v=99ZiXrHgW2o" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/99ZiXrHgW2o/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni Spagnole: Manuel e Jana fuggono insieme! Lope lascia La promessa</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Jimena ha ingannato anche Abel o il medico è suo complice? E il segreto di Ramona su Dolores è quello che tutti immaginiamo?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=TZ4n9kQp4A4">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di La Promessa</h2><div class="griglia"><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/"><div class="foto"><img src="https://i.ytimg.com/vi/Rp8VhxDiDSk/hqdefault.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></h3>
+    <div class="quando">7 settembre 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/"><div class="foto"><img src="https://i.ytimg.com/vi/8JHt6ogwxQw/hqdefault.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Ángela beve tutto, Curro sfonda la porta</a></h3>
+    <div class="quando">6 settembre 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/"><div class="foto"><img src="/img/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Curro nasconde Ángela, Lorenzo furioso</a></h3>
+    <div class="quando">6 settembre 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=La Promessa, notte da sogno per Manuel e Jana alla festa del re — mentre la farsa di Jimena crolla e Ramona rivela il segreto su Dolores — https://serietvfans.com/la-promessa/la-promessa-notte-da-sogno-per-manuel-e-jana-alla-festa-del-re-mentre-la-farsa-d/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/la-promessa/la-promessa-notte-da-sogno-per-manuel-e-jana-alla-festa-del-re-mentre-la-farsa-d/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/la-promessa/la-promessa-notte-da-sogno-per-manuel-e-jana-alla-festa-del-re-mentre-la-farsa-d/&text=La Promessa, notte da sogno per Manuel e Jana alla festa del re — mentre la farsa di Jimena crolla e Ramona rivela il segreto su Dolores" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">LA PROMESSA Anticipazioni Spagnole: Manuel e Jana, notte da sogno</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=TZ4n9kQp4A4">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di La Promessa</h3><ol class="numerata"><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Ángela beve tutto, Curro sfonda la porta</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Curro nasconde Ángela, Lorenzo furioso</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>LA PROMESSA Anticipazioni Spagnole: Manuel e Jana, notte da sogno</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su La Promessa</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-3-6-settembre-maria-affronta-la-gravidanza-da-sola/">La Promessa anticipazioni 3-6 settembre: Maria affronta la gravidanza da sola</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-carlo-arriva-maria-trema/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Carlo arriva, Maria trema</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/far-away/far-away-anticipazioni-dal-31-agosto-al-4-settembre-chi-ha-donato-il-fegato-a-nare/">Far Away, anticipazioni dal 31 agosto al 4 settembre: chi ha donato il fegato a Nare, e perché adesso sta male lui</a></li><li><a href="/far-away/far-away-dal-31-agosto-la-madre-di-alya-sapeva-tutto-non-ricordo/">Far Away Dal 31 Agosto: la madre di Alya sapeva tutto — «non ricordo»</a></li><li><a href="/forbidden-fruit/forbidden-fruit-dal-31-agosto-il-conto-a-nome-di-halit-che-e-morto/">Forbidden Fruit Dal 31 Agosto: il conto a nome di Halit, che è morto</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

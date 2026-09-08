@@ -12,7 +12,7 @@
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Serie TV Fans">
 <meta property="og:url" content="https://serietvfans.com/far-away/far-away-anticipazioni-dal-31-agosto-al-4-settembre-chi-ha-donato-il-fegato-a-nare/">
-<meta property="og:image" content="https://i.ytimg.com/vi/Q5Ds7Gid2Bs/hqdefault.jpg">
+<meta property="og:image" content="https://serietvfans.com/img/far-away-anticipazioni-dal-31-agosto-al-4-settembre-chi-ha-donato-il-fegato-a-nare.jpg">
 <meta property="og:locale" content="it_IT">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#7b1e2b">
@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -318,12 +367,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7778653397776213" crossorigin="anonymous"></script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "96259d7e67ce47fba4573364859712a6"}'></script>
 <script>(function(){var f=0;function go(){if(f)return;f=1;(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","y3rpoig6jk");}["pointerdown","keydown","touchstart","scroll"].forEach(function(v){addEventListener(v,go,{once:1,passive:1})});setTimeout(go,2500)})();</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Far Away, anticipazioni dal 31 agosto al 4 settembre: chi ha donato il fegato a Nare, e perché adesso sta male lui", "datePublished": "2026-09-03", "dateModified": "2026-09-03", "description": "Le anticipazioni di Far Away dal 31 agosto al 4 settembre 2026: il trapianto di fegato riesce, il donatore è Özkan e le sue condizioni peggiorano mentre Nare migliora. Prima di essere dimessa lei fa una promessa che somiglia a un pagamento. Intanto Cihan si fa arrestare apposta per arrivare a Halis, e ne esce con una confessione a metà che gli toglie un sospettato senza consegnargli un colpevole.", "inLanguage": "it-IT", "mainEntityOfPage": "https://serietvfans.com/far-away/far-away-anticipazioni-dal-31-agosto-al-4-settembre-chi-ha-donato-il-fegato-a-nare/", "image": ["https://i.ytimg.com/vi/Q5Ds7Gid2Bs/hqdefault.jpg"], "author": {"@type": "Organization", "name": "Serie TV Fans", "url": "https://serietvfans.com/chi-siamo/"}, "publisher": {"@type": "Organization", "name": "Serie TV Fans", "logo": {"@type": "ImageObject", "url": "https://serietvfans.com/favicon.svg"}}, "video": {"@type": "VideoObject", "name": "Far Away, anticipazioni dal 31 agosto al 4 settembre: chi ha donato il fegato a Nare, e perché adesso sta male lui", "description": "Le anticipazioni di Far Away dal 31 agosto al 4 settembre 2026: il trapianto di fegato riesce, il donatore è Özkan e le sue condizioni peggiorano mentre Nare migliora. Prima di essere dimessa lei fa una promessa che somiglia a un pagamento. Intanto Cihan si fa arrestare apposta per arrivare a Halis, e ne esce con una confessione a metà che gli toglie un sospettato senza consegnargli un colpevole.", "thumbnailUrl": "https://i.ytimg.com/vi/Q5Ds7Gid2Bs/hqdefault.jpg", "uploadDate": "2026-09-03T12:00:00Z", "embedUrl": "https://www.youtube.com/embed/Q5Ds7Gid2Bs"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Far Away, anticipazioni dal 31 agosto al 4 settembre: chi ha donato il fegato a Nare, e perché adesso sta male lui", "datePublished": "2026-09-03", "dateModified": "2026-09-08", "description": "Le anticipazioni di Far Away dal 31 agosto al 4 settembre 2026: il trapianto di fegato riesce, il donatore è Özkan e le sue condizioni peggiorano mentre Nare migliora. Prima di essere dimessa lei fa una promessa che somiglia a un pagamento. Intanto Cihan si fa arrestare apposta per arrivare a Halis, e ne esce con una confessione a metà che gli toglie un sospettato senza consegnargli un colpevole.", "inLanguage": "it-IT", "mainEntityOfPage": "https://serietvfans.com/far-away/far-away-anticipazioni-dal-31-agosto-al-4-settembre-chi-ha-donato-il-fegato-a-nare/", "image": ["https://serietvfans.com/img/far-away-anticipazioni-dal-31-agosto-al-4-settembre-chi-ha-donato-il-fegato-a-nare.jpg"], "author": {"@type": "Organization", "name": "Serie TV Fans", "url": "https://serietvfans.com/chi-siamo/"}, "publisher": {"@type": "Organization", "name": "Serie TV Fans", "logo": {"@type": "ImageObject", "url": "https://serietvfans.com/favicon.svg"}}, "video": {"@type": "VideoObject", "name": "Far Away, anticipazioni dal 31 agosto al 4 settembre: chi ha donato il fegato a Nare, e perché adesso sta male lui", "description": "Le anticipazioni di Far Away dal 31 agosto al 4 settembre 2026: il trapianto di fegato riesce, il donatore è Özkan e le sue condizioni peggiorano mentre Nare migliora. Prima di essere dimessa lei fa una promessa che somiglia a un pagamento. Intanto Cihan si fa arrestare apposta per arrivare a Halis, e ne esce con una confessione a metà che gli toglie un sospettato senza consegnargli un colpevole.", "thumbnailUrl": "https://serietvfans.com/img/far-away-anticipazioni-dal-31-agosto-al-4-settembre-chi-ha-donato-il-fegato-a-nare.jpg", "uploadDate": "2026-09-03T12:00:00Z", "embedUrl": "https://www.youtube.com/embed/Q5Ds7Gid2Bs"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://serietvfans.com/"}, {"@type": "ListItem", "position": 2, "name": "Far Away", "item": "https://serietvfans.com/serie/far-away/"}, {"@type": "ListItem", "position": 3, "name": "Far Away, anticipazioni dal 31 agosto al 4 settembre: chi ha donato il fegato a Nare, e perché adesso sta male lui"}]}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,17 +385,18 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/far-away/">Far Away</a> › Far Away, anticipazioni dal 31 agosto al 4 settembre: chi ha donato il fegato a Nare, e perché adesso sta male lui</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/far-away/">Far Away</a>
   <h1>Far Away, anticipazioni dal 31 agosto al 4 settembre: chi ha donato il fegato a Nare, e perché adesso sta male lui</h1>
-  <div class="firma">Redazione Serie TV Fans · giovedì 3 settembre 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-09-03">giovedì 3 settembre 2026</time></span><span>aggiornato il 8 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Le anticipazioni di Far Away dal 31 agosto al 4 settembre 2026: il trapianto di fegato riesce, il donatore è Özkan e le sue condizioni peggiorano mentre Nare migliora. Prima di essere dimessa lei fa una promessa che somiglia a un pagamento. Intanto Cihan si fa arrestare apposta per arrivare a Halis, e ne esce con una confessione a metà che gli toglie un sospettato senza consegnargli un colpevole.</p><ol><li><a href="#c1">Chi ha donato il fegato a Nare in Far Away?</a></li><li><a href="#c2">Chi sono Nare, Özkan e gli altri, per chi arriva adesso</a></li><li><a href="#c3">L&#x27;antefatto: lo sparo alla festa, e una lista che si accorciava</a></li><li><a href="#c4">Quanto costa donare un pezzo di fegato</a></li><li><a href="#c5">La promessa che Nare fa prima di essere dimessa</a></li><li><a href="#c6">Perché Cihan si fa arrestare, e cosa ottiene da Halis</a></li><li><a href="#c7">Perché questa settimana pesa più di quanto sembri</a></li><li><a href="#c8">Due uomini che pagano, e due donne che non hanno scelto</a></li><li><a href="#c9">Dove vedere Far Away</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>Far Away</strong> — Canale 5 · in streaming su Mediaset Infinity</span></div>
-  
-  <p class="occhiello">Le anticipazioni di Far Away dal 31 agosto al 4 settembre 2026: il trapianto di fegato riesce, il donatore è Özkan e le sue condizioni peggiorano mentre Nare migliora. Prima di essere dimessa lei fa una promessa che somiglia a un pagamento. Intanto Cihan si fa arrestare apposta per arrivare a Halis, e ne esce con una confessione a metà che gli toglie un sospettato senza consegnargli un colpevole.</p>
+  <figure class="copertina"><img src="/img/far-away-anticipazioni-dal-31-agosto-al-4-settembre-chi-ha-donato-il-fegato-a-nare.jpg" alt="Far Away"><figcaption>Immagine d&#x27;ambiente — Far Away</figcaption></figure>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
     <button type="button" class="avvia" data-yt="Q5Ds7Gid2Bs"
       aria-label="Riproduci il video: Far Away, anticipazioni dal 31 agosto al 4 settembre: chi ha donato il fegato a Nare, e perché adesso sta male lui" onclick="ytGo(this)">
-      <img src="https://i.ytimg.com/vi/Q5Ds7Gid2Bs/hqdefault.jpg" alt="Far Away, anticipazioni dal 31 agosto al 4 settembre: chi ha donato il fegato a Nare, e perché adesso sta male lui" width="480" height="360"
+      <img src="/img/far-away-anticipazioni-dal-31-agosto-al-4-settembre-chi-ha-donato-il-fegato-a-nare.jpg" alt="Far Away, anticipazioni dal 31 agosto al 4 settembre: chi ha donato il fegato a Nare, e perché adesso sta male lui" width="1280" height="720"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/Q5Ds7Gid2Bs/hqdefault.jpg&quot;, &quot;/fallback/far-away.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,56 +409,78 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
   <p><strong>Nare si sveglia dal trapianto e chiede chi le ha salvato la vita. La risposta è il nome di un uomo che in quel momento sta male in un altro reparto dello stesso ospedale.</strong></p>
   <p>Il trapianto riesce. Nare apre gli occhi, capisce dov&#x27;è, e la prima cosa che chiede è chi le ha dato quel fegato. Attorno al letto ci sono i suoi, e per qualche secondo non risponde nessuno.</p>
 <p>Quel silenzio ha un motivo semplice: nessuno in quella stanza voleva essere la persona che le consegna un peso simile. Alla fine il nome glielo dice Cihan.</p>
-<h2>Chi ha donato il fegato a Nare in Far Away?</h2>
+<h2 id="c1">Chi ha donato il fegato a Nare in Far Away?</h2>
 <p>È la domanda che in questi giorni porta più persone a cercare Far Away, e la risposta è secca: il fegato che tiene in vita Nare è di Özkan. L&#x27;operazione va bene, Nare comincia a riprendersi, e nello stesso ospedale, in un altro reparto, le condizioni di lui peggiorano.</p>
 <p>Tutta la settimana dal 31 agosto al 4 settembre sta dentro quella distanza di pochi corridoi. Nare non ha ricevuto un organo da uno sconosciuto: l&#x27;ha ricevuto dall&#x27;uomo che per mesi si è sentito dire di no da lei. E adesso deve decidere che farsene di una vita che le è stata regalata proprio da lui.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Chi sono Nare, Özkan e gli altri, per chi arriva adesso</h2>
+<h2 id="c2">Chi sono Nare, Özkan e gli altri, per chi arriva adesso</h2>
 <p>Siamo a Mardin, in casa Albora, una famiglia di latifondisti dove le regole non scritte pesano più di quelle scritte. Cihan è il primogenito, quello che tiene insieme tutto. Alya, sua moglie, è il medico arrivato dal Canada dopo la morte di Boran. Nare è la sorella minore: quella che tutti proteggono e che quasi mai decide qualcosa di quello che le capita.</p>
 <p>Özkan è l&#x27;uomo che intorno a Nare ha sempre gravitato senza mai riuscire a entrarci davvero: non le è parente e non le è marito, è uno che c&#x27;era e basta. Şahin invece è l&#x27;uomo che Nare ha scelto, e con cui la famiglia non ha mai fatto pace. Sopra tutti c&#x27;è Sadakat, la matriarca. E in una cella, lontano da questa storia solo in apparenza, c&#x27;è Halis, il nome che salta fuori ogni volta che si torna a parlare di come è morto Boran.</p>
-<h2>L&#x27;antefatto: lo sparo alla festa, e una lista che si accorciava</h2>
+<h2 id="c3">L&#x27;antefatto: lo sparo alla festa, e una lista che si accorciava</h2>
 <p>Chi ha saltato le puntate precedenti si è perso il modo in cui Nare è finita in sala operatoria. Alla festa degli aquiloni Şahin punta la pistola contro Özkan, il colpo parte nel disordine e prende Nare di fianco. Sopravvive all&#x27;intervento, ma non basta: senza un fegato nuovo non se la cava.</p>
 <p>Da lì in poi la famiglia diventa una lista di nomi da controllare. Le analisi danno Kadir come compatibile, e la sera prima dell&#x27;operazione Kadir ha la febbre. Solo quello: la febbre. Con quella addosso in sala operatoria non lo fanno entrare. L&#x27;intervento salta, e agli Albora resta un tempo che ormai è finito.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>Il nome che esce quando la lista si è ridotta all&#x27;osso è quello che nessuno aveva messo in conto. Özkan si fa avanti per primo, e stavolta si arriva davvero al tavolo operatorio.</p>
-<h2>Quanto costa donare un pezzo di fegato</h2>
+<h2 id="c4">Quanto costa donare un pezzo di fegato</h2>
 <p>Un pezzo di fegato non è una sacca di sangue. Chi dona resta ore in sala operatoria e torna a casa con un organo mutilato che deve ricrescere da solo. Nella maggior parte dei casi ricresce. In qualche caso le cose si complicano, e le anticipazioni su questo sono chiare: mentre Nare migliora, Özkan sta male.</p>
 <p>È il dettaglio che ribalta la scena del risveglio. Nare si sveglia dentro una buona notizia, e la buona notizia ha un prezzo che sta pagando qualcun altro, due porte più in là.</p>
-<h2>La promessa che Nare fa prima di essere dimessa</h2>
+<h2 id="c5">La promessa che Nare fa prima di essere dimessa</h2>
 <p>Prima delle dimissioni Nare va da Özkan e gli fa una promessa: non starà più con Şahin. Vale la pena fermarsi su questa scena, perché è più torbida di quanto sembri. Non gli offre un grazie, non gli offre un abbraccio. Le prime parole che trova, appena scoperto chi l&#x27;ha salvata, sono una rinuncia.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>Le anticipazioni lasciano volutamente aperta la domanda vera: Nare lo dice perché ha smesso di amare Şahin, o perché sente di dovere qualcosa a Özkan? Nel primo caso è una donna che sceglie. Nel secondo sta saldando una fattura, e in una storia come questa una promessa fatta per gratitudine non regge mai a lungo.</p>
 <p>Il punto è che Özkan non chiede niente. Nessuna condizione, nessun «adesso mi devi». Ed è proprio questo che rende il debito impossibile da estinguere: se lui avesse chiesto qualcosa, lei avrebbe potuto dargliela e chiudere la partita. Non avendo chiesto nulla, resta debitrice a tempo indeterminato.</p>
-<h2>Perché Cihan si fa arrestare, e cosa ottiene da Halis</h2>
+<h2 id="c6">Perché Cihan si fa arrestare, e cosa ottiene da Halis</h2>
 <p>Nel frattempo, dall&#x27;altra parte della città, Cihan scopre che il profugo alla guida dell&#x27;auto nell&#x27;incidente in cui è morto Boran è stato scarcerato. Per lo Stato quel conto è saldato e il caso è chiuso. Per Cihan, che all&#x27;incidente non ha mai creduto, il caso non è mai nemmeno cominciato.</p>
 <p>Chiunque altro, davanti a una scarcerazione, andrebbe da un avvocato. Cihan ragiona al contrario: l&#x27;uomo che sa davvero come sono andate le cose non è quello appena uscito, è Halis, ed è dentro. Quindi invece di cercare un modo per farlo uscire, cerca un modo per entrare lui. Si fa arrestare apposta.</p>
 <p>Detta così sembra una mossa da film. Farla è tutt&#x27;altra cosa: serve un reato vero, serve che qualcuno lo denunci, serve finire nella struttura giusta. Cihan non si traveste da detenuto, diventa un detenuto, con un fascicolo intestato a lui.</p>
 <p>Messo alle strette, Halis alla fine parla. Ammette di avere indicato a Nadim ed Ecmel il posto in cui si trovava Boran. E nega con forza di avere ordinato di ucciderlo.</p>
-<h2>Perché questa settimana pesa più di quanto sembri</h2>
+<h2 id="c7">Perché questa settimana pesa più di quanto sembri</h2>
 <p>Facciamo il conto dell&#x27;affare che ha fatto Cihan, perché è peggiore di quello che sembra. Prima di entrare aveva un sospettato solo, Halis. Adesso ne ha tre — Halis, Nadim ed Ecmel — e nessuno dei tre si prende la morte di Boran. Tra dire dove si trova un uomo e mandarlo a morire c&#x27;è una mano in mezzo, e quella mano continua a non avere un nome. Si è giocato la libertà per una confessione che gli toglie un sospettato senza consegnargli un colpevole.</p>
 <p>E mentre lui è chiuso dentro, la villa resta senza padrone. Sadakat comincia a sospettare che in sua assenza alla villa sia successo qualcosa di importante e manda Şehmuz a cercare Fikriye, con l&#x27;ordine preciso che Cihan non ne sappia nulla. Fikriye, soccorsa da Hasan e portata d&#x27;urgenza in ospedale, quando Alya le chiede cosa sia successo risponde che non ricorda quasi niente.</p>
 <p>Ecco la conseguenza che questa settimana si porta dietro fino alle prossime puntate: la persona che conosce per intero la verità sulla morte di Boran non è in carcere, è in un letto d&#x27;ospedale, ed è la madre di sua moglie. Chi arriva per primo a Fikriye decide quale versione di quella morte diventerà quella ufficiale. Cihan, che ha pagato più di tutti per arrivarci, in questo momento è l&#x27;unico che non può muoversi.</p>
-<h2>Due uomini che pagano, e due donne che non hanno scelto</h2>
+<h2 id="c8">Due uomini che pagano, e due donne che non hanno scelto</h2>
 <p>Tenete insieme le due immagini della settimana. Un uomo si toglie un pezzo di corpo per far vivere qualcuno. Un altro si toglie la libertà per far parlare qualcuno. Nessuno dei due ha chiesto il permesso, e in entrambi i casi il conto arriva a chi non ha deciso niente: Nare, che si risveglia con un debito addosso, e Alya, che resta sola in una casa dove sua suocera sta indagando su sua madre.</p>
 <p>È il modo in cui gli Albora hanno sempre funzionato, e spiega perché in questa casa nessuno riesce a essere semplicemente riconoscente: ogni favore ricevuto qui dentro arriva con una data di scadenza che decide chi l&#x27;ha fatto.</p>
-<h2>Dove vedere Far Away</h2>
+<h2 id="c9">Dove vedere Far Away</h2>
 <p>Il titolo originale è Uzak Şehir: la serie è prodotta in Turchia per Kanal D, e la storia si svolge a Mardin, nel sud-est del Paese, a poca distanza dal confine. In Italia la trasmette Canale 5, e le puntate restano poi disponibili su Mediaset Infinity. I nomi dei personaggi non sono stati cambiati nel passaggio all&#x27;italiano: Nare, Özkan, Cihan e Fikriye si chiamano così anche in originale.</p>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=SYr_sUICFk0" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/SYr_sUICFk0/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>FAR AWAY: Alya confessa di essere stata VENDUTA per 300mila euro, Cihan dichiara guerra 💔</span></a></li><li><a href="https://www.youtube.com/watch?v=-1mSuZOzD7Q" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/-1mSuZOzD7Q/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>FAR AWAY: MINE finge un crollo per riprendersi Cihan — e spunta il mistero Mariam 😱</span></a></li><li><a href="https://www.youtube.com/watch?v=9VR_4M2ziyY" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/9VR_4M2ziyY/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>FAR AWAY: ALYA entra nella stanza segreta di Cihan — e scopre cosa le nascondeva 😱</span></a></li></ul></div>
   
+  <section class="correlati-serie"><h2>Altre anticipazioni di Far Away</h2><div class="griglia"><article class="scheda">
+  <a href="/far-away/far-away-dal-31-agosto-la-madre-di-alya-sapeva-tutto-non-ricordo/"><div class="foto"><img src="/img/far-away-dal-31-agosto-la-madre-di-alya-sapeva-tutto-non-ricordo.jpg" alt="Far Away" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/far-away.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Far Away</span>
+    <h3><a href="/far-away/far-away-dal-31-agosto-la-madre-di-alya-sapeva-tutto-non-ricordo/">Far Away Dal 31 Agosto: la madre di Alya sapeva tutto — «non ricordo»</a></h3>
+    <div class="quando">31 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/far-away/far-away-chi-e-fikriye-la-madre-di-alya-cosa-ha-fatto-e-perche-conta/"><div class="foto"><img src="/img/far-away-chi-e-fikriye-la-madre-di-alya-cosa-ha-fatto-e-perche-conta.jpg" alt="Far Away" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/far-away.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Far Away</span>
+    <h3><a href="/far-away/far-away-chi-e-fikriye-la-madre-di-alya-cosa-ha-fatto-e-perche-conta/">Far Away, chi è Fikriye: la madre di Alya, cosa ha fatto e perché conta per gli Albora</a></h3>
+    <div class="quando">29 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/far-away/far-away-chi-e-nadim-il-capo-dei-baybars-cosa-vuole-e-perche-gli-albora-lo-accusano/"><div class="foto"><img src="/img/far-away-chi-e-nadim-il-capo-dei-baybars-cosa-vuole-e-perche-gli-albora-lo-accusano.jpg" alt="Far Away" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/far-away.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Far Away</span>
+    <h3><a href="/far-away/far-away-chi-e-nadim-il-capo-dei-baybars-cosa-vuole-e-perche-gli-albora-lo-accusano/">Far Away, chi è Nadim: il capo dei Baybars, cosa vuole e perché gli Albora lo accusano</a></h3>
+    <div class="quando">29 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=Far Away, anticipazioni dal 31 agosto al 4 settembre: chi ha donato il fegato a Nare, e perché adesso sta male lui — https://serietvfans.com/far-away/far-away-anticipazioni-dal-31-agosto-al-4-settembre-chi-ha-donato-il-fegato-a-nare/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/far-away/far-away-anticipazioni-dal-31-agosto-al-4-settembre-chi-ha-donato-il-fegato-a-nare/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/far-away/far-away-anticipazioni-dal-31-agosto-al-4-settembre-chi-ha-donato-il-fegato-a-nare/&text=Far Away, anticipazioni dal 31 agosto al 4 settembre: chi ha donato il fegato a Nare, e perché adesso sta male lui" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">Far Away, anticipazioni dal 31 agosto al 4 settembre: chi ha donato il fegato a Nare, e perché adesso sta male lui</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=Q5Ds7Gid2Bs">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di Far Away</h3><ol class="numerata"><li><a href="/far-away/far-away-dal-31-agosto-la-madre-di-alya-sapeva-tutto-non-ricordo/">Far Away Dal 31 Agosto: la madre di Alya sapeva tutto — «non ricordo»</a></li><li><a href="/far-away/far-away-chi-e-fikriye-la-madre-di-alya-cosa-ha-fatto-e-perche-conta/">Far Away, chi è Fikriye: la madre di Alya, cosa ha fatto e perché conta per gli Albora</a></li><li><a href="/far-away/far-away-chi-e-nadim-il-capo-dei-baybars-cosa-vuole-e-perche-gli-albora-lo-accusano/">Far Away, chi è Nadim: il capo dei Baybars, cosa vuole e perché gli Albora lo accusano</a></li><li><a href="/far-away/far-away-sadakat-muore-cosa-sappiamo-e-chi-ha-motivo-di-volerla-morta/">Sadakat muore in Far Away? Cosa sappiamo: chi ha motivo di volerla morta e perché la serie non ha ancora risposto</a></li><li><a href="/far-away/far-away-chi-e-mariam-il-nome-sulla-chiavetta-di-boran-che-mine-usa-per-dividere/">Far Away, chi è Meryem: il nome sulla chiavetta di Boran che Mine usa per dividere Alya e Cihan</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>Ogni anticipazione, prima in video sul canale Serie TV Fans</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su Far Away</h3><ul><li><a href="/far-away/far-away-dal-31-agosto-la-madre-di-alya-sapeva-tutto-non-ricordo/">Far Away Dal 31 Agosto: la madre di Alya sapeva tutto — «non ricordo»</a></li><li><a href="/far-away/far-away-chi-e-fikriye-la-madre-di-alya-cosa-ha-fatto-e-perche-conta/">Far Away, chi è Fikriye: la madre di Alya, cosa ha fatto e perché conta per gli Albora</a></li><li><a href="/far-away/far-away-chi-e-nadim-il-capo-dei-baybars-cosa-vuole-e-perche-gli-albora-lo-accusano/">Far Away, chi è Nadim: il capo dei Baybars, cosa vuole e perché gli Albora lo accusano</a></li><li><a href="/far-away/far-away-sadakat-muore-cosa-sappiamo-e-chi-ha-motivo-di-volerla-morta/">Sadakat muore in Far Away? Cosa sappiamo: chi ha motivo di volerla morta e perché la serie non ha ancora risposto</a></li><li><a href="/far-away/far-away-chi-e-mariam-il-nome-sulla-chiavetta-di-boran-che-mine-usa-per-dividere/">Far Away, chi è Meryem: il nome sulla chiavetta di Boran che Mine usa per dividere Alya e Cihan</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

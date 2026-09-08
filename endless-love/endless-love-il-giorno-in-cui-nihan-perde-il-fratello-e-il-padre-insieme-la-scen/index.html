@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/endless-love/">Endless Love</a> › Endless Love, il giorno in cui Nihan perde il fratello e il padre insieme: la scena dell&#x27;obitorio e la partenza per Londra</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/endless-love/">Endless Love</a>
   <h1>Endless Love, il giorno in cui Nihan perde il fratello e il padre insieme: la scena dell&#x27;obitorio e la partenza per Londra</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Poche ore prima Nihan aveva scoperto di aspettare un figlio da Kemal e si stava preparando a dirglielo. Poi arriva la telefonata su Ozan, e dopo la telefonata arriva il resto.</p><ol><li><a href="#c1">La speranza durata mezza giornata</a></li><li><a href="#c2">All&#x27;obitorio</a></li><li><a href="#c3">L&#x27;altra stanza</a></li><li><a href="#c4">Chi era Önder, l&#x27;uomo che muore nell&#x27;altra stanza</a></li><li><a href="#c5">Due strade opposte per madre e figlia</a></li><li><a href="#c6">Vildan e Leyla si riavvicinano: perché proprio adesso</a></li><li><a href="#c7">Cosa Nihan si porta a Londra senza dirlo a nessuno</a></li><li><a href="#c8">Come Kemal rimane all&#x27;oscuro della gravidanza di Nihan</a></li><li><a href="#c9">Perché la tragedia nell&#x27;ospedale sconvolge la vita di Vildan</a></li><li><a href="#c10">Cosa spinge Nihan a scegliere l&#x27;esilio a Londra</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>Endless Love</strong> — Serie conclusa in Italia · le puntate su Mediaset Infinity</span></div>
   
-  <p class="occhiello">Poche ore prima Nihan aveva scoperto di aspettare un figlio da Kemal e si stava preparando a dirglielo. Poi arriva la telefonata su Ozan, e dopo la telefonata arriva il resto.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: Endless Love, il giorno in cui Nihan perde il fratello e il padre insieme: la scena dell&#x27;obitorio e la partenza per Londra" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/5tQYZF-Uub0/maxresdefault.jpg" alt="Endless Love, il giorno in cui Nihan perde il fratello e il padre insieme: la scena dell&#x27;obitorio e la partenza per Londra" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/5tQYZF-Uub0/hqdefault.jpg 480w, https://i.ytimg.com/vi/5tQYZF-Uub0/sddefault.jpg 640w, https://i.ytimg.com/vi/5tQYZF-Uub0/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/5tQYZF-Uub0/hqdefault.jpg&quot;, &quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,48 +409,70 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>È la sequenza più dura di tutta la serie, e cambia per sempre la famiglia Sezin.</strong></p>
-  <h2>La speranza durata mezza giornata</h2>
+  <h2 id="c1">La speranza durata mezza giornata</h2>
 <p>La gravidanza arriva come l&#x27;unica cosa buona dopo mesi difficili: per Nihan è la prova che una via d&#x27;uscita esiste, e che quella fuga con Kemal non è stata solo un errore da pagare. Sta cercando il modo di dirglielo quando squilla il telefono. Ozan è morto in ospedale. Da quel momento la notizia della gravidanza scompare completamente dai suoi pensieri: corre dalla famiglia, chiede di vedere il fratello, e i sanitari la fermano perché non è il caso.</p>
-<h2>All&#x27;obitorio</h2>
+<h2 id="c2">All&#x27;obitorio</h2>
 <p>Nihan non accetta la parola «morto». Torna all&#x27;obitorio decisa a portare via il corpo del fratello, e alla fine la lasciano entrare. Davanti a quel lettino si convince che stia soltanto dormendo, e prova a sollevarlo per portarlo via da lì; sono gli infermieri a fermarla e ad accompagnarla fuori. È il punto in cui il dolore smette di essere lutto e diventa qualcosa che le toglie la lucidità — e nessuno, in quel momento, ha il coraggio di dirle il resto.</p>
-<h2>L&#x27;altra stanza</h2>
+<h2 id="c3">L&#x27;altra stanza</h2>
 <p>Uscendo, Nihan trova la madre in stato di choc e la invita a tornare dentro con lei, convinta che pianga per Ozan. La verità è un&#x27;altra: in quelle stanze c&#x27;è anche il corpo di suo padre. Önder aveva cercato disperatamente di raggiungere la camera del figlio, i sanitari non erano riusciti a fermarlo, e quello che si è trovato davanti gli ha provocato un infarto che non gli ha lasciato scampo. In un solo giorno la famiglia Sezin perde entrambi gli uomini.</p>
-<h2>Chi era Önder, l&#x27;uomo che muore nell&#x27;altra stanza</h2>
+<h2 id="c4">Chi era Önder, l&#x27;uomo che muore nell&#x27;altra stanza</h2>
 <p>Önder è il padre di Nihan e Ozan, e la sua è una delle figure su cui poggia l&#x27;intera architettura della serie. Anni prima si era fermato a un passo dalle nozze con Leyla, la sorella di Vildan, e l&#x27;aveva lasciata all&#x27;altare confessando di avere una relazione segreta proprio con lei — e che da quella relazione stava per nascere un figlio. Tutta la famiglia Sezin nasce da quello strappo. Che sia proprio lui a morire mentre cerca di raggiungere il corpo del figlio chiude un cerchio che nessuno dei protagonisti ha mai avuto il coraggio di nominare per intero.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Due strade opposte per madre e figlia</h2>
+<h2 id="c5">Due strade opposte per madre e figlia</h2>
 <p>Da qui in avanti Vildan e Nihan reagiscono in modi opposti. Vildan cerca rifugio nell&#x27;unica persona che le resta: fa pace con la sorella Leyla dopo anni di incomprensioni e va a vivere da lei, tentando di rimettere insieme quello che era rimasto della famiglia. Nihan invece decide di andarsene: Istanbul è diventata una città fatta solo di ricordi che non riesce più a sostenere, e sceglie Londra — lontano da tutto, con dentro un figlio di cui il padre non sa ancora niente.</p>
-<h2>Vildan e Leyla si riavvicinano: perché proprio adesso</h2>
+<h2 id="c6">Vildan e Leyla si riavvicinano: perché proprio adesso</h2>
 <p>La scelta di Vildan di rifugiarsi dalla sorella non è un dettaglio di raccordo: è la conseguenza diretta di due bare nello stesso giorno. Tra quelle due donne c&#x27;era un torto che durava da una vita intera — un uomo, una gravidanza taciuta, un matrimonio saltato — e nessuna delle due aveva mai fatto il primo passo. È davanti alla fragilità di quelle morti improvvise che Leyla sceglie il perdono, e la riconciliazione regge anche negli anni successivi. La perdita, in questa famiglia, è l&#x27;unica cosa che riesca a fare quello che le spiegazioni non hanno mai fatto.</p>
-<h2>Cosa Nihan si porta a Londra senza dirlo a nessuno</h2>
+<h2 id="c7">Cosa Nihan si porta a Londra senza dirlo a nessuno</h2>
 <p>La notizia che sparisce in questo episodio non è una notizia qualsiasi. Nihan stava cercando il modo di dire a Kemal che aspettava un figlio quando ha squillato quel telefono, e da quel momento la gravidanza esce dal racconto insieme a tutto il resto. Quando sale sull&#x27;aereo per Londra, quindi, non porta via soltanto se stessa: porta via una bambina di cui il padre non sa niente. Sarà quello, e non il dolore di questo giorno, l&#x27;esplosivo che farà saltare gli equilibri anni dopo — perché un segreto tenuto così a lungo, quando torna, non torna mai da solo.</p>
-<h2>Come Kemal rimane all&#x27;oscuro della gravidanza di Nihan</h2>
+<h2 id="c8">Come Kemal rimane all&#x27;oscuro della gravidanza di Nihan</h2>
 <p>La relazione tra Kemal e Nihan ha attraversato momenti complessi, culminati nella decisione di tentare una fuga insieme che non si è rivelata un semplice sbaglio. Proprio nei momenti successivi a quel periodo travagliato, la ragazza scopre di essere incinta e capisce che quella nuova vita rappresenta un vero motivo di speranza dopo mesi carichi di difficoltà. Nihan sta attivamente cercando l&#x27;occasione giusta e il momento adatto per comunicare a Kemal che diventerà padre, ma la sorte interviene prima che la notizia possa essere condivisa. Una chiamata drammatica giunge improvvisamente, sconvolgendo per sempre ogni piano e lasciando l&#x27;uomo del tutto inconsapevole dell&#x27;evento imminente.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>La tragedia che coinvolge la famiglia Sezin cancella istantaneamente ogni altro pensiero dalla mente di Nihan, che corre disperata verso la struttura sanitaria. In quella sequenza di eventi drammatici, Kemal rimane tagliato fuori dalla verità senza nemmeno saperlo, mentre la ragazza affronta da sola il dramma della perdita del fratello e del padre. La scelta di tacere, dettata inizialmente dall&#x27;emergenza e dallo choc, si trasforma rapidamente in un distacco definitivo quando Nihan decide di allontanarsi. Sarà proprio questo prolungato silenzio a gettare le basi per le successive tensioni narrative, poiché il padre non immagina minimamente che in quella partenza si nasconda il futuro della sua famiglia.</p>
-<h2>Perché la tragedia nell&#x27;ospedale sconvolge la vita di Vildan</h2>
+<h2 id="c9">Perché la tragedia nell&#x27;ospedale sconvolge la vita di Vildan</h2>
 <p>La drammatica giornata trascorsa tra i corridoi della struttura sanitaria segna un punto di non ritorno per Vildan, trovatasi improvvisamente di fronte alla perdita simultanea del figlio Ozan e del marito Önder. Quando Nihan esce provata dall&#x27;obitorio e la incontra in uno stato di completo choc, crede che la madre stia piangendo esclusivamente per la morte del ragazzo. La realtà drammatica è che Vildan sta affrontando anche la scomparsa improvvisa di Önder, stroncato da un infarto devastante mentre cercava disperatamente di raggiungere la stanza del figlio. In pochissime ore, la donna vede sgretolarsi interamente il nucleo familiare che aveva costruito e difeso nel tempo.</p>
 <p>Di fronte a un dolore così devastante, Vildan comprende di non poter restare da sola e decide di cercare rifugio nell&#x27;unica persona in grado di comprenderla, la sorella Leyla. Tra le due donne esisteva una ferita profonda creata anni prima, quando Önder aveva abbandonato Leyla ad un passo dal matrimonio dopo aver confessato la relazione segreta con Vildan e la nascita imminente di un figlio. Nonostante questo passato ingombrante e doloroso, la presenza di due bare nello stesso giorno spinge Leyla verso il perdono immediato. Vildan lascia così la sua casa per trasferirsi dalla sorella, trovando nella riconciliazione l&#x27;unico sostegno possibile per sopravvivere.</p>
-<h2>Cosa spinge Nihan a scegliere l&#x27;esilio a Londra</h2>
+<h2 id="c10">Cosa spinge Nihan a scegliere l&#x27;esilio a Londra</h2>
 <p>La reazione di Nihan di fronte alla scomparsa del fratello rivela la profondità di un trauma che le fa perdere del tutto la lucidità iniziale. All&#x27;interno dell&#x27;obitorio, la ragazza rifiuta con ostinazione l&#x27;idea della morte di Ozan, arrivando a credere che il giovane stia semplicemente dormendo e tentando persino di sollevarlo dal lettino per portarlo via. Solo il pronto intervento del personale sanitario riesce a fermarla e ad accompagnarla all&#x27;esterno di quei locali. Questo momento segna il passaggio definitivo da un lutto elaborabile a un dolore insostenibile, che rende la città di Istanbul un luogo invivibile, intriso soltanto di ricordi dolorosi e strazianti da cui scappare al più presto.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>La decisione di imbarcarsi su un volo diretto a Londra nasce proprio dalla necessità irrinunciabile di allontanarsi da un ambiente diventato soffocante per la sua stabilità emotiva. Salendo su quell&#x27;aereo, la giovane donna porta con sé non soltanto il proprio dolore inconsolabile, ma anche il segreto della bambina che porta in grembo e di cui Kemal non sa assolutamente nulla. Questa partenza trasforma la gravidanza in un elemento esplosivo destinato a rimanere nascosto per anni oltreconfine. La scelta di vivere lontano da tutti ridisegna completamente il futuro dei protagonisti, gettando le premesse per le inevitabili conseguenze che travolgeranno la storia quando questo segreto riemergerà dall&#x27;ombra.</p>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=WJc6MfB3mz4" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/WJc6MfB3mz4/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>KEMAL E NIHAN FINALMENTE INSIEME VOLANO VIA VERSO LA LIBERTA&#x27;-Anticipazioni Endless Love 16 Giu</span></a></li><li><a href="https://www.youtube.com/watch?v=s4OTXWO9lBo" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/s4OTXWO9lBo/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>SEI MIO FIGLIO, KEMAL...&quot; LA SCENA CHE CAMBIA LA STORIA DI ENDLESS LOVE PER SEMPRE!</span></a></li><li><a href="https://www.youtube.com/watch?v=1WvCl8sGd3Y" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/1WvCl8sGd3Y/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>KEMAL E NIHAN SCAPPANO INSIEME? INTANTO GLI SPOSINI FANNO LA SORPRESA...Endless Love 19 Maggio</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Nihan avrebbe dovuto dire subito a Kemal della gravidanza?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=5tQYZF-Uub0">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di Endless Love</h2><div class="griglia"><article class="scheda">
+  <a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/"><div class="foto"><img src="https://i.ytimg.com/vi/DSiProJJ1ls/hqdefault.jpg" alt="Endless Love" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/"><div class="foto"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/"><div class="foto"><img src="https://i.ytimg.com/vi/uu2oAzTOWQU/hqdefault.jpg" alt="Endless Love" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></h3>
+    <div class="quando">25 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=Endless Love, il giorno in cui Nihan perde il fratello e il padre insieme: la scena dell&#x27;obitorio e la partenza per Londra — https://soapoperaitalia.com/endless-love/endless-love-la-trama-completa-perche-nihan-sposa-emir-e-come-finisce/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://soapoperaitalia.com/endless-love/endless-love-la-trama-completa-perche-nihan-sposa-emir-e-come-finisce/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://soapoperaitalia.com/endless-love/endless-love-la-trama-completa-perche-nihan-sposa-emir-e-come-finisce/&text=Endless Love, il giorno in cui Nihan perde il fratello e il padre insieme: la scena dell&#x27;obitorio e la partenza per Londra" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">Endless Love anticipazioni, il doppio lutto della famiglia Sezin</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=5tQYZF-Uub0">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di Endless Love</h3><ol class="numerata"><li><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></li><li><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></li><li><a href="/endless-love/endless-love-chi-e-galip-kozcuoglu-le-due-volte-in-cui-nihan-e-stata-venduta/">Endless Love, chi è Galip Kozcuoğlu: le due volte in cui Nihan è stata venduta</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-zeynep-soydere-perche-emir-lha-scelta-e-cosa-ha-distrutto/">Endless Love, chi è davvero Zeynep Soydere: perché Emir l&#x27;ha scelta e cosa ha distrutto</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>Endless Love anticipazioni, il doppio lutto della famiglia Sezin</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su Endless Love</h3><ul><li><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></li><li><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></li><li><a href="/endless-love/endless-love-chi-e-galip-kozcuoglu-le-due-volte-in-cui-nihan-e-stata-venduta/">Endless Love, chi è Galip Kozcuoğlu: le due volte in cui Nihan è stata venduta</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-zeynep-soydere-perche-emir-lha-scelta-e-cosa-ha-distrutto/">Endless Love, chi è davvero Zeynep Soydere: perché Emir l&#x27;ha scelta e cosa ha distrutto</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

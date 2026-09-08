@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/my-home-my-destiny/">My Home My Destiny</a> › My Home My Destiny 24-28 luglio, il biglietto per Londra di Faruk e i documenti d&#x27;annullamento: Zeynep firma, poi ci ripensa — e Mehdi finisce in ospedale</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/my-home-my-destiny/">My Home My Destiny</a>
   <h1>My Home My Destiny 24-28 luglio, il biglietto per Londra di Faruk e i documenti d&#x27;annullamento: Zeynep firma, poi ci ripensa — e Mehdi finisce in ospedale</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Settimana da montagne russe per gli sposi più fragili di Canale 5: Faruk raggiunge Zeynep sull&#x27;autobus e le mette in mano un biglietto per Londra — «domani ti aspetto in aeroporto». Kibrit vede tutto e riferisce a Mehdi, che corre dall&#x27;avvocato e porta a Zeynep i documenti per annullare il matrimonio: «Firmali o strappali». Lei firma, poi ci ripensa. E mentre Benal sgancia la bomba con Nermin — la relazione di Mehdi mai confessata, viva anche a nozze già fissate — la settimana si chiude nel modo peggiore: un grave incidente e Mehdi in ospedale, privo di coscienza.</p><ol><li><a href="#c1">Lunedì-martedì: la furia di Benal e il biglietto per Londra</a></li><li><a href="#c2">Mercoledì: «Firmali o strappali» — i documenti dell&#x27;annullamento</a></li><li><a href="#c3">Giovedì: l&#x27;aeroporto vuoto e le frizioni con Ekrem</a></li><li><a href="#c4">Venerdì: la vendetta di Benal e l&#x27;incidente</a></li><li><a href="#c5">Come Kibrit scopre il biglietto e avvisa Mehdi</a></li><li><a href="#c6">Perché Ekrem e Nermin ostacolano Mehdi e Zeynep</a></li><li><a href="#c7">Cosa rivela Benal a Nermin per rovinare Mehdi</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>My Home My Destiny</strong> — Serie conclusa in Italia · le puntate su Mediaset Infinity</span></div>
   
-  <p class="occhiello">Settimana da montagne russe per gli sposi più fragili di Canale 5: Faruk raggiunge Zeynep sull&#x27;autobus e le mette in mano un biglietto per Londra — «domani ti aspetto in aeroporto». Kibrit vede tutto e riferisce a Mehdi, che corre dall&#x27;avvocato e porta a Zeynep i documenti per annullare il matrimonio: «Firmali o strappali». Lei firma, poi ci ripensa. E mentre Benal sgancia la bomba con Nermin — la relazione di Mehdi mai confessata, viva anche a nozze già fissate — la settimana si chiude nel modo peggiore: un grave incidente e Mehdi in ospedale, privo di coscienza.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: My Home My Destiny 24-28 luglio, il biglietto per Londra di Faruk e i documenti d&#x27;annullamento: Zeynep firma, poi ci ripensa — e Mehdi finisce in ospedale" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/vPXYYVZaBNY/maxresdefault.jpg" alt="My Home My Destiny 24-28 luglio, il biglietto per Londra di Faruk e i documenti d&#x27;annullamento: Zeynep firma, poi ci ripensa — e Mehdi finisce in ospedale" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/vPXYYVZaBNY/hqdefault.jpg 480w, https://i.ytimg.com/vi/vPXYYVZaBNY/sddefault.jpg 640w, https://i.ytimg.com/vi/vPXYYVZaBNY/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/vPXYYVZaBNY/hqdefault.jpg&quot;, &quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,41 +409,63 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>Il dettaglio che complica tutto: Benal è una vedova più grande di Mehdi con cui lui ha avuto una relazione fino a poco prima delle nozze — e non ha nessuna intenzione di lasciarlo andare.</strong></p>
-  <h2>Lunedì-martedì: la furia di Benal e il biglietto per Londra</h2>
+  <h2 id="c1">Lunedì-martedì: la furia di Benal e il biglietto per Londra</h2>
 <p>La settimana si apre con Benal su tutte le furie: ha scoperto che Mehdi si è sposato davvero. Vedova da qualche anno e più grande di lui, la donna ha intrecciato con Mehdi una relazione arrivata fin quasi alle nozze — e non intende accettare la sconfitta: vuole riprenderselo, anche se per ora non sa come. Mehdi lo sa ed è consapevole del pericolo, ma tace, sperando che Zeynep non scopra mai quell&#x27;avventura. Intanto Faruk, spinto dalla famiglia adottiva di Zeynep, non si rassegna: la intercetta perfino sull&#x27;autobus e le consegna un biglietto per Londra — ne ha uno anche per sé, l&#x27;indomani sarà in aeroporto ad aspettarla. Zeynep non risponde. Ma Kibrit ha visto tutto.</p>
-<h2>Mercoledì: «Firmali o strappali» — i documenti dell&#x27;annullamento</h2>
+<h2 id="c2">Mercoledì: «Firmali o strappali» — i documenti dell&#x27;annullamento</h2>
 <p>La soffiata di Kibrit arriva dritta a Mehdi, che tira la conclusione più amara: Zeynep non è mai stata sua, quel matrimonio non sarà mai normale. Dall&#x27;avvocato si fa preparare le carte per l&#x27;annullamento, firma per primo e le mette davanti alla moglie con un ultimatum secco: qualche ora di tempo, poi documenti firmati o strappati. Zeynep, col pensiero alla proposta di Faruk, firma e riconsegna. Ma il destino ci mette lo zampino: le difficoltà di Kibrit riavvicinano i due sposi, che scelgono insieme di non consegnare la documentazione. L&#x27;annullamento resta in un cassetto — una spada di Damocle che prima o poi qualcuno riaprirà.</p>
-<h2>Giovedì: l&#x27;aeroporto vuoto e le frizioni con Ekrem</h2>
+<h2 id="c3">Giovedì: l&#x27;aeroporto vuoto e le frizioni con Ekrem</h2>
 <p>Faruk aspetta in aeroporto un arrivo che non ci sarà: Zeynep gli comunica che ormai è sposata e i progetti esteri non la riguardano più. Ma la riconciliazione con Mehdi è tutt&#x27;altro che serena: la famiglia adottiva di lei lo tratta da intruso, con Ekrem che non nasconde il fastidio per un genero mai voluto — per Zeynep avevano programmato un futuro completamente diverso. Mehdi promette di non perdere la pazienza e arriva a rifugiarsi in bagno pur di evitare lo scontro diretto. E c&#x27;è un campanello d&#x27;allarme che suona forte: l&#x27;insofferenza di Mehdi all&#x27;idea che Zeynep continui a formarsi, viaggi e diventi l&#x27;avvocato che sogna. I primi scontri su questo tema sono la crepa che i fan impareranno a conoscere.</p>
-<h2>Venerdì: la vendetta di Benal e l&#x27;incidente</h2>
+<h2 id="c4">Venerdì: la vendetta di Benal e l&#x27;incidente</h2>
 <p>La mossa decisiva è di Benal: si presenta da Nermin e racconta tutte le menzogne di Mehdi — la relazione tenuta in piedi anche a data di nozze già fissata. Mehdi prova a fermare la valanga, ma è tardi: Zeynep chiede spiegazioni e il confronto è tutto fuorché tranquillo. Nel frattempo Nermin incassa il doppio colpo — le bugie di Mehdi e il tradimento pluriennale del marito Ekrem, ormai con le spalle al muro: dovrà scegliere tra la moglie e l&#x27;amante segreta. E quando sembra che il peggio sia passato, la telefonata che gela il sangue: Mehdi ha avuto un grave incidente, è ricoverato privo di coscienza, le condizioni sono serie. Zeynep piomba nella disperazione — e la soap nel suo primo, grande cliffhanger.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Come Kibrit scopre il biglietto e avvisa Mehdi</h2>
+<h2 id="c5">Come Kibrit scopre il biglietto e avvisa Mehdi</h2>
 <p>La decisione di Faruk di salire sull&#x27;autobus per consegnare a Zeynep un biglietto aereo per Londra non passa inosservata. Kibrit assiste a tutta la scena e vede il giovane tentare di convincere la sposa a lasciarsi tutto alle spalle per partire l&#x27;indomani. Preoccupata per le sorti della coppia, Kibrit decide di non tenere per sé quel segreto e corre immediatamente da Mehdi per raccontargli quanto ha appena visto. La soffiata sconvolge profondamente l&#x27;uomo, che giunge alla conclusione più dolorosa: Zeynep non si è mai considerata davvero sua moglie e il loro non potrà mai essere un matrimonio normale. Ferito dal gesto, Mehdi decide di rivolgersi subito al proprio avvocato per preparare l&#x27;annullamento.</p>
 <p>Dopo aver ottenuto i documenti dall&#x27;avvocato e aver firmato per primo, Mehdi affronta Zeynep imponendole un ultimatum chiaro: firmarli oppure strapparli nel giro di poche ore. Zeynep, condizionata dai dubbi e dalla proposta di Faruk, appone la propria firma e restituisce le carte. Tuttavia, la situazione cambia improvvisamente quando insorgono gravi difficoltà legate a Kibrit. I problemi della ragazza spingono Mehdi e Zeynep a riavvicinarsi per affrontarli insieme, portandoli a cambiare idea. I due decidono così di non consegnare la documentazione legale, lasciando i moduli firmati chiusi in un cassetto. L&#x27;annullamento resta così sospeso come una minaccia costante pronta a riemergere nelle loro vite.</p>
-<h2>Perché Ekrem e Nermin ostacolano Mehdi e Zeynep</h2>
+<h2 id="c6">Perché Ekrem e Nermin ostacolano Mehdi e Zeynep</h2>
 <p>La famiglia adottiva di Zeynep non ha alcuna intenzione di accettare l&#x27;unione con Mehdi, considerato un estraneo del tutto inadatto al futuro che avevano progettato per la ragazza. Nermin ed Ekrem avevano immaginato per lei un percorso completamente diverso, fatto di studi universitari, viaggi all&#x27;estero e una brillante carriera come avvocato. Per questo motivo spingono Faruk a non arrendersi e a tentare il tutto per tutto per portarla con sé a Londra. Quando Zeynep rifiuta la proposta e resta al fianco del marito, le tensioni familiari esplodono. Ekrem manifesta apertamente la propria insofferenza verso Mehdi, il quale tenta disperatamente di mantenere la calma arrivando perfino a nascondersi in bagno pur di evitare uno scontro diretto con il suocero.</p>
 <p>Oltre all&#x27;ostilità dei genitori adottivi, la stabilità della coppia viene messa a dura prova dalle insicurezze di Mehdi. L&#x27;uomo comincia a mostrare una forte insofferenza di fronte all&#x27;idea che Zeynep continui la sua formazione per diventare l&#x27;avvocato che ha sempre sognato, spaventato dai viaggi e dall&#x27;indipendenza della moglie. Nel frattempo, un&#x27;altra bufera travolge la famiglia adottiva: Nermin scopre che Ekrem l&#x27;ha tradita per anni mantenendo una relazione segreta con un&#x27;altra donna. Messo con le spalle al muro e privo di scuse, Ekrem si trova costretto ad affrontare le conseguenze delle sue bugie e a compiere una scelta definitiva tra la moglie e l&#x27;amante segreta.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Cosa rivela Benal a Nermin per rovinare Mehdi</h2>
+<h2 id="c7">Cosa rivela Benal a Nermin per rovinare Mehdi</h2>
 <p>Benal è una donna vedova, più grande di Mehdi, che con lui ha condiviso una storia d&#x27;amore clandestina proseguita fino a pochissimo tempo prima delle nozze. Incapace di rassegnarsi all&#x27;idea che l&#x27;uomo si sia sposato davvero con Zeynep, la donna decide di agire con rabbia per riprenderselo e distruggere il suo nuovo legame. Consapevole che Mehdi ha tenuto nascosta la loro relazione per evitare che Zeynep lo scoprisse, Benal decide di colpire nell&#x27;ombra. Sceglie così di presentarsi direttamente da Nermin per sganciare la bomba e rivelarle tutta la verità sulle menzogne di Mehdi, raccontando di come la loro intimità sia continuata anche quando la data del matrimonio era già stata fissata.</p>
 <p>La rivelazione di Benal scatena un vero e proprio terremoto emotivo all&#x27;interno della famiglia. Mehdi prova in tutti i modi a fermare la valanga di polemiche e a giustificarsi, ma la situazione gli sfugge completamente di mano. Zeynep, sconvolta dalle bugie del marito, pretende immediati chiarimenti dando vita a un confronto estremamente duro e violento. Proprio mentre la tensione tra i due sposi raggiunge il punto di rottura, una telefonata improvvisa sconvolge ogni equilibrio: Mehdi è rimasto vittima di un gravissimo incidente stradale. Ricoverato d&#x27;urgenza in ospedale e privo di coscienza, versa in condizioni molto serie, facendo precipitare Zeynep nella disperazione e chiudendo la settimana con una tragica incertezza.</p>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=H113vpw30Ps" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/H113vpw30Ps/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>MY HOME MY DESTINY Anticipazioni 11 e 12 Dicembre: Baris&amp;Zeynep presto sposi | Mehdi rinchiude </span></a></li><li><a href="https://www.youtube.com/watch?v=1TFCJPAnof4" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/1TFCJPAnof4/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>MY HOME MY DESTINY Anticipazioni: Mehdi ci ricasca, chiude Benal in camera! Arriva Zeynep a sal</span></a></li><li><a href="https://www.youtube.com/watch?v=DTQe0fBwHA4" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/DTQe0fBwHA4/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>MY HOME MY DESTINY 6-7 Settembre: Zeynep tra gioia e dolore, Benal rapita dall&#x27;ex!</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Zeynep ha rinunciato a Londra per amore o per dovere? E se i documenti dell&#x27;annullamento fossero rispuntati al momento sbagliato, il matrimonio sarebbe sopravvissuto?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=vPXYYVZaBNY">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di My Home My Destiny</h2><div class="griglia"><article class="scheda">
+  <a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/"><div class="foto"><img src="/img/my-home-my-destiny-la-trama-completa-e-come-finisce.jpg" alt="My Home My Destiny" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">My Home My Destiny</span>
+    <h3><a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/">My Home My Destiny: la trama completa e come finisce</a></h3>
+    <div class="quando">30 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/"><div class="foto"><img src="https://i.ytimg.com/vi/-djleIeCLQs/hqdefault.jpg" alt="My Home My Destiny" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">My Home My Destiny</span>
+    <h3><a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/">My Home My Destiny, Zeynep ferma l&#x27;aborto di Benal in sala operatoria senza sapere che il padre è Mehdi</a></h3>
+    <div class="quando">17 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/"><div class="foto"><img src="https://i.ytimg.com/vi/gxL0o63Nhqw/hqdefault.jpg" alt="My Home My Destiny" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">My Home My Destiny</span>
+    <h3><a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/">My Home My Destiny, anticipazioni del 17 novembre: Özlem indaga su Zeynep e scopre tutto, Nuh diventa autista di Barış e qualcuno manomette i macchinari di Bekir</a></h3>
+    <div class="quando">16 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=My Home My Destiny 24-28 luglio, il biglietto per Londra di Faruk e i documenti d&#x27;annullamento: Zeynep firma, poi ci ripensa — e Mehdi finisce in ospedale — https://serietvfans.com/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/&text=My Home My Destiny 24-28 luglio, il biglietto per Londra di Faruk e i documenti d&#x27;annullamento: Zeynep firma, poi ci ripensa — e Mehdi finisce in ospedale" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">MY HOME, MY DESTINY Anticipazioni: Mehdi ha un bruttissimo incidente!</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=vPXYYVZaBNY">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di My Home My Destiny</h3><ol class="numerata"><li><a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/">My Home My Destiny: la trama completa e come finisce</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/">My Home My Destiny, Zeynep ferma l&#x27;aborto di Benal in sala operatoria senza sapere che il padre è Mehdi</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/">My Home My Destiny, anticipazioni del 17 novembre: Özlem indaga su Zeynep e scopre tutto, Nuh diventa autista di Barış e qualcuno manomette i macchinari di Bekir</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-guida-alla-serie-chi-sono-demet-ozdemir-e-ibrahim-celikkol-qu/">My Home My Destiny: guida alla serie, il cast, i personaggi e quante puntate sono</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-1-dicembre-gli-spari-davanti-alla-vecchia-casa-zeynep-tra-le/">My Home My Destiny 1° dicembre, gli spari davanti alla vecchia casa: Zeynep tra le due madri quando l&#x27;uomo in moto estrae la pistola</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>MY HOME, MY DESTINY Anticipazioni: Mehdi ha un bruttissimo incidente!</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su My Home My Destiny</h3><ul><li><a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/">My Home My Destiny: la trama completa e come finisce</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/">My Home My Destiny, Zeynep ferma l&#x27;aborto di Benal in sala operatoria senza sapere che il padre è Mehdi</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/">My Home My Destiny, anticipazioni del 17 novembre: Özlem indaga su Zeynep e scopre tutto, Nuh diventa autista di Barış e qualcuno manomette i macchinari di Bekir</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-guida-alla-serie-chi-sono-demet-ozdemir-e-ibrahim-celikkol-qu/">My Home My Destiny: guida alla serie, il cast, i personaggi e quante puntate sono</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-1-dicembre-gli-spari-davanti-alla-vecchia-casa-zeynep-tra-le/">My Home My Destiny 1° dicembre, gli spari davanti alla vecchia casa: Zeynep tra le due madri quando l&#x27;uomo in moto estrae la pistola</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

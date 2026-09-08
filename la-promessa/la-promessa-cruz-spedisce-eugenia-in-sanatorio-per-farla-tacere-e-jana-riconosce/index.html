@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/la-promessa/">La Promessa</a> › La Promessa, Cruz spedisce Eugenia in sanatorio per farla tacere — e Jana riconosce l&#x27;anello di fidanzamento di Jimena</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/la-promessa/">La Promessa</a>
   <h1>La Promessa, Cruz spedisce Eugenia in sanatorio per farla tacere — e Jana riconosce l&#x27;anello di fidanzamento di Jimena</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">La settimana dal 31 luglio al 4 agosto è quella dei colpi bassi: Eugenia, che ha ricominciato a parlare di Dolores, viene ricoverata in sanatorio senza che nessuno possa salutarla; Manuel chiede la mano di Jimena per salvare le finanze di famiglia — e Jana, gelando, riconosce nell&#x27;anello della proposta uno di quelli visti alle mani degli assassini di sua madre.</p><ol><li><a href="#c1">Eugenia parla troppo: il ricovero senza preavviso</a></li><li><a href="#c2">La proposta a Jimena — e l&#x27;anello che gela Jana</a></li><li><a href="#c3">Miguel, Salvador e il documento falsificato</a></li><li><a href="#c4">L&#x27;arrivo di Martina e l&#x27;anticipo dalla Spagna</a></li><li><a href="#c5">Perche&#x27; Cruz allontana Eugenia dalla tenuta dei Lujan</a></li><li><a href="#c6">Come la proposta di matrimonio coinvolge Jimena e Manuel</a></li><li><a href="#c7">Cosa rischia Salvador dopo le rivelazioni di Miguel</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>La Promessa</strong> — Rete 4 · in streaming su Mediaset Infinity</span></div>
   
-  <p class="occhiello">La settimana dal 31 luglio al 4 agosto è quella dei colpi bassi: Eugenia, che ha ricominciato a parlare di Dolores, viene ricoverata in sanatorio senza che nessuno possa salutarla; Manuel chiede la mano di Jimena per salvare le finanze di famiglia — e Jana, gelando, riconosce nell&#x27;anello della proposta uno di quelli visti alle mani degli assassini di sua madre.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: La Promessa, Cruz spedisce Eugenia in sanatorio per farla tacere — e Jana riconosce l&#x27;anello di fidanzamento di Jimena" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/C4TlzBxAO3s/maxresdefault.jpg" alt="La Promessa, Cruz spedisce Eugenia in sanatorio per farla tacere — e Jana riconosce l&#x27;anello di fidanzamento di Jimena" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/C4TlzBxAO3s/hqdefault.jpg 480w, https://i.ytimg.com/vi/C4TlzBxAO3s/sddefault.jpg 640w, https://i.ytimg.com/vi/C4TlzBxAO3s/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/C4TlzBxAO3s/hqdefault.jpg&quot;, &quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,44 +409,66 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>Ogni volta che la verità si avvicina, Cruz allunga la mano e la spegne: il ricovero-lampo di Eugenia è la mossa più spietata — e più rivelatrice — della marchesa.</strong></p>
-  <h2>Eugenia parla troppo: il ricovero senza preavviso</h2>
+  <h2 id="c1">Eugenia parla troppo: il ricovero senza preavviso</h2>
 <p>Il progresso di Eugenia è diventato un pericolo: la donna parla di Dolores con chiunque, ha accennato a Curro e alle sue origini, e per Cruz è troppo. La soluzione arriva nel massimo silenzio: Eugenia viene spedita in sanatorio senza che nessuno alla tenuta possa salutarla. È Catalina a scoprirlo per prima, e le sue urla furiose mettono tutti al corrente. Per Jana è un colpo durissimo — la testimone chiave del suo passato di nuovo irraggiungibile — e per Curro la disperazione pura: nemmeno un ultimo momento con la madre. Ma nel dolore accade qualcosa di nuovo: quando Jana gli sta accanto per consolarlo, per la prima volta lui non la allontana.</p>
-<h2>La proposta a Jimena — e l&#x27;anello che gela Jana</h2>
+<h2 id="c2">La proposta a Jimena — e l&#x27;anello che gela Jana</h2>
 <p>Il grande evento della settimana è la richiesta di mano: Manuel, consapevole che solo la dote di Jimena può salvare le disastrose finanze dei Luján, si piega alla volontà di famiglia e — davanti al Duca e alla Duchessa de los Infantes arrivati alla tenuta — chiede la mano della ragazza. Jana è costretta a nascondere una gelosia che brucia, ma il vero shock è un dettaglio: l&#x27;anello della promessa che Manuel infila al dito di Jimena è uno di quelli che ricorda alle mani degli assassini di sua madre. E c&#x27;è di più: si scopre che il Duca conosceva molto bene don padre Camilo — un filo che collega la famiglia della sposa ai misteri più neri della tenuta.</p>
-<h2>Miguel, Salvador e il documento falsificato</h2>
+<h2 id="c3">Miguel, Salvador e il documento falsificato</h2>
 <p>Ai piani di servizio si consuma il dramma di Miguel: ricercato dalla Guardia Civil, viene nascosto da Lope (la cui cucina ne risente vistosamente) e poi da María Fernández, finché non decide di uscire allo scoperto per non pesare su chi lo protegge — e infine di fuggire per sempre. Prima di andarsene, però, avverte Salvador: nelle carte compromettenti ci sono anche documenti su di lui. La confessione arriva a Simona e Candela: Salvador ha falsificato un documento per evitare l&#x27;arruolamento militare, e ora rischia l&#x27;accusa di frode. Fuggire con Miguel significherebbe però lasciare Maria — e questo non può farlo.</p>
-<h2>L&#x27;arrivo di Martina e l&#x27;anticipo dalla Spagna</h2>
+<h2 id="c4">L&#x27;arrivo di Martina e l&#x27;anticipo dalla Spagna</h2>
 <p>A movimentare la tenuta arriva Martina, la vivace nipote di Alonso, che mette tutto a soqquadro (e scopre da Curro il segreto di Leonor: la ragazza avrebbe tentato di togliersi la vita). Dalle puntate spagnole, intanto, l&#x27;anticipazione che fa male: dopo il matrimonio ottenuto con l&#x27;inganno dell&#x27;amnesia, Manuel ricomincerà a ricordare Jana e capirà di amarla — al punto da scriverle una lettera d&#x27;amore destinata a essere intercettata e fraintesa, mentre i litigi con Jimena lo spingeranno ad accettare un lavoro all&#x27;estero nella manutenzione dei velivoli. La matassa dell&#x27;inganno comincia a sfilacciarsi: e ogni filo tirato porta dritto a Cruz.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Perche&#x27; Cruz allontana Eugenia dalla tenuta dei Lujan</h2>
+<h2 id="c5">Perche&#x27; Cruz allontana Eugenia dalla tenuta dei Lujan</h2>
 <p>La decisione di allontanare Eugenia dimostra la spietatezza di Cruz nel proteggere i segreti dei Luj!n. Eugenia ha iniziato a parlare di Dolores e delle vere origini di Curro, diventando una presenza troppo pericolosa per la marchesa. Il ricovero forzato in sanatorio avviene in totale segreto, senza concedere a nessuno la possibilita&#x27; di salutarla. Quando Catalina scopre quanto accaduto, le sue urla furiose rivelano a tutti la verita&#x27;. Curro sprofonda nella disperazione per non aver potuto riabbracciare la madre, ma in questo momento di profondo dolore Jana gli si avvicina per consolarlo e lui, per la prima volta, non la respinge.</p>
 <p>Per Jana la partenza improvvisa di Eugenia e&#x27; un colpo durissimo nella sua ricerca della verita&#x27; su Dolores. La donna rappresentava la testimone chiave per comprendere gli avvenimenti del passato e fare finalmente luce sulla morte della madre. Allontanandola dalla tenuta, Cruz spegne una fonte preziosa di risposte e conferma di essere disposta a qualsiasi manovra pur di mantenere il controllo. Tuttavia, la tragedia del ricovero finisce per riavvicinare Jana e Curro: trovandosi accanto al ragazzo disperato, la serva riesce ad abbattere parte delle sue difese, ponendo le basi per un legame nuovo tra i due.</p>
 <p>La reazione di Catalina di fronte al ricovero improvviso trasforma l&#x27;episodio in un caso aperto all&#x27;interno della servitu&#x27; e tra i nobili. La figlia di Alonso non nasconde la propria indignazione per le modalita&#x27; con cui l&#x27;allontanamento e&#x27; stato eseguito all&#x27;insaputa di tutti. Mentre Cruz festeggia in silenzio il successo della sua mossa spietata, alla tenuta l&#x27;atmosfera si fa sempre piu&#x27; pesante. La partenza coatta impedisce qualsiasi ulteriore chiarimento sui dettagli emersi durante le conversazioni con Eugenia, lasciando Jana senza le spiegazioni che cercava e Curro isolato nel proprio dolore.</p>
-<h2>Come la proposta di matrimonio coinvolge Jimena e Manuel</h2>
+<h2 id="c6">Come la proposta di matrimonio coinvolge Jimena e Manuel</h2>
 <p>La richiesta di mano organizzata da Manuel risponde alla drammatica necessita&#x27; di salvare le finanze disastrose dei Luj!n attraverso la dote di Jimena. Consapevole delle proprie responsabilita&#x27; familiari, il giovane si piega alle pressioni dei genitori e formalizza la proposta davanti al Duca e alla Duchessa de los Infantes, arrivati alla tenuta per l&#x27;occasione. Per Jana assistere alla scena e&#x27; un supplizio: la ragazza deve nascondere una bruciante gelosia mentre osserva la cerimonia. La presenza dei genitori della sposa sancisce ufficialmente un&#x27;unione fondata sugli interessi economici, lasciando la serva nell&#x27;amarezza di dover nascondere i propri sentimenti per l&#x27;uomo che ama.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>A rendere la situazione ancora piu&#x27; sconvolgente per Jana e&#x27; il dettaglio dell&#x27;anello che Manuel infila al dito di Jimena durante la proposta. La ragazza riconosce nel gioiello uno degli anelli visti alle mani degli assassini di sua madre Dolores. La scoperta shock collega la famiglia della sposa ai delitti del passato e getta un&#x27;ombra scura sulle nozze. A complicare il quadro si aggiunge la rivelazione che il Duca conosceva molto bene don padre Camilo, un legame che intreccia ulteriormente i nobili visitatori ai misteri piu&#x27; cupi e nascosti che gravano sulla tenuta dei Luj!n.</p>
 <p>Le anticipazioni provenienti dalla Spagna rivelano come l&#x27;inganno si manifestera&#x27; nel futuro della coppia. Dopo il matrimonio celebrato approfittando dell&#x27;amnesia di Manuel, il ragazzo comincera&#x27; gradualmente a ricordare Jana e a comprendere il suo vero amore. Manuel scrivera&#x27; una profonda lettera d&#x27;amore destinata a essere intercettata e fraintesa, provocando ulteriori lacerazioni. I continui litigi con Jimena e la rabbia per le manipolazioni subite spingeranno infine il giovane ad accettare un incarico all&#x27;estero nella manutenzione dei velivoli, nel tentativo di allontanarsi da un matrimonio nato sulla menzogna e sulle manovre orchestrate da Cruz.</p>
-<h2>Cosa rischia Salvador dopo le rivelazioni di Miguel</h2>
+<h2 id="c7">Cosa rischia Salvador dopo le rivelazioni di Miguel</h2>
 <p>Ai piani di servizio della tenuta si consuma intanto la complessa vicenda di Miguel, ricercato dalla Guardia Civil. Per evitare che venga arrestato, Lope lo nasconde inizialmente nei propri spazi, con evidenti ripercussioni sul lavoro in cucina, prima che anche Mar!a Fern!ndez intervenga per proteggerlo. Consapevole di rappresentare un pericolo costante per gli amici che lo stanno aiutando, Miguel decide infine di uscire allo scoperto e di fuggire per sempre. Prima di allontanarsi definitivamente, l&#x27;uomo affronta Salvador per avvertirlo che tra le carte compromettenti sono presenti documenti che riguardano direttamente la sua posizione e i suoi trasgressi.</p>
 <p>Messo in allarme da Miguel, Salvador decide di confidare tutta la verita&#x27; a Simona e Candela, ammettendo di aver falsificato un documento ufficiale per evitare l&#x27;arruolamento militare e di rischiare ora un&#x27;accusa di frode. Sebbene fuggire insieme a Miguel rappresenterebbe l&#x27;unica soluzione per scampare all&#x27;arresto, Salvador non vuole abbandonare Mar!a Fern!ndez e sceglie di rimanere. Contemporaneamente, l&#x27;arrivo della vivace Martina, nipote di Alonso, porta nuovo scompiglio alla tenuta, culminando nella scoperta, tramite Curro, del segreto di Leonor, che aveva tentato di togliersi la vita, dimostrando come ogni abitante del palazzo sia coinvolto in segreti e sofferenze.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=e1ge2PPm8to" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/e1ge2PPm8to/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni: Manuel fa la proposta! Tutto finito con Jana?</span></a></li><li><a href="https://www.youtube.com/watch?v=hItKzQHIolk" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/hItKzQHIolk/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni: Manuel non Riconosce più Jana! Jana è distrutta!</span></a></li><li><a href="https://www.youtube.com/watch?v=vi4IaAZ72e0" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/vi4IaAZ72e0/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>Shock a La Promessa: Jimena Smascherata! Le Anticipazioni della Settimana Ti Lasciano Senza Fia</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>L&#x27;anello della proposta è la pista giusta verso gli assassini di Dolores o un altro depistaggio? E il ricovero-lampo di Eugenia si ritorcerà contro Cruz?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=C4TlzBxAO3s">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di La Promessa</h2><div class="griglia"><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/"><div class="foto"><img src="https://i.ytimg.com/vi/Rp8VhxDiDSk/hqdefault.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></h3>
+    <div class="quando">7 settembre 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/"><div class="foto"><img src="https://i.ytimg.com/vi/8JHt6ogwxQw/hqdefault.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Ángela beve tutto, Curro sfonda la porta</a></h3>
+    <div class="quando">6 settembre 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/"><div class="foto"><img src="/img/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Curro nasconde Ángela, Lorenzo furioso</a></h3>
+    <div class="quando">6 settembre 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=La Promessa, Cruz spedisce Eugenia in sanatorio per farla tacere — e Jana riconosce l&#x27;anello di fidanzamento di Jimena — https://serietvfans.com/la-promessa/la-promessa-cruz-spedisce-eugenia-in-sanatorio-per-farla-tacere-e-jana-riconosce/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/la-promessa/la-promessa-cruz-spedisce-eugenia-in-sanatorio-per-farla-tacere-e-jana-riconosce/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/la-promessa/la-promessa-cruz-spedisce-eugenia-in-sanatorio-per-farla-tacere-e-jana-riconosce/&text=La Promessa, Cruz spedisce Eugenia in sanatorio per farla tacere — e Jana riconosce l&#x27;anello di fidanzamento di Jimena" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">LA PROMESSA - Anticipazioni dal 31/07 al 04/08: Jana riconosce l&#x27;anello</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=C4TlzBxAO3s">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di La Promessa</h3><ol class="numerata"><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Ángela beve tutto, Curro sfonda la porta</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Curro nasconde Ángela, Lorenzo furioso</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>LA PROMESSA - Anticipazioni dal 31/07 al 04/08: Jana riconosce l&#x27;anello</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su La Promessa</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-3-6-settembre-maria-affronta-la-gravidanza-da-sola/">La Promessa anticipazioni 3-6 settembre: Maria affronta la gravidanza da sola</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-carlo-arriva-maria-trema/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Carlo arriva, Maria trema</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/far-away/far-away-anticipazioni-dal-31-agosto-al-4-settembre-chi-ha-donato-il-fegato-a-nare/">Far Away, anticipazioni dal 31 agosto al 4 settembre: chi ha donato il fegato a Nare, e perché adesso sta male lui</a></li><li><a href="/far-away/far-away-dal-31-agosto-la-madre-di-alya-sapeva-tutto-non-ricordo/">Far Away Dal 31 Agosto: la madre di Alya sapeva tutto — «non ricordo»</a></li><li><a href="/forbidden-fruit/forbidden-fruit-dal-31-agosto-il-conto-a-nome-di-halit-che-e-morto/">Forbidden Fruit Dal 31 Agosto: il conto a nome di Halit, che è morto</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

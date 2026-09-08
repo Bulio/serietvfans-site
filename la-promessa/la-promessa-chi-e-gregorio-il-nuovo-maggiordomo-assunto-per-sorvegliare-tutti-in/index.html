@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/la-promessa/">La Promessa</a> › La Promessa, chi è Gregorio il nuovo maggiordomo: assunto per sorvegliare tutti, in realtà è arrivato per vendicarsi di Rómulo</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/la-promessa/">La Promessa</a>
   <h1>La Promessa, chi è Gregorio il nuovo maggiordomo: assunto per sorvegliare tutti, in realtà è arrivato per vendicarsi di Rómulo</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Quando Cruz scopre che Lope è stato assunto in cucina ingannando la marchesa, e Alonso capisce che Rómulo lo sapeva da mesi, il marchese assume un nuovo maggiordomo con pieni poteri di supervisione: Gregorio Castillo. L&#x27;uomo si presenta rifiutando perfino un bicchiere per mettersi subito al lavoro e pretende l&#x27;elenco completo dei dipendenti. Ma dietro il rigore c&#x27;è altro — un conto in sospeso con Rómulo che risale a fatti accaduti anni prima e riguarda suo fratello.</p><ol><li><a href="#c1">L&#x27;inganno delle cucine e la fiducia rotta</a></li><li><a href="#c2">Chi è Rómulo, l&#x27;uomo che Gregorio è venuto a punire</a></li><li><a href="#c3">Un supervisore con pieni poteri</a></li><li><a href="#c4">Il vero motivo: un conto aperto con Rómulo</a></li><li><a href="#c5">Il matrimonio con Pía e i dubbi dei fan</a></li><li><a href="#c6">Perché conta: la persona più esposta non è Rómulo</a></li><li><a href="#c7">Come Lope e le cuoche scatenano la crisi</a></li><li><a href="#c8">Perché Gregorio trasforma la tenuta in una trappola</a></li><li><a href="#c9">Cosa rischia Pía accanto al suo nuovo marito</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>La Promessa</strong> — Rete 4 · in streaming su Mediaset Infinity</span></div>
   
-  <p class="occhiello">Quando Cruz scopre che Lope è stato assunto in cucina ingannando la marchesa, e Alonso capisce che Rómulo lo sapeva da mesi, il marchese assume un nuovo maggiordomo con pieni poteri di supervisione: Gregorio Castillo. L&#x27;uomo si presenta rifiutando perfino un bicchiere per mettersi subito al lavoro e pretende l&#x27;elenco completo dei dipendenti. Ma dietro il rigore c&#x27;è altro — un conto in sospeso con Rómulo che risale a fatti accaduti anni prima e riguarda suo fratello.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: La Promessa, chi è Gregorio il nuovo maggiordomo: assunto per sorvegliare tutti, in realtà è arrivato per vendicarsi di Rómulo" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/wNGh0A6OdYU/maxresdefault.jpg" alt="La Promessa, chi è Gregorio il nuovo maggiordomo: assunto per sorvegliare tutti, in realtà è arrivato per vendicarsi di Rómulo" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/wNGh0A6OdYU/hqdefault.jpg 480w, https://i.ytimg.com/vi/wNGh0A6OdYU/sddefault.jpg 640w, https://i.ytimg.com/vi/wNGh0A6OdYU/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/wNGh0A6OdYU/hqdefault.jpg&quot;, &quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,46 +409,68 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>Il sospetto che i fan hanno avanzato per settimane: e se l&#x27;avvelenamento di Pía non fosse opera di Petra, ma di suo marito?</strong></p>
-  <h2>L&#x27;inganno delle cucine e la fiducia rotta</h2>
+  <h2 id="c1">L&#x27;inganno delle cucine e la fiducia rotta</h2>
 <p>Tutto parte da Petra, che rivela a Cruz chi sia davvero il nuovo cuoco: se lo avesse saputo prima, la marchesa non avrebbe mai permesso a un uomo di preparare i pasti alla tenuta. Dopo un confronto acceso con Pía e Rómulo, Cruz concede a Lope, Simona e Candela di restare — ma solo finché non troverà dei sostituti. Il problema più grave però è un altro: Alonso scopre che il suo maggiordomo di fiducia gli ha tenuto nascosta per mesi l&#x27;intera faccenda, e quella fiducia si incrina definitivamente.</p>
-<h2>Chi è Rómulo, l&#x27;uomo che Gregorio è venuto a punire</h2>
+<h2 id="c2">Chi è Rómulo, l&#x27;uomo che Gregorio è venuto a punire</h2>
 <p>Il bersaglio vero di questa assunzione ha un nome, e conviene sapere chi sia. Rómulo è il maggiordomo della Promessa da così tanto tempo che il ruolo e la casa gli coincidono: è lui a tenere insieme la servitù, ed è a lui che ci si rivolge quando serve qualcuno di cui fidarsi — sarà Rómulo, per dire, a rivelare a Manuel chi fosse davvero l&#x27;amica di Dolores, la madre di Jana. Ed è anche uno che sa mettersi in mezzo quando serve: a Mauro, illuso su Leonor, dirà in faccia che quell&#x27;amore è una chimera. Un maggiordomo con quella storia non lo si declassa senza conseguenze, e Alonso lo ha appena fatto davanti a tutti.</p>
-<h2>Un supervisore con pieni poteri</h2>
+<h2 id="c3">Un supervisore con pieni poteri</h2>
 <p>La risposta del marchese è netta: assume a tempo indeterminato un nuovo maggiordomo con il compito di sorvegliare tutti i dipendenti e riferire direttamente a lui su eventuali cambiamenti da fare nel personale. Per Rómulo è un declassamento in piena regola — dovrà obbedire scrupolosamente al nuovo arrivato. Gregorio si presenta subito per quello che è: rifiuta cortesemente l&#x27;invito di Alonso a bere qualcosa, si mette immediatamente al lavoro e pretende dal collega l&#x27;elenco dettagliato di tutti i lavoratori, punto di partenza per riorganizzare turni e mansioni.</p>
-<h2>Il vero motivo: un conto aperto con Rómulo</h2>
+<h2 id="c4">Il vero motivo: un conto aperto con Rómulo</h2>
 <p>Ai colleghi Gregorio appare fin da subito come una spia del marchese, e l&#x27;atmosfera alla tenuta cambia: arroganza, insofferenza, tensione continua. Ma il vero movente emerge col tempo, e non ha nulla a che fare con l&#x27;ordine da ristabilire: è una vendetta personale contro Rómulo, per fatti avvenuti anni prima e legati al fratello. Un antico rancore che riporta a galla vecchie rivalità e segreti sepolti, e che trasforma il nuovo maggiordomo da fastidio organizzativo a minaccia concreta.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Il matrimonio con Pía e i dubbi dei fan</h2>
+<h2 id="c5">Il matrimonio con Pía e i dubbi dei fan</h2>
 <p>Il percorso di Gregorio incrocia poi quello di donna Pía: davanti alla sua gravidanza si offre di fare da padre al bambino e, spinto anche dalle pressioni dei marchesi, arriva a sposarla garantendole un tetto e una sicurezza. Un gesto apparentemente nobile, che però dopo le nozze mostra il rovescio della medaglia — l&#x27;uomo non ottiene ciò che si aspettava e la sua insoddisfazione apre scenari inquietanti. Da qui la teoria più discussa tra gli spettatori: che l&#x27;avvelenamento di Pía non sia opera di Petra ma proprio sua, perché desidera la donna per sé e non il bambino. Solo le puntate successive diranno quanto quel sospetto sia fondato.</p>
-<h2>Perché conta: la persona più esposta non è Rómulo</h2>
+<h2 id="c6">Perché conta: la persona più esposta non è Rómulo</h2>
 <p>Alonso pensava di comprare ordine e ha comprato un uomo con un movente privato: il conto che Gregorio è venuto a riscuotere riguarda suo fratello, non i turni della servitù. Ma la vittima designata non è il maggiordomo. Il percorso del nuovo arrivato incrocia quello di Pía nel punto in cui lei è più indifesa — incinta, senza protezione e a un passo dal licenziamento — e il matrimonio che sembra salvarla la consegna a lui dentro quattro mura in cui nessuno ha titolo per entrare. Da lì in poi ogni malore della governante andrà guardato due volte, e il sospetto che i fan puntano su Petra andrà puntato su chi le dorme accanto. È il rovescio di tutta l&#x27;operazione: un supervisore assunto per sorvegliare tutti ha ottenuto in cambio che nessuno sorvegliasse lui.</p>
-<h2>Come Lope e le cuoche scatenano la crisi</h2>
+<h2 id="c7">Come Lope e le cuoche scatenano la crisi</h2>
 <p>La scoperta della vera identità del nuovo cuoco rappresenta l&#x27;inizio del crollo degli equilibri all&#x27;interno della servitù. Petra scopre l&#x27;inganno orchestrato nelle cucine e decide subito di riferire ogni cosa alla marchesa Cruz, sapendo perfettamente che la nobildonna non tollererebbe mai la presenza di un uomo ai fornelli. La reazione della padrona di casa non si fa attendere ed è durissima: nasce un accesissimo confronto con Pía e Rómulo. Nonostante l&#x27;innegabile gravità dell&#x27;accaduto, la marchesa concede temporaneamente a Lope, Simona e Candela di rimanere nei loro ruoli. Tuttavia, questa decisione non rappresenta una vera grazia, bensì soltanto una misura transitoria concessa nell&#x27;attesa di reperire rapidamente dei validi sostituti per il personale coinvolto.</p>
 <p>Le conseguenze più devastanti dell&#x27;inganno non riguardano soltanto la sorte dei cuochi, ma vanno a colpire direttamente i vertici del palazzo. Quando Alonso scopre che il suo storico e fidatissimo maggiordomo gli ha tenuto nascosta l&#x27;intera faccenda per diversi mesi, il rapporto di stima reciproca crolla in modo inevitabile. Per il marchese si tratta di un tradimento imperdonabile, poiché Rómulo ha sempre incarnato la lealtà assoluta e l&#x27;ordine impeccabile all&#x27;interno della tenuta. Sentendosi ingannato dalla persona di cui si fidava ciecamente, Alonso sceglie di agire con la massima severità: declassa pubblicamente il vecchio servitore davanti a tutto il personale e decide di assumere una figura esterna dotata di pieni poteri per riportare la disciplina.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Perché Gregorio trasforma la tenuta in una trappola</h2>
+<h2 id="c8">Perché Gregorio trasforma la tenuta in una trappola</h2>
 <p>L&#x27;arrivo di Gregorio Castillo cambia radicalmente l&#x27;atmosfera quotidiana della servitù, trasformando la tenuta in un ambiente saturo di sospetti. Assunto a tempo indeterminato con l&#x27;incarico formale di sorvegliare tutti i dipendenti e riferire direttamente al marchese, il nuovo arrivato chiarisce subito le sue intenzioni. Rifiuta con distacco l&#x27;invito di Alonso a bere qualcosa e preme per iniziare immediatamente le sue mansioni, esigendo da Rómulo la lista completa dei dipendenti per riorganizzare turni e compiti. Agli occhi dei lavoratori, il suo atteggiamento rigido, arrogante e scostante appare come quello di una spia inviata dai padroni per stanare ogni minimo errore, creando un clima di forte insofferenza e continua tensione nei corridoi del palazzo.</p>
 <p>Oltre al ruolo di inflessibile supervisore, si nasconde un motivo ben più oscuro che spiega la presenza del nuovo maggiordomo. La sua non è una semplice missione organizzativa per conto di Alonso, bensì una fredda vendetta privata contro Rómulo. Tra i due uomini esiste infatti un conto aperto da anni, nato da vicende del passato che coinvolgono direttamente il fratello di Gregorio. Questo antico rancore, tenuto nascosto per lungo tempo, riaffiora con violenza spingendo il nuovo arrivato a voler punire l&#x27;anziano capo della servitù. Così, l&#x27;uomo ingaggiato dal marchese per ristabilire l&#x27;ordine si rivela una minaccia concreta e pericolosa, pronto a sfruttare il proprio potere per consumare la sua personale ritorsione.</p>
-<h2>Cosa rischia Pía accanto al suo nuovo marito</h2>
+<h2 id="c9">Cosa rischia Pía accanto al suo nuovo marito</h2>
 <p>La vita di donna Pía subisce una svolta drammatica quando la sua gravidanza la espone al rischio concreto del licenziamento, lasciandola priva di tutele. In questa fase di estrema vulnerabilità interviene Gregorio, che si offre spontaneamente di fare da padre al nascituro. Incalzato dalle insistenti pressioni dei padroni della tenuta, l&#x27;uomo decide di unirsi in matrimonio con la governante, assicurandole apparentemente la stabilità economica e un tetto sicuro sotto cui vivere. Tuttavia, quello che nasce come un gesto salvifico e generoso rivela presto la sua natura ambigua. Subito dopo le nozze, il maggiordomo manifesta una profonda insoddisfazione per non aver ottenuto ciò che desiderava dalla relazione, trasformando l&#x27;unione in un incubo domestico privo di serenità.</p>
 <p>La crescente tensione tra i coniugi spalanca le porte ai peggiori sospetti, accendendo la curiosità e i dubbi dei fan della serie. Se inizialmente tutti gli indizi sull&#x27;avvelenamento della donna sembravano puntare contro Petra, gli atteggiamenti del nuovo marito portano gli spettatori a riconsiderare l&#x27;intera vicenda. L&#x27;ipotesi sempre più accreditata è che sia proprio Gregorio il responsabile dei continui malori della moglie, mosso dalla volontà egoistica di volere la donna tutta per sé ed eliminare la presenza del bambino. Protetta solo dalle quattro mura coniugali e lontana da qualsiasi controllo esterno, la governante si trova ora in una posizione di estremo pericolo, completamente alla mercé di un uomo mosso da oscuri risentimenti.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=RS7LHd0I6W4" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/RS7LHd0I6W4/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni: Un Tragico Finale per Cruz, la Marchesa de Lujan</span></a></li><li><a href="https://www.youtube.com/watch?v=a97HgvxLvtQ" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/a97HgvxLvtQ/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni 9-13 Ottobre: Gregorio arrestato ! Perchè? Cruz ed Elisa ai ferri cor</span></a></li><li><a href="https://www.youtube.com/watch?v=5WNtKGFgagA" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/5WNtKGFgagA/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni Spagnole: Un altro Uomo nella Vita di Jana? Chi è?</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Gregorio ha sposato Pía per generosità o per calcolo? E secondo voi il vero avvelenatore è lui o Petra?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=wNGh0A6OdYU">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di La Promessa</h2><div class="griglia"><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/"><div class="foto"><img src="https://i.ytimg.com/vi/Rp8VhxDiDSk/hqdefault.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></h3>
+    <div class="quando">7 settembre 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/"><div class="foto"><img src="https://i.ytimg.com/vi/8JHt6ogwxQw/hqdefault.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Ángela beve tutto, Curro sfonda la porta</a></h3>
+    <div class="quando">6 settembre 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/"><div class="foto"><img src="/img/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Curro nasconde Ángela, Lorenzo furioso</a></h3>
+    <div class="quando">6 settembre 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=La Promessa, chi è Gregorio il nuovo maggiordomo: assunto per sorvegliare tutti, in realtà è arrivato per vendicarsi di Rómulo — https://serietvfans.com/la-promessa/la-promessa-chi-e-gregorio-il-nuovo-maggiordomo-assunto-per-sorvegliare-tutti-in/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/la-promessa/la-promessa-chi-e-gregorio-il-nuovo-maggiordomo-assunto-per-sorvegliare-tutti-in/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/la-promessa/la-promessa-chi-e-gregorio-il-nuovo-maggiordomo-assunto-per-sorvegliare-tutti-in/&text=La Promessa, chi è Gregorio il nuovo maggiordomo: assunto per sorvegliare tutti, in realtà è arrivato per vendicarsi di Rómulo" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">LA PROMESSA Anticipazioni: Ecco Gregorio, nuovo supervisore in cerca di vendetta</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=wNGh0A6OdYU">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di La Promessa</h3><ol class="numerata"><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Ángela beve tutto, Curro sfonda la porta</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Curro nasconde Ángela, Lorenzo furioso</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>LA PROMESSA Anticipazioni: Ecco Gregorio, nuovo supervisore in cerca di vendetta</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su La Promessa</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-3-6-settembre-maria-affronta-la-gravidanza-da-sola/">La Promessa anticipazioni 3-6 settembre: Maria affronta la gravidanza da sola</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-carlo-arriva-maria-trema/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Carlo arriva, Maria trema</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/far-away/far-away-anticipazioni-dal-31-agosto-al-4-settembre-chi-ha-donato-il-fegato-a-nare/">Far Away, anticipazioni dal 31 agosto al 4 settembre: chi ha donato il fegato a Nare, e perché adesso sta male lui</a></li><li><a href="/far-away/far-away-dal-31-agosto-la-madre-di-alya-sapeva-tutto-non-ricordo/">Far Away Dal 31 Agosto: la madre di Alya sapeva tutto — «non ricordo»</a></li><li><a href="/forbidden-fruit/forbidden-fruit-dal-31-agosto-il-conto-a-nome-di-halit-che-e-morto/">Forbidden Fruit Dal 31 Agosto: il conto a nome di Halit, che è morto</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/la-promessa/">La Promessa</a> › La Promessa, l&#x27;incendio nell&#x27;hangar: Jana salva Curro e vede la cicatrice sul petto che le fa capire chi è davvero</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/la-promessa/">La Promessa</a>
   <h1>La Promessa, l&#x27;incendio nell&#x27;hangar: Jana salva Curro e vede la cicatrice sul petto che le fa capire chi è davvero</h1>
-  <div class="firma">Redazione Serie TV Fans · lunedì 17 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-17">lunedì 17 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Un incendio divampa nell&#x27;hangar della tenuta e Curro rischia di restare tra le fiamme: a tirarlo fuori è Jana, la domestica che lui tratta con diffidenza aperta. Durante il salvataggio Jana nota una cicatrice sul petto del ragazzo, e da quel momento è sempre più convinta che Curro sia suo fratello. Intanto la festa di compleanno di Cruz rischia di saltare per una spesa sbagliata, e Petra prende il posto di Pía approfittando della sua assenza.</p><ol><li><a href="#c1">Chi sono Jana, Curro e Petra, per chi arriva adesso</a></li><li><a href="#c2">L&#x27;antefatto: perché Curro tratta male proprio Jana</a></li><li><a href="#c3">Le fiamme nell&#x27;hangar e il coraggio di Jana</a></li><li><a href="#c4">La macchia sul petto: il dettaglio che cambia tutto</a></li><li><a href="#c5">Le scuse imposte e l&#x27;orecchino di Jimena</a></li><li><a href="#c6">La festa di Cruz e la spesa sbagliata di Mauro</a></li><li><a href="#c7">Catalina e l&#x27;abito della madre</a></li><li><a href="#c8">Petra prende il posto di Pía — e la bugia sull&#x27;aborto</a></li><li><a href="#c9">Perché conta: una bugia che il tempo smaschera da sola</a></li><li><a href="#c10">Dove vedere La Promessa</a></li><li><a href="#c11">Come Jimena scopre la sintonia tra Manuel e Jana</a></li><li><a href="#c12">Perche&#x27; la decisione di Pia mina le trame di Petra</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>La Promessa</strong> — Rete 4 · in streaming su Mediaset Infinity</span></div>
   
-  <p class="occhiello">Un incendio divampa nell&#x27;hangar della tenuta e Curro rischia di restare tra le fiamme: a tirarlo fuori è Jana, la domestica che lui tratta con diffidenza aperta. Durante il salvataggio Jana nota una cicatrice sul petto del ragazzo, e da quel momento è sempre più convinta che Curro sia suo fratello. Intanto la festa di compleanno di Cruz rischia di saltare per una spesa sbagliata, e Petra prende il posto di Pía approfittando della sua assenza.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: La Promessa, l&#x27;incendio nell&#x27;hangar: Jana salva Curro e vede la cicatrice sul petto che le fa capire chi è davvero" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/Wa_iP6VL4bc/maxresdefault.jpg" alt="La Promessa, l&#x27;incendio nell&#x27;hangar: Jana salva Curro e vede la cicatrice sul petto che le fa capire chi è davvero" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/Wa_iP6VL4bc/hqdefault.jpg 480w, https://i.ytimg.com/vi/Wa_iP6VL4bc/sddefault.jpg 640w, https://i.ytimg.com/vi/Wa_iP6VL4bc/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/Wa_iP6VL4bc/hqdefault.jpg&quot;, &quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,51 +409,73 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>Jana entra tra le fiamme per tirare fuori il ragazzo che la tratta peggio di tutti in quella casa. E mentre lo salva vede una macchia sul suo petto — il dettaglio che cercava da quando è arrivata alla tenuta.</strong></p>
-  <h2>Chi sono Jana, Curro e Petra, per chi arriva adesso</h2>
+  <h2 id="c1">Chi sono Jana, Curro e Petra, per chi arriva adesso</h2>
 <p>Jana è entrata a servizio alla tenuta con un obiettivo che nessuno conosce: ritrovare il fratello che le è stato portato via da bambina e capire cosa sia successo davvero alla sua famiglia. Curro è il nipote dei marchesi, un ragazzo che in questo periodo si comporta da despota con la servitù e in particolare con lei. Petra è la dama di compagnia di Cruz, una donna senza scrupoli il cui obiettivo dichiarato è prendere il posto di Pía come governante — e in questi giorni ci va vicinissima.</p>
-<h2>L&#x27;antefatto: perché Curro tratta male proprio Jana</h2>
+<h2 id="c2">L&#x27;antefatto: perché Curro tratta male proprio Jana</h2>
 <p>L&#x27;atteggiamento di Curro verso Jana è talmente ostile da non passare inosservato: Don Alonso lo sgrida apertamente, e poco dopo è la stessa Cruz a fargli una lavata di capo per come si rivolge alla domestica. Lui però non cambia idea e ne parla con Leonor, sostenendo che di quella ragazza bisogna diffidare perché si comporta in modo sospetto. È una diffidenza reciproca che rende quello che sta per succedere nell&#x27;hangar ancora più significativo: Jana non ha nessun motivo personale per rischiare la vita per lui.</p>
-<h2>Le fiamme nell&#x27;hangar e il coraggio di Jana</h2>
+<h2 id="c3">Le fiamme nell&#x27;hangar e il coraggio di Jana</h2>
 <p>L&#x27;incendio divampa nell&#x27;hangar in modo accidentale e la situazione precipita subito: Curro rischia di bruciarsi e non riesce a mettersi in salvo da solo. È Jana a intervenire, con una dose di coraggio che sorprende tutti, e riesce a domare le fiamme e a tirarlo fuori. Manuel non risparmia elogi per quello che ha fatto, mentre Curro — coerente fino all&#x27;ultimo — non nasconde nemmeno in quel momento la propria diffidenza verso di lei. Ma per Jana quel salvataggio vale molto più di un ringraziamento mancato.</p>
-<h2>La macchia sul petto: il dettaglio che cambia tutto</h2>
+<h2 id="c4">La macchia sul petto: il dettaglio che cambia tutto</h2>
 <p>Mentre lo soccorre, Jana nota sul petto di Curro una strana macchia che all&#x27;occhio di chiunque altro non direbbe niente. A lei invece dice tutto. È il segno che stava cercando da quando è arrivata alla tenuta, e da quel momento la sua convinzione diventa quasi certezza: quel ragazzo è suo fratello. La beffa è evidente e la serie ci gioca apertamente — dopo anni passati a cercarlo, Jana lo ritrova nel ragazzo più insopportabile della casa, quello che la tratta peggio di tutti e che non ha la minima idea di chi lei sia.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Le scuse imposte e l&#x27;orecchino di Jimena</h2>
+<h2 id="c5">Le scuse imposte e l&#x27;orecchino di Jimena</h2>
 <p>Dopo il rimprovero del marchese, Curro è costretto a scusarsi con Jana, cosa che ovviamente non lo rende affatto contento. Anche Jana però non ha molto da festeggiare, almeno finché non trova l&#x27;orecchino di Jimena sotto l&#x27;aereo di Manuel. Quando lo restituisce alla proprietaria lo fa davanti a lui, e a quel punto succede una cosa che nessuno aveva calcolato: Jimena si accorge che tra la cameriera e il suo futuro sposo volano scintille. È il primo momento in cui il triangolo diventa visibile a chi ha più interesse a spezzarlo.</p>
-<h2>La festa di Cruz e la spesa sbagliata di Mauro</h2>
+<h2 id="c6">La festa di Cruz e la spesa sbagliata di Mauro</h2>
 <p>Sull&#x27;altro fronte, tutta la tenuta ruota attorno al compleanno di Cruz, che la marchesa vuole in pompa magna e su cui ripone aspettative altissime. I preparativi però vanno storti: Mauro viene mandato alla Puebla per gli ultimi ingredienti del banchetto in stile francese e torna con la lista sbagliata, facendo salire il panico di Simona. A salvare la situazione è Lope, che la tranquillizza e le dà consigli su come costruire un banchetto con quello che c&#x27;è già in cucina — esponendosi però più di quanto vorrebbe.</p>
-<h2>Catalina e l&#x27;abito della madre</h2>
+<h2 id="c7">Catalina e l&#x27;abito della madre</h2>
 <p>Cruz chiede al marito di convincere Catalina a partecipare alla festa, ma la ragazza non ne vuole sapere e finisce per discutere animatamente con la matrigna. Alla fine cede, e si presenta con una sorpresa: indossa l&#x27;abito da ballo che era stato di sua madre, e con quello addosso è identica a lei. Don Alonso resta ammaliato dalla visione della figlia e insieme rabbuiato dal ricordo della moglie scomparsa. La festa si rivela un successo, e proprio l&#x27;euforia spinge Cruz a fare un annuncio che spiazza tutti, Manuel per primo.</p>
-<h2>Petra prende il posto di Pía — e la bugia sull&#x27;aborto</h2>
+<h2 id="c8">Petra prende il posto di Pía — e la bugia sull&#x27;aborto</h2>
 <p>Nel frattempo Petra ottiene quello che voleva da sempre. Pía chiede alla marchesa qualche giorno di permesso per interrompere la gravidanza, come Cruz le ha ordinato, e in quei giorni è Petra a fare le sue veci: si comporta da governante a tutti gli effetti, arriva a scegliere il menù per il compleanno e crea scontri continui con la servitù, soprattutto con Candela. Quando Pía riappare per riprendersi il posto, tutti credono che abbia abortito — ma poco dopo confessa a Candela di non esserci riuscita.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Perché conta: una bugia che il tempo smaschera da sola</h2>
+<h2 id="c9">Perché conta: una bugia che il tempo smaschera da sola</h2>
 <p>Quella confessione è la mina che resta sotto tutta la stagione, perché è una bugia che nessuno può mantenere a lungo: prima o poi il pancione diventerà evidente, e a quel punto Cruz scoprirà di essere stata ingannata da una sua dipendente. Nel frattempo Candela evita Pía e finisce per dirle apertamente di essere molto arrabbiata con lei. E c&#x27;è un ultimo filo che si muove sottotraccia: Rómulo si accorge che tra Leonor e Mauro c&#x27;è del tenero, proprio mentre la marchesina sembra pronta a fuggire con il cameriere.</p>
-<h2>Dove vedere La Promessa</h2>
+<h2 id="c10">Dove vedere La Promessa</h2>
 <p>La Promessa va in onda in Italia su Rete 4: le puntate si possono recuperare in streaming su Mediaset Infinity.</p>
-<h2>Come Jimena scopre la sintonia tra Manuel e Jana</h2>
+<h2 id="c11">Come Jimena scopre la sintonia tra Manuel e Jana</h2>
 <p>Analizziamo la scena dell&#x27;orecchino ritrovato sotto l&#x27;aereo di Manuel. Jana recupera l&#x27;oggetto prezioso di Jimena nel luogo in cui il giovane erede trascorre gran parte delle sue giornate. Consegnare il gioiello direttamente alla legittima proprietaria davanti a Manuel crea una situazione di palpabile tensione. Jimena nota chiaramente gli sguardi e l&#x27;intesa reciproca tra la semplice domestica e il marchese, cogliendo per la prima volta che il loro rapporto va oltre le mansioni di servizio. Questa immediata consapevolezza accende la gelosia della promessa sposa, trasformando un semplice gesto d&#x27;onesta&#x27; nell&#x27;inizio di un pericoloso triangolo amoroso destinato a minacciare i piani della famiglia.</p>
 <p>La presenza di Jana nei pressi del velivolo finisce per tradire i sentimenti che legano i due ragazzi. Manuel, gia&#x27; colpito dal coraggio mostrato dalla cameriera durante l&#x27;incendio nell&#x27;hangar, non nasconde l&#x27;interesse nei suoi confronti. Jimena comprende la gravita&#x27; della situazione e percepisce la serva come un ostacolo concreto alle imminenti nozze. Da quel momento, la promessa sposa capisce di dover sorvegliare ogni mossa della servetta, conscia del fatto che le scintille scoccate davanti a Manuel rischiano di mandare all&#x27;aria l&#x27;unione matrimoniale fortemente voluta dai marchesi.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Perche&#x27; la decisione di Pia mina le trame di Petra</h2>
+<h2 id="c12">Perche&#x27; la decisione di Pia mina le trame di Petra</h2>
 <p>L&#x27;allontanamento temporaneo di Pia offre a Petra la grande occasione di gestire l&#x27;intera servitu&#x27; della tenuta. Assumendo il comando durante i preparativi per il compleanno di Cruz, la dama di compagnia mostra il suo lato piu&#x27; despota, imponendo scelte sul menu e scontrandosi con Candela. Quando Pia si ripresenta mantenendo il segreto sulla gravidanza non interrotta, il potere di Petra svanisce nuovamente. L&#x27;inganno architettato dalla governante ai danni della padrona rappresenta un segreto pericoloso che rischia di sconvolgere il palazzo, soprattutto quando le forme fisiche renderanno del tutto impossibile nascondere la realta&#x27; dei fatti.</p>
 <p>La reazione di Candela aggiunge ulteriore tensione alla delicata situazione. La confessione ricevuta sul mancato aborto spinge la cuoca ad allontanarsi da Pia per la rabbia e per la paura delle ritorsioni. Nel frattempo Petra rimane in agguato, pronta a cogliere qualsiasi passo falso della rivale per prenderne definitivamente il posto. La menzogna della governante si trasforma in una minaccia costante: pur consentendole di conservare il lavoro nell&#x27;immediato, la bugia rischia di scatenare la furia di Cruz contro tutto il personale della casa non appena la verita&#x27; verra&#x27; finalmente alla luce.</p>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=JY3mexNp4Us" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/JY3mexNp4Us/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>JANA SALVA IL FIGLIO DI PIA! CRUZ E PETRA LO AVEVANO RAPITO - Anticipazioni La Promessa</span></a></li><li><a href="https://www.youtube.com/watch?v=S6buAl8j5sk" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/S6buAl8j5sk/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni: Jana ritrova in un Convento il figlio di Pia rapito da Petra e Cruz!</span></a></li><li><a href="https://www.youtube.com/watch?v=ce3KZ50cZr4" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/ce3KZ50cZr4/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA: Jana scopre la verità su Curro - Leonor prova a togliersi la vita, chi la salva?</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Jana ha fatto bene a salvare Curro senza dirgli niente di quello che ha capito? E secondo voi quanto potrà tenerselo per sé, ora che ha visto quella cicatrice?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=Wa_iP6VL4bc">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di La Promessa</h2><div class="griglia"><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/"><div class="foto"><img src="https://i.ytimg.com/vi/Rp8VhxDiDSk/hqdefault.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></h3>
+    <div class="quando">7 settembre 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/"><div class="foto"><img src="https://i.ytimg.com/vi/8JHt6ogwxQw/hqdefault.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Ángela beve tutto, Curro sfonda la porta</a></h3>
+    <div class="quando">6 settembre 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/"><div class="foto"><img src="/img/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Curro nasconde Ángela, Lorenzo furioso</a></h3>
+    <div class="quando">6 settembre 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=La Promessa, l&#x27;incendio nell&#x27;hangar: Jana salva Curro e vede la cicatrice sul petto che le fa capire chi è davvero — https://serietvfans.com/la-promessa/la-promessa-lincendio-nellhangar-jana-salva-curro-e-vede-la-cicatrice-sul-petto/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/la-promessa/la-promessa-lincendio-nellhangar-jana-salva-curro-e-vede-la-cicatrice-sul-petto/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/la-promessa/la-promessa-lincendio-nellhangar-jana-salva-curro-e-vede-la-cicatrice-sul-petto/&text=La Promessa, l&#x27;incendio nell&#x27;hangar: Jana salva Curro e vede la cicatrice sul petto che le fa capire chi è davvero" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">La Promessa, l&#x27;incendio nell&#x27;hangar: Jana salva Curro e vede la cicatrice sul petto che le fa capire chi è davvero</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=Wa_iP6VL4bc">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di La Promessa</h3><ol class="numerata"><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Ángela beve tutto, Curro sfonda la porta</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Curro nasconde Ángela, Lorenzo furioso</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>Ogni anticipazione, prima in video sul canale Serie TV Fans</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su La Promessa</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-3-6-settembre-maria-affronta-la-gravidanza-da-sola/">La Promessa anticipazioni 3-6 settembre: Maria affronta la gravidanza da sola</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-carlo-arriva-maria-trema/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Carlo arriva, Maria trema</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/far-away/far-away-anticipazioni-dal-31-agosto-al-4-settembre-chi-ha-donato-il-fegato-a-nare/">Far Away, anticipazioni dal 31 agosto al 4 settembre: chi ha donato il fegato a Nare, e perché adesso sta male lui</a></li><li><a href="/far-away/far-away-dal-31-agosto-la-madre-di-alya-sapeva-tutto-non-ricordo/">Far Away Dal 31 Agosto: la madre di Alya sapeva tutto — «non ricordo»</a></li><li><a href="/forbidden-fruit/forbidden-fruit-dal-31-agosto-il-conto-a-nome-di-halit-che-e-morto/">Forbidden Fruit Dal 31 Agosto: il conto a nome di Halit, che è morto</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

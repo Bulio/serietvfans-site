@@ -12,7 +12,7 @@
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Serie TV Fans">
 <meta property="og:url" content="https://serietvfans.com/la-promessa/la-promessa-chi-comanda-davvero-alla-tenuta-adesso-non-e-piu-il-marchese/">
-<meta property="og:image" content="https://i.ytimg.com/vi/DVkmJ5YEsLo/maxresdefault.jpg">
+<meta property="og:image" content="https://serietvfans.com/img/la-promessa-chi-comanda-davvero-alla-tenuta-adesso-non-e-piu-il-marchese.jpg">
 <meta property="og:locale" content="it_IT">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#7b1e2b">
@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -318,12 +367,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7778653397776213" crossorigin="anonymous"></script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "96259d7e67ce47fba4573364859712a6"}'></script>
 <script>(function(){var f=0;function go(){if(f)return;f=1;(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","y3rpoig6jk");}["pointerdown","keydown","touchstart","scroll"].forEach(function(v){addEventListener(v,go,{once:1,passive:1})});setTimeout(go,2500)})();</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "La Promessa, chi comanda davvero alla tenuta adesso: non è più il marchese", "datePublished": "2026-08-25", "dateModified": "2026-08-29", "description": "La Promessa non è stata conquistata: è stata occupata dall'interno, stanza per stanza, mentre i proprietari erano occupati a piangere i loro morti. Non raccontiamo un personaggio, raccontiamo la tenuta: chi comandava all'inizio, quante posizioni di comando si sono svuotate nello stesso periodo, e chi le ha riempite una per una. Don Alonso ha ancora il titolo, la terra e il nome sulla facciata — ma provate a elencare una decisione degli ultimi mesi in cui abbia prevalso la sua volontà.", "inLanguage": "it-IT", "mainEntityOfPage": "https://serietvfans.com/la-promessa/la-promessa-chi-comanda-davvero-alla-tenuta-adesso-non-e-piu-il-marchese/", "image": ["https://i.ytimg.com/vi/DVkmJ5YEsLo/maxresdefault.jpg"], "author": {"@type": "Organization", "name": "Serie TV Fans", "url": "https://serietvfans.com/chi-siamo/"}, "publisher": {"@type": "Organization", "name": "Serie TV Fans", "logo": {"@type": "ImageObject", "url": "https://serietvfans.com/favicon.svg"}}, "video": {"@type": "VideoObject", "name": "LA PROMESSA: chi comanda davvero alla tenuta adesso, e non è più il marchese 😱", "description": "La Promessa non è stata conquistata: è stata occupata dall'interno, stanza per stanza, mentre i proprietari erano occupati a piangere i loro morti. Non raccontiamo un personaggio, raccontiamo la tenuta: chi comandava all'inizio, quante posizioni di comando si sono svuotate nello stesso periodo, e chi le ha riempite una per una. Don Alonso ha ancora il titolo, la terra e il nome sulla facciata — ma provate a elencare una decisione degli ultimi mesi in cui abbia prevalso la sua volontà.", "thumbnailUrl": "https://i.ytimg.com/vi/DVkmJ5YEsLo/maxresdefault.jpg", "uploadDate": "2026-08-25T12:00:00Z", "embedUrl": "https://www.youtube.com/embed/DVkmJ5YEsLo"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "La Promessa, chi comanda davvero alla tenuta adesso: non è più il marchese", "datePublished": "2026-08-25", "dateModified": "2026-09-08", "description": "La Promessa non è stata conquistata: è stata occupata dall'interno, stanza per stanza, mentre i proprietari erano occupati a piangere i loro morti. Non raccontiamo un personaggio, raccontiamo la tenuta: chi comandava all'inizio, quante posizioni di comando si sono svuotate nello stesso periodo, e chi le ha riempite una per una. Don Alonso ha ancora il titolo, la terra e il nome sulla facciata — ma provate a elencare una decisione degli ultimi mesi in cui abbia prevalso la sua volontà.", "inLanguage": "it-IT", "mainEntityOfPage": "https://serietvfans.com/la-promessa/la-promessa-chi-comanda-davvero-alla-tenuta-adesso-non-e-piu-il-marchese/", "image": ["https://serietvfans.com/img/la-promessa-chi-comanda-davvero-alla-tenuta-adesso-non-e-piu-il-marchese.jpg"], "author": {"@type": "Organization", "name": "Serie TV Fans", "url": "https://serietvfans.com/chi-siamo/"}, "publisher": {"@type": "Organization", "name": "Serie TV Fans", "logo": {"@type": "ImageObject", "url": "https://serietvfans.com/favicon.svg"}}, "video": {"@type": "VideoObject", "name": "LA PROMESSA: chi comanda davvero alla tenuta adesso, e non è più il marchese 😱", "description": "La Promessa non è stata conquistata: è stata occupata dall'interno, stanza per stanza, mentre i proprietari erano occupati a piangere i loro morti. Non raccontiamo un personaggio, raccontiamo la tenuta: chi comandava all'inizio, quante posizioni di comando si sono svuotate nello stesso periodo, e chi le ha riempite una per una. Don Alonso ha ancora il titolo, la terra e il nome sulla facciata — ma provate a elencare una decisione degli ultimi mesi in cui abbia prevalso la sua volontà.", "thumbnailUrl": "https://serietvfans.com/img/la-promessa-chi-comanda-davvero-alla-tenuta-adesso-non-e-piu-il-marchese.jpg", "uploadDate": "2026-08-25T12:00:00Z", "embedUrl": "https://www.youtube.com/embed/DVkmJ5YEsLo"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://serietvfans.com/"}, {"@type": "ListItem", "position": 2, "name": "La Promessa", "item": "https://serietvfans.com/serie/la-promessa/"}, {"@type": "ListItem", "position": 3, "name": "La Promessa, chi comanda davvero alla tenuta adesso: non è più il marchese"}]}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,19 +385,18 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/la-promessa/">La Promessa</a> › La Promessa, chi comanda davvero alla tenuta adesso: non è più il marchese</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/la-promessa/">La Promessa</a>
   <h1>La Promessa, chi comanda davvero alla tenuta adesso: non è più il marchese</h1>
-  <div class="firma">Redazione Serie TV Fans · martedì 25 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-25">martedì 25 agosto 2026</time></span><span>aggiornato il 8 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">La Promessa non è stata conquistata: è stata occupata dall&#x27;interno, stanza per stanza, mentre i proprietari erano occupati a piangere i loro morti. Non raccontiamo un personaggio, raccontiamo la tenuta: chi comandava all&#x27;inizio, quante posizioni di comando si sono svuotate nello stesso periodo, e chi le ha riempite una per una. Don Alonso ha ancora il titolo, la terra e il nome sulla facciata — ma provate a elencare una decisione degli ultimi mesi in cui abbia prevalso la sua volontà.</p><ol><li><a href="#c1">Una scena che nessuno ha letto per quello che è</a></li><li><a href="#c2">Chi comandava alla Promessa all&#x27;inizio</a></li><li><a href="#c3">Le caselle rimaste vuote</a></li><li><a href="#c4">Chi ha riempito i vuoti</a></li><li><a href="#c5">Il matrimonio usato come strumento</a></li><li><a href="#c6">La stanza dove si decide davvero</a></li><li><a href="#c7">Cosa lasciano intendere le anticipazioni</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>La Promessa</strong> — Rete 4 · in streaming su Mediaset Infinity</span></div>
-  
-  <p class="occhiello">La Promessa non è stata conquistata: è stata occupata dall&#x27;interno, stanza per stanza, mentre i proprietari erano occupati a piangere i loro morti. Non raccontiamo un personaggio, raccontiamo la tenuta: chi comandava all&#x27;inizio, quante posizioni di comando si sono svuotate nello stesso periodo, e chi le ha riempite una per una. Don Alonso ha ancora il titolo, la terra e il nome sulla facciata — ma provate a elencare una decisione degli ultimi mesi in cui abbia prevalso la sua volontà.</p>
+  <figure class="copertina"><img src="/img/la-promessa-chi-comanda-davvero-alla-tenuta-adesso-non-e-piu-il-marchese.jpg" alt="La Promessa"><figcaption>Immagine d&#x27;ambiente — La Promessa</figcaption></figure>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
     <button type="button" class="avvia" data-yt="DVkmJ5YEsLo"
       aria-label="Riproduci il video: La Promessa, chi comanda davvero alla tenuta adesso: non è più il marchese" onclick="ytGo(this)">
-      <img src="https://i.ytimg.com/vi/DVkmJ5YEsLo/maxresdefault.jpg" alt="La Promessa, chi comanda davvero alla tenuta adesso: non è più il marchese" width="1280" height="720"
-        srcset="https://i.ytimg.com/vi/DVkmJ5YEsLo/hqdefault.jpg 480w, https://i.ytimg.com/vi/DVkmJ5YEsLo/sddefault.jpg 640w, https://i.ytimg.com/vi/DVkmJ5YEsLo/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+      <img src="/img/la-promessa-chi-comanda-davvero-alla-tenuta-adesso-non-e-piu-il-marchese.jpg" alt="La Promessa, chi comanda davvero alla tenuta adesso: non è più il marchese" width="1280" height="720"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/DVkmJ5YEsLo/hqdefault.jpg&quot;, &quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,10 +407,10 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>C&#x27;è una scena, alla Promessa, che riassume tutto quello che è successo negli ultimi anni in quella tenuta, e quasi nessuno l&#x27;ha letta per quello che è.</strong></p>
-  <h2>Una scena che nessuno ha letto per quello che è</h2>
+  <h2 id="c1">Una scena che nessuno ha letto per quello che è</h2>
 <p>Un maggiordomo nuovo entra in sala, e dà ordini. Retrocede un valletto. Toglie autonomia alla governante. Sposta un uomo di fiducia. E il marchese, il padrone di casa, quello il cui nome è sulla proprietà, lo lascia fare.</p>
 <p>Non è una scena di servitù. È una scena di potere. E il potere, in quella casa, non è più dove tutti credono che sia.</p>
-<h2>Chi comandava alla Promessa all&#x27;inizio</h2>
+<h2 id="c2">Chi comandava alla Promessa all&#x27;inizio</h2>
 <p>Qui non vi raccontiamo un personaggio. Vi raccontiamo la tenuta: chi comandava alla Promessa all&#x27;inizio, chi comanda adesso, e come è avvenuto il passaggio. Perché la cosa impressionante è che La Promessa è stata presa senza uno sparo, senza una causa in tribunale e senza che il proprietario perdesse un solo metro di terra. È stata presa dall&#x27;interno, da qualcuno che è entrato dalla porta principale, invitato, come amica di famiglia.</p>
 <p>E alla fine vi dico qual è la stanza in cui, oggi, si decide davvero. Non è quella che pensate.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
@@ -379,9 +427,9 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <p>Cruz, la donna che decideva tutto, è finita in carcere. E qui c&#x27;è il dettaglio più amaro della serie: l&#x27;hanno presa per un omicidio, quello di Jana, che non aveva commesso lei. Non ci soffermiamo, perché quella storia l&#x27;abbiamo raccontata in un altro video, ma il risultato è quello che conta adesso: la persona che teneva in piedi il comando è uscita di scena.</p>
 <p>Catalina, l&#x27;unica che sapeva far rendere la tenuta, non c&#x27;è più. Se n&#x27;è andata, e le circostanze di quella partenza sono tutt&#x27;altro che limpide.</p>
 <p>Rómulo, il maggiordomo, ha lasciato il posto. E il successore naturale era Ricardo, che era lì da anni e conosceva la casa.</p>
-<h2>Le caselle rimaste vuote</h2>
+<h2 id="c3">Le caselle rimaste vuote</h2>
 <p>Contate con me quante caselle si sono liberate in cima: la marchesa, un figlio, la figlia che gestiva i conti, il maggiordomo. Quattro posizioni di comando vuote nella stessa casa, nello stesso periodo.</p>
-<h2>Chi ha riempito i vuoti</h2>
+<h2 id="c4">Chi ha riempito i vuoti</h2>
 <p>E don Alonso, rimasto solo in cima, non è mai stato un uomo che riempie i vuoti. È un uomo che li lascia riempire.</p>
 <p>Ora vi faccio la domanda che divide chi guarda La Promessa, e vorrei davvero la vostra risposta: Alonso è una vittima delle persone che si è messo in casa, oppure è complice per pigrizia, perché gli fa comodo che decida qualcun altro? Scrivete VITTIMA oppure COMPLICE, una parola sola. Sono curioso di vedere come la pensate, perché su questo il pubblico si spacca sempre a metà.</p>
 <p>Leocadia de Figueroa non è arrivata alla Promessa come padrona. È arrivata come ospite. Amica di vecchia data, una che si conosceva da prima, accolta in casa con tutti gli onori.</p>
@@ -389,17 +437,17 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <p>Il maggiordomo. Quando il posto di Rómulo si è liberato, non è andato a Ricardo. È stato assunto Cristóbal Ballesteros, presentato come uomo di grandissima esperienza al servizio di altre famiglie nobili. A insistere con Alonso perché lo prendesse è stata Leocadia. E il motivo vero non era il curriculum: Cristóbal e Leocadia sono legati da molto tempo, da prima, dai tempi di Cruz.</p>
 <p>Cioè, tradotto: la persona che ogni giorno decide chi lavora dove, chi viene retrocesso e chi viene allontanato, è stata messa lì da lei.</p>
 <p>La figlia. Ángela è figlia di Leocadia, e questo alla Promessa non lo sapeva nessuno per un pezzo. Una gravidanza tenuta nascosta e un padre, Maximo, che non ha voluto riconoscerla.</p>
-<h2>Il matrimonio usato come strumento</h2>
+<h2 id="c5">Il matrimonio usato come strumento</h2>
 <p>Il matrimonio. E qui si vede il metodo. Su Ángela si è mosso il capitano Lorenzo de la Mata, che ha chiesto la sua mano. Leocadia ha provato prima a offrire sé stessa al posto della figlia, e non ha funzionato: Lorenzo voleva Ángela. E quando lui ha tirato fuori quello che sapeva sul suo passato, Leocadia ha ceduto e ha spinto la figlia ad accettare.</p>
 <p>Poi però ha cambiato strada. Ha lavorato su Curro perché aiutasse a far sposare Ángela con Beltrán, e togliere così la ragazza dalle mani di Lorenzo. Non per amore materno. Per sostituire un uomo che la teneva sotto scacco con uno che non la tiene.</p>
-<h2>La stanza dove si decide davvero</h2>
+<h2 id="c6">La stanza dove si decide davvero</h2>
 <p>Fermatevi un attimo su questa sequenza, perché è il ritratto esatto del personaggio: quando le hanno puntato addosso un ricatto, non ha combattuto e non ha ceduto davvero. Ha cambiato il pezzo sulla scacchiera.</p>
 <p>Manca solo un passaggio, ed è quello che sta succedendo adesso.</p>
 <p>Quarto tempo. La stanza in cui si decide.</p>
 <p>Sommate tutto. Il maggiordomo è suo. La ragazza che sta per entrare nella famiglia con un matrimonio è sua figlia. Il ragazzo che tutti in casa amano, Curro, lavora ai suoi piani, sia pure obbligato. E la donna che prima decideva tutto è in una cella.</p>
 <p>Il marchese ha ancora il titolo. Ha ancora la terra. Ha ancora il nome sulla facciata. Ma provate a elencare una decisione presa alla Promessa negli ultimi mesi in cui la volontà di Alonso sia stata quella che ha prevalso. Fatelo davvero, mentalmente. È un elenco molto corto.</p>
 <p>Ed è per questo che dicevo, all&#x27;inizio, che la stanza dove si decide non è quella che pensate. Non è lo studio del marchese, con la scrivania e i registri. È il corridoio della servitù, e sono le stanze degli ospiti. Da una parte l&#x27;uomo che controlla chi fa che cosa ogni giorno, dall&#x27;altra la donna che lo ha messo lì.</p>
-<h2>Cosa lasciano intendere le anticipazioni</h2>
+<h2 id="c7">Cosa lasciano intendere le anticipazioni</h2>
 <p>Ora entriamo per un momento nelle ipotesi, e ve lo dico chiaramente perché non voglio spacciarvi una supposizione per un fatto. Le anticipazioni lasciano intendere che questo assetto stia per essere messo alla prova, e che a incrinarlo sia proprio uno dei pezzi che Leocadia credeva di controllare. Chi tiene insieme una casa con i segreti ha un problema strutturale: gli basta che parli una persona sola.</p>
 <p>E c&#x27;è un nome, in quella tenuta, che sa più cose di quante ne abbia mai dette.</p>
 <p>Un maggiordomo che dà ordini in casa d&#x27;altri. Un marchese che lo lascia fare. E una donna che non ha alzato la voce nemmeno una volta, perché non ne ha avuto bisogno.</p>
@@ -408,19 +456,41 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=LpCKsmgAAXA" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/LpCKsmgAAXA/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni Spagnole: Curro scopre tutto sulla sua nascita! Svelato il nome del p</span></a></li><li><a href="https://www.youtube.com/watch?v=8QqHV5CXJ0E" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/8QqHV5CXJ0E/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni 31 Agosto: Manuel è ancora vivo! Festa alla Tenuta!</span></a></li><li><a href="https://www.youtube.com/watch?v=Dj6zyPg_ZAU" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/Dj6zyPg_ZAU/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni Spoiler: Qualcuno non regge alla pressione! Medita il suicidio! Chi è</span></a></li></ul></div>
   
+  <section class="correlati-serie"><h2>Altre anticipazioni di La Promessa</h2><div class="griglia"><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/"><div class="foto"><img src="https://i.ytimg.com/vi/Rp8VhxDiDSk/hqdefault.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></h3>
+    <div class="quando">7 settembre 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/"><div class="foto"><img src="https://i.ytimg.com/vi/8JHt6ogwxQw/hqdefault.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Ángela beve tutto, Curro sfonda la porta</a></h3>
+    <div class="quando">6 settembre 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/"><div class="foto"><img src="/img/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Curro nasconde Ángela, Lorenzo furioso</a></h3>
+    <div class="quando">6 settembre 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=La Promessa, chi comanda davvero alla tenuta adesso: non è più il marchese — https://serietvfans.com/la-promessa/la-promessa-chi-comanda-davvero-alla-tenuta-adesso-non-e-piu-il-marchese/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/la-promessa/la-promessa-chi-comanda-davvero-alla-tenuta-adesso-non-e-piu-il-marchese/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/la-promessa/la-promessa-chi-comanda-davvero-alla-tenuta-adesso-non-e-piu-il-marchese/&text=La Promessa, chi comanda davvero alla tenuta adesso: non è più il marchese" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">LA PROMESSA: chi comanda davvero alla tenuta adesso, e non è più il marchese 😱</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=DVkmJ5YEsLo">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di La Promessa</h3><ol class="numerata"><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Ángela beve tutto, Curro sfonda la porta</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Curro nasconde Ángela, Lorenzo furioso</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>LA PROMESSA: chi comanda davvero alla tenuta adesso, e non è più il marchese 😱</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su La Promessa</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-3-6-settembre-maria-affronta-la-gravidanza-da-sola/">La Promessa anticipazioni 3-6 settembre: Maria affronta la gravidanza da sola</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-carlo-arriva-maria-trema/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Carlo arriva, Maria trema</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/far-away/far-away-anticipazioni-dal-31-agosto-al-4-settembre-chi-ha-donato-il-fegato-a-nare/">Far Away, anticipazioni dal 31 agosto al 4 settembre: chi ha donato il fegato a Nare, e perché adesso sta male lui</a></li><li><a href="/far-away/far-away-dal-31-agosto-la-madre-di-alya-sapeva-tutto-non-ricordo/">Far Away Dal 31 Agosto: la madre di Alya sapeva tutto — «non ricordo»</a></li><li><a href="/forbidden-fruit/forbidden-fruit-dal-31-agosto-il-conto-a-nome-di-halit-che-e-morto/">Forbidden Fruit Dal 31 Agosto: il conto a nome di Halit, che è morto</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

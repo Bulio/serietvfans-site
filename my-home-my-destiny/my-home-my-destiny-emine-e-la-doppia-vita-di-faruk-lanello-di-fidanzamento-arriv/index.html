@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/my-home-my-destiny/">My Home My Destiny</a> › My Home My Destiny, Emine e la doppia vita di Faruk: l&#x27;anello di fidanzamento arriva mentre lui frequenta ancora la ricca Selin</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/my-home-my-destiny/">My Home My Destiny</a>
   <h1>My Home My Destiny, Emine e la doppia vita di Faruk: l&#x27;anello di fidanzamento arriva mentre lui frequenta ancora la ricca Selin</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">La storia più amara della soap: Emine, ripudiata dalla madre Sultan per la relazione con Faruk, si ritrova rinchiusa nel ruolo di amante segreta mentre il padre di lui orchestra le nozze con l&#x27;ereditiera Selin Kutucuoğlu. Poi la proposta in ginocchio con l&#x27;anello costosissimo — e negli stessi attimi Faruk è in compagnia di Selin. Sultan l&#x27;aveva detto: «Ti sta solo prendendo in giro».</p><ol><li><a href="#c1">Lo scandalo: Sultan scopre la relazione segreta</a></li><li><a href="#c2">La gabbia dorata e l&#x27;ombra di Selin</a></li><li><a href="#c3">La verità che ferisce: «Ho bisogno dei benefici di mio padre»</a></li><li><a href="#c4">L&#x27;anello, il sì — e Faruk che esce con Selin</a></li><li><a href="#c5">Come Sultan reagisce al segreto di Emine</a></li><li><a href="#c6">Cosa spinge Faruk a scegliere Selin Kutucuoğlu</a></li><li><a href="#c7">Perche Emine finisce nella prigione dorata</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>My Home My Destiny</strong> — Serie conclusa in Italia · le puntate su Mediaset Infinity</span></div>
   
-  <p class="occhiello">La storia più amara della soap: Emine, ripudiata dalla madre Sultan per la relazione con Faruk, si ritrova rinchiusa nel ruolo di amante segreta mentre il padre di lui orchestra le nozze con l&#x27;ereditiera Selin Kutucuoğlu. Poi la proposta in ginocchio con l&#x27;anello costosissimo — e negli stessi attimi Faruk è in compagnia di Selin. Sultan l&#x27;aveva detto: «Ti sta solo prendendo in giro».</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: My Home My Destiny, Emine e la doppia vita di Faruk: l&#x27;anello di fidanzamento arriva mentre lui frequenta ancora la ricca Selin" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/8KSiq4GFbzU/maxresdefault.jpg" alt="My Home My Destiny, Emine e la doppia vita di Faruk: l&#x27;anello di fidanzamento arriva mentre lui frequenta ancora la ricca Selin" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/8KSiq4GFbzU/hqdefault.jpg 480w, https://i.ytimg.com/vi/8KSiq4GFbzU/sddefault.jpg 640w, https://i.ytimg.com/vi/8KSiq4GFbzU/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/8KSiq4GFbzU/hqdefault.jpg&quot;, &quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,25 +409,25 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>La confessione più cruda di Faruk: protegge Emine, sì — ma ha anche bisogno dei soldi del padre, «senza i quali non sarei l&#x27;uomo di cui ti sei innamorata».</strong></p>
-  <h2>Lo scandalo: Sultan scopre la relazione segreta</h2>
+  <h2 id="c1">Lo scandalo: Sultan scopre la relazione segreta</h2>
 <p>Mentre il matrimonio di Zeynep e Mehdi vive la sua prima notte d&#x27;amore, per Emine arriva la tempesta: la madre Sultan scopre la relazione — anche intima — con Faruk, l&#x27;ex fidanzato della sua migliore amica, e la ripudia: la sognava sposa e «ancora vergine» all&#x27;altare. Cacciata di casa, Emine trova rifugio proprio da Faruk. E Zeynep, più che gelosa dell&#x27;ex, è ferita dalla rete di bugie con cui l&#x27;amica ha nascosto tutto: un&#x27;amicizia solida che si incrina nel modo più doloroso.</p>
-<h2>La gabbia dorata e l&#x27;ombra di Selin</h2>
+<h2 id="c2">La gabbia dorata e l&#x27;ombra di Selin</h2>
 <p>La vita da signora borghese si rivela una prigione: giornate vuote, shopping e solitudine, il disprezzo degli amici di Faruk e di una famiglia che la considera di rango troppo basso. Il padre di Faruk ha già pronto il piano: nozze di convenienza con la bellissima e ricchissima Selin Kutucuoğlu, per saldare le due dinastie e sistemare gli affari. Faruk comunica con Selin di nascosto — finché Emine, dopo l&#x27;ennesima lite, trova le conversazioni sul telefono. La «spiegazione» di lui è un capolavoro di ambiguità: è tutto un piano di sopravvivenza imposto dal padre, ama solo lei, servirà tempo. Intanto la convince a trasferirsi in un&#x27;altra villa: di fatto, la relega ad amante.</p>
-<h2>La verità che ferisce: «Ho bisogno dei benefici di mio padre»</h2>
+<h2 id="c3">La verità che ferisce: «Ho bisogno dei benefici di mio padre»</h2>
 <p>In una notte insonne di gelosia, la discussione esplode e Faruk si lascia scappare la verità più cruda: non agisce solo per proteggerla — ha bisogno dei vantaggi economici del padre, parte della sua identità e del suo status, «senza i quali non sarebbe l&#x27;uomo di cui Emine si è innamorata». Una confessione che vale un ritratto: l&#x27;amore c&#x27;è, ma viene dopo il conto in banca.</p>
-<h2>L&#x27;anello, il sì — e Faruk che esce con Selin</h2>
+<h2 id="c4">L&#x27;anello, il sì — e Faruk che esce con Selin</h2>
 <p>Il colpo di teatro arriva a sorpresa: Faruk si inginocchia, estrae un anello costosissimo e chiede a Emine di sposarlo. Lei, entusiasta, dice sì e corre da Sultan — che la gela: «Apri gli occhi, ti sta prendendo in giro». E la bottegaia ha ragione: negli stessi attimi Faruk è in compagnia di Selin, la doppia frequentazione continua. Zeynep, dopo il litigio, si fa dare l&#x27;indirizzo da Tolga e spinge Sultan a farle visita: l&#x27;amore materno prevale, le chiavi di casa tornano nelle mani di Emine — «puoi tornare quando vuoi». Prima o poi le serviranno: quanto ancora si farà prendere in giro?</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Come Sultan reagisce al segreto di Emine</h2>
+<h2 id="c5">Come Sultan reagisce al segreto di Emine</h2>
 <p>La scoperta dell&#x27;intima relazione tra Emine e Faruk travolge improvvisamente l&#x27;esistenza della bottegaia Sultan, che per la propria figlia aveva sempre coltivato un ideale ben preciso ed estremamente rigoroso. La donna sognava infatti di accompagnare Emine all&#x27;altare ancora vergine, coronando quel percorso con un matrimonio solenne e rispettabile agli occhi dell&#x27;intera comunità. Quando la verità emerge con sconcertante durezza, il colpo si rivela insostenibile, soprattutto perché Faruk rappresenta il passato sentimentale di Zeynep, la migliore amica di sua figlia. Questa catena di omissioni e doppiezze trasforma l&#x27;orgoglio materno in una rabbia profonda, incapace di accettare quello che appare come un tradimento imperdonabile dei valori familiari.</p>
 <p>La reazione di Sultan non tarda ad arrivare e si traduce nel ripudio immediato di Emine, che si ritrova improvvisamente cacciata dalla propria casa senza alcuna possibilità di dialogo. La giovane trova riparo proprio tra le braccia di Faruk, ma le parole d&#x27;avvertimento della madre risuonano fin da subito come una triste profezia. La bottegaia ammonisce la figlia sostenendo con forza che l&#x27;uomo la stia soltanto prendendo in giro, nascondendo le reali intenzioni dietro falsi sentimenti. Nonostante l&#x27;amarezza, Sultan dimostra una visione lucida delle dinamiche sociali e della disparità tra le loro famiglie, mettendo in guardia Emine su un destino segnato dall&#x27;illusione.</p>
 <p>Parallelamente, la vicenda si intreccia con il percorso personale di Zeynep, che proprio in quelle stesse ore vive la sua prima notte d&#x27;amore insieme al marito Mehdi. Piuttosto che cedere alla gelosia nei confronti del suo ex fidanzato Faruk, Zeynep si riscopre profondamente ferita dalla complessa rete di menzogne costruita dall&#x27;amica del cuore per celare il legame. La solida amicizia tra le due giovani si incrina in modo doloroso, poichè la mancanza di sincerità distrugge la fiducia reciproca. La gioia del nuovo inizio matrimoniale di Zeynep viene così inevitabilmente offuscata dall&#x27;amarezza per un affetto fraterno tradito nel momento più inaspettato.</p>
-<h2>Cosa spinge Faruk a scegliere Selin Kutucuoğlu</h2>
+<h2 id="c6">Cosa spinge Faruk a scegliere Selin Kutucuoğlu</h2>
 <p>Le motivazioni che guidano le azioni di Faruk risiedono principalmente nel rigido piano finanziario orchestrato da suo padre per consolidare la posizione sociale della famiglia. Il genitore ha infatti già pianificato nei minimi dettagli un matrimonio di convenienza con la bellissima e ricchissima ereditiera Selin Kutucuoğlu, un&#x27;unione strategica indispensabile per saldare insieme le due potenti dinastie e sistemare importanti affari economici. Faruk si ritrova catturato in questo meccanismo di potere, consapevole che la continuità del suo stile di vita e del suo prestigio dipende interamente dalle decisioni paterne e dalla riuscita di questa importante alleanza commerciale.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>Durante un acceso confronto notturno causato dai dubbi e dalla gelosia di Emine, il giovane arriva a pronunciare una confessione di rara crudeltà. Faruk ammette apertamente di non agire soltanto con lo scopo di proteggere la ragazza, ma di avere un bisogno assoluto dei benefici economici garantiti dal padre. Senza quel sostegno finanziario e senza le ricchezze di famiglia, infatti, egli ammette che non sarebbe affatto l&#x27;uomo di cui Emine si è innamorata. Questa rivelazione meticolosa chiarisce come, nella scala dei valori del giovane borghese, il conto in banca e lo status sociale mantengano una priorità indiscutibile rispetto all&#x27;amore.</p>
 <p>Per proteggere i propri interessi e portare avanti il disegno paterno, Faruk continua a comunicare costantemente di nascosto con Selin Kutucuoğlu. Quando Emine scopre casualmente le conversazioni sul cellulare dell&#x27;uomo dopo l&#x27;ennesima lite, lui giustifica la situazione definendola una complessa strategia di sopravvivenza imposta dal genitore. Con parole ambigue e rassicuranti, il ragazzo convince la compagna che serve soltanto del tempo, trasferendola in una seconda villa. Questa mossa, tuttavia, finisce per restrittivamente relegare Emine al ruolo di amante segreta, lasciando incontaminata la frequentazione ufficiale con la ricca ereditiera.</p>
-<h2>Perche Emine finisce nella prigione dorata</h2>
+<h2 id="c7">Perche Emine finisce nella prigione dorata</h2>
 <p>Il trasferimento nella nuova residenza si trasforma ben presto in un&#x27;esperienza soffocante per Emine, che scopre quanto la vita da signora borghese somigli a una prigione dorata. Le sue giornate trascorrono vuote e monotone, divise soltanto tra acquisti compulsivi nei negozi e un profondo senso di solitudine. A rendere ancora più insostenibile la permanenza contribuiscono il palese disprezzo e la freddezza dimostrati dagli amici di Faruk e dai suoi familiari, i quali la considerano inequivocabilmente di rango troppo basso per far parte del loro ambiente sociale. La giovane si ritrova così del tutto isolata e privata di punti di riferimento reali.</p>
 <p>La situazione sembra ribaltarsi improvvisamente quando Faruk compie un gesto inatteso, inginocchiandosi davanti a lei per offrirle un anello costosissimo e chiederle ufficialmente di diventare sua moglie. Sopraffatta dall&#x27;entusiasmo e convinta di aver finalmente raggiunto la felicità, Emine corre immediatamente dalla madre per condividere la grande notizia. Sultan, tuttavia, reagisce congelando la sua gioia con parole dirette, invitandola ad aprire gli occhi davanti alla realtà di un uomo che continua a prenderla in giro. Le parole della bottegaia trovano immediata conferma nel fatto che Faruk, negli stessi attimi, si trova in compagnia di Selin.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
@@ -385,19 +435,41 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=JElWLUv_sZQ" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/JElWLUv_sZQ/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>MY HOME MY DESTINY Anticipazioni 21-26 Agosto 2023: Mehdi Rischia la Vita - Emine e Faruk vicin</span></a></li><li><a href="https://www.youtube.com/watch?v=_I5jIkcvjgo" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/_I5jIkcvjgo/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>MY HOME MY DESTINY Anticipazioni 24 25 Gennaio: Sakine racconta finalmente la storia della sua </span></a></li><li><a href="https://www.youtube.com/watch?v=DLMIsqJcJI0" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/DLMIsqJcJI0/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>MY HOME MY DESTINY Anticipazioni 30 Agosto: Zeynep rinuncia a Mehdi? Sultan scopre Emine con Fa</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Faruk ama davvero Emine o ama soprattutto il patrimonio di famiglia? E Sultan che le ridà le chiavi di casa: resa o lungimiranza di madre?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=8KSiq4GFbzU">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di My Home My Destiny</h2><div class="griglia"><article class="scheda">
+  <a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/"><div class="foto"><img src="/img/my-home-my-destiny-la-trama-completa-e-come-finisce.jpg" alt="My Home My Destiny" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">My Home My Destiny</span>
+    <h3><a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/">My Home My Destiny: la trama completa e come finisce</a></h3>
+    <div class="quando">30 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/"><div class="foto"><img src="https://i.ytimg.com/vi/-djleIeCLQs/hqdefault.jpg" alt="My Home My Destiny" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">My Home My Destiny</span>
+    <h3><a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/">My Home My Destiny, Zeynep ferma l&#x27;aborto di Benal in sala operatoria senza sapere che il padre è Mehdi</a></h3>
+    <div class="quando">17 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/"><div class="foto"><img src="https://i.ytimg.com/vi/gxL0o63Nhqw/hqdefault.jpg" alt="My Home My Destiny" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">My Home My Destiny</span>
+    <h3><a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/">My Home My Destiny, anticipazioni del 17 novembre: Özlem indaga su Zeynep e scopre tutto, Nuh diventa autista di Barış e qualcuno manomette i macchinari di Bekir</a></h3>
+    <div class="quando">16 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=My Home My Destiny, Emine e la doppia vita di Faruk: l&#x27;anello di fidanzamento arriva mentre lui frequenta ancora la ricca Selin — https://serietvfans.com/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/&text=My Home My Destiny, Emine e la doppia vita di Faruk: l&#x27;anello di fidanzamento arriva mentre lui frequenta ancora la ricca Selin" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">MY HOME MY DESTINY ANTICIPAZIONI: EMINE PRESA IN GIRO DA FARUK, ARRIVA LA BELLISSIMA SELIN</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=8KSiq4GFbzU">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di My Home My Destiny</h3><ol class="numerata"><li><a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/">My Home My Destiny: la trama completa e come finisce</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/">My Home My Destiny, Zeynep ferma l&#x27;aborto di Benal in sala operatoria senza sapere che il padre è Mehdi</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/">My Home My Destiny, anticipazioni del 17 novembre: Özlem indaga su Zeynep e scopre tutto, Nuh diventa autista di Barış e qualcuno manomette i macchinari di Bekir</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-guida-alla-serie-chi-sono-demet-ozdemir-e-ibrahim-celikkol-qu/">My Home My Destiny: guida alla serie, il cast, i personaggi e quante puntate sono</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-1-dicembre-gli-spari-davanti-alla-vecchia-casa-zeynep-tra-le/">My Home My Destiny 1° dicembre, gli spari davanti alla vecchia casa: Zeynep tra le due madri quando l&#x27;uomo in moto estrae la pistola</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>MY HOME MY DESTINY ANTICIPAZIONI: EMINE PRESA IN GIRO DA FARUK, ARRIVA LA BELLISSIMA SELIN</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su My Home My Destiny</h3><ul><li><a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/">My Home My Destiny: la trama completa e come finisce</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/">My Home My Destiny, Zeynep ferma l&#x27;aborto di Benal in sala operatoria senza sapere che il padre è Mehdi</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/">My Home My Destiny, anticipazioni del 17 novembre: Özlem indaga su Zeynep e scopre tutto, Nuh diventa autista di Barış e qualcuno manomette i macchinari di Bekir</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-guida-alla-serie-chi-sono-demet-ozdemir-e-ibrahim-celikkol-qu/">My Home My Destiny: guida alla serie, il cast, i personaggi e quante puntate sono</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-1-dicembre-gli-spari-davanti-alla-vecchia-casa-zeynep-tra-le/">My Home My Destiny 1° dicembre, gli spari davanti alla vecchia casa: Zeynep tra le due madri quando l&#x27;uomo in moto estrae la pistola</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/terra-amara/">Terra Amara</a> › Terra Amara, chi era davvero Behice: due mariti morti d&#x27;infarto e l&#x27;errore che l&#x27;ha tradita</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/terra-amara/">Terra Amara</a>
   <h1>Terra Amara, chi era davvero Behice: due mariti morti d&#x27;infarto e l&#x27;errore che l&#x27;ha tradita</h1>
-  <div class="firma">Redazione Serie TV Fans · giovedì 20 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-20">giovedì 20 agosto 2026</time></span><span>aggiornato il 29 agosto 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Terra Amara, chi era davvero Behice Hekimoğlu: non solo la donna che ha ucciso Hünkar, ma una che aveva un metodo e lo aveva già usato due volte. I due mariti morti &quot;di infarto&quot;, la lettera falsa firmata a nome di Züleyha che manda Müjgan nel bosco, il fascicolo che Hünkar le mette davanti, e la sera in cui Behice è stata costretta a uccidere nel modo opposto al suo.</p><ol><li><a href="#c1">Tre morti e nessuna indagine</a></li><li><a href="#c2">Il metodo: due mariti, due infarti</a></li><li><a href="#c3">Perché è arrivata a Çukurova</a></li><li><a href="#c4">La lettera falsa e il bosco</a></li><li><a href="#c5">Hünkar e il fascicolo</a></li><li><a href="#c6">L&#x27;unica volta che ha cambiato metodo</a></li><li><a href="#c7">Il buco nell&#x27;alibi</a></li><li><a href="#c8">Dove aveva sbagliato davvero</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>Terra Amara</strong> — Serie conclusa in Italia · tutte le puntate su Mediaset Infinity</span></div>
   
-  <p class="occhiello">Terra Amara, chi era davvero Behice Hekimoğlu: non solo la donna che ha ucciso Hünkar, ma una che aveva un metodo e lo aveva già usato due volte. I due mariti morti &quot;di infarto&quot;, la lettera falsa firmata a nome di Züleyha che manda Müjgan nel bosco, il fascicolo che Hünkar le mette davanti, e la sera in cui Behice è stata costretta a uccidere nel modo opposto al suo.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: Terra Amara, chi era davvero Behice: due mariti morti d&#x27;infarto e l&#x27;errore che l&#x27;ha tradita" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/XyYfYQtETKc/maxresdefault.jpg" alt="Terra Amara, chi era davvero Behice: due mariti morti d&#x27;infarto e l&#x27;errore che l&#x27;ha tradita" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/XyYfYQtETKc/hqdefault.jpg 480w, https://i.ytimg.com/vi/XyYfYQtETKc/sddefault.jpg 640w, https://i.ytimg.com/vi/XyYfYQtETKc/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/XyYfYQtETKc/hqdefault.jpg&quot;, &quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,18 +409,18 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>Quante persone deve uccidere una donna, in una serie, prima che qualcuno cominci a sospettare di lei? In Terra Amara la risposta è tre.</strong></p>
-  <h2>Tre morti e nessuna indagine</h2>
+  <h2 id="c1">Tre morti e nessuna indagine</h2>
 <p>Partiamo dal metodo, perché senza il metodo il resto non si capisce.</p>
-<h2>Il metodo: due mariti, due infarti</h2>
+<h2 id="c2">Il metodo: due mariti, due infarti</h2>
 <p>Prima di arrivare a Çukurova, Behice Hekimoğlu era già stata sposata due volte. Il primo marito, Lutfì. Il secondo, Rüstem. Tutti e due morti. E tutti e due morti, ufficialmente, di infarto. Uomini adulti, morti di cuore, uno dopo l&#x27;altro. Sulla carta non c&#x27;è niente di strano: succede, è la causa di morte più comune che esista, e nessuno fa domande a una vedova che piange.</p>
 <p>Solo che quei due uomini non sono morti di cuore. Sono stati avvelenati. E questo è il punto centrale di tutto il personaggio, quindi vi chiedo di tenerlo a mente per i prossimi minuti: Behice non uccideva per far vedere. Uccideva per far sembrare che non fosse successo niente.</p>
-<h2>Perché è arrivata a Çukurova</h2>
+<h2 id="c3">Perché è arrivata a Çukurova</h2>
 <p>È una differenza enorme. In Terra Amara ci sono personaggi che sparano, che minacciano, che fanno scenate davanti a venti persone. Behice no. Behice sceglie sempre lo strumento che lascia il morto seduto sulla sua poltrona con l&#x27;aria di uno che si è sentito male. Il veleno non fa rumore, non lascia una scena da spiegare e soprattutto non ha bisogno di un alibi, perché non c&#x27;è nessun momento in cui devi essere da un&#x27;altra parte.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>E allora la domanda è: se il suo sistema era così solido, cosa ci faceva una come lei in una tenuta di campagna piena di gente che si guarda le spalle a vicenda?</p>
 <p>Ci era arrivata al seguito di sua nipote. Behice è la zia di Müjgan, e Müjgan a Çukurova ci era arrivata come medico, e ci era rimasta come moglie di Yılmaz. Behice si presenta come la parente premurosa, quella che è venuta a dare una mano alla nipote in un posto che non conosce. Nella pratica si installa dentro una famiglia già instabile e comincia a lavorarci.</p>
 <p>E qui c&#x27;è una cosa che secondo me è il vero capolavoro del personaggio, molto più di qualsiasi omicidio. Behice non attacca mai per prima con le proprie mani, se può evitarlo. Preferisce mettere un&#x27;altra persona nella posizione di fare il lavoro al posto suo.</p>
-<h2>La lettera falsa e il bosco</h2>
+<h2 id="c4">La lettera falsa e il bosco</h2>
 <p>Guardate cosa combina con Müjgan. Behice scrive una lettera falsa, la firma a nome di Züleyha, e in quella lettera fa uscire la questione della paternità del piccolo Adnan. Non ha bisogno di dire niente a voce, non deve convincere nessuno: lascia che sia la carta a parlare. Müjgan legge, e Müjgan crolla.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>Il risultato di quella lettera arriva nel bosco. Müjgan affronta Züleyha con una pistola in mano, e non la punta soltanto: prova a spingerla a farsi del male da sola. Durante quel confronto parte un colpo, e Züleyha resta ferita.</p>
@@ -379,18 +429,18 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <p>Chi lo usa ci permette di continuare a fare video come questo. Nessun obbligo, ci mancherebbe: chi resta e basta è già la ragione per cui siamo qui.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>Torniamo a noi, perché adesso arriviamo alla persona che quel sistema lo ha smontato.</p>
-<h2>Hünkar e il fascicolo</h2>
+<h2 id="c5">Hünkar e il fascicolo</h2>
 <p>Hünkar Yaman. E non lo smonta per intuito, lo smonta per documenti. Hünkar arriva ad avere in mano un fascicolo, e in quel fascicolo c&#x27;è la storia dei due mariti di Behice: le morti, le circostanze, quello che c&#x27;è dietro il timbro con scritto infarto.</p>
 <p>E adesso guardate cosa fa Hünkar con quel fascicolo, perché è il passaggio che decide tutto. Non va dal procuratore. Non lo mette in mano alle autorità. Va da Behice, glielo mostra, e le dice una cosa sola: vattene da Çukurova.</p>
-<h2>L&#x27;unica volta che ha cambiato metodo</h2>
+<h2 id="c6">L&#x27;unica volta che ha cambiato metodo</h2>
 <p>Hünkar le ha dato un&#x27;uscita. Le ha dato l&#x27;unica cosa che una come Behice non poteva accettare, cioè andarsene da sconfitta lasciando indietro tutto quello che aveva costruito lì dentro. E le ha dato anche una scadenza, perché quel fascicolo, finché resta in mano a Hünkar, è una pistola carica appoggiata sul tavolo.</p>
 <p>E qui Behice fa l&#x27;unica cosa che non aveva mai fatto in vita sua. Non avvelena. Non aspetta. Prende un coltello e la accoltella.</p>
 <p>Fermatevi un secondo su questo, perché è esattamente il punto del video. Behice era una che uccideva senza lasciare una scena. Con Hünkar non poteva: non aveva tempo, non aveva accesso alla sua tavola, non aveva niente. Ha dovuto uccidere nel modo opposto al suo, cioè nel modo più rumoroso possibile, lasciando per terra un corpo con una ferita che nessun medico può scambiare per un infarto.</p>
 <p>E allora, siccome il fatto non si poteva nascondere, ha dovuto nascondere il movente. Toglie a Hünkar tutti i gioielli, così che sembri una rapina finita male. Si disfa dell&#x27;arma. E poi va al circolo, dove è in corso una riunione delle signore, e si fa vedere. Lì, tranquilla, tra le altre donne.</p>
-<h2>Il buco nell&#x27;alibi</h2>
+<h2 id="c7">Il buco nell&#x27;alibi</h2>
 <p>È un alibi perfetto, sulla carta. Una rapina spiega la morte, il circolo spiega dove era lei, e nessuno collega la vedova gentile arrivata da fuori a un delitto di strada.</p>
 <p>E allora perché non ha funzionato? Cosa manca a un alibi costruito così bene?</p>
-<h2>Dove aveva sbagliato davvero</h2>
+<h2 id="c8">Dove aveva sbagliato davvero</h2>
 <p>Manca la cosa che Behice non poteva controllare: qualcun altro che rifacesse lo stesso percorso di Hünkar. Perché il fascicolo esisteva, e la verità sui due mariti era una verità che una persona sola aveva già trovato. Se l&#x27;ha trovata Hünkar, può trovarla qualcun altro.</p>
 <p>E infatti succede. Züleyha arriva a sapere degli omicidi dei due mariti, e non fa quello che aveva fatto Hünkar. Non offre nessuna uscita, non parla in privato. Punta il dito contro Behice in pubblico, davanti a tutti, e l&#x27;accusa di aver ucciso Hünkar Yaman.</p>
 <p>In quel momento l&#x27;alibi non serve più a niente. Perché un alibi ti protegge dal sospetto, non ti protegge dal passato. E il passato di Behice, una volta detto ad alta voce davanti a testimoni, non si può più rimettere dentro una busta.</p>
@@ -400,19 +450,41 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=GoBKLotSoP0" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/GoBKLotSoP0/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TERRA AMARA Anticipazioni: Fekeli manda via Behice! Sospetta Qualcosa?</span></a></li><li><a href="https://www.youtube.com/watch?v=eXmbtZIAIT0" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/eXmbtZIAIT0/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TERRA AMARA Anticipazioni 16-18 Ottobre: Demir è convinto che sia stata Behice ma non ha prove!</span></a></li><li><a href="https://www.youtube.com/watch?v=tWZMl5oybYk" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/tWZMl5oybYk/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TERRA AMARA: Gaffur smaschera Behice davanti a tutti 😱 #terraamara #shorts</span></a></li></ul></div>
   
+  <section class="correlati-serie"><h2>Altre anticipazioni di Terra Amara</h2><div class="griglia"><article class="scheda">
+  <a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/"><div class="foto"><img src="/img/terra-amara-la-trama-completa-e-come-finisce.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></h3>
+    <div class="quando">30 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/"><div class="foto"><img src="https://i.ytimg.com/vi/_ypSJU-x7LY/hqdefault.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/"><div class="foto"><img src="https://i.ytimg.com/vi/B_MLx-0yh6M/hqdefault.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=Terra Amara, chi era davvero Behice: due mariti morti d&#x27;infarto e l&#x27;errore che l&#x27;ha tradita — https://serietvfans.com/terra-amara/terra-amara-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/terra-amara/terra-amara-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/terra-amara/terra-amara-la-trama-completa-e-come-finisce/&text=Terra Amara, chi era davvero Behice: due mariti morti d&#x27;infarto e l&#x27;errore che l&#x27;ha tradita" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">TERRA AMARA: l&#x27;alibi perfetto di Behice — e l&#x27;unico errore che l&#x27;ha tradita 😱</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=XyYfYQtETKc">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di Terra Amara</h3><ol class="numerata"><li><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></li><li><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></li><li><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></li><li><a href="/terra-amara/terra-amara-come-finisce-davvero-zuleyha-vince-tutto-e-resta-sola/">Terra Amara: come finisce davvero, Züleyha vince tutto e resta sola</a></li><li><a href="/terra-amara/terra-amara-come-muore-demir-yaman-chi-ha-dato-lordine-e-perche-doveva-essere-un-rapimento/">Terra Amara, come muore Demir Yaman: chi ha dato l&#x27;ordine e perché doveva essere un rapimento</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>TERRA AMARA: l&#x27;alibi perfetto di Behice — e l&#x27;unico errore che l&#x27;ha tradita 😱</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su Terra Amara</h3><ul><li><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></li><li><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></li><li><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></li><li><a href="/terra-amara/terra-amara-come-finisce-davvero-zuleyha-vince-tutto-e-resta-sola/">Terra Amara: come finisce davvero, Züleyha vince tutto e resta sola</a></li><li><a href="/terra-amara/terra-amara-come-muore-demir-yaman-chi-ha-dato-lordine-e-perche-doveva-essere-un-rapimento/">Terra Amara, come muore Demir Yaman: chi ha dato l&#x27;ordine e perché doveva essere un rapimento</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

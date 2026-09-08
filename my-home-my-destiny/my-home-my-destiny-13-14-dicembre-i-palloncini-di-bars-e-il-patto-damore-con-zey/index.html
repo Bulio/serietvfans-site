@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/my-home-my-destiny/">My Home My Destiny</a> › My Home My Destiny 13-14 dicembre, i palloncini di Barış e il patto d&#x27;amore con Zeynep — mentre Özlem sentenzia: «Lei non ti ama» e Mehdi nega la figlia a Benal</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/my-home-my-destiny/">My Home My Destiny</a>
   <h1>My Home My Destiny 13-14 dicembre, i palloncini di Barış e il patto d&#x27;amore con Zeynep — mentre Özlem sentenzia: «Lei non ti ama» e Mehdi nega la figlia a Benal</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Il giorno dopo la proposta, Barış si presenta all&#x27;alba con un mucchio di palloncini colorati che nascondono l&#x27;anello — e i due stringono un patto: fedeltà all&#x27;amore, qualunque cosa accada. Ma la famiglia rema contro: Özlem confessa al fratello di aver tentato di comprare Zeynep e sentenzia «lei non ti ama», mentre Mehdi, portato da Cemile sulla tomba della sorella Müjgan, resta sordo a ogni lezione: Benal può andarsene, «ma la bambina resta con me».</p><ol><li><a href="#c1">L&#x27;anello tra i palloncini e il patto dei fidanzati</a></li><li><a href="#c2">Özlem all&#x27;attacco: «Zeynep non ti ama»</a></li><li><a href="#c3">La lezione sulla tomba di Müjgan che Mehdi non impara</a></li><li><a href="#c4">La lettera nel cassetto: il dilemma di Benal</a></li><li><a href="#c5">Come Özlem tenta di fermare le nozze di Barış</a></li><li><a href="#c6">Perché Cemile e Nuh decidono di abbandonare Mehdi</a></li><li><a href="#c7">Cosa spinge Sakine ed Emine a dubitare di Zeynep</a></li><li><a href="#c8">Quale scelta affronta Benal con la piccola Müjgan</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>My Home My Destiny</strong> — Serie conclusa in Italia · le puntate su Mediaset Infinity</span></div>
   
-  <p class="occhiello">Il giorno dopo la proposta, Barış si presenta all&#x27;alba con un mucchio di palloncini colorati che nascondono l&#x27;anello — e i due stringono un patto: fedeltà all&#x27;amore, qualunque cosa accada. Ma la famiglia rema contro: Özlem confessa al fratello di aver tentato di comprare Zeynep e sentenzia «lei non ti ama», mentre Mehdi, portato da Cemile sulla tomba della sorella Müjgan, resta sordo a ogni lezione: Benal può andarsene, «ma la bambina resta con me».</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: My Home My Destiny 13-14 dicembre, i palloncini di Barış e il patto d&#x27;amore con Zeynep — mentre Özlem sentenzia: «Lei non ti ama» e Mehdi nega la figlia a Benal" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/qoMBoz2vS5k/maxresdefault.jpg" alt="My Home My Destiny 13-14 dicembre, i palloncini di Barış e il patto d&#x27;amore con Zeynep — mentre Özlem sentenzia: «Lei non ti ama» e Mehdi nega la figlia a Benal" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/qoMBoz2vS5k/hqdefault.jpg 480w, https://i.ytimg.com/vi/qoMBoz2vS5k/sddefault.jpg 640w, https://i.ytimg.com/vi/qoMBoz2vS5k/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/qoMBoz2vS5k/hqdefault.jpg&quot;, &quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,45 +409,67 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>La scena che spezza: Benal, in lacrime con la piccola Müjgan in braccio, trova nel cassetto una lettera indirizzata a Zeynep — e valuta se partire con la figlia o lasciarla alle cure di chi può proteggerla.</strong></p>
-  <h2>L&#x27;anello tra i palloncini e il patto dei fidanzati</h2>
+  <h2 id="c1">L&#x27;anello tra i palloncini e il patto dei fidanzati</h2>
 <p>La serata della proposta era stata rovinata dal soccorso a Benal, e Barış rimedia con stile: all&#x27;alba, prima della colazione, si presenta da Zeynep con palloncini colorati che nascondono l&#x27;anello di fidanzamento. Il patto che stringono è solenne — lui giura fedeltà all&#x27;amore e agli ideali comuni, lei promette di non farsi distrarre da nulla di esterno. Le reazioni in famiglia però disegnano il campo minato: Nermin e Sultan gioiscono, Sakine teme l&#x27;abbandono, Emine insinua che Zeynep «non sia del tutto sicura» — e la futura sposa zittisce tutte: «Sono certa delle mie decisioni, nessuno giudicherà il mio amore».</p>
-<h2>Özlem all&#x27;attacco: «Zeynep non ti ama»</h2>
+<h2 id="c2">Özlem all&#x27;attacco: «Zeynep non ti ama»</h2>
 <p>Il fronte più duro è in casa Barış: mentre Ali Rıza festeggia, Özlem confessa furiosa di aver cercato di convincere Zeynep a lasciare il fratello — e davanti al suo sconcerto rilancia: quella donna è legata all&#x27;ex marito e alla sua famiglia «numerosa, invadente e pericolosa», e il matrimonio minaccia reputazione e perfino la vita di Barış. La sentenza finale è una lama: «Zeynep non ti ama, e non puoi negare l&#x27;evidenza». Barış la rimprovera duramente davanti a Sultan ed Emine, ma il dubbio seminato resta — anche se la passeggiata serale con Zeynep, più uniti che mai, sembra spazzarlo via.</p>
-<h2>La lezione sulla tomba di Müjgan che Mehdi non impara</h2>
+<h2 id="c3">La lezione sulla tomba di Müjgan che Mehdi non impara</h2>
 <p>Il tentativo più struggente è di Cemile: porta Mehdi al cimitero, davanti alla tomba della sorella Müjgan — uccisa da un uomo possessivo e violento — e lo implora di specchiarsi in quella storia prima di agire. Mehdi recita una preghiera, sembra toccato… e poche ore dopo dimostra di non aver capito nulla: convocata Benal, alla sua decisione di andarsene con la figlia risponde gelido — «vai dove vuoi, ma Müjgan resta con me». Nuh e Cemile, disgustati, fanno le valigie e lasciano la sua casa; Zeynep lo affronta in macchina implorandolo di ascoltare la coscienza, e ne riceve solo un «pensa al tuo matrimonio».</p>
-<h2>La lettera nel cassetto: il dilemma di Benal</h2>
+<h2 id="c4">La lettera nel cassetto: il dilemma di Benal</h2>
 <p>Il finale è tutto negli occhi lucidi di Benal: mentre culla la piccola Müjgan — circondata dalla solidarietà delle donne di casa — trova nel cassetto delle lettere, una indirizzata a Zeynep. Il dilemma che la lacera è da madre: fuggire con la bambina sfidando Mehdi, o partire da sola lasciando la figlia sotto la protezione di Zeynep e della sua famiglia? Una scelta che cambierà il destino di tutti — mentre Mehdi, solo tra i vecchi attrezzi dell&#x27;officina, ripensa ai giorni felici e sembra finalmente accorgersi delle macerie che si è costruito intorno.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Come Özlem tenta di fermare le nozze di Barış</h2>
+<h2 id="c5">Come Özlem tenta di fermare le nozze di Barış</h2>
 <p>Özlem manifesta la sua totale contrarietà verso l&#x27;unione tra Barış e Zeynep guidata dalla convinzione che la donna sia irrimediabilmente legata al passato. Nel tentativo disperato di impedire il fidanzamento, la donna si spinge a offrire del denaro a Zeynep per convincerla ad allontanarsi definitivamente da suo fratello. Quando il suo piano fallisce, Özlem non esita ad affrontare Barış a viso aperto, rivelandogli la verità sulle sue azioni e sostenendo che la futura sposa non provi un sentimento autentico nei suoi confronti. Secondo la sua visione, l&#x27;ombra del precedente matrimonio e la presenza costante di una famiglia ritenuta invadente, numerosa e pericolosa rappresentano una minaccia diretta sia per la reputazione professionale del fratello sia per la sua stessa incolumità personale.</p>
 <p>La reazione di Barış di fronte alle confessioni di Özlem è immediata e severa, trasformando il confronto familiare in uno scontro aperto. Mentre Ali Rıza festeggia apertamente la notizia del fidanzamento e guarda al futuro con entusiasmo, Barış sceglie di difendere la decisione presa rimproverando duramente la sorella davanti a Sultan ed Emine. Nonostante la ferma presa di posizione dell&#x27;uomo e la successiva passeggiata serale che sembra riavvicinare i due fidanzati più felici che mai, le parole piene di odio pronunciate da Özlem lasciano un&#x27;ombra strisciante. Il sospetto insinuato sulla reale natura dei sentimenti di Zeynep rimane ad aleggiare nello sfondo, mettendo alla prova la solidità del patto d&#x27;amore appena stretto tra i due promessi sposi.</p>
-<h2>Perché Cemile e Nuh decidono di abbandonare Mehdi</h2>
+<h2 id="c6">Perché Cemile e Nuh decidono di abbandonare Mehdi</h2>
 <p>Il percorso di rottura all&#x27;interno della famiglia di Mehdi raggiunge il punto di non ritorno a causa del suo atteggiamento sempre più inflessibile e autoritario. Nel disperato tentativo di farlo riflettere sulle sue azioni, Cemile conduce il fratello al cimitero davanti alla tomba della loro amata sorella Müjgan, tragicamente assassinata in passato da un uomo possessivo e violento. Presso quel luogo di dolore, Cemile implora Mehdi di guardarsi dentro e di riconoscere i pericoli dei propri comportamenti ossessivi prima che sia troppo tardi. Nonostante la recita di una preghiera e un apparente momento di commozione sul luogo della sepoltura, l&#x27;uomo dimostra poco dopo di non aver tratto alcun insegnamento morale o umano da quella drammatica lezione del passato.</p>
 <p>Quando Benal esprime la volontà di andarsene lontano per rifarsi una vita, Mehdi reagisce con estrema freddezza ponendo un aut aut insostenibile: concede alla donna la libertà di partire, ma pretende in modo perentorio che la piccola Müjgan rimanga con lui. Di fronte a tanta spietatezza e all&#x27;incapacità dell&#x27;uomo di comprendere i propri errori, la reazione dei suoi cari è immediata e drastica. Profondamente disgustati da questo ennesimo atto di prevaricazione, Nuh e Cemile decidono di fare le valigie e abbandonare la casa di Mehdi, rifiutando di avallare la sua condotta. Questo gesto segna l&#x27;isolamento morale dell&#x27;uomo, lasciandolo solo a fronteggiare le conseguenze del proprio comportamento distruttivo.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Cosa spinge Sakine ed Emine a dubitare di Zeynep</h2>
+<h2 id="c7">Cosa spinge Sakine ed Emine a dubitare di Zeynep</h2>
 <p>L&#x27;annuncio della proposta di matrimonio e il gesto romantico dei palloncini colorati all&#x27;alba portano reazioni contrastanti all&#x27;interno del nucleo familiare di Zeynep. Mentre figure come Nermin e Sultan accolgono la notizia con gioia sincera festeggiando il nuovo capitolo, Sakine ed Emine manifestano perplessità e timori diffusi. Sakine è sopraffatta dalla paura di essere abbandonata e di perdere il legame con la figlia, mentre Emine esprime apertamente il sospetto che Zeynep non sia del tutto convinta della scelta fatta e che stia affrettando i tempi. Queste divergenze creano un clima di forte tensione domestica, in cui le insicurezze delle donne rischiano di incrinare la serenità della futura sposa.</p>
 <p>Determinata a difendere la propria autonomia e la sincerità dei propri sentimenti, Zeynep interviene con fermezza per porre fine alle speculazioni parentali, ribadendo la certezza assoluta delle sue decisioni e rifiutando qualunque giudizio esterno sulla sua storia con Barış. Tuttavia, il peso delle responsabilità si fa sentire quando la donna si trova ad affrontare direttamente Mehdi all&#x27;interno della sua automobile. Zeynep lo implora con forza di ascoltare la propria coscienza riguardo alla sorte della figlia e di Benal, ma riceve dall&#x27;ex marito un rifiuto gelido e l&#x27;invito a pensare solo al suo imminente matrimonio. La determinazione di Zeynep si scontra così con la rigidezza dell&#x27;uomo, confermando la complessità della situazione.</p>
-<h2>Quale scelta affronta Benal con la piccola Müjgan</h2>
+<h2 id="c8">Quale scelta affronta Benal con la piccola Müjgan</h2>
 <p>Circondata dall&#x27;affetto e dalla solidarietà delle donne di casa, Benal si trova a vivere momenti di profonda angoscia mentre culla con le lacrime agli occhi la piccola Müjgan. La scoperta casuale di alcune lettere riposte all&#x27;interno di un cassetto, tra cui una missiva indirizzata direttamente a Zeynep, pone la madre di fronte a un dilemma devastante. La donna deve valutare se scappare sfidando l&#x27;autorità e le minacce di Mehdi per tenere la bambina con sé, oppure se intraprendere la fuga da sola lasciando la neonata sotto la protezione di Zeynep e della sua famiglia, ritenute in grado di garantirle sicurezza e cura.</p>
 <p>Questa drammatica decisione è destinata a modificare irrimediabilmente l&#x27;equilibrio di tutti i protagonisti coinvolti nella vicenda. Nel frattempo, Mehdi si ritrova completamente isolato all&#x27;interno della sua officina, circondato soltanto dai vecchi attrezzi da lavoro. In quel luogo nostalgico, l&#x27;uomo comincia a ripercorrere con la mente i giorni felici ormai trascorsi, prendendo lentamente coscienza delle macerie e del vuoto che il suo comportamento egoista ha generato attorno a sé. Il contrasto tra il dolore di Benal e la tardiva presa di coscienza di Mehdi segna un punto di svolta inevitabile nelle dinamiche familiari, aprendo scenari carichi di incertezza e sofferenza per il futuro.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=vAcEsRyghxc" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/vAcEsRyghxc/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>MY HOME MY DESTINY 4 e 5 Dicembre: Mehdi e Baris a confronto | Chi vuole fare del male a Zeynep</span></a></li><li><a href="https://www.youtube.com/watch?v=H113vpw30Ps" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/H113vpw30Ps/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>MY HOME MY DESTINY Anticipazioni 11 e 12 Dicembre: Baris&amp;Zeynep presto sposi | Mehdi rinchiude </span></a></li><li><a href="https://www.youtube.com/watch?v=Ukc1Roo8dN0" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/Ukc1Roo8dN0/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>MY HOME MY DESTINY Anticipazioni 15 Dicembre: Benal lascia la figlia a Zeynep | Mehdi la porta </span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Benal partirà con la piccola Müjgan o la lascerà a Zeynep? E il dubbio seminato da Özlem — «lei non ti ama» — è veleno o verità?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=qoMBoz2vS5k">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di My Home My Destiny</h2><div class="griglia"><article class="scheda">
+  <a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/"><div class="foto"><img src="/img/my-home-my-destiny-la-trama-completa-e-come-finisce.jpg" alt="My Home My Destiny" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">My Home My Destiny</span>
+    <h3><a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/">My Home My Destiny: la trama completa e come finisce</a></h3>
+    <div class="quando">30 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/"><div class="foto"><img src="https://i.ytimg.com/vi/-djleIeCLQs/hqdefault.jpg" alt="My Home My Destiny" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">My Home My Destiny</span>
+    <h3><a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/">My Home My Destiny, Zeynep ferma l&#x27;aborto di Benal in sala operatoria senza sapere che il padre è Mehdi</a></h3>
+    <div class="quando">17 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/"><div class="foto"><img src="https://i.ytimg.com/vi/gxL0o63Nhqw/hqdefault.jpg" alt="My Home My Destiny" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">My Home My Destiny</span>
+    <h3><a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/">My Home My Destiny, anticipazioni del 17 novembre: Özlem indaga su Zeynep e scopre tutto, Nuh diventa autista di Barış e qualcuno manomette i macchinari di Bekir</a></h3>
+    <div class="quando">16 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=My Home My Destiny 13-14 dicembre, i palloncini di Barış e il patto d&#x27;amore con Zeynep — mentre Özlem sentenzia: «Lei non ti ama» e Mehdi nega la figlia a Benal — https://serietvfans.com/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/&text=My Home My Destiny 13-14 dicembre, i palloncini di Barış e il patto d&#x27;amore con Zeynep — mentre Özlem sentenzia: «Lei non ti ama» e Mehdi nega la figlia a Benal" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">MY HOME MY DESTINY ANTICIPAZIONI 13-14 DICEMBRE: BARIS DURO CONFRONTO CON OSLEM</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=qoMBoz2vS5k">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di My Home My Destiny</h3><ol class="numerata"><li><a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/">My Home My Destiny: la trama completa e come finisce</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/">My Home My Destiny, Zeynep ferma l&#x27;aborto di Benal in sala operatoria senza sapere che il padre è Mehdi</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/">My Home My Destiny, anticipazioni del 17 novembre: Özlem indaga su Zeynep e scopre tutto, Nuh diventa autista di Barış e qualcuno manomette i macchinari di Bekir</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-guida-alla-serie-chi-sono-demet-ozdemir-e-ibrahim-celikkol-qu/">My Home My Destiny: guida alla serie, il cast, i personaggi e quante puntate sono</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-1-dicembre-gli-spari-davanti-alla-vecchia-casa-zeynep-tra-le/">My Home My Destiny 1° dicembre, gli spari davanti alla vecchia casa: Zeynep tra le due madri quando l&#x27;uomo in moto estrae la pistola</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>MY HOME MY DESTINY ANTICIPAZIONI 13-14 DICEMBRE: BARIS DURO CONFRONTO CON OSLEM</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su My Home My Destiny</h3><ul><li><a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/">My Home My Destiny: la trama completa e come finisce</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/">My Home My Destiny, Zeynep ferma l&#x27;aborto di Benal in sala operatoria senza sapere che il padre è Mehdi</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/">My Home My Destiny, anticipazioni del 17 novembre: Özlem indaga su Zeynep e scopre tutto, Nuh diventa autista di Barış e qualcuno manomette i macchinari di Bekir</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-guida-alla-serie-chi-sono-demet-ozdemir-e-ibrahim-celikkol-qu/">My Home My Destiny: guida alla serie, il cast, i personaggi e quante puntate sono</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-1-dicembre-gli-spari-davanti-alla-vecchia-casa-zeynep-tra-le/">My Home My Destiny 1° dicembre, gli spari davanti alla vecchia casa: Zeynep tra le due madri quando l&#x27;uomo in moto estrae la pistola</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

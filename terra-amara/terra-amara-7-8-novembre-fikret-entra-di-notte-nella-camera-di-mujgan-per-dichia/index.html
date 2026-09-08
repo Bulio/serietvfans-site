@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/terra-amara/">Terra Amara</a> › Terra Amara 7-8 novembre, Fikret entra di notte nella camera di Müjgan per dichiararsi — e Lütfiye assiste alla scena senza farsi vedere</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/terra-amara/">Terra Amara</a>
   <h1>Terra Amara 7-8 novembre, Fikret entra di notte nella camera di Müjgan per dichiararsi — e Lütfiye assiste alla scena senza farsi vedere</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Fekeli chiede alla sorella di trasferirsi a Çukurova per aiutarlo con il nipote, convinto che a Fikret manchi una figura materna. Lütfiye accetta — e la prima cosa che scopre è che il ragazzo, nel cuore della notte, bussa alla porta di Müjgan per dirle che è innamorato di lei. Nel frattempo Demir torna a casa con una mano ferita e una versione dei fatti che non convince nessuno.</p><ol><li><a href="#c1">«Ha bisogno di affetto materno»</a></li><li><a href="#c2">La porta bussata nel cuore della notte</a></li><li><a href="#c3">«Ti avevo detto di non innamorarti di lui»</a></li><li><a href="#c4">La rissa al ristorante</a></li><li><a href="#c5">Come Lütfiye scopre i sentimenti segreti di Fikret</a></li><li><a href="#c6">Perché Fikret affronta Ümit dopo il racconto di Şermin</a></li><li><a href="#c7">Cosa nasconde Demir sulla rissa scoppiata al ristorante</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>Terra Amara</strong> — Serie conclusa in Italia · tutte le puntate su Mediaset Infinity</span></div>
   
-  <p class="occhiello">Fekeli chiede alla sorella di trasferirsi a Çukurova per aiutarlo con il nipote, convinto che a Fikret manchi una figura materna. Lütfiye accetta — e la prima cosa che scopre è che il ragazzo, nel cuore della notte, bussa alla porta di Müjgan per dirle che è innamorato di lei. Nel frattempo Demir torna a casa con una mano ferita e una versione dei fatti che non convince nessuno.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: Terra Amara 7-8 novembre, Fikret entra di notte nella camera di Müjgan per dichiararsi — e Lütfiye assiste alla scena senza farsi vedere" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/fmsbAuMK6nE/maxresdefault.jpg" alt="Terra Amara 7-8 novembre, Fikret entra di notte nella camera di Müjgan per dichiararsi — e Lütfiye assiste alla scena senza farsi vedere" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/fmsbAuMK6nE/hqdefault.jpg 480w, https://i.ytimg.com/vi/fmsbAuMK6nE/sddefault.jpg 640w, https://i.ytimg.com/vi/fmsbAuMK6nE/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/fmsbAuMK6nE/hqdefault.jpg&quot;, &quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,42 +409,64 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>Al circolo, Fikret ascolta Şermin raccontare della luna di miele di Demir e Züleyha: e monta la rabbia.</strong></p>
-  <h2>«Ha bisogno di affetto materno»</h2>
+  <h2 id="c1">«Ha bisogno di affetto materno»</h2>
 <p>Fekeli propone a sua sorella Lütfiye di trasferirsi a Çukurova per dargli una mano con Fikret, e lei accetta con entusiasmo. Il motivo lo confessa una sera, rimasto solo con lei: il ragazzo ha bisogno di qualcuno che gli voglia bene come una madre, perché per ora è convinto che l&#x27;unico modo per alleviare il proprio dolore sia far del male a Demir. Lütfiye ci ha già provato a parlargli, senza risultati, ma promette di restare al suo fianco.</p>
-<h2>La porta bussata nel cuore della notte</h2>
+<h2 id="c2">La porta bussata nel cuore della notte</h2>
 <p>A cena la convivenza sembra distesa, finché Fikret non chiede di tenere ancora un po&#x27; in braccio il piccolo Kerem Ali e Müjgan taglia corto: è ora di metterlo a dormire. Nella notte, però, lui va a bussare alla sua porta e insiste per parlarle. Le ammette di essere stato ingiusto e di averla ferita; lei ribatte che quell&#x27;ingiustizia le ha fatto malissimo proprio perché si fidava, e che non ha più intenzione di capirlo. Fikret le dice allora che è innamorato di lei, che è ferito e pieno di rabbia e vorrebbe essere guarito dal suo amore, e le promette che se lo accetterà così com&#x27;è non la tradirà mai. Restano entrambi a piangere da soli, lei in camera e lui sulle scale. La scena non è passata inosservata: Lütfiye ha visto tutto e non riesce a spiegarsi il comportamento del nipote.</p>
-<h2>«Ti avevo detto di non innamorarti di lui»</h2>
+<h2 id="c3">«Ti avevo detto di non innamorarti di lui»</h2>
 <p>Al circolo, mentre accompagna la zia, Fikret sente Şermin raccontare alle amiche che Demir e Züleyha sono tornati insieme, che lui le ha regalato un anello di diamanti e che sono in viaggio di nozze. Torna in ufficio furibondo e convoca Ümit: le rinfaccia di essere lì per tenere d&#x27;occhio Demir e separarlo dalla famiglia, mentre invece quei due sono in luna di miele. Poi le legge la tristezza negli occhi e le chiede se si sia innamorata di lui; lei nega, ma la risposta non lo convince. Le chiede anche se sia stata lei a parlargli delle bombe sotto i camion — accusa che Ümit respinge — e la congeda con un avvertimento: l&#x27;amore rende sciocchi e fa commettere errori gravi. La sera, appostata vicino alla villa, Ümit guarda Demir e Züleyha rientrare e abbracciare i bambini, e giura a se stessa che non si arrenderà.</p>
-<h2>La rissa al ristorante</h2>
+<h2 id="c4">La rissa al ristorante</h2>
 <p>Rientrato dal viaggio, Demir va a cena per chiudere l&#x27;acquisto di un terreno vicino al magazzino — un affare che farebbe risparmiare parecchio sulle spedizioni. La serata degenera quando un uomo da un tavolo vicino comincia a provocarlo con insinuazioni su Sevda: Demir perde il controllo e lo picchia. A casa racconta di aver litigato con un ubriaco, ma Züleyha non ci crede e il giorno dopo pretende la verità. Lui allora confessa: quell&#x27;uomo aveva detto di Sevda cose infamanti, tirando in ballo anche suo padre. E le chiede una cosa sola — che a lei non arrivi mai.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Come Lütfiye scopre i sentimenti segreti di Fikret</h2>
+<h2 id="c5">Come Lütfiye scopre i sentimenti segreti di Fikret</h2>
 <p>Lütfiye accetta la proposta di Fekeli di trasferirsi a Çukurova per aiutare il nipote in un momento delicato. Fekeli è infatti persuaso che al ragazzo serva un affetto materno sincero per superare il dolore profondo che si porta dentro, un dolore che lo spinge continuamente a cercare il modo di fare del male a Demir. Nonostante Lütfiye avesse già provato in passato a parlare con il giovane senza ottenere i risultati sperati, decide comunque di restargli accanto per supportarlo. La situazione appare tranquilla durante la cena in casa, dove la convivenza sembra scorrere in modo disteso tra tutti i familiari, ma sotto la superficie covano ancora molte tensioni e incomprensioni mai risolte del tutto.</p>
 <p>La vera svolta avviene nel cuore della notte, quando Lütfiye assiste di nascosto a una scena inaspettata. Fikret si avvicina alla stanza di Müjgan e bussa con insistenza per chiederle perdono delle ingiustizie commesse, ammettendo di averla ferita pur di far valere le proprie ragioni. Tra i due nasce un confronto doloroso nel quale il giovane le dichiara apertamente il suo amore, confessando che la sua rabbia potrebbe essere guarita solo da lei. Lütfiye osserva il nipote rimanere solo a piangere sulle scale mentre Müjgan si dispera nella sua stanza, e si ritrova incapace di comprendere fino in fondo le vere motivazioni e il comportamento emotivo del ragazzo.</p>
-<h2>Perché Fikret affronta Ümit dopo il racconto di Şermin</h2>
+<h2 id="c6">Perché Fikret affronta Ümit dopo il racconto di Şermin</h2>
 <p>Durante una giornata trascorsa al circolo insieme a sua zia Lütfiye, Fikret ascolta per caso un racconto dettagliato di Şermin che fa esplodere la sua rabbia. La donna sta infatti descrivendo con entusiasmo alle amiche il recente viaggio di nozze tra Demir e Züleyha, rivelando anche il prezioso anello di diamanti regali che l&#x27;uomo ha offerto a sua moglie per suggellare la loro ritrovata intesa familiare. Queste parole scatenano un profondo risentimento in Fikret, il quale vede vanificati tutti i suoi piani e non riesce a tollerare che il suo rivale possa godersi la felicità domestica proprio mentre lui continua a soffrire per le ferite del passato.</p>
 <p>Fuori di sé per la frustrazione, Fikret torna subito nel suo ufficio per convocare d&#x27;urgenza Ümit e chiederle conto del suo operato. L&#x27;accordo prevedeva che la donna tenesse d&#x27;occhio Demir per riuscire a separarlo definitivamente dalla sua famiglia, ma la realtà dei fatti dimostra un fallimento clamoroso. Fikret le rinfaccia la situazione, notando una profonda tristezza nello sguardo della donna e accusandola di essersi innamorata del suo obiettivo. Le chiede persino se sia stata lei a rivelare a Demir il dettaglio delle bombe nascoste sotto i camion, ma di fronte ai suoi dinieghi la congeda mettendola in guardia sulle conseguenze e sui gravi errori che l&#x27;amore può causare.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>La reazione di Ümit non tarda ad arrivare ed evidenzia quanto sia complicata la rete di sentimenti in gioco. La sera stessa la donna si apposta nei pressi della villa per osservare di nascosto il rientro a casa di Demir e Züleyha, mentre si stringono affettuosamente ai loro bambini. La vista di quella scena idilliaca scatena in lei una forte determinazione emotiva, portandola a giurare a se stessa che non farà un passo indietro e che non si arrenderà affatto alla situazione. Fikret, nel frattempo, rimane convinto che i sentimenti finiscano soltanto per accecare le persone, rendendole incapaci di agire con la dovuta freddezza per raggiungere i propri scopi materiali e personali.</p>
-<h2>Cosa nasconde Demir sulla rissa scoppiata al ristorante</h2>
+<h2 id="c7">Cosa nasconde Demir sulla rissa scoppiata al ristorante</h2>
 <p>Il ritorno di Demir dal viaggio di nozze con Züleyha coincide subito con la necessità di concludere importanti questioni d&#x27;affari per la gestione della tenuta. L&#x27;uomo si reca infatti a cena al ristorante con l&#x27;intento di acquistare un terreno situato nelle immediate vicinanze del magazzino, un investimento strategico che permetterebbe alla famiglia di risparmiare cifre considerevoli sulle future spedizioni commerciali. Tuttavia la serata prende una piega del tutto imprevista a causa delle continue provocazioni lanciate da un cliente seduto a un tavolo vicino. L&#x27;individuo comincia infatti a pronunciare frasi pesanti e insinuations infamanti nei confronti di Sevda, arrivando a tirar dentro la discussione anche la figura del padre di Demir.</p>
 <p>L&#x27;incapacità di trattenere il proprio furore spinge Demir ad aggredire fisicamente l&#x27;uomo, scatenando un violento scontro nel locale che gli provoca una ferita evidente alla mano. Tornato a casa nella notte, cerca inizialmente di nascondere la verità alla moglie raccontandole di essere stato coinvolto in una banale lite con un ubriaco. Züleyha però intuisce immediatamente che qualcosa non quadra e il giorno seguente pretende da lui un chiarimento sincero. Messo di fronte alla determinazione della donna, Demir confessa quanto accaduto al ristorante e ammette di aver reagito per difendere l&#x27;onore di Sevda e la memoria paterna, chiedendo disperatamente a Züleyha di non far trapelare mai la notizia.</p>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=3Yh3Rj8zv9I" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/3Yh3Rj8zv9I/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TERRA AMARA Anticipazioni 5 Novembre: Demir lascia Umit! Nuovo arrivo a casa Fekeli!</span></a></li><li><a href="https://www.youtube.com/watch?v=OVckNvFtfwc" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/OVckNvFtfwc/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TERRA AMARA Anticipazioni 15-16 Novembre: Umit e Fikret uniti danno il via alla vendetta!</span></a></li><li><a href="https://www.youtube.com/watch?v=h89zSaILrkg" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/h89zSaILrkg/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TERRA AMARA Anticipazioni: Assalto alla villa, Demir scompare! Hakan entra in scena!</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Fikret riuscirà a farsi perdonare da Müjgan?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=fmsbAuMK6nE">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di Terra Amara</h2><div class="griglia"><article class="scheda">
+  <a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/"><div class="foto"><img src="/img/terra-amara-la-trama-completa-e-come-finisce.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></h3>
+    <div class="quando">30 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/"><div class="foto"><img src="https://i.ytimg.com/vi/_ypSJU-x7LY/hqdefault.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/"><div class="foto"><img src="https://i.ytimg.com/vi/B_MLx-0yh6M/hqdefault.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=Terra Amara 7-8 novembre, Fikret entra di notte nella camera di Müjgan per dichiararsi — e Lütfiye assiste alla scena senza farsi vedere — https://serietvfans.com/terra-amara/terra-amara-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/terra-amara/terra-amara-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/terra-amara/terra-amara-la-trama-completa-e-come-finisce/&text=Terra Amara 7-8 novembre, Fikret entra di notte nella camera di Müjgan per dichiararsi — e Lütfiye assiste alla scena senza farsi vedere" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">TERRA AMARA Anticipazioni 7-8 Novembre: La zia Lütfiye scopre che Fikret e Müjgan sono...</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=fmsbAuMK6nE">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di Terra Amara</h3><ol class="numerata"><li><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></li><li><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></li><li><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></li><li><a href="/terra-amara/terra-amara-come-finisce-davvero-zuleyha-vince-tutto-e-resta-sola/">Terra Amara: come finisce davvero, Züleyha vince tutto e resta sola</a></li><li><a href="/terra-amara/terra-amara-come-muore-demir-yaman-chi-ha-dato-lordine-e-perche-doveva-essere-un-rapimento/">Terra Amara, come muore Demir Yaman: chi ha dato l&#x27;ordine e perché doveva essere un rapimento</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>TERRA AMARA Anticipazioni 7-8 Novembre: La zia Lütfiye scopre che Fikret e Müjgan sono...</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su Terra Amara</h3><ul><li><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></li><li><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></li><li><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></li><li><a href="/terra-amara/terra-amara-come-finisce-davvero-zuleyha-vince-tutto-e-resta-sola/">Terra Amara: come finisce davvero, Züleyha vince tutto e resta sola</a></li><li><a href="/terra-amara/terra-amara-come-muore-demir-yaman-chi-ha-dato-lordine-e-perche-doveva-essere-un-rapimento/">Terra Amara, come muore Demir Yaman: chi ha dato l&#x27;ordine e perché doveva essere un rapimento</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

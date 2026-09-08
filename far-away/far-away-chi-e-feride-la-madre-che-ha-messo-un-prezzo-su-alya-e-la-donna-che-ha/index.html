@@ -12,7 +12,7 @@
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Serie TV Fans">
 <meta property="og:url" content="https://serietvfans.com/far-away/far-away-chi-e-feride-la-madre-che-ha-messo-un-prezzo-su-alya-e-la-donna-che-ha/">
-<meta property="og:image" content="https://i.ytimg.com/vi/TKLhvitUCKA/maxresdefault.jpg">
+<meta property="og:image" content="https://serietvfans.com/img/far-away-chi-e-feride-la-madre-che-ha-messo-un-prezzo-su-alya-e-la-donna-che-ha.jpg">
 <meta property="og:locale" content="it_IT">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#7b1e2b">
@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -318,12 +367,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7778653397776213" crossorigin="anonymous"></script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "96259d7e67ce47fba4573364859712a6"}'></script>
 <script>(function(){var f=0;function go(){if(f)return;f=1;(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","y3rpoig6jk");}["pointerdown","keydown","touchstart","scroll"].forEach(function(v){addEventListener(v,go,{once:1,passive:1})});setTimeout(go,2500)})();</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Far Away, chi è Fikriye: la madre che ha messo un prezzo su Alya, e la donna che ha venduto casa per salvarla", "datePublished": "2026-08-21", "dateModified": "2026-09-04", "description": "Alya trova il coraggio di raccontare a Cihan da dove viene, e la frase che pronuncia è la più dura di tutta la stagione: «mia madre mi ha venduta». Dietro c'è una trattativa a freddo, una casa in Canada venduta per pagarla, e una donna appena ricomparsa nel salone della villa.", "inLanguage": "it-IT", "mainEntityOfPage": "https://serietvfans.com/far-away/far-away-chi-e-feride-la-madre-che-ha-messo-un-prezzo-su-alya-e-la-donna-che-ha/", "image": ["https://i.ytimg.com/vi/TKLhvitUCKA/maxresdefault.jpg"], "author": {"@type": "Organization", "name": "Serie TV Fans", "url": "https://serietvfans.com/chi-siamo/"}, "publisher": {"@type": "Organization", "name": "Serie TV Fans", "logo": {"@type": "ImageObject", "url": "https://serietvfans.com/favicon.svg"}}, "video": {"@type": "VideoObject", "name": "FAR AWAY: «mia madre mi ha venduta» — la verità su FERIDE", "description": "Alya trova il coraggio di raccontare a Cihan da dove viene, e la frase che pronuncia è la più dura di tutta la stagione: «mia madre mi ha venduta». Dietro c'è una trattativa a freddo, una casa in Canada venduta per pagarla, e una donna appena ricomparsa nel salone della villa.", "thumbnailUrl": "https://i.ytimg.com/vi/TKLhvitUCKA/maxresdefault.jpg", "uploadDate": "2026-08-21T12:00:00Z", "embedUrl": "https://www.youtube.com/embed/TKLhvitUCKA"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Far Away, chi è Fikriye: la madre che ha messo un prezzo su Alya, e la donna che ha venduto casa per salvarla", "datePublished": "2026-08-21", "dateModified": "2026-09-08", "description": "Alya trova il coraggio di raccontare a Cihan da dove viene, e la frase che pronuncia è la più dura di tutta la stagione: «mia madre mi ha venduta». Dietro c'è una trattativa a freddo, una casa in Canada venduta per pagarla, e una donna appena ricomparsa nel salone della villa.", "inLanguage": "it-IT", "mainEntityOfPage": "https://serietvfans.com/far-away/far-away-chi-e-feride-la-madre-che-ha-messo-un-prezzo-su-alya-e-la-donna-che-ha/", "image": ["https://serietvfans.com/img/far-away-chi-e-feride-la-madre-che-ha-messo-un-prezzo-su-alya-e-la-donna-che-ha.jpg"], "author": {"@type": "Organization", "name": "Serie TV Fans", "url": "https://serietvfans.com/chi-siamo/"}, "publisher": {"@type": "Organization", "name": "Serie TV Fans", "logo": {"@type": "ImageObject", "url": "https://serietvfans.com/favicon.svg"}}, "video": {"@type": "VideoObject", "name": "FAR AWAY: «mia madre mi ha venduta» — la verità su FERIDE", "description": "Alya trova il coraggio di raccontare a Cihan da dove viene, e la frase che pronuncia è la più dura di tutta la stagione: «mia madre mi ha venduta». Dietro c'è una trattativa a freddo, una casa in Canada venduta per pagarla, e una donna appena ricomparsa nel salone della villa.", "thumbnailUrl": "https://serietvfans.com/img/far-away-chi-e-feride-la-madre-che-ha-messo-un-prezzo-su-alya-e-la-donna-che-ha.jpg", "uploadDate": "2026-08-21T12:00:00Z", "embedUrl": "https://www.youtube.com/embed/TKLhvitUCKA"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://serietvfans.com/"}, {"@type": "ListItem", "position": 2, "name": "Far Away", "item": "https://serietvfans.com/serie/far-away/"}, {"@type": "ListItem", "position": 3, "name": "Far Away, chi è Fikriye: la madre che ha messo un prezzo su Alya, e la donna che ha venduto casa per salvarla"}]}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,19 +385,18 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/far-away/">Far Away</a> › Far Away, chi è Fikriye: la madre che ha messo un prezzo su Alya, e la donna che ha venduto casa per salvarla</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/far-away/">Far Away</a>
   <h1>Far Away, chi è Fikriye: la madre che ha messo un prezzo su Alya, e la donna che ha venduto casa per salvarla</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 21 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-21">venerdì 21 agosto 2026</time></span><span>aggiornato il 8 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Alya trova il coraggio di raccontare a Cihan da dove viene, e la frase che pronuncia è la più dura di tutta la stagione: «mia madre mi ha venduta». Dietro c&#x27;è una trattativa a freddo, una casa in Canada venduta per pagarla, e una donna appena ricomparsa nel salone della villa.</p><ol><li><a href="#c1">La fuga di una bambina</a></li><li><a href="#c2">Trecentomila euro per lasciarla andare</a></li><li><a href="#c3">«Mia madre mi ha venduta»</a></li><li><a href="#c4">La collana, e la fenice</a></li><li><a href="#c5">Perché Fikriye è tornata proprio adesso</a></li><li><a href="#c6">Come Cansu e Caroline hanno salvato Alya</a></li><li><a href="#c7">Perche&#x27; Cihan accoglie il passato di Alya</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>Far Away</strong> — Canale 5 · in streaming su Mediaset Infinity</span></div>
-  
-  <p class="occhiello">Alya trova il coraggio di raccontare a Cihan da dove viene, e la frase che pronuncia è la più dura di tutta la stagione: «mia madre mi ha venduta». Dietro c&#x27;è una trattativa a freddo, una casa in Canada venduta per pagarla, e una donna appena ricomparsa nel salone della villa.</p>
+  <figure class="copertina"><img src="/img/far-away-chi-e-feride-la-madre-che-ha-messo-un-prezzo-su-alya-e-la-donna-che-ha.jpg" alt="Far Away"><figcaption>Immagine d&#x27;ambiente — Far Away</figcaption></figure>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
     <button type="button" class="avvia" data-yt="TKLhvitUCKA"
       aria-label="Riproduci il video: Far Away, chi è Fikriye: la madre che ha messo un prezzo su Alya, e la donna che ha venduto casa per salvarla" onclick="ytGo(this)">
-      <img src="https://i.ytimg.com/vi/TKLhvitUCKA/maxresdefault.jpg" alt="Far Away, chi è Fikriye: la madre che ha messo un prezzo su Alya, e la donna che ha venduto casa per salvarla" width="1280" height="720"
-        srcset="https://i.ytimg.com/vi/TKLhvitUCKA/hqdefault.jpg 480w, https://i.ytimg.com/vi/TKLhvitUCKA/sddefault.jpg 640w, https://i.ytimg.com/vi/TKLhvitUCKA/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+      <img src="/img/far-away-chi-e-feride-la-madre-che-ha-messo-un-prezzo-su-alya-e-la-donna-che-ha.jpg" alt="Far Away, chi è Fikriye: la madre che ha messo un prezzo su Alya, e la donna che ha venduto casa per salvarla" width="1280" height="720"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/TKLhvitUCKA/hqdefault.jpg&quot;, &quot;/fallback/far-away.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -360,50 +408,72 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
   <div class="corpo">
   <p><strong>Trecentomila euro per firmare l&#x27;adozione. È questa la cifra che spiega perché il ritorno di Fikriye abbia il potere di far crollare tutto.</strong></p>
   <p>Per capire perché il volto comparso all&#x27;improvviso nel salone degli Albora abbia lasciato Alya senza fiato, bisogna tornare molto indietro: a un&#x27;infanzia che alla villa nessuno conosceva fino a questo momento. Le prossime puntate sono costruite proprio su quel racconto, e su ciò che succede a chi lo ascolta.</p>
-<h2>La fuga di una bambina</h2>
+<h2 id="c1">La fuga di una bambina</h2>
 <p>Dopo anni passati in una casa in cui viveva nella paura, Alya, ancora bambina, decise di scappare senza avere idea di dove andare. L&#x27;unico rifugio glielo offrì la famiglia della sua amica Cansu, che la protesse in un momento disperato.</p>
 <p>La svolta però arriva con Caroline: una donna disposta a darle finalmente quell&#x27;affetto che non aveva mai conosciuto. Caroline le fece la proposta che poteva cambiarle la vita — adottarla, darle una casa vera, una famiglia che la scegliesse davvero. Sembrava il primo raggio di luce dopo anni di paura.</p>
-<h2>Trecentomila euro per lasciarla andare</h2>
+<h2 id="c2">Trecentomila euro per lasciarla andare</h2>
 <p>È a quel punto che Fikriye, la madre biologica di Alya, avanza la richiesta che ancora oggi lascia senza parole: per concedere l&#x27;adozione pretese trecentomila euro.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>Non fu un gesto disperato per proteggere la figlia. Non fu un ultimo tentativo di restarle vicina in qualche modo. Non fu nemmeno una richiesta nata dal bisogno. Fu un prezzo, fissato a freddo, per lasciarla andare via per sempre — come si tratta la vendita di un oggetto qualsiasi. Nessuna lacrima, nessun tentativo di trattenerla: soltanto una cifra da negoziare.</p>
 <p>Caroline non esitò un istante. Vendette la propria casa in Canada, il posto che chiamava casa da una vita intera, pur di mettere insieme quella somma. Un gesto che da solo ridefinisce il significato della parola madre, e che permise alle due di cominciare una vita nuova, lontano da quel dolore e da chi avrebbe dovuto amarla senza condizioni e invece aveva scelto di metterle un prezzo addosso.</p>
-<h2>«Mia madre mi ha venduta»</h2>
+<h2 id="c3">«Mia madre mi ha venduta»</h2>
 <p>Quella ferita, per Alya, non si è mai davvero chiusa. È rimasta lì, sepolta per tutti questi anni, pronta a riaprirsi nel momento peggiore. Ed è davanti a Cihan che trova finalmente il coraggio di dire ad alta voce le parole che si porta dentro da sempre: mia madre mi ha venduta.</p>
 <p>Subito dopo averlo detto, Alya ha paura. Paura di essere giudicata, paura che quel passato cambi per sempre il modo in cui lui la guarda. Ma la reazione di Cihan sarà l&#x27;opposto esatto di quella che teme.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>La collana, e la fenice</h2>
+<h2 id="c4">La collana, e la fenice</h2>
 <p>Cihan non la giudica nemmeno per un istante. Le fa capire, con la delicatezza che ormai ha soltanto con lei, che il suo passato non cambia di una virgola quello che prova. E le ricorda il significato della collana che le aveva regalato tempo prima: un simbolo scelto apposta per lei, perché come una fenice Alya è sempre riuscita a rinascere dalle proprie ceneri ogni volta che la vita ha provato a spezzarla.</p>
 <p>È un gesto piccolo che in quel momento vale più di qualunque discorso: la conferma che, qualsiasi cosa il passato le abbia fatto, ai suoi occhi lei resta esattamente la donna di cui si è innamorato.</p>
 <p>Ed è anche il segnale più chiaro di quanto Cihan sia cambiato. Chi lo conosce sa che in un altro momento della sua vita avrebbe reagito diversamente: con distacco, con la freddezza di chi preferisce non aprire porte scomode, di chi ha imparato da bambino a proteggersi tenendo tutti a distanza. Stavolta sceglie l&#x27;altra strada. Invece di allontanarsi si avvicina; invece di giudicare ascolta.</p>
-<h2>Perché Fikriye è tornata proprio adesso</h2>
+<h2 id="c5">Perché Fikriye è tornata proprio adesso</h2>
 <p>La confessione arriva nel momento più delicato possibile, perché il passato che Alya credeva di essersi lasciata alle spalle ha appena smesso di restare lontano. La Fikriye di cui sta parlando a Cihan è la stessa donna che, secondo le ultime anticipazioni, si è presentata alla porta della villa degli Albora senza preavviso, con la calma inquietante di chi non ha mai pagato per quello che ha fatto.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>Adesso si capisce perché quel volto nel salone l&#x27;abbia pietrificata. Non è un fantasma tornato per caso: è la donna che l&#x27;ha venduta, ricomparsa proprio quando Alya aveva finalmente trovato, accanto a Cihan e a Deniz, la stabilità e l&#x27;affetto che da bambina le erano stati negati.</p>
 <p>Vale la pena fermarsi un attimo sul contrasto. Da una parte una madre che vende la propria figlia per denaro; dall&#x27;altra una donna, all&#x27;altro capo del mondo, che vende la propria casa pur di salvarla. Due scelte opposte, nate entrambe dal rapporto con la stessa bambina. E in mezzo Alya, cresciuta con la certezza che l&#x27;amore vero non si riconosce da chi ti mette al mondo, ma da chi sceglie di restare e di proteggerti anche quando nessun legame di sangue lo impone. È la lezione che si porta scolpita addosso da sempre e che oggi, da adulta, sta provando a trasmettere a Deniz, decisa a non fargli mai provare quello che ha provato lei.</p>
 <p>Resta la domanda che pesa su tutto il resto: Fikriye non ha attraversato mezzo mondo dopo anni di silenzio soltanto per bussare a una porta e andarsene. Se è tornata proprio adesso, con la stessa freddezza calcolatrice che l&#x27;aveva spinta a mettere un prezzo su sua figlia, è perché qualcosa — o qualcuno — le ha reso di nuovo conveniente farlo.</p>
-<h2>Come Cansu e Caroline hanno salvato Alya</h2>
+<h2 id="c6">Come Cansu e Caroline hanno salvato Alya</h2>
 <p>Prima che la verità venisse alla luce davanti a Cihan, l&#x27;infanzia di Alya era rimasta un territorio oscuro e del tutto sconosciuto tra le mura della villa degli Albora. La ragazza aveva trascorso anni difficili segnati da una costante sensazione di paura, finché da bambina non aveva trovato la forza di scappare via di casa senza sapere quale destinazione la attendesse. In quel momento di profonda disperazione l&#x27;unico riparo sicuro le venne offerto dalla famiglia della sua amica Cansu, pronta ad accoglierla e proteggerla. Poco dopo fu l&#x27;incontro con Caroline a cambiare ogni prospettiva, grazie a una donna finalmente disposta a regalarle l&#x27;affetto sincero che le era sempre mancato, proponendole un&#x27;adozione formale per integrarla in una vera famiglia.</p>
 <p>Di fronte alla richiesta di adozione avanzata da Caroline, la reazione della madre biologica Fikriye non fu guidata dall&#x27;amore materno o dal desiderio di riavvicinarsi alla figlia, bensì da un puro calcolo economico. Senza versare alcuna lacrima e senza tentare di trattenerla, la donna fissò la fredda cifra di trecentomila euro come condizione vincolante per concedere la propria firma e rinunciare a lei per sempre. Per raccogliere quella somma spaventosa, Caroline decise di compiere un sacrificio enorme vendendo la propria casa in Canada, dimostrando come l&#x27;amore vero possa nascere anche senza un legame di sangue. Quel gesto permise ad Alya di ricominciare lontano, costruendosi quella stabilità che oggi cerca di proteggere a ogni costo insieme al piccolo Deniz.</p>
-<h2>Perche&#x27; Cihan accoglie il passato di Alya</h2>
+<h2 id="c7">Perche&#x27; Cihan accoglie il passato di Alya</h2>
 <p>Quando Alya trova finalmente il coraggio di confessare il proprio segreto a Cihan, rivelandogli con dolore che la madre l&#x27;aveva venduta, teme fortemente di essere giudicata e che la considerazione nei suoi confronti possa cambiare negativamente. La risposta dell&#x27;uomo si rivela tuttavia del tutto opposta alle sue ansie, accogliendo quel racconto con estrema delicatezza. Cihan le assicura infatti che le ombre del passato non modificano affatto i suoi sentimenti, cogliendo l&#x27;occasione per richiamare alla memoria il valore simbolico della collana regalatale in precedenza. Quel ciondolo raffigurante una fenice rappresenta la capacità della donna di rinascere sempre dalle proprie ceneri, dimostrando che per lui lei resta la persona speciale di cui si è innamorato.</p>
 <p>Questo atteggiamento comprensivo evidenzia quanto Cihan sia cambiato nel tempo, superando la solitudine e la freddezza apprese durante un&#x27;infanzia trascorsa a proteggersi tenendo le persone a distanza. Invece di allontanarsi di fronte a una verità sgradevole, l&#x27;uomo sceglie di ascoltare senza riserve, diventando un punto di riferimento per Alya proprio mentre l&#x27;incubo della sua infanzia torna a palesarsi. La presenza improvvisa di Fikriye nel salone della villa degli Albora spezza l&#x27;equilibrio appena raggiunto, riproponendo la figura calcolatrice di una madre che in passato aveva barattato la propria figlia per denaro e che ora si ripresenta con inquietante serenità dopo anni passati a viaggiare lontano.</p>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=SYr_sUICFk0" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/SYr_sUICFk0/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>FAR AWAY: Alya confessa di essere stata VENDUTA per 300mila euro, Cihan dichiara guerra 💔</span></a></li><li><a href="https://www.youtube.com/watch?v=s3WyLXM5iRs" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/s3WyLXM5iRs/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>FAR AWAY: ALYA non crede a FERIDE — poi scopre la verità sulla sua malattia 😢</span></a></li><li><a href="https://www.youtube.com/watch?v=LgtMj_mgCy8" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/LgtMj_mgCy8/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>FAR AWAY: Cihan rifiuta il divorzio, la dichiarazione che sconvolge Alya 😍</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Fikriye merita ancora una possibilità di essere perdonata, o ha perso per sempre il diritto di essere chiamata madre? Vi ha colpito di più il coraggio di Alya nel raccontare il proprio passato, o la reazione di Cihan?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=TKLhvitUCKA">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di Far Away</h2><div class="griglia"><article class="scheda">
+  <a href="/far-away/far-away-anticipazioni-dal-31-agosto-al-4-settembre-chi-ha-donato-il-fegato-a-nare/"><div class="foto"><img src="/img/far-away-anticipazioni-dal-31-agosto-al-4-settembre-chi-ha-donato-il-fegato-a-nare.jpg" alt="Far Away" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/far-away.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Far Away</span>
+    <h3><a href="/far-away/far-away-anticipazioni-dal-31-agosto-al-4-settembre-chi-ha-donato-il-fegato-a-nare/">Far Away, anticipazioni dal 31 agosto al 4 settembre: chi ha donato il fegato a Nare, e perché adesso sta male lui</a></h3>
+    <div class="quando">3 settembre 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/far-away/far-away-dal-31-agosto-la-madre-di-alya-sapeva-tutto-non-ricordo/"><div class="foto"><img src="/img/far-away-dal-31-agosto-la-madre-di-alya-sapeva-tutto-non-ricordo.jpg" alt="Far Away" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/far-away.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Far Away</span>
+    <h3><a href="/far-away/far-away-dal-31-agosto-la-madre-di-alya-sapeva-tutto-non-ricordo/">Far Away Dal 31 Agosto: la madre di Alya sapeva tutto — «non ricordo»</a></h3>
+    <div class="quando">31 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/far-away/far-away-chi-e-fikriye-la-madre-di-alya-cosa-ha-fatto-e-perche-conta/"><div class="foto"><img src="/img/far-away-chi-e-fikriye-la-madre-di-alya-cosa-ha-fatto-e-perche-conta.jpg" alt="Far Away" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/far-away.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Far Away</span>
+    <h3><a href="/far-away/far-away-chi-e-fikriye-la-madre-di-alya-cosa-ha-fatto-e-perche-conta/">Far Away, chi è Fikriye: la madre di Alya, cosa ha fatto e perché conta per gli Albora</a></h3>
+    <div class="quando">29 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=Far Away, chi è Fikriye: la madre che ha messo un prezzo su Alya, e la donna che ha venduto casa per salvarla — https://serietvfans.com/far-away/far-away-chi-e-feride-la-madre-che-ha-messo-un-prezzo-su-alya-e-la-donna-che-ha/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/far-away/far-away-chi-e-feride-la-madre-che-ha-messo-un-prezzo-su-alya-e-la-donna-che-ha/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/far-away/far-away-chi-e-feride-la-madre-che-ha-messo-un-prezzo-su-alya-e-la-donna-che-ha/&text=Far Away, chi è Fikriye: la madre che ha messo un prezzo su Alya, e la donna che ha venduto casa per salvarla" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">FAR AWAY: «mia madre mi ha venduta» — la verità su FERIDE</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=TKLhvitUCKA">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di Far Away</h3><ol class="numerata"><li><a href="/far-away/far-away-anticipazioni-dal-31-agosto-al-4-settembre-chi-ha-donato-il-fegato-a-nare/">Far Away, anticipazioni dal 31 agosto al 4 settembre: chi ha donato il fegato a Nare, e perché adesso sta male lui</a></li><li><a href="/far-away/far-away-dal-31-agosto-la-madre-di-alya-sapeva-tutto-non-ricordo/">Far Away Dal 31 Agosto: la madre di Alya sapeva tutto — «non ricordo»</a></li><li><a href="/far-away/far-away-chi-e-fikriye-la-madre-di-alya-cosa-ha-fatto-e-perche-conta/">Far Away, chi è Fikriye: la madre di Alya, cosa ha fatto e perché conta per gli Albora</a></li><li><a href="/far-away/far-away-chi-e-nadim-il-capo-dei-baybars-cosa-vuole-e-perche-gli-albora-lo-accusano/">Far Away, chi è Nadim: il capo dei Baybars, cosa vuole e perché gli Albora lo accusano</a></li><li><a href="/far-away/far-away-sadakat-muore-cosa-sappiamo-e-chi-ha-motivo-di-volerla-morta/">Sadakat muore in Far Away? Cosa sappiamo: chi ha motivo di volerla morta e perché la serie non ha ancora risposto</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>FAR AWAY: «mia madre mi ha venduta» — la verità su FERIDE</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su Far Away</h3><ul><li><a href="/far-away/far-away-anticipazioni-dal-31-agosto-al-4-settembre-chi-ha-donato-il-fegato-a-nare/">Far Away, anticipazioni dal 31 agosto al 4 settembre: chi ha donato il fegato a Nare, e perché adesso sta male lui</a></li><li><a href="/far-away/far-away-dal-31-agosto-la-madre-di-alya-sapeva-tutto-non-ricordo/">Far Away Dal 31 Agosto: la madre di Alya sapeva tutto — «non ricordo»</a></li><li><a href="/far-away/far-away-chi-e-fikriye-la-madre-di-alya-cosa-ha-fatto-e-perche-conta/">Far Away, chi è Fikriye: la madre di Alya, cosa ha fatto e perché conta per gli Albora</a></li><li><a href="/far-away/far-away-chi-e-nadim-il-capo-dei-baybars-cosa-vuole-e-perche-gli-albora-lo-accusano/">Far Away, chi è Nadim: il capo dei Baybars, cosa vuole e perché gli Albora lo accusano</a></li><li><a href="/far-away/far-away-sadakat-muore-cosa-sappiamo-e-chi-ha-motivo-di-volerla-morta/">Sadakat muore in Far Away? Cosa sappiamo: chi ha motivo di volerla morta e perché la serie non ha ancora risposto</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

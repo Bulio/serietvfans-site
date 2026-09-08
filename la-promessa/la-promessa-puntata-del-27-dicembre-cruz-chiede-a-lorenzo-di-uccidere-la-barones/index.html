@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/la-promessa/">La Promessa</a> › La Promessa, puntata del 27 dicembre: Cruz chiede a Lorenzo di uccidere la Baronessa, Jimena ringrazia la madre per gli abusi e Candela svela l&#x27;omicidio</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/la-promessa/">La Promessa</a>
   <h1>La Promessa, puntata del 27 dicembre: Cruz chiede a Lorenzo di uccidere la Baronessa, Jimena ringrazia la madre per gli abusi e Candela svela l&#x27;omicidio</h1>
-  <div class="firma">Redazione Serie TV Fans · domenica 16 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-16">domenica 16 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Nella lunga puntata del 27 dicembre Cruz propone a Lorenzo di eliminare Elisa de Grazalema e di corrompere il notaio per far sparire il secondo testamento; Jana, malata, viene minacciata di licenziamento; Manuel scopre gli abusi subiti a casa dei duchi e Jimena finge di non saperne nulla. In cucina, Candela rivela davanti a tutti che il marito di Simona ha ucciso un uomo.</p><ol><li><a href="#c1">Chi sono Cruz, Elisa e Lorenzo, per chi arriva adesso</a></li><li><a href="#c2">L&#x27;ultimatum a Jana e la malattia che nessuno vuole vedere</a></li><li><a href="#c3">Cruz a Lorenzo: «Risolvi il problema della Baronessa»</a></li><li><a href="#c4">Manuel scopre gli abusi, Jimena finge di cadere dalle nuvole</a></li><li><a href="#c5">La telefonata alla duchessa: il ringraziamento che smaschera tutto</a></li><li><a href="#c6">Pía e Gregorio: un orologio svizzero e un pupazzo di pezza</a></li><li><a href="#c7">La rivelazione di Candela: «Il marito di Simona ha ucciso un uomo»</a></li><li><a href="#c8">Perché conta: la puntata in cui i sospetti diventano piani</a></li><li><a href="#c9">Dove vedere La Promessa</a></li><li><a href="#c10">Come Cruz manipola Lorenzo per eliminare la Baronessa</a></li><li><a href="#c11">Perche&#x27; Jimena nasconde la sua crudelta&#x27; a Manuel</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>La Promessa</strong> — Rete 4 · in streaming su Mediaset Infinity</span></div>
   
-  <p class="occhiello">Nella lunga puntata del 27 dicembre Cruz propone a Lorenzo di eliminare Elisa de Grazalema e di corrompere il notaio per far sparire il secondo testamento; Jana, malata, viene minacciata di licenziamento; Manuel scopre gli abusi subiti a casa dei duchi e Jimena finge di non saperne nulla. In cucina, Candela rivela davanti a tutti che il marito di Simona ha ucciso un uomo.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: La Promessa, puntata del 27 dicembre: Cruz chiede a Lorenzo di uccidere la Baronessa, Jimena ringrazia la madre per gli abusi e Candela svela l&#x27;omicidio" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/JhXaXTlSiTM/maxresdefault.jpg" alt="La Promessa, puntata del 27 dicembre: Cruz chiede a Lorenzo di uccidere la Baronessa, Jimena ringrazia la madre per gli abusi e Candela svela l&#x27;omicidio" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/JhXaXTlSiTM/hqdefault.jpg 480w, https://i.ytimg.com/vi/JhXaXTlSiTM/sddefault.jpg 640w, https://i.ytimg.com/vi/JhXaXTlSiTM/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/JhXaXTlSiTM/hqdefault.jpg&quot;, &quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,49 +409,71 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>Due ore di puntata in cui la Marchesa passa dal sospetto alla commissione di un omicidio, e in cui la rivelazione più grossa non arriva dalla biblioteca ma dalle cucine, urlata da chi non ce la fa più a tacere.</strong></p>
-  <h2>Chi sono Cruz, Elisa e Lorenzo, per chi arriva adesso</h2>
+  <h2 id="c1">Chi sono Cruz, Elisa e Lorenzo, per chi arriva adesso</h2>
 <p>Cruz è la Marchesa della Promessa, la donna che regge la tenuta con un misto di eleganza e ferocia e che considera il denaro di famiglia una questione di sopravvivenza personale. Elisa de Grazalema è la Baronessa, ospite ingombrante che sembra accaparrarsi tutta l&#x27;eredità e che flirta apertamente con Alonso. Lorenzo è il cognato: militare, ambizioso, indebitato, disposto a molto ma non necessariamente a tutto. È il triangolo su cui si regge l&#x27;intera puntata.</p>
-<h2>L&#x27;ultimatum a Jana e la malattia che nessuno vuole vedere</h2>
+<h2 id="c2">L&#x27;ultimatum a Jana e la malattia che nessuno vuole vedere</h2>
 <p>Jana sta male: ha tremori e difficoltà respiratorie che non le permettono di dormire, e María Fernández se ne accorge portandole la colazione. Petra corre a riferire a Cruz che la domestica è a letto, e la Marchesa reagisce accusandola di parassitismo: se non torna al lavoro il mattino seguente, sarà licenziata immediatamente. Pía prova a guadagnare tempo organizzando con la servitù un piano per coprire l&#x27;assenza, mentre María Fernández e Teresa ingannano Petra facendole credere che Jana stia lavorando in lavanderia.</p>
-<h2>Cruz a Lorenzo: «Risolvi il problema della Baronessa»</h2>
+<h2 id="c3">Cruz a Lorenzo: «Risolvi il problema della Baronessa»</h2>
 <p>In biblioteca la Marchesa arriva al punto: chiede al cognato di assassinare Elisa de Grazalema. Lorenzo è dubbioso e prova a ragionare, spiegandole che se la Baronessa morisse gli eredi otterrebbero la parte maggiore dell&#x27;eredità, il che non conviene affatto a Cruz. La Marchesa dimostra allora la sua astuzia proponendo un&#x27;alternativa: corrompere il notaio per eliminare il secondo testamento e lasciare in piedi soltanto quello che la favorisce. La conversazione arriva dopo giorni di indagini sui segreti di Elisa che non hanno portato nulla.</p>
-<h2>Manuel scopre gli abusi, Jimena finge di cadere dalle nuvole</h2>
+<h2 id="c4">Manuel scopre gli abusi, Jimena finge di cadere dalle nuvole</h2>
 <p>Manuel, insospettito dal malessere di Jana, chiede spiegazioni alla moglie su cosa sia successo a casa dei suoi genitori, i duchi de los Infantes. Jimena finge sorpresa e ignoranza con una disinvoltura che dice tutto del personaggio, poi chiama Jana per interrogarla direttamente davanti al marito e le regala una medaglia della Vergine per una pronta guarigione, mantenendo la facciata della moglie premurosa. Catalina, però, aveva già messo in guardia Jana definendo Jimena un lupo travestito da agnello.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>La telefonata alla duchessa: il ringraziamento che smaschera tutto</h2>
+<h2 id="c5">La telefonata alla duchessa: il ringraziamento che smaschera tutto</h2>
 <p>La scena che chiude il cerchio è breve e agghiacciante. Jimena telefona a sua madre, la duchessa, e la ringrazia per gli abusi inflitti a Jana e per il ruolo avuto nel tenerla sottomessa. Non è un sospetto dello spettatore né un&#x27;accusa di un altro personaggio: è una confessione volontaria detta al telefono, e trasforma Jimena da moglie insicura a regista consapevole della persecuzione. Manuel, intanto, si scusa personalmente con Jana e si offre di pulire l&#x27;hangar al posto suo perché possa riposare.</p>
-<h2>Pía e Gregorio: un orologio svizzero e un pupazzo di pezza</h2>
+<h2 id="c6">Pía e Gregorio: un orologio svizzero e un pupazzo di pezza</h2>
 <p>Il matrimonio tra Pía e Gregorio resta il capitolo più ambiguo della puntata. Lui propone di affittare una casa vicino a Luján per cominciare una vita insieme; lei vuole restare alla Promessa, ma in stanze separate. Pía gli regala un orologio svizzero per riconoscenza, poi litigano perché Gregorio non ha difeso Jana davanti a Cruz, e lui prova a riappacificarsi portandole un pupazzo di pezza per il bambino che aspetta. Pía si commuove ma è chiarissima: il loro è un accordo, e tra loro non c&#x27;è amore.</p>
-<h2>La rivelazione di Candela: «Il marito di Simona ha ucciso un uomo»</h2>
+<h2 id="c7">La rivelazione di Candela: «Il marito di Simona ha ucciso un uomo»</h2>
 <p>In cucina la tensione tra Candela e Simona cova per tutta la puntata, alimentata da una gara silenziosa a chi cucina meglio per Jana. Martina prova perfino a chiuderle nell&#x27;ufficio di Pía finché non avranno risolto i loro problemi. Poi, durante l&#x27;ennesimo litigio, Candela cede alle emozioni e confessa ad alta voce davanti a tutti che il marito di Simona ha ucciso un uomo. È la rivelazione più pesante dell&#x27;episodio e arriva dal luogo della tenuta che nessuno sorveglia.</p>
-<h2>Perché conta: la puntata in cui i sospetti diventano piani</h2>
+<h2 id="c8">Perché conta: la puntata in cui i sospetti diventano piani</h2>
 <p>Il 27 dicembre segna il passaggio da un registro all&#x27;altro. Fino a questo momento la guerra per l&#x27;eredità della Baronessa si era combattuta con pedinamenti e chiacchiere; qui Cruz mette sul tavolo un omicidio e, quando le viene spiegato che non conviene, ripiega su una frode notarile senza battere ciglio. Allo stesso modo, il malessere di Jana smette di essere una malattia e diventa la prova di un disegno. Sono le due linee che alimenteranno tutte le puntate successive — e anche il piano di Petra, che pochi giorni dopo si offrirà a Cruz per lo stesso lavoro.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Dove vedere La Promessa</h2>
+<h2 id="c9">Dove vedere La Promessa</h2>
 <p>La Promessa va in onda su Rete 4 e le puntate sono disponibili in streaming su Mediaset Infinity.</p>
-<h2>Come Cruz manipola Lorenzo per eliminare la Baronessa</h2>
+<h2 id="c10">Come Cruz manipola Lorenzo per eliminare la Baronessa</h2>
 <p>Cruz dimostra una spietatezza calcolata quando comprende che le indagini sui segreti della Baronessa Elisa de Grazalema non hanno portato ad alcun risultato utile. La Marchesa, ossessionata dalla sopravvivenza economica della famiglia e infastidita dal flirt tra Elisa e Alonso, coinvolge il cognato Lorenzo per risolvere definitivamente la questione. Lorenzo, un ufficiale militare oppresso dai debiti e spinto da grandi ambizioni, appare inizialmente perplesso di fronte alla proposta di commettere un omicidio in biblioteca. Quando il cognato le fa notare che la morte di Elisa favorirebbe altri eredi, Cruz non si scompone affatto e ridefinisce subito la sua strategia proponendo la corruzione del notaio per distruggere il secondo testamento e salvare l&#x27;eredita.</p>
 <p>La decisione di ricorrere alla frode notarile e alla violenza rivela fino a che punto Cruz sia disposta a spingersi per mantenere il controllo sulla Promessa. Questa totale assenza di scrupoli si riflette anche nel modo in cui la Marchesa gestisce la servitu durante l&#x27;emergenza di Jana. Mentre la giovane domestica lotta contro tremori e problemi respiratori che le impediscono di dormire, Cruz accoglie la segnalazione di Petra definendo la ragazza una parassita da licenziare in tronco. La biblioteca diventa cosi il luogo in cui si intrecciano l&#x27;avidita nobiliare e l&#x27;oppressione verso chi lavora nella tenuta, mostrando Lorenzo di fronte a una donna capace di pianificare crimini finanziari senza mostrare alcun cedimento.</p>
-<h2>Perche&#x27; Jimena nasconde la sua crudelta&#x27; a Manuel</h2>
+<h2 id="c11">Perche&#x27; Jimena nasconde la sua crudelta&#x27; a Manuel</h2>
 <p>Jimena incarna con estrema freddezza il ritratto tracciato da Catalina, che aveva predetto a Jana quanto la ragazza fosse un pericoloso lupo travestito da agnello. Di fronte ai dubbi e alle domande di Manuel sul malessere della domestica, la giovane donna finge una totale ignoranza riguardo a quanto accaduto nella residenza dei duchi de los Infantes. Con disinvoltura e calcolo, Jimena organizza un interrogatorio formale in presenza del marito, regalando a Jana una medaglia della Vergine per augurarle una pronta guarigione. Questa facciata di sposa devota serve a rassicurare Manuel, occultando del tutto la vera natura oppressiva della nobile e le sue reali intenzioni verso la serva.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>La maschera cade definitivamente durante la telefonata segreta alla duchessa sua madre, durante la quale Jimena la ringrazia apertamente per le punizioni e gli abusi inflitti alla ragazza per mantenerla sottomessa. Questa rivelazione diretta mostra che la persecuzione di Jana non e frutto del caso, ma un disegno condiviso tra la giovane e la sua famiglia. Nel frattempo Manuel, del tutto ignaro del doppio gioco della moglie, manifesta un profondo rimorso verso la serva e sceglie di aiutarla concretamente. Il giovane si scusa di persona con Jana e si offre di sostituirla nella pulizia dell&#x27;hangar, mentre le colleghe Maria Fernandez e Teresa cercano di proteggerla con piccoli inganni in lavanderia.</p>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=3qam7VZZ_2Q" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/3qam7VZZ_2Q/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni: 2-6 Ottobre: Jimena tenta di uccidere Jana! Manuel in aereo con il p</span></a></li><li><a href="https://www.youtube.com/watch?v=L5mm8zEozlY" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/L5mm8zEozlY/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni 18-22 Dicembre Spagnole: Cruz prova ad uccidere Catalina! Jimena va v</span></a></li><li><a href="https://www.youtube.com/watch?v=VKPGG-_SNmY" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/VKPGG-_SNmY/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni: INCREDIBILE! Cruz chiede aiuto a Lorenzo per uccidere lui....ma perc</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Vi aspettavate che Jimena arrivasse a ringraziare sua madre per gli abusi su Jana? E Lorenzo accetterà davvero la proposta di Cruz o la userà contro di lei?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=JhXaXTlSiTM">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di La Promessa</h2><div class="griglia"><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/"><div class="foto"><img src="https://i.ytimg.com/vi/Rp8VhxDiDSk/hqdefault.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></h3>
+    <div class="quando">7 settembre 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/"><div class="foto"><img src="https://i.ytimg.com/vi/8JHt6ogwxQw/hqdefault.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Ángela beve tutto, Curro sfonda la porta</a></h3>
+    <div class="quando">6 settembre 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/"><div class="foto"><img src="/img/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Curro nasconde Ángela, Lorenzo furioso</a></h3>
+    <div class="quando">6 settembre 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=La Promessa, puntata del 27 dicembre: Cruz chiede a Lorenzo di uccidere la Baronessa, Jimena ringrazia la madre per gli abusi e Candela svela l&#x27;omicidio — https://serietvfans.com/la-promessa/la-promessa-puntata-del-27-dicembre-cruz-chiede-a-lorenzo-di-uccidere-la-barones/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/la-promessa/la-promessa-puntata-del-27-dicembre-cruz-chiede-a-lorenzo-di-uccidere-la-barones/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/la-promessa/la-promessa-puntata-del-27-dicembre-cruz-chiede-a-lorenzo-di-uccidere-la-barones/&text=La Promessa, puntata del 27 dicembre: Cruz chiede a Lorenzo di uccidere la Baronessa, Jimena ringrazia la madre per gli abusi e Candela svela l&#x27;omicidio" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">LA PROMESSA Anticipazioni 27 Dicembre: Cruz, terribile ultimatum a Jana</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=JhXaXTlSiTM">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di La Promessa</h3><ol class="numerata"><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Ángela beve tutto, Curro sfonda la porta</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Curro nasconde Ángela, Lorenzo furioso</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>LA PROMESSA Anticipazioni 27 Dicembre: Cruz, terribile ultimatum a Jana</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su La Promessa</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-3-6-settembre-maria-affronta-la-gravidanza-da-sola/">La Promessa anticipazioni 3-6 settembre: Maria affronta la gravidanza da sola</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-carlo-arriva-maria-trema/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Carlo arriva, Maria trema</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/far-away/far-away-anticipazioni-dal-31-agosto-al-4-settembre-chi-ha-donato-il-fegato-a-nare/">Far Away, anticipazioni dal 31 agosto al 4 settembre: chi ha donato il fegato a Nare, e perché adesso sta male lui</a></li><li><a href="/far-away/far-away-dal-31-agosto-la-madre-di-alya-sapeva-tutto-non-ricordo/">Far Away Dal 31 Agosto: la madre di Alya sapeva tutto — «non ricordo»</a></li><li><a href="/forbidden-fruit/forbidden-fruit-dal-31-agosto-il-conto-a-nome-di-halit-che-e-morto/">Forbidden Fruit Dal 31 Agosto: il conto a nome di Halit, che è morto</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

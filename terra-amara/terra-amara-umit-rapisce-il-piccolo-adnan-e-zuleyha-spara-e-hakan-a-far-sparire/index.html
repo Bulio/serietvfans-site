@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/terra-amara/">Terra Amara</a> › Terra Amara, Ümit rapisce il piccolo Adnan e Züleyha spara: è Hakan a far sparire il corpo simulando l&#x27;incidente nel burrone</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/terra-amara/">Terra Amara</a>
   <h1>Terra Amara, Ümit rapisce il piccolo Adnan e Züleyha spara: è Hakan a far sparire il corpo simulando l&#x27;incidente nel burrone</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Il duello tra Züleyha e Ümit arriva al punto di non ritorno: con Demir rapito e sparito da settimane, la dottoressa impazzita sequestra il piccolo Adnan per estorcere informazioni alla rivale. Il confronto a pistola puntata finisce in tragedia — ma quando Züleyha torna sul posto con Fikret e Fekeli per occultare il corpo, Ümit è svanita. L&#x27;ha trovata prima Hakan: e il suo modo di «aiutare» è gettarla in un burrone simulando un incidente stradale.</p><ol><li><a href="#c1">La spirale di Ümit: dal lutto al rapimento</a></li><li><a href="#c2">Chi è Ümit, e chi l&#x27;ha portata a Çukurova</a></li><li><a href="#c3">Pistola contro pistola: il colpo fatale</a></li><li><a href="#c4">Il corpo scomparso: il giallo nel giallo</a></li><li><a href="#c5">Il favore di Hakan: un incidente costruito ad arte</a></li><li><a href="#c6">Perché conta: Züleyha si indebita con l&#x27;uomo che ha causato tutto</a></li><li><a href="#c7">Come Fikret ha coinvolto la dottoressa Ümit</a></li><li><a href="#c8">Cosa nasconde Ali Rahmet Fekeli sulla scomparsa</a></li><li><a href="#c9">Perché Hakan recita la parte di Mehmet</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>Terra Amara</strong> — Serie conclusa in Italia · tutte le puntate su Mediaset Infinity</span></div>
   
-  <p class="occhiello">Il duello tra Züleyha e Ümit arriva al punto di non ritorno: con Demir rapito e sparito da settimane, la dottoressa impazzita sequestra il piccolo Adnan per estorcere informazioni alla rivale. Il confronto a pistola puntata finisce in tragedia — ma quando Züleyha torna sul posto con Fikret e Fekeli per occultare il corpo, Ümit è svanita. L&#x27;ha trovata prima Hakan: e il suo modo di «aiutare» è gettarla in un burrone simulando un incidente stradale.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: Terra Amara, Ümit rapisce il piccolo Adnan e Züleyha spara: è Hakan a far sparire il corpo simulando l&#x27;incidente nel burrone" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/sJ_MX8Lma88/sddefault.jpg" alt="Terra Amara, Ümit rapisce il piccolo Adnan e Züleyha spara: è Hakan a far sparire il corpo simulando l&#x27;incidente nel burrone" width="640" height="480"
         srcset="https://i.ytimg.com/vi/sJ_MX8Lma88/hqdefault.jpg 480w, https://i.ytimg.com/vi/sJ_MX8Lma88/sddefault.jpg 640w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/sJ_MX8Lma88/hqdefault.jpg&quot;, &quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,46 +409,68 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>Il gesto di Hakan non è amore, non ancora: è strategia — Züleyha come alleata preziosa per la vendetta che l&#x27;uomo misterioso cova contro Demir e Fekeli.</strong></p>
-  <h2>La spirale di Ümit: dal lutto al rapimento</h2>
+  <h2 id="c1">La spirale di Ümit: dal lutto al rapimento</h2>
 <p>Con Demir portato via dagli uomini mascherati che hanno assaltato villa Yaman e nessuna notizia per settimane, Ümit precipita nella disperazione — e nella paranoia: si convince che Züleyha nasconda la verità sulla scomparsa dell&#x27;uomo che ama. La sua mossa estrema è la più imperdonabile: irrompe alla villa e rapisce il piccolo Adnan, usando il bambino come leva per estorcere risposte alla rivale.</p>
-<h2>Chi è Ümit, e chi l&#x27;ha portata a Çukurova</h2>
+<h2 id="c2">Chi è Ümit, e chi l&#x27;ha portata a Çukurova</h2>
 <p>Ümit non è arrivata a Çukurova per caso e nemmeno per amore: è il medico che Fikret ha fatto entrare in città come arma contro Demir, sapendo esattamente dove sarebbe andata a colpire. La relazione con l&#x27;uomo più potente della zona è nata da lì, da un piano che qualcun altro aveva già scritto. Il punto è che l&#x27;arma si è affezionata al bersaglio: quando Demir sparisce, Ümit non reagisce come una pedina ma come una donna che ha perso tutto, e la disperazione la porta molto più in là di quanto chi l&#x27;aveva mandata avesse previsto. Rapire Adnan è il gesto di chi non ha più un mandante a cui rispondere.</p>
-<h2>Pistola contro pistola: il colpo fatale</h2>
+<h2 id="c3">Pistola contro pistola: il colpo fatale</h2>
 <p>L&#x27;incontro tra le due donne è una polveriera: Züleyha, armata e accecata dal terrore per il figlio, intima a Ümit di restituirle Adnan e di smettere di perseguitarla. La dottoressa, minacciata, tenta disperatamente di disarmarla — e nella colluttazione parte il colpo che cambia tutto: Ümit cade, e Züleyha si ritrova con un delitto sulle mani e il mondo che le crolla addosso.</p>
-<h2>Il corpo scomparso: il giallo nel giallo</h2>
+<h2 id="c4">Il corpo scomparso: il giallo nel giallo</h2>
 <p>Sconvolta, Züleyha corre da Fikret e Fekeli, e i tre tornano sul luogo con l&#x27;intenzione di occultare il corpo e proteggerla dalle conseguenze legali. Ma la scena è vuota: Ümit è sparita come volatilizzata. Fekeli ipotizza che fosse solo ferita e sia fuggita — la verità è ben più inquietante: qualcuno è arrivato prima di loro. Quel qualcuno è Hakan.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Il favore di Hakan: un incidente costruito ad arte</h2>
+<h2 id="c5">Il favore di Hakan: un incidente costruito ad arte</h2>
 <p>Il falso Mehmet gioca la carta del salvatore: getta il corpo di Ümit in un burrone simulando un incidente stradale, cancellando ogni sospetto di omicidio e mettendo Züleyha per sempre in debito con lui. Ma le anticipazioni sono chiare sul movente: non è amore — non ancora. È strategia pura: Züleyha come potenziale alleata nella vendetta che Hakan prepara contro Demir e Ali Rahmet Fekeli. Da una tragedia nasce così il legame più ambiguo della stagione: una gratitudine costruita su una menzogna, destinata a esplodere quando Züleyha scoprirà chi è davvero l&#x27;uomo che l&#x27;ha «salvata».</p>
-<h2>Perché conta: Züleyha si indebita con l&#x27;uomo che ha causato tutto</h2>
+<h2 id="c6">Perché conta: Züleyha si indebita con l&#x27;uomo che ha causato tutto</h2>
 <p>Il debito che nasce in quel burrone è avvelenato alla radice. L&#x27;assalto a villa Yaman — gli uomini armati, le guardie neutralizzate, Demir portato via — non è stato un colpo di banditi qualunque: dietro c&#x27;è la stessa persona che adesso si offre di far sparire un cadavere. Hakan non sta coprendo un delitto altrui, sta coprendo l&#x27;ultimo anello di una catena che ha messo in moto lui. È la ragione per cui quel favore non può restare un favore: nel momento in cui Züleyha scoprirà che l&#x27;uomo a cui deve la libertà è anche quello che le ha tolto il marito, la gratitudine non diventerà semplicemente odio, diventerà la prova che per anni ha ringraziato il proprio nemico chiamandolo con un nome che non esisteva.</p>
-<h2>Come Fikret ha coinvolto la dottoressa Ümit</h2>
+<h2 id="c7">Come Fikret ha coinvolto la dottoressa Ümit</h2>
 <p>L&#x27;arrivo della dottoressa Ümit a Çukurova è stato orchestrato fin dall&#x27;inizio da Fikret, che intendeva usarla come una vera e propria arma strategica per colpire l&#x27;uomo più potente della zona, Demir Yaman. Il piano originario prevedeva una precisa tattica di avvicinamento, ma l&#x27;imprevisto si è verificato quando la donna ha iniziato a provare sentimenti autentici e profondi verso il proprio bersaglio. La successiva e improvvisa scomparsa di Demir, trascinato via durante il violento assalto armato alla tenuta, ha infranto ogni equilibrio precario. Privata del suo unico punto di riferimento, la dottoressa è scivolata rapidamente in una paranoia incontrollabile, arrivando a credere fermamente che Züleyha stesse nascondendo la verità su dove si trovasse l&#x27;uomo amato.</p>
 <p>Senza più alcun mandante a cui rispondere o da cui ricevere direttive precise, la donna ha deciso di agire in totale autonomia, spinta da una disperazione cieca e distruttiva. Il sequestro del piccolo Adnan rappresenta il punto di non ritorno di questa pericolosa spirale autodistruttiva, un gesto estremo ideato per obbligare la rivale a confessare dettagli fondamentali sulla sorte di Demir. Facendo irruzione a villa Yaman e portando via il bambino innocente, la dottoressa ha scatenato la reazione terrorizzata di una madre disposta a tutto per salvarlo. Quello che doveva essere un ricatto per ottenere risposte si è trasformato così nel drammatico confronto armato in cui è partito il colpo di pistola decisivo.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Cosa nasconde Ali Rahmet Fekeli sulla scomparsa</h2>
+<h2 id="c8">Cosa nasconde Ali Rahmet Fekeli sulla scomparsa</h2>
 <p>Dopo la tragedia scaturita dalla violenta colluttazione, Züleyha si è rivolta immediatamente a Fikret e ad Ali Rahmet Fekeli per cercare aiuto di fronte a una situazione apparentemente disperata. I due uomini, spinti dalla ferma volontà di proteggere la protagonista dalle terribili conseguenze legali di un delitto, hanno scelto di intervenire senza esitazione per occultare il corpo della dottoressa. Tuttavia, al loro arrivo sul luogo dello scontro, la scena si è presentata del tutto vuota e il cadavere era misteriosamente scomparso. Di fronte all&#x27;incredibile scoperta, Fekeli ha ipotizzato che la vittima fosse soltanto rimasta ferita e fosse riuscita a fuggire da sola per mettere in salvo la propria vita.</p>
 <p>La rassicurante spiegazione fornita da Fekeli si è rivelata una lettura del tutto errata degli eventi, poiché nessuno poteva immaginare che qualcun altro fosse giunto sul posto con estrema tempestività. Hakan era infatti arrivato prima dei soccorritori, prendendo il controllo del corpo di Ümit e organizzando una messinscena calcolata nei minimi dettagli. Trasportando la donna verso un burrone e spingendo la vettura nel precipizio, l&#x27;uomo ha simulato un fatale incidente stradale per cancellare ogni traccia dell&#x27;arma da fuoco e dei sospetti di omicidio, lasciando credere a tutti che la tragedia fosse stata causata da una sfortunata sbandata durante la fuga improvvisa.</p>
-<h2>Perché Hakan recita la parte di Mehmet</h2>
+<h2 id="c9">Perché Hakan recita la parte di Mehmet</h2>
 <p>La decisione di far sparire il corpo della dottoressa nel burrone risponde a un disegno strategico ben preciso portato avanti da Hakan, giunto in città sotto la falsa identità di Mehmet. L&#x27;uomo sta preparando un piano articolato di vendetta rivolto contro Demir Yaman e Ali Rahmet Fekeli, e ha individuato in Züleyha l&#x27;alleata ideale da manovrare a proprio totale vantaggio. Dietro il gesto apparentemente generoso di coprire un possibile delitto non vi è alcun sentimento di rispetto o di amore verso la donna, ma soltanto la fredda volontà di legarla a sé attraverso un immenso debito di gratitudine per un favore di cui lei non conosce i reali contorni.</p>
 <p>Questo inganno pone le basi per una dinamica di profonda manipolazione, poiché Züleyha ignora totalmente che il suo presunto salvatore è la medesima persona che ha orchestrato l&#x27;aggressione a villa Yaman. Gli uomini armati e mascherati che hanno neutralizzato le guardie e sequestrato suo marito eseguivano infatti gli ordini diretti di Hakan. Ringraziare con il nome di Mehmet l&#x27;uomo responsabile del rapimento di Demir rappresenta la trappola più crudele, destinata a trasformare la gratitudine della protagonista in un odio devastante quando la verità sulla vera identità dell&#x27;uomo e sul suo ruolo nell&#x27;intera vicenda verrà finalmente a galla.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=92zkQuVsPJY" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/92zkQuVsPJY/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TERRA AMARA Anticipazioni: Zuleyha delusa e stressata spara ad Hakan! Arriva Fikret, la fermerà</span></a></li><li><a href="https://www.youtube.com/watch?v=l6a162N6mak" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/l6a162N6mak/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TERRA AMARA Anticipazioni:  Zuleyha ha ucciso Umit si o no? Salverà il piccolo Adnan?</span></a></li><li><a href="https://www.youtube.com/watch?v=U3CBXFBrhuA" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/U3CBXFBrhuA/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TERRA AMARA Anticipazioni: Zuleyha rapisce Hakan e lo minaccia con una pistola!</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Züleyha ha ucciso per legittima difesa o la vendetta ha guidato la sua mano? E quando scoprirà che Hakan l&#x27;ha coperta per calcolo, il debito diventerà amore o odio?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=sJ_MX8Lma88">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di Terra Amara</h2><div class="griglia"><article class="scheda">
+  <a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/"><div class="foto"><img src="/img/terra-amara-la-trama-completa-e-come-finisce.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></h3>
+    <div class="quando">30 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/"><div class="foto"><img src="https://i.ytimg.com/vi/_ypSJU-x7LY/hqdefault.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/"><div class="foto"><img src="https://i.ytimg.com/vi/B_MLx-0yh6M/hqdefault.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=Terra Amara, Ümit rapisce il piccolo Adnan e Züleyha spara: è Hakan a far sparire il corpo simulando l&#x27;incidente nel burrone — https://serietvfans.com/terra-amara/terra-amara-umit-rapisce-il-piccolo-adnan-e-zuleyha-spara-e-hakan-a-far-sparire/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/terra-amara/terra-amara-umit-rapisce-il-piccolo-adnan-e-zuleyha-spara-e-hakan-a-far-sparire/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/terra-amara/terra-amara-umit-rapisce-il-piccolo-adnan-e-zuleyha-spara-e-hakan-a-far-sparire/&text=Terra Amara, Ümit rapisce il piccolo Adnan e Züleyha spara: è Hakan a far sparire il corpo simulando l&#x27;incidente nel burrone" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">TERRA AMARA ANTICIPAZIONI: UMIT RAPISCE IL PICCOLO ADNAN, ZULEYHA LA UCCIDE!</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=sJ_MX8Lma88">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di Terra Amara</h3><ol class="numerata"><li><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></li><li><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></li><li><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></li><li><a href="/terra-amara/terra-amara-come-finisce-davvero-zuleyha-vince-tutto-e-resta-sola/">Terra Amara: come finisce davvero, Züleyha vince tutto e resta sola</a></li><li><a href="/terra-amara/terra-amara-come-muore-demir-yaman-chi-ha-dato-lordine-e-perche-doveva-essere-un-rapimento/">Terra Amara, come muore Demir Yaman: chi ha dato l&#x27;ordine e perché doveva essere un rapimento</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>TERRA AMARA ANTICIPAZIONI: UMIT RAPISCE IL PICCOLO ADNAN, ZULEYHA LA UCCIDE!</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su Terra Amara</h3><ul><li><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></li><li><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></li><li><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></li><li><a href="/terra-amara/terra-amara-come-finisce-davvero-zuleyha-vince-tutto-e-resta-sola/">Terra Amara: come finisce davvero, Züleyha vince tutto e resta sola</a></li><li><a href="/terra-amara/terra-amara-come-muore-demir-yaman-chi-ha-dato-lordine-e-perche-doveva-essere-un-rapimento/">Terra Amara, come muore Demir Yaman: chi ha dato l&#x27;ordine e perché doveva essere un rapimento</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

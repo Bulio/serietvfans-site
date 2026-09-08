@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/endless-love/">Endless Love</a> › Endless Love, Nihan scopre il segreto di Leyla: «Sei mia zia» — e il padre Önder era il suo fidanzato abbandonato all&#x27;altare</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/endless-love/">Endless Love</a>
   <h1>Endless Love, Nihan scopre il segreto di Leyla: «Sei mia zia» — e il padre Önder era il suo fidanzato abbandonato all&#x27;altare</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>8 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">La rivelazione che riscrive la famiglia Sezin: Leyla e Vildan sono sorelle, Önder era il fidanzato di Leyla — e Vildan rimase incinta di Nihan e Ozan quando era la sua amante, con la verità esplosa il giorno stesso del matrimonio. A scoprire il legame, come sempre, ci pensa Emir.</p><ol><li><a href="#c1">L&#x27;intuito di Emir e il cognome in comune</a></li><li><a href="#c2">«Sei davvero mia zia?»: la confessione di Leyla</a></li><li><a href="#c3">La crisi di Nihan: a chi rivolgere il dolore?</a></li><li><a href="#c4">Il paradosso di Vildan: la carnefice che si sente vittima</a></li><li><a href="#c5">Come Emir risale al legame nascosto di Leyla</a></li><li><a href="#c6">Cosa scopre Nihan durante il confronto con Leyla</a></li><li><a href="#c7">Perche Vildan continua a provare rancore verso Leyla</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>Endless Love</strong> — Serie conclusa in Italia · le puntate su Mediaset Infinity</span></div>
   
-  <p class="occhiello">La rivelazione che riscrive la famiglia Sezin: Leyla e Vildan sono sorelle, Önder era il fidanzato di Leyla — e Vildan rimase incinta di Nihan e Ozan quando era la sua amante, con la verità esplosa il giorno stesso del matrimonio. A scoprire il legame, come sempre, ci pensa Emir.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: Endless Love, Nihan scopre il segreto di Leyla: «Sei mia zia» — e il padre Önder era il suo fidanzato abbandonato all&#x27;altare" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/0akKVmWLi_Q/maxresdefault.jpg" alt="Endless Love, Nihan scopre il segreto di Leyla: «Sei mia zia» — e il padre Önder era il suo fidanzato abbandonato all&#x27;altare" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/0akKVmWLi_Q/hqdefault.jpg 480w, https://i.ytimg.com/vi/0akKVmWLi_Q/sddefault.jpg 640w, https://i.ytimg.com/vi/0akKVmWLi_Q/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/0akKVmWLi_Q/hqdefault.jpg&quot;, &quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,25 +409,25 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>Una foto di due bambini stretta tra le mani e una frase che vale una vita: «Allora sei tu». Il segreto di Leyla è la ferita più antica della serie.</strong></p>
-  <h2>L&#x27;intuito di Emir e il cognome in comune</h2>
+  <h2 id="c1">L&#x27;intuito di Emir e il cognome in comune</h2>
 <p>Il filo lo tira, come sempre, Emir: vedendo Leyla e Önder confabulare fuori da casa Sezin, mette Tufan sulle tracce della donna. La prima scoperta è il cognome identico a quello di Vildan; la seconda è la bomba — non parenti lontane: sorelle. Armato della rivelazione, Emir piomba da Önder e Vildan per giocarsela… ma il tempismo lo tradisce: proprio mentre dichiara ad alta voce che «Leyla è la vostra zia», nella stanza entrano Nihan e Ozan. Önder reagisce con una minaccia pesantissima: se Emir diffonderà il segreto, lui rivelerà a tutti che sua madre Müjgan non è affatto morta.</p>
-<h2>«Sei davvero mia zia?»: la confessione di Leyla</h2>
+<h2 id="c2">«Sei davvero mia zia?»: la confessione di Leyla</h2>
 <p>Nihan corre da Leyla per la conferma, e ottiene molto di più: uno sguardo che vale un sì, e poi la confessione dolorosa. Önder era il fidanzato di Leyla — avevano perfino pianificato le nozze — ma il giorno del matrimonio lei scoprì che la sorella Vildan era incinta di lui: aspettava proprio Nihan e Ozan. Leyla aveva capito tutto fin dal primo incontro con la nipote, quando Kemal gliela presentò: al nome &quot;Nihan Sezin&quot; corse in camera a riprendere una vecchia fotografia con due bambini. «Allora sei tu».</p>
-<h2>La crisi di Nihan: a chi rivolgere il dolore?</h2>
+<h2 id="c3">La crisi di Nihan: a chi rivolgere il dolore?</h2>
 <p>Per Nihan è il tradimento delle fondamenta: la famiglia che credeva costruita su lealtà e sincerità le ha nascosto tutto. E il dilemma è lancinante — condannare il padre, che tradì Leyla mettendone incinta la sorella e abbandonandola sull&#x27;altare, o la madre, che le rubò il fidanzato manipolando nell&#x27;ombra e stravolgendo per sempre il destino di entrambe? La crisi emotiva si somma al risentimento mai sopito verso Vildan, la donna che l&#x27;ha costretta a sposare Emir non per salvare Ozan, ma per garantirsi una vita agiata grazie ai soldi di Galip.</p>
-<h2>Il paradosso di Vildan: la carnefice che si sente vittima</h2>
+<h2 id="c4">Il paradosso di Vildan: la carnefice che si sente vittima</h2>
 <p>Il mistero più affascinante resta l&#x27;astio di Vildan verso la sorella: Leyla non minaccia nulla — non vuole riprendersi Önder (contro cui ha chiesto perfino un ordine restrittivo quando si è ripresentato), desidera solo pace. Eppure è Vildan a covare il rancore più acceso: orgoglio ferito, gelosie mai chiarite, il bisogno di recitare la vittima pur essendo stata la carnefice. Con il segreto ormai sveglio, i nodi della famiglia Sezin vengono al pettine tutti insieme — e la domanda dei fan è una sola: quando arriverà, per Vildan, la giusta punizione?</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Come Emir risale al legame nascosto di Leyla</h2>
+<h2 id="c5">Come Emir risale al legame nascosto di Leyla</h2>
 <p>Tutto prende avvio da uno sguardo attento di Emir, sempre pronto a cogliere ogni minimo movimento sospetto attorno alla famiglia Sezin. Notando Leyla e Önder mentre confabulano in modo furtivo al di fuori della dimora di famiglia, l&#x27;uomo intuisce immediatamente che tra i due si nasconda un legame profondo e mai chiarito. Senza perdere tempo, Emir decide di incaricare il suo fidato Tufan di mettersi sulle tracce della donna per fare piena luce sul suo passato. Le indagini svolte da Tufan portano subito a galla un dettaglio fondamentale: la donna possiede lo stesso identico cognome di Vildan. Approfondendo la ricerca, emerge infine la verità sconcertante che stravolge le carte in tavola, rivelando che le due donne non sono affatto parenti lontane, bensì sorelle biologiche.</p>
 <p>Forte di questa clamorosa scoperta, Emir decide di fare irruzione nell&#x27;abitazione di Önder e Vildan per utilizzare l&#x27;informazione come arma di ricatto personale. Tuttavia, la sua mossa strategica viene ostacolata da un tempismo del tutto imprevisto durante la spiegazione. Proprio nel momento esatto in cui Emir dichiara ad alta voce la reale parentela, affermando che la donna sia la loro zia, Nihan e Ozan varcano la soglia della stanza ascoltando ogni singola parola. La reazione di Önder è immediata e carica di tensione: l&#x27;uomo affronta Emir minacciandolo direttamente di rivelare a tutti un altro segreto inconfessabile, ovvero che sua madre Müjgan non è affatto deceduta come è stato fatto credere a lungo, fermando così temporaneamente l&#x27;attacco dell&#x27;avversario.</p>
 <p>Questa complessa rete di ricatti incrociati dimostra quanto la stabilità apparentemente solida dei Sezin poggiasse in realtà su fondamenta fragili e piene di menzogne taciute negli anni. La rivelazione involontaria di Emir trasforma un segreto custodito nel silenzio per decenni in un punto di non ritorno per tutti i protagonisti coinvolti. Önder si ritrova improvvisamente costretto a difendere la propria posizione utilizzando un&#x27;arma altrettanto pericolosa, mentre Vildan assiste all&#x27;inesorabile crollo del castello di menzogne edificato intorno alla nascita dei suoi due figli. L&#x27;intervento di Tufan ed Emir finisce per far esplodere una bomba ad orologeria che coinvolge inevitabilmente le vite di Nihan e Ozan, sconvolti da quanto udito.</p>
-<h2>Cosa scopre Nihan durante il confronto con Leyla</h2>
+<h2 id="c6">Cosa scopre Nihan durante il confronto con Leyla</h2>
 <p>Sconvolta dalla frase pronunciata da Emir all&#x27;interno della casa paterna, Nihan decide di cercare immediatamente risposte definitive correndo direttamente da Leyla. Al suo arrivo, la giovane non riceve risposte evasive o scuse, bensì uno sguardo carico di sofferenza che vale più di mille parole, seguito da una confessione estremamente dolorosa. Leyla decide finalmente di raccontare tutta la verità, spiegando che Önder era in passato il suo promesso sposo con cui aveva già programmato le nozze. Il giorno stesso del matrimonio, tuttavia, la donna scoprì che la sorella Vildan era incinta di lui, portando in grembo proprio Nihan e Ozan. Quel tradimento devastante consumato nell&#x27;ombra spezzò per sempre il sogno d&#x27;amore di Leyla.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>Nel corso del toccante racconto, Leyla rivela a Nihan di aver compreso la sua vera identità fin dal loro primissimo incontro avvenuto grazie a Kemal. Quando Kemal gliela presentò ufficialmente, sentendo pronunciare il nome di Nihan Sezin, la donna fu colta da un sobbalzo e corse immediatamente nella propria camera per recuperare una vecchia fotografia conservata da anni. Tra le mani stringeva l&#x27;immagine di due bambini, pronunciando la frase iconica che racchiudeva un&#x27;intera vita di ricordi e dolore sopito. Capendo che la ragazza davanti a lei era la figlia di sua sorella e del suo ex fidanzato, Leyla comprese subito chi avesse di fronte, custodendo quel legame speciale fino al momento della dolorosa confessione finale.</p>
 <p>Per Nihan questa sconcertante verità rappresenta un vero e proprio crollo emotivo, poiché demolisce l&#x27;immagine della famiglia in cui era cresciuta e in cui aveva sempre creduto. La giovane si ritrova improvvisamente schiacciata da un lacerante dilemma morale, non sapendo contro chi rivolgere la propria rabbia e il proprio profondo dolore. Da un lato c&#x27;è un padre che ha tradito la fidanzata mettendone incinta la sorella per poi abbandonarla sull&#x27;altare, dall&#x27;altro una madre capace di sottrarre il compagno alla sorella manipolando la situazione nell&#x27;ombra. Ogni certezza affettiva viene totalmente spazzata via, lasciando Nihan smarrita di fronte al passato oscuro dei suoi genitori.</p>
-<h2>Perche Vildan continua a provare rancore verso Leyla</h2>
+<h2 id="c7">Perche Vildan continua a provare rancore verso Leyla</h2>
 <p>Nonostante sia stata la vera responsabile della rottura tra Önder e la sorella, Vildan continua inspiegabilmente a nutrire un astio profondo e mai placato nei confronti di Leyla. Il comportamento di Vildan rappresenta un paradosso affascinante e complesso, in cui la reale carnefice finisce per recitare costantemente il ruolo della vittima indebitata. Leyla, dal canto suo, non ha mai mostrato alcuna intenzione di minacciare l&#x27;equilibrio della sorella o di riprendersi Önder, desiderando esclusivamente di vivere nella pace e nella tranquillità. Ciononostante, Vildan rimane prigioniera di un orgoglio ferito e di gelosie mai chiarite che alimentano un rancore ossessivo, impedendole di accettare la presenza della consanguinea.</p>
 <p>La distanza cercata da Leyla appare ancora più evidente considerando la fermezza con cui ha respinto ogni tentativo di riavvicinamento nel tempo. Quando in passato Önder si è ripresentato alla sua porta, Leyla non ha esitato a chiedere un formale ordine restrittivo contro di lui, dimostrando di non voler assolutamente ricostruire alcun tipo di legame sentimentale con l&#x27;uomo che l&#x27;aveva abbandonata sull&#x27;altare. Questo atteggiamento rigido conferma quanto la donna volesse soltanto lasciarsi alle spalle le macerie del passato. Tuttavia, per Vildan la semplice esistenza di Leyla costituisce un costante elemento di confronto negativo, un promemoria vivente delle proprie scorrettezze e delle azioni manipolatorie compiute molti anni prima.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
@@ -385,19 +435,41 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=BCn7ojaBPPY" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/BCn7ojaBPPY/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>VILDAN SCOPRE CHE ONDER ONDER HA SEMPRE AMATO LEYLA;  SCENATA EPOCALE E LUI SE NE VA! Endless L</span></a></li><li><a href="https://www.youtube.com/watch?v=NAHsFJsvdBE" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/NAHsFJsvdBE/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>ZEYNEP INGANNA OZAN: &quot;SONO INCINTA&quot;! MA IL TEST E&#x27; DI UN&#x27;ALTRA! Anticipazioni Endless Love Turc</span></a></li><li><a href="https://www.youtube.com/watch?v=RyxBZrES_-w" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/RyxBZrES_-w/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>Emir Abbandonato dalla Madre in Endless Love – La Rivelazione Che Nessuno Si Aspettava</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Chi ha tradito di più Nihan: il padre, la madre o il silenzio di Leyla? E Vildan pagherà mai per le sue manipolazioni?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=0akKVmWLi_Q">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di Endless Love</h2><div class="griglia"><article class="scheda">
+  <a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/"><div class="foto"><img src="https://i.ytimg.com/vi/DSiProJJ1ls/hqdefault.jpg" alt="Endless Love" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/"><div class="foto"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/"><div class="foto"><img src="https://i.ytimg.com/vi/uu2oAzTOWQU/hqdefault.jpg" alt="Endless Love" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></h3>
+    <div class="quando">25 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=Endless Love, Nihan scopre il segreto di Leyla: «Sei mia zia» — e il padre Önder era il suo fidanzato abbandonato all&#x27;altare — https://soapoperaitalia.com/endless-love/endless-love-la-trama-completa-perche-nihan-sposa-emir-e-come-finisce/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://soapoperaitalia.com/endless-love/endless-love-la-trama-completa-perche-nihan-sposa-emir-e-come-finisce/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://soapoperaitalia.com/endless-love/endless-love-la-trama-completa-perche-nihan-sposa-emir-e-come-finisce/&text=Endless Love, Nihan scopre il segreto di Leyla: «Sei mia zia» — e il padre Önder era il suo fidanzato abbandonato all&#x27;altare" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">NIHAN SCIOCCATA DOPO AVER SCOPERTO IL SEGRETO SU LEYLA - Endless Love</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=0akKVmWLi_Q">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di Endless Love</h3><ol class="numerata"><li><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></li><li><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></li><li><a href="/endless-love/endless-love-chi-e-galip-kozcuoglu-le-due-volte-in-cui-nihan-e-stata-venduta/">Endless Love, chi è Galip Kozcuoğlu: le due volte in cui Nihan è stata venduta</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-zeynep-soydere-perche-emir-lha-scelta-e-cosa-ha-distrutto/">Endless Love, chi è davvero Zeynep Soydere: perché Emir l&#x27;ha scelta e cosa ha distrutto</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>NIHAN SCIOCCATA DOPO AVER SCOPERTO IL SEGRETO SU LEYLA - Endless Love</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su Endless Love</h3><ul><li><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></li><li><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></li><li><a href="/endless-love/endless-love-chi-e-galip-kozcuoglu-le-due-volte-in-cui-nihan-e-stata-venduta/">Endless Love, chi è Galip Kozcuoğlu: le due volte in cui Nihan è stata venduta</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-zeynep-soydere-perche-emir-lha-scelta-e-cosa-ha-distrutto/">Endless Love, chi è davvero Zeynep Soydere: perché Emir l&#x27;ha scelta e cosa ha distrutto</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

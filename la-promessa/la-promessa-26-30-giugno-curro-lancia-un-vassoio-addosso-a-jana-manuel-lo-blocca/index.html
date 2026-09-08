@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/la-promessa/">La Promessa</a> › La Promessa 26-30 giugno, Curro lancia un vassoio addosso a Jana: Manuel lo blocca e lo costringe a chiederle scusa</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/la-promessa/">La Promessa</a>
   <h1>La Promessa 26-30 giugno, Curro lancia un vassoio addosso a Jana: Manuel lo blocca e lo costringe a chiederle scusa</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>6 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Convinta che Curro sia il fratello che cerca da anni, Jana prova in tutti i modi a farlo parlare del suo passato — e ogni tentativo si scontra con un muro di ostilità che diventa aggressione fisica. Quando le lancia addosso un vassoio, però, in sala c&#x27;è anche Manuel: lo ferma, si fa raccontare entrambe le versioni e lo obbliga a scusarsi. Nella stessa settimana Jana chiude con lui, Pía decide del suo futuro e Leonor vuole rendere pubblica la storia con Mauro.</p><ol><li><a href="#c1">Il muro di Curro</a></li><li><a href="#c2">Manuel si mette in mezzo</a></li><li><a href="#c3">«Tra una domestica e il suo padrone possono nascere solo guai»</a></li><li><a href="#c4">Pía, Leonor e i debiti di Alonso</a></li><li><a href="#c5">Come Manuel interviene per fermare la furia di Curro</a></li><li><a href="#c6">Perche&#x27; Cruz pretende una festa di compleanno faraonica</a></li><li><a href="#c7">Cosa spinge Pia a valutare un futuro diverso</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>La Promessa</strong> — Rete 4 · in streaming su Mediaset Infinity</span></div>
   
-  <p class="occhiello">Convinta che Curro sia il fratello che cerca da anni, Jana prova in tutti i modi a farlo parlare del suo passato — e ogni tentativo si scontra con un muro di ostilità che diventa aggressione fisica. Quando le lancia addosso un vassoio, però, in sala c&#x27;è anche Manuel: lo ferma, si fa raccontare entrambe le versioni e lo obbliga a scusarsi. Nella stessa settimana Jana chiude con lui, Pía decide del suo futuro e Leonor vuole rendere pubblica la storia con Mauro.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: La Promessa 26-30 giugno, Curro lancia un vassoio addosso a Jana: Manuel lo blocca e lo costringe a chiederle scusa" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/RL3FuM5jnlE/maxresdefault.jpg" alt="La Promessa 26-30 giugno, Curro lancia un vassoio addosso a Jana: Manuel lo blocca e lo costringe a chiederle scusa" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/RL3FuM5jnlE/hqdefault.jpg 480w, https://i.ytimg.com/vi/RL3FuM5jnlE/sddefault.jpg 640w, https://i.ytimg.com/vi/RL3FuM5jnlE/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/RL3FuM5jnlE/hqdefault.jpg&quot;, &quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,42 +409,64 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>Cruz progetta una festa di compleanno faraonica mentre Alonso non sa più dove trovare i soldi: la soluzione sarà vendere di nascosto la spilla di famiglia.</strong></p>
-  <h2>Il muro di Curro</h2>
+  <h2 id="c1">Il muro di Curro</h2>
 <p>Jana si convince sempre di più che il nipote appena arrivato alla tenuta sia il fratello scomparso, e non perde occasione per portarlo a parlare della sua infanzia. Curro la respinge ogni volta, con una durezza che a lei sembra un indizio in più. Anche Cruz, del resto, accoglie quel nipote con un tepore molto inferiore a quello che ci si aspetterebbe da una zia, come se ci fosse qualcosa da non far uscire. María Fernández mette a punto un piano perché Jana riesca finalmente a restare sola con lui, ma l&#x27;unico risultato è un&#x27;esplosione: durante uno degli scontri, Curro le lancia addosso un vassoio, e lei si rifugia in lacrime sulla spalla dell&#x27;amica senza però rinunciare alla sua ricerca.</p>
-<h2>Manuel si mette in mezzo</h2>
+<h2 id="c2">Manuel si mette in mezzo</h2>
 <p>Al confronto successivo tra i due, però, c&#x27;è Manuel. Interviene, invita Curro a controllare la rabbia e fa una cosa che alla tenuta non si fa mai: chiede anche alla domestica di raccontare la sua versione, sapendo benissimo che non coinciderà con quella del ragazzo. Poi lo costringe a chiedere scusa. Non basterà — Curro continuerà a maltrattarla nei giorni seguenti, tanto che a rimproverarlo dovrà pensarci Alonso in persona — ma è il momento in cui i rapporti di forza dentro il palazzo si incrinano. E Jimena, assistendo a una discussione tra Manuel e Jana, capisce che tra quei due c&#x27;è qualcosa che si stanno impegnando a nascondere.</p>
-<h2>«Tra una domestica e il suo padrone possono nascere solo guai»</h2>
+<h2 id="c3">«Tra una domestica e il suo padrone possono nascere solo guai»</h2>
 <p>Nel frattempo Jana prende una decisione radicale: interrompere ogni legame con Manuel, convinta che un rapporto del genere non possa che portare problemi a entrambi. Lui prova più volte ad avvicinarla per parlare di quello che è successo, e ogni volta lei si sottrae. Sull&#x27;altro fronte, il ritorno di Jimena porta a Manuel una notizia scomoda — i genitori vorrebbero che si sposassero — e un rifiuto netto: ha appena perso Tomás, il dolore è troppo fresco. Per chiudere davvero con quel passato, Jana e María fanno sparire l&#x27;anello che Tomás le aveva dato, gettandolo nello scarico di un bagno.</p>
-<h2>Pía, Leonor e i debiti di Alonso</h2>
+<h2 id="c4">Pía, Leonor e i debiti di Alonso</h2>
 <p>Pía, rimproverata da Cruz per la gravidanza ma non licenziata, arriva a considerare l&#x27;aborto; è Jana a convincerla a valutare l&#x27;alternativa, promettendole che le domestiche si prenderanno cura del bambino e che non resterà mai sola. Presa la sua decisione, Pía lascia la tenuta per qualche giorno — con il dispiacere di consegnare il suo posto proprio a Petra. Leonor, stanca di nascondersi, annuncia a Mauro che vuole rendere pubblica la loro relazione e chiede un colloquio privato al padre, nonostante lui provi a dissuaderla. E mentre Alonso affonda nei debiti — con Cruz che gli vieta di accettare prestiti da amici e parenti — la Marchesa pretende una festa di compleanno con tutti gli invitati che contano.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Come Manuel interviene per fermare la furia di Curro</h2>
+<h2 id="c5">Come Manuel interviene per fermare la furia di Curro</h2>
 <p>La tensione continua a crescere in modo evidente tra Jana e Curro all&#x27;interno della tenuta. La giovane domestica è infatti sempre più convinta che il nipote di Cruz, appena giunto al palazzo, sia in realtà il fratello scomparso che sta cercando disperatamente da molti anni. Per questa ragione non perde alcuna occasione utile per portarlo a parlare della sua infanzia e del suo passato. Tuttavia Curro la respinge ogni volta con enorme durezza e ostilità, rifiutando qualsiasi tipo di dialogo aperto, fino ad arrivare a compiere un gesto violento e lanciarle addosso un vassoio durante un&#x27;ennesima e accesa discussione.</p>
 <p>La situazione rischia di degenerare ulteriormente quando Manuel assiste personalmente al confronto successivo e decide di intervenire per mettere fine alle tensioni. Il giovane ferma Curro, gli ordina di controllare la propria rabbia e compie un atto del tutto inusuale per le regole della tenuta: chiede e ascolta con molta attenzione anche la versione della domestica, sapendo benissimo che non coinciderà affatto con quella del nobile. Dopodiché obbliga il cugino a scusarsi con la ragazza. Tuttavia questo intervento non basta a fermare Curro, il quale continua a maltrattare Jana nei giorni seguenti, spingendo Alonso a rimproverarlo di persona.</p>
 <p>Questo scontro inaspettato altera gli equilibri del palazzo e attira la forte attenzione di Jimena. Assistendo a una discussione tra Manuel e Jana, la donna intuisce che tra loro due esiste un legame profondo che entrambi cercano in ogni modo di tenere nascosto. Nel frattempo Jana decide di interrompere ogni contatto con Manuel, convinta che tra un padrone e una serva possano nascere solo guai. Per chiudere definitivamente con le vicende passate, la ragazza si libera anche dell&#x27;anello che le era stato regalato da Tomás, gettandolo direttamente nello scarico del bagno insieme alla sua fidata amica María Fernández.</p>
-<h2>Perche&#x27; Cruz pretende una festa di compleanno faraonica</h2>
+<h2 id="c6">Perche&#x27; Cruz pretende una festa di compleanno faraonica</h2>
 <p>La situazione finanziaria dei signori del palazzo è sempre più drammatica, con Alonso che affonda nei debiti e non sa più in quale modo trovare il denaro necessario per coprire le spese. Nonostante questa grave crisi economica, Cruz rifiuta categoricamente di rinunciare al lusso e progetta una festa di compleanno faraonica, pretendendo l&#x27;intervento di tutti gli ospiti più importanti. La marchesa dimostra una rigidità incrollabile e vieta in modo assoluto al marito di accettare qualsiasi tipo di prestito da amici o parenti, imponendogli di mantenere un&#x27;immagine di grande sfarzo e potenza di fronte all&#x27;intera società nobile.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>Senza alcuna alternativa e schiacciato dalle rigide pretese della moglie, Alonso si vede costretto ad adottare una misura estrema e segreta pur di recuperare la somma necessaria. Per finanziare la grandiosa festa pretesa da Cruz, l&#x27;uomo prende la sofferta decisione di vendere di nascosto un prezioso gioiello di famiglia, la spilla appartenente ai Luján. Questo gesto disperato mette in luce la gravità delle difficoltà finanziarie della casata, dove la necessità di preservare l&#x27;onore e le apparenze spinge il marchese ad agire al di fuori delle regole pur di compiacere la consorte ed evitare un rovinoso scandalo pubblico.</p>
-<h2>Cosa spinge Pia a valutare un futuro diverso</h2>
+<h2 id="c7">Cosa spinge Pia a valutare un futuro diverso</h2>
 <p>La governante Pía si trova a vivere un momento di grandissima sofferenza interiore dopo essere stata duramente rimproverata da Cruz per via della sua gravidanza. Benché la marchesa scelga di non cacciarla dal palazzo, la donna si sente profondamente sola e sconfortata, arrivando persino a considerare l&#x27;ipotesi dell&#x27;aborto per salvare il proprio futuro e la propria posizione. In questa fase delicata interviene Jana, la quale parla con la donna e la convince a valutare una strada diversa. La domestica promette infatti che l&#x27;intero personale di servizio sosterrà Pía e si prenderà cura del bambino, garantendole pieno aiuto.</p>
 <p>Rassicurata dal sostegno dimostrato da Jana e dalle altre domestiche, Pía prende una decisione definitiva sul proprio futuro e sceglie di allontanarsi dalla tenuta per qualche giorno. Questa assenza temporanea la costringe tuttavia a lasciare con grande dispiacere il proprio ruolo di responsabile nelle mani di Petra. Parallelamente a questi fatti, Leonor decide di non voler più nascondere il suo sentimento per Mauro e gli comunica l&#x27;intenzione di rendere pubblica la loro storia d&#x27;amore. La giovane chiede quindi un colloquio privato al padre Alonso, ignorando totalmente i tentativi del servitore che cerca in ogni modo di dissuaderla.</p>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=Zsq5cwGnnQk" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/Zsq5cwGnnQk/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni: Curro Violento con Jana ! Manuel muore?</span></a></li><li><a href="https://www.youtube.com/watch?v=Pdq1xRl1G6M" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/Pdq1xRl1G6M/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni Settimana 19 - 23 Giugno: Manuel si dichiara!</span></a></li><li><a href="https://www.youtube.com/watch?v=ce3KZ50cZr4" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/ce3KZ50cZr4/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA: Jana scopre la verità su Curro - Leonor prova a togliersi la vita, chi la salva?</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Manuel ha fatto bene a intervenire, o ha peggiorato la posizione di Jana nella tenuta?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=RL3FuM5jnlE">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di La Promessa</h2><div class="griglia"><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/"><div class="foto"><img src="https://i.ytimg.com/vi/Rp8VhxDiDSk/hqdefault.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></h3>
+    <div class="quando">7 settembre 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/"><div class="foto"><img src="https://i.ytimg.com/vi/8JHt6ogwxQw/hqdefault.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Ángela beve tutto, Curro sfonda la porta</a></h3>
+    <div class="quando">6 settembre 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/"><div class="foto"><img src="/img/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Curro nasconde Ángela, Lorenzo furioso</a></h3>
+    <div class="quando">6 settembre 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=La Promessa 26-30 giugno, Curro lancia un vassoio addosso a Jana: Manuel lo blocca e lo costringe a chiederle scusa — https://serietvfans.com/la-promessa/la-promessa-26-30-giugno-curro-lancia-un-vassoio-addosso-a-jana-manuel-lo-blocca/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/la-promessa/la-promessa-26-30-giugno-curro-lancia-un-vassoio-addosso-a-jana-manuel-lo-blocca/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/la-promessa/la-promessa-26-30-giugno-curro-lancia-un-vassoio-addosso-a-jana-manuel-lo-blocca/&text=La Promessa 26-30 giugno, Curro lancia un vassoio addosso a Jana: Manuel lo blocca e lo costringe a chiederle scusa" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">LA PROMESSA Anticipazioni 26-30 Giugno: Manuel si dichiara a Jana - Curro violento</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=RL3FuM5jnlE">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di La Promessa</h3><ol class="numerata"><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Ángela beve tutto, Curro sfonda la porta</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Curro nasconde Ángela, Lorenzo furioso</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>LA PROMESSA Anticipazioni 26-30 Giugno: Manuel si dichiara a Jana - Curro violento</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su La Promessa</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-3-6-settembre-maria-affronta-la-gravidanza-da-sola/">La Promessa anticipazioni 3-6 settembre: Maria affronta la gravidanza da sola</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-carlo-arriva-maria-trema/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Carlo arriva, Maria trema</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/far-away/far-away-anticipazioni-dal-31-agosto-al-4-settembre-chi-ha-donato-il-fegato-a-nare/">Far Away, anticipazioni dal 31 agosto al 4 settembre: chi ha donato il fegato a Nare, e perché adesso sta male lui</a></li><li><a href="/far-away/far-away-dal-31-agosto-la-madre-di-alya-sapeva-tutto-non-ricordo/">Far Away Dal 31 Agosto: la madre di Alya sapeva tutto — «non ricordo»</a></li><li><a href="/forbidden-fruit/forbidden-fruit-dal-31-agosto-il-conto-a-nome-di-halit-che-e-morto/">Forbidden Fruit Dal 31 Agosto: il conto a nome di Halit, che è morto</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

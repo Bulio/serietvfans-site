@@ -12,7 +12,7 @@
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Serie TV Fans">
 <meta property="og:url" content="https://serietvfans.com/la-promessa/la-promessa-chi-ha-pagato-il-segreto-di-curro-quattro-persone-in-quindici-anni-e/">
-<meta property="og:image" content="https://serietvfans.com/social.svg">
+<meta property="og:image" content="https://serietvfans.com/img/la-promessa-chi-ha-pagato-il-segreto-di-curro-quattro-persone-in-quindici-anni-e.jpg">
 <meta property="og:locale" content="it_IT">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#7b1e2b">
@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -314,12 +363,12 @@ if(l.length){el.src=l.shift();el.dataset.fb=JSON.stringify(l)}else{el.onerror=nu
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7778653397776213" crossorigin="anonymous"></script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "96259d7e67ce47fba4573364859712a6"}'></script>
 <script>(function(){var f=0;function go(){if(f)return;f=1;(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","y3rpoig6jk");}["pointerdown","keydown","touchstart","scroll"].forEach(function(v){addEventListener(v,go,{once:1,passive:1})});setTimeout(go,2500)})();</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "La Promessa, chi ha pagato il segreto di Curro: quattro persone in quindici anni, e l'unico che non ha pagato niente", "datePublished": "2026-08-23", "dateModified": "2026-08-23", "description": "Un segreto non si tiene da solo: costa. Quello sulle origini di Curro è costato a quattro persone diverse, in quattro modi diversi, nell'arco di quindici anni. Ecco il conto, uno per uno — e la persona che, alla fine, non ha pagato assolutamente niente.", "inLanguage": "it-IT", "mainEntityOfPage": "https://serietvfans.com/la-promessa/la-promessa-chi-ha-pagato-il-segreto-di-curro-quattro-persone-in-quindici-anni-e/", "image": [], "author": {"@type": "Organization", "name": "Serie TV Fans", "url": "https://serietvfans.com/chi-siamo/"}, "publisher": {"@type": "Organization", "name": "Serie TV Fans", "logo": {"@type": "ImageObject", "url": "https://serietvfans.com/favicon.svg"}}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "La Promessa, chi ha pagato il segreto di Curro: quattro persone in quindici anni, e l'unico che non ha pagato niente", "datePublished": "2026-08-23", "dateModified": "2026-09-07", "description": "Un segreto non si tiene da solo: costa. Quello sulle origini di Curro è costato a quattro persone diverse, in quattro modi diversi, nell'arco di quindici anni. Ecco il conto, uno per uno — e la persona che, alla fine, non ha pagato assolutamente niente.", "inLanguage": "it-IT", "mainEntityOfPage": "https://serietvfans.com/la-promessa/la-promessa-chi-ha-pagato-il-segreto-di-curro-quattro-persone-in-quindici-anni-e/", "image": ["https://serietvfans.com/img/la-promessa-chi-ha-pagato-il-segreto-di-curro-quattro-persone-in-quindici-anni-e.jpg"], "author": {"@type": "Organization", "name": "Serie TV Fans", "url": "https://serietvfans.com/chi-siamo/"}, "publisher": {"@type": "Organization", "name": "Serie TV Fans", "logo": {"@type": "ImageObject", "url": "https://serietvfans.com/favicon.svg"}}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://serietvfans.com/"}, {"@type": "ListItem", "position": 2, "name": "La Promessa", "item": "https://serietvfans.com/serie/la-promessa/"}, {"@type": "ListItem", "position": 3, "name": "La Promessa, chi ha pagato il segreto di Curro: quattro persone in quindici anni, e l'unico che non ha pagato niente"}]}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -332,62 +381,88 @@ if(l.length){el.src=l.shift();el.dataset.fb=JSON.stringify(l)}else{el.onerror=nu
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/la-promessa/">La Promessa</a> › La Promessa, chi ha pagato il segreto di Curro: quattro persone in quindici anni, e l&#x27;unico che non ha pagato niente</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/la-promessa/">La Promessa</a>
   <h1>La Promessa, chi ha pagato il segreto di Curro: quattro persone in quindici anni, e l&#x27;unico che non ha pagato niente</h1>
-  <div class="firma">Redazione Serie TV Fans · domenica 23 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-23">domenica 23 agosto 2026</time></span><span>aggiornato il 7 settembre 2026</span><span>6 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Un segreto non si tiene da solo: costa. Quello sulle origini di Curro è costato a quattro persone diverse, in quattro modi diversi, nell&#x27;arco di quindici anni. Ecco il conto, uno per uno — e la persona che, alla fine, non ha pagato assolutamente niente.</p><ol><li><a href="#c1">I fatti, prima di tutto</a></li><li><a href="#c2">Prima: Dolores paga con la vita</a></li><li><a href="#c3">Seconda: Eugenia paga con la testa</a></li><li><a href="#c4">Terza: Mariana paga col proprio nome — ed è la parte che sfugge a tutti</a></li><li><a href="#c5">Quarto: Curro, e la bugia che non riguardava suo padre</a></li><li><a href="#c6">Il conto, e chi non ha pagato niente</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>La Promessa</strong> — Rete 4 · in streaming su Mediaset Infinity</span></div>
-  <figure class="copertina"><img src="/fallback/la-promessa.svg" alt="La Promessa" width="1280" height="720"><figcaption>La Promessa</figcaption></figure>
-  <p class="occhiello">Un segreto non si tiene da solo: costa. Quello sulle origini di Curro è costato a quattro persone diverse, in quattro modi diversi, nell&#x27;arco di quindici anni. Ecco il conto, uno per uno — e la persona che, alla fine, non ha pagato assolutamente niente.</p>
+  <figure class="copertina"><img src="/img/la-promessa-chi-ha-pagato-il-segreto-di-curro-quattro-persone-in-quindici-anni-e.jpg" alt="La Promessa"><figcaption>Immagine d&#x27;ambiente — La Promessa</figcaption></figure>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   
   <div class="corpo">
   <p><strong>Non è «chi è il vero padre di Curro» — quella la sanno tutti. La domanda vera è chi ha sostenuto il costo di quel silenzio. Una ci ha rimesso la vita, una la ragione, una il proprio nome.</strong></p>
   <p>C&#x27;è una domanda che alla Promessa nessuno fa mai ad alta voce. Non è «chi è il vero padre di Curro»: quella la fanno tutti, e la risposta ormai la sanno anche i muri. La domanda vera è un&#x27;altra — quel segreto, chi l&#x27;ha pagato?</p>
 <p>Perché un segreto non si tiene da solo. Costa. E guardandolo bene, il segreto sull&#x27;origine di Curro è costato a quattro persone diverse, in quattro modi diversi, nell&#x27;arco di quindici anni. Una ci ha rimesso la vita. Una la ragione. Una il proprio nome. E l&#x27;ultimo, Curro, ci ha rimesso una cosa che non si vede: l&#x27;idea di chi era.</p>
-<h2>I fatti, prima di tutto</h2>
+<h2 id="c1">I fatti, prima di tutto</h2>
 <p>Quindici anni prima di dove comincia la soap, alla Promessa lavora una cameriera. Si chiama Dolores, ha una figlia — Mariana — e un figlio piccolo, Marcos.</p>
 <p>Il marito di Dolores, il padre di Mariana, è morto anni prima. E qui c&#x27;è il dettaglio che regge tutto il resto: quell&#x27;uomo muore circa quattro anni prima che nasca Marcos. Quattro anni. È aritmetica, non è un sospetto.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>Vuol dire che Mariana e Marcos hanno la stessa madre ma non lo stesso padre. E vuol dire che Dolores, dopo essere rimasta vedova, ha avuto un figlio da qualcun altro dentro quella casa. Quel qualcun altro è il marchese, Alonso de Luján. Da questa frase in poi comincia il conto.</p>
-<h2>Prima: Dolores paga con la vita</h2>
+<h2 id="c2">Prima: Dolores paga con la vita</h2>
 <p>Nel 1899 Dolores prova ad andarsene dalla tenuta. Non sappiamo con quante intenzioni di parlare: sappiamo che se ne va. E non ci arriva. Viene uccisa mentre scappa, davanti agli occhi di sua figlia.</p>
 <p>Vale la pena fermarsi su questa immagine, perché è la scena da cui nasce tutta la soap: una bambina che vede ammazzare sua madre e resta sola, con un fratellino che le viene tolto lo stesso giorno.</p>
 <p>Da quel momento Marcos smette di esistere. Al suo posto, dentro la tenuta, compare un bambino che si chiama Curro ed è registrato come figlio di due persone che con lui non c&#x27;entrano niente.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Seconda: Eugenia paga con la testa</h2>
+<h2 id="c3">Seconda: Eugenia paga con la testa</h2>
 <p>Il bambino viene attribuito a doña Eugenia, sorella di Cruz, e a suo marito Lorenzo de la Mata.</p>
 <p>Pensate a cosa significa concretamente. Non stiamo parlando di un&#x27;adozione discreta e affettuosa: stiamo parlando di una donna a cui viene appoggiato in braccio il figlio che suo cognato ha avuto da una cameriera, e a cui viene chiesto di passare il resto della vita a chiamarlo figlio suo.</p>
 <p>Eugenia finisce in un sanatorio, e non ci finisce per caso: è sua sorella Cruz a rispedircela, perché Cruz è disposta a qualunque cosa pur di tenere chiusi i segreti dei Luján.</p>
 <p>E qui c&#x27;è la cosa più crudele di tutta la faccenda. Eugenia, chiusa là dentro, si ricorda dei pezzi: ha in mente frammenti decisivi. Ma è in un sanatorio, e la parola di una persona che sta in un sanatorio non vale niente per nessuno. È il modo più pulito che esista per zittire un testimone — non serve farlo tacere, basta metterlo in un posto dove quello che dice non conta.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Terza: Mariana paga col proprio nome — ed è la parte che sfugge a tutti</h2>
+<h2 id="c4">Terza: Mariana paga col proprio nome — ed è la parte che sfugge a tutti</h2>
 <p>Passano quindici anni. La bambina che ha visto morire sua madre è diventata una donna, e fa la cosa che nessuno si aspetterebbe: torna. Torna proprio là dentro, alla Promessa, per cercare suo fratello.</p>
 <p>Solo che non può tornarci da Mariana. Se si presenta col suo vero nome non entra: è la figlia della donna uccisa mentre scappava da quella casa. Quindi si inventa un&#x27;altra persona, prende un nome che non è il suo e si fa assumere come serva. Quel nome è Jana.</p>
 <p>Ed è un dettaglio che al pubblico è in gran parte sfuggito. Noi la chiamiamo Jana per tutta la serie, la amiamo con quel nome, piangiamo con quel nome. Ma Jana non è mai esistita: è un travestimento. Quella ragazza ha dato via il proprio nome per poter stare nella stessa stanza di suo fratello senza poterglielo dire.</p>
 <p>Ed è la prova stessa a inchiodarla. Jana va al cimitero, si mette davanti alla lapide di suo padre e legge la data: quattro anni prima della nascita di Curro. In quell&#x27;istante capisce due cose insieme — che Curro è suo fratello per parte di madre, e che suo padre non c&#x27;entra niente. Cioè che il padre di Curro è qualcun altro. Qualcuno che sta ancora dentro quella casa, vivo, seduto a capotavola.</p>
-<h2>Quarto: Curro, e la bugia che non riguardava suo padre</h2>
+<h2 id="c5">Quarto: Curro, e la bugia che non riguardava suo padre</h2>
 <p>Curro cresce dentro la tenuta convinto di essere figlio di Lorenzo de la Mata. Peccato che Lorenzo lo tratti come un peso da tollerare. E quando comincia a farsi delle domande, Lorenzo non lo rassicura: lo minaccia, facendogli capire molto chiaramente che se continua a scavare ci saranno conseguenze.</p>
 <p>Tutti pensano che il colpo grosso per Curro sia scoprire chi è suo padre. Noi crediamo di no, e che il colpo sia un altro: a Curro non hanno mentito su chi è suo padre, gli hanno mentito su chi è lui.</p>
 <p>Perché fino a quel giorno Curro si è pensato per quello che è cresciuto credendo di essere: un signorino, uno di sopra, uno che scende in cucina solo di passaggio. E la verità non lo promuove — lo sposta. Sua madre non era una signora, era una cameriera come quelle a cui lui dà ordini. Sua sorella non è una nobildonna: è la serva che gli rifà la stanza.</p>
 <p>Non ha scoperto di avere un padre importante. Ha scoperto di stare dalla parte sbagliata della scala di servizio, e di esserci sempre stato.</p>
-<h2>Il conto, e chi non ha pagato niente</h2>
+<h2 id="c6">Il conto, e chi non ha pagato niente</h2>
 <p>Mettiamoli in fila. Dolores: morta. Eugenia: chiusa in un sanatorio, con la memoria di una verità che nessuno le lascia dire. Mariana: quindici anni sotto falso nome. Curro: cresciuto da un uomo che lo disprezza, e che quel disprezzo se l&#x27;era guadagnato per un motivo che il ragazzo non poteva conoscere.</p>
 <p>Quattro persone. E chi non ha pagato niente? Alonso.</p>
 <p>Il marchese ha continuato a fare il marchese: a sedersi a capotavola, a essere chiamato don Alonso, a decidere. Il suo cognome è arrivato integro fino a oggi. Tutto quello che è successo in quella casa — la cameriera ammazzata, la cognata in sanatorio, la ragazza sotto falso nome, il ragazzo cresciuto nella bugia — è servito a questo. A una firma che restasse pulita.</p>
 <p>E qui aggiungiamo una lettura nostra, che non è un fatto: non crediamo che sia stato Alonso a costruire questo silenzio. Crediamo che se lo sia lasciato costruire intorno da altri — e che questo lo renda peggio, non meglio, perché uno che ordina almeno sceglie. Alonso ha lasciato che qualcun altro sistemasse la faccenda, e poi ha vissuto tranquillamente in mezzo alla sistemazione.</p>
 <p>Resta un ultimo dettaglio che rende tutto insopportabile. Mariana è tornata alla Promessa per una ragione sola: portarsi via suo fratello. Ha rinunciato al proprio nome per quindici anni per riuscirci. E alla fine, quel viaggio, non l&#x27;ha finito lei.</p>
   </div>
-  <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=3cDNweyU_C0" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/3cDNweyU_C0/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni: Curro scopre lo scioccante segreto di Ramona! Lo dirà a Jana?</span></a></li><li><a href="https://www.youtube.com/watch?v=7xFeJMONDOI" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/7xFeJMONDOI/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA - Puntate 17-21 Luglio - Eugenia racconterà a Jana la verità su Curro?</span></a></li><li><a href="https://www.youtube.com/watch?v=8eAoXYVLnbk" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/8eAoXYVLnbk/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni: Cosa nasconde Romulo? Curro riconosce Jana?</span></a></li></ul></div>
+  <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=3cDNweyU_C0" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/3cDNweyU_C0/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni: Curro scopre lo scioccante segreto di Ramona! Lo dirà a Jana?</span></a></li><li><a href="https://www.youtube.com/watch?v=7xFeJMONDOI" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/7xFeJMONDOI/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA - Puntate 17-21 Luglio - Eugenia racconterà a Jana la verità su Curro?</span></a></li><li><a href="https://www.youtube.com/watch?v=9BFFndCpAoo" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/9BFFndCpAoo/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA ANTICIPAZIONI : Chi è il Padre di Curro e il grande complotto de La Promessa!</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Eugenia era complice o vittima? Ha accettato, o le è stato imposto? Alonso è meno colpevole perché non ha ordinato lui il silenzio, o proprio per questo lo è di più?</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di La Promessa</h2><div class="griglia"><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/"><div class="foto"><img src="https://i.ytimg.com/vi/Rp8VhxDiDSk/hqdefault.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></h3>
+    <div class="quando">7 settembre 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/"><div class="foto"><img src="https://i.ytimg.com/vi/8JHt6ogwxQw/hqdefault.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Ángela beve tutto, Curro sfonda la porta</a></h3>
+    <div class="quando">6 settembre 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/"><div class="foto"><img src="/img/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Curro nasconde Ángela, Lorenzo furioso</a></h3>
+    <div class="quando">6 settembre 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=La Promessa, chi ha pagato il segreto di Curro: quattro persone in quindici anni, e l&#x27;unico che non ha pagato niente — https://serietvfans.com/la-promessa/la-promessa-chi-ha-pagato-il-segreto-di-curro-quattro-persone-in-quindici-anni-e/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/la-promessa/la-promessa-chi-ha-pagato-il-segreto-di-curro-quattro-persone-in-quindici-anni-e/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/la-promessa/la-promessa-chi-ha-pagato-il-segreto-di-curro-quattro-persone-in-quindici-anni-e/&text=La Promessa, chi ha pagato il segreto di Curro: quattro persone in quindici anni, e l&#x27;unico che non ha pagato niente" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  
-  <div class="box"><h3>Ancora su La Promessa</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-3-6-settembre-maria-affronta-la-gravidanza-da-sola/">La Promessa anticipazioni 3-6 settembre: Maria affronta la gravidanza da sola</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-carlo-arriva-maria-trema/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Carlo arriva, Maria trema</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/far-away/far-away-anticipazioni-dal-31-agosto-al-4-settembre-chi-ha-donato-il-fegato-a-nare/">Far Away, anticipazioni dal 31 agosto al 4 settembre: chi ha donato il fegato a Nare, e perché adesso sta male lui</a></li><li><a href="/far-away/far-away-dal-31-agosto-la-madre-di-alya-sapeva-tutto-non-ricordo/">Far Away Dal 31 Agosto: la madre di Alya sapeva tutto — «non ricordo»</a></li><li><a href="/forbidden-fruit/forbidden-fruit-dal-31-agosto-il-conto-a-nome-di-halit-che-e-morto/">Forbidden Fruit Dal 31 Agosto: il conto a nome di Halit, che è morto</a></li></ul></div>
+  <div class="box"><h3>Ultime di La Promessa</h3><ol class="numerata"><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Ángela beve tutto, Curro sfonda la porta</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Curro nasconde Ángela, Lorenzo furioso</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>Ogni anticipazione, prima in video sul canale Serie TV Fans</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
+  </div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

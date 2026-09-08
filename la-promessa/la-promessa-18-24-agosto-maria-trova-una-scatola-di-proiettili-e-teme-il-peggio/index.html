@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/la-promessa/">La Promessa</a> › La Promessa 18-24 agosto, María trova una scatola di proiettili e teme il peggio: crede che Jana voglia farla pagare al Barone</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/la-promessa/">La Promessa</a>
   <h1>La Promessa 18-24 agosto, María trova una scatola di proiettili e teme il peggio: crede che Jana voglia farla pagare al Barone</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>8 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Settimana in cui la tensione dentro la tenuta diventa fisica. Jana è convinta che il Barone sia legato all&#x27;omicidio di sua madre e lo affronta; lui le tende una trappola per farla passare per ladra. Poi María trova una scatola di proiettili e si convince che l&#x27;amica stia per fare qualcosa di irreparabile — mentre Pía si frappone per proteggere Teresa da quello stesso uomo.</p><ol><li><a href="#c1">Il ritratto nell&#x27;hangar</a></li><li><a href="#c2">Chi è María Fernández, la domestica che trova quella scatola</a></li><li><a href="#c3">La trappola del Barone</a></li><li><a href="#c4">Pía si mette in mezzo</a></li><li><a href="#c5">La scatola di proiettili</a></li><li><a href="#c6">Il Barone parte, i suoi nemici restano dentro</a></li><li><a href="#c7">Come Martina scopre il segreto di Leonor attraverso Curro</a></li><li><a href="#c8">Perché Pía decide di affrontare il Barone per Teresa</a></li><li><a href="#c9">Cosa spinge Salvador al fronte nonostante i risparmi di María</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>La Promessa</strong> — Rete 4 · in streaming su Mediaset Infinity</span></div>
   
-  <p class="occhiello">Settimana in cui la tensione dentro la tenuta diventa fisica. Jana è convinta che il Barone sia legato all&#x27;omicidio di sua madre e lo affronta; lui le tende una trappola per farla passare per ladra. Poi María trova una scatola di proiettili e si convince che l&#x27;amica stia per fare qualcosa di irreparabile — mentre Pía si frappone per proteggere Teresa da quello stesso uomo.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: La Promessa 18-24 agosto, María trova una scatola di proiettili e teme il peggio: crede che Jana voglia farla pagare al Barone" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/Ga0hy4ehusY/maxresdefault.jpg" alt="La Promessa 18-24 agosto, María trova una scatola di proiettili e teme il peggio: crede che Jana voglia farla pagare al Barone" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/Ga0hy4ehusY/hqdefault.jpg 480w, https://i.ytimg.com/vi/Ga0hy4ehusY/sddefault.jpg 640w, https://i.ytimg.com/vi/Ga0hy4ehusY/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/Ga0hy4ehusY/hqdefault.jpg&quot;, &quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,47 +409,69 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>Jimena regala a Manuel una macchina fotografica e pretende di posare insieme a Jana nell&#x27;hangar.</strong></p>
-  <h2>Il ritratto nell&#x27;hangar</h2>
+  <h2 id="c1">Il ritratto nell&#x27;hangar</h2>
 <p>Ufficializzato il fidanzamento con l&#x27;anello, Jimena regala a Manuel una macchina fotografica che lui comincia a usare di continuo. In uno degli scatti insiste per farsi ritrarre insieme a Jana proprio nell&#x27;hangar, il luogo che lega i due più di ogni altro: una posa che si trasforma nel momento più imbarazzante della settimana, e che a Jana costa più di quanto lasci vedere.</p>
-<h2>Chi è María Fernández, la domestica che trova quella scatola</h2>
+<h2 id="c2">Chi è María Fernández, la domestica che trova quella scatola</h2>
 <p>María Fernández è una delle ragazze che tengono in piedi la casa dal piano di sotto, ed è uno dei personaggi attraverso cui la serie racconta la tenuta vista dalla servitù. Il suo legame con Salvador è la storia più fragile della Promessa: quando lui viene arrestato per il documento falsificato e poi destinato al fronte, è lei a tirare fuori i propri risparmi per pagargli l&#x27;esenzione — soldi che non bastano. Ed è anche l&#x27;amica che sta accanto a Jana nei momenti peggiori. Per questo, quando le capita tra le mani una scatola di proiettili, non pensa a un pericolo generico: pensa alla persona a cui è più affezionata e alla vendetta che la vede covare da settimane.</p>
-<h2>La trappola del Barone</h2>
+<h2 id="c3">La trappola del Barone</h2>
 <p>Jana non riesce a togliersi dalla testa l&#x27;anello visto al dito del Barone, identico a quello di uno degli assassini di sua madre, e lo affronta a viso aperto. Lui risponde tendendole una trappola per farla accusare di furto e poi racconta tutto alla figlia; Cruz, a quel punto, mette Pía davanti a un aut aut — o riesce a far moderare quella ragazza, o Jana dovrà lasciare la tenuta. Il Barone, però, è a sua volta braccato: continua a ricevere biglietti anonimi minacciosi, accusa Rómulo, e alla fine, dopo una discussione con Alonso, decide di partire per Córdova.</p>
-<h2>Pía si mette in mezzo</h2>
+<h2 id="c4">Pía si mette in mezzo</h2>
 <p>C&#x27;è un altro fronte che la governante presidia in silenzio: quando capisce quali siano le intenzioni del Barone nei confronti di Teresa, gli si para davanti per impedirgli di approfittare di lei, e la ragazza — resa finalmente consapevole del pericolo che sta correndo — trova il coraggio di chiedere aiuto. Pía lo affronta anche sul pestaggio ordinato ai danni di Rómulo, che aveva scatenato i primi sospetti di tutta la servitù.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>La scatola di proiettili</h2>
+<h2 id="c5">La scatola di proiettili</h2>
 <p>È in questo clima che María trova una scatola di proiettili e si convince che Jana stia preparando qualcosa di folle contro il Barone. In realtà, a quel punto, ad affrontarlo è Alonso. Nel frattempo Martina, preoccupata dal tono delle lettere di Leonor, incalza Curro finché lui non le confessa che la cugina ha tentato di togliersi la vita; Salvador viene arrestato per il documento falsificato e poi rilasciato, ma senza scampo dovrà partire per la guerra — e i risparmi che María Fernández gli offre per pagare l&#x27;esenzione non bastano. Alla fine della settimana Jana raggiunge Manuel e gli dichiara il suo amore, sapendo che è impossibile: gli dice che lascerà La Promessa.</p>
-<h2>Il Barone parte, i suoi nemici restano dentro</h2>
+<h2 id="c6">Il Barone parte, i suoi nemici restano dentro</h2>
 <p>Il viaggio a Córdova sembra chiudere la settimana e invece lascia tutto aperto. Il Barone se ne va sapendo due cose che prima non sapeva: che una domestica ha riconosciuto il suo anello e che qualcuno, dentro quelle mura, gli fa recapitare biglietti minatori senza che lui riesca a dargli un nome — al punto da accusare Rómulo, che con ogni evidenza non c&#x27;entra. Il risultato è che la posizione di Jana non dipende più da lei ma da Pía: se la governante non riesce a tenerla a freno, l&#x27;aut aut di Cruz si trasforma in un licenziamento. Ed è esattamente il momento in cui Jana annuncia che se ne andrà da sola. Chi ha scritto quei biglietti, però, è ancora lì e ora ha campo libero.</p>
-<h2>Come Martina scopre il segreto di Leonor attraverso Curro</h2>
+<h2 id="c7">Come Martina scopre il segreto di Leonor attraverso Curro</h2>
 <p>Le lettere scritte da Leonor cominciano a mostrare un tono decisamente insolito, tanto da allarmare in modo profondo Martina. La ragazza intuisce che dietro quelle parole si nasconde qualcosa di grave e non intende far finta di nulla, spinta dal desiderio di comprendere cosa stia davvero accadendo alla cugina. Per questa ragione sceglie di affrontare Curro in maniera diretta e insistente, mettendolo alle strette affinché le dica tutta la verità. Il giovane, pressato dalle continue domande della cugina, cede infine alla tensione e le rivela un dettaglio sconvolgente riguardante la ragazza. Curro le confessa infatti che Leonor ha cercato di togliersi la vita, un gesto estremo che stravolge le prospettive di Martina e trasforma i dubbi in una dolorosa realtà quotidiana.</p>
 <p>La confessione ottenuta da Curro chiarisce finalmente il motivo dell&#x27;inquietudine manifestata da Leonor nei suoi messaggi e getta una luce del tutto nuova sulle dinamiche della famiglia. Martina si trova così a dover gestire un peso enorme, consapevole di una verità drammatica che cambia la percezione della situazione all&#x27;interno della tenuta. Questo drammatico evento segna un punto di svolta nel rapporto tra i cugini, lasciando Martina di fronte alla necessità di proteggere un segreto così delicato. Nel frattempo, il clima di sospetto generale rende l&#x27;ambiente ancora più teso, dimostrando come le sofferenze personali dei giovani protagonisti si intreccino con le ombre che continuano ad addensarsi sopra La Promessa e sulle vite dei suoi abitanti.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Perché Pía decide di affrontare il Barone per Teresa</h2>
+<h2 id="c8">Perché Pía decide di affrontare il Barone per Teresa</h2>
 <p>La presenza del Barone all&#x27;interno della tenuta diventa una minaccia sempre più concreta e pericolosa, specialmente quando l&#x27;uomo inizia a rivolgere le sue mire verso la giovane Teresa. La governante Pía intuisce immediatamente il grave rischio che la ragazza sta correndo e decide di non rimanere a guardare. Senza alcuna esitazione, Pía si frappone fisicamente tra l&#x27;uomo e la serva, decisa a bloccare ogni sua intenzione abusiva. Questo atto di coraggio ha un effetto decisivo su Teresa, che fino a quel momento non aveva compreso del tutto la gravità della situazione. Trovata la necessaria consapevolezza, la giovane trova finalmente la forza di uscire dal proprio isolamento e di chiedere un supporto concreto per mettersi al sicuro da ulteriori pericoli.</p>
 <p>Il confronto con il Barone non si limita tuttavia alla sola protezione di Teresa, poiché Pía decide di affrontarlo apertamente anche per un altro episodio inquietante. La governante gli chiede conto del vile pestaggio ordinato ai danni di Rómulo, un&#x27;aggressione brutale che aveva sollevato fortissimi sospetti tra tutto il personale di servizio. Oltre a gestire queste accuse, Pía si trova costretta a fare i conti con le pesanti pressioni esercitate da Cruz. La marchesa le impone infatti un ultimatum perentorio riguardante Jana: la governante deve riuscire a calmarla e a frenare la sua condotta, altrimenti la giovane domestica sarà inevitabilmente licenziata e cacciata via per sempre dalla tenuta, senza alcuna possibilità di appello.</p>
 <p>Le tensioni accumulated spingono infine il Barone a prendere una decisione drastica, favorita anche dai continui messaggi anonimi ricchi di minacce che continua a ricevere. Convinto ingiustamente che l&#x27;autore di quei biglietti intimidatori sia Rómulo, e dopo aver avuto una dura discussione con Alonso, l&#x27;uomo sceglie di abbandonare temporaneamente La Promessa per trasferirsi a Córdova. Tuttavia, la sua partenza non risolve affatto i problemi rimasti in sospeso nel palazzo. Con il Barone lontano, l&#x27;identità della persona misteriosa che gli inviava i messaggi resta avvolta nel mistero, mentre la posizione di Jana si fa sempre più precaria, sospesa tra le rigide condizioni fissate da Cruz e la volontà della stessa domestica di andarsene per sempre.</p>
-<h2>Cosa spinge Salvador al fronte nonostante i risparmi di María</h2>
+<h2 id="c9">Cosa spinge Salvador al fronte nonostante i risparmi di María</h2>
 <p>La drammatica vicenda di Salvador prende una piega drammatica quando il giovane viene improvvisamente arrestato dalle autorità a causa di un documento falsificato. Sebbene in un secondo momento riesca a ottenere la scarcerazione, la sua libertà si rivela pura illusione, poiché il suo destino appare ormai irrimediabilmente segnato. Il ragazzo viene infatti immediatamente destinato a partire per il fronte di guerra, una condanna che getta nel panico la povera María Fernández. La domestica, profondamente legata a lui, decide di compiere un enorme sacrificio personale pur di salvarlo da quel tragico destino. Senza alcuna esitazione, racimola tutti i risparmi accumulati con il duro lavoro per tentare di pagarne l&#x27;esenzione ufficiale dalla leva militare.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>Purtroppo, il gesto disperato e generoso di María Fernández non produce l&#x27;effetto sperato. I soldi messi a disposizione dalla ragazza si rivelano del tutto insufficienti a coprire la cifra richiesta per evitare la chiamata alle armi, lasciando Salvador senza alcuna via di scampo di fronte all&#x27;imminente partenza per il conflitto. Questa dolorosa sconfitta lascia la serva in uno stato di profonda angoscia ed esaurimento emotivo. È proprio in questo momento di estrema fragilità che la ragazza si imbatte nella scatola di proiettili nascosta. Sopraffatta dalle preoccupazioni per il destino di Salvador e conoscendo l&#x27;odio della sua amica Jana verso il Barone, María si convince subito che sia in atto un piano spaventoso e irreparabile.</p>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=Pdq1xRl1G6M" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/Pdq1xRl1G6M/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni Settimana 19 - 23 Giugno: Manuel si dichiara!</span></a></li><li><a href="https://www.youtube.com/watch?v=RL3FuM5jnlE" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/RL3FuM5jnlE/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni 26 - 30 Giugno: Manuel si dichiara a Jana -Curro violento</span></a></li><li><a href="https://www.youtube.com/watch?v=2ALKrKLnSpw" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/2ALKrKLnSpw/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>ABEL SCIOCCATO,VEDE JANA E MANUEL ABBRACCIATI!MA NON SI ARRENDE Anticipazioni La Promessa 1-7 L</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Pía ha fatto bene a mettersi tra il Barone e Teresa, rischiando il posto?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=Ga0hy4ehusY">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di La Promessa</h2><div class="griglia"><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/"><div class="foto"><img src="https://i.ytimg.com/vi/Rp8VhxDiDSk/hqdefault.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></h3>
+    <div class="quando">7 settembre 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/"><div class="foto"><img src="https://i.ytimg.com/vi/8JHt6ogwxQw/hqdefault.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Ángela beve tutto, Curro sfonda la porta</a></h3>
+    <div class="quando">6 settembre 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/"><div class="foto"><img src="/img/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Curro nasconde Ángela, Lorenzo furioso</a></h3>
+    <div class="quando">6 settembre 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=La Promessa 18-24 agosto, María trova una scatola di proiettili e teme il peggio: crede che Jana voglia farla pagare al Barone — https://serietvfans.com/la-promessa/la-promessa-18-24-agosto-maria-trova-una-scatola-di-proiettili-e-teme-il-peggio/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/la-promessa/la-promessa-18-24-agosto-maria-trova-una-scatola-di-proiettili-e-teme-il-peggio/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/la-promessa/la-promessa-18-24-agosto-maria-trova-una-scatola-di-proiettili-e-teme-il-peggio/&text=La Promessa 18-24 agosto, María trova una scatola di proiettili e teme il peggio: crede che Jana voglia farla pagare al Barone" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">LA PROMESSA Anticipazioni 18-24 agosto: Jana si dichiara a Manuel ma...</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=Ga0hy4ehusY">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di La Promessa</h3><ol class="numerata"><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Ángela beve tutto, Curro sfonda la porta</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Curro nasconde Ángela, Lorenzo furioso</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>LA PROMESSA Anticipazioni 18-24 agosto: Jana si dichiara a Manuel ma...</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su La Promessa</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-3-6-settembre-maria-affronta-la-gravidanza-da-sola/">La Promessa anticipazioni 3-6 settembre: Maria affronta la gravidanza da sola</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-carlo-arriva-maria-trema/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Carlo arriva, Maria trema</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/far-away/far-away-anticipazioni-dal-31-agosto-al-4-settembre-chi-ha-donato-il-fegato-a-nare/">Far Away, anticipazioni dal 31 agosto al 4 settembre: chi ha donato il fegato a Nare, e perché adesso sta male lui</a></li><li><a href="/far-away/far-away-dal-31-agosto-la-madre-di-alya-sapeva-tutto-non-ricordo/">Far Away Dal 31 Agosto: la madre di Alya sapeva tutto — «non ricordo»</a></li><li><a href="/forbidden-fruit/forbidden-fruit-dal-31-agosto-il-conto-a-nome-di-halit-che-e-morto/">Forbidden Fruit Dal 31 Agosto: il conto a nome di Halit, che è morto</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

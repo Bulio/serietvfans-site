@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/endless-love/">Endless Love</a> › Endless Love, l&#x27;alleata che Emir non aveva previsto: Müjgan avverte Nihan — «Lui sa» — mentre il figlio la spia con telecamere e telefoni deviati</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/endless-love/">Endless Love</a>
   <h1>Endless Love, l&#x27;alleata che Emir non aveva previsto: Müjgan avverte Nihan — «Lui sa» — mentre il figlio la spia con telecamere e telefoni deviati</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Nella seconda stagione la donna uscita da quasi trent&#x27;anni di coma diventa l&#x27;arma segreta di Nihan: Emir, ignaro della lucidità crescente della madre, le confida piani e ossessioni — e Müjgan memorizza tutto. Fino all&#x27;avvertimento che cambia la partita: Emir sa che Kemal ha scoperto di essere il padre di Deniz. E la sua minaccia è da brividi: «Piuttosto li uccido».</p><ol><li><a href="#c1">La confidente inattesa: dalla riabilitazione all&#x27;alleanza</a></li><li><a href="#c2">La casa-prigione: telecamere nascoste e chiamate deviate</a></li><li><a href="#c3">«Lui sa»: l&#x27;avvertimento su Deniz e la minaccia di morte</a></li><li><a href="#c4">Due incubi speculari: Galip ieri, Emir oggi</a></li><li><a href="#c5">Come Müjgan spezza il controllo tecnologico di Emir</a></li><li><a href="#c6">Perché il passato di Galip tormenta la vita di Nihan</a></li><li><a href="#c7">Cosa spinge Müjgan a rivelare il segreto su Deniz</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>Endless Love</strong> — Serie conclusa in Italia · le puntate su Mediaset Infinity</span></div>
   
-  <p class="occhiello">Nella seconda stagione la donna uscita da quasi trent&#x27;anni di coma diventa l&#x27;arma segreta di Nihan: Emir, ignaro della lucidità crescente della madre, le confida piani e ossessioni — e Müjgan memorizza tutto. Fino all&#x27;avvertimento che cambia la partita: Emir sa che Kemal ha scoperto di essere il padre di Deniz. E la sua minaccia è da brividi: «Piuttosto li uccido».</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: Endless Love, l&#x27;alleata che Emir non aveva previsto: Müjgan avverte Nihan — «Lui sa» — mentre il figlio la spia con telecamere e telefoni deviati" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/xJJ9GpbIhJ0/maxresdefault.jpg" alt="Endless Love, l&#x27;alleata che Emir non aveva previsto: Müjgan avverte Nihan — «Lui sa» — mentre il figlio la spia con telecamere e telefoni deviati" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/xJJ9GpbIhJ0/hqdefault.jpg 480w, https://i.ytimg.com/vi/xJJ9GpbIhJ0/sddefault.jpg 640w, https://i.ytimg.com/vi/xJJ9GpbIhJ0/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/xJJ9GpbIhJ0/hqdefault.jpg&quot;, &quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,45 +409,67 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>«Mi sta facendo rivivere lo stesso incubo che Galip ha inflitto a te»: lo sfogo di Nihan nella stanza di Müjgan salda due prigioniere dello stesso destino, a una generazione di distanza.</strong></p>
-  <h2>La confidente inattesa: dalla riabilitazione all&#x27;alleanza</h2>
+  <h2 id="c1">La confidente inattesa: dalla riabilitazione all&#x27;alleanza</h2>
 <p>Il recupero di Müjgan è lento — le parole faticose dei primi tempi si fanno via via chiare — ma la mente è lucidissima. Ed è proprio questa la trappola in cui cade Emir: considerandola inoffensiva, le confida pensieri e piani senza immaginare che la madre ricordi tutto. Müjgan raccoglie e memorizza ogni dettaglio, trasformandosi nella fonte più preziosa di Nihan: una suocera-alleata che conosce il carnefice meglio di chiunque altro, perché lo ha cresciuto — e perché ha vissuto sulla propria pelle un marito identico.</p>
-<h2>La casa-prigione: telecamere nascoste e chiamate deviate</h2>
+<h2 id="c2">La casa-prigione: telecamere nascoste e chiamate deviate</h2>
 <p>L&#x27;alleanza tra Nihan e Kemal per sfuggire al controllo di Emir si scontra con un sistema di sorveglianza degno di un servizio segreto: telecamere nascoste piazzate strategicamente per monitorare movimenti e conversazioni, e — il dettaglio più inquietante — le chiamate di Nihan deviate sul telefono del marito, che ascolta tutto. Ogni piano viene rilevato e contrattaccato prima ancora di nascere. In questo assedio, gli occhi e le orecchie di Müjgan dentro casa diventano l&#x27;unica falla nel sistema di Emir.</p>
-<h2>«Lui sa»: l&#x27;avvertimento su Deniz e la minaccia di morte</h2>
+<h2 id="c3">«Lui sa»: l&#x27;avvertimento su Deniz e la minaccia di morte</h2>
 <p>La rivelazione capitale arriva in due parole: «Lui sa». Emir è a conoscenza del fatto che Kemal ha scoperto di essere il vero padre di Deniz — e la sua reazione, confidata alla madre, è una minaccia esplicita che toglie il fiato: «Non gli darò Nihan e Deniz. Non permetterò che siano felici: piuttosto li uccido». Müjgan, sconvolta dall&#x27;ossessione del figlio — così intensa «da poterlo condurre perfino alla morte» — sceglie da che parte stare: consegna l&#x27;informazione a Nihan, dandole il vantaggio strategico che aspettava.</p>
-<h2>Due incubi speculari: Galip ieri, Emir oggi</h2>
+<h2 id="c4">Due incubi speculari: Galip ieri, Emir oggi</h2>
 <p>La forza di questo legame sta nella simmetria dei destini: Galip tentò di uccidere Müjgan — quasi trent&#x27;anni di coma — temendo che trovasse la felicità con la bambina che credeva frutto di un tradimento; solo di recente ha scoperto che quella figlia, rivelatasi essere Asu, era legittima. Quando Nihan esplode nella sua stanza — «Non lo amo, e lui lo sa. Mi sta facendo rivivere il tuo stesso incubo» — Müjgan non sente un&#x27;accusa: sente uno specchio. Mentre Vildan teme che Emir possa sfruttare quella vicinanza, le due donne saldano un patto silenzioso di resistenza: la vittima di ieri arma la vittima di oggi. E stavolta, il carnefice non lo vede arrivare.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Come Müjgan spezza il controllo tecnologico di Emir</h2>
+<h2 id="c5">Come Müjgan spezza il controllo tecnologico di Emir</h2>
 <p>La dimora trasformata da Emir in una vera e propria prigione tecnologica rappresenta un ostacolo quasi insormontabile per chiunque cerchi di sfuggire alla sua morsa. Il giovane uomo ha predisposto un sistema di sorveglianza capillare, piazzando telecamere nascoste in punti strategici per monitorare ogni singolo movimento ed evitare che dettagli importanti gli sfuggano. Oltre a questo controllo visivo, Emir utilizza una deviazione sistematica delle chiamate sul proprio telefono, ascoltando direttamente ogni conversazione di Nihan. Questo assedio continuo permette al marito di neutralizzare qualsiasi mossa o piano di fuga prima ancora che possa prendere forma, creando un&#x27;atmosfera soffocante da cui sembra impossibile uscire.</p>
 <p>In questo scenario apparentemente perfetto ed ermetico, il punto debole della strategia di Emir si rivela essere proprio la madre. Dopo quasi trent&#x27;anni trascorsi in uno stato di coma profondo, il recupero fisico e verbale di Müjgan procede in maniera molto lenta e faticosa. Le sue prime parole sono state incerte e difficili da articolare, ma la sua lucidità mentale è rimasta straordinariamente intatta. Convinto che la donna sia del tutto inoffensiva e incapace di comprendere la realtà circostante, Emir commette l&#x27;errore di confidarsi apertamente con lei, trasformando la stanza della madre nel luogo in cui rivela pensieri intimi e strategie senza sospettare alcun pericolo.</p>
 <p>Mentre Vildan esprime forte preoccupazione temendo che Emir possa sfruttare la vicinanza tra Nihan e Müjgan a proprio favore, tra le due donne nasce un&#x27;intesa del tutto inaspettata. Müjgan ascolta attentamente ogni parola del figlio, memorizzando ciascun dettaglio delle sue confessioni per poi trasmetterlo a Nihan. La madre di Emir diventa così l&#x27;unica falla nel sofisticato sistema di controllo architettato dal figlio. Conoscendo a fondo la natura del suo carnefice, avendolo cresciuto e avendo vissuto una sofferenza simile, la donna sceglie di trasformare la propria apparente fragilità nell&#x27;arma strategica più preziosa per difendere Nihan.</p>
-<h2>Perché il passato di Galip tormenta la vita di Nihan</h2>
+<h2 id="c6">Perché il passato di Galip tormenta la vita di Nihan</h2>
 <p>L&#x27;incubo vissuto oggi da Nihan affonda le sue radici in una dolorosa vicenda familiare iniziata decenni prima tra le mura della stessa dinastia. Galip arrivò al punto di tentare di uccidere sua moglie Müjgan, facendola precipitare in un lungo coma durato quasi trent&#x27;anni, a causa della folle gelosia e del timore che la donna potesse trovare la felicità insieme a una bambina creduta frutto di un tradimento. Soltanto di recente è emersa la verità su quella drammatica vicenda, ovvero che quella figlia si è rivelata essere Asu ed era in realtà una figlia legittima, rendendo ancora più assurda la tragedia.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>Quando Nihan entra nella stanza di Müjgan ed esplode in un pianto liberatorio, le sue parole testimoniano una spaventosa continuità generazionale nel comportamento dei due uomini. Esclamando con disperazione di non amare Emir e di essere costretta a rivivere lo stesso identico incubo inflitto in passato da Galip, Nihan trova di fronte a sé una donna che comprende ogni singola sfumatura del suo dolore. Müjgan non percepisce quelle frasi come un&#x27;accusa verso la propria famiglia, ma rivede chiaramente nello specchio del presente la medesima trappola emotiva e la violenza psicologica subita anni prima.</p>
 <p>La drammatica simmetria tra il destino vissuto ieri da Müjgan e quello affrontato oggi da Nihan salda tra le due prigioniere un patto di resistenza silenzioso e indissolubile. Sotto lo sguardo timoroso di Vildan, che teme ritorsioni o inganni da parte di Emir, la vittima del passato decide di armare la vittima del presente fornendole elementi cruciali. Müjgan riconosce nel figlio la medesima ossessione distruttiva che ha guidato le azioni di Galip, e comprende che l&#x27;unico modo per spezzare questa catena di sofferenza è agire di nascosto, colpendo il carnefice proprio dove si sente più sicuro.</p>
-<h2>Cosa spinge Müjgan a rivelare il segreto su Deniz</h2>
+<h2 id="c7">Cosa spinge Müjgan a rivelare il segreto su Deniz</h2>
 <p>La svolta decisiva nella trama matura quando Emir scopre una verità che rischia di distruggere definitivamente le sue illusioni e il suo controllo. Il marito di Nihan viene a sapere che Kemal ha finalmente scoperto di essere il vero padre biologico della piccola Deniz. Messo di fronte a questa consapevolezza, Emir crolla in una spirale di rabbia cieca e confida alla madre intenzioni agghiaccianti. Senza nascondere la propria ossessione, dichiara apertamente che non permetterà mai a Nihan e Kemal di vivere felici insieme al bambino, affermando che piuttosto che cederli o vederli uniti sarebbe disposto persino a ucciderli.</p>
 <p>Le agghiaccianti parole pronunciate da Emir sconvolgono profondamente Müjgan, la quale riconosce la pericolosità estrema dell&#x27;ossessione del figlio, un sentimento così deviato da poterlo condurre direttamente verso la morte. Consapevole dell&#x27;imminente catastrofe, la madre capisce di dover intervenire immediatamente per evitare che la storia si ripeta con esiti ancora più tragici. Scegliendo con fermezza da che parte stare, la donna sfrutta l&#x27;occasione per incontrare Nihan in segreto e pronunciarle due sole ma fondamentali parole: «Lui sa». Questo stringato avvertimento rompe il muro di bugie e mette in guardia la giovane madre.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>Grazie al tempestivo avvertimento fornito da Müjgan riguardo a Deniz, l&#x27;alleanza tra Nihan e Kemal conquista un vantaggio tattico inaspettato all&#x27;interno di una partita difficilissima. Sapere che Emir è perfettamente a conoscenza della paternità di Kemal permette ai due amanti di calibrare le mosse successive e di prevenire le contromosse del loro persecutore. L&#x27;informazione passata dalla madre diventa così l&#x27;unica vera crepa nella fitta rete di sorveglianza e deviazioni telefoniche creata da Emir, consentendo a Nihan di muoversi con maggiore prudenza e di organizzare la propria difesa contro le minacce del marito.</p>
   </div>
-  <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=IXUXDknZI3k" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/IXUXDknZI3k/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>ENDLESS LOVE Anticipazioni 21-22 Marzo: Kemal e Emir, tensione crescente  | Nihan devastata</span></a></li><li><a href="https://www.youtube.com/watch?v=QXpcDyhWhGw" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/QXpcDyhWhGw/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>EMIR PAZZO FURIOSO! RAPISCE DENIZ E COSTRINGE NIHAN A SPARARE A KEMAL PER RIAVERLA! Endless Lov</span></a></li><li><a href="https://www.youtube.com/watch?v=gJbQc3AStYE" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/gJbQc3AStYE/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>ENDLESS LOVE Anticipazioni 30 Marzo: Scacco Matto di Emir! Colpisce Nihan e Kemal nei punti deb</span></a></li></ul></div>
+  <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=IXUXDknZI3k" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/IXUXDknZI3k/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>ENDLESS LOVE Anticipazioni 21-22 Marzo: Kemal e Emir, tensione crescente  | Nihan devastata</span></a></li><li><a href="https://www.youtube.com/watch?v=QXpcDyhWhGw" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/QXpcDyhWhGw/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>EMIR PAZZO FURIOSO! RAPISCE DENIZ E COSTRINGE NIHAN A SPARARE A KEMAL PER RIAVERLA! Endless Lov</span></a></li><li><a href="https://www.youtube.com/watch?v=iYuBiPdu3Wc" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/iYuBiPdu3Wc/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>KEMAL SCIOCCATO DA SUA MADRE:&quot;PERCHE&#x27; HAI UNA FOTO DI DENIZ?&quot;-Anticipazioni Endless Love 2^ Sta</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Müjgan arriverà a testimoniare contro il proprio figlio pur di salvare Nihan e Deniz? E la minaccia di Emir — «piuttosto li uccido» — è disperazione o un piano già in moto?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=xJJ9GpbIhJ0">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di Endless Love</h2><div class="griglia"><article class="scheda">
+  <a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/"><div class="foto"><img src="https://i.ytimg.com/vi/DSiProJJ1ls/hqdefault.jpg" alt="Endless Love" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/"><div class="foto"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/"><div class="foto"><img src="https://i.ytimg.com/vi/uu2oAzTOWQU/hqdefault.jpg" alt="Endless Love" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></h3>
+    <div class="quando">25 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=Endless Love, l&#x27;alleata che Emir non aveva previsto: Müjgan avverte Nihan — «Lui sa» — mentre il figlio la spia con telecamere e telefoni deviati — https://soapoperaitalia.com/endless-love/endless-love-la-trama-completa-perche-nihan-sposa-emir-e-come-finisce/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://soapoperaitalia.com/endless-love/endless-love-la-trama-completa-perche-nihan-sposa-emir-e-come-finisce/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://soapoperaitalia.com/endless-love/endless-love-la-trama-completa-perche-nihan-sposa-emir-e-come-finisce/&text=Endless Love, l&#x27;alleata che Emir non aveva previsto: Müjgan avverte Nihan — «Lui sa» — mentre il figlio la spia con telecamere e telefoni deviati" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">UN&#x27;ALLEATA INSPERATA PER NIHAN E KEMAL? &quot;ATTENTI, EMIR SA TUTTO!&quot; - Endless Love</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=xJJ9GpbIhJ0">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di Endless Love</h3><ol class="numerata"><li><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></li><li><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></li><li><a href="/endless-love/endless-love-chi-e-galip-kozcuoglu-le-due-volte-in-cui-nihan-e-stata-venduta/">Endless Love, chi è Galip Kozcuoğlu: le due volte in cui Nihan è stata venduta</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-zeynep-soydere-perche-emir-lha-scelta-e-cosa-ha-distrutto/">Endless Love, chi è davvero Zeynep Soydere: perché Emir l&#x27;ha scelta e cosa ha distrutto</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>UN&#x27;ALLEATA INSPERATA PER NIHAN E KEMAL? &quot;ATTENTI, EMIR SA TUTTO!&quot; - Endless Love</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su Endless Love</h3><ul><li><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></li><li><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></li><li><a href="/endless-love/endless-love-chi-e-galip-kozcuoglu-le-due-volte-in-cui-nihan-e-stata-venduta/">Endless Love, chi è Galip Kozcuoğlu: le due volte in cui Nihan è stata venduta</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-zeynep-soydere-perche-emir-lha-scelta-e-cosa-ha-distrutto/">Endless Love, chi è davvero Zeynep Soydere: perché Emir l&#x27;ha scelta e cosa ha distrutto</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

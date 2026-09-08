@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/la-promessa/">La Promessa</a> › La Promessa, Petra si prende il posto di Pía e sfida Candela — mentre Lope viene smascherato: è lui la cuoca misteriosa</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/la-promessa/">La Promessa</a>
   <h1>La Promessa, Petra si prende il posto di Pía e sfida Candela — mentre Lope viene smascherato: è lui la cuoca misteriosa</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Con Pía lontana dalla tenuta per tre giorni di «ferie» concessi da Cruz, Petra assapora il potere: comanda la servitù con arroganza, sceglie il menù della festa della marchesa e si proclama prossima governante — finché una presenza alle sue spalle non le gela il sorriso. Intanto Simona scopre chi cucina i piatti prodigiosi, e la verità sulle lettere dei suoi figli è più triste di ogni sospetto.</p><ol><li><a href="#c1">Petra al comando: l&#x27;assenza di Pía scatena la cameriera</a></li><li><a href="#c2">La cuoca misteriosa ha un nome: Lope</a></li><li><a href="#c3">Lope e Simona, e i due segreti che si scambiano</a></li><li><a href="#c4">Curro quasi aggredisce Jana, Manuel lo ferma</a></li><li><a href="#c5">Leonor e Mauro, la benedizione mai arrivata</a></li><li><a href="#c6">Perché conta: qui un segreto scambiato vale più di un&#x27;amicizia</a></li><li><a href="#c7">Come Cruz controlla le decisioni importanti alla tenuta</a></li><li><a href="#c8">Quale futuro attende Jana dopo lo scontro con Curro</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>La Promessa</strong> — Rete 4 · in streaming su Mediaset Infinity</span></div>
   
-  <p class="occhiello">Con Pía lontana dalla tenuta per tre giorni di «ferie» concessi da Cruz, Petra assapora il potere: comanda la servitù con arroganza, sceglie il menù della festa della marchesa e si proclama prossima governante — finché una presenza alle sue spalle non le gela il sorriso. Intanto Simona scopre chi cucina i piatti prodigiosi, e la verità sulle lettere dei suoi figli è più triste di ogni sospetto.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: La Promessa, Petra si prende il posto di Pía e sfida Candela — mentre Lope viene smascherato: è lui la cuoca misteriosa" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/eOwovuLv8vI/maxresdefault.jpg" alt="La Promessa, Petra si prende il posto di Pía e sfida Candela — mentre Lope viene smascherato: è lui la cuoca misteriosa" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/eOwovuLv8vI/hqdefault.jpg 480w, https://i.ytimg.com/vi/eOwovuLv8vI/sddefault.jpg 640w, https://i.ytimg.com/vi/eOwovuLv8vI/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/eOwovuLv8vI/hqdefault.jpg&quot;, &quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,45 +409,67 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>«Presto sarò io la nuova governante»: la frase è ancora nell&#x27;aria quando Pía ricompare alle spalle di Petra. Una delle scene più godute dai fan.</strong></p>
-  <h2>Petra al comando: l&#x27;assenza di Pía scatena la cameriera</h2>
+  <h2 id="c1">Petra al comando: l&#x27;assenza di Pía scatena la cameriera</h2>
 <p>Le puntate ruotano attorno al vuoto lasciato da Pía, combattuta per una gravidanza non voluta — non è frutto d&#x27;amore, e partorire significherebbe il licenziamento immediato — e partita con tre giorni concessi da Cruz. Petra ne approfitta senza pudore: sostituisce la governante trattando tutta la servitù con arroganza, fino allo scontro frontale con Candela. Convinta che Pía non tornerà mai, arriva a scegliere il menù della festa e a proclamarsi erede del ruolo davanti a Simona — un istante prima che Pía ricompaia alle sue spalle.</p>
-<h2>La cuoca misteriosa ha un nome: Lope</h2>
+<h2 id="c2">La cuoca misteriosa ha un nome: Lope</h2>
 <p>Si chiude anche il giallo dei fornelli: Simona scopre che la «cuoca misteriosa» dai piatti prodigiosi è in realtà Lope. Lui è disposto a spiegarsi, ma a un prezzo: la verità sulle lettere dei figli di Simona. E la verità è struggente — le lettere sono tutte false, scritte e spedite dal paese da Simona stessa per smentire le insinuazioni velenose di Petra sui figli che non scrivono mai. Lo scambio di confessioni sigilla un&#x27;alleanza in cucina, con Lope che compie «il miracolo ai fornelli» lasciando Simona di stucco.</p>
-<h2>Lope e Simona, e i due segreti che si scambiano</h2>
+<h2 id="c3">Lope e Simona, e i due segreti che si scambiano</h2>
 <p>Il patto in cucina si capisce meglio sapendo cosa rischia ciascuno dei due. Lope in quella cucina non dovrebbe nemmeno esserci: è stato assunto aggirando la marchesa, che a un uomo ai fornelli non avrebbe mai dato il permesso, e quando la cosa verrà a galla il suo posto dipenderà soltanto da quanto in fretta si troverà qualcuno con cui rimpiazzarlo. Simona, dall&#x27;altra parte, tiene in piedi da mesi un teatrino tutto suo per non ammettere che dai figli lontani non arriva niente: le lettere se le scrive e se le spedisce da sola. Sono due bugie di segno opposto — una serve a restare, l&#x27;altra a non perdere la faccia davanti alla servitù — e finiscono nelle mani l&#x27;una dell&#x27;altro nello stesso pomeriggio.</p>
-<h2>Curro quasi aggredisce Jana, Manuel lo ferma</h2>
+<h2 id="c4">Curro quasi aggredisce Jana, Manuel lo ferma</h2>
 <p>Sul fronte dei segreti di sangue, Jana cerca il dialogo con Curro convinta che sia suo fratello — e ne riceve solo disprezzo: «non rivolgermi più la parola». La tensione degenera fino al punto più drammatico: Curro sta per aggredirla, e solo l&#x27;intervento di Manuel — scioccato da ciò che vede — la salva. Manuel intanto ha capito perché Jana lo evita: «non possiamo essere amici», gli chiarisce lei, mentre i marchesi lo spingono verso il matrimonio con Jimena e lui, innamorato della cameriera, oppone un rifiuto determinato.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Leonor e Mauro, la benedizione mai arrivata</h2>
+<h2 id="c5">Leonor e Mauro, la benedizione mai arrivata</h2>
 <p>C&#x27;è infine la mossa ingenua di Leonor: convinta di ottenere la benedizione di Alonso, gli racconta di «un&#x27;amica innamorata del cameriere personale del padre» — e la reazione del marchese è tutt&#x27;altro che quella sperata. Mauro, che si era presentato in salone senza uniforme sperando nel miracolo, incassa una lavata di capo da Rómulo, ma il riavvicinamento nell&#x27;hangar con Leonor scalda i cuori. Con la fede nuziale «ritrovata» nel bagno di Jimena grazie al sotterfugio di Jana e Maria — e Cruz che vieta di avvisare il sergente Funes — la Promessa resta un campo minato di segreti.</p>
-<h2>Perché conta: qui un segreto scambiato vale più di un&#x27;amicizia</h2>
+<h2 id="c6">Perché conta: qui un segreto scambiato vale più di un&#x27;amicizia</h2>
 <p>Alla Promessa le informazioni sono l&#x27;unica ricchezza che il piano di sotto riesca ad accumulare, ed è esattamente il mestiere di Petra: sono le sue insinuazioni sui figli che non scrivono mai ad aver costretto Simona a inventarsi quella corrispondenza. Da questa settimana, però, quel materiale non è più a disposizione solo sua. Lope e Simona si tengono in mano a vicenda, e due persone che si tengono in mano non si tradiscono: è la prima alleanza in cucina che Petra non può rompere parlando all&#x27;orecchio della marchesa. Vale la pena ricordarlo per la prossima volta che andrà a cercare un punto debole in quella stanza, con o senza il posto di governante in tasca — lo troverà occupato, e non da una simpatia, da un patto.</p>
-<h2>Come Cruz controlla le decisioni importanti alla tenuta</h2>
+<h2 id="c7">Come Cruz controlla le decisioni importanti alla tenuta</h2>
 <p>La marchesa Cruz mantiene un controllo rigoroso su tutto ciò che accade all&#x27;interno della struttura, imponendo regole stringenti che condizionano sia le dinamiche del personale sia il destino della propria famiglia. È stata lei a concedere tre giorni di ferie a Pía, ignara del dramma segreto della donna, ma al tempo stesso rappresenta l&#x27;ostacolo principale per chiunque cerchi di sovvertire l&#x27;ordine stabilito. Cruz non avrebbe mai tollerato la presenza di un uomo davanti ai fornelli, costringendo Lope a operare nella clandestinità. Allo stesso tempo, la nobildonna dimostra la sua fermezza vietando in modo perentorio di avvisare il sergente Funes riguardo alla questione della fede nuziale.</p>
 <p>Le sue decisioni si riflettono pesantemente anche sulle vicende sentimentali dei giovani di casa, spingendo con forza il figlio Manuel verso un matrimonio d&#x27;interesse con Jimena. Questa pressione soffocante non lascia spazio ai desideri personali dei ragazzi, costringendo ciascuno a muoversi con estrema cautela per non scatenare la sua ira. L&#x27;autorità di Cruz influisce direttamente sulle scelte quotidiane della servitù e dei nobili, creando un clima di costante tensione in cui ogni sgarro rischia di pagare un prezzo altissimo per i protagonisti coinvolti. La marchesa rimane dunque la figura centrale intorno alla quale ruotano i divieti e le manovre più delicate del palazzo.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>In questo contesto rigido, persino la gestione temporanea della tenuta scatena ambizioni e rivalità feroci tra la servitù. Quando Pía si allontana per il periodo di riposo accordato da Cruz, Petra cerca immediatamente di approfittare del vuoto di potere per imporre la propria autorità, arrivando a scontrarsi con Candela e a decidere il menù della festa della marchesa. La totale mancanza di tolleranza dimostrata da Cruz verso le infrazioni spiega perché ogni dipendente cerchi disperatamente di nascondere i propri segreti o di cogliere l&#x27;occasione giusta per migliorare la propria posizione personale prima del ritorno dell&#x27;autorità ufficiale.</p>
-<h2>Quale futuro attende Jana dopo lo scontro con Curro</h2>
+<h2 id="c8">Quale futuro attende Jana dopo lo scontro con Curro</h2>
 <p>Jana continua a muoversi in un ambiente ostile e pericoloso, spinta dalla ferma convinzione che Curro sia in realtà suo fratello. Il suo tentativo di cercare un dialogo sincero con il giovane si scontra però con una chiusura totale e carica di disprezzo, al punto che il ragazzo le ordina categoricamente di non rivolgerle mai più la parola. La situazione precipita rapidamente quando la tensione accumulata rischia di trasformarsi in una vera e propria aggressione fisica ai danni della cameriera, evitata soltanto dall&#x27;intervento provvidenziale di Manuel, rimasto profondamente scioccato da ciò a cui ha assistito.</p>
 <p>I problemi per Jana non si fermano alla complessa ricerca della verità sui propri legami di sangue, poiché la donna deve gestire anche il legame con Manuel. Nonostante l&#x27;evidente sentimento che il giovane prova nei suoi confronti, Jana sceglie di mantenere le distanze spiegandogli chiaramente che tra loro non può esistere alcuna amicizia. Questa decisione arrives mentre i marchesi continuano a premere per le nozze tra Manuel e Jimena, un&#x27;unione a cui il ragazzo oppone un rifiuto determinato, aggiungendo ulteriore drammaticità a una situazione già estremamente tesa per la servitù e per la famiglia.</p>
 <p>Per proteggere se stessa e muovere le proprie pedine nel palazzo, Jana si dimostra estremamente astuta nel manipolare la situazione a proprio favore insieme a María. Attraverso un ingegnoso sotterfugio orchestrato dalle due cameriere, la fede nuziale viene infine fatta ritrovare all&#x27;interno del bagno di Jimena, evitando ulteriori complicazioni con la marchesa Cruz. La capacità di Jana di destreggiarsi tra l&#x27;aggressività di Curro, i sentimenti di Manuel e le trame della servitù dimostra quanto sia determinata a sopravvivere in una tenuta che si conferma giorno dopo giorno un vero terreno minato.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   </div>
-  <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=ZVlZhU-ma2w" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/ZVlZhU-ma2w/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>ANTICIPAZIONI LA PROMESSA - Puntate Spagnole - Candela non perdona Simona! Perchè?</span></a></li><li><a href="https://www.youtube.com/watch?v=RS7LHd0I6W4" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/RS7LHd0I6W4/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni: Un Tragico Finale per Cruz, la Marchesa de Lujan</span></a></li><li><a href="https://www.youtube.com/watch?v=hO6W0jFmdGU" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/hO6W0jFmdGU/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni Spagnole: Cruz caccia Petra da La Promessa! Ma perchè?</span></a></li></ul></div>
+  <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=ZVlZhU-ma2w" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/ZVlZhU-ma2w/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>ANTICIPAZIONI LA PROMESSA - Puntate Spagnole - Candela non perdona Simona! Perchè?</span></a></li><li><a href="https://www.youtube.com/watch?v=RS7LHd0I6W4" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/RS7LHd0I6W4/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni: Un Tragico Finale per Cruz, la Marchesa de Lujan</span></a></li><li><a href="https://www.youtube.com/watch?v=oV1KN0X5-MY" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/oV1KN0X5-MY/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni e Teorie: Sarà Jana la prossima Marchesa de Lujan?</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Petra pagherà mai la sua arroganza o continuerà a salire? E quanto manca prima che Curro scopra la verità sul legame con Jana?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=eOwovuLv8vI">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di La Promessa</h2><div class="griglia"><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/"><div class="foto"><img src="https://i.ytimg.com/vi/Rp8VhxDiDSk/hqdefault.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></h3>
+    <div class="quando">7 settembre 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/"><div class="foto"><img src="https://i.ytimg.com/vi/8JHt6ogwxQw/hqdefault.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Ángela beve tutto, Curro sfonda la porta</a></h3>
+    <div class="quando">6 settembre 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/"><div class="foto"><img src="/img/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Curro nasconde Ángela, Lorenzo furioso</a></h3>
+    <div class="quando">6 settembre 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=La Promessa, Petra si prende il posto di Pía e sfida Candela — mentre Lope viene smascherato: è lui la cuoca misteriosa — https://serietvfans.com/la-promessa/la-promessa-petra-si-prende-il-posto-di-pia-e-sfida-candela-mentre-lope-viene-sm/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/la-promessa/la-promessa-petra-si-prende-il-posto-di-pia-e-sfida-candela-mentre-lope-viene-sm/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/la-promessa/la-promessa-petra-si-prende-il-posto-di-pia-e-sfida-candela-mentre-lope-viene-sm/&text=La Promessa, Petra si prende il posto di Pía e sfida Candela — mentre Lope viene smascherato: è lui la cuoca misteriosa" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">LA PROMESSA - SCOPERTA LA CUOCA MISTERIOSA - SCONTRO TRA PETRA E CANDELA</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=eOwovuLv8vI">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di La Promessa</h3><ol class="numerata"><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Ángela beve tutto, Curro sfonda la porta</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Curro nasconde Ángela, Lorenzo furioso</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>LA PROMESSA - SCOPERTA LA CUOCA MISTERIOSA - SCONTRO TRA PETRA E CANDELA</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su La Promessa</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-3-6-settembre-maria-affronta-la-gravidanza-da-sola/">La Promessa anticipazioni 3-6 settembre: Maria affronta la gravidanza da sola</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-carlo-arriva-maria-trema/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Carlo arriva, Maria trema</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/far-away/far-away-anticipazioni-dal-31-agosto-al-4-settembre-chi-ha-donato-il-fegato-a-nare/">Far Away, anticipazioni dal 31 agosto al 4 settembre: chi ha donato il fegato a Nare, e perché adesso sta male lui</a></li><li><a href="/far-away/far-away-dal-31-agosto-la-madre-di-alya-sapeva-tutto-non-ricordo/">Far Away Dal 31 Agosto: la madre di Alya sapeva tutto — «non ricordo»</a></li><li><a href="/forbidden-fruit/forbidden-fruit-dal-31-agosto-il-conto-a-nome-di-halit-che-e-morto/">Forbidden Fruit Dal 31 Agosto: il conto a nome di Halit, che è morto</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

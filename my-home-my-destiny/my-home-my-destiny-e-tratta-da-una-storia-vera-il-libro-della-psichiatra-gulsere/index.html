@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/my-home-my-destiny/">My Home My Destiny</a> › My Home My Destiny è tratta da una storia vera: il libro della psichiatra Gülseren Budayıcıoğlu e le differenze con la serie</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/my-home-my-destiny/">My Home My Destiny</a>
   <h1>My Home My Destiny è tratta da una storia vera: il libro della psichiatra Gülseren Budayıcıoğlu e le differenze con la serie</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Il realismo con cui la serie racconta le pressioni familiari attorno al matrimonio non è merito soltanto della sceneggiatura: alla base c&#x27;è un romanzo scritto da una psichiatra a partire da casi che ha seguito di persona.</p><ol><li><a href="#c1">Da dove nasce</a></li><li><a href="#c2">Chi è Mehdi nella serie, e quanto pesa quel cambio di mestiere</a></li><li><a href="#c3">L&#x27;infanzia raccontata nel libro</a></li><li><a href="#c4">Il matrimonio imposto</a></li><li><a href="#c5">Cosa cambia nella serie</a></li><li><a href="#c6">Cosa cambia, guardandola, sapere che è successo davvero</a></li><li><a href="#c7">Come Zeynep affronta la pressione della famiglia biologica</a></li><li><a href="#c8">Perche Mehdi vive con disagio il matrimonio con Zeynep</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>My Home My Destiny</strong> — Serie conclusa in Italia · le puntate su Mediaset Infinity</span></div>
   
-  <p class="occhiello">Il realismo con cui la serie racconta le pressioni familiari attorno al matrimonio non è merito soltanto della sceneggiatura: alla base c&#x27;è un romanzo scritto da una psichiatra a partire da casi che ha seguito di persona.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: My Home My Destiny è tratta da una storia vera: il libro della psichiatra Gülseren Budayıcıoğlu e le differenze con la serie" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/zaPBUaj9QKo/sddefault.jpg" alt="My Home My Destiny è tratta da una storia vera: il libro della psichiatra Gülseren Budayıcıoğlu e le differenze con la serie" width="640" height="480"
         srcset="https://i.ytimg.com/vi/zaPBUaj9QKo/hqdefault.jpg 480w, https://i.ytimg.com/vi/zaPBUaj9QKo/sddefault.jpg 640w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/zaPBUaj9QKo/hqdefault.jpg&quot;, &quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,25 +409,25 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>Alcuni passaggi della serie sono più duri del libro, altri molto più romantici.</strong></p>
-  <h2>Da dove nasce</h2>
+  <h2 id="c1">Da dove nasce</h2>
 <p>La fonte è un romanzo di Gülseren Budayıcıoğlu, psichiatra e scrittrice turca che ha costruito diversi dei suoi libri — e, di riflesso, diverse serie di successo — su storie di persone realmente incontrate nel suo lavoro. Nel libro il rapporto tra la protagonista e l&#x27;autrice comincia proprio così: la ragazza legge i suoi testi, la cerca e chiede un colloquio, spiegando di aver attraversato una lunga depressione. Da quella prima seduta comincia il racconto della sua vita.</p>
-<h2>Chi è Mehdi nella serie, e quanto pesa quel cambio di mestiere</h2>
+<h2 id="c2">Chi è Mehdi nella serie, e quanto pesa quel cambio di mestiere</h2>
 <p>Nel romanzo l&#x27;uomo che le viene imposto è un medico; nella serie è Mehdi, un meccanico stimato nel quartiere, con un&#x27;officina e una reputazione costruita sul lavoro delle mani. Non è un dettaglio di colore. Il medico del libro ha su di lei un vantaggio sociale che rende la sottomissione quasi scontata; Mehdi no — è lei, con gli studi e la famiglia adottiva alle spalle, ad avere più strumenti di lui, e questo rovescia la dinamica di potere della coppia. Da lì nasce tutto il personaggio: un uomo che si sente costantemente inadeguato accanto alla moglie, che tace su una relazione che non ha chiuso e che scivola nel controllo proprio perché teme di non averla mai avuta davvero.</p>
-<h2>L&#x27;infanzia raccontata nel libro</h2>
+<h2 id="c3">L&#x27;infanzia raccontata nel libro</h2>
 <p>La protagonista è la terza figlia di una famiglia molto povera — il padre operaio edile, la madre donna delle pulizie — e cresce in un contesto durissimo, segnato dall&#x27;alcolismo del padre e da abusi subiti proprio in casa. Perde il fratello maggiore dopo una lunga malattia, la sorella scappa via, e a quel punto viene adottata da una coppia benestante con cui si trasferisce in città. Con la madre adottiva costruisce un rapporto che somiglia più a un&#x27;amicizia che a un legame madre-figlia. Si diploma, si iscrive a legge, e lì si innamora di un ragazzo che poi parte per il servizio militare.</p>
-<h2>Il matrimonio imposto</h2>
+<h2 id="c4">Il matrimonio imposto</h2>
 <p>È la famiglia biologica a opporsi a quella relazione e a spingerla verso un altro uomo del quartiere — nel libro un medico, dal carattere irascibile e con problemi di alcolismo. La pressione emotiva funziona: lei accetta. Il matrimonio si rivela quello che era prevedibile, tra l&#x27;alcol e una relazione che lui aveva già alle spalle e non ha mai chiuso. Dopo un&#x27;aggressione, la protagonista lo lascia e torna in città con la figlia chiedendo il divorzio; ne segue una depressione che la tiene a letto per mesi, e la ripresa arriva attraverso la terapia. In una seduta successiva emerge il motivo per cui quella famiglia aveva insistito tanto: dei terreni. Ottenuto quello che volevano, dopo il divorzio si sono allontanati da lei.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Cosa cambia nella serie</h2>
+<h2 id="c5">Cosa cambia nella serie</h2>
 <p>La trasposizione televisiva è più drammatica dell&#x27;originale, ma cambia tre cose importanti. Faruk resta una presenza costante nella vita di Zeynep invece di uscire di scena con il servizio militare, e questo permette di tenere in piedi il filone sentimentale per tutta la serie. Mehdi non è un medico ma un meccanico rispettato nel quartiere: una scelta che ne cambia completamente la posizione sociale e il rapporto di forza con Zeynep. E soprattutto, nella serie chiude la relazione con Benal prima di sposarla — un dettaglio che rende il personaggio molto meno monolitico e apre lo spazio per la sua evoluzione.</p>
-<h2>Cosa cambia, guardandola, sapere che è successo davvero</h2>
+<h2 id="c6">Cosa cambia, guardandola, sapere che è successo davvero</h2>
 <p>C&#x27;è un passaggio del libro che vale più di qualunque colpo di scena della serie: la spiegazione del perché quella famiglia avesse insistito tanto per il matrimonio. Non era l&#x27;onore, non era la tradizione — erano dei terreni. E ottenuto quello che volevano, dopo il divorzio si sono semplicemente allontanati. Tenere a mente questo dettaglio cambia il peso di ogni scena in cui i parenti tornano a farsi vivi. La serie, però, si concede una cosa che alla storia vera non era toccata: mantiene Faruk dentro la vita della protagonista invece di farlo sparire con il servizio militare, e chiude i conti di Mehdi con Benal prima delle nozze. Sono le due scelte che permettono al racconto di offrire una seconda possibilità dove la seduta dalla psichiatra registrava solo una risalita.</p>
-<h2>Come Zeynep affronta la pressione della famiglia biologica</h2>
+<h2 id="c7">Come Zeynep affronta la pressione della famiglia biologica</h2>
 <p>La storia personale della protagonista comincia all&#x27;interno di un nucleo familiare segnato da pesanti sofferenze economiche e umane. Essere la terza figlia di un padre operaio edile incline all&#x27;alcolismo e di una madre impiegata come donna delle pulizie la costringe a crescere in un ambiente domestico durissimo, caratterizzato da maltrattamenti e da drammi profondi. La perdita del fratello maggiore dopo una dolorosa malattia e la successiva fuga della sorella spingono la giovane verso un percorso completamente diverso, grazie all&#x27;adozione da parte di una coppia benestante. Il trasferimento in citta le permette di diplomarsi e iscriversi alla facolta di legge, intrecciando con la madre adottiva un legame speciale che ricorda piu un&#x27;affettuosa amicizia che un tradizionale rapporto tra genitore e figlia.</p>
 <p>Nonostante la nuova vita lontana dalle privazioni dell&#x27;infanzia, l&#x27;influenza della famiglia d&#x27;origine torna a farsi sentire in modo determinante al momento delle scelte affettive. I genitori biologici si oppongono con forza al sentimento che la lega al giovane conosciuto durante gli studi universitari, il quale si allontana per compiere il servizio militare. Sfruttando un&#x27;intensa pressione emotiva, i parenti la spingono ad accettare un matrimonio combinato con un uomo del quartiere, un medico irascibile con problemi legati all&#x27;alcol. Solo in un secondo momento emerge la vera motivazione dell&#x27;insistenza familiare: l&#x27;interesse economico legato a dei terreni. Ottenuto cio che desideravano, i parenti interrompono ogni contatto, dimostrando un distacco totale dopo il divorzio della figlia.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>L&#x27;unione con il medico si rivela ben presto insostenibile a causa degli sbalzi d&#x27;umore legati alle bevande alcoliche e all&#x27;ombra di un passato sentimentale mai davvero archiviato dall&#x27;uomo. A seguito di un episodio di aggressione, la protagonista trova il coraggio di interrompere il matrimonio, fuggendo di nuovo verso la citta insieme alla figlioletta per avviare la pratica di divorzio. Le sofferenze accumulate sfociano in una profonda forma depressiva che la costringe a restare a letto per diversi mesi. Il percorso di guarigione comincia soltanto quando la giovane, dopo aver letto alcuni scritti della dottoressa Gülseren Budayıcıoğlu, decide di contattarla per richiedere un colloquio terapeutico, avviando cosi il racconto analitico di tutte le fasi della sua travagliata esistenza.</p>
-<h2>Perche Mehdi vive con disagio il matrimonio con Zeynep</h2>
+<h2 id="c8">Perche Mehdi vive con disagio il matrimonio con Zeynep</h2>
 <p>Nella versione televisiva, la figura del marito subisce una profonda trasformazione rispetto alla vicenda reale documentata dal libro. Mehdi non e un professionista affermato come il medico dell&#x27;opera cartacea, bensi un meccanico di quartiere molto stimato per l&#x27;onesta e la manualita del proprio lavoro. Questo cambiamento di occupazione modifica completamente la gerarchia sociale all&#x27;interno della coppia. Zeynep, con la sua formazione universitaria in legge e alle spalle il sostegno economico della famiglia adottiva benestante, dispone di risorse sociali e culturali superiori. La disparita non e piu a vantaggio dell&#x27;uomo, ma si ribalta in favore della moglie, generando nell&#x27;uomo un costante senso di inadeguatezza che ne condiziona fortemente ogni atteggiamento quotidiano.</p>
 <p>Il timore di non possedere mai veramente l&#x27;affetto di Zeynep spinge Mehdi a manifestare comportamenti sempre piu controllanti e possessivi. A differenza del medico del romanzo, che manteneva apertamente una seconda storia senza curarsene, nella serie televisiva Mehdi sceglie di interrompere la relazione con Benal prima di celebrare le nozze. Tuttavia, il silenzio mantenuto su questo passato affettivo e la continua paura di perdere la consorte trasformano il suo carattere, rendendolo piu complesso e aperto a possibili evoluzioni narrative. La scelta degli sceneggiatori permette di evitare la rappresentazione di un antagonista del tutto negativo, mostrando un personaggio maschile lacerato dalle proprie fragilita e dall&#x27;incapacita di gestire il confronto con la donna che ha sposato.</p>
 <p>Un altro elemento decisivo inserito dagli autori televisivi riguarda la figura di Faruk, che nel libro usciva di scena dopo la partenza per la leva militare. Sul piccolo schermo, invece, la presenza di Faruk si mantiene costante nella vita della protagonista, alimentando una linea sentimentale parallela che dura per l&#x27;intero arco della storia. Questo confronto triangolare accentua la drammaticita del racconto e amplifica l&#x27;insicurezza di Mehdi. La fiction televisiva sceglie cosi di trasformare una secca testimonianza clinica, incentrata sul lento recupero psicologico dopo il divorzio, in un&#x27;avvincente narrazione che concede ai suoi protagonisti una seconda opportunita d&#x27;amore e di riscatto personale di fronte ai condizionamenti del quartiere.</p>
@@ -385,19 +435,41 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=_I5jIkcvjgo" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/_I5jIkcvjgo/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>MY HOME MY DESTINY Anticipazioni 24 25 Gennaio: Sakine racconta finalmente la storia della sua </span></a></li><li><a href="https://www.youtube.com/watch?v=H9wyCbcZqkg" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/H9wyCbcZqkg/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>MY HOME, MY DESTINY Anticipazioni - Ecco la nuova storia di Zeynep</span></a></li><li><a href="https://www.youtube.com/watch?v=aCMwz6y-DXI" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/aCMwz6y-DXI/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>MY HOME MY DESTINY Anticipazioni: Ekrem si dà alla Fuga e lascia Nermin in Bancarotta!</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Sapevate che dietro la serie c&#x27;è una storia vera?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=zaPBUaj9QKo">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di My Home My Destiny</h2><div class="griglia"><article class="scheda">
+  <a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/"><div class="foto"><img src="/img/my-home-my-destiny-la-trama-completa-e-come-finisce.jpg" alt="My Home My Destiny" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">My Home My Destiny</span>
+    <h3><a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/">My Home My Destiny: la trama completa e come finisce</a></h3>
+    <div class="quando">30 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/"><div class="foto"><img src="https://i.ytimg.com/vi/-djleIeCLQs/hqdefault.jpg" alt="My Home My Destiny" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">My Home My Destiny</span>
+    <h3><a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/">My Home My Destiny, Zeynep ferma l&#x27;aborto di Benal in sala operatoria senza sapere che il padre è Mehdi</a></h3>
+    <div class="quando">17 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/"><div class="foto"><img src="https://i.ytimg.com/vi/gxL0o63Nhqw/hqdefault.jpg" alt="My Home My Destiny" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">My Home My Destiny</span>
+    <h3><a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/">My Home My Destiny, anticipazioni del 17 novembre: Özlem indaga su Zeynep e scopre tutto, Nuh diventa autista di Barış e qualcuno manomette i macchinari di Bekir</a></h3>
+    <div class="quando">16 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=My Home My Destiny è tratta da una storia vera: il libro della psichiatra Gülseren Budayıcıoğlu e le differenze con la serie — https://serietvfans.com/my-home-my-destiny/my-home-my-destiny-guida-alla-serie-chi-sono-demet-ozdemir-e-ibrahim-celikkol-qu/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/my-home-my-destiny/my-home-my-destiny-guida-alla-serie-chi-sono-demet-ozdemir-e-ibrahim-celikkol-qu/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/my-home-my-destiny/my-home-my-destiny-guida-alla-serie-chi-sono-demet-ozdemir-e-ibrahim-celikkol-qu/&text=My Home My Destiny è tratta da una storia vera: il libro della psichiatra Gülseren Budayıcıoğlu e le differenze con la serie" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">My Home My Destiny tra finzione e realtà: differenze tra storia vera e soap</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=zaPBUaj9QKo">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di My Home My Destiny</h3><ol class="numerata"><li><a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/">My Home My Destiny: la trama completa e come finisce</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/">My Home My Destiny, Zeynep ferma l&#x27;aborto di Benal in sala operatoria senza sapere che il padre è Mehdi</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/">My Home My Destiny, anticipazioni del 17 novembre: Özlem indaga su Zeynep e scopre tutto, Nuh diventa autista di Barış e qualcuno manomette i macchinari di Bekir</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-guida-alla-serie-chi-sono-demet-ozdemir-e-ibrahim-celikkol-qu/">My Home My Destiny: guida alla serie, il cast, i personaggi e quante puntate sono</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-1-dicembre-gli-spari-davanti-alla-vecchia-casa-zeynep-tra-le/">My Home My Destiny 1° dicembre, gli spari davanti alla vecchia casa: Zeynep tra le due madri quando l&#x27;uomo in moto estrae la pistola</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>My Home My Destiny tra finzione e realtà: differenze tra storia vera e soap</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su My Home My Destiny</h3><ul><li><a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/">My Home My Destiny: la trama completa e come finisce</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/">My Home My Destiny, Zeynep ferma l&#x27;aborto di Benal in sala operatoria senza sapere che il padre è Mehdi</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/">My Home My Destiny, anticipazioni del 17 novembre: Özlem indaga su Zeynep e scopre tutto, Nuh diventa autista di Barış e qualcuno manomette i macchinari di Bekir</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-guida-alla-serie-chi-sono-demet-ozdemir-e-ibrahim-celikkol-qu/">My Home My Destiny: guida alla serie, il cast, i personaggi e quante puntate sono</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-1-dicembre-gli-spari-davanti-alla-vecchia-casa-zeynep-tra-le/">My Home My Destiny 1° dicembre, gli spari davanti alla vecchia casa: Zeynep tra le due madri quando l&#x27;uomo in moto estrae la pistola</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

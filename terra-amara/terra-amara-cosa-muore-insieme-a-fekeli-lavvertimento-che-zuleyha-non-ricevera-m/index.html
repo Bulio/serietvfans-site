@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/terra-amara/">Terra Amara</a> › Terra Amara, cosa muore insieme a Fekeli: l&#x27;avvertimento che Züleyha non riceverà mai — dall&#x27;incidente di Erkan alla condanna a 24 anni di Betül</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/terra-amara/">Terra Amara</a>
   <h1>Terra Amara, cosa muore insieme a Fekeli: l&#x27;avvertimento che Züleyha non riceverà mai — dall&#x27;incidente di Erkan alla condanna a 24 anni di Betül</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">La morte di Fekeli non è solo un lutto: è un avvertimento che non arriva a destinazione. Il vecchio patriarca aveva scoperto che «Mehmet Kara» è Hakan Gümüşoğlu, e stava per dirlo a Züleyha — invece la siringa degli uomini di Abdülkadir chiude quella bocca per sempre. Il filo parte da lontano, dall&#x27;incidente in cui Fekeli travolge Erkan, e arriva lontanissimo: alla proposta di matrimonio di Hakan, al suo sacrificio per salvare Züleyha dalla pistola di Betül, e ai 24 anni di carcere che l&#x27;avvocato sconterà.</p><ol><li><a href="#c1">L&#x27;incidente che innesca tutto</a></li><li><a href="#c2">Il confronto con Abdülkadir: l&#x27;alleanza nata in Libano</a></li><li><a href="#c3">La bocca chiusa per sempre — e il vuoto attorno a Züleyha</a></li><li><a href="#c4">Dalla proposta di Hakan al carcere di Betül</a></li><li><a href="#c5">Come Hakan Gümüşoğlu nasconde la sua vera identità</a></li><li><a href="#c6">Perché Abdülkadir organizza la trappola mortale a Fekeli</a></li><li><a href="#c7">Cosa scoprono Gaffur e Raşit lungo la strada</a></li><li><a href="#c8">Quale destino attende Betül e Abdülkadir dopo l&#x27;agguato</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>Terra Amara</strong> — Serie conclusa in Italia · tutte le puntate su Mediaset Infinity</span></div>
   
-  <p class="occhiello">La morte di Fekeli non è solo un lutto: è un avvertimento che non arriva a destinazione. Il vecchio patriarca aveva scoperto che «Mehmet Kara» è Hakan Gümüşoğlu, e stava per dirlo a Züleyha — invece la siringa degli uomini di Abdülkadir chiude quella bocca per sempre. Il filo parte da lontano, dall&#x27;incidente in cui Fekeli travolge Erkan, e arriva lontanissimo: alla proposta di matrimonio di Hakan, al suo sacrificio per salvare Züleyha dalla pistola di Betül, e ai 24 anni di carcere che l&#x27;avvocato sconterà.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: Terra Amara, cosa muore insieme a Fekeli: l&#x27;avvertimento che Züleyha non riceverà mai — dall&#x27;incidente di Erkan alla condanna a 24 anni di Betül" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/kWCNystrm7Y/maxresdefault.jpg" alt="Terra Amara, cosa muore insieme a Fekeli: l&#x27;avvertimento che Züleyha non riceverà mai — dall&#x27;incidente di Erkan alla condanna a 24 anni di Betül" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/kWCNystrm7Y/hqdefault.jpg 480w, https://i.ytimg.com/vi/kWCNystrm7Y/sddefault.jpg 640w, https://i.ytimg.com/vi/kWCNystrm7Y/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/kWCNystrm7Y/hqdefault.jpg&quot;, &quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,45 +409,67 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>Il dettaglio che spiega tutto: fu proprio la vendetta per l&#x27;incidente al fratello a portare Hakan a Çukurova sotto falso nome — e a farlo confessare a Fekeli.</strong></p>
-  <h2>L&#x27;incidente che innesca tutto</h2>
+  <h2 id="c1">L&#x27;incidente che innesca tutto</h2>
 <p>All&#x27;origine c&#x27;è un fatto quasi banale: con la sua elegante automobile, Fekeli travolge Erkan in un grave incidente. La notizia raggiunge il fratello dell&#x27;uomo, deciso a far pagare a chiunque abbia danneggiato la sua famiglia — e a nessun costo si fermerà davanti al padrino di Yılmaz. Ma quando i due si incontrano, il vecchio si mostra sinceramente afflitto per quanto accaduto, e in quella conversazione avviene l&#x27;imprevisto: Hakan si toglie la maschera e ammette di essere arrivato a Çukurova sotto il falso nome di Mehmet Kara, con l&#x27;obiettivo di mandare in rovina Demir.</p>
-<h2>Il confronto con Abdülkadir: l&#x27;alleanza nata in Libano</h2>
+<h2 id="c2">Il confronto con Abdülkadir: l&#x27;alleanza nata in Libano</h2>
 <p>Fekeli non si accontenta e va a cercare conferme dal complice: tornato da un viaggio ad Ankara affronta Abdülkadir, che rivela di aver conosciuto Hakan in Libano e di aver stretto con lui un&#x27;alleanza per danneggiare economicamente Demir. Poi prova a scaricargli addosso anche la responsabilità dell&#x27;attentato subito dopo la morte di Erkan — una versione a cui Fekeli non crede. L&#x27;avvertimento è esplicito: se scoprirà che gli sta mentendo o manipolando gli eventi, prenderà misure estreme. Da quel momento, il vecchio diventa l&#x27;uomo più pericoloso per entrambi.</p>
-<h2>La bocca chiusa per sempre — e il vuoto attorno a Züleyha</h2>
+<h2 id="c3">La bocca chiusa per sempre — e il vuoto attorno a Züleyha</h2>
 <p>Mentre Züleyha, allarmata dall&#x27;assenza prolungata, lo cerca al cotonificio, Fekeli è già in auto verso l&#x27;ultimo confronto con Hakan. Gli uomini di Abdülkadir gli tendono la trappola più vile: un&#x27;auto ferma in mezzo alla strada, la scusa di una madre malata, e lui che scende per aiutare. La siringa fa il resto, e la scena viene composta per simulare un infarto — la mano sul petto, il corpo lasciato al volante, e Gaffur e Raşit a fare la scoperta. Ma la vera perdita è un&#x27;altra: con Fekeli muore l&#x27;unico che poteva dire a Züleyha chi ha davvero accanto. Quel silenzio la lascerà esposta per mesi.</p>
-<h2>Dalla proposta di Hakan al carcere di Betül</h2>
+<h2 id="c4">Dalla proposta di Hakan al carcere di Betül</h2>
 <p>Quando la verità sull&#x27;identità di Hakan verrà finalmente a galla, lui giocherà la carta più inattesa: chiedere a Züleyha di sposarlo. Ma la felicità durerà poco. Betül, animata dal rancore, farà irruzione alla tenuta con l&#x27;intenzione di uccidere Züleyha, e sarà Hakan a farle da scudo umano, morendo al posto suo. Rimasta sola, Züleyha trasformerà il dolore in sete di giustizia, portando davanti alla legge sia Betül che il complice Abdülkadir. Il conto lo pagherà l&#x27;avvocato: uscirà dal carcere solo dopo ventiquattro anni.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Come Hakan Gümüşoğlu nasconde la sua vera identità</h2>
+<h2 id="c5">Come Hakan Gümüşoğlu nasconde la sua vera identità</h2>
 <p>Il doloroso incidente automobilistico in cui Fekeli travolge Erkan muove una catena di eventi devastanti destinata a stravolgere la vita dell&#x27;intera comunità. Quando la drammatica notizia giunge all&#x27;inflessibile fratello della vittima, la reazione è immediata e spietata. Hakan Gümüşoğlu decide di recarsi a Çukurova utilizzando l&#x27;identità fittizia di Mehmet Kara, spinto dall&#x27;unico desiderio di far pagare un prezzo altissimo a chiunque abbia fatto soffrire la sua famiglia. Il piano iniziale prevede di colpire duro, concentrandosi in particolare sulla distruzione economica e personale di Demir. Tuttavia, l&#x27;incontro ravvicinato con l&#x27;anziano padrino di Yılmaz altera in modo del tutto inaspettato le carte in tavola.</p>
 <p>Durante quel faccia a faccia carico di tensione, Fekeli mostra un dolore sincero e profondo per la tragica sorte toccata ad Erkan, dimostrando una statura morale che colpisce il suo interlocutore. Di fronte all&#x27;evidente afflizione del vecchio patriarca, Hakan cede all&#x27;impulso di togliersi la maschera che indossava e ammette apertamente di non essere il misterioso Mehmet Kara. Confessa quindi la sua reale identità di Hakan Gümüşoğlu e rivela senza filtri il proposito originario di mandare in rovina Demir. Questa rischiosa ammissione trasforma radicalmente il rapporto tra i due, mettendo Fekeli a conoscenza di un segreto bruciante che minaccia direttamente la tranquillità di Züleyha.</p>
-<h2>Perché Abdülkadir organizza la trappola mortale a Fekeli</h2>
+<h2 id="c6">Perché Abdülkadir organizza la trappola mortale a Fekeli</h2>
 <p>La rete di inganni si intreccia in modo ancor più complesso quando Fekeli, di ritorno da un importante viaggio ad Ankara, decide di affrontare direttamente Abdülkadir. Quest&#x27;ultimo, legato ad Hakan da un patto stretto in passato durante il soggiorno in Libano, aveva concordato un piano preciso per mettere in ginocchio Demir dal punto di vista finanziario. Cercando di difendersi e deviare i sospetti, il complice prova a scaricare sul socio la responsabilità dell&#x27;attentato avvenuto subito dopo la tragica morte di Erkan. Fekeli, uomo d&#x27;esperienza e grande intuito, intuisce immediatamente la falsità di quella ricostruzione e rifiuta di credere alla versione manipolata che gli viene presentata.</p>
 <p>Di fronte alle palesi menzogne, Fekeli lancia un avvertimento durissimo e senza appello: se dovesse scoprire ulteriori inganni o manipolazioni negli eventi, interverrà direttamente con misure estreme. Tale posizione rende il vecchio patriarca un ostacolo insormontabile e incredibilmente pericoloso sia per Abdülkadir sia per il suo socio. Per eliminare la minaccia, viene ordito un piano diabolico e privo di scrupoli. Sfruttando la consueta generosità di Fekeli, gli uomini del complice piazzano una vettura ferma lungo la carreggiata, inventando la scusa di una madre malata da soccorrere. Non appena il vecchio scende per offrire aiuto, l&#x27;agguato si compie con una fatale siringa.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Cosa scoprono Gaffur e Raşit lungo la strada</h2>
+<h2 id="c7">Cosa scoprono Gaffur e Raşit lungo la strada</h2>
 <p>Mentre la tragica aggressione si consuma nell&#x27;ombra, Züleyha comincia ad avvertire una crescente inquietudine a causa della prolungata assenza di Fekeli, decidendo di cercarlo disperatamente presso il cotonificio. In realtà, il patriarca si trova già a bordo della sua automobile, inconsapevolmente diretto verso quello che avrebbe dovuto essere l&#x27;ultimo decisivo confronto con Hakan. La vile trappola tesa dagli scagnozzi di Abdülkadir spegne la sua voce proprio mentre si appresta a svelare la verità. Per evitare indagini, i killer allestiscono la scena del delitto per simulare un improvviso attacco cardiaco, posizionando la mano della vittima sul petto e abbandonando il corpo senza vita al volante.</p>
 <p>Sono Gaffur e Raşit a fare la macabra e sconvolgente scoperta del cadavere immobile dentro la vettura lasciata al margine della via. La farsa dell&#x27;infarto funziona nell&#x27;immediato, ma la vera tragedia risiede nell&#x27;irreparabile vuoto informativo lasciato dalla scomparsa di Fekeli. Con la morte dell&#x27;anziano padrino si spegne infatti l&#x27;unica fonte in grado di spalancare gli occhi a Züleyha e rivelarle la vera identità dell&#x27;uomo che le sta accanto. La donna rimane così del tutto ignara del pericolo e completamente esposta ai rivali per lunghi mesi, priva di quella protezione fondamentale che soltanto l&#x27;esperto patriarca avrebbe potuto garantirle.</p>
-<h2>Quale destino attende Betül e Abdülkadir dopo l&#x27;agguato</h2>
+<h2 id="c8">Quale destino attende Betül e Abdülkadir dopo l&#x27;agguato</h2>
 <p>Trascorsi mesi di menzogne, la reale identità di Hakan viene infine alla luce, sconvolgendo gli equilibri faticosamente costruiti a Çukurova. A quel punto, Hakan tenta la mossa più imprevedibile e disperata proponendo a Züleyha di diventare sua moglie. Tuttavia, il miraggio di una vita serena dura un istante brevissimo. L&#x27;avvocato Betül, mossa da un odio profondo e insaziabile rancore, fa un&#x27;improvvisa e violenta irruzione all&#x27;interno della tenuta con l&#x27;obiettivo dichiarato di uccidere Züleyha. Nel momento decisivo dello scontro, Hakan sceglie di agire da scudo umano, intercettando il proiettile destinato alla donna amata e pagando con la propria vita.</p>
 <p>Devastata dalla perdita ma sorretta da una dote d&#x27;inaudita determinazione, Züleyha incanala il terribile dolore in una ferrea sete di giustizia contro i responsabili di tanti lutti. La donna muove ogni risorsa per assicurare alla legge sia l&#x27;avvocato Betül sia il crudele complice Abdülkadir, senza concedere alcuna attenuante ai colpevoli. La resa dei conti si rivela schiacciante nelle aule del tribunale, dove la giustizia emette condanne severe per le malefatte compiute. Betül riceve una pena durissima e sarà costretta a scontare ben ventiquattro anni di carcere prima di poter finalmente riassaporare la libertà perduta.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=MG2wUFH5Bc4" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/MG2wUFH5Bc4/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TERRA AMARA Anticipazioni Sabato 23 Dicembre: Zuleyha alla prova più dura,Hakan assale Ranch Fe</span></a></li><li><a href="https://www.youtube.com/watch?v=TU1Lo8chzpg" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/TU1Lo8chzpg/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TERRA AMARA Anticipazioni  8-11 Gennaio: Fekeli scopre che Mehmet è Hakan | Si scaglia contro K</span></a></li><li><a href="https://www.youtube.com/watch?v=2tBqDE8RLQI" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/2tBqDE8RLQI/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TERRA AMARA Sabato 3 Febbraio: Hakan dice a Zuleyha di non chiamarsi Mehmet Kara, come reagirà </span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Se Fekeli avesse fatto in tempo ad avvertire Züleyha, quante tragedie si sarebbero evitate? E il sacrificio di Hakan basta a riscattare tutto quello che aveva costruito sulle menzogne?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=kWCNystrm7Y">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di Terra Amara</h2><div class="griglia"><article class="scheda">
+  <a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/"><div class="foto"><img src="/img/terra-amara-la-trama-completa-e-come-finisce.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></h3>
+    <div class="quando">30 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/"><div class="foto"><img src="https://i.ytimg.com/vi/_ypSJU-x7LY/hqdefault.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/"><div class="foto"><img src="https://i.ytimg.com/vi/B_MLx-0yh6M/hqdefault.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=Terra Amara, cosa muore insieme a Fekeli: l&#x27;avvertimento che Züleyha non riceverà mai — dall&#x27;incidente di Erkan alla condanna a 24 anni di Betül — https://serietvfans.com/terra-amara/terra-amara-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/terra-amara/terra-amara-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/terra-amara/terra-amara-la-trama-completa-e-come-finisce/&text=Terra Amara, cosa muore insieme a Fekeli: l&#x27;avvertimento che Züleyha non riceverà mai — dall&#x27;incidente di Erkan alla condanna a 24 anni di Betül" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">TERRA AMARA Spoiler Turchia: Ali Rahmet Fekeli viene ucciso! Züleyha resta sola</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=kWCNystrm7Y">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di Terra Amara</h3><ol class="numerata"><li><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></li><li><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></li><li><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></li><li><a href="/terra-amara/terra-amara-come-finisce-davvero-zuleyha-vince-tutto-e-resta-sola/">Terra Amara: come finisce davvero, Züleyha vince tutto e resta sola</a></li><li><a href="/terra-amara/terra-amara-come-muore-demir-yaman-chi-ha-dato-lordine-e-perche-doveva-essere-un-rapimento/">Terra Amara, come muore Demir Yaman: chi ha dato l&#x27;ordine e perché doveva essere un rapimento</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>TERRA AMARA Spoiler Turchia: Ali Rahmet Fekeli viene ucciso! Züleyha resta sola</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su Terra Amara</h3><ul><li><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></li><li><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></li><li><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></li><li><a href="/terra-amara/terra-amara-come-finisce-davvero-zuleyha-vince-tutto-e-resta-sola/">Terra Amara: come finisce davvero, Züleyha vince tutto e resta sola</a></li><li><a href="/terra-amara/terra-amara-come-muore-demir-yaman-chi-ha-dato-lordine-e-perche-doveva-essere-un-rapimento/">Terra Amara, come muore Demir Yaman: chi ha dato l&#x27;ordine e perché doveva essere un rapimento</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

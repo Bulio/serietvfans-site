@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/endless-love/">Endless Love</a> › Endless Love, l&#x27;ordine di Tufan: «Uccidi Emir e fallo sembrare un incidente» — ma in auto sale anche Nihan</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/endless-love/">Endless Love</a>
   <h1>Endless Love, l&#x27;ordine di Tufan: «Uccidi Emir e fallo sembrare un incidente» — ma in auto sale anche Nihan</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Il braccio destro più fidato di Emir è in realtà l&#x27;uomo che ne pianifica la morte: Tufan ordina a Nazif di manomettere l&#x27;auto durante il soggiorno alla baita, in modo che tutto sembri una fatalità. Ma quando Emir riparte, accanto a lui c&#x27;è Nihan — un dettaglio che nessuno aveva previsto. L&#x27;auto si schianta contro un albero, e a chiamare l&#x27;ambulanza è proprio Nazif, travolto dai sensi di colpa. Poi il confronto in un vicolo: Tufan lo colpisce in faccia e gli urla che ha rovinato tutto.</p><ol><li><a href="#c1">Il doppio gioco dell&#x27;uomo di fiducia</a></li><li><a href="#c2">La baita e l&#x27;auto manomessa</a></li><li><a href="#c3">Lo schianto contro l&#x27;albero</a></li><li><a href="#c4">Il pugno nel vicolo</a></li><li><a href="#c5">Come Tufan nasconde la sua vera alleanza</a></li><li><a href="#c6">Cosa spinge Nazif a chiamare i soccorsi</a></li><li><a href="#c7">Perche&#x27; Tufan colpisce Nazif nel vicolo</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>Endless Love</strong> — Serie conclusa in Italia · le puntate su Mediaset Infinity</span></div>
   
-  <p class="occhiello">Il braccio destro più fidato di Emir è in realtà l&#x27;uomo che ne pianifica la morte: Tufan ordina a Nazif di manomettere l&#x27;auto durante il soggiorno alla baita, in modo che tutto sembri una fatalità. Ma quando Emir riparte, accanto a lui c&#x27;è Nihan — un dettaglio che nessuno aveva previsto. L&#x27;auto si schianta contro un albero, e a chiamare l&#x27;ambulanza è proprio Nazif, travolto dai sensi di colpa. Poi il confronto in un vicolo: Tufan lo colpisce in faccia e gli urla che ha rovinato tutto.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: Endless Love, l&#x27;ordine di Tufan: «Uccidi Emir e fallo sembrare un incidente» — ma in auto sale anche Nihan" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/aNvoAjwlOH4/maxresdefault.jpg" alt="Endless Love, l&#x27;ordine di Tufan: «Uccidi Emir e fallo sembrare un incidente» — ma in auto sale anche Nihan" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/aNvoAjwlOH4/hqdefault.jpg 480w, https://i.ytimg.com/vi/aNvoAjwlOH4/sddefault.jpg 640w, https://i.ytimg.com/vi/aNvoAjwlOH4/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/aNvoAjwlOH4/hqdefault.jpg&quot;, &quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,25 +409,25 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>La spiegazione di Nazif che rivela la logica dell&#x27;intero piano: «Se lo volevi morto potevo sparargli» — «Doveva sembrare un incidente».</strong></p>
-  <h2>Il doppio gioco dell&#x27;uomo di fiducia</h2>
+  <h2 id="c1">Il doppio gioco dell&#x27;uomo di fiducia</h2>
 <p>Per stagioni intere Tufan è apparso come la colonna portante di Emir, l&#x27;uomo che eseguiva ogni ordine senza fiatare. La verità è opposta: ha sempre lavorato per conto di Asu, nemica giurata dei Kozcuoğlu, restando accanto al bersaglio solo per rendere possibili i piani di vendetta. Gli anni passati al suo fianco gli hanno dato una conoscenza dettagliata di abitudini e spostamenti, e con quella conoscenza ha costruito il piano più freddo: eliminarlo senza che nessuno possa attribuire una colpa a qualcuno.</p>
-<h2>La baita e l&#x27;auto manomessa</h2>
+<h2 id="c2">La baita e l&#x27;auto manomessa</h2>
 <p>L&#x27;occasione arriva quando Emir decide di andare in una baita isolata per chiudere una volta per tutte le questioni legate a Kemal. Seguendo istruzioni dettagliate, Nazif manomette il veicolo: appena l&#x27;auto verrà messa in moto, la sequenza fatale dovrà scattare da sola. Tufan attende a distanza il momento in cui il piano si compirà. Ma alla partenza succede l&#x27;imprevisto — Nihan sale accanto al marito, ignara di tutto.</p>
-<h2>Lo schianto contro l&#x27;albero</h2>
+<h2 id="c3">Lo schianto contro l&#x27;albero</h2>
 <p>Sulla strada nel bosco, dopo un confronto finito male, Emir lascia che la rabbia prenda il sopravvento e schiaccia l&#x27;acceleratore. L&#x27;auto, sabotata, non risponde: in un attimo il controllo sfugge e il veicolo si schianta contro un albero. Nascosto tra gli alberi, Nazif assiste alla scena e il suo primo pensiero non è per il bersaglio ma per Nihan, vittima innocente di un piano che non la riguardava. Con le mani che tremano compone il numero dell&#x27;ambulanza, fornisce le informazioni essenziali e si dilegua.</p>
-<h2>Il pugno nel vicolo</h2>
+<h2 id="c4">Il pugno nel vicolo</h2>
 <p>L&#x27;incontro tra i due, in un angolo buio della città, è tutto fuorché una resa dei conti tra pari: Tufan lo colpisce con un pugno in faccia e gli urla che ha rovinato tutto — «ti avevo detto di far fuori solo Emir, cosa succede se muore anche Nihan?». Nazif si difende con la logica di chi esegue: se lo voleva morto poteva sparargli, e non poteva prevedere che lei salisse in macchina. La verità è che entrambi si salveranno, e questo per Tufan è il peggiore degli scenari: l&#x27;incidente non ha eliminato il bersaglio e ha lasciato dietro di sé una scia che qualcuno, prima o poi, seguirà.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Come Tufan nasconde la sua vera alleanza</h2>
+<h2 id="c5">Come Tufan nasconde la sua vera alleanza</h2>
 <p>Per lunghissimo tempo la figura di Tufan è sembrata inossidabile all&#x27;interno dell&#x27;organizzazione dei Kozcuoğlu, dove ricopriva il ruolo di assistente personale e uomo di massima fiducia. Nessuno nell&#x27;entourage sospettava che dietro questa devozione cieca si nascondesse un disegno del tutto diverso. Tufan eseguiva ogni direttiva senza esprimere riserve, mantenendo un profilo impeccabile per guadagnarsi la totale fiducia del suo capo. In realtà il suo unico punto di riferimento è sempre stata Asu, acerrima nemica della famiglia Kozcuoğlu. È per conto di questa donna che l&#x27;uomo ha accettato di vivere una doppia vita, trasformando la sua costante vicinanza al nemico nello strumento perfetto per pianificare una vendetta senza sbavature.</p>
 <p>L&#x27;apparente fedeltà mostrata nel corso del tempo ha garantito a Tufan un accesso privilegiato alle informazioni più riservate riguardanti la vita privata e gli affari. Questo gli ha permesso di studiare dettagliatamente ogni singola abitudine del suo bersaglio, osservandone gli spostamenti e prevedendone le mosse con estrema precisione. Quando si è presentata l&#x27;occasione del soggiorno nella baita isolata, organizzato per chiudere la complessa questione legata a Kemal, Tufan ha capito di avere finalmente in mano l&#x27;opportunità ideale per agire. Sfruttando la vulnerabilità di quella location lontana da sguardi indiscreti, l&#x27;uomo ha potuto mettere in atto la strategia finale che preparava da anni insieme ad Asu.</p>
 <p>Il piano ideato da Tufan non prevedeva un attacco diretto o un atto di violenza palese, ma una manovra sottile e letale. Un&#x27;eliminazione violenta avrebbe subito insospettito gli inquirenti e la cerchia dei Kozcuoğlu, scatenando indagini pericolose. Per questo motivo l&#x27;obiettivo principale era fare in modo che la morte sembrasse una tragica fatalità dovuta a un guasto meccanico. Affidando l&#x27;incarico esecutivo a Nazif, Tufan ha preteso la massima precisione nella manomissione del mezzo. L&#x27;ordine impartito stabiliva chiaramente che la sequenza distruttiva dovesse innescarsi automaticamente alla partenza dell&#x27;auto, così da non lasciare alcuna traccia riconducibile a un intervento umano volontario o a un complotto ordito dall&#x27;esterno.</p>
-<h2>Cosa spinge Nazif a chiamare i soccorsi</h2>
+<h2 id="c6">Cosa spinge Nazif a chiamare i soccorsi</h2>
 <p>Nazif ha seguito alla lettera le scrupolose istruzioni ricevute, avvicinandosi all&#x27;automobile parcheggiata vicino alla baita isolata per effettuare la manomissione tecnica necessaria. Il suo compito era fare in modo che il veicolo perdesse ogni controllo non appena fosse stato messo in marcia lungo il tragitto. Una volta completato il lavoro meccanico, si è nascosto nella vegetazione circostante per attendere l&#x27;uscita del bersaglio e monitorare lo svolgimento dell&#x27;operazione. Quando l&#x27;uomo è salito a bordo ed è ripartito, si è verificato un imprevisto imprevedibile: anche Nihan ha occupato il sedile del passeggero accanto al marito. Nazif ha assistito alla scena con sgomento, conscio che la situazione era ormai del tutto compromessa.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>L&#x27;auto manomessa si è avviata lungo le strade sconnesse del bosco in un clima di forte tensione a bordo. Durante il tragitto è scoppiato un duro confronto tra i due coniugi, al termine del quale la rabbia ha preso il sopravvento guidando la mano del conducente. A quel punto è stato premuto con forza l&#x27;acceleratore, ma il veicolo sabotato non ha risposto ai comandi di frenata e sterzata, perdendo aderenza in pochissimi istanti. La corsa si è conclusa con un violentissimo schianto contro un albero a margine della carreggiata. Nazif, ancora appostato tra gli alberi, ha visto l&#x27;impatto distruttivo e ha capito immediatamente la gravità dell&#x27;incidente che aveva appena contribuito a provocare.</p>
 <p>Di fronte alla drammaticità dello schianto, la priorità di Nazif è improvvisamente cambiata a causa della presenza della donna nell&#x27;abitacolo distrutto. Nihan rappresentava una vittima del tutto innocente, la cui vita non doveva essere messa in pericolo secondo i piani originari. Sopraffatto da fortissimi sensi di colpa e con le mani scosse da un tremito incontrollabile, l&#x27;esecutore ha impugnato il telefono per contattare i soccorsi medici. Senza rivelare la propria identità, ha fornito all&#x27;operatore dell&#x27;ambulanza le coordinate esatte del punto dell&#x27;impatto nel bosco. Subito dopo aver trasmesso le informazioni indispensabili per salvare i feriti, Nazif si è rapidamente allontanato nel folto della vegetazione prima dell&#x27;arrivo delle forze dell&#x27;ordine.</p>
-<h2>Perche&#x27; Tufan colpisce Nazif nel vicolo</h2>
+<h2 id="c7">Perche&#x27; Tufan colpisce Nazif nel vicolo</h2>
 <p>Il fallimento del piano ha scatenato la rabbia incontenibile di Tufan, sfociata in un drammatico incontro clandestino in un angolo buio della città. Non appena si è trovato di fronte al suo complice, Tufan lo ha colpito con un violento pugno in pieno volto senza neppure lasciargli il tempo di spiegarsi. L&#x27;aggressione è stata accompagnata da urla furiose riguardanti la presenza indesiderata di Nihan a bordo dell&#x27;autovettura sabotata. Per Tufan il ferimento o la morte della donna rappresentavano un errore inaccettabile che rischiava di mandare all&#x27;aria l&#x27;intera strategia ideata per conto di Asu. L&#x27;obiettivo unico doveva rimanere Emir, mentre la presenza di testimoni o vittime estranee complicava enormemente la situazione.</p>
 <p>Nel corso dell&#x27;acceso confronto nel vicolo, Nazif ha provato a difendere il proprio operato spiegando la dinamica degli eventi. L&#x27;esecutore ha ricordato a Tufan che, se l&#x27;intenzione fosse stata semplicemente quella di eliminare il nemico senza troppi calcoli, avrebbe potuto utilizzare un&#x27;arma da fuoco e sparargli direttamente alla testa. Ha inoltre sottolineato come fosse assolutamente impossibile prevedere la decisione di Nihan di salire in macchina proprio in quel preciso momento. Nazif si è difeso affermando di aver eseguito le direttive ricevute sulla manomissione dell&#x27;auto, mantenendo la logica dell&#x27;incidente stradale richiesta dal piano originale per non sollevare sospetti d&#x27;omicidio nell&#x27;opinione pubblica.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
@@ -385,19 +435,41 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=gJbQc3AStYE" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/gJbQc3AStYE/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>ENDLESS LOVE Anticipazioni 30 Marzo: Scacco Matto di Emir! Colpisce Nihan e Kemal nei punti deb</span></a></li><li><a href="https://www.youtube.com/watch?v=mLrPFQDPW3k" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/mLrPFQDPW3k/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>Anticipazioni Endless Love: Nihan ed Emir, La Verità Sull&#x27;Incidente - Scopri Chi è il Mandante!</span></a></li><li><a href="https://www.youtube.com/watch?v=W5DPH529050" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/W5DPH529050/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TUFAN TRADISCE EMIR E AIUTA NIHAN E KEMAL! E&#x27; LUI IL RICATTATORE? Anticipazioni Endless Love Tu</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Emir arriverà a scoprire che dietro l&#x27;incidente c&#x27;è il suo uomo più fidato? E il rimorso di Nazif basta a renderlo qualcosa di diverso da un complice?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=aNvoAjwlOH4">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di Endless Love</h2><div class="griglia"><article class="scheda">
+  <a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/"><div class="foto"><img src="https://i.ytimg.com/vi/DSiProJJ1ls/hqdefault.jpg" alt="Endless Love" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/"><div class="foto"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/"><div class="foto"><img src="https://i.ytimg.com/vi/uu2oAzTOWQU/hqdefault.jpg" alt="Endless Love" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></h3>
+    <div class="quando">25 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=Endless Love, l&#x27;ordine di Tufan: «Uccidi Emir e fallo sembrare un incidente» — ma in auto sale anche Nihan — https://soapoperaitalia.com/endless-love/endless-love-la-trama-completa-perche-nihan-sposa-emir-e-come-finisce/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://soapoperaitalia.com/endless-love/endless-love-la-trama-completa-perche-nihan-sposa-emir-e-come-finisce/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://soapoperaitalia.com/endless-love/endless-love-la-trama-completa-perche-nihan-sposa-emir-e-come-finisce/&text=Endless Love, l&#x27;ordine di Tufan: «Uccidi Emir e fallo sembrare un incidente» — ma in auto sale anche Nihan" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">SCIOCCANTE TUFAN: &quot;UCCIDI EMIR!&quot; MA IN MACCHINA C&#x27;E&#x27; ANCHE NIHAN!</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=aNvoAjwlOH4">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di Endless Love</h3><ol class="numerata"><li><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></li><li><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></li><li><a href="/endless-love/endless-love-chi-e-galip-kozcuoglu-le-due-volte-in-cui-nihan-e-stata-venduta/">Endless Love, chi è Galip Kozcuoğlu: le due volte in cui Nihan è stata venduta</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-zeynep-soydere-perche-emir-lha-scelta-e-cosa-ha-distrutto/">Endless Love, chi è davvero Zeynep Soydere: perché Emir l&#x27;ha scelta e cosa ha distrutto</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>SCIOCCANTE TUFAN: &quot;UCCIDI EMIR!&quot; MA IN MACCHINA C&#x27;E&#x27; ANCHE NIHAN!</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su Endless Love</h3><ul><li><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></li><li><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></li><li><a href="/endless-love/endless-love-chi-e-galip-kozcuoglu-le-due-volte-in-cui-nihan-e-stata-venduta/">Endless Love, chi è Galip Kozcuoğlu: le due volte in cui Nihan è stata venduta</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-zeynep-soydere-perche-emir-lha-scelta-e-cosa-ha-distrutto/">Endless Love, chi è davvero Zeynep Soydere: perché Emir l&#x27;ha scelta e cosa ha distrutto</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

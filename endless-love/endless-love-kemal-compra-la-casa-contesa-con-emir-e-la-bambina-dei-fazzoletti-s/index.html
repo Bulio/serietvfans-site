@@ -12,7 +12,7 @@
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Serie TV Fans">
 <meta property="og:url" content="https://serietvfans.com/endless-love/endless-love-kemal-compra-la-casa-contesa-con-emir-e-la-bambina-dei-fazzoletti-s/">
-<meta property="og:image" content="https://i.ytimg.com/vi/M-Bh1rT1GT0/maxresdefault.jpg">
+<meta property="og:image" content="https://serietvfans.com/img/endless-love-kemal-compra-la-casa-contesa-con-emir-e-la-bambina-dei-fazzoletti-s.jpg">
 <meta property="og:locale" content="it_IT">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#7b1e2b">
@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -318,12 +367,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7778653397776213" crossorigin="anonymous"></script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "96259d7e67ce47fba4573364859712a6"}'></script>
 <script>(function(){var f=0;function go(){if(f)return;f=1;(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","y3rpoig6jk");}["pointerdown","keydown","touchstart","scroll"].forEach(function(v){addEventListener(v,go,{once:1,passive:1})});setTimeout(go,2500)})();</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Endless Love, Kemal compra la casa contesa con Emir e la bambina dei fazzoletti svela i cinque anni di Nihan", "datePublished": "2026-08-17", "dateModified": "2026-09-04", "description": "L'agente immobiliare comunica sia a Kemal sia a Emir che la casa che entrambi volevano è stata ritirata dal mercato. Nello stesso giorno un incidente al cantiere mette Kemal contro Emir sulla sicurezza e costringe Galip a mettere in dubbio il figlio per la prima volta. Poi una bambina di strada rivela a Kemal che Nihan ha pianto per lui per cinque anni, e la proprietaria della casa — amica di Leyla — decide di venderla proprio a lui.", "inLanguage": "it-IT", "mainEntityOfPage": "https://serietvfans.com/endless-love/endless-love-kemal-compra-la-casa-contesa-con-emir-e-la-bambina-dei-fazzoletti-s/", "image": ["https://i.ytimg.com/vi/M-Bh1rT1GT0/maxresdefault.jpg"], "author": {"@type": "Organization", "name": "Serie TV Fans", "url": "https://serietvfans.com/chi-siamo/"}, "publisher": {"@type": "Organization", "name": "Serie TV Fans", "logo": {"@type": "ImageObject", "url": "https://serietvfans.com/favicon.svg"}}, "video": {"@type": "VideoObject", "name": "Endless Love, Kemal compra la casa contesa con Emir e la bambina dei fazzoletti svela i cinque anni di Nihan", "description": "L'agente immobiliare comunica sia a Kemal sia a Emir che la casa che entrambi volevano è stata ritirata dal mercato. Nello stesso giorno un incidente al cantiere mette Kemal contro Emir sulla sicurezza e costringe Galip a mettere in dubbio il figlio per la prima volta. Poi una bambina di strada rivela a Kemal che Nihan ha pianto per lui per cinque anni, e la proprietaria della casa — amica di Leyla — decide di venderla proprio a lui.", "thumbnailUrl": "https://i.ytimg.com/vi/M-Bh1rT1GT0/maxresdefault.jpg", "uploadDate": "2026-08-17T12:00:00Z", "embedUrl": "https://www.youtube.com/embed/M-Bh1rT1GT0"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Endless Love, Kemal compra la casa contesa con Emir e la bambina dei fazzoletti svela i cinque anni di Nihan", "datePublished": "2026-08-17", "dateModified": "2026-09-08", "description": "L'agente immobiliare comunica sia a Kemal sia a Emir che la casa che entrambi volevano è stata ritirata dal mercato. Nello stesso giorno un incidente al cantiere mette Kemal contro Emir sulla sicurezza e costringe Galip a mettere in dubbio il figlio per la prima volta. Poi una bambina di strada rivela a Kemal che Nihan ha pianto per lui per cinque anni, e la proprietaria della casa — amica di Leyla — decide di venderla proprio a lui.", "inLanguage": "it-IT", "mainEntityOfPage": "https://serietvfans.com/endless-love/endless-love-kemal-compra-la-casa-contesa-con-emir-e-la-bambina-dei-fazzoletti-s/", "image": ["https://serietvfans.com/img/endless-love-kemal-compra-la-casa-contesa-con-emir-e-la-bambina-dei-fazzoletti-s.jpg"], "author": {"@type": "Organization", "name": "Serie TV Fans", "url": "https://serietvfans.com/chi-siamo/"}, "publisher": {"@type": "Organization", "name": "Serie TV Fans", "logo": {"@type": "ImageObject", "url": "https://serietvfans.com/favicon.svg"}}, "video": {"@type": "VideoObject", "name": "Endless Love, Kemal compra la casa contesa con Emir e la bambina dei fazzoletti svela i cinque anni di Nihan", "description": "L'agente immobiliare comunica sia a Kemal sia a Emir che la casa che entrambi volevano è stata ritirata dal mercato. Nello stesso giorno un incidente al cantiere mette Kemal contro Emir sulla sicurezza e costringe Galip a mettere in dubbio il figlio per la prima volta. Poi una bambina di strada rivela a Kemal che Nihan ha pianto per lui per cinque anni, e la proprietaria della casa — amica di Leyla — decide di venderla proprio a lui.", "thumbnailUrl": "https://serietvfans.com/img/endless-love-kemal-compra-la-casa-contesa-con-emir-e-la-bambina-dei-fazzoletti-s.jpg", "uploadDate": "2026-08-17T12:00:00Z", "embedUrl": "https://www.youtube.com/embed/M-Bh1rT1GT0"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://serietvfans.com/"}, {"@type": "ListItem", "position": 2, "name": "Endless Love", "item": "https://serietvfans.com/serie/endless-love/"}, {"@type": "ListItem", "position": 3, "name": "Endless Love, Kemal compra la casa contesa con Emir e la bambina dei fazzoletti svela i cinque anni di Nihan"}]}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,19 +385,18 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/endless-love/">Endless Love</a> › Endless Love, Kemal compra la casa contesa con Emir e la bambina dei fazzoletti svela i cinque anni di Nihan</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/endless-love/">Endless Love</a>
   <h1>Endless Love, Kemal compra la casa contesa con Emir e la bambina dei fazzoletti svela i cinque anni di Nihan</h1>
-  <div class="firma">Redazione Serie TV Fans · lunedì 17 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-17">lunedì 17 agosto 2026</time></span><span>aggiornato il 8 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">L&#x27;agente immobiliare comunica sia a Kemal sia a Emir che la casa che entrambi volevano è stata ritirata dal mercato. Nello stesso giorno un incidente al cantiere mette Kemal contro Emir sulla sicurezza e costringe Galip a mettere in dubbio il figlio per la prima volta. Poi una bambina di strada rivela a Kemal che Nihan ha pianto per lui per cinque anni, e la proprietaria della casa — amica di Leyla — decide di venderla proprio a lui.</p><ol><li><a href="#c1">Chi sono Kemal, Nihan ed Emir, per chi arriva adesso</a></li><li><a href="#c2">L&#x27;antefatto: la casa ritirata dal mercato e i due rivali a mani vuote</a></li><li><a href="#c3">La cena in casa Soydere e la scelta di Tarık</a></li><li><a href="#c4">L&#x27;incidente al cantiere: Kemal contro Emir sulla sicurezza</a></li><li><a href="#c5">Galip mette in dubbio suo figlio per la prima volta</a></li><li><a href="#c6">«È lui l&#x27;uomo per cui hai pianto»: la frase della bambina dei fazzoletti</a></li><li><a href="#c7">La casa venduta a Kemal grazie a Leyla</a></li><li><a href="#c8">Il faccia a faccia sulla porta: Nihan scopre chi è il nuovo proprietario</a></li><li><a href="#c9">Dove vedere Endless Love</a></li><li><a href="#c10">Come Galip ridimensiona Emir davanti a tutti</a></li><li><a href="#c11">Cosa spinge Tarık ad accettare l&#x27;offerta di Emir</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>Endless Love</strong> — Serie conclusa in Italia · le puntate su Mediaset Infinity</span></div>
-  
-  <p class="occhiello">L&#x27;agente immobiliare comunica sia a Kemal sia a Emir che la casa che entrambi volevano è stata ritirata dal mercato. Nello stesso giorno un incidente al cantiere mette Kemal contro Emir sulla sicurezza e costringe Galip a mettere in dubbio il figlio per la prima volta. Poi una bambina di strada rivela a Kemal che Nihan ha pianto per lui per cinque anni, e la proprietaria della casa — amica di Leyla — decide di venderla proprio a lui.</p>
+  <figure class="copertina"><img src="/img/endless-love-kemal-compra-la-casa-contesa-con-emir-e-la-bambina-dei-fazzoletti-s.jpg" alt="Endless Love"><figcaption>Immagine d&#x27;ambiente — Endless Love</figcaption></figure>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
     <button type="button" class="avvia" data-yt="M-Bh1rT1GT0"
       aria-label="Riproduci il video: Endless Love, Kemal compra la casa contesa con Emir e la bambina dei fazzoletti svela i cinque anni di Nihan" onclick="ytGo(this)">
-      <img src="https://i.ytimg.com/vi/M-Bh1rT1GT0/maxresdefault.jpg" alt="Endless Love, Kemal compra la casa contesa con Emir e la bambina dei fazzoletti svela i cinque anni di Nihan" width="1280" height="720"
-        srcset="https://i.ytimg.com/vi/M-Bh1rT1GT0/hqdefault.jpg 480w, https://i.ytimg.com/vi/M-Bh1rT1GT0/sddefault.jpg 640w, https://i.ytimg.com/vi/M-Bh1rT1GT0/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+      <img src="/img/endless-love-kemal-compra-la-casa-contesa-con-emir-e-la-bambina-dei-fazzoletti-s.jpg" alt="Endless Love, Kemal compra la casa contesa con Emir e la bambina dei fazzoletti svela i cinque anni di Nihan" width="1280" height="720"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/M-Bh1rT1GT0/hqdefault.jpg&quot;, &quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,49 +407,71 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>Una bambina che vende fazzoletti per strada dice a Kemal, in una frase, quello che Nihan non gli ha mai detto in cinque anni. Poche ore dopo lui firma per la casa che entrambi volevano — e sulla porta trova proprio lei.</strong></p>
-  <h2>Chi sono Kemal, Nihan ed Emir, per chi arriva adesso</h2>
+  <h2 id="c1">Chi sono Kemal, Nihan ed Emir, per chi arriva adesso</h2>
 <p>Kemal è l&#x27;ingegnere tornato a Istanbul con un solo obiettivo dichiarato: smontare pezzo per pezzo il potere della famiglia Kozcuoğlu. Nihan è la donna che ha amato e che cinque anni prima ha sposato Emir, lasciandolo convinto di essere stato abbandonato per denaro. Emir è il figlio della holding, l&#x27;uomo che ha costruito quel matrimonio su un ricatto e che considera Kemal un&#x27;ossessione personale prima ancora che un rivale d&#x27;affari. Galip è il padre di Emir, l&#x27;unica persona nella serie che possa togliergli qualcosa senza chiedere il permesso a nessuno.</p>
-<h2>L&#x27;antefatto: la casa ritirata dal mercato e i due rivali a mani vuote</h2>
+<h2 id="c2">L&#x27;antefatto: la casa ritirata dal mercato e i due rivali a mani vuote</h2>
 <p>Kemal aveva messo gli occhi su una casa e Emir aveva fatto lo stesso, trasformando anche quell&#x27;acquisto in una gara personale. La mattina dopo aver passato la notte da Leyla, durante la colazione, Kemal riceve la telefonata dell&#x27;agente immobiliare: la casa non è più disponibile. La stessa notizia arriva a Emir, e il dettaglio che rende la cosa sopportabile per entrambi è che non l&#x27;ha vinta nessuno — la proprietà è stata semplicemente ritirata dal mercato. La partita sembra chiusa in parità, ma è solo sospesa: la decisione vera non l&#x27;ha ancora presa la proprietaria.</p>
-<h2>La cena in casa Soydere e la scelta di Tarık</h2>
+<h2 id="c3">La cena in casa Soydere e la scelta di Tarık</h2>
 <p>In casa Soydere, Fehime convince Hüseyin a lasciare che Kemal torni a vivere lì, e lui acconsente. La cosa manda su tutte le furie Tarık, che vede il fratello ricevere perdono e ammirazione mentre lui fatica a ottenere anche solo un&#x27;occhiata dal padre. Fehime prova a spiegargli che l&#x27;atteggiamento di Hüseyin non è punitivo ma un modo — sbagliato — di forgiargli il carattere. Tarık non ci arriva, e da quel disagio prende la decisione che pagherà cara: chiama Emir e accetta la sua offerta di tornare a lavorare per lui.</p>
-<h2>L&#x27;incidente al cantiere: Kemal contro Emir sulla sicurezza</h2>
+<h2 id="c4">L&#x27;incidente al cantiere: Kemal contro Emir sulla sicurezza</h2>
 <p>Mentre è in auto, Kemal riceve la chiamata di İsmail: c&#x27;è stato un grave incidente sul cantiere. Ordina di fermare immediatamente i lavori e corre sul posto. Quando Emir arriva, richiamato con urgenza dal padre, trova già lì Önder e Galip, e Kemal impegnato a soccorrere gli operai. Non ci sono vittime, ma gli operai sono apertamente furiosi con Emir, che aveva ignorato le loro precedenti segnalazioni sulle carenze di sicurezza. Kemal si fa portavoce delle loro richieste e chiede l&#x27;adeguamento immediato alle norme; Önder e Galip gli danno ragione davanti a tutti, e per Emir è un&#x27;umiliazione doppia.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Galip mette in dubbio suo figlio per la prima volta</h2>
+<h2 id="c5">Galip mette in dubbio suo figlio per la prima volta</h2>
 <p>Il confronto vero arriva in ufficio. Galip affronta Emir con una durezza mai usata prima: gli rimprovera di essersi lasciato distrarre dalla rivalità con Kemal a scapito della sicurezza e dell&#x27;efficienza dell&#x27;azienda, e gli ricorda che quell&#x27;incidente avrebbe potuto avere conseguenze molto gravi per l&#x27;impresa. Poi arriva la minaccia: se non tornerà a occuparsi seriamente dell&#x27;azienda, gli verranno revocate responsabilità e poteri. È la prima volta che il padre mette apertamente in discussione la sua capacità di gestione, e per Emir è un colpo senza precedenti.</p>
-<h2>«È lui l&#x27;uomo per cui hai pianto»: la frase della bambina dei fazzoletti</h2>
+<h2 id="c6">«È lui l&#x27;uomo per cui hai pianto»: la frase della bambina dei fazzoletti</h2>
 <p>Tornando verso casa, Kemal devia verso il luogo dove Nihan sta seguendo un progetto artistico sostenuto dalla sua azienda. Lì la trova mentre parla con una bambina che vende fazzoletti per strada, un viso che Nihan incontra spesso durante le sue corse. La piccola, che in passato l&#x27;aveva vista piangere per amore, guarda Kemal e dice ad alta voce di aver capito: è lui l&#x27;uomo per cui ha sofferto per cinque anni. La frase imbarazza entrambi, ma su Kemal ha un effetto molto più profondo — era convinto che Nihan lo avesse lasciato per Emir.</p>
-<h2>La casa venduta a Kemal grazie a Leyla</h2>
+<h2 id="c7">La casa venduta a Kemal grazie a Leyla</h2>
 <p>Mentre si allontana, Kemal riceve una seconda telefonata inaspettata: è la proprietaria della casa contesa, che ha deciso di venderla. E ha deciso anche a chi. La donna si rivela essere un&#x27;amica di Leyla, e proprio le referenze di Leyla la convincono ad affidare la proprietà a Kemal invece che a Emir. La casa che i due rivali si stavano contendendo a colpi di offerte finisce così a chi non aveva rilanciato: nella serie è uno dei rari casi in cui a decidere non è il denaro, ma la parola di qualcuno che si fida.</p>
-<h2>Il faccia a faccia sulla porta: Nihan scopre chi è il nuovo proprietario</h2>
+<h2 id="c8">Il faccia a faccia sulla porta: Nihan scopre chi è il nuovo proprietario</h2>
 <p>Il giorno dopo Nihan, durante il suo giro di corsa, nota che la casa dei suoi sogni è stata venduta e che qualcuno sta traslocando. Da lontano riconosce Kemal e capisce che il nuovo proprietario è lui. Si avvicina spinta dalla curiosità e si ferma davanti alla porta, lasciandosi andare per qualche istante all&#x27;idea che l&#x27;abbia comprata per loro, un posto dove costruire finalmente una vita insieme. Poi entra e si trova faccia a faccia con lui, che resta senza parole. Intanto Emir, notando che non è ancora rientrata dalla corsa, ha cominciato a cercarla nei dintorni.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Dove vedere Endless Love</h2>
+<h2 id="c9">Dove vedere Endless Love</h2>
 <p>Endless Love è andata in onda in Italia su Canale 5: le puntate si possono recuperare in streaming su Mediaset Infinity.</p>
-<h2>Come Galip ridimensiona Emir davanti a tutti</h2>
+<h2 id="c10">Come Galip ridimensiona Emir davanti a tutti</h2>
 <p>L&#x27;incidente avvenuto all&#x27;interno del cantiere rappresenta un punto di svolta fondamentale nelle dinamiche tra i vertici della societa, spingendo Galip a prendere una posizione netta e inaspettata contro il proprio figlio. Dopo che gli operai esprimono apertamente tutta la loro rabbia nei confronti di Emir per aver completamente ignorato le precedenti segnalazioni sulla mancanza di sicurezza, Kemal interviene facendosi portavoce delle loro giuste rivendicazioni. La situazione precipita quando sia Önder sia Galip decidono di appoggiare pubblicamente l&#x27;ingegnere, costringendo il giovane Kozcuoğlu a subire una pesante umiliazione di fronte alle maestranze e ai collaboratori presenti sul posto.</p>
 <p>La vera rottura si consuma tuttavia poco dopo, all&#x27;interno degli uffici aziendali, dove Galip affronta il figlio con una durezza mai mostrata in precedenza. Il capofamiglia rimprovera ad Emir di essersi lasciato completamente distrarre dalla rivalita personale con Kemal, mettendo a rischio la stabilita e l&#x27;efficienza dell&#x27;impresa di famiglia. Galip chiarisce che la gestione della sicurezza e la tutela dei lavoratori non possono essere subordinate ai suoi rancori personali. Per la prima volta nella storia della holding, il padre esprime forti dubbi sulle capacita manageriali del figlio e lo minaccia direttamente di privarlo di ogni potere decisionale se non cambiera immediato registro.</p>
-<h2>Cosa spinge Tarık ad accettare l&#x27;offerta di Emir</h2>
+<h2 id="c11">Cosa spinge Tarık ad accettare l&#x27;offerta di Emir</h2>
 <p>Le tensioni interne alla famiglia Soydere raggiungono il punto di rottura quando Fehime riesce a convincere Hüseyin a riaccogliere Kemal in casa, scatenando la profonda gelosia di Tarık. Quest&#x27;ultimo osserva con crescente risentimento il modo in cui il fratello ottiene il perdono e l&#x27;ammirazione dei genitori, mentre i propri sforzi per conquistare la stima paterna sembrano passare del tutto inosservati. Nonostante Fehime provi a spiegargli che il rigore di Hüseyin nasce soltanto dal desiderio di temprare il suo carattere, Tarık vive questa diseguaglianza con grande sofferenza, sentendosi costantemente messo in secondo piano all&#x27;interno delle mura domestiche.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>Schiacciato da questo senso di frustrazione e dal bisogno disperato di emanciparsi, Tarık prende una decisione impulsiva dalle conseguenze potenzialmente devastanti per il suo futuro. Sceglie infatti di contattare direttamente Emir e di accettare la sua proposta lavorativa, mettendosi alle dipendenze dell&#x27;uomo che considera il principale avversario di suo fratello. Questa scelta, dettata dall&#x27;orgoglio ferito e dalla rabbia verso la decisione paterna, finisce per consegnarlo direttamente nelle mani del nemico, creando una spaccatura ancora piu profonda e complessa nell&#x27;equilibrio gia precario della famiglia Soydere.</p>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=2x6eVZ8HpgQ" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/2x6eVZ8HpgQ/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TARIK SCEGLIE EMIR E MINACCIA KEMAL: &quot;RIPORTO NIHAN A CASA DA EMIR&quot; - Anticipazioni Endless Lov</span></a></li><li><a href="https://www.youtube.com/watch?v=QXpcDyhWhGw" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/QXpcDyhWhGw/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>EMIR PAZZO FURIOSO! RAPISCE DENIZ E COSTRINGE NIHAN A SPARARE A KEMAL PER RIAVERLA! Endless Lov</span></a></li><li><a href="https://www.youtube.com/watch?v=tlrClPcR9_s" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/tlrClPcR9_s/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>Colpo di Scena in Endless Love: Kemal e Nihan Scoprono Tutto – Emir Decide di Eliminare Asu e M</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Kemal ha comprato quella casa per sé o pensando a Nihan? E secondo voi la frase della bambina cambierà davvero il modo in cui la guarda, o è troppo tardi?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=M-Bh1rT1GT0">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di Endless Love</h2><div class="griglia"><article class="scheda">
+  <a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/"><div class="foto"><img src="https://i.ytimg.com/vi/DSiProJJ1ls/hqdefault.jpg" alt="Endless Love" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/"><div class="foto"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/"><div class="foto"><img src="https://i.ytimg.com/vi/uu2oAzTOWQU/hqdefault.jpg" alt="Endless Love" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></h3>
+    <div class="quando">25 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=Endless Love, Kemal compra la casa contesa con Emir e la bambina dei fazzoletti svela i cinque anni di Nihan — https://serietvfans.com/endless-love/endless-love-kemal-compra-la-casa-contesa-con-emir-e-la-bambina-dei-fazzoletti-s/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/endless-love/endless-love-kemal-compra-la-casa-contesa-con-emir-e-la-bambina-dei-fazzoletti-s/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/endless-love/endless-love-kemal-compra-la-casa-contesa-con-emir-e-la-bambina-dei-fazzoletti-s/&text=Endless Love, Kemal compra la casa contesa con Emir e la bambina dei fazzoletti svela i cinque anni di Nihan" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">Endless Love, Kemal compra la casa contesa con Emir e la bambina dei fazzoletti svela i cinque anni di Nihan</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=M-Bh1rT1GT0">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di Endless Love</h3><ol class="numerata"><li><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></li><li><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></li><li><a href="/endless-love/endless-love-chi-e-galip-kozcuoglu-le-due-volte-in-cui-nihan-e-stata-venduta/">Endless Love, chi è Galip Kozcuoğlu: le due volte in cui Nihan è stata venduta</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-zeynep-soydere-perche-emir-lha-scelta-e-cosa-ha-distrutto/">Endless Love, chi è davvero Zeynep Soydere: perché Emir l&#x27;ha scelta e cosa ha distrutto</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>Ogni anticipazione, prima in video sul canale Serie TV Fans</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su Endless Love</h3><ul><li><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></li><li><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></li><li><a href="/endless-love/endless-love-chi-e-galip-kozcuoglu-le-due-volte-in-cui-nihan-e-stata-venduta/">Endless Love, chi è Galip Kozcuoğlu: le due volte in cui Nihan è stata venduta</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-zeynep-soydere-perche-emir-lha-scelta-e-cosa-ha-distrutto/">Endless Love, chi è davvero Zeynep Soydere: perché Emir l&#x27;ha scelta e cosa ha distrutto</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/endless-love/">Endless Love</a> › Endless Love, Deniz chiama Kemal «papà» sulla spiaggia al tramonto — mentre Emir fallisce l&#x27;assalto alla villa e fugge in barca da latitante</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/endless-love/">Endless Love</a>
   <h1>Endless Love, Deniz chiama Kemal «papà» sulla spiaggia al tramonto — mentre Emir fallisce l&#x27;assalto alla villa e fugge in barca da latitante</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>6 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Il momento che i fan aspettavano da due stagioni: durante la luna di miele, sulla battigia al tramonto, la piccola Deniz si volta verso Kemal e lo chiama «papà». Lui si inginocchia con gli occhi lucidi e la stringe in un abbraccio che vale tutta la serie. Ma la felicità ha il fiato corto: la prima notte di nozze gli uomini di Emir assaltano la villa per rapire gli sposi — il piano fallisce grazie a Zehir e Ayhan, il braccio destro confessa il nome del mandante e per Emir scatta il mandato d&#x27;arresto. La fuga in barca verso l&#x27;orizzonte lo trasforma in un latitante.</p><ol><li><a href="#c1">La parola più attesa: «papà»</a></li><li><a href="#c2">La prima notte di nozze e l&#x27;assalto alla villa</a></li><li><a href="#c3">La confessione e la caccia all&#x27;uomo: Emir sparisce tra le onde</a></li><li><a href="#c4">Il precedente che spiega tutto: quando «papà» era rivolto a Emir</a></li><li><a href="#c5">Come Zehir e Ayhan salvano Kemal</a></li><li><a href="#c6">Perché la confessione del braccio destro rovina Emir</a></li><li><a href="#c7">Cosa spinge Nihan e Kemal a superare l&#x27;ossessione</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>Endless Love</strong> — Serie conclusa in Italia · le puntate su Mediaset Infinity</span></div>
   
-  <p class="occhiello">Il momento che i fan aspettavano da due stagioni: durante la luna di miele, sulla battigia al tramonto, la piccola Deniz si volta verso Kemal e lo chiama «papà». Lui si inginocchia con gli occhi lucidi e la stringe in un abbraccio che vale tutta la serie. Ma la felicità ha il fiato corto: la prima notte di nozze gli uomini di Emir assaltano la villa per rapire gli sposi — il piano fallisce grazie a Zehir e Ayhan, il braccio destro confessa il nome del mandante e per Emir scatta il mandato d&#x27;arresto. La fuga in barca verso l&#x27;orizzonte lo trasforma in un latitante.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: Endless Love, Deniz chiama Kemal «papà» sulla spiaggia al tramonto — mentre Emir fallisce l&#x27;assalto alla villa e fugge in barca da latitante" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/4QUBS2BOdbs/sddefault.jpg" alt="Endless Love, Deniz chiama Kemal «papà» sulla spiaggia al tramonto — mentre Emir fallisce l&#x27;assalto alla villa e fugge in barca da latitante" width="640" height="480"
         srcset="https://i.ytimg.com/vi/4QUBS2BOdbs/hqdefault.jpg 480w, https://i.ytimg.com/vi/4QUBS2BOdbs/sddefault.jpg 640w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/4QUBS2BOdbs/hqdefault.jpg&quot;, &quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,41 +409,63 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>Il dettaglio che pesa: l&#x27;unica altra volta che Deniz aveva detto «papà» era stata rivolta a Emir — e quella parola aveva acceso in lui l&#x27;ossessione di prendersela, arrivando a far passare Nihan per una madre instabile.</strong></p>
-  <h2>La parola più attesa: «papà»</h2>
+  <h2 id="c1">La parola più attesa: «papà»</h2>
 <p>Il sole che tramonta colora il cielo di arancio e rosa, le onde lambiscono i piedini di Deniz sulla battigia — e in quel quadro perfetto la bambina si ferma, si volta verso Kemal e con voce dolce lo chiama «papà». Per Kemal è una gioia immensa e inattesa: fino a quel momento Deniz aveva pronunciato quella parola una sola volta, e l&#x27;aveva rivolta a Emir. Lui si inginocchia per guardarla negli occhi e la stringe in un abbraccio che sancisce ciò che il sangue non può decidere: un legame costruito giorno per giorno, con amore e dedizione. Un attimo sospeso nel tempo che Kemal custodirà per sempre.</p>
-<h2>La prima notte di nozze e l&#x27;assalto alla villa</h2>
+<h2 id="c2">La prima notte di nozze e l&#x27;assalto alla villa</h2>
 <p>Ma Emir non si arrende mai. Il primo giorno di matrimonio di Kemal e Nihan si trasforma in un incubo: nell&#x27;ombra, il suo braccio destro coordina l&#x27;operazione — catturare gli sposi e portarli via su due auto diverse, separandoli. Gli scagnozzi si muovono come predatori nella notte attorno alla villa immersa nel silenzio, mentre dentro le risate dei primi momenti da marito e moglie ignorano il pericolo. A salvare tutto è la lungimiranza degli amici di sempre: Zehir e Ayhan, consapevoli della minaccia, hanno organizzato una protezione discreta attorno alla casa. Quando scatta l&#x27;assalto, la lotta è intensa ma il piano fallisce miseramente: il braccio destro di Emir finisce in manette.</p>
-<h2>La confessione e la caccia all&#x27;uomo: Emir sparisce tra le onde</h2>
+<h2 id="c3">La confessione e la caccia all&#x27;uomo: Emir sparisce tra le onde</h2>
 <p>In commissariato, giorni di interrogatori serrati piegano il silenzio dell&#x27;uomo di Emir: l&#x27;ordine di rapire Kemal e Nihan è partito da Kozcuoğlu. Scatta il mandato d&#x27;arresto e la caccia all&#x27;uomo su vasta scala — porti, aeroporti, luoghi isolati. Ma Emir si dimostra astuto: con la polizia alle calcagna riesce a salire su una barca e a far perdere le proprie tracce verso l&#x27;orizzonte, beffando anche la guardia costiera. Kemal avrebbe voluto vederlo dietro le sbarre, ma con Nihan si concede una soddisfazione diversa: il nemico è ora un fuggitivo, condannato all&#x27;esilio perpetuo lontano dalle loro vite. E il viaggio di nozze — regalo di Zehir e Ayhan — può finalmente cominciare, tra spiagge dorate e tramonti senza paura.</p>
-<h2>Il precedente che spiega tutto: quando «papà» era rivolto a Emir</h2>
+<h2 id="c4">Il precedente che spiega tutto: quando «papà» era rivolto a Emir</h2>
 <p>C&#x27;è un motivo se quella parolina sulla spiaggia pesa come un macigno: la prima volta che Deniz disse «papà», lo disse a Emir — e quel gesto innocente accese in lui un&#x27;ossessione di possesso. Da uomo che non aveva mai degnato la bambina di uno sguardo, Emir si convinse dell&#x27;illusione che potesse essere davvero sua: minacciò Nihan di portargliela via e orchestrò una campagna crudele, diffondendo voci sull&#x27;instabilità mentale della madre per dipingerla come pericolosa. Nihan lottò contro le menzogne con l&#x27;aiuto di Kemal, fino a smascherare la perfidia di Emir e a comprometterne la reputazione. Ecco perché il «papà» detto a Kemal non è solo tenerezza: è la parola che rimette il mondo al posto giusto.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Come Zehir e Ayhan salvano Kemal</h2>
+<h2 id="c5">Come Zehir e Ayhan salvano Kemal</h2>
 <p>La lealtà e l&#x27;intuito di Zehir e Ayhan si dimostrano decisivi nel proteggere il matrimonio tra Kemal e Nihan dall&#x27;ennesimo attacco nemico. I due fedeli amici, consapevoli della pericolosità di Emir e della sua incapacità di accettare la sconfitta, organizzano di propria iniziativa una sorveglianza discreta attorno alla villa dove si celebra la prima notte di nozze. La loro prudenza evita la tragedia quando gli uomini del commando inviato da Kozcuoğlu tentano l&#x27;irruzione nell&#x27;oscurità. Senza la copertura preparata da Zehir e Ayhan, il piano di rapire e separare la coppia in due distinte vetture avrebbe avuto successo, spezzando la felicità dei neosposi proprio nell&#x27;atto del loro coronamento d&#x27;amore.</p>
 <p>L&#x27;intervento della scorta posizionata all&#x27;esterno trasforma l&#x27;imminente rapimento in un fallimento totale per il commando di Emir, mentre all&#x27;interno della residenza le risate dei neosposi continuano ignare del pericolo sventato. La ferma risposta della difesa vanifica l&#x27;azione dei mercenari e porta all&#x27;arresto immediato del braccio destro di Kozcuoğlu. Come gesto di affetto e profondo sostegno, Zehir e Ayhan decidono inoltre di regalare a Kemal, Nihan e alla bambina l&#x27;intero viaggio per la luna di miele. Questo dono consente alla ritrovata famiglia di rifugiarsi tra spiagge dorate e incantevoli tramonti sul mare, godendosi un periodo di pace assoluta lontano dai ricatti del passato.</p>
-<h2>Perché la confessione del braccio destro rovina Emir</h2>
+<h2 id="c6">Perché la confessione del braccio destro rovina Emir</h2>
 <p>La svolta decisiva nelle indagini arriva durante i lunghi e pressanti interrogatori condotti in commissariato sul braccio destro di Emir, catturato durante il fallito assalto alla villa. Dopo giorni di silenzio e reticenza, l&#x27;uomo cede di fronte alla fermezza degli inquirenti e rivela che l&#x27;ordine di rapire Kemal e Nihan è stato impartito direttamente da Kozcuoğlu. Questa esplicita ammissione di colpevolezza fornisce alla magistratura la prova schiacciante per far scattare un immediato mandato d&#x27;arresto. La polizia avvia così una massiccia caccia all&#x27;uomo su scala nazionale, presidiando porti, aeroporti e ogni possibile rifugio isolato per impedire al mandante di trovare scampo.</p>
 <p>Messo alle strette dalle forze dell&#x27;ordine, Emir sfoggia un&#x27;ultima e disperata scaltrezza per evitare le sbarre, riuscendo a salire su un&#x27;imbarcazione e a far perdere le proprie tracce oltre l&#x27;orizzonte, eludendo perfino i controlli della guardia costiera. Questo svanire tra le onde lo trasforma ufficialmente in un pericoloso latitante condannato all&#x27;esilio. Sebbene Kemal avesse preferito vederlo rinchiuso in carcere a pagare per tutto il male commesso, sia lui che Nihan accolgono la notizia con un senso di profondo sollievo. Sapere che il loro nemico giurato è ora un fuggitivo senza meta permette alla coppia di liberarsi definitivamente dalla sua ombra soffocante.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Cosa spinge Nihan e Kemal a superare l&#x27;ossessione</h2>
+<h2 id="c7">Cosa spinge Nihan e Kemal a superare l&#x27;ossessione</h2>
 <p>Il dolce momento vissuto sulla spiaggia tra Kemal e Deniz acquista un valore ancora più profondo se confrontato con la prima volta in cui la piccola aveva pronunciato la parola papà. In quell&#x27;occasione la bambina si era rivolta a Emir, scatenando nell&#x27;uomo un&#x27;immediata ossessione di possesso, nonostante fino ad allora non l&#x27;avesse mai degnata di una dimostrazione d&#x27;affetto. Quell&#x27;episodio spinse Kozcuoğlu a convincersi di poter fare propria la bambina, arrivando a minacciare Nihan di portargliela via e a diffondere spietate calunnie sull&#x27;instabilità mentale della madre nel tentativo di farla passare per una figura pericolosa e del tutto incapace di accudire la figlia.</p>
 <p>Di fronte alla crudeltà di Emir e alla sua campagna diffamatoria, Nihan non si è mai arresa e ha trovato in Kemal un sostegno incrollabile con cui combattere per la verità. Insieme, i due sono riusciti a smascherare l&#x27;inganno e le calunnie orchestrate da Kozcuoğlu, demolendo la sua reputazione e riprendendosi la propria dignità. Sconfitto sul piano legale e morale, il malvagio persecutore ha dovuto assistere al crollo di tutte le sue illusioni. Il papà pronunciato da Deniz sulla battigia al tramonto rappresenta quindi il trionfo finale dell&#x27;amore sincero e della giustizia, ricollocando ogni affetto al proprio posto definitivo.</p>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=IZ_o8mv7Mno" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/IZ_o8mv7Mno/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>&quot;CIAO PAPA&#x27; KEMAL, SONO DENIZ&quot;, UN&#x27;EMOZIONE INDESCRIVIBILE, Anticipazioni Endless Love Turchia</span></a></li><li><a href="https://www.youtube.com/watch?v=d8pXN6Gghdg" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/d8pXN6Gghdg/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>NIHAN RIESCE A FUGGIRE DA EMIR E DA&#x27; ALLA LUCE DENIZ, FIGLIA DI KEMAL! Anticipazioni Endless Lo</span></a></li><li><a href="https://www.youtube.com/watch?v=hU03uDbYchA" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/hU03uDbYchA/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>EMIR CRUDELE CON LA PICCOLA DENIZ, LA FA AMMALARE DI PROPOSITO -  Anticipazioni Endless Love</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Il «papà» di Deniz a Kemal è il momento più bello della seconda stagione? E la latitanza di Emir è una punizione sufficiente o il suo ritorno è solo questione di tempo?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=4QUBS2BOdbs">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di Endless Love</h2><div class="griglia"><article class="scheda">
+  <a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/"><div class="foto"><img src="https://i.ytimg.com/vi/DSiProJJ1ls/hqdefault.jpg" alt="Endless Love" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/"><div class="foto"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/"><div class="foto"><img src="https://i.ytimg.com/vi/uu2oAzTOWQU/hqdefault.jpg" alt="Endless Love" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></h3>
+    <div class="quando">25 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=Endless Love, Deniz chiama Kemal «papà» sulla spiaggia al tramonto — mentre Emir fallisce l&#x27;assalto alla villa e fugge in barca da latitante — https://soapoperaitalia.com/endless-love/endless-love-la-trama-completa-perche-nihan-sposa-emir-e-come-finisce/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://soapoperaitalia.com/endless-love/endless-love-la-trama-completa-perche-nihan-sposa-emir-e-come-finisce/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://soapoperaitalia.com/endless-love/endless-love-la-trama-completa-perche-nihan-sposa-emir-e-come-finisce/&text=Endless Love, Deniz chiama Kemal «papà» sulla spiaggia al tramonto — mentre Emir fallisce l&#x27;assalto alla villa e fugge in barca da latitante" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">GIOIA IMMENSA PER KEMAL, DENIZ PER LA PRIMA VOLTA GLI DICE: &quot;PAPA&#x27;&quot; - Anticipazioni Endless Love</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=4QUBS2BOdbs">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di Endless Love</h3><ol class="numerata"><li><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></li><li><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></li><li><a href="/endless-love/endless-love-chi-e-galip-kozcuoglu-le-due-volte-in-cui-nihan-e-stata-venduta/">Endless Love, chi è Galip Kozcuoğlu: le due volte in cui Nihan è stata venduta</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-zeynep-soydere-perche-emir-lha-scelta-e-cosa-ha-distrutto/">Endless Love, chi è davvero Zeynep Soydere: perché Emir l&#x27;ha scelta e cosa ha distrutto</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>GIOIA IMMENSA PER KEMAL, DENIZ PER LA PRIMA VOLTA GLI DICE: &quot;PAPA&#x27;&quot; - Anticipazioni Endless Love</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su Endless Love</h3><ul><li><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></li><li><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></li><li><a href="/endless-love/endless-love-chi-e-galip-kozcuoglu-le-due-volte-in-cui-nihan-e-stata-venduta/">Endless Love, chi è Galip Kozcuoğlu: le due volte in cui Nihan è stata venduta</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-zeynep-soydere-perche-emir-lha-scelta-e-cosa-ha-distrutto/">Endless Love, chi è davvero Zeynep Soydere: perché Emir l&#x27;ha scelta e cosa ha distrutto</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

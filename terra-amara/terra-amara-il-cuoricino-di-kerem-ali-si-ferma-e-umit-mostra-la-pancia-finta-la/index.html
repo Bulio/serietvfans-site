@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/terra-amara/">Terra Amara</a> › Terra Amara, il cuoricino di Kerem Ali si ferma — e Ümit mostra la pancia finta: la settimana che cambia tutto</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/terra-amara/">Terra Amara</a>
   <h1>Terra Amara, il cuoricino di Kerem Ali si ferma — e Ümit mostra la pancia finta: la settimana che cambia tutto</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Negli episodi del 14 e 15 dicembre il piccolo Kerem Ali lotta tra la vita e la morte per la meningite, Üzüm rivela che Cumali è il suo vero padre, Sevda tenta il ricatto e poi la confessione — e il gesto della pancia finta di Ümit prepara il colpo di pistola che chiude la settimana.</p><ol><li><a href="#c1">Il cuore di Kerem Ali si ferma</a></li><li><a href="#c2">«Cumali è il mio vero papà»: il segreto di Üzüm</a></li><li><a href="#c3">Il ricatto di Sevda e la confessione mancata</a></li><li><a href="#c4">La pancia finta e lo sparo finale</a></li><li><a href="#c5">Come Fikret affronta la terribile prova in ospedale</a></li><li><a href="#c6">Cosa nasconde Cumali alla tenuta di Demir</a></li><li><a href="#c7">Perche&#x27; Sevda ricatta Demir con un oscuro segreto</a></li><li><a href="#c8">Quale tragico destino attende Sevda lungo la strada</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>Terra Amara</strong> — Serie conclusa in Italia · tutte le puntate su Mediaset Infinity</span></div>
   
-  <p class="occhiello">Negli episodi del 14 e 15 dicembre il piccolo Kerem Ali lotta tra la vita e la morte per la meningite, Üzüm rivela che Cumali è il suo vero padre, Sevda tenta il ricatto e poi la confessione — e il gesto della pancia finta di Ümit prepara il colpo di pistola che chiude la settimana.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: Terra Amara, il cuoricino di Kerem Ali si ferma — e Ümit mostra la pancia finta: la settimana che cambia tutto" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/3Shw8Z9boyE/maxresdefault.jpg" alt="Terra Amara, il cuoricino di Kerem Ali si ferma — e Ümit mostra la pancia finta: la settimana che cambia tutto" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/3Shw8Z9boyE/hqdefault.jpg 480w, https://i.ytimg.com/vi/3Shw8Z9boyE/sddefault.jpg 640w, https://i.ytimg.com/vi/3Shw8Z9boyE/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/3Shw8Z9boyE/hqdefault.jpg&quot;, &quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,45 +409,67 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>Un&#x27;infermiera che corre chiamando i medici, una madre che scopre di non conoscere la figlia e una pistola estratta da una borsa: due giorni di Terra Amara che valgono una stagione.</strong></p>
-  <h2>Il cuore di Kerem Ali si ferma</h2>
+  <h2 id="c1">Il cuore di Kerem Ali si ferma</h2>
 <p>In ospedale, dove Fikret, Fekeli e Lütfiye vegliano sul piccolo ricoverato per meningite, la tensione esplode due volte. Prima l&#x27;irruzione dell&#x27;avvocato dei parenti di Müjgan con un poliziotto, tra accuse di aggressione a Fikret e minacce di denuncia; poi il momento che gela il sangue: un&#x27;infermiera corre chiamando i medici — il cuore di Kerem Ali si è fermato. I minuti della rianimazione sono un&#x27;agonia collettiva, finché il battito riprende e la gioia esplode tra abbracci e preghiere. Perfino l&#x27;avvocato, colpito dalla scena, rinuncia al mandato e riconosce che il bambino appartiene a Fikret e alla sua famiglia. Davanti alla paura di Fikret, è Züleyha a trovare le parole giuste: «Guarirà, e giocherà con suo fratello Adnan».</p>
-<h2>«Cumali è il mio vero papà»: il segreto di Üzüm</h2>
+<h2 id="c2">«Cumali è il mio vero papà»: il segreto di Üzüm</h2>
 <p>Il secondo fronte esplode davanti a scuola: un uomo chiama Üzüm di nascosto e la abbraccia — e Saniye, credendolo un molestatore, lo colpisce alla testa con un bastone fino a farlo svenire. La verità lascia tutti di sasso: «È mio padre», dice la bambina. L&#x27;uomo è Cumali, finito in prigione quando lei era piccola, che le aveva chiesto di mantenere il segreto per non farsi cacciare dalla tenuta. Mentre l&#x27;uomo viene ricoverato (e Gaffur, straziato, si offre perfino di prendersi la colpa se dovesse morire), Üzüm chiede a Saniye la sola cosa che conta: «Voi mi amerete sempre, nonostante Cumali?». L&#x27;abbraccio di Saniye vale più di mille risposte.</p>
-<h2>Il ricatto di Sevda e la confessione mancata</h2>
+<h2 id="c3">Il ricatto di Sevda e la confessione mancata</h2>
 <p>Intanto Sevda gioca la carta più rischiosa: chiama Demir e pretende 100.000 lire e un&#x27;auto per lasciare Çukurova con Ümit, minacciando altrimenti di rivelare il segreto della notte dell&#x27;assalto — l&#x27;uomo ucciso per difendere Adnan, il corpo spostato e seppellito dove prima giaceva un cane. Züleyha conferma tutto al marito: non voleva che Sevda portasse la colpa da sola. L&#x27;appuntamento all&#x27;hotel salta, e Sevda corre al comando di polizia decisa a confessare — ma quando Demir irrompe nella stanza del comandante, la donna fa marcia indietro: «Non ho nulla da dire». Il segreto, per ora, resta sepolto.</p>
-<h2>La pancia finta e lo sparo finale</h2>
+<h2 id="c4">La pancia finta e lo sparo finale</h2>
 <p>Il gran finale è un crescendo di crudeltà e disperazione. Alla baita, Demir consegna la borsa coi soldi e liquida Ümit con parole di ghiaccio; in auto, quando Sevda si commuove all&#x27;idea di crescere &quot;il nipote&quot; a Istanbul, Ümit le prende la mano e la posa sulla pancia — finta. Non c&#x27;è nessun bambino: solo il bisogno di non essere gettata via «come un vecchio oggetto». L&#x27;ultimo confronto sulla strada degenera: Ümit estrae una pistola dalla borsa, Demir la sfida a sparare e le volta le spalle — e il colpo parte. In un istante di tragica fatalità, Sevda si frappone e viene colpita in pieno petto. La settimana si chiude così: con la donna che ha mentito per amore sospesa tra la vita e la morte.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Come Fikret affronta la terribile prova in ospedale</h2>
+<h2 id="c5">Come Fikret affronta la terribile prova in ospedale</h2>
 <p>La corsia dell&#x27;ospedale diventa il teatro di un&#x27;angoscia insopportabile mentre Fikret, Fekeli e Lütfiye restano vicini al piccolo Kerem Ali, colpito da una grave forma di meningite. La già precaria serenità del gruppo viene spazzata via quando l&#x27;avvocato dei parenti della scomparsa Müjgan si presenta accompagnato da un poliziotto. L&#x27;uomo lancia pesanti accuse di aggressione nei confronti di Fikret e minaccia di sporgere una formale denuncia. In un clima carico di tensione, l&#x27;incolumità del bambino e il destino della famiglia si intrecciano con la rabbia dei parenti, trasformando l&#x27;attesa per le condizioni del neonato in uno scontro legale e personale che rischia di travolgere tutti i presenti nel momento più vulnerabile.</p>
 <p>Nel momento di massima pressione, la situazione precipita improvvisamente quando un&#x27;infermiera attraversa di corsa il corridoio sollecitando con urgenza l&#x27;intervento immediato dei medici. Il cuore del piccolo Kerem Ali si è fermato, lasciando i familiari in un silenzio di puro terrore durante la disperata manovra di rianimazione. Quando il battito finalmente riprende, la gioia esplode tra abbracci e preghiere di sollievo. Persino l&#x27;avvocato avversario, profondamente scosso dalla drammatica scena assistita, decide di rinunciare al proprio mandato e ammette che il bimbo deve restare con Fikret. È Züleyha a dare conforto a Fikret, rassicurandolo sul fatto che il piccolo guarirà presto e potrà finalmente giocare con il suo fratellino Adnan.</p>
-<h2>Cosa nasconde Cumali alla tenuta di Demir</h2>
+<h2 id="c6">Cosa nasconde Cumali alla tenuta di Demir</h2>
 <p>Un drammatico equivoco sconvolge la routine quotidiana nei pressi della scuola, dove un uomo si avvicina con circospezione a Üzüm per abbracciarla di nascosto. Saniye, assistendo alla scena e scambiando l&#x27;individuo per un pericoloso molestatore, reagisce d&#x27;impulso colpendolo violentemente alla testa con un bastone fino a farlo svenire a terra. L&#x27;uomo soccorso si rivela essere Cumali, che viene crollato e trasportato d&#x27;urgenza in ospedale per le gravi ferite riportate. Nel frattempo, la piccola Üzüm è costretta a rivelare a tutti la verità tenuta nascosta per troppo tempo, sconvolgendo le certezze di Saniye e di tutta la comunità della tenuta.</p>
 <p>La bambina spiega che Cumali è in realtà il suo vero padre, uscito dalla prigione dove era finito quando lei era ancora molto piccola. L&#x27;uomo le aveva chiesto di non rivelare la sua identità per evitare di essere scacciato dalla tenuta. Di fronte alla possibilità che Cumali muoia per il colpo ricevuto, Gaffur appare completamente straziato al punto da offrirsi di prendersi la colpa dell&#x27;incidente. Nel mezzo del caos, la piccola Üzüm cerca solo una rassicurazione affettiva e chiede a Saniye se continueranno ad amarla nonostante la verità sul padre. La risposta arriva immediata con uno stretto e caloroso abbraccio che cancella ogni dubbio e paura della bambina.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Perche&#x27; Sevda ricatta Demir con un oscuro segreto</h2>
+<h2 id="c7">Perche&#x27; Sevda ricatta Demir con un oscuro segreto</h2>
 <p>Sevda decide di spingersi al limite pur di garantire un futuro a sua figlia Ümit, mettendo in atto una rischiosa estorsione contro Demir. La donna telefona al ricco imprenditore pretendendo la somma di centomila lire e una vettura per poter abbandonare definitivamente Çukurova. Per ottenere ciò che desidera, Sevda minaccia di rivelare alla polizia il terribile segreto legato alla notte dell&#x27;assalto. Si tratta dell&#x27;episodio in cui un uomo è stato ucciso per proteggere il piccolo Adnan, con il cadavere successivamente spostato e sotterrato nel punto preciso in cui prima era sepolto un cane. Questo inganno e la verità nascosta rischiano di distruggere per sempre la tranquillità di Demir.</p>
 <p>Züleyha conferma l&#x27;intera ricostruzione dei fatti al marito Demir, spiegando di aver partecipato alla vicenda perché non voleva che Sevda portasse da sola il peso di quella tremenda colpa. Dopo che l&#x27;incontro stabilito presso l&#x27;hotel salta improvvisamente, Sevda decide di recarsi direttamente al comando di polizia pronta a confessare tutto alle autorità. Tuttavia, proprio mentre la donna si trova davanti al comandante, Demir irrompe con impeto nella stanza. Alla vista dell&#x27;uomo, Sevda fa un&#x27;immediata marcia indietro dichiarando di non avere nulla da dire, lasciando così che il grave segreto rimanga provvisoriamente sepolto senza alcuna conseguenza legale immediata per i protagonisti.</p>
-<h2>Quale tragico destino attende Sevda lungo la strada</h2>
+<h2 id="c8">Quale tragico destino attende Sevda lungo la strada</h2>
 <p>La tensione tra i protagonisti raggiunge il punto di rottura alla baita, dove Demir consegna a Sevda la borsa contenente il denaro richiesto e liquida Ümit con estrema freddezza. Successivamente, mentre si trovano in auto pronte a partire, Sevda si commuove profondamente al pensiero di potersi trasferire a Istanbul per crescere il presunto nipote. In quel momento di commozione, Ümit prende la mano della madre e la appoggia sulla propria pancia, svelando che la gravidanza è finta. Non esiste alcun bambino in arrivo; la giovane ha architettato tutto unicamente per la paura di essere abbandonata e scartata come un vecchio oggetto ormai privo di valore.</p>
 <p>L&#x27;ultimo e acceso scontro esplode in mezzo alla strada quando Ümit, fuori di sé, estrae improvvisamente una pistola dalla propria borsa. Demir la provoca apertamente sfidandola a fare fuoco e le gira le spalle per allontanarsi, ma la giovane cede all&#x27;impulso e spara un colpo. In un secondo di drammatica fatalità, Sevda si frappone d&#x27;istinto tra la figlia e Demir, venendo colpita in pieno petto dall&#x27;unico proiettile esploso. La complessa vicenda della donna, che ha spinto le sue menzogne fino all&#x27;estremo per proteggere l&#x27;amore materno, si conclude tragicamente con la sua vita appesa a un filo a causa dello sparo.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=fl6wIEFi7d0" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/fl6wIEFi7d0/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TERRA AMARA Anticipazioni 5-7 Febbraio: Zuleyha lotta tra la vita e la morte | Hakan brucia tut</span></a></li><li><a href="https://www.youtube.com/watch?v=iC3UsZYP1go" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/iC3UsZYP1go/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TERRA AMARA ANTICIPAZIONI  - Questo gesto cambia tutto, Zuleyha è libera!</span></a></li><li><a href="https://www.youtube.com/watch?v=iJmUEZfqfgY" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/iJmUEZfqfgY/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TERRA AMARA Anticipazioni 30 Dicembre: Zuleyha, incubo senza fine | Kumali non è il padre di Uz</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Il sacrificio di Sevda vi ha spezzato il cuore? E Saniye e Gaffur dovrebbero lasciare spazio a Cumali nella vita di Üzüm?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=3Shw8Z9boyE">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di Terra Amara</h2><div class="griglia"><article class="scheda">
+  <a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/"><div class="foto"><img src="/img/terra-amara-la-trama-completa-e-come-finisce.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></h3>
+    <div class="quando">30 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/"><div class="foto"><img src="https://i.ytimg.com/vi/_ypSJU-x7LY/hqdefault.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/"><div class="foto"><img src="https://i.ytimg.com/vi/B_MLx-0yh6M/hqdefault.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=Terra Amara, il cuoricino di Kerem Ali si ferma — e Ümit mostra la pancia finta: la settimana che cambia tutto — https://serietvfans.com/terra-amara/terra-amara-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/terra-amara/terra-amara-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/terra-amara/terra-amara-la-trama-completa-e-come-finisce/&text=Terra Amara, il cuoricino di Kerem Ali si ferma — e Ümit mostra la pancia finta: la settimana che cambia tutto" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">TERRA AMARA Anticipazioni 14 e 15 Dicembre: Il cuoricino di Kerem Ali si ferma</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=3Shw8Z9boyE">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di Terra Amara</h3><ol class="numerata"><li><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></li><li><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></li><li><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></li><li><a href="/terra-amara/terra-amara-come-finisce-davvero-zuleyha-vince-tutto-e-resta-sola/">Terra Amara: come finisce davvero, Züleyha vince tutto e resta sola</a></li><li><a href="/terra-amara/terra-amara-come-muore-demir-yaman-chi-ha-dato-lordine-e-perche-doveva-essere-un-rapimento/">Terra Amara, come muore Demir Yaman: chi ha dato l&#x27;ordine e perché doveva essere un rapimento</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>TERRA AMARA Anticipazioni 14 e 15 Dicembre: Il cuoricino di Kerem Ali si ferma</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su Terra Amara</h3><ul><li><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></li><li><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></li><li><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></li><li><a href="/terra-amara/terra-amara-come-finisce-davvero-zuleyha-vince-tutto-e-resta-sola/">Terra Amara: come finisce davvero, Züleyha vince tutto e resta sola</a></li><li><a href="/terra-amara/terra-amara-come-muore-demir-yaman-chi-ha-dato-lordine-e-perche-doveva-essere-un-rapimento/">Terra Amara, come muore Demir Yaman: chi ha dato l&#x27;ordine e perché doveva essere un rapimento</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

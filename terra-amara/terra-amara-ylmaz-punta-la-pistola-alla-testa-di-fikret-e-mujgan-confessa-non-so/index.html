@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/terra-amara/">Terra Amara</a> › Terra Amara, Yılmaz punta la pistola alla testa di Fikret — e Müjgan confessa: «Non sono incinta, ho falsato le analisi»</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/terra-amara/">Terra Amara</a>
   <h1>Terra Amara, Yılmaz punta la pistola alla testa di Fikret — e Müjgan confessa: «Non sono incinta, ho falsato le analisi»</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Il gossip sulla &quot;relazione segreta&quot; tra Fikret e Müjgan dilaga dal barbiere fino alla tenuta, e quando arriva alle orecchie di Yılmaz esplode la follia: pistola alla testa del nipote di Fekeli. A fermare la tragedia è la confessione più clamorosa: la gravidanza di Müjgan era una messinscena, costruita con le urine rubate a una donna incinta.</p><ol><li><a href="#c1">Il club femminile e la gravidanza annunciata troppo presto</a></li><li><a href="#c2">La miccia: la rissa di Çetin e il colpo di pistola</a></li><li><a href="#c3">«Non aspetto nessun bambino»: la confessione</a></li><li><a href="#c4">Intanto, i fili che si intrecciano</a></li><li><a href="#c5">Perché Behice e Şermin scatenano il pettegolezzo a Çukurova</a></li><li><a href="#c6">Come Yılmaz reagisce alle voci sulla presunta relazione di Müjgan</a></li><li><a href="#c7">Cosa spinge Yılmaz a restituire il piccolo Adnan a Züleyha</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>Terra Amara</strong> — Serie conclusa in Italia · tutte le puntate su Mediaset Infinity</span></div>
   
-  <p class="occhiello">Il gossip sulla &quot;relazione segreta&quot; tra Fikret e Müjgan dilaga dal barbiere fino alla tenuta, e quando arriva alle orecchie di Yılmaz esplode la follia: pistola alla testa del nipote di Fekeli. A fermare la tragedia è la confessione più clamorosa: la gravidanza di Müjgan era una messinscena, costruita con le urine rubate a una donna incinta.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: Terra Amara, Yılmaz punta la pistola alla testa di Fikret — e Müjgan confessa: «Non sono incinta, ho falsato le analisi»" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/8FcNGV4DloY/maxresdefault.jpg" alt="Terra Amara, Yılmaz punta la pistola alla testa di Fikret — e Müjgan confessa: «Non sono incinta, ho falsato le analisi»" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/8FcNGV4DloY/hqdefault.jpg 480w, https://i.ytimg.com/vi/8FcNGV4DloY/sddefault.jpg 640w, https://i.ytimg.com/vi/8FcNGV4DloY/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/8FcNGV4DloY/hqdefault.jpg&quot;, &quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,44 +409,66 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>Un pettegolezzo nato in un salone da barbiere per poco non trasforma Çukurova in una scena del crimine: la settimana in cui una bugia di troppo presenta il conto.</strong></p>
-  <h2>Il club femminile e la gravidanza annunciata troppo presto</h2>
+  <h2 id="c1">Il club femminile e la gravidanza annunciata troppo presto</h2>
 <p>Tutto comincia tra i tavolini del club femminile: Füsun mette in dubbio la versione di Behice sull&#x27;aggressione — «Züleyha non arriverebbe mai a tanto» — facendola innervosire, e Şermin serve il gossip del giorno: Müjgan è incinta. Gli auguri a &quot;zia&quot; Behice si scontrano con la sua irritazione: quella notizia doveva uscire più avanti. Troppo tardi — la dottoressa ha festeggiato coi colleghi in ospedale, e ormai è pubblica. Insieme alla gravidanza, però, circola un&#x27;altra voce, ben più velenosa: tra Müjgan e Fikret ci sarebbe del tenero. Se ne parla dal barbiere, in casa Fekeli (dove Nazire smentisce), perfino alla tenuta — dove Saniye, unica, difende Müjgan a spada tratta. Ma il dado è tratto.</p>
-<h2>La miccia: la rissa di Çetin e il colpo di pistola</h2>
+<h2 id="c2">La miccia: la rissa di Çetin e il colpo di pistola</h2>
 <p>La voce arriva a Yılmaz nel modo peggiore. Prima Çetin aggredisce due sbruffoni che ne parlano per strada; poi, accorso a dividere la rissa, Yılmaz si sente dire in faccia: «Dovresti fare attenzione a tua moglie, ha una relazione segreta con Fikret». La reazione è da brividi: un colpo di pistola in aria e la corsa cieca verso l&#x27;azienda, con Çetin che non riesce a fermarlo e vola da Fekeli a dare l&#x27;allarme. Quando Fekeli e Müjgan arrivano, la scena è da infarto: Yılmaz tiene Fikret sotto tiro, la canna puntata alla testa, pronto a &quot;fare giustizia&quot;.</p>
-<h2>«Non aspetto nessun bambino»: la confessione</h2>
+<h2 id="c3">«Non aspetto nessun bambino»: la confessione</h2>
 <p>A disinnescare la tragedia è la verità più impensabile, urlata da Müjgan nel panico: non è incinta. Ha mentito. Davanti allo stupore generale — Fekeli aveva visto le analisi! — la dottoressa confessa il dettaglio che gela il sangue: ha falsato gli esami rubando le urine di una donna davvero incinta e spacciandole per proprie. Il movente, tra le lacrime: aveva scoperto che Yılmaz era pronto ad abbandonarla per fuggire con Züleyha, e la gravidanza era l&#x27;unico modo per trattenerlo. Yılmaz, fuori di sé, la trascina via e sparisce con lei in auto — con Fikret e Çetin che temono il peggio.</p>
-<h2>Intanto, i fili che si intrecciano</h2>
+<h2 id="c4">Intanto, i fili che si intrecciano</h2>
 <p>Attorno alla deflagrazione principale, la settimana muove pedine pesanti: Yılmaz riesce finalmente a riabbracciare il piccolo Adnan alla tenuta — e davanti alla disperazione di Züleyha glielo riconsegna promettendo che non agirà mai più senza il suo consenso; Gaffur, terrorizzato che Behice e Şermin rivelino il segreto di Hatip, fa i test per entrare in gendarmeria e farsi trasferire lontano da Çukurova; e Fekeli consegna a un vecchio amico una busta con la foto di Hünkar: c&#x27;è &quot;un lavoro&quot; da fare. In una sola settimana, Terra Amara carica tre pistole narrative — e nessuna resterà inesplosa.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Perché Behice e Şermin scatenano il pettegolezzo a Çukurova</h2>
+<h2 id="c5">Perché Behice e Şermin scatenano il pettegolezzo a Çukurova</h2>
 <p>Tra i tavolini del club femminile la tensione sale rapidamente quando Füsun mette in discussione la versione di Behice riguardante la recente aggressione subita. Secondo Füsun, Züleyha non arriverebbe mai a compiere un gesto simile, scatenando così l&#x27;immediato irritamento della donna. In questo clima già teso interviene Şermin, la quale lancia la notizia del momento annunciando a tutti che la dottoressa Müjgan risulta essere incinta. Gli auguri calorosi rivolti alla zia Behice finiscono per infastidirla ulteriormente, poiché l&#x27;intenzione originale era quella di rivelare questa presunta gravidanza soltanto più avanti. La situazione è però ormai del tutto fuori controllo, dato che la dottoressa ha incautamente festeggiato l&#x27;evento insieme ai propri colleghi all&#x27;interno dell&#x27;ospedale, rendendo la notizia di dominio pubblico in tutto il paese.</p>
 <p>Oltre alla notizia della maternità, nei vari ambienti della città inizia a diffondersi un pettegolezzo decisamente più pericoloso che riguarda la vita privata dei protagonisti. Tra i cittadini e all&#x27;interno del salone da barbiere si mormora con insistenza di un legame sentimentale nascosto tra la dottoressa Müjgan e Fikret. Questa voce penetra rapidamente sia nella dimora di Fekeli, dove la serva Nazire si affretta a smentire categoricamente la cosa, sia presso la tenuta principale. In quest&#x27;ultimo luogo è Saniye a prendere la parola per difendere energicamente la reputazione della dottoressa. Nonostante queste prese di posizione a suo favore, il chiacchiericcio maligno continua inevitabilmente ad alimentarsi e a circolare in ogni angolo della comunità locale senza che nessuno riesca a frenarlo.</p>
 <p>Nel frattempo, l&#x27;atmosfera si fa pesante anche per Gaffur, il quale si trova in uno stato di costante terrore a causa di Behice e Şermin. L&#x27;uomo teme infatti che le due donne possano da un momento all&#x27;altro rivelare l&#x27;oscuro segreto che riguarda Hatip, compromettendo definitivamente la sua posizione. Spinto da questa tremenda paura di essere scoperto, Gaffur decide di tentare i test per entrare nei ranghi della gendarmeria, sperando in questo modo di ottenere un trasferimento immediato e potersi allontanare il più lontano possibile da Çukurova. La combinazione tra i ricatti taciuti e i pettegolezzi incombe come una minaccia costante sull&#x27;intera cittadina, preparando il terreno per le conseguenze drammatiche che investiranno a breve tutti i personaggi coinvolti nelle vicende.</p>
-<h2>Come Yılmaz reagisce alle voci sulla presunta relazione di Müjgan</h2>
+<h2 id="c6">Come Yılmaz reagisce alle voci sulla presunta relazione di Müjgan</h2>
 <p>La tensione accumulata a causa delle voci maligne esplode violentemente quando le insinuazioni raggiungono la strada. Il fedele Çetin si scaglia contro due individui arroganti che stanno commentando pubblicamente la presunta relazione scandalosa. Nel tentativo di sedare la rissa, Yılmaz interviene sul posto ma si trova a subire una provocazione diretta e umiliante, venendo invitato a fare molta attenzione a sua moglie e al suo rapporto con Fikret. Accecato dall&#x27;ira, l&#x27;uomo esplode un colpo di pistola in aria prima di mettersi alla guida verso l&#x27;azienda a velocità folle. A nulla servono i tentativi di Çetin di calmarlo e fermarlo: conscio della gravità estrema della situazione, il giovane non può fare altro che correre immediatamente da Fekeli per lanciargli un allarme disperato.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>Quando Fekeli e Müjgan arrivano precipitosamente presso l&#x27;azienda, si trovano di fronte a una scena drammatica e da infarto. Yılmaz sta minacciando direttamente il nipote di Fekeli, tenendolo sotto tiro con la canna della propria arma puntata dritta alla testa, fermamente intenzionato a compiere una personale giustizia sommaria. A sbloccare questo tragico stallo è l&#x27;intervento disperato di Müjgan, la quale, urlando presissima dal panico generale, decide di confessare tutta la verità. La donna ammette davanti ai presenti di aver mentito sulla propria maternità, svelando di aver falsato i test medici dopo aver sottratto le urine a una vera gestante e spiegando di aver agito così soltanto per impedire che il marito fuggisse insieme a Züleyha.</p>
 <p>La sconvolgente rivelazione di Müjgan lascia basiti tutti i presenti, in particolare Fekeli che in precedenza aveva visionato personalmente l&#x27;esito di quegli esami falsificati. Furioso e del tutto privo di controllo, Yılmaz afferra la moglie per trascinarla con la forza verso la propria vettura, allontanandosi a grande velocità verso una destinazione sconosciuta. Questo gesto improvviso ed estremo lascia sia Fikret sia Çetin nell&#x27;angoscia più totale, temendo che la situazione possa degenerare nel peggiore dei modi e che l&#x27;uomo possa compiere qualche atto irrimediabile contro la dottoressa. Nel frattempo, Fekeli si ritrova a dover gestire non soltanto la profonda delusione per l&#x27;inganno subito ma anche le gravi ripercussioni che questa vicenda avrà sulla stabilità dell&#x27;intera famiglia.</p>
-<h2>Cosa spinge Yılmaz a restituire il piccolo Adnan a Züleyha</h2>
+<h2 id="c7">Cosa spinge Yılmaz a restituire il piccolo Adnan a Züleyha</h2>
 <p>In mezzo a questo clima di fortissima tensione, un momento toccante riguarda il profondo legame paterno che unisce Yılmaz al piccolo Adnan. L&#x27;uomo riesce finalmente a riabbracciare il bambino all&#x27;interno della tenuta, vivendo un istante di grande emotività. Tuttavia, trovatosi di fronte alla disperazione totale di Züleyha, distrutta dal dolore e dalla paura per la sorte del figlio, Yılmaz prende la decisione di riconsegnarle il bambino. In quell&#x27;occasione solenne, l&#x27;uomo fa una promessa fondamentale alla donna, garantendole che da quel momento in poi non agirà mai più di testa propria o senza aver prima ottenuto il suo esplicito consenso, dimostrando la volontà di proteggerla da ulteriori sofferenze.</p>
 <p>Nel frattempo Fekeli muove un&#x27;altra importante pedina sul campo, dimostrando come gli equilibri a Çukurova siano sempre estremamente precisi ed evolutivi. L&#x27;uomo si incontra infatti con un suo vecchio amico di fiducia per consegnargli personalmente una busta contenente al suo interno la fotografia di Hünkar. Fekeli chiarisce senza mezzi termini che c&#x27;è un lavoro specifico da portare a termine con la massima riservatezza. Questa mossa misteriosa si aggiunge agli altri intrecci narrativi della settimana, evidenziando come le vicende dei vari protagonisti siano destinate a incrociarsi pericolosamente e come ogni azione compiuta porti con sé conseguenze inevitabili per il futuro di tutti gli abitanti della tenuta e della città.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=KP9waZKOH9Y" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/KP9waZKOH9Y/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TERRA AMARA Anticipazioni 23-24 Novembre: Demir accecato dall&#x27;ira vuole uccidere Fikret!</span></a></li><li><a href="https://www.youtube.com/watch?v=7No-HaXhWns" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/7No-HaXhWns/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TERRA AMARA Anticipazioni: Chi è Colak, il nuovo cattivo che vuole uccidere Zuleyha!</span></a></li><li><a href="https://www.youtube.com/watch?v=U9wGUW3tjUs" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/U9wGUW3tjUs/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TERRA AMARA Anticipazioni: Yilmaz Vuole Uccidere Hunkar!</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>La confessione di Müjgan vi ha fatto più rabbia o più pena? E come reagirà Züleyha quando scoprirà che la gravidanza che l&#x27;ha allontanata da Yılmaz era falsa?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=8FcNGV4DloY">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di Terra Amara</h2><div class="griglia"><article class="scheda">
+  <a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/"><div class="foto"><img src="/img/terra-amara-la-trama-completa-e-come-finisce.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></h3>
+    <div class="quando">30 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/"><div class="foto"><img src="https://i.ytimg.com/vi/_ypSJU-x7LY/hqdefault.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/"><div class="foto"><img src="https://i.ytimg.com/vi/B_MLx-0yh6M/hqdefault.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=Terra Amara, Yılmaz punta la pistola alla testa di Fikret — e Müjgan confessa: «Non sono incinta, ho falsato le analisi» — https://serietvfans.com/terra-amara/terra-amara-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/terra-amara/terra-amara-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/terra-amara/terra-amara-la-trama-completa-e-come-finisce/&text=Terra Amara, Yılmaz punta la pistola alla testa di Fikret — e Müjgan confessa: «Non sono incinta, ho falsato le analisi»" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">TERRA AMARA Anticipazioni: Yılmaz infuriato vuole uccidere Fikret!</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=8FcNGV4DloY">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di Terra Amara</h3><ol class="numerata"><li><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></li><li><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></li><li><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></li><li><a href="/terra-amara/terra-amara-come-finisce-davvero-zuleyha-vince-tutto-e-resta-sola/">Terra Amara: come finisce davvero, Züleyha vince tutto e resta sola</a></li><li><a href="/terra-amara/terra-amara-come-muore-demir-yaman-chi-ha-dato-lordine-e-perche-doveva-essere-un-rapimento/">Terra Amara, come muore Demir Yaman: chi ha dato l&#x27;ordine e perché doveva essere un rapimento</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>TERRA AMARA Anticipazioni: Yılmaz infuriato vuole uccidere Fikret!</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su Terra Amara</h3><ul><li><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></li><li><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></li><li><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></li><li><a href="/terra-amara/terra-amara-come-finisce-davvero-zuleyha-vince-tutto-e-resta-sola/">Terra Amara: come finisce davvero, Züleyha vince tutto e resta sola</a></li><li><a href="/terra-amara/terra-amara-come-muore-demir-yaman-chi-ha-dato-lordine-e-perche-doveva-essere-un-rapimento/">Terra Amara, come muore Demir Yaman: chi ha dato l&#x27;ordine e perché doveva essere un rapimento</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

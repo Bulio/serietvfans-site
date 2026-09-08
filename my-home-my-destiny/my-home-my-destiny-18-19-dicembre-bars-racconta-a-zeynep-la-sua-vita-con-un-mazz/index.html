@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/my-home-my-destiny/">My Home My Destiny</a> › My Home My Destiny 18-19 dicembre, Barış racconta a Zeynep la sua vita con un mazzo di carte — e il giorno dopo trovano Benal, ma con una notizia terribile</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/my-home-my-destiny/">My Home My Destiny</a>
   <h1>My Home My Destiny 18-19 dicembre, Barış racconta a Zeynep la sua vita con un mazzo di carte — e il giorno dopo trovano Benal, ma con una notizia terribile</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Rintracciata la compagnia di taxi che l&#x27;ha portata via, Barış e Zeynep partono per raggiungere Benal e convincerla a tornare. La prima sera bussano alla porta giusta e si sentono dire che non c&#x27;è nessuno; passano la notte in albergo, e per farle passare i sensi di colpa lui le racconta la sua stessa storia usando le carte da gioco. La mattina dopo la trovano — ma quello che devono dirle non se lo aspetta.</p><ol><li><a href="#c1">La caccia all&#x27;indirizzo</a></li><li><a href="#c2">La porta che resta chiusa</a></li><li><a href="#c3">Mehdi vuole tirarsi fuori</a></li><li><a href="#c4">«Tua figlia è già con lui»</a></li><li><a href="#c5">Come Zeynep e Baris cercano di salvare Benal</a></li><li><a href="#c6">Perche Nermin e Sakine superano le antiche incomprensioni</a></li><li><a href="#c7">Cosa spinge Mehdi a riflettere sul proprio futuro</a></li><li><a href="#c8">Quando Benal scopre l amara verità su Müjgan</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>My Home My Destiny</strong> — Serie conclusa in Italia · le puntate su Mediaset Infinity</span></div>
   
-  <p class="occhiello">Rintracciata la compagnia di taxi che l&#x27;ha portata via, Barış e Zeynep partono per raggiungere Benal e convincerla a tornare. La prima sera bussano alla porta giusta e si sentono dire che non c&#x27;è nessuno; passano la notte in albergo, e per farle passare i sensi di colpa lui le racconta la sua stessa storia usando le carte da gioco. La mattina dopo la trovano — ma quello che devono dirle non se lo aspetta.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: My Home My Destiny 18-19 dicembre, Barış racconta a Zeynep la sua vita con un mazzo di carte — e il giorno dopo trovano Benal, ma con una notizia terribile" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/Trc5ftyX2RM/maxresdefault.jpg" alt="My Home My Destiny 18-19 dicembre, Barış racconta a Zeynep la sua vita con un mazzo di carte — e il giorno dopo trovano Benal, ma con una notizia terribile" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/Trc5ftyX2RM/hqdefault.jpg 480w, https://i.ytimg.com/vi/Trc5ftyX2RM/sddefault.jpg 640w, https://i.ytimg.com/vi/Trc5ftyX2RM/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/Trc5ftyX2RM/hqdefault.jpg&quot;, &quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,45 +409,67 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>Ali Rıza chiede a Sultan di sposarlo: «Rendiamo meno soli gli ultimi anni».</strong></p>
-  <h2>La caccia all&#x27;indirizzo</h2>
+  <h2 id="c1">La caccia all&#x27;indirizzo</h2>
 <p>Zeynep si tormenta per aver lasciato che Mehdi portasse via la piccola Müjgan, e decide di rimettere le cose a posto: vuole ritrovare Benal e aiutarla a riprendersi la custodia della figlia. Barış si mette a disposizione e riesce a risalire alla compagnia di taxi che l&#x27;ha accompagnata; dal tassista ottengono l&#x27;indirizzo esatto. Mentre loro partono, la famiglia si mobilita — Nermin e Sakine restano a casa nel caso Benal tornasse, gli altri si radunano a casa di Barış. E in quelle ore di attesa le due madri di Zeynep si riappacificano davvero: Nermin ammette che la bambina, da piccola, soffriva l&#x27;assenza di Sakine, e Sakine le confessa di averle affidato la figlia perché aveva riconosciuto in lei una madre capace di amarla quanto lei.</p>
-<h2>La porta che resta chiusa</h2>
+<h2 id="c2">La porta che resta chiusa</h2>
 <p>Arrivati a destinazione, i due individuano la casa e suonano, ma l&#x27;amica che ospita Benal — seguendo le sue istruzioni — nega che sia lì. Devono andarsene, pur essendo certi del contrario, e trovano un albergo per la notte. Prendono due camere separate e finiscono per restare nella stessa: Zeynep è schiacciata dal senso di colpa, e Barış tira fuori un mazzo di carte per distrarla. Con quelle carte le racconta una storia che è la sua — dall&#x27;infanzia al matrimonio infelice con Mehdi fino a oggi, dove ha accanto un uomo che non la sottomette e che vuole farla piangere soltanto di gioia. Si addormentano abbracciati.</p>
-<h2>Mehdi vuole tirarsi fuori</h2>
+<h2 id="c3">Mehdi vuole tirarsi fuori</h2>
 <p>A casa, intanto, Mehdi si occupa della bambina e confessa a Cemile di essersi cacciato in una situazione pericolosa: sta pensando seriamente di lasciare gli affari che gli sono stati affidati e vuole parlarne con Cengiz. Cemile non è affatto sicura che l&#x27;uomo la prenderà bene — e non ha torto, perché nel frattempo l&#x27;organizzazione si lamenta apertamente della sua gestione. Nuh, saputo dell&#x27;intenzione dell&#x27;amico, si riavvicina a lui e i due passano la sera giocando a backgammon, con Cemile che li osserva finalmente serena. Nell&#x27;altra casa, Ali Rıza fa il grande passo con Sultan: le dice che da quando è entrata nella sua vita ci sono sole e risate, e le chiede di sposarlo.</p>
-<h2>«Tua figlia è già con lui»</h2>
+<h2 id="c4">«Tua figlia è già con lui»</h2>
 <p>La mattina dopo Benal apre la porta convinta che sia la sua amica e si ritrova davanti due avvocati. Zeynep le dice senza girarci intorno che abbandonare la bambina è stato un errore, Barış le garantisce una copertura legale solida e la promessa di battersi per la custodia esclusiva, così che non sia costretta a vivere con Mehdi. Ma Benal, che la legge la conosce, ribatte che nemmeno un&#x27;ordinanza fermerebbe quell&#x27;uomo. Ed è allora che Zeynep deve dirle la cosa peggiore: la piccola Müjgan non è con lei, è già con Mehdi, che essendone il padre aveva tutto il diritto di portarla via. È esattamente l&#x27;incubo da cui Benal era scappata.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Come Zeynep e Baris cercano di salvare Benal</h2>
+<h2 id="c5">Come Zeynep e Baris cercano di salvare Benal</h2>
 <p>La profonda sofferenza che tormenta l&#x27;animo di Zeynep nasce dal senso di colpa per non essere riuscita a impedire che Mehdi portasse via la piccola Müjgan. La giovane donna avverte una forte responsabilità e decide di agire immediatamente per porre rimedio alla situazione, mettendosi sulle tracce di Benal con l&#x27;obiettivo di offrirle tutto l&#x27;aiuto possibile affinché possa riprendersi la custodia della bambina. Al suo fianco si schiera subito Barış, che non solo mettendosi a completa disposizione dimostra il suo profondo sostegno, ma si attiva personalmente per rintracciare la compagnia di taxi che ha trasportato Benal. Grazie alle informazioni ottenute direttamente dal tassista, i due riescono ad avere l&#x27;indirizzo esatto dell&#x27;abitazione in cui la donna si rifugia.</p>
 <p>Dopo aver individuato il luogo preciso, Zeynep e Barış bussano alla porta sperando di potersi confrontare direttamente con la donna, ma l&#x27;amica che la ospita sceglie di mentire seguendo alla lettera le sue disposizioni. Di fronte al rifiuto e all&#x27;impossibilità di entrare, i due si vedono costretti ad allontanarsi pur sapendo bene che la ricercata si trova all&#x27;interno. La necessità di trascorrere la notte fuori li spinge a cercare una sistemazione in un albergo della zona dove, nonostante abbiano prenotato inizialmente due camere separate, finiscono per rimanere insieme nello stesso spazio. In questo contesto intimo, Barış ricorre a un mazzo di carte per alleggerire il peso dei rimorsi di Zeynep e raccontarle la sua complessa storia personale.</p>
-<h2>Perche Nermin e Sakine superano le antiche incomprensioni</h2>
+<h2 id="c6">Perche Nermin e Sakine superano le antiche incomprensioni</h2>
 <p>Mentre la ricerca di Benal prosegue lontana, l&#x27;attesa vissuta tra le mura domestiche diventa un momento di profonda trasformazione per le due madri di Zeynep. Nermin e Sakine scelgono di rimanere a casa pronte ad accogliere Benal qualora decida di fare ritorno, mentre il resto dei familiari si riunisce presso la dimora di Barış. Questa protratta attesa crea le condizioni perfette per un confronto intimo ed esaustivo tra le due donne, le quali decidono finalmente di affrontare le incomprensioni del passato che le avevano allontanate per lungo tempo. La tensione accumulata negli anni lascia gradualmente il posto a una ritrovata comprensione reciproca e a un sincero desiderio di chiarimento.</p>
 <p>Durante questo intimo dialogo, Nermin trova il coraggio di ammettere aperta consapevolezza riguardo alle sofferenze dell&#x27;infanzia di Zeynep, riconoscendo quanto la bambina abbia sofferto per la prolungata assenza della madre biologica. A sua volta, Sakine apre completamente il proprio cuore facendo una rivelazione molto profonda a Nermin: le confessa infatti di averle affidato la propria figlia in passato proprio perché aveva scorto in lei una figura materna capace di amarla con la medesima intensità. Questo scambio sincero permette a entrambe le donne di superare le reciproche diffidenze e di siglare una vera e propria riappacificazione, riscoprendo un legame solido fondato sul reciproco rispetto.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Cosa spinge Mehdi a riflettere sul proprio futuro</h2>
+<h2 id="c7">Cosa spinge Mehdi a riflettere sul proprio futuro</h2>
 <p>A casa sua, intanto, Mehdi si ritrova a gestire l&#x27;impegnativa presenza della piccola Müjgan e comprende di essersi cacciato in una condizione dalle conseguenze estremamente pericolose per tutti. Preso dalla preoccupazione per gli eventi recenti, l&#x27;uomo manifesta a Cemile il chiaro desiderio di volersi ritirare definitivamente dagli affari che gli sono stati affidati, manifestando l&#x27;intenzione di volerne discutere direttamente con Cengiz. Tuttavia, Cemile non nasconde una forte perplessità riguardo alla reazione di Cengiz di fronte a una simile decisione. I dubbi della donna si rivelano ben fondati, dal momento che nell&#x27;ambiente circostante i membri dell&#x27;organizzazione iniziano già a lamentarsi apertamente del modo in cui Mehdi sta conducendo l&#x27;intera gestione.</p>
 <p>Nel frattempo Nuh, venuto a conoscenza della volontà manifestata dal suo caro amico di voler cambiare strada, decide di cancellare ogni distanza e di riavvicinarsi a lui per offrirgli il proprio sostegno. I due uomini trascorrono così una serata tranquilla giocando insieme a backgammon, ripristinando quell&#x27;armonia che si era incrinata negli ultimi tempi, mentre Cemile li osserva dal vivo provando finalmente un senso di serena distensione. La presenza di Nuh e il clima di ritrovata amicizia offrono a Mehdi un momento di sollievo temporaneo, anche se le ombre legate alle proteste dell&#x27;organizzazione e alla complessa gestione delle sue responsabilità lavorative continuano a gravare minacciose sul suo immediato futuro.</p>
-<h2>Quando Benal scopre l amara verità su Müjgan</h2>
+<h2 id="c8">Quando Benal scopre l amara verità su Müjgan</h2>
 <p>La mattina seguente la situazione precipita rapidamente quando Benal apre la porta di casa credendo di trovarsi di fronte la sua amica, venendo invece sorpresi dalla presenza dei due legali. Zeynep non perde tempo e le comunica chiaramente che l&#x27;aver abbandonato la bambina rappresenta un errore gravissimo, mentre Barış le assicura un solido sostegno legale per ottenere la custodia esclusiva, evitando che debba vivere sotto lo stesso tetto con Mehdi. Nonostante queste rassicurazioni, Benal risponde con forte scetticismo affermando che neppure un provvedimento ufficiale riuscirebbe a fermare la determinazione di Mehdi, dimostrando quanto sia profonda la sua costante paura nei confronti dell&#x27;uomo.</p>
 <p>Di fronte alle parole di Benal, Zeynep si vede costretta a rivelarle la verità più dolorosa e drammatica che la donna potesse mai ascoltare in quel momento. La giovane avvocatessa deve infatti confessarle che la piccola Müjgan non si trova affatto con lei, bensì è già finita nelle mani di Mehdi, il quale ha esercitato il suo diritto paterno per portarla via con sé. Questa terribile notizia fa crollare ogni speranza di Benal, concretizzando in modo immediato l&#x27;incubo dal quale aveva tentato disperatamente di sfuggire allontanandosi dalla città. La donna si ritrova così ad affrontare una realtà drammatica dove le garanzie legali rischiano di arrivare troppo tardi.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=cs59FEiCdaU" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/cs59FEiCdaU/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>MY HOME MY DESTINY Anticipazioni 20-21 Dicembre:Mehdi decide di cambiare vita, il prezzo è alti</span></a></li><li><a href="https://www.youtube.com/watch?v=Ukc1Roo8dN0" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/Ukc1Roo8dN0/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>MY HOME MY DESTINY Anticipazioni 15 Dicembre: Benal lascia la figlia a Zeynep | Mehdi la porta </span></a></li><li><a href="https://www.youtube.com/watch?v=A_21cg0B0Sg" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/A_21cg0B0Sg/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>MY HOME MY DESTINY Anticipazioni: Mehdi passa la notte con Nazli! Benal infuriata! Zeynep gelos</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Benal tornerà a Istanbul o resterà nascosta?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=Trc5ftyX2RM">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di My Home My Destiny</h2><div class="griglia"><article class="scheda">
+  <a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/"><div class="foto"><img src="/img/my-home-my-destiny-la-trama-completa-e-come-finisce.jpg" alt="My Home My Destiny" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">My Home My Destiny</span>
+    <h3><a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/">My Home My Destiny: la trama completa e come finisce</a></h3>
+    <div class="quando">30 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/"><div class="foto"><img src="https://i.ytimg.com/vi/-djleIeCLQs/hqdefault.jpg" alt="My Home My Destiny" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">My Home My Destiny</span>
+    <h3><a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/">My Home My Destiny, Zeynep ferma l&#x27;aborto di Benal in sala operatoria senza sapere che il padre è Mehdi</a></h3>
+    <div class="quando">17 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/"><div class="foto"><img src="https://i.ytimg.com/vi/gxL0o63Nhqw/hqdefault.jpg" alt="My Home My Destiny" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">My Home My Destiny</span>
+    <h3><a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/">My Home My Destiny, anticipazioni del 17 novembre: Özlem indaga su Zeynep e scopre tutto, Nuh diventa autista di Barış e qualcuno manomette i macchinari di Bekir</a></h3>
+    <div class="quando">16 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=My Home My Destiny 18-19 dicembre, Barış racconta a Zeynep la sua vita con un mazzo di carte — e il giorno dopo trovano Benal, ma con una notizia terribile — https://serietvfans.com/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/&text=My Home My Destiny 18-19 dicembre, Barış racconta a Zeynep la sua vita con un mazzo di carte — e il giorno dopo trovano Benal, ma con una notizia terribile" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">MY HOME MY DESTINY Anticipazioni 18-19 Dicembre: Mehdi pronto a lasciare Cengiz e cambiare vita</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=Trc5ftyX2RM">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di My Home My Destiny</h3><ol class="numerata"><li><a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/">My Home My Destiny: la trama completa e come finisce</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/">My Home My Destiny, Zeynep ferma l&#x27;aborto di Benal in sala operatoria senza sapere che il padre è Mehdi</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/">My Home My Destiny, anticipazioni del 17 novembre: Özlem indaga su Zeynep e scopre tutto, Nuh diventa autista di Barış e qualcuno manomette i macchinari di Bekir</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-guida-alla-serie-chi-sono-demet-ozdemir-e-ibrahim-celikkol-qu/">My Home My Destiny: guida alla serie, il cast, i personaggi e quante puntate sono</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-1-dicembre-gli-spari-davanti-alla-vecchia-casa-zeynep-tra-le/">My Home My Destiny 1° dicembre, gli spari davanti alla vecchia casa: Zeynep tra le due madri quando l&#x27;uomo in moto estrae la pistola</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>MY HOME MY DESTINY Anticipazioni 18-19 Dicembre: Mehdi pronto a lasciare Cengiz e cambiare vita</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su My Home My Destiny</h3><ul><li><a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/">My Home My Destiny: la trama completa e come finisce</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/">My Home My Destiny, Zeynep ferma l&#x27;aborto di Benal in sala operatoria senza sapere che il padre è Mehdi</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/">My Home My Destiny, anticipazioni del 17 novembre: Özlem indaga su Zeynep e scopre tutto, Nuh diventa autista di Barış e qualcuno manomette i macchinari di Bekir</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-guida-alla-serie-chi-sono-demet-ozdemir-e-ibrahim-celikkol-qu/">My Home My Destiny: guida alla serie, il cast, i personaggi e quante puntate sono</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-1-dicembre-gli-spari-davanti-alla-vecchia-casa-zeynep-tra-le/">My Home My Destiny 1° dicembre, gli spari davanti alla vecchia casa: Zeynep tra le due madri quando l&#x27;uomo in moto estrae la pistola</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

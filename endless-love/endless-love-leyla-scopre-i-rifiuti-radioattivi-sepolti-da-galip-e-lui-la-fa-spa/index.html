@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/endless-love/">Endless Love</a> › Endless Love, Leyla scopre i rifiuti radioattivi sepolti da Galip e lui la fa sparare: il proiettile nel pericardio e la frase del medico</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/endless-love/">Endless Love</a>
   <h1>Endless Love, Leyla scopre i rifiuti radioattivi sepolti da Galip e lui la fa sparare: il proiettile nel pericardio e la frase del medico</h1>
-  <div class="firma">Redazione Serie TV Fans · domenica 16 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-16">domenica 16 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Durante una visita a un doposcuola per bambini, Leyla scopre che i piccoli si ammalano per l&#x27;esposizione a rifiuti radioattivi interrati trent&#x27;anni prima da Galip. Raccoglie prove, prepara un dossier e rifiuta di tacere. La sera stessa un colpo di pistola la raggiunge davanti all&#x27;officina di Ayhan: il proiettile colpisce il pericardio.</p><ol><li><a href="#c1">Chi sono Leyla, Galip e Ayhan, per chi arriva adesso</a></li><li><a href="#c2">L&#x27;antefatto: il doposcuola dove i bambini si ammalano</a></li><li><a href="#c3">Il terreno dove non cresce niente: come Leyla arriva alla verità</a></li><li><a href="#c4">Trent&#x27;anni prima: il crimine ambientale di Galip</a></li><li><a href="#c5">«Falla fuori»: il confronto diretto e l&#x27;ordine al telefono</a></li><li><a href="#c6">Il proiettile nel pericardio e le ore in sala operatoria</a></li><li><a href="#c7">«Prepariamoci al peggio»: le parole del medico ad Ayhan</a></li><li><a href="#c8">Non è la prima volta: il precedente di Emir che spiega tutto</a></li><li><a href="#c9">Dove vedere Endless Love</a></li><li><a href="#c10">Come Leyla e Ayhan ricostruiscono la vicenda dei veleni</a></li><li><a href="#c11">Perche Galip ordina l agguato contro Leyla</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>Endless Love</strong> — Serie conclusa in Italia · le puntate su Mediaset Infinity</span></div>
   
-  <p class="occhiello">Durante una visita a un doposcuola per bambini, Leyla scopre che i piccoli si ammalano per l&#x27;esposizione a rifiuti radioattivi interrati trent&#x27;anni prima da Galip. Raccoglie prove, prepara un dossier e rifiuta di tacere. La sera stessa un colpo di pistola la raggiunge davanti all&#x27;officina di Ayhan: il proiettile colpisce il pericardio.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: Endless Love, Leyla scopre i rifiuti radioattivi sepolti da Galip e lui la fa sparare: il proiettile nel pericardio e la frase del medico" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/movjunMAQLw/maxresdefault.jpg" alt="Endless Love, Leyla scopre i rifiuti radioattivi sepolti da Galip e lui la fa sparare: il proiettile nel pericardio e la frase del medico" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/movjunMAQLw/hqdefault.jpg 480w, https://i.ytimg.com/vi/movjunMAQLw/sddefault.jpg 640w, https://i.ytimg.com/vi/movjunMAQLw/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/movjunMAQLw/hqdefault.jpg&quot;, &quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,49 +409,71 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>Un terreno recintato dove non cresce un filo d&#x27;erba, una scorciatoia che i bambini prendono ogni giorno, e trent&#x27;anni di silenzio. Leyla tira il filo fino in fondo — e Galip, al telefono, dice tre parole.</strong></p>
-  <h2>Chi sono Leyla, Galip e Ayhan, per chi arriva adesso</h2>
+  <h2 id="c1">Chi sono Leyla, Galip e Ayhan, per chi arriva adesso</h2>
 <p>Leyla è la zia di Nihan, la donna che nella famiglia ha sempre fatto da argine ai soprusi dei Kozcuoğlu e che dedica una parte della sua vita al volontariato negli orfanotrofi di Istanbul. Galip è un membro potente della holding, uno di quelli che il denaro ha reso intoccabili. Ayhan è l&#x27;amico fedele, il meccanico che nella serie funziona da coscienza pratica: quando c&#x27;è da fare una cosa scomoda e concreta, la fa lui. Il legame tra Leyla e Ayhan è uno dei pochi rapporti puliti dell&#x27;intera vicenda.</p>
-<h2>L&#x27;antefatto: il doposcuola dove i bambini si ammalano</h2>
+<h2 id="c2">L&#x27;antefatto: il doposcuola dove i bambini si ammalano</h2>
 <p>Anche dopo essere entrata nel consiglio di amministrazione della holding, Leyla non abbandona l&#x27;impegno verso i più deboli. Durante una visita con Ayhan a un centro per bambini — una specie di doposcuola dove i piccoli passano il pomeriggio a giocare e studiare — emerge un dettaglio che nessuno riesce a spiegare: molti dei bambini che lo frequentano si sono ammalati, e i medici non trovano una causa. È da questa anomalia, non da un sospetto su qualcuno, che parte tutto.</p>
-<h2>Il terreno dove non cresce niente: come Leyla arriva alla verità</h2>
+<h2 id="c3">Il terreno dove non cresce niente: come Leyla arriva alla verità</h2>
 <p>Leyla e Ayhan parlano con le madri del villaggio e una di loro racconta un particolare che sposta l&#x27;indagine: i bambini prendono ogni giorno una scorciatoia che dal villaggio porta al centro, e lungo quella scorciatoia c&#x27;è una zona recintata che i piccoli riescono comunque a raggiungere. Leyla va a vederla e nota una cosa che non torna: il terreno è arido, senza un filo d&#x27;erba, innaturalmente desolato. Consulta gli abitanti, poi gli esperti, e ottiene rapporti scientifici che confermano la presenza di materiale radioattivo nel suolo.</p>
-<h2>Trent&#x27;anni prima: il crimine ambientale di Galip</h2>
+<h2 id="c4">Trent&#x27;anni prima: il crimine ambientale di Galip</h2>
 <p>La ricostruzione arriva a un nome. Circa trent&#x27;anni prima, Galip fece seppellire in quella zona dei rifiuti radioattivi. Non è un incidente né una negligenza: è una decisione presa per risparmiare, le cui conseguenze si stanno scaricando ora sui corpi di bambini che allora non erano nati. Leyla mette insieme un dossier dettagliato, contatta esperti di radioprotezione, si assicura che le prove siano solide e presenta tutto alle autorità competenti, decisa anche a rendere pubblica la storia.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>«Falla fuori»: il confronto diretto e l&#x27;ordine al telefono</h2>
+<h2 id="c5">«Falla fuori»: il confronto diretto e l&#x27;ordine al telefono</h2>
 <p>Galip la affronta di persona e le chiede di non rivelare a nessuno ciò che ha scoperto, provando a intimidirla. Leyla rifiuta categoricamente e se ne va decisa a proseguire. È allora che Galip, furioso e soprattutto spaventato dalle conseguenze, prende il telefono, chiama uno dei suoi uomini di fiducia e dà l&#x27;ordine con due parole. La sera stessa Leyla si reca come sempre all&#x27;officina di Ayhan: appena scende dalla macchina, un colpo di pistola la raggiunge.</p>
-<h2>Il proiettile nel pericardio e le ore in sala operatoria</h2>
+<h2 id="c6">Il proiettile nel pericardio e le ore in sala operatoria</h2>
 <p>La ferita sembra al braccio, ma la situazione è subito gravissima: il proiettile ha colpito il pericardio, la membrana che avvolge il cuore. Ayhan chiama l&#x27;ambulanza e Leyla viene portata d&#x27;urgenza in ospedale per un intervento delicatissimo, durante il quale va in arresto cardiaco più volte. Il chirurgo riesce a portare a termine l&#x27;operazione, ma le condizioni restano critiche e Leyla viene trasferita in terapia intensiva, dove i familiari possono vederla solo attraverso un vetro.</p>
-<h2>«Prepariamoci al peggio»: le parole del medico ad Ayhan</h2>
+<h2 id="c7">«Prepariamoci al peggio»: le parole del medico ad Ayhan</h2>
 <p>Ayhan, Kemal e Nihan passano ore davanti a quel vetro. Dopo due giorni il medico esce dalla stanza con un&#x27;espressione grave e dice ad Ayhan che, se vuole, può entrare. Lui chiede perché, visto che il giorno prima gli era stato vietato, e la risposta è la frase che dà il titolo a tutto l&#x27;episodio: le condizioni sono stabili, ma tutto può cambiare da un momento all&#x27;altro, prepariamoci al peggio. Ayhan entra, si siede accanto al letto e le parla, sperando che lo senta.</p>
-<h2>Non è la prima volta: il precedente di Emir che spiega tutto</h2>
+<h2 id="c8">Non è la prima volta: il precedente di Emir che spiega tutto</h2>
 <p>Per chi segue la serie da tempo, questa non è la prima volta che Leyla rischia la vita a causa dei Kozcuoğlu. Anni prima era stato Emir a ordinare ai suoi uomini di ferirla: Nihan era fuggita con Kemal, ed Emir aveva minacciato la famiglia dicendo che se lei non fosse rientrata avrebbe ucciso sua zia. Nihan non fece in tempo a tornare, e gli uomini di Emir eseguirono. Padre e figlio hanno usato la stessa donna come strumento di pressione a distanza di anni: è il modo più efficace che la serie ha per dire che nulla, in quella famiglia, è cambiato.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Dove vedere Endless Love</h2>
+<h2 id="c9">Dove vedere Endless Love</h2>
 <p>Endless Love è andata in onda in Italia su Canale 5: le puntate si possono recuperare in streaming su Mediaset Infinity.</p>
-<h2>Come Leyla e Ayhan ricostruiscono la vicenda dei veleni</h2>
+<h2 id="c10">Come Leyla e Ayhan ricostruiscono la vicenda dei veleni</h2>
 <p>Leyla occupa un posto nel consiglio di amministrazione della holding Kozcuoğlu, ma non ha mai messo da parte la sua dedizione per i volontariati e gli orfanotrofi di Istanbul. Durante una visita insieme ad Ayhan in un centro per bambini dove i piccoli trascorrevano i pomeriggi tra studio e gioco, la donna si rende conto che molti frequentatori continuano ad ammalarsi senza una causa medica apparente. È proprio questo mistero ad accendere la sua determinazione nel cercare risposte concrete. Insieme al meccanico Ayhan, figura fidata che la affianca sempre nelle decisioni più difficili, Leyla sceglie di ascoltare le testimonianze delle madri del villaggio, avviando così un percorso conoscitivo che la porterà a fare una scoperta drammatica e a raccogliere prove decisive.</p>
 <p>Dalle parole delle madri emerge un elemento fondamentale: i bambini utilizzano quotidianamente una scorciatoia per raggiungere il doposcuola, passando nei pressi di un terreno recintato che attira la loro curiosità. Quando Leyla si reca sul posto per verificare di persona, nota subito che l&#x27;area appare del tutto arida, priva di un solo filo d&#x27;erba e vistosamente desolata. Questa anomalia spinge la donna a consultare immediatamente alcuni esperti di radioprotezione e a richiedere analisi approfondite. I rapporti scientifici confermano la presenza di materiale radioattivo interrato trent&#x27;anni prima da Galip per puro risparmio economico. Senza esitare, Leyla prepara un dossier completo da consegnare alle autorità competenti, decisa a fare giustizia per i bambini del centro.</p>
-<h2>Perche Galip ordina l agguato contro Leyla</h2>
+<h2 id="c11">Perche Galip ordina l agguato contro Leyla</h2>
 <p>Galip Kozcuoğlu è un uomo abituato a considerarsi intoccabile grazie al proprio potere economico, ma la determinazione di Leyla mette a rischio l&#x27;intero suo impero. Nel tentativo di bloccare la diffusione del dossier sui rifiuti radioattivi, Galip affronta direttamente la donna chiedendole di tacere e cercando di intimorirla con la sua forza. Leyla respinge fermamente ogni tentativo di ricatto, confermando la volontà di portare la verità davanti alle autorità competenti. Spaventato dalle conseguenze legali e pubbliche delle sue azioni passate, Galip telefona a un suo uomo di fiducia e impartisce l&#x27;ordine di eliminare la donna. La sera stessa, mentre Leyla raggiunge l&#x27;officina di Ayhan e scende dalla propria vettura, un colpo di pistola la colpisce in pieno.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>Nonostante la ferita sembri inizialmente circoscritta al braccio, le condizioni di Leyla si rivelano drammatiche poiché il proiettile ha trafitto il pericardio. Trasportata d&#x27;urgenza in ospedale da Ayhan, la donna affronta un delicato intervento chirurgico segnato da ripetuti arresti cardiaci, prima di essere trasferita nel reparto di terapia intensiva. Lì, dietro il vetro della stanza, Ayhan, Kemal e Nihan attendono per ore drammatiche fino all&#x27;infausto annuncio del medico sulle stabili ma precarie condizioni della paziente. Questo tragico evento richiama un precedente analogo legato ad Emir, il figlio di Galip, che anni prima aveva fatto sparare a Leyla per ricattare Nihan, dimostrando come la famiglia Kozcuoğlu utilizzi da sempre i medesimi metodi spietati.</p>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=-DzqxPWmWNs" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/-DzqxPWmWNs/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TERRIBILE GESTO! HAKKI SI TOGLIE LA VITA DAVANTI A GALIP! Anticipazioni Endless Love Turchia</span></a></li><li><a href="https://www.youtube.com/watch?v=JY6JdF1IhFQ" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/JY6JdF1IhFQ/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LEYLA, KEMAL SCOPRE IL SEGRETO NASCOSTO PER 30 ANNI - Endless Love Anticipazioni 6 Aprile</span></a></li><li><a href="https://www.youtube.com/watch?v=iGP9Xrc7Vfk" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/iGP9Xrc7Vfk/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>AYHAN A LEYLA: &quot;VUOI SPOSARMI?&quot;; LEI ACCETTA, FINALMENTE FELICE-Anticipazioni Endless Love Turc</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Leyla ha fatto bene a rifiutare il patto con Galip sapendo a cosa andava incontro? E secondo voi qualcuno pagherà davvero per quei rifiuti sepolti trent&#x27;anni fa?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=movjunMAQLw">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di Endless Love</h2><div class="griglia"><article class="scheda">
+  <a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/"><div class="foto"><img src="https://i.ytimg.com/vi/DSiProJJ1ls/hqdefault.jpg" alt="Endless Love" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/"><div class="foto"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/"><div class="foto"><img src="https://i.ytimg.com/vi/uu2oAzTOWQU/hqdefault.jpg" alt="Endless Love" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></h3>
+    <div class="quando">25 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=Endless Love, Leyla scopre i rifiuti radioattivi sepolti da Galip e lui la fa sparare: il proiettile nel pericardio e la frase del medico — https://soapoperaitalia.com/endless-love/endless-love-la-trama-completa-perche-nihan-sposa-emir-e-come-finisce/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://soapoperaitalia.com/endless-love/endless-love-la-trama-completa-perche-nihan-sposa-emir-e-come-finisce/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://soapoperaitalia.com/endless-love/endless-love-la-trama-completa-perche-nihan-sposa-emir-e-come-finisce/&text=Endless Love, Leyla scopre i rifiuti radioattivi sepolti da Galip e lui la fa sparare: il proiettile nel pericardio e la frase del medico" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">SPARANO A LEYLA, IN FIN DI VITA! IL MEDICO: &quot;PREPARATEVI&quot;</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=movjunMAQLw">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di Endless Love</h3><ol class="numerata"><li><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></li><li><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></li><li><a href="/endless-love/endless-love-chi-e-galip-kozcuoglu-le-due-volte-in-cui-nihan-e-stata-venduta/">Endless Love, chi è Galip Kozcuoğlu: le due volte in cui Nihan è stata venduta</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-zeynep-soydere-perche-emir-lha-scelta-e-cosa-ha-distrutto/">Endless Love, chi è davvero Zeynep Soydere: perché Emir l&#x27;ha scelta e cosa ha distrutto</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>SPARANO A LEYLA, IN FIN DI VITA! IL MEDICO: &quot;PREPARATEVI&quot;</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su Endless Love</h3><ul><li><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></li><li><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></li><li><a href="/endless-love/endless-love-chi-e-galip-kozcuoglu-le-due-volte-in-cui-nihan-e-stata-venduta/">Endless Love, chi è Galip Kozcuoğlu: le due volte in cui Nihan è stata venduta</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-zeynep-soydere-perche-emir-lha-scelta-e-cosa-ha-distrutto/">Endless Love, chi è davvero Zeynep Soydere: perché Emir l&#x27;ha scelta e cosa ha distrutto</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

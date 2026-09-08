@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/la-promessa/">La Promessa</a> › La Promessa, Manuel annulla la luna di miele e vola con Jana: «Ricordo l&#x27;odore dei suoi capelli» — mentre Simona confessa il segreto che uccide un&#x27;amicizia</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/la-promessa/">La Promessa</a>
   <h1>La Promessa, Manuel annulla la luna di miele e vola con Jana: «Ricordo l&#x27;odore dei suoi capelli» — mentre Simona confessa il segreto che uccide un&#x27;amicizia</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Settimana dal 6 al 10 novembre densissima: sull&#x27;aereo ricostruito da Jana e Catalina, Manuel torna a sentirsi vivo e i frammenti di memoria riaffiorano — al punto da annullare il viaggio di nozze con una Jimena sempre più sospettosa. Intanto Simona confessa a Candela che fu suo marito Antonio a uccidere Custodio, Petra scopre che Pía è ancora incinta e Curro, armato di accetta, affronta Lorenzo.</p><ol><li><a href="#c1">Il primo volo: Manuel torna vivo tra le nuvole</a></li><li><a href="#c2">La confessione di Simona: «Fu Antonio a uccidere Custodio»</a></li><li><a href="#c3">Petra dietro la porta: Pía non ha mai abortito</a></li><li><a href="#c4">La trappola di Cruz: Curro con l&#x27;accetta contro Lorenzo</a></li><li><a href="#c5">Perche Simona rivela a Candela la verita</a></li><li><a href="#c6">Cosa scopre Petra sul segreto di Pia</a></li><li><a href="#c7">Come Manuel annulla il viaggio con Jimena</a></li><li><a href="#c8">Perche Curro affronta Lorenzo con un accetta</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>La Promessa</strong> — Rete 4 · in streaming su Mediaset Infinity</span></div>
   
-  <p class="occhiello">Settimana dal 6 al 10 novembre densissima: sull&#x27;aereo ricostruito da Jana e Catalina, Manuel torna a sentirsi vivo e i frammenti di memoria riaffiorano — al punto da annullare il viaggio di nozze con una Jimena sempre più sospettosa. Intanto Simona confessa a Candela che fu suo marito Antonio a uccidere Custodio, Petra scopre che Pía è ancora incinta e Curro, armato di accetta, affronta Lorenzo.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: La Promessa, Manuel annulla la luna di miele e vola con Jana: «Ricordo l&#x27;odore dei suoi capelli» — mentre Simona confessa il segreto che uccide un&#x27;amicizia" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/hdL50MHvAww/maxresdefault.jpg" alt="La Promessa, Manuel annulla la luna di miele e vola con Jana: «Ricordo l&#x27;odore dei suoi capelli» — mentre Simona confessa il segreto che uccide un&#x27;amicizia" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/hdL50MHvAww/hqdefault.jpg 480w, https://i.ytimg.com/vi/hdL50MHvAww/sddefault.jpg 640w, https://i.ytimg.com/vi/hdL50MHvAww/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/hdL50MHvAww/hqdefault.jpg&quot;, &quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,45 +409,67 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>La domanda che Manuel fa a Mauro vale più di mille ricordi: «Jana si è presa cura di me mentre ero in coma?». E la confessione che segue: «Ricordo distintamente l&#x27;odore dei suoi capelli».</strong></p>
-  <h2>Il primo volo: Manuel torna vivo tra le nuvole</h2>
+  <h2 id="c1">Il primo volo: Manuel torna vivo tra le nuvole</h2>
 <p>Tutto parte da un sogno di volo che spinge Manuel, quasi d&#x27;istinto, verso l&#x27;hangar — dove trova Jana e un aereo ricostruito alla perfezione grazie a lei e Catalina. L&#x27;esitazione dura poco: i due volano insieme, e in quota Manuel confessa di sentirsi «finalmente vivo». Ma c&#x27;è di più: i frammenti di memoria cominciano a tornare, e lo sguardo con cui guarda Jana cambia. A Mauro, sotto giuramento di segretezza, rivelerà il dettaglio più intimo: ricorda l&#x27;odore dei suoi capelli. Risultato immediato: il viaggio di nozze con Jimena viene annullato con la scusa di un malessere — e la sposa, delusa, fiuta che qualcosa non torna.</p>
-<h2>La confessione di Simona: «Fu Antonio a uccidere Custodio»</h2>
+<h2 id="c2">La confessione di Simona: «Fu Antonio a uccidere Custodio»</h2>
 <p>Il segreto che divora Simona esplode grazie alla lettera del falso Don padre Camilo, che minaccia di rivelare a Candela quanto appreso in confessione. Per impedire che la verità arrivi da un estraneo, Simona la ferma sulla porta e gliela dice in faccia: a uccidere Custodio, il marito di Candela, fu Antonio — il marito di Simona — al culmine di una lite alimentata dall&#x27;invidia per il successo di Custodio; quella sera tornò a casa con le mani sporche di sangue. Candela crolla: «Ti consideravo una sorella e mi hai mentito per anni. Non potrò mai perdonarti». Un&#x27;amicizia storica muore in un patio.</p>
-<h2>Petra dietro la porta: Pía non ha mai abortito</h2>
+<h2 id="c3">Petra dietro la porta: Pía non ha mai abortito</h2>
 <p>Origliando la discussione tra Rómulo e Gregorio — con il primo che dubita della versione dell&#x27;aborto — Petra mette insieme i pezzi e li porta dritti a Cruz: Pía è ancora incinta e presto partorirà. La marchesa, preoccupata, incarica Petra di elaborare un piano «appropriato», che passa per l&#x27;allontanamento della governante. Intanto Petra semina veleno in cucina sulle presunte attenzioni di Gregorio verso Pía, fissandole la pancia con insistenza: la caccia è aperta.</p>
-<h2>La trappola di Cruz: Curro con l&#x27;accetta contro Lorenzo</h2>
+<h2 id="c4">La trappola di Cruz: Curro con l&#x27;accetta contro Lorenzo</h2>
 <p>Il capitolo più inquietante è la manovra di Cruz su Curro: gli rivela che Eugenia subiva da Lorenzo gli stessi abusi — e che la sedia a rotelle nasce da una spinta giù dalle scale. Il ragazzo, devastato, rintraccia Lorenzo e lo affronta arrivando ad afferrare un&#x27;accetta prima di essere disarmato; alla fine Lorenzo cede: gli racconterà tutto. Ma la scena chiave è un&#x27;altra: Petra riferisce a Cruz il comportamento alterato di Curro, e la marchesa sorride — «è caduto in una trappola da noi predisposta. Se tutto va come previsto, uno tra Curro e Lorenzo non sarà più un problema». A margine, una nota di luce: Alonso, grazie alla dote di Jimena, approva finalmente i progetti di modernizzazione di Catalina — che avrebbe solo preferito guadagnarseli in un altro modo.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Perche Simona rivela a Candela la verita</h2>
+<h2 id="c5">Perche Simona rivela a Candela la verita</h2>
 <p>La drammatica svolta che devasta la cucina nasce dal ricatto orchestrato attraverso una lettera inviata dal falso Don padre Camilo. L&#x27;impostore minaccia infatti di rivelare dettagli confessionali che distruggerebbero ogni equilibrio, spingendo la cuoca ad agire prima che la verità venga allo scoperto per bocca di un estraneo. Bloccando l&#x27;amica proprio sulla porta di casa, la donna trova il coraggio di confessare un crimine commesso anni prima dal proprio marito Antonio. L&#x27;uomo aveva infatti aggredito a morte Custodio, consorte della collega, al culmine di un violento litigio generato dalla profonda invidia nutrita verso i successi professionali e personali dell&#x27;altro lavoratore.</p>
 <p>Quella tragica sera Antonio fece ritorno a casa con le mani sporche del sangue di Custodio, lasciando la consorte nell&#x27;angoscia e costringendola a un silenzio durato per lunghissimo tempo. La reazione della vittima di questo inganno è inevitabilmente devastante quando comprende la portata delle menzogne subite. Sentendosi profondamente tradita da chi considerava al pari di una sorella di sangue, la donna dichiara apertamente l&#x27;impossibilità di concedere qualsiasi tipo di perdono per una colpa così grave. Un&#x27;amicizia storica ed apparentemente indistruttibile giunge così al capolinea nello spazio intimo del patio, lasciando dietro di sé un baratro emotivo incolmabile per entrambe le protagoniste della vicenda.</p>
-<h2>Cosa scopre Petra sul segreto di Pia</h2>
+<h2 id="c6">Cosa scopre Petra sul segreto di Pia</h2>
 <p>L&#x27;intera vicenda prende una piega decisiva nel momento in cui la fedele servitrice intercetta di nascosto una conversazione riservata tra Rómulo e Gregorio. Sentendo l&#x27;uomo esprimere forti dubbi sulla versione ufficiale secondo cui la governante avrebbe interrotto la gravidanza, la donna raccoglie gli indizi necessari e comprende la verità. Pía non ha mai abortito e si trova ancora in stato gravido, ormai vicina al momento del parto. Senza perdere tempo, la servitrice riferisce immediatamente la sconvolgente scoperta alla marchesa Cruz, scatenando una reazione immediata da parte della nobile, fortemente preoccupata per le implicazioni di questa nascita all&#x27;interno della residenza.</p>
 <p>Di fronte al pericolo rappresentato dal nascituro, la nobile affida all&#x27;alleata il compito di elaborare un piano efficace che porti all&#x27;allontanamento definitivo della governante. Nell&#x27;attesa che la strategia prenda forma, la servitrice comincia a diffondere veleno tra il personale della cucina, mettendo in cattiva luce le attenzioni mostrate da Gregorio verso la donna. Gli sguardi insistenti e minacciosi rivolti verso la pancia della futura madre confermano che l&#x27;ostilità è ormai aperta e pubblica. La caccia contro la governante si intensifica giorno dopo giorno, rendendo l&#x27;ambiente di lavoro insostenibile e spingendo la donna verso una posizione di estrema vulnerabilità.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Come Manuel annulla il viaggio con Jimena</h2>
+<h2 id="c7">Come Manuel annulla il viaggio con Jimena</h2>
 <p>Il desiderio irrefrenabile di tornare nei cieli spinge Manuel a seguire un sogno e a camminare verso l hangar della tenuta. In quel luogo ritrova Jana insieme all aereo che la giovane ha ricostruito con la collaborazione di Catalina. L emozione del volo condiviso risveglia nel giovane erede sensazioni assopite e preziosi frammenti di memoria. Sulla scia di queste rivelazioni interiori, l uomo affronta Mauro chiedendogli riservatezza e domandandogli se la serva si sia occupata di lui durante il periodo del coma. La risposta trova conferme nel ricordo nitido del profumo dei capelli della ragazza, un dettaglio intimo che cambia per sempre la sua prospettiva sulla realta circondante e sui sentimenti che prova.</p>
 <p>Le conseguenze di questo risveglio emotivo si ripercuotono immediatamente sul matrimonio appena celebrato tra il nobile e la sua sposa. Per evitare di partire per la luna di miele, l uomo inventa la scusa di un improvviso malessere fisico che costringe la coppia ad annullare il viaggio programmato. Questo rifiuto alimenta forte delusione e crescenti sospetti in Jimena, la quale percepisce chiaramente che il marito le nasconde qualcosa e che il suo atteggiamento non e del tutto sincero. Sullo sfondo della residenza si inserisce anche la decisione di Alonso, il quale approva finalmente i progetti di modernizzazione proposti da Catalina grazie alle risorse finanziarie portate in dote dalla sposa.</p>
-<h2>Perche Curro affronta Lorenzo con un accetta</h2>
+<h2 id="c8">Perche Curro affronta Lorenzo con un accetta</h2>
 <p>La spietata strategia della marchesa Cruz prende forma attraverso una manipolazione diretta ai danni del giovane Curro. La donna rivela al ragazzo particolari sconvolgenti sul passato di Eugenia, spiegando che la donna subiva costanti abusi da parte di Lorenzo e che la sua invalidita sulla sedia a rotelle fu causata proprio da una spinta giu dalle scale inflitta dall uomo. Devastato da questa terribile verita, il ragazzo perde il controllo e affronta apertamente il parente, impugnando persino un accetta prima che la situazione degeneri del tutto. Lorenzo riesce comunque a disarmare il giovane e promette di fornirgli spiegazioni complete su quanto realmente accaduto in passato.</p>
 <p>Mentre la tensione tra i due uomini raggiunge livelli critici, la servitrice Petra nota il comportamento alterato del ragazzo e riferisce prontamente ogni dettaglio alla sua signora. Cruz accoglie la notizia con grande soddisfazione, consapevole che la trappola tesa sta funzionando esattamente secondo i suoi piani macchiavellici. Nel disegno della marchesa, infatti, questo scontro violento condurra inevitabilmente all eliminazione di uno dei due contendenti, liberando la tenuta da un problema ingombrante. Le manovre oscure della nobile dimostrano ancora una volta la sua capacita di sfruttare i dolori altrui per mantenere il controllo assoluto all interno della residenza e proteggere i propri interessi personali.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=3qam7VZZ_2Q" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/3qam7VZZ_2Q/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni: 2-6 Ottobre: Jimena tenta di uccidere Jana! Manuel in aereo con il p</span></a></li><li><a href="https://www.youtube.com/watch?v=9UNQ989ZIEY" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/9UNQ989ZIEY/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni: Curro e Lorenzo Alleati! Jimena caccia Jana e Manuel lo scopre!</span></a></li><li><a href="https://www.youtube.com/watch?v=885tEh8gQNk" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/885tEh8gQNk/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni: Lorenzo chiede la restituzione del prestito | Jana intanto indaga</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>La trappola di Cruz eliminerà Curro o Lorenzo — e chi pagherà per primo? E i ricordi di Manuel su Jana arriveranno prima o dopo il punto di non ritorno con Jimena?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=hdL50MHvAww">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di La Promessa</h2><div class="griglia"><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/"><div class="foto"><img src="https://i.ytimg.com/vi/Rp8VhxDiDSk/hqdefault.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></h3>
+    <div class="quando">7 settembre 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/"><div class="foto"><img src="https://i.ytimg.com/vi/8JHt6ogwxQw/hqdefault.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Ángela beve tutto, Curro sfonda la porta</a></h3>
+    <div class="quando">6 settembre 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/"><div class="foto"><img src="/img/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Curro nasconde Ángela, Lorenzo furioso</a></h3>
+    <div class="quando">6 settembre 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=La Promessa, Manuel annulla la luna di miele e vola con Jana: «Ricordo l&#x27;odore dei suoi capelli» — mentre Simona confessa il segreto che uccide un&#x27;amicizia — https://serietvfans.com/la-promessa/la-promessa-manuel-annulla-la-luna-di-miele-e-vola-con-jana-ricordo-lodore-dei-s/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/la-promessa/la-promessa-manuel-annulla-la-luna-di-miele-e-vola-con-jana-ricordo-lodore-dei-s/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/la-promessa/la-promessa-manuel-annulla-la-luna-di-miele-e-vola-con-jana-ricordo-lodore-dei-s/&text=La Promessa, Manuel annulla la luna di miele e vola con Jana: «Ricordo l&#x27;odore dei suoi capelli» — mentre Simona confessa il segreto che uccide un&#x27;amicizia" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">LA PROMESSA ANTICIPAZIONI 6-10 NOVEMBRE: MANUEL ANNULLA LA LUNA DI MIELE E VOLA CON JANA</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=hdL50MHvAww">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di La Promessa</h3><ol class="numerata"><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Ángela beve tutto, Curro sfonda la porta</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Curro nasconde Ángela, Lorenzo furioso</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>LA PROMESSA ANTICIPAZIONI 6-10 NOVEMBRE: MANUEL ANNULLA LA LUNA DI MIELE E VOLA CON JANA</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su La Promessa</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-3-6-settembre-maria-affronta-la-gravidanza-da-sola/">La Promessa anticipazioni 3-6 settembre: Maria affronta la gravidanza da sola</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-carlo-arriva-maria-trema/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Carlo arriva, Maria trema</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/far-away/far-away-anticipazioni-dal-31-agosto-al-4-settembre-chi-ha-donato-il-fegato-a-nare/">Far Away, anticipazioni dal 31 agosto al 4 settembre: chi ha donato il fegato a Nare, e perché adesso sta male lui</a></li><li><a href="/far-away/far-away-dal-31-agosto-la-madre-di-alya-sapeva-tutto-non-ricordo/">Far Away Dal 31 Agosto: la madre di Alya sapeva tutto — «non ricordo»</a></li><li><a href="/forbidden-fruit/forbidden-fruit-dal-31-agosto-il-conto-a-nome-di-halit-che-e-morto/">Forbidden Fruit Dal 31 Agosto: il conto a nome di Halit, che è morto</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

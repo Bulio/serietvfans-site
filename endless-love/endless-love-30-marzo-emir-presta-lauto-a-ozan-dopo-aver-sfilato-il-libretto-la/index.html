@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/endless-love/">Endless Love</a> › Endless Love 30 marzo, Emir presta l&#x27;auto a Ozan dopo aver sfilato il libretto: la polizia li ferma, e a restare in cella è solo lui</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/endless-love/">Endless Love</a>
   <h1>Endless Love 30 marzo, Emir presta l&#x27;auto a Ozan dopo aver sfilato il libretto: la polizia li ferma, e a restare in cella è solo lui</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Ozan confida a Emir di avere un appuntamento con una ragazza e di non poter guidare per via della propria condizione di salute; lui si offre di prestargli l&#x27;auto e di non dirlo a nessuno. Prima di consegnargli le chiavi, però, toglie il libretto di circolazione. Il posto di blocco fa il resto — e a uscirne rovinati sono tutti tranne chi ha organizzato la trappola.</p><ol><li><a href="#c1">Il portachiavi e la bugia</a></li><li><a href="#c2">Il posto di blocco</a></li><li><a href="#c3">Chi esce e chi resta dentro</a></li><li><a href="#c4">Due famiglie sotto assedio</a></li><li><a href="#c5">Perche Emir architetta la trappola contro Ozan</a></li><li><a href="#c6">Come Zeynep finisce al commissariato con Ozan</a></li><li><a href="#c7">Cosa convince Fehime a sfidare Vildan</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>Endless Love</strong> — Serie conclusa in Italia · le puntate su Mediaset Infinity</span></div>
   
-  <p class="occhiello">Ozan confida a Emir di avere un appuntamento con una ragazza e di non poter guidare per via della propria condizione di salute; lui si offre di prestargli l&#x27;auto e di non dirlo a nessuno. Prima di consegnargli le chiavi, però, toglie il libretto di circolazione. Il posto di blocco fa il resto — e a uscirne rovinati sono tutti tranne chi ha organizzato la trappola.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: Endless Love 30 marzo, Emir presta l&#x27;auto a Ozan dopo aver sfilato il libretto: la polizia li ferma, e a restare in cella è solo lui" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/gJbQc3AStYE/maxresdefault.jpg" alt="Endless Love 30 marzo, Emir presta l&#x27;auto a Ozan dopo aver sfilato il libretto: la polizia li ferma, e a restare in cella è solo lui" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/gJbQc3AStYE/hqdefault.jpg 480w, https://i.ytimg.com/vi/gJbQc3AStYE/sddefault.jpg 640w, https://i.ytimg.com/vi/gJbQc3AStYE/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/gJbQc3AStYE/hqdefault.jpg&quot;, &quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,25 +409,25 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>Fehime giura sul Corano che farà di tutto per allontanare Nihan e la sua famiglia da Kemal.</strong></p>
-  <h2>Il portachiavi e la bugia</h2>
+  <h2 id="c1">Il portachiavi e la bugia</h2>
 <p>Tra Zeynep e Ozan le cose vanno bene: lei gli regala un portachiavi a forma di auto da corsa e i due si danno appuntamento per un giro in macchina. Quello che Ozan non le ha detto è che non può guidare a causa della propria malattia. Quando si confida con Emir, lui coglie l&#x27;occasione al volo: gli offre la propria auto e gli promette che nessuno lo saprà. La mattina dopo, prima di consegnargli le chiavi, sfila dal cruscotto il libretto di circolazione.</p>
-<h2>Il posto di blocco</h2>
+<h2 id="c2">Il posto di blocco</h2>
 <p>Poco prima Zeynep aveva scoperto che il misterioso imprenditore interessato ad assumerla era proprio Emir e aveva interrotto l&#x27;incontro rifiutando ogni collaborazione — senza sapere che nel frattempo qualcuno aveva già scattato una foto dei due insieme. Sale in auto con Ozan, e i due vengono fermati da un controllo della polizia: niente libretto, niente patente, ed entrambi vengono trattenuti. Emir, che li osservava da lontano, aveva già fatto la telefonata giusta. In caserma Zeynep viene a sapere che Ozan non ha la patente per motivi di salute, e la delusione per la bugia è forte quanto lo spavento.</p>
-<h2>Chi esce e chi resta dentro</h2>
+<h2 id="c3">Chi esce e chi resta dentro</h2>
 <p>Arrivano Nihan e Vildan, arriva Kemal, arriva perfino Emir a fare il salvatore usando la propria influenza; nella confusione generale, però, lui approfitta per sottrarre il cellulare di Zeynep. Alla fine Zeynep torna a casa e Ozan resta in custodia, perché alcuni agenti sono stati corrotti perché lo trattenessero. Kemal affronta il responsabile del commissariato convinto che dietro tutto ci sia Emir, e ha ragione — ma l&#x27;obiettivo vero non era lui: era Önder, che poco prima aveva tentato di rivelare a Nihan che Emir sapeva tutto e li teneva sotto controllo.</p>
-<h2>Due famiglie sotto assedio</h2>
+<h2 id="c4">Due famiglie sotto assedio</h2>
 <p>La serata a casa di Kemal aggiunge tensione: Tarık si presenta con regali comprati grazie ai soldi di Emir e rifiuta di lasciare quel lavoro, accusando il fratello di invidia; il padre, saputo per chi lavora, rimprovera Kemal ricordandogli che è stato lui a far entrare Emir nelle loro vite. Poi Asu lascia cadere davanti a Fehime che Nihan lavora nell&#x27;azienda di Kemal, e la donna arriva a giurare sul Corano che farà di tutto per allontanarla — presentandosi il giorno dopo a casa loro per dettare le condizioni a Vildan. Sullo sfondo, una telefonata ricevuta da Emir conferma che le minacce di cui parlava non erano affatto inventate: qualcuno sa cosa è successo la notte dell&#x27;omicidio, e va pagato.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Perche Emir architetta la trappola contro Ozan</h2>
+<h2 id="c5">Perche Emir architetta la trappola contro Ozan</h2>
 <p>Emir osserva ogni mossa della famiglia di Nihan per mantenere il controllo assoluto su tutti loro. Quando scopre che Önder sta cercando di rivelare la verita a Nihan, facendo presente che l&#x27;imprenditore conosce ogni dettaglio e li tiene in pugno, capisce di dover agire immediatamente. La sua manovra non prende di mira direttamente Önder, ma colpisce il punto piu debole del gruppo, ovvero il giovane Ozan. Sfruttando la fiducia del ragazzo e la sua condizione di salute che gli impedisce di guidare, Emir offre con apparente generosita la propria automobile per l&#x27;appuntamento segreto con Zeynep. In realta, ogni dettaglio e calcolato con fredda precisione per provocare il caos.</p>
 <p>Prima di consegnare le chiavi della vettura a Ozan, Emir rimuove il libretto di circolazione dal cruscotto e promette di mantenere il segreto sul giro in macchina. Successivamente effettua la telefonata al posto di blocco della polizia per fare fermare il veicolo proprio mentre a bordo ci sono i due giovani. Quando Ozan e Zeynep vengono trattenuti dagli agenti per la mancanza dei documenti e della patente, Emir interviene in caserma fingendo di essere il loro salvatore grazie alla propria influenza. In realta, il suo vero scopo e manipolare gli eventi, corrompendo alcuni poliziotti per trattenere ancora Ozan e creando una confusione generale che gli permette persino di sottrarre il cellulare della ragazza.</p>
 <p>Questa articolata trappola serve a Emir per consolidare la propria posizione di potere sia verso la famiglia di Nihan sia verso quella di Kemal. Allo stesso tempo, sullo sfondo della vicenda emerge un&#x27;altra ombra inquietante per l&#x27;uomo: una telefonata misteriosa conferma che le minacce legate alla notte dell&#x27;omicidio sono del tutto reali. Qualcuno sa esattamente che cosa e accaduto in quella drammatica occasione e pretende di essere pagato per il proprio silenzio. Emir si trova cosi a dover gestire contemporaneamente i sospetti di Kemal, il tentativo di verita di Önder e un ricatto concreto che rischia di mandare in frantumi le sue manovre.</p>
-<h2>Come Zeynep finisce al commissariato con Ozan</h2>
+<h2 id="c6">Come Zeynep finisce al commissariato con Ozan</h2>
 <p>Il rapporto tra Zeynep e Ozan sembra procedere nel migliore dei modi, con momenti di grande complicita come il regalo del portachiavi a forma di auto da corsa. Tuttavia, la ragazza ignora del tutto la verita sulla salute di Ozan e sul fatto che la sua malattia gli proibisca di mettersi alla guida. Nel frattempo Zeynep affronta una scoperta sconvolgente riguardo al proprio futuro lavorativo: scopre che il misterioso imprenditore intenzionato ad assumerla non e altri che Emir. Non volendo avere nulla a che fare con lui, rifiuta immediatamente ogni forma di collaborazione e interrompe il loro incontro, ignara che qualcuno ha gia scattato una fotografia per documentare che i due si trovavano insieme.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>Subito dopo l&#x27;incontro rifiutato con Emir, Zeynep si fida di Ozan e sale a bordo della vettura prestata per fare il giro in macchina promesso. La corsa dei due giovani dura pero pochissimo, perche l&#x27;auto viene subito bloccata al controllo della polizia organizzato dalla telefonata di Emir. Senza il libretto di circolazione, che era stato sfilato a tradimento prima della partenza, e senza la patente di guida che Ozan non possiede, entrambi vengono condotti e trattenuti in commissariato. Per Zeynep lo spavento del fermo si unisce a una profonda delusione quando apprende dagli agenti che Ozan le ha mentito sulla propria impossibilita di guidare per motivi medici.</p>
 <p>La situazione al commissariato si complica ulteriormente con l&#x27;arrivo dei familiari dei ragazzi, scatenando un momento di grande caos. Kemal affronta a viso aperto il responsabile del commissariato, convinto fin dal primo istante che dietro questo strano arresto ci sia la mano di Emir. Mentre si scatena la confusione tra i presenti, con la presenza anche di Nihan e Vildan, Emir sfrutta il trambusto per rubare il telefono di Zeynep. La ragazza viene infine rilasciata e torna a casa, ma il turbamento per la bugia di Ozan e l&#x27;ombra di Emir sulla sua vita privata lasciano un segno profondo nell&#x27;intera vicenda.</p>
-<h2>Cosa convince Fehime a sfidare Vildan</h2>
+<h2 id="c7">Cosa convince Fehime a sfidare Vildan</h2>
 <p>Le tensioni all&#x27;interno della famiglia di Kemal raggiungono il punto di rottura durante una cena particolarmente difficile. Tarık si presenta a casa portando diversi regali acquistati grazie ai soldi ricevuti da Emir e manifesta con fermezza la volonta di non abbandonare quel lavoro ben retribuito. Di fronte alle proteste e ai dubbi sollevati dal fratello, Tarık reagisce con rabbia e accusa Kemal di essere semplicemente invidioso del suo successo. A peggiorare il clima interviene il padre, il quale, dopo aver scoperto chi e il datore di lavoro di Tarık, rimprovera severamente Kemal ricordandogli che e stato proprio lui a fare entrare Emir nelle vite di tutti loro.</p>
 <p>In questo clima di sospetto e scontro familiare, Asu rivela ad un&#x27;inconsapevole Fehime un dettaglio decisivo: Nihan lavora direttamente nell&#x27;azienda gestita da Kemal. La notizia sconvolge la madre, che vede il pericolo di un legame mai veramente spezzato tra i due giovani e decide di reagire con la massima durezza. Spinta dalla paura e dalla rabbia per la presenza costante di quella famiglia, Fehime pronuncia un solenne giuramento sul Corano, promettendo a se stessa di fare tutto il necessario per allontanare definitivamente Nihan e i suoi cari dalla vita di Kemal. Il giuramento segna l&#x27;inizio di una guerra aperta tra le due madri.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
@@ -385,19 +435,41 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=0iIm_EMCa10" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/0iIm_EMCa10/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>ASU IMPLORA EMIR DI AIUTARLA: &quot;FERMA TUFAN O KEMAL SAPRA&#x27; CHI SONO&quot;-Anticipazioni Endless Love</span></a></li><li><a href="https://www.youtube.com/watch?v=4MPdsPcXKXI" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/4MPdsPcXKXI/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>ASU ED EMIR TENGONO IN SCACCO KEMAL E NIHAN, RIUSCIRANNO A FARCELA? Anticipazioni Endless Love</span></a></li><li><a href="https://www.youtube.com/watch?v=GTWyYbZfkKs" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/GTWyYbZfkKs/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>ENDLESS LOVE Anticipazioni 11-12 Marzo: Kemal salva la vita a Nihan | Emir ossessionato di gelo</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Emir ha vinto anche stavolta o si è esposto troppo?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=gJbQc3AStYE">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di Endless Love</h2><div class="griglia"><article class="scheda">
+  <a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/"><div class="foto"><img src="https://i.ytimg.com/vi/DSiProJJ1ls/hqdefault.jpg" alt="Endless Love" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/"><div class="foto"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/"><div class="foto"><img src="https://i.ytimg.com/vi/uu2oAzTOWQU/hqdefault.jpg" alt="Endless Love" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></h3>
+    <div class="quando">25 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=Endless Love 30 marzo, Emir presta l&#x27;auto a Ozan dopo aver sfilato il libretto: la polizia li ferma, e a restare in cella è solo lui — https://soapoperaitalia.com/endless-love/endless-love-la-trama-completa-perche-nihan-sposa-emir-e-come-finisce/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://soapoperaitalia.com/endless-love/endless-love-la-trama-completa-perche-nihan-sposa-emir-e-come-finisce/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://soapoperaitalia.com/endless-love/endless-love-la-trama-completa-perche-nihan-sposa-emir-e-come-finisce/&text=Endless Love 30 marzo, Emir presta l&#x27;auto a Ozan dopo aver sfilato il libretto: la polizia li ferma, e a restare in cella è solo lui" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">ENDLESS LOVE Anticipazioni 30 marzo: Scacco matto di Emir! Colpisce Nihan e Kemal</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=gJbQc3AStYE">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di Endless Love</h3><ol class="numerata"><li><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></li><li><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></li><li><a href="/endless-love/endless-love-chi-e-galip-kozcuoglu-le-due-volte-in-cui-nihan-e-stata-venduta/">Endless Love, chi è Galip Kozcuoğlu: le due volte in cui Nihan è stata venduta</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-zeynep-soydere-perche-emir-lha-scelta-e-cosa-ha-distrutto/">Endless Love, chi è davvero Zeynep Soydere: perché Emir l&#x27;ha scelta e cosa ha distrutto</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>ENDLESS LOVE Anticipazioni 30 marzo: Scacco matto di Emir! Colpisce Nihan e Kemal</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su Endless Love</h3><ul><li><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></li><li><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></li><li><a href="/endless-love/endless-love-chi-e-galip-kozcuoglu-le-due-volte-in-cui-nihan-e-stata-venduta/">Endless Love, chi è Galip Kozcuoğlu: le due volte in cui Nihan è stata venduta</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-zeynep-soydere-perche-emir-lha-scelta-e-cosa-ha-distrutto/">Endless Love, chi è davvero Zeynep Soydere: perché Emir l&#x27;ha scelta e cosa ha distrutto</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

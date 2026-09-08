@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/hercai/">Hercai</a> › Hercai, la vendetta fermata da Miran: il convoglio della polizia intercettato e Füsun trascinata sul luogo del delitto</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/hercai/">Hercai</a>
   <h1>Hercai, la vendetta fermata da Miran: il convoglio della polizia intercettato e Füsun trascinata sul luogo del delitto</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>6 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Convinto che la giustizia abbia fallito, il patriarca della famiglia organizza tutto nei dettagli: uomini fidati, il convoglio che trasferisce Füsun in carcere intercettato, e come luogo dell&#x27;esecuzione lo stesso terreno dove suo figlio è stato ucciso. A fermarlo, a un passo dallo sparo, è Miran — con l&#x27;unico argomento che poteva funzionare.</p><ol><li><a href="#c1">La festa e la pistola di Yaren</a></li><li><a href="#c2">Chi è Yaren, e perché arriva armata proprio a quella festa</a></li><li><a href="#c3">«Devi pagare per quello che hai fatto»</a></li><li><a href="#c4">Il piano interrotto</a></li><li><a href="#c5">La lettera e il ritorno</a></li><li><a href="#c6">Miran ferma la vendetta con cui era stato cresciuto</a></li><li><a href="#c7">Perche Füsun finisce nel mirino del patriarca</a></li><li><a href="#c8">Cosa trasforma il futuro di Reyyan e Miran</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>Hercai</strong> — Serie conclusa in Italia · andata in onda su Real Time, in streaming su discovery+</span></div>
   
-  <p class="occhiello">Convinto che la giustizia abbia fallito, il patriarca della famiglia organizza tutto nei dettagli: uomini fidati, il convoglio che trasferisce Füsun in carcere intercettato, e come luogo dell&#x27;esecuzione lo stesso terreno dove suo figlio è stato ucciso. A fermarlo, a un passo dallo sparo, è Miran — con l&#x27;unico argomento che poteva funzionare.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: Hercai, la vendetta fermata da Miran: il convoglio della polizia intercettato e Füsun trascinata sul luogo del delitto" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/XxCSZLhQFBE/maxresdefault.jpg" alt="Hercai, la vendetta fermata da Miran: il convoglio della polizia intercettato e Füsun trascinata sul luogo del delitto" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/XxCSZLhQFBE/hqdefault.jpg 480w, https://i.ytimg.com/vi/XxCSZLhQFBE/sddefault.jpg 640w, https://i.ytimg.com/vi/XxCSZLhQFBE/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/XxCSZLhQFBE/hqdefault.jpg&quot;, &quot;/fallback/hercai.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,42 +409,64 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>Reyyan riceve in dono una villa carica di brutti ricordi e decide di trasformarla in una fondazione benefica.</strong></p>
-  <h2>La festa e la pistola di Yaren</h2>
+  <h2 id="c1">La festa e la pistola di Yaren</h2>
 <p>Si comincia con una giornata di gioia: la casa è addobbata per la festa del figlio di Reyyan e Miran, arrivano ospiti da ogni parte e i regali si accumulano. Il più significativo è una villa donata a Reyyan, che porta con sé ricordi pesantissimi: lei sceglie di darle un senso nuovo, destinandola a una fondazione benefica. L&#x27;unica a non partecipare alla gioia è Yaren, che si presenta armata pronta a tutto; nella colluttazione ferisce al braccio il proprio padre, che continua comunque a supplicarla di fermarsi, e viene arrestata quando arriva la polizia. Prima di essere portata via prova a farsi del male, e a disarmarla è Miran.</p>
-<h2>Chi è Yaren, e perché arriva armata proprio a quella festa</h2>
+<h2 id="c2">Chi è Yaren, e perché arriva armata proprio a quella festa</h2>
 <p>Yaren è la cugina che in questa storia non ha mai avuto un posto. Racconterà lei stessa al padre com&#x27;è cresciuta: un&#x27;infanzia in cui le era stato proibito perfino di frequentare Reyyan, in una famiglia dove ogni suo errore veniva coperto invece che corretto. È un personaggio costruito su un&#x27;ingiustizia vera — l&#x27;affetto che è sempre andato a un&#x27;altra — e su un&#x27;educazione che le ha insegnato che tanto qualcuno sistemerà. Presentarsi armata alla festa del figlio di Reyyan e Miran, cioè nel giorno che celebra tutto quello che a lei non è toccato, è la conclusione logica di quella traiettoria.</p>
-<h2>«Devi pagare per quello che hai fatto»</h2>
+<h2 id="c3">«Devi pagare per quello che hai fatto»</h2>
 <p>In commissariato Yaren riceve la visita del padre e lo implora di tirarla fuori. Lui, per la prima volta, non la copre: ammette di aver sbagliato tutta la vita coprendo ogni suo errore, e le dice che stavolta dovrà affrontare le conseguenze, perché è l&#x27;unico modo perché possa diventare una persona diversa. Il trasferimento in carcere è la scena più dura: dall&#x27;auto della polizia si volta a guardare la famiglia in lacrime, e per la prima volta piange davvero.</p>
-<h2>Il piano interrotto</h2>
+<h2 id="c4">Il piano interrotto</h2>
 <p>Nel frattempo il capofamiglia non riesce ad accettare che la donna responsabile della morte di suo figlio sia ancora viva. Recluta uomini che un tempo lavoravano per lei, intercetta il convoglio che la sta trasferendo in prigione e la porta esattamente dove quel sangue era stato versato. Ma quando solleva la pistola arriva Miran, che si mette in mezzo: uccidere non riporterà indietro nessuno, dice, e non lo renderà un uomo migliore di lei — genererà solo altro odio. L&#x27;arma si abbassa. È Füsun, però, ad approfittare del momento: afferra una pistola nascosta e prova a sparare a Miran, e gli uomini reagiscono colpendola. Sopravvive, ma resta paralizzata.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>La lettera e il ritorno</h2>
+<h2 id="c5">La lettera e il ritorno</h2>
 <p>Ad occuparsi di lei sarà sua figlia Azra, che pur riconoscendo l&#x27;orrore di quello che ha fatto sceglie di non abbandonarla e di portarla via dal paese. Il patriarca, dal canto suo, lascia la villa con una lettera in cui si dichiara indegno di far parte di quella famiglia; verrà ritrovato in una piccola casa isolata e convinto a tornare da chi gli ricorda che una seconda possibilità non si spreca. L&#x27;accoglienza è fatta di lacrime e abbracci, e la storia si chiude con un matrimonio celebrato nonostante l&#x27;età avanzata, con Reyyan e Miran che adottano una bambina conosciuta grazie alla fondazione e, cinque anni dopo, con l&#x27;annuncio di due gemelli in arrivo.</p>
-<h2>Miran ferma la vendetta con cui era stato cresciuto</h2>
+<h2 id="c6">Miran ferma la vendetta con cui era stato cresciuto</h2>
 <p>Il gesto di mettersi in mezzo pesa perché arriva da lui. Miran è il personaggio che l&#x27;intera serie ha costruito su una vendetta ereditata: gli era stata raccontata una versione della storia di sua madre — dove veniva, come si era sposata, chi le aveva fatto del male — e su quel racconto era stato addestrato a odiare una famiglia intera. Quando poi ha scoperto quanto di quella versione fosse falso, si è ritrovato con una parte di vita sottrattagli da chi lo aveva cresciuto. Per questo la frase che pronuncia davanti alla pistola alzata non è buonismo: è l&#x27;unica persona lì presente che sa per esperienza diretta come finisce chi consegna la propria vita a una vendetta ricevuta in eredità. E infatti la scena gli dà ragione due volte — l&#x27;arma si abbassa, e chi decide comunque di sparare ne esce distrutta.</p>
-<h2>Perche Füsun finisce nel mirino del patriarca</h2>
+<h2 id="c7">Perche Füsun finisce nel mirino del patriarca</h2>
 <p>La rabbia del patriarca affonda le sue radici nella perdita del proprio figlio, un dramma devastante per il quale ritiene direttamente responsabile Füsun. Nonostante la donna fosse ormai sotto la custodia delle forze dell&#x27;ordine e in procinto di essere trasferita in carcere per scontare le proprie colpe, l&#x27;uomo rifiuta di affidarsi alla giustizia ordinaria, ritenendola del tutto inadeguata. Guidato dal desiderio di farsi giustizia da solo, la testa della famiglia organizza un piano preciso nei minimi dettagli, reclutando persino uomini fidati che in passato avevano lavorato per la sua rivale. Intercettare l&#x27;auto della polizia diventa quindi il primo passo di un&#x27;operazione destinata a culminare proprio nel terreno intriso del sangue di suo figlio.</p>
 <p>Condotta sul luogo dell&#x27;esecuzione, la donna si trova a un passo dalla morte, evitata soltanto dall&#x27;intervento provvidenziale di Miran che si frappone fra la pistola e la vittima. Tuttavia, l&#x27;evento prende una piega inaspettata quando Füsun, approfittando del momento di esitazione, afferra un&#x27;arma nascosta e tenta di sparare a Miran. La reazione immediata degli uomini presenti la ferisce gravemente: pur riuscendo a sopravvivere all&#x27;incursione, la donna rimane completamente paralizzata. Sarà poi sua figlia Azra a farsi carico del suo destino, scegliendo di non abbandonarla nonostante la gravità delle sue azioni e portandola via per sempre dal paese verso un nuovo capitolo lontana da tutti.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Cosa trasforma il futuro di Reyyan e Miran</h2>
+<h2 id="c8">Cosa trasforma il futuro di Reyyan e Miran</h2>
 <p>La decisione di Reyyan di trasformare una villa legata a pessimi ricordi in una fondazione benefica segna una svolta fondamentale nella vita della coppia. Quel luogo, originariamente intriso di sofferenza, diventa il motore per aiutare chi si trova in difficoltà, dando un significato completamente nuovo all&#x27;esistenza della famiglia. Attraverso le attività benefiche dell&#x27;organizzazione, Reyyan e Miran entrano in contatto con una bambina che decidono di adottare, accogliendola nella loro casa come una vera figlia. Questo gesto d&#x27;amore si inserisce in un percorso di rinascita profonda, distante anni luce dalle faide e dai rancori del passato, gettando le basi per un ambiente familiare sereno, protetto e finalmente luminoso.</p>
 <p>Miran riesce così a spezzare la catena di odio in cui era stato cresciuto fin dall&#x27;infanzia, quando gli venivano raccontate falsità sulla storia di sua madre per addestrarlo contro una famiglia nemica. Aver compreso il valore del perdono gli permette di evitare che la vendetta distrugga nuovamente i suoi cari, dimostrando una maturità che si riflette in ogni scelta futura. La storia della coppia trova il suo coronamento definitivo cinque anni dopo, quando l&#x27;annuncio dell&#x27;arrivo di due gemelli completa un quadro di felicità a lungo cercato. Tra la crescita della fondazione e l&#x27;espansione della famiglia, il percorso dimostra come il superamento del passato possa costruire un domani ricco di speranza.</p>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=Oo97R8tr84k" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/Oo97R8tr84k/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>Hercai Anticipazioni: Ultima vendetta di Azize ,Sultana ritrova suo Figlio,Reyyan incredibilmen</span></a></li><li><a href="https://www.youtube.com/watch?v=EbV9X-cuyAI" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/EbV9X-cuyAI/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>Hercai – Amore e Vendetta: Azize e il Mistero dell’Anello! Anticipazioni 16 Dicembre</span></a></li><li><a href="https://www.youtube.com/watch?v=Nz3O9FGFytg" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/Nz3O9FGFytg/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>Hercai Amore e Vendetta: Anticipazioni 99 e 100 – Il Finale CHOC della Seconda Stagione</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Miran ha fatto bene a impedire quella vendetta?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=XxCSZLhQFBE">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di Hercai</h2><div class="griglia"><article class="scheda">
+  <a href="/hercai/hercai-23-dicembre-elif-accusa-azize-davanti-a-tutti-ha-fatto-bendare-la-sultana/"><div class="foto"><img src="https://i.ytimg.com/vi/nKoyRzZ5Zzs/hqdefault.jpg" alt="Hercai" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/hercai.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Hercai</span>
+    <h3><a href="/hercai/hercai-23-dicembre-elif-accusa-azize-davanti-a-tutti-ha-fatto-bendare-la-sultana/">Hercai 23 dicembre, Elif accusa Azize davanti a tutti: «Ha fatto bendare Sultan e l&#x27;ha minacciata di morte» — e Zehra chiede a Reyyan di firmare il divorzio</a></h3>
+    <div class="quando">14 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/hercai/hercai-esma-consegna-la-lettera-di-dilsah-a-zehra-miran-e-figlio-di-hazar-e-aziz/"><div class="foto"><img src="/img/hercai-esma-consegna-la-lettera-di-dilsah-a-zehra-miran-e-figlio-di-hazar-e-aziz.jpg" alt="Hercai" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/hercai.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Hercai</span>
+    <h3><a href="/hercai/hercai-esma-consegna-la-lettera-di-dilsah-a-zehra-miran-e-figlio-di-hazar-e-aziz/">Hercai, Esma consegna la lettera di Dilşah a Zehra: «Miran è figlio di Hazar, e Azize lo ha sempre saputo» — ma lei sceglie il silenzio</a></h3>
+    <div class="quando">14 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/hercai/hercai-il-biglietto-anonimo-porta-miran-al-villaggio-di-dilsah-lanziana-lo-ricon/"><div class="foto"><img src="/img/hercai-il-biglietto-anonimo-porta-miran-al-villaggio-di-dilsah-lanziana-lo-ricon.jpg" alt="Hercai" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/hercai.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Hercai</span>
+    <h3><a href="/hercai/hercai-il-biglietto-anonimo-porta-miran-al-villaggio-di-dilsah-lanziana-lo-ricon/">Hercai, il biglietto anonimo porta Miran al villaggio di Dilşah: l&#x27;anziana lo riconosce sulla soglia — «Sapevo che saresti venuto, somigli a tuo nonno»</a></h3>
+    <div class="quando">14 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=Hercai, la vendetta fermata da Miran: il convoglio della polizia intercettato e Füsun trascinata sul luogo del delitto — https://soapoperaitalia.com/hercai/hercai-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://soapoperaitalia.com/hercai/hercai-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://soapoperaitalia.com/hercai/hercai-la-trama-completa-e-come-finisce/&text=Hercai, la vendetta fermata da Miran: il convoglio della polizia intercettato e Füsun trascinata sul luogo del delitto" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">Hercai: una proposta scioccante sconvolge la vita di Reyyan</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=XxCSZLhQFBE">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di Hercai</h3><ol class="numerata"><li><a href="/hercai/hercai-23-dicembre-elif-accusa-azize-davanti-a-tutti-ha-fatto-bendare-la-sultana/">Hercai 23 dicembre, Elif accusa Azize davanti a tutti: «Ha fatto bendare Sultan e l&#x27;ha minacciata di morte» — e Zehra chiede a Reyyan di firmare il divorzio</a></li><li><a href="/hercai/hercai-esma-consegna-la-lettera-di-dilsah-a-zehra-miran-e-figlio-di-hazar-e-aziz/">Hercai, Esma consegna la lettera di Dilşah a Zehra: «Miran è figlio di Hazar, e Azize lo ha sempre saputo» — ma lei sceglie il silenzio</a></li><li><a href="/hercai/hercai-il-biglietto-anonimo-porta-miran-al-villaggio-di-dilsah-lanziana-lo-ricon/">Hercai, il biglietto anonimo porta Miran al villaggio di Dilşah: l&#x27;anziana lo riconosce sulla soglia — «Sapevo che saresti venuto, somigli a tuo nonno»</a></li><li><a href="/hercai/hercai-il-gran-finale-yaren-armata-alla-festa-il-perdono-di-nasuh-e-i-gemelli-in/">Hercai, il gran finale: Yaren armata alla festa, il perdono di Nasuh e i gemelli in arrivo per Reyyan e Miran</a></li><li><a href="/hercai/hercai-il-segreto-dellanello-di-fidanzamento-era-stato-commissionato-per-la-madr/">Hercai, il segreto dell&#x27;anello di fidanzamento: era stato commissionato per la madre di Miran — e Gül rivela che suo fratello è vivo</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>Hercai: una proposta scioccante sconvolge la vita di Reyyan</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su Hercai</h3><ul><li><a href="/hercai/hercai-23-dicembre-elif-accusa-azize-davanti-a-tutti-ha-fatto-bendare-la-sultana/">Hercai 23 dicembre, Elif accusa Azize davanti a tutti: «Ha fatto bendare Sultan e l&#x27;ha minacciata di morte» — e Zehra chiede a Reyyan di firmare il divorzio</a></li><li><a href="/hercai/hercai-esma-consegna-la-lettera-di-dilsah-a-zehra-miran-e-figlio-di-hazar-e-aziz/">Hercai, Esma consegna la lettera di Dilşah a Zehra: «Miran è figlio di Hazar, e Azize lo ha sempre saputo» — ma lei sceglie il silenzio</a></li><li><a href="/hercai/hercai-il-biglietto-anonimo-porta-miran-al-villaggio-di-dilsah-lanziana-lo-ricon/">Hercai, il biglietto anonimo porta Miran al villaggio di Dilşah: l&#x27;anziana lo riconosce sulla soglia — «Sapevo che saresti venuto, somigli a tuo nonno»</a></li><li><a href="/hercai/hercai-il-gran-finale-yaren-armata-alla-festa-il-perdono-di-nasuh-e-i-gemelli-in/">Hercai, il gran finale: Yaren armata alla festa, il perdono di Nasuh e i gemelli in arrivo per Reyyan e Miran</a></li><li><a href="/hercai/hercai-il-segreto-dellanello-di-fidanzamento-era-stato-commissionato-per-la-madr/">Hercai, il segreto dell&#x27;anello di fidanzamento: era stato commissionato per la madre di Miran — e Gül rivela che suo fratello è vivo</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

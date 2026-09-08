@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/terra-amara/">Terra Amara</a> › Terra Amara, la truffa della Germania travolge Gaffur — mentre Fekeli nomina Fikret suo erede e arriva la dottoressa Ümit</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/terra-amara/">Terra Amara</a>
   <h1>Terra Amara, la truffa della Germania travolge Gaffur — mentre Fekeli nomina Fikret suo erede e arriva la dottoressa Ümit</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">La settimana dopo la morte di Yılmaz: Gaffur vola in Germania per il lavoro dei sogni e scopre che era una truffa colossale, Fekeli — convinto di avere poco da vivere — chiede a Fikret di diventare il suo erede, Müjgan perde la direzione dell&#x27;ospedale a favore della nuova arrivata Ümit e Züleyha prende in mano la tenuta.</p><ol><li><a href="#c1">L&#x27;addio a Yılmaz e la villa che riparte</a></li><li><a href="#c2">Gaffur e il lavoro fantasma in Germania</a></li><li><a href="#c3">Fekeli sceglie l&#x27;erede — e Ümit soffia il posto a Müjgan</a></li><li><a href="#c4">Puntate turche: l&#x27;investigatore di Züleyha inchioda Behice</a></li><li><a href="#c5">Come Gaffur cade nella trappola di Suleiman</a></li><li><a href="#c6">Perche&#x27; Fekeli decide di nominare Fikret erede</a></li><li><a href="#c7">Cosa scopre l&#x27;investigatore di Züleyha su Behice</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>Terra Amara</strong> — Serie conclusa in Italia · tutte le puntate su Mediaset Infinity</span></div>
   
-  <p class="occhiello">La settimana dopo la morte di Yılmaz: Gaffur vola in Germania per il lavoro dei sogni e scopre che era una truffa colossale, Fekeli — convinto di avere poco da vivere — chiede a Fikret di diventare il suo erede, Müjgan perde la direzione dell&#x27;ospedale a favore della nuova arrivata Ümit e Züleyha prende in mano la tenuta.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: Terra Amara, la truffa della Germania travolge Gaffur — mentre Fekeli nomina Fikret suo erede e arriva la dottoressa Ümit" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/vmTLaMyKC0Y/maxresdefault.jpg" alt="Terra Amara, la truffa della Germania travolge Gaffur — mentre Fekeli nomina Fikret suo erede e arriva la dottoressa Ümit" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/vmTLaMyKC0Y/hqdefault.jpg 480w, https://i.ytimg.com/vi/vmTLaMyKC0Y/sddefault.jpg 640w, https://i.ytimg.com/vi/vmTLaMyKC0Y/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/vmTLaMyKC0Y/hqdefault.jpg&quot;, &quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,25 +409,25 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>Un uomo misterioso di nome Suleiman, una busta di denaro ottenuta ipotecando il terreno di Gülten e un&#x27;officina tedesca dove nessuno lo aspetta: il sogno di Gaffur dura il tempo di un volo.</strong></p>
-  <h2>L&#x27;addio a Yılmaz e la villa che riparte</h2>
+  <h2 id="c1">L&#x27;addio a Yılmaz e la villa che riparte</h2>
 <p>La settimana si apre nel lutto: Demir era riuscito a estrarre Yılmaz dall&#x27;auto prima dell&#x27;esplosione, e per un attimo il risveglio aveva acceso la speranza — Fekeli aveva perfino perdonato Müjgan, affidando i figli a Demir &quot;nel caso non ce l&#x27;avesse fatta&quot;, e Züleyha aveva vegliato l&#x27;amato tutta la notte. Ma al termine di una toccante dichiarazione d&#x27;amore, la crisi fatale se l&#x27;è portato via. Demir offre a Züleyha di tornare a villa Yaman — «quella è casa tua, anche se non sei più mia moglie» — e lei accetta, con una premessa spietata: non riuscirà mai a innamorarsi di lui. A fine settimana, però, onora la promessa fatta a Hünkar: abiti da lavoro, campi, dipendenti — la tenuta ora la guida lei, e i gioielli di Hünkar regalati a Gülten e Fadik segnano il nuovo corso.</p>
-<h2>Gaffur e il lavoro fantasma in Germania</h2>
+<h2 id="c2">Gaffur e il lavoro fantasma in Germania</h2>
 <p>Convinto di essere stato assunto da una fabbrica tedesca, Gaffur rassegna le dimissioni — incassando la furia di Demir — saluta Saniye e Üzüm (che lo raggiungeranno &quot;appena sistemato&quot;) e parte. A Istanbul consegna a un misterioso Suleiman una cospicua somma, ottenuta ipotecando uno dei terreni di Gülten, in cambio dei &quot;documenti d&#x27;imbarco&quot;. Il risveglio è in Germania, davanti all&#x27;officina indicata: nessun lavoro, e decine di truffati come lui. Tornato a Çukurova con l&#x27;orgoglio a pezzi e le tasche vuote, supplica Demir di riassumerlo — e a Saniye, incapace di mentire, confessa la verità più tenera: al momento di imbarcarsi, la nostalgia di lei e della piccola Üzüm lo aveva già spezzato.</p>
-<h2>Fekeli sceglie l&#x27;erede — e Ümit soffia il posto a Müjgan</h2>
+<h2 id="c3">Fekeli sceglie l&#x27;erede — e Ümit soffia il posto a Müjgan</h2>
 <p>Devastato dal dolore e convinto di non vivere ancora a lungo, Ali Rahmet convoca Fikret con una richiesta solenne: prendersi cura della famiglia e dei beni, diventando il suo erede. Fikret promette — ma il suo atteggiamento resta ambiguo: continua a indagare sugli Yaman, con quelle visite alla tomba di Adnan che sollevano più domande che risposte. Intanto per Müjgan arriva la doccia gelata: la direzione dell&#x27;ospedale, che dava per sua dopo mesi da sostituta, va alla nuova arrivata — la dottoressa Ümit, destinata a diventare un personaggio chiave. E mentre Fikret e Müjgan si avvicinano, Behice fiuta il pericolo e cerca prove contro di lui, convinta che punti all&#x27;eredità di Yılmaz.</p>
-<h2>Puntate turche: l&#x27;investigatore di Züleyha inchioda Behice</h2>
+<h2 id="c4">Puntate turche: l&#x27;investigatore di Züleyha inchioda Behice</h2>
 <p>Dalle puntate turche, l&#x27;anticipo della resa dei conti: decisa a ottenere giustizia per Hünkar, Züleyha ingaggia un investigatore privato di Istanbul che scava sul passato di Behice — e scopre che entrambi i suoi mariti sono morti in circostanze misteriose, con le pratiche archiviate come &quot;morti naturali&quot; dal fratello medico della donna. Al circolo, davanti a tutti, Züleyha cala i documenti e la domanda al veleno rivolta a Müjgan: «Avrebbe fatto lo stesso con Ali Rahmet, se fosse riuscita a sposarlo?». Behice fugge tra gli insulti, ma il cerchio si stringe: e quando Fekeli troverà le armi in suo possesso, una delle quali compatibile con l&#x27;omicidio di Hünkar, il conto alla rovescia sarà cominciato.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Come Gaffur cade nella trappola di Suleiman</h2>
+<h2 id="c5">Come Gaffur cade nella trappola di Suleiman</h2>
 <p>Il desiderio di riscatto spinge Gaffur a compiere una scelta azzardata che sconvolge l&#x27;equilibrio della tenuta. Convinto di aver conquistato un posto di lavoro sicuro all&#x27;interno di una rinomata fabbrica tedesca, l&#x27;uomo decide di rassegnare immediatamente le proprie dimissioni, provocando l&#x27;immediata e violentissima reazione di furia da parte di Demir. Senza lasciarsi scoraggiare dallo scontro con il padrone, Gaffur saluta commosso la moglie Saniye e la piccola Üzüm, rassicurandole sul fatto che le avrebbe fatte trasferire all&#x27;estero con lui non appena si fosse sistemato. Il piano sembra perfetto, ma nasconde un&#x27;insidia terribile che cambierà ogni cosa.</p>
 <p>Giunto a Istanbul per completare le pratiche di partenza, Gaffur incontra un misterioso individuo di nome Suleiman a cui consegna una cospicua somma di denaro per ottenere i presunti documenti d&#x27;imbarco. Quei soldi provengono dall&#x27;ipotecazione di uno dei terreni di sua sorella Gülten, un sacrificio enorme che Gaffur compie accecato dalla speranza. Tuttavia, una volta atterrato in Germania e raggiunta l&#x27;officina indicata sulle carte, l&#x27;amara realtà si rivela in tutta la sua drammaticità: ad aspettarlo non c&#x27;è alcun posto di lavoro, ma soltanto decine di altri lavoratori truffati esattamente come lui, lasciati senza niente in terra straniera.</p>
 <p>Senza più un soldo in tasca e con l&#x27;orgoglio completamente a pezzi, Gaffur non può fare altro che fare ritorno a Çukurova da sconfitto. Con estrema umiltà si presenta di nuovo al cospetto di Demir, supplicandolo di riassumerlo e di perdonare la sua colossale ingenuità. Messo di fronte a Saniye, l&#x27;uomo dimostra di non saper mentire e le confessa la verità più tenera e toccante: al momento di salire sull&#x27;aereo, la fortissima nostalgia nei confronti della moglie e della piccola Üzüm lo aveva già spezzato nel profondo, dimostrando quanto il legame con la sua famiglia fosse più forte di qualsiasi illusione tedesca.</p>
-<h2>Perche&#x27; Fekeli decide di nominare Fikret erede</h2>
+<h2 id="c6">Perche&#x27; Fekeli decide di nominare Fikret erede</h2>
 <p>Devastato dal dolore per la tragica perdita di Yılmaz e ormai profondamente convinto di avere ancora poco tempo da vivere, Ali Rahmet Fekeli decide di prendere una decisione drastica per tutelare il futuro dei suoi cari. L&#x27;uomo convoca ufficialmente Fikret per fargli una solenne richiesta, chiedendogli di assumersi la responsabilità di prendersi cura della famiglia e della gestione di tutti i suoi beni personali, nominandolo a tutti gli effetti suo unico erede. Fikret accetta l&#x27;incarico e formula una promessa formale di fronte al padrino, dimostrando apparentemente una grande lealtà nei suoi confronti.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>Nonostante l&#x27;impegno preso solennemente con Fekeli, il comportamento di Fikret continua a essere avvolto da un&#x27;ombra di forte ambiguità che solleva crescenti sospetti. Il giovane prosegue segretamente nelle sue personali indagini sulla famiglia Yaman, muovendosi con discrezione ma determinazione. In particolare, le sue frequenti e misteriose visite alla tomba di Adnan rappresentano un enigma indecifrabile che solleva più domande che risposte all&#x27;interno della comunità. Nessuno riesce a comprendere quali siano le vere intenzioni del ragazzo e quale legame segreto lo spinga a interessarsi così da vicino alla storia passata degli Yaman.</p>
 <p>Nel frattempo, per Müjgan arriva una cocente delusione professionale dopo che la direzione dell&#x27;ospedale, ruolo che la dottoressa ricopriva come sostituta da diversi mesi, viene assegnata alla nuova arrivata Ümit. Mentre la dottoressa Ümit si appresta a diventare un personaggio chiave nelle dinamiche locali, Müjgan trova conforto e si avvicina sempre di più a Fikret. Questa intesa nascente non sfugge però all&#x27;occhio attento di Behice. La donna fiuta immediatamente il pericolo e inizia a cercare prove compromettenti contro Fikret, convinta che il nipote di Fekeli stia soltanto cercando di mettere le mani sulla cospicua eredità lasciata da Yılmaz.</p>
-<h2>Cosa scopre l&#x27;investigatore di Züleyha su Behice</h2>
+<h2 id="c7">Cosa scopre l&#x27;investigatore di Züleyha su Behice</h2>
 <p>Determinata a scoprire la verità sulla tragica scomparsa di Hünkar e a far emergere la giustizia, Züleyha prende l&#x27;iniziativa e decide di ingaggiare un investigatore privato proveniente da Istanbul. Lo specialista inizia a scavare a fondo nel passato oscuro di Behice, portando alla luce dettagli sconvolgenti e fino a quel momento sconosciuti a tutti. L&#x27;indagine rivela infatti che entrambi i precedenti mariti di Behice sono deceduti in circostanze estremamente misteriose. In entrambi i casi, le pratiche giudiziarie erano state prontamente archiviate come morti naturali grazie all&#x27;intervento decisivo del fratello della donna, che di professione faceva il medico.</p>
 <p>Forte delle schiaccianti prove raccolte dall&#x27;investigatore, Züleyha decide di affrontare direttamente la sua nemica e si presenta al circolo cittadino davanti agli occhi di tutti i presenti. Senza esitare, la donna cala i documenti incriminanti sul tavolo e rivolge una domanda avvelenata e provocatoria a Müjgan, chiedendole apertamente se sua zia avrebbe riservato lo stesso identico trattamento ad Ali Rahmet Fekeli nel caso in cui fosse riuscita a sposarlo. Tra il mormorio generale e gli insulti della gente, Behice si trova costretta a fuggire precipitosamente dal locale per evitare il linciaggio pubblico.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
@@ -385,19 +435,41 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=efufiG8r-9k" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/efufiG8r-9k/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TERRA AMARA Anticipazioni Turchia: Un nuovo Amore x Gaffur | Annuncio di un matrimonio per Fikr</span></a></li><li><a href="https://www.youtube.com/watch?v=8iJK5HeFAE8" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/8iJK5HeFAE8/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TERRA AMARA Anticipazioni: Morte Fekeli, Zuleyha e Lutfiye cominciano ad avere dubbi sulle caus</span></a></li><li><a href="https://www.youtube.com/watch?v=DxqQe3Xx-fc" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/DxqQe3Xx-fc/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TERRA AMARA 16 -17 Febbraio: Gulten muore, Fikret scopre che Kadir ha ucciso Fekeli, Hakan insi</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>La nostalgia confessata da Gaffur lo redime almeno un po&#x27; della truffa subita (e fatta pagare a Gülten)? E la promessa di Fikret a Fekeli era sincera fin dall&#x27;inizio?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=vmTLaMyKC0Y">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di Terra Amara</h2><div class="griglia"><article class="scheda">
+  <a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/"><div class="foto"><img src="/img/terra-amara-la-trama-completa-e-come-finisce.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></h3>
+    <div class="quando">30 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/"><div class="foto"><img src="https://i.ytimg.com/vi/_ypSJU-x7LY/hqdefault.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/"><div class="foto"><img src="https://i.ytimg.com/vi/B_MLx-0yh6M/hqdefault.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=Terra Amara, la truffa della Germania travolge Gaffur — mentre Fekeli nomina Fikret suo erede e arriva la dottoressa Ümit — https://serietvfans.com/terra-amara/terra-amara-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/terra-amara/terra-amara-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/terra-amara/terra-amara-la-trama-completa-e-come-finisce/&text=Terra Amara, la truffa della Germania travolge Gaffur — mentre Fekeli nomina Fikret suo erede e arriva la dottoressa Ümit" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">TERRA AMARA Anticipazioni 25-29 Settembre 2023: Gaffur fa una terribile scoperta</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=vmTLaMyKC0Y">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di Terra Amara</h3><ol class="numerata"><li><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></li><li><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></li><li><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></li><li><a href="/terra-amara/terra-amara-come-finisce-davvero-zuleyha-vince-tutto-e-resta-sola/">Terra Amara: come finisce davvero, Züleyha vince tutto e resta sola</a></li><li><a href="/terra-amara/terra-amara-come-muore-demir-yaman-chi-ha-dato-lordine-e-perche-doveva-essere-un-rapimento/">Terra Amara, come muore Demir Yaman: chi ha dato l&#x27;ordine e perché doveva essere un rapimento</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>TERRA AMARA Anticipazioni 25-29 Settembre 2023: Gaffur fa una terribile scoperta</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su Terra Amara</h3><ul><li><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></li><li><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></li><li><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></li><li><a href="/terra-amara/terra-amara-come-finisce-davvero-zuleyha-vince-tutto-e-resta-sola/">Terra Amara: come finisce davvero, Züleyha vince tutto e resta sola</a></li><li><a href="/terra-amara/terra-amara-come-muore-demir-yaman-chi-ha-dato-lordine-e-perche-doveva-essere-un-rapimento/">Terra Amara, come muore Demir Yaman: chi ha dato l&#x27;ordine e perché doveva essere un rapimento</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

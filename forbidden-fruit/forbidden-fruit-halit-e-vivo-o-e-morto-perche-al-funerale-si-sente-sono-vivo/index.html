@@ -12,7 +12,7 @@
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Serie TV Fans">
 <meta property="og:url" content="https://serietvfans.com/forbidden-fruit/forbidden-fruit-halit-e-vivo-o-e-morto-perche-al-funerale-si-sente-sono-vivo/">
-<meta property="og:image" content="https://serietvfans.com/social.svg">
+<meta property="og:image" content="https://serietvfans.com/img/forbidden-fruit-halit-e-vivo-o-e-morto-perche-al-funerale-si-sente-sono-vivo.jpg">
 <meta property="og:locale" content="it_IT">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#7b1e2b">
@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -314,12 +363,12 @@ if(l.length){el.src=l.shift();el.dataset.fb=JSON.stringify(l)}else{el.onerror=nu
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7778653397776213" crossorigin="anonymous"></script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "96259d7e67ce47fba4573364859712a6"}'></script>
 <script>(function(){var f=0;function go(){if(f)return;f=1;(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","y3rpoig6jk");}["pointerdown","keydown","touchstart","scroll"].forEach(function(v){addEventListener(v,go,{once:1,passive:1})});setTimeout(go,2500)})();</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Forbidden Fruit, Halit è vivo o è morto: perché al funerale qualcuno sente «sono vivo»", "datePublished": "2026-08-29", "dateModified": "2026-08-29", "description": "È la domanda più digitata su Forbidden Fruit, e la risposta breve è una sola: Halit non torna. Dopo il funerale il patriarca degli Argun non entra più in una stanza, non pronuncia una battuta, non prende una decisione — eppure continua a decidere la vita di tutti, perché la notte in cui è morto diventa l'arma con cui Şahika fa arrestare Yıldız ed Ender. Qui c'è come è nato il sospetto che fosse vivo, cosa lo alimenta ancora, e perché una parte del pubblico non ha mai smesso di aspettarlo.", "inLanguage": "it-IT", "mainEntityOfPage": "https://serietvfans.com/forbidden-fruit/forbidden-fruit-halit-e-vivo-o-e-morto-perche-al-funerale-si-sente-sono-vivo/", "image": [], "author": {"@type": "Organization", "name": "Serie TV Fans", "url": "https://serietvfans.com/chi-siamo/"}, "publisher": {"@type": "Organization", "name": "Serie TV Fans", "logo": {"@type": "ImageObject", "url": "https://serietvfans.com/favicon.svg"}}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Forbidden Fruit, Halit è vivo o è morto: perché al funerale qualcuno sente «sono vivo»", "datePublished": "2026-08-29", "dateModified": "2026-09-07", "description": "È la domanda più digitata su Forbidden Fruit, e la risposta breve è una sola: Halit non torna. Dopo il funerale il patriarca degli Argun non entra più in una stanza, non pronuncia una battuta, non prende una decisione — eppure continua a decidere la vita di tutti, perché la notte in cui è morto diventa l'arma con cui Şahika fa arrestare Yıldız ed Ender. Qui c'è come è nato il sospetto che fosse vivo, cosa lo alimenta ancora, e perché una parte del pubblico non ha mai smesso di aspettarlo.", "inLanguage": "it-IT", "mainEntityOfPage": "https://serietvfans.com/forbidden-fruit/forbidden-fruit-halit-e-vivo-o-e-morto-perche-al-funerale-si-sente-sono-vivo/", "image": ["https://serietvfans.com/img/forbidden-fruit-halit-e-vivo-o-e-morto-perche-al-funerale-si-sente-sono-vivo.jpg"], "author": {"@type": "Organization", "name": "Serie TV Fans", "url": "https://serietvfans.com/chi-siamo/"}, "publisher": {"@type": "Organization", "name": "Serie TV Fans", "logo": {"@type": "ImageObject", "url": "https://serietvfans.com/favicon.svg"}}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://serietvfans.com/"}, {"@type": "ListItem", "position": 2, "name": "Forbidden Fruit", "item": "https://serietvfans.com/serie/forbidden-fruit/"}, {"@type": "ListItem", "position": 3, "name": "Forbidden Fruit, Halit è vivo o è morto: perché al funerale qualcuno sente «sono vivo»"}]}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -332,35 +381,36 @@ if(l.length){el.src=l.shift();el.dataset.fb=JSON.stringify(l)}else{el.onerror=nu
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/forbidden-fruit/">Forbidden Fruit</a> › Forbidden Fruit, Halit è vivo o è morto: perché al funerale qualcuno sente «sono vivo»</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/forbidden-fruit/">Forbidden Fruit</a>
   <h1>Forbidden Fruit, Halit è vivo o è morto: perché al funerale qualcuno sente «sono vivo»</h1>
-  <div class="firma">Redazione Serie TV Fans · sabato 29 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-29">sabato 29 agosto 2026</time></span><span>aggiornato il 7 settembre 2026</span><span>8 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">È la domanda più digitata su Forbidden Fruit, e la risposta breve è una sola: Halit non torna. Dopo il funerale il patriarca degli Argun non entra più in una stanza, non pronuncia una battuta, non prende una decisione — eppure continua a decidere la vita di tutti, perché la notte in cui è morto diventa l&#x27;arma con cui Şahika fa arrestare Yıldız ed Ender. Qui c&#x27;è come è nato il sospetto che fosse vivo, cosa lo alimenta ancora, e perché una parte del pubblico non ha mai smesso di aspettarlo.</p><ol><li><a href="#c1">Cosa dicono le puntate: Halit è vivo o è morto</a></li><li><a href="#c2">Chi ha sussurrato «sono vivo» al funerale di Halit</a></li><li><a href="#c3">Perché il testamento ha fatto pensare a una messinscena</a></li><li><a href="#c4">Cosa è successo la notte in cui Halit è morto</a></li><li><a href="#c5">Perché una parte del pubblico continua ad aspettare il ritorno di Halit</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>Forbidden Fruit</strong> — Canale 5 · in streaming su Mediaset Infinity</span></div>
-  <figure class="copertina"><img src="/fallback/forbidden-fruit.svg" alt="Forbidden Fruit" width="1280" height="720"><figcaption>Forbidden Fruit</figcaption></figure>
-  <p class="occhiello">È la domanda più digitata su Forbidden Fruit, e la risposta breve è una sola: Halit non torna. Dopo il funerale il patriarca degli Argun non entra più in una stanza, non pronuncia una battuta, non prende una decisione — eppure continua a decidere la vita di tutti, perché la notte in cui è morto diventa l&#x27;arma con cui Şahika fa arrestare Yıldız ed Ender. Qui c&#x27;è come è nato il sospetto che fosse vivo, cosa lo alimenta ancora, e perché una parte del pubblico non ha mai smesso di aspettarlo.</p>
+  <figure class="copertina"><img src="/img/forbidden-fruit-halit-e-vivo-o-e-morto-perche-al-funerale-si-sente-sono-vivo.jpg" alt="Forbidden Fruit"><figcaption>Immagine d&#x27;ambiente — Forbidden Fruit</figcaption></figure>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   
   <div class="corpo">
   <p><strong>Halit Argun è morto. La serie non lo ha mai smentito: il funerale si celebra davvero, il notaio apre davvero il testamento, e da quella morte nasce un&#x27;inchiesta per omicidio che porta tre donne in una cella. Il dubbio, però, esiste per una ragione precisa — due parole sussurrate mentre calavano il feretro, «sono vivo», e una bara che a qualcuno dei presenti non tornava.</strong></p>
   <p>Halit Argun non era un padre di famiglia con un&#x27;azienda: era l&#x27;uomo che teneva in pugno tutti quelli che gli stavano intorno, con prestiti concessi al momento giusto, favori mai gratuiti e segreti conservati come si conserva una chiave. Quando un personaggio così esce di scena, la prima reazione di chi guarda non è il dolore: è il sospetto. Ed è esattamente il sospetto che la serie ha deciso di coltivare, invece di spegnerlo subito.</p>
-<h2>Cosa dicono le puntate: Halit è vivo o è morto</h2>
+<h2 id="c1">Cosa dicono le puntate: Halit è vivo o è morto</h2>
 <p>Morto. E non si tratta di una deduzione: è il presupposto su cui poggia tutto quello che viene dopo. Il funerale viene celebrato, con la famiglia schierata, le telecamere in chiesa e il feretro calato davanti a tutti. Il notaio apre il testamento e lo legge ad alta voce, cosa che non si fa per una persona scomparsa. E soprattutto la sua morte diventa un fascicolo penale: un&#x27;accusa di omicidio ha bisogno di un morto, e quell&#x27;accusa arriva a portare via Yıldız ed Ender in manette.</p>
 <p>C&#x27;è poi la prova più semplice di tutte, quella che nessuno guarda perché è troppo evidente: nei blocchi di puntate successivi al funerale Halit non compare mai. Non ha una battuta, non entra in una villa, non firma niente. Chi cerca «Halit è vivo» sperando in un ritorno in grande stile trova invece il contrario: un uomo che è diventato un nome dentro un procedimento giudiziario, e che proprio per questo continua a governare la famiglia Argun più di quando era in vita.</p>
 <p>Va detto con altrettanta chiarezza che la serie non chiude la porta con un cartello. Non c&#x27;è una scena che dica «era morto per davvero, smettete di chiedervelo»: c&#x27;è un vuoto, e in una soap turca un vuoto lasciato aperto è quasi sempre una scelta di scrittura, non una dimenticanza. È per questo che la domanda continua a essere fatta anche da chi ha visto tutto.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Chi ha sussurrato «sono vivo» al funerale di Halit</h2>
+<h2 id="c2">Chi ha sussurrato «sono vivo» al funerale di Halit</h2>
 <p>Il sospetto nasce lì, in cimitero, e nasce da tre dettagli piccolissimi messi in fila. Mentre il feretro sta per essere calato, tra i presenti qualcuno giura di aver sentito due parole: «sono vivo». Poi c&#x27;è un movimento fuori posto, un&#x27;ombra dietro una colonna che nessuno riesce ad attribuire a un invitato. Infine, il dettaglio che pesa di più: qualcosa nella bara che non corrisponde a quello che la famiglia si aspettava di vedere.</p>
 <p>Da quel momento si formano due partiti. C&#x27;è chi parla di un banale scambio all&#x27;obitorio, il tipo di errore che in una struttura sotto pressione può capitare. E c&#x27;è chi sostiene che qualcuno abbia manomesso tutto di proposito, sapendo benissimo cosa stava facendo. La terza ipotesi, quella che ha fatto il giro dei commenti, è la più vertiginosa: che sia stato Halit stesso a organizzare il proprio funerale, per guardare da un posto sicuro chi lo avrebbe pianto e chi invece stava già contando le quote.</p>
 <p>Il funerale, in ogni caso, non resta un momento di raccoglimento nemmeno per un minuto. Şahika si mette davanti alle telecamere e recita la vedova più distrutta che si sia mai vista; Yıldız, arrivata in ritardo e giudicata da tutti per questo, la guarda e chiama Kaya. Kaya entra in chiesa con delle prove in mano e smonta in pubblico una menzogna che Şahika teneva in piedi da anni. Il racconto completo di quella scena sta nel pezzo dedicato a Kaya, e vale la pena leggerlo a parte: spiega perché quel giorno la famiglia Argun aveva molto altro di cui occuparsi, oltre a un sussurro.</p>
-<h2>Perché il testamento ha fatto pensare a una messinscena</h2>
+<h2 id="c3">Perché il testamento ha fatto pensare a una messinscena</h2>
 <p>Il secondo motore del dubbio è il documento che il notaio legge davanti a tutti. Nessuna delle donne che si erano preparate ottiene quello per cui aveva lavorato: non Ender, che con Halit aveva condiviso ogni segreto, non Şahika, convinta di essersi guadagnata il posto. La quota destinata al figlio piccolo di Yıldız finisce vincolata in una fondazione fino alla maggiore età del bambino, cioè in un luogo dove la madre non può metterci mano. Yıldız aveva costruito ogni alleanza su quell&#x27;eredità e si ritrova senza appoggio economico proprio quando le serviva di più.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>È qui che molti spettatori hanno fatto due più due nel modo sbagliato ma comprensibile: un testamento così chirurgico, che neutralizza in una riga tutte le persone che avevano un motivo per volerlo morto, sembra scritto da qualcuno che sapeva. E se sapeva, il passo successivo — «allora ha organizzato anche il resto» — viene naturale. In realtà dice soltanto che Halit conosceva bene la propria famiglia, il che era vero anche quando era vivo. Cosa contiene esattamente il documento, e come Mert ne approfitta per consegnare Kerim alla polizia e prendersi la holding, è raccontato nell&#x27;articolo che abbiamo dedicato al testamento.</p>
-<h2>Cosa è successo la notte in cui Halit è morto</h2>
+<h2 id="c4">Cosa è successo la notte in cui Halit è morto</h2>
 <p>Questa è la domanda che la serie tiene davvero aperta, ed è diversa da «Halit è vivo». Yıldız, Ender e Şahika — tre donne che si erano fatte a pezzi per anni — stringono un accordo silenzioso per proteggersi a vicenda su quello che è realmente accaduto quella notte. Non è un&#x27;alleanza nata dall&#x27;affetto: è un patto di sopravvivenza, in cui nessuna delle tre può parlare senza affondare anche se stessa.</p>
 <p>Il patto regge finché resta segreto, e non resta segreto a lungo. Prima si fa vivo un ricattatore anonimo che dimostra di sapere molto più di quanto dovrebbe. Poi Şahika, che quella verità non l&#x27;aveva mai dimenticata, la tira fuori dal cassetto nel momento più crudele possibile: il giorno del matrimonio di Yıldız con Çağatay Kuyucu. Non falsifica niente, non compra testimoni — usa una verità che riguarda anche lei, facendola arrivare alle autorità attraverso Zehra. Yıldız ed Ender vengono portate via in abito da cerimonia, accusate di omicidio, davanti alla famiglia in cui Yıldız era appena entrata.</p>
 <p>Le tre finiscono nella stessa cella, e da lì la partita si sposta di nuovo sui soldi: Hasan Ali convince Zehra a ritirare la denuncia, ma prima si fa cedere da Ender e da Şahika le loro quote societarie, presentando la cosa come una precauzione tecnica. Escono libere e senza azienda. Il nome di Halit, in tutto questo, non serve a nessuno per commuoversi: serve come leva.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Perché una parte del pubblico continua ad aspettare il ritorno di Halit</h2>
+<h2 id="c5">Perché una parte del pubblico continua ad aspettare il ritorno di Halit</h2>
 <p>Va detto, perché sarebbe scorretto tacerlo: sul ritorno di Halit sono circolate ricostruzioni molto dettagliate, e ne abbiamo scritto anche noi. Raccontano un patriarca che si presenta alla villa in pieno giorno, davanti a testimoni che non possono più far finta di niente, e che invece di cercare Yıldız o l&#x27;azienda va dritto verso il bambino e se lo porta via senza dire una parola. È una scena costruita bene, ed è il motivo per cui in molti hanno dato per acquisito un ritorno che le puntate successive non confermano: quando la storia riprende, Halit resta un morto e le tre donne restano tre imputate.</p>
 <p>Quindi la risposta onesta è doppia, e conviene tenerle separate. Sul piano di quello che viene mostrato, Halit è morto e non rientra in scena. Sul piano delle teorie del pubblico, l&#x27;ipotesi della morte inscenata non è mai stata smentita in modo esplicito, e continua a circolare perché la serie stessa l&#x27;ha alimentata con il sussurro, l&#x27;ombra e la bara. Le due cose convivono, e chi promette un colpo di scena già scritto sta vendendo un&#x27;ipotesi come se fosse una puntata.</p>
 <p>C&#x27;è anche una ragione che riguarda il genere e non questa storia in particolare. Nelle soap turche il funerale non è quasi mai una prova sufficiente: si sono visti troppi personaggi tornare dopo essere stati pianti, e il pubblico ha imparato a non fidarsi di una bara chiusa. Su Forbidden Fruit questa diffidenza trova terreno fertile perché Halit era, di suo, un uomo che aveva costruito tutto sull&#x27;inganno. Un personaggio così, quando muore fuori scena, lascia sempre il sospetto di aver truccato anche l&#x27;ultima mano.</p>
@@ -368,16 +418,41 @@ if(l.length){el.src=l.shift();el.dataset.fb=JSON.stringify(l)}else{el.onerror=nu
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=bdjTgbHoRUE" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/bdjTgbHoRUE/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>FORBIDDEN FRUIT: &quot;SONO VIVO...&quot; Al Funerale di Halit! Yildiz Prende Tutto l&#x27;Impero 😱</span></a></li><li><a href="https://www.youtube.com/watch?v=udcqctptU9s" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/udcqctptU9s/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>FORBIDDEN FRUIT: Kaya smaschera Şahika al funerale di Halit, la verità esplode 😱</span></a></li><li><a href="https://www.youtube.com/watch?v=-GLAbshKy3I" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/-GLAbshKy3I/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>FORBIDDEN FRUIT: il testamento di HALIT ribalta tutto — Mert tradisce Kerim e lo fa arrestare 😱</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Secondo voi il sussurro al funerale era davvero Halit, o la serie ha solo voluto tenerci sul filo?</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di Forbidden Fruit</h2><div class="griglia"><article class="scheda">
+  <a href="/forbidden-fruit/forbidden-fruit-dal-31-agosto-il-conto-a-nome-di-halit-che-e-morto/"><div class="foto"><img src="/img/forbidden-fruit-dal-31-agosto-il-conto-a-nome-di-halit-che-e-morto.jpg" alt="Forbidden Fruit" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/forbidden-fruit.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Forbidden Fruit</span>
+    <h3><a href="/forbidden-fruit/forbidden-fruit-dal-31-agosto-il-conto-a-nome-di-halit-che-e-morto/">Forbidden Fruit Dal 31 Agosto: il conto a nome di Halit, che è morto</a></h3>
+    <div class="quando">31 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/forbidden-fruit/forbidden-fruit-che-fine-fa-zehra-perche-resta-lunica-libera/"><div class="foto"><img src="/img/forbidden-fruit-che-fine-fa-zehra-perche-resta-lunica-libera.jpg" alt="Forbidden Fruit" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/forbidden-fruit.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Forbidden Fruit</span>
+    <h3><a href="/forbidden-fruit/forbidden-fruit-che-fine-fa-zehra-perche-resta-lunica-libera/">Forbidden Fruit, che fine fa Zehra: perché resta l&#x27;unica libera mentre le altre finiscono in cella</a></h3>
+    <div class="quando">29 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/forbidden-fruit/forbidden-fruit-chi-e-davvero-zeynep-la-sorella-per-bene-che-ha-finito-peggio-di-yildiz/"><div class="foto"><img src="https://i.ytimg.com/vi/oZ7UQzlz0uM/hqdefault.jpg" alt="Forbidden Fruit" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/forbidden-fruit.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Forbidden Fruit</span>
+    <h3><a href="/forbidden-fruit/forbidden-fruit-chi-e-davvero-zeynep-la-sorella-per-bene-che-ha-finito-peggio-di-yildiz/">Forbidden Fruit: chi è davvero Zeynep, la sorella «per bene» che ha finito peggio di Yıldız</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=Forbidden Fruit, Halit è vivo o è morto: perché al funerale qualcuno sente «sono vivo» — https://serietvfans.com/forbidden-fruit/forbidden-fruit-halit-e-vivo-o-e-morto-perche-al-funerale-si-sente-sono-vivo/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/forbidden-fruit/forbidden-fruit-halit-e-vivo-o-e-morto-perche-al-funerale-si-sente-sono-vivo/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/forbidden-fruit/forbidden-fruit-halit-e-vivo-o-e-morto-perche-al-funerale-si-sente-sono-vivo/&text=Forbidden Fruit, Halit è vivo o è morto: perché al funerale qualcuno sente «sono vivo»" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  
-  <div class="box"><h3>Ancora su Forbidden Fruit</h3><ul><li><a href="/forbidden-fruit/forbidden-fruit-dal-31-agosto-il-conto-a-nome-di-halit-che-e-morto/">Forbidden Fruit Dal 31 Agosto: il conto a nome di Halit, che è morto</a></li><li><a href="/forbidden-fruit/forbidden-fruit-che-fine-fa-zehra-perche-resta-lunica-libera/">Forbidden Fruit, che fine fa Zehra: perché resta l&#x27;unica libera mentre le altre finiscono in cella</a></li><li><a href="/forbidden-fruit/forbidden-fruit-chi-e-davvero-zeynep-la-sorella-per-bene-che-ha-finito-peggio-di-yildiz/">Forbidden Fruit: chi è davvero Zeynep, la sorella «per bene» che ha finito peggio di Yıldız</a></li><li><a href="/forbidden-fruit/forbidden-fruit-cosa-dice-il-testamento-di-halit-la-quota-del-bambino-va-a-una-f/">Forbidden Fruit, cosa dice il testamento di Halit: la quota del bambino va a una fondazione, e Mert tradisce Kerim</a></li><li><a href="/forbidden-fruit/forbidden-fruit-ender-ha-mandato-lei-yildiz-da-suo-marito-e-ha-perso-tutto/">Forbidden Fruit: Ender ha mandato lei Yıldız da suo marito, e ha perso tutto</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
+  <div class="box"><h3>Ultime di Forbidden Fruit</h3><ol class="numerata"><li><a href="/forbidden-fruit/forbidden-fruit-dal-31-agosto-il-conto-a-nome-di-halit-che-e-morto/">Forbidden Fruit Dal 31 Agosto: il conto a nome di Halit, che è morto</a></li><li><a href="/forbidden-fruit/forbidden-fruit-che-fine-fa-zehra-perche-resta-lunica-libera/">Forbidden Fruit, che fine fa Zehra: perché resta l&#x27;unica libera mentre le altre finiscono in cella</a></li><li><a href="/forbidden-fruit/forbidden-fruit-chi-e-davvero-zeynep-la-sorella-per-bene-che-ha-finito-peggio-di-yildiz/">Forbidden Fruit: chi è davvero Zeynep, la sorella «per bene» che ha finito peggio di Yıldız</a></li><li><a href="/forbidden-fruit/forbidden-fruit-cosa-dice-il-testamento-di-halit-la-quota-del-bambino-va-a-una-f/">Forbidden Fruit, cosa dice il testamento di Halit: la quota del bambino va a una fondazione, e Mert tradisce Kerim</a></li><li><a href="/forbidden-fruit/forbidden-fruit-ender-ha-mandato-lei-yildiz-da-suo-marito-e-ha-perso-tutto/">Forbidden Fruit: Ender ha mandato lei Yıldız da suo marito, e ha perso tutto</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>Ogni anticipazione, prima in video sul canale Serie TV Fans</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
+  </div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

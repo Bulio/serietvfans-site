@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/endless-love/">Endless Love</a> › Endless Love, Kemal e Nihan finalmente sposi — ma poche ore prima Emir lo aveva chiuso in una camera iperbarica senza ossigeno</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/endless-love/">Endless Love</a>
   <h1>Endless Love, Kemal e Nihan finalmente sposi — ma poche ore prima Emir lo aveva chiuso in una camera iperbarica senza ossigeno</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Il giorno più bello arriva dopo l&#x27;agguato più feroce: narcotizzato dal barbiere e rinchiuso da Emir in una camera iperbarica in un ospedale abbandonato, Kemal viene salvato in extremis dalla sorella Zeynep — e arriva all&#x27;altare in riva al mare per il «noi due insieme fino alla morte».</p><ol><li><a href="#c1">L&#x27;agguato del giorno delle nozze</a></li><li><a href="#c2">Chi è Emir, e perché sceglie proprio quel giorno</a></li><li><a href="#c3">Zeynep, l&#x27;eroina inattesa</a></li><li><a href="#c4">Chi è Zeynep, e quanto le costa quel salvataggio</a></li><li><a href="#c5">I piedi nell&#x27;acqua: «Noi due insieme fino alla morte»</a></li><li><a href="#c6">Le assenze che pesano</a></li><li><a href="#c7">Perché conta: questa famiglia sta rifacendo l&#x27;errore che le è costato tutto</a></li><li><a href="#c8">Come Zehir e Ayhan sostengono Kemal nelle nozze</a></li><li><a href="#c9">Perché Leyla e Tarık finiscono in carcere</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>Endless Love</strong> — Serie conclusa in Italia · le puntate su Mediaset Infinity</span></div>
   
-  <p class="occhiello">Il giorno più bello arriva dopo l&#x27;agguato più feroce: narcotizzato dal barbiere e rinchiuso da Emir in una camera iperbarica in un ospedale abbandonato, Kemal viene salvato in extremis dalla sorella Zeynep — e arriva all&#x27;altare in riva al mare per il «noi due insieme fino alla morte».</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: Endless Love, Kemal e Nihan finalmente sposi — ma poche ore prima Emir lo aveva chiuso in una camera iperbarica senza ossigeno" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/7NgUtv4f92s/maxresdefault.jpg" alt="Endless Love, Kemal e Nihan finalmente sposi — ma poche ore prima Emir lo aveva chiuso in una camera iperbarica senza ossigeno" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/7NgUtv4f92s/hqdefault.jpg 480w, https://i.ytimg.com/vi/7NgUtv4f92s/sddefault.jpg 640w, https://i.ytimg.com/vi/7NgUtv4f92s/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/7NgUtv4f92s/hqdefault.jpg&quot;, &quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,44 +409,66 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>Nihan non saprà mai quanto è andato vicino a perderlo: la scelta di amici e famiglia di tacere tutto rende queste nozze ancora più commoventi.</strong></p>
-  <h2>L&#x27;agguato del giorno delle nozze</h2>
+  <h2 id="c1">L&#x27;agguato del giorno delle nozze</h2>
 <p>Kemal lo aveva previsto: conoscendo Emir, qualcosa di terribile sarebbe accaduto proprio il giorno del matrimonio, e per questo aveva organizzato una rete di protezione attorno a Nihan. Ma il bersaglio era lui: nel salone da barbiere del padre, mentre si preparava per il grande giorno, i complici di Emir narcotizzano lui e perfino papà Hüseyin. Kemal si risveglia in un ospedale abbandonato, dentro una camera iperbarica trasformata in strumento di morte: il piano di Emir è privarlo lentamente dell&#x27;ossigeno, condannandolo a un&#x27;agonia atroce.</p>
-<h2>Chi è Emir, e perché sceglie proprio quel giorno</h2>
+<h2 id="c2">Chi è Emir, e perché sceglie proprio quel giorno</h2>
 <p>Per capire l&#x27;accanimento bisogna sapere come Emir aveva ottenuto Nihan la prima volta. Non con il corteggiamento: con un ricatto. Aveva insabbiato un crimine che ricadeva su Ozan, il fratello di lei, e in cambio di quel silenzio si è fatto dare la ragazza in moglie. Da quel patto è nato tutto il resto — i rifiuti, le parole taglienti, la crudeltà apparente di Nihan verso l&#x27;uomo che amava, che aveva sempre e soltanto un fratello da salvare dietro le spalle. Ecco perché il giorno delle nozze non è una data qualunque per Emir: è il giorno in cui quel ricatto smette pubblicamente di funzionare. Non attacca per gelosia, attacca perché ha appena perso la leva.</p>
-<h2>Zeynep, l&#x27;eroina inattesa</h2>
+<h2 id="c3">Zeynep, l&#x27;eroina inattesa</h2>
 <p>Quando tutto sembra perduto, la salvezza arriva dalla persona più inaspettata: Zeynep. Contattata da Zehir, preoccupato per la scomparsa dell&#x27;amico, la sorella di Kemal rivela di aver sentito Emir menzionare un ospedale abbandonato — e, sfidando la vendetta del marito, guida il salvataggio: approfittando della pausa della guardia, lei e Zehir si intrufolano nell&#x27;edificio, disattivano la camera iperbarica e liberano Kemal privo di sensi ma vivo. «Sai, è stata tua sorella a salvarti», gli rivela Zehir durante la corsa verso la cerimonia. Kemal, tra gratitudine e paura per lei, la supplica di allontanarsi subito: l&#x27;ira di Emir non perdona.</p>
-<h2>Chi è Zeynep, e quanto le costa quel salvataggio</h2>
+<h2 id="c4">Chi è Zeynep, e quanto le costa quel salvataggio</h2>
 <p>Zeynep è la sorella di Kemal, ed è stata per anni l&#x27;arma migliore di Emir: l&#x27;unico legame che il fratello non avrebbe mai messo in discussione, e quindi la persona perfetta da usare come pedina. Con il tempo quel rapporto è diventato molto più profondo e sporco di quanto in famiglia sospettassero, fino al matrimonio con lui. Quando entra nell&#x27;ospedale abbandonato e stacca la camera iperbarica non sta facendo un favore a un parente: sta scegliendo, per la prima volta, contro l&#x27;uomo con cui vive. È il motivo per cui Kemal, appena saputolo, non la ringrazia e basta — la supplica di sparire.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>I piedi nell&#x27;acqua: «Noi due insieme fino alla morte»</h2>
+<h2 id="c5">I piedi nell&#x27;acqua: «Noi due insieme fino alla morte»</h2>
 <p>La cerimonia è un sogno a occhi aperti: una celebrazione civile intima in riva al mare, i voti scambiati con i piedi immersi nell&#x27;acqua, Zehir e Ayhan come testimoni e un tramonto dorato a fare da cornice. Per proteggere la felicità di Nihan, tutti i presenti a conoscenza del dramma scelgono il silenzio: lei non saprà nulla del rapimento. E quando Kemal pronuncia la sua promessa — «Noi due insieme fino alla morte» — quelle parole suonano più vere che mai: le ha appena guadagnate sfuggendo alla morte per davvero.</p>
-<h2>Le assenze che pesano</h2>
+<h2 id="c6">Le assenze che pesano</h2>
 <p>Nella gioia, due sedie vuote raccontano il prezzo pagato da questa famiglia: Leyla, in attesa di processo per aver sparato ad Asu proteggendo Nihan, e Tarık, in carcere per l&#x27;omicidio di Ozan. Ma il libretto di matrimonio finalmente stretto tra le mani vale ogni battaglia: dopo stagioni di ricatti, separazioni e trappole, l&#x27;amore &quot;infinito&quot; di Kemal e Nihan ha vinto la sua guerra più importante. Resta solo da capire quanto durerà la pace — perché Emir, ancora una volta, è là fuori.</p>
-<h2>Perché conta: questa famiglia sta rifacendo l&#x27;errore che le è costato tutto</h2>
+<h2 id="c7">Perché conta: questa famiglia sta rifacendo l&#x27;errore che le è costato tutto</h2>
 <p>La decisione di non dire niente a Nihan viene presa con le migliori intenzioni, e assomiglia in modo inquietante a quella che ha rovinato la vita a entrambi. Anni fa fu proprio Nihan a tacere: si tenne dentro il ricatto di Emir per proteggere il fratello, lasciò credere a Kemal di non amarlo più, e quel silenzio li ha separati per stagioni intere. Adesso sono gli altri a scegliere per lei cosa può sapere il giorno del suo matrimonio. C&#x27;è poi il fatto pratico: Emir sa di aver fallito, e non gli servirà molto per capire chi ha aperto quella camera. La sposa scenderà dall&#x27;altare senza sapere che deve suo marito a una cognata che, da questo momento, vive in casa del proprio nemico.</p>
-<h2>Come Zehir e Ayhan sostengono Kemal nelle nozze</h2>
+<h2 id="c8">Come Zehir e Ayhan sostengono Kemal nelle nozze</h2>
 <p>Zehir si dimostra fondamentale per la salvezza di Kemal e per la riuscita di questo matrimonio tanto atteso. Quando il promesso sposo scompare improvvisamente dal salone da barbiere di papà Hüseyin, è proprio Zehir ad allarmarsi subito e a intuire che c&#x27;è dietro la mano di Emir. Senza esitare, l&#x27;uomo si mette in contatto con Zeynep, la quale gli rivela quanto ha ascoltato sui piani del marito riguardo all&#x27;ospedale abbandonato. Insieme raggiungono la struttura e approfittano della pausa della guardia per infiltrarsi, disattivare la camera iperbarica e salvare Kemal privo di sensi. Successivamente, durante la corsa verso la cerimonia in riva al mare, Zehir riferisce al protagonista la verità sul coraggioso gesto della sorella. Poi assume il ruolo di testimone alle nozze, mantenendo il silenzio davanti a Nihan.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>Accanto a Zehir c&#x27;è Ayhan, l&#x27;altro testimone scelto per accompagnare Kemal e Nihan nel momento più importante della loro vita. La presenza di questi amici fidati rende la celebrazione civica ancora più profonda e toccante, mentre il sole tramonta tingendo il cielo di sfumature dorate in riva al mare. Insieme agli sposi, che pronunciano le loro promesse con i piedi immersi nell&#x27;acqua, gli invitati condivideranno questo segreto per proteggere la gioia della sposa. La figura di Ayhan e quella di Zehir rappresentano un punto di riferimento fondamentale per una famiglia segnata da assenze pesantissime come quelle di Leyla e Tarık. Senza il loro sostegno pratico e la loro lealtà incrollabile, Kemal non avrebbe mai potuto superare l&#x27;ennesima trappola mortale tesa dal suo acerrimo nemico.</p>
-<h2>Perché Leyla e Tarık finiscono in carcere</h2>
+<h2 id="c9">Perché Leyla e Tarık finiscono in carcere</h2>
 <p>La gioia del matrimonio tra Kemal e Nihan è inevitabilmente velata dall&#x27;assenza di Leyla, una figura materna e fondamentale per la sposa. La donna si trova infatti reclusa in carcere in attesa di giudizio, dopo aver compiuto un gesto estremo dettato dal desiderio di protezione. Leyla ha sparato ad Asu per difendere Nihan da un ennesimo pericolo, accettando di pagare un prezzo altissimo dal punto di vista personale e giudiziario. Nonostante la gravità della sua situazione legale e l&#x27;imminenza del processo, il suo sacrificio ha permesso a Nihan di arrivare sana e salva al giorno del sì. La sua sedia vuota durante la cerimonia civile di fronte al mare ricorda a tutti gli invitati quanta sofferenza sia stata necessaria per consentire ai due protagonisti di celebrare finalmente la loro unione.</p>
 <p>L&#x27;altra grande assenza alla cerimonia è quella di Tarık, il fratello di Kemal, anch&#x27;egli rinchiuso in prigione per una tragica e complessa vicenda del passato. Tarık sta infatti scontando la pena per essere stato responsabile dell&#x27;omicidio di Ozan, il fratello di Nihan la cui sorte aveva originariamente scatenato il feroce ricatto di Emir. Questa dolorosa drammaticità familiare pesa enormemente sui cuori dei presenti, dimostrando come le trame del nemico abbiano lacerato gli affetti di entrambe le parti. Nonostante sia finito dietro le sbarre per un delitto gravissimo, il nome di Tarık resta legato al doloroso percorso che la famiglia ha dovuto affrontare prima di giungere a questo momento. Il libretto di matrimonio conquistato dagli sposi riassume così anni di trappole, crimini e sacrifici personali che hanno segnato per sempre il destino dei protagonisti.</p>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=xN6Bpfs7FoY" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/xN6Bpfs7FoY/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>ZEYNEP TRADISCE KEMAL E SCEGLIE EMIR! INFRANTO IL SOGNO DI LIBERTA&#x27; DI KEMAL E NIHAN -Endless L</span></a></li><li><a href="https://www.youtube.com/watch?v=CwCXl3ZuRHk" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/CwCXl3ZuRHk/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>EMIR UNA FURIA CONTRO KEMAL!INSOPPORTABILE CHE KEMAL ABBIA SALVATO NIHAN! Anticipazioni Endless</span></a></li><li><a href="https://www.youtube.com/watch?v=WJc6MfB3mz4" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/WJc6MfB3mz4/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>KEMAL E NIHAN FINALMENTE INSIEME VOLANO VIA VERSO LA LIBERTA&#x27;-Anticipazioni Endless Love 16 Giu</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Fatto bene a nascondere il rapimento a Nihan, o in un matrimonio non dovrebbero esserci segreti? E il gesto di Zeynep basta a redimerla ai vostri occhi?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=7NgUtv4f92s">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di Endless Love</h2><div class="griglia"><article class="scheda">
+  <a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/"><div class="foto"><img src="https://i.ytimg.com/vi/DSiProJJ1ls/hqdefault.jpg" alt="Endless Love" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/"><div class="foto"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/"><div class="foto"><img src="https://i.ytimg.com/vi/uu2oAzTOWQU/hqdefault.jpg" alt="Endless Love" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></h3>
+    <div class="quando">25 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=Endless Love, Kemal e Nihan finalmente sposi — ma poche ore prima Emir lo aveva chiuso in una camera iperbarica senza ossigeno — https://soapoperaitalia.com/endless-love/endless-love-la-trama-completa-perche-nihan-sposa-emir-e-come-finisce/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://soapoperaitalia.com/endless-love/endless-love-la-trama-completa-perche-nihan-sposa-emir-e-come-finisce/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://soapoperaitalia.com/endless-love/endless-love-la-trama-completa-perche-nihan-sposa-emir-e-come-finisce/&text=Endless Love, Kemal e Nihan finalmente sposi — ma poche ore prima Emir lo aveva chiuso in una camera iperbarica senza ossigeno" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">IL SOGNO SI AVVERA, KEMAL E NIHAN FINALMENTE SPOSI! Anticipazioni Endless Love</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=7NgUtv4f92s">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di Endless Love</h3><ol class="numerata"><li><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></li><li><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></li><li><a href="/endless-love/endless-love-chi-e-galip-kozcuoglu-le-due-volte-in-cui-nihan-e-stata-venduta/">Endless Love, chi è Galip Kozcuoğlu: le due volte in cui Nihan è stata venduta</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-zeynep-soydere-perche-emir-lha-scelta-e-cosa-ha-distrutto/">Endless Love, chi è davvero Zeynep Soydere: perché Emir l&#x27;ha scelta e cosa ha distrutto</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>IL SOGNO SI AVVERA, KEMAL E NIHAN FINALMENTE SPOSI! Anticipazioni Endless Love</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su Endless Love</h3><ul><li><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></li><li><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></li><li><a href="/endless-love/endless-love-chi-e-galip-kozcuoglu-le-due-volte-in-cui-nihan-e-stata-venduta/">Endless Love, chi è Galip Kozcuoğlu: le due volte in cui Nihan è stata venduta</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-zeynep-soydere-perche-emir-lha-scelta-e-cosa-ha-distrutto/">Endless Love, chi è davvero Zeynep Soydere: perché Emir l&#x27;ha scelta e cosa ha distrutto</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/endless-love/">Endless Love</a> › Endless Love, Emir rapisce Deniz e mette una pistola in mano a Nihan: «Se vuoi uscire viva e rivedere tua figlia, devi sparare a Kemal»</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/endless-love/">Endless Love</a>
   <h1>Endless Love, Emir rapisce Deniz e mette una pistola in mano a Nihan: «Se vuoi uscire viva e rivedere tua figlia, devi sparare a Kemal»</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">È il punto più basso a cui Emir sia mai arrivato: non gli basta prendersi la bambina, vuole che sia Nihan stessa a distruggere l&#x27;unica cosa che le è rimasta. E a convincerla a farlo, alla fine, è Kemal.</p><ol><li><a href="#c1">«Sarò io l&#x27;unico padre che conosci»</a></li><li><a href="#c2">Il video con la candela</a></li><li><a href="#c3">«Fallo per nostra figlia»</a></li><li><a href="#c4">Chi è Zeynep, e perché il suo dolore sta nelle stesse puntate</a></li><li><a href="#c5">La perdita di Zeynep</a></li><li><a href="#c6">Perché conta: il punto non era uccidere Kemal, era far premere il grilletto a Nihan</a></li><li><a href="#c7">Come Emir ha attirato Kemal e Nihan in trappola</a></li><li><a href="#c8">Perché il dolore di Zeynep segna una svolta</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>Endless Love</strong> — Serie conclusa in Italia · le puntate su Mediaset Infinity</span></div>
   
-  <p class="occhiello">È il punto più basso a cui Emir sia mai arrivato: non gli basta prendersi la bambina, vuole che sia Nihan stessa a distruggere l&#x27;unica cosa che le è rimasta. E a convincerla a farlo, alla fine, è Kemal.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: Endless Love, Emir rapisce Deniz e mette una pistola in mano a Nihan: «Se vuoi uscire viva e rivedere tua figlia, devi sparare a Kemal»" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/QXpcDyhWhGw/maxresdefault.jpg" alt="Endless Love, Emir rapisce Deniz e mette una pistola in mano a Nihan: «Se vuoi uscire viva e rivedere tua figlia, devi sparare a Kemal»" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/QXpcDyhWhGw/hqdefault.jpg 480w, https://i.ytimg.com/vi/QXpcDyhWhGw/sddefault.jpg 640w, https://i.ytimg.com/vi/QXpcDyhWhGw/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/QXpcDyhWhGw/hqdefault.jpg&quot;, &quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,25 +409,25 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>Nelle stesse puntate Zeynep perde il bambino e si convince che sia una punizione.</strong></p>
-  <h2>«Sarò io l&#x27;unico padre che conosci»</h2>
+  <h2 id="c1">«Sarò io l&#x27;unico padre che conosci»</h2>
 <p>Con l&#x27;aiuto di due complici, Emir si introduce in casa approfittando di un momento di distrazione e porta via Deniz. Alla bambina, troppo piccola per capire cosa stia succedendo, dice che da quel momento in poi sarà lui l&#x27;unico padre che conoscerà e che non permetterà a nessuno di separarli. Nihan e Kemal reagiscono all&#x27;unica cosa a cui possono aggrapparsi — l&#x27;idea che Emir, per quanto mostruoso, alla bambina voglia bene e non le farebbe del male — e si mettono a cercarla.</p>
-<h2>Il video con la candela</h2>
+<h2 id="c2">Il video con la candela</h2>
 <p>La caccia però è già scritta: ogni indizio è stato lasciato apposta. A Kemal arriva un video agghiacciante — sua sorella legata a un letto, il pavimento cosparso di benzina, una candela accesa lì accanto e una voce che spiega cosa succederà quando la fiamma arriverà a terra; poi l&#x27;inquadratura si sposta su Deniz. Kemal riesce a decifrare i dettagli e ad arrivare in tempo per salvarla, ma è esattamente quello che si voleva ottenere: muovendosi come previsto, lui e Nihan finiscono entrambi dove Emir li aspettava.</p>
-<h2>«Fallo per nostra figlia»</h2>
+<h2 id="c3">«Fallo per nostra figlia»</h2>
 <p>In un luogo isolato, Emir mette Nihan in ginocchio e le consegna un&#x27;arma: se vuole uscire viva da lì e rivedere la bambina, deve sparare a Kemal. Nihan lo guarda tremando, incapace. È lui, con una calma che ha dell&#x27;incredibile, a darle il permesso: le dice che sarà sempre con lei, che si prenderà cura di lei, e che deve farlo adesso — per la figlia e per se stessa. Nihan spara. Kemal cade a terra e non si muove più, e lei viene trascinata fuori a forza dagli uomini di Emir, con le urla che restano dentro quell&#x27;edificio.</p>
-<h2>Chi è Zeynep, e perché il suo dolore sta nelle stesse puntate</h2>
+<h2 id="c4">Chi è Zeynep, e perché il suo dolore sta nelle stesse puntate</h2>
 <p>Chi arriva adesso rischia di leggere la storia di Zeynep come una parentesi, e non lo è. Zeynep è la sorella di Kemal, cioè la persona che Emir ha usato per anni come leva su di lui: la porta d&#x27;ingresso in una famiglia che altrimenti non avrebbe potuto toccare. Solo che quel rapporto le è sfuggito di mano ed è diventato molto più profondo e molto più sporco di quanto in casa sospettassero. Per questo la sua perdita non è una sottotrama sentimentale messa lì per bilanciare i toni: è l&#x27;altra faccia dello stesso meccanismo. Emir non colpisce mai una persona sola per volta, e mentre in un luogo isolato mette una pistola in mano a Nihan, la sorella dell&#x27;uomo che vuole eliminare sta scegliendo di non dire a nessuno quello che le è successo.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>La perdita di Zeynep</h2>
+<h2 id="c5">La perdita di Zeynep</h2>
 <p>Su un piano parallelo si consuma un altro dolore. Zeynep, dopo la morte di Ozan, aveva trovato per la prima volta accoglienza da parte di Vildan, che le aveva parlato con dolcezza del bambino in arrivo e di come lo avrebbero cresciuto. Poche ore prima dell&#x27;incontro, però, durante un controllo la ginecologa le comunica che il bambino non c&#x27;è più, a causa di un&#x27;emorragia. Zeynep si chiude nel silenzio e comincia a ripetersi che è una punizione per il male che ha fatto agli altri; nasconde a tutti quello che è successo, per paura di ritrovarsi di nuovo sola. L&#x27;unica che non si allontana mai è sua madre Fehime, che le promette di non lasciarla in nessun caso.</p>
-<h2>Perché conta: il punto non era uccidere Kemal, era far premere il grilletto a Nihan</h2>
+<h2 id="c6">Perché conta: il punto non era uccidere Kemal, era far premere il grilletto a Nihan</h2>
 <p>Se l&#x27;obiettivo fosse stato togliere di mezzo un uomo, i complici erano già lì e bastava molto meno di una messinscena con una candela e un video. Quello che Emir voleva era un&#x27;altra cosa, e l&#x27;ha ottenuta: adesso Nihan è una donna che ha sparato all&#x27;uomo che ama, e questo la lega a lui più di qualsiasi ricatto costruito prima. È il tipo di colpa che non si racconta a una figlia e che non si porta in tribunale. Il secondo risultato è ancora più duraturo, e ha l&#x27;età di Deniz: la bambina si è sentita dire in faccia, da chi la teneva in braccio, chi sarà d&#x27;ora in poi l&#x27;unico padre che le è concesso conoscere. Comunque vada a finire quella stanza, entrambe le cose sono già successe — e nessuna delle due si può riavvolgere.</p>
-<h2>Come Emir ha attirato Kemal e Nihan in trappola</h2>
+<h2 id="c7">Come Emir ha attirato Kemal e Nihan in trappola</h2>
 <p>Emir ha costruito ogni passaggio di questa vicenda sfruttando i punti deboli di tutti i protagonisti coinvolti. Per attirare l&#x27;uomo che considera il suo grande nemico ha scelto di colpire prima Zeynep, legandola a un letto in una stanza cosparsa di benzina con una candela accesa pronta a far esplodere tutto. Inviando un video angosciante a Kemal, Emir sapeva perfettamente che l&#x27;uomo avrebbe concentrato ogni sua energia nell&#x27;osservare le immagini per decifrare i dettagli nascosti e capire dove si trovasse la sorella. Quel salvataggio disperato era soltanto un&#x27;illusione orchestrata con estrema precisione. Muovendosi esattamente come previsto, Kemal e Nihan sono finiti direttamente nel luogo isolato dove l&#x27;uomo li attendeva per mettere in atto il suo piano finale.</p>
 <p>Di fronte alla minaccia mortale rivolta alla piccola Deniz e alla prospettiva di non rivedere mai più la bambina, la situazione è precipitata rapidamente. Emir ha costretto Nihan a mettersi in ginocchio consegnandole la pistola e ponendola davanti a una scelta spaventosa per uscire viva da quel luogo. A sbloccare il terrore della donna è stato proprio Kemal, che con straordinaria calma le ha concesso il permesso di premere il grilletto per salvare se stessa e la loro bambina, rassicurandola sul fatto che le sarebbe rimasto sempre accanto. Dopo il colpo, Kemal è caduto a terra senza più muoversi, mentre Nihan è stata trascinata via a forza dagli uomini di Emir urlando disperata.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>L&#x27;obiettivo di Emir non era soltanto eliminare un rivale attraverso un gesto violento, ma distruggere psicologicamente la donna che pretende di legare a sé. Con la sparatoria ha fatto in modo che Nihan rimanesse schiacciata da un terribile senso di colpa, difficile da superare o portare in un tribunale. Contemporaneamente, portando via la piccola Deniz con l&#x27;aiuto dei suoi complici, Emir ha cercato di imporre la propria presenza nella vita della bambina, dicendole chiaramente che sarà lui l&#x27;unico padre che conoscerà. Si tratta di una strategia calcolata per recidere ogni legame passato, lasciando Nihan e la figlia in una condizione di totale vulnerabilità e sotto il suo costante controllo.</p>
-<h2>Perché il dolore di Zeynep segna una svolta</h2>
+<h2 id="c8">Perché il dolore di Zeynep segna una svolta</h2>
 <p>Zeynep ha rappresentato per anni la porta d&#x27;ingresso usata da Emir per insinuarsi nella famiglia di Kemal e colpirla dall&#x27;interno. Quel legame ambiguo e profondo si è trasformato nel tempo in qualcosa di molto pericoloso, lontano dai sospetti originali dei suoi familiari. Dopo la tragica scomparsa di Ozan, la ragazza aveva trovato una insperata accoglienza in Vildan, la quale le aveva mostrato grande dolcezza parlandole del bambino in arrivo e del futuro che avrebbero costruito insieme. Tuttavia, proprio prima di quel momento di riavvicinamento, una visita dalla ginecologa ha rivelato una drammatica verità: un&#x27;improvvisa emorragia ha causato la perdita definitiva del piccolo, cancellando ogni speranza di serenità.</p>
 <p>Schiacciata dal dolore per la perdita del bambino, Zeynep ha scelto di chiudersi in un totale silenzio, convincendosi che quella tragica emorragia sia una vera e propria punizione per le cattive azioni commesse in passato. Per il timore di essere abbandonata e rimanere nuovamente sola, ha deciso di nascondere la verità a tutti quanti, mantenendo il segreto sull&#x27;esito del controllo medico. In questa dolorosa solitudine, l&#x27;unica figura pronta a offrirle sostegno costante è la madre Fehime, che le garantisce di non lasciarla mai sola in qualunque circostanza. Il dramma personale di Zeynep si intreccia così con gli eventi tragici che travolgono suo fratello e Nihan.</p>
 <p>La scelta della ragazza di tacere sulla perdita del piccolo dimostra fino a che punto la paura delle conseguenze condizioni le sue azioni presenti. Mentre Emir porta avanti il suo ricatto estremo mettendo una pistola in mano a Nihan e tenendo in ostaggio la bambina, Zeynep affronta da sola il crollo del suo futuro. La promessa di Fehime rappresenta l&#x27;unico punto fermo per la giovane donna, che teme continuamente di vedere distrutta la considerazione degli altri. La figura materna rimane dunque un riparo fondamentale mentre attorno a loro ogni equilibrio familiare precipita irrimediabilmente verso la rovina a causa dei piani orchestrati senza scrupoli.</p>
@@ -385,19 +435,41 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=d8pXN6Gghdg" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/d8pXN6Gghdg/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>NIHAN RIESCE A FUGGIRE DA EMIR E DA&#x27; ALLA LUCE DENIZ, FIGLIA DI KEMAL! Anticipazioni Endless Lo</span></a></li><li><a href="https://www.youtube.com/watch?v=gymyaag4Mco" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/gymyaag4Mco/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>KEMAL TENDE TRAPPOLA A NIHAN: &quot;DEVI RUBARE UN CAPELLO A DENIZ!&quot; Anticipazioni Endless Love</span></a></li><li><a href="https://www.youtube.com/watch?v=sySBzzYRrbo" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/sySBzzYRrbo/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>FINALMENTE KEMAL CHIEDE LA MANO DI NIHAN: &quot;VUOI SPOSARMI?&quot; - Anticipazioni Endless Love 2^ Stag</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Kemal è davvero morto?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=QXpcDyhWhGw">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di Endless Love</h2><div class="griglia"><article class="scheda">
+  <a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/"><div class="foto"><img src="https://i.ytimg.com/vi/DSiProJJ1ls/hqdefault.jpg" alt="Endless Love" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/"><div class="foto"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/"><div class="foto"><img src="https://i.ytimg.com/vi/uu2oAzTOWQU/hqdefault.jpg" alt="Endless Love" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></h3>
+    <div class="quando">25 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=Endless Love, Emir rapisce Deniz e mette una pistola in mano a Nihan: «Se vuoi uscire viva e rivedere tua figlia, devi sparare a Kemal» — https://soapoperaitalia.com/endless-love/endless-love-la-trama-completa-perche-nihan-sposa-emir-e-come-finisce/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://soapoperaitalia.com/endless-love/endless-love-la-trama-completa-perche-nihan-sposa-emir-e-come-finisce/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://soapoperaitalia.com/endless-love/endless-love-la-trama-completa-perche-nihan-sposa-emir-e-come-finisce/&text=Endless Love, Emir rapisce Deniz e mette una pistola in mano a Nihan: «Se vuoi uscire viva e rivedere tua figlia, devi sparare a Kemal»" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">Endless Love anticipazioni: Emir rapisce Deniz e costringe Nihan a sparare a Kemal</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=QXpcDyhWhGw">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di Endless Love</h3><ol class="numerata"><li><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></li><li><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></li><li><a href="/endless-love/endless-love-chi-e-galip-kozcuoglu-le-due-volte-in-cui-nihan-e-stata-venduta/">Endless Love, chi è Galip Kozcuoğlu: le due volte in cui Nihan è stata venduta</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-zeynep-soydere-perche-emir-lha-scelta-e-cosa-ha-distrutto/">Endless Love, chi è davvero Zeynep Soydere: perché Emir l&#x27;ha scelta e cosa ha distrutto</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>Endless Love anticipazioni: Emir rapisce Deniz e costringe Nihan a sparare a Kemal</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su Endless Love</h3><ul><li><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></li><li><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></li><li><a href="/endless-love/endless-love-chi-e-galip-kozcuoglu-le-due-volte-in-cui-nihan-e-stata-venduta/">Endless Love, chi è Galip Kozcuoğlu: le due volte in cui Nihan è stata venduta</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-zeynep-soydere-perche-emir-lha-scelta-e-cosa-ha-distrutto/">Endless Love, chi è davvero Zeynep Soydere: perché Emir l&#x27;ha scelta e cosa ha distrutto</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

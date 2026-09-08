@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/endless-love/">Endless Love</a> › Endless Love, la scoperta spaventosa di Kemal: Karen trovata morta — e dietro il grilletto c&#x27;è Tarık</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/endless-love/">Endless Love</a>
   <h1>Endless Love, la scoperta spaventosa di Kemal: Karen trovata morta — e dietro il grilletto c&#x27;è Tarık</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Kemal è a un passo dal dimostrare che l&#x27;omicidio attribuito a Ozan era una messinscena di Emir: la testimone chiave è Karen. Ma quando torna a prenderla con Nihan, la trova senza vita con una pistola in mano — e il vero assassino è la persona che Kemal non avrebbe mai sospettato.</p><ol><li><a href="#c1">La testimone chiave della messinscena</a></li><li><a href="#c2">La telefonata a Nihan e la scena del delitto</a></li><li><a href="#c3">Tarık, la pedina di Emir</a></li><li><a href="#c4">Kemal davanti al dilemma più terribile</a></li><li><a href="#c5">Come Emir attrae Tarık nella sua trappola</a></li><li><a href="#c6">Perché il salvataggio di Karen non salva Ozan</a></li><li><a href="#c7">Cosa spinge Kemal al dilemma sul fratello Tarık</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>Endless Love</strong> — Serie conclusa in Italia · le puntate su Mediaset Infinity</span></div>
   
-  <p class="occhiello">Kemal è a un passo dal dimostrare che l&#x27;omicidio attribuito a Ozan era una messinscena di Emir: la testimone chiave è Karen. Ma quando torna a prenderla con Nihan, la trova senza vita con una pistola in mano — e il vero assassino è la persona che Kemal non avrebbe mai sospettato.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: Endless Love, la scoperta spaventosa di Kemal: Karen trovata morta — e dietro il grilletto c&#x27;è Tarık" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/zH2jIZE4-SQ/maxresdefault.jpg" alt="Endless Love, la scoperta spaventosa di Kemal: Karen trovata morta — e dietro il grilletto c&#x27;è Tarık" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/zH2jIZE4-SQ/hqdefault.jpg 480w, https://i.ytimg.com/vi/zH2jIZE4-SQ/sddefault.jpg 640w, https://i.ytimg.com/vi/zH2jIZE4-SQ/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/zH2jIZE4-SQ/hqdefault.jpg&quot;, &quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,47 +409,69 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>Un suicidio apparente, una pistola regalata con malizia e un fratello caduto nella ragnatela di Emir: la corsa di Kemal verso la verità si schianta contro la scoperta più dolorosa della sua vita.</strong></p>
-  <h2>La testimone chiave della messinscena</h2>
+  <h2 id="c1">La testimone chiave della messinscena</h2>
 <p>Kemal è vicino come non mai a far crollare il castello di Emir: vuole strappare una confessione a Karen, la donna complice nella messinscena dell&#x27;omicidio che Ozan è stato accusato di aver commesso. È lei la prova vivente che quella notte fu tutta una costruzione. Ma Emir gioca d&#x27;anticipo: fa rapire Karen per soffocare la verità, e la vita della donna resta appesa a un filo — finché Kemal, con un&#x27;azione coraggiosa e temeraria, non riesce a strapparla dalle grinfie dell&#x27;oscurità e a portarla in salvo.</p>
 <p>Karen però pone una condizione per parlare: Kemal dovrà salvare anche suo marito, prigioniero e in pericolo. Detto, fatto: superando ostacoli mortali, all&#x27;alba Kemal porta in salvo anche lui, assicurandosi la chiave per liberare entrambi dal giogo di Emir — e, con essa, la possibilità di riscrivere la verità sulla tragica notte di Ozan.</p>
-<h2>La telefonata a Nihan e la scena del delitto</h2>
+<h2 id="c2">La telefonata a Nihan e la scena del delitto</h2>
 <p>Con il cuore in gola, Kemal chiama Nihan: ha un segreto sconvolgente da rivelarle, la verità sulla notte in cui tutto è cominciato. Va a prenderla e insieme si dirigono dalla testimone. Ma nella casa di Karen li aspetta una scena che toglie il respiro: la donna è distesa senza vita, una pistola stretta in mano, apparente epilogo di un&#x27;esistenza travagliata da inganni e rimorsi. Il silenzio è assordante: con lei muore anche la speranza di dimostrare l&#x27;innocenza di Ozan.</p>
 <p>Ma dietro la facciata del suicidio si nasconde una realtà ben più sinistra: non è stato il rimorso a spezzare quella vita. Un assassino si aggira nell&#x27;ombra — e per Kemal la verità che emerge è agghiacciante, perché porta il nome di suo fratello.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Tarık, la pedina di Emir</h2>
+<h2 id="c3">Tarık, la pedina di Emir</h2>
 <p>Per capire come si è arrivati a tanto bisogna tornare alla trappola: Emir, il burattinaio, ha reclutato Tarık sedotto con la promessa dell&#x27;indipendenza economica e di un futuro lontano dalla soffocante presenza paterna. Accecato dal bagliore dell&#x27;oro, Tarık ha ignorato i moniti del fratello e si è avvicinato passo dopo passo al precipizio. Il gesto più malvagio di Emir è stato anche il più simbolico: regalargli una pistola — un talismano di potere che portava con sé una condanna.</p>
 <p>Il conto arriva presto: pressato da Tufan, il braccio destro di Emir, Tarık esegue l&#x27;ordine imperdonabile. «Ho ucciso una donna», mormora tra i singhiozzi, con l&#x27;anima lacerata — inconsapevole che con quel gesto non ha soltanto spezzato una vita, ma anche infranto le speranze di felicità di Kemal e Nihan.</p>
-<h2>Kemal davanti al dilemma più terribile</h2>
+<h2 id="c4">Kemal davanti al dilemma più terribile</h2>
 <p>Ora Kemal deve fare i conti con un doppio abisso: la verità sull&#x27;omicidio, e il fatto che a commetterlo sia stato il sangue del suo sangue. Denunciare il fratello o proteggerlo? In un universo dove inganni e tradimenti si celano a ogni svolta, lui e Nihan dovranno combattere con tutte le loro forze per trovare la luce della giustizia — sapendo che ogni passo verso la verità, adesso, passa sopra il cuore della famiglia Soydere.</p>
-<h2>Come Emir attrae Tarık nella sua trappola</h2>
+<h2 id="c5">Come Emir attrae Tarık nella sua trappola</h2>
 <p>Il percorso che conduce alla disgrazia ha origine dal desiderio di indipendenza economica coltivato da Tarık. Il giovane Soydere cerca disperatamente un futuro diverso, lontano dalla soffocante autorità del padre. Emir individua subito la fragilità del ragazzo e sfrutta il bagliore dell&#x27;oro per attirarlo nella propria rete. Nonostante i ripetuti moniti del fratello Kemal, Tarık decide di ignorare ogni avvertimento e di avvicinarsi sempre di più al baratro. In questo calcolato piano di manipolazione, il potente imprenditore regala al giovane una pistola, trasformando un apparente talismano di potere in uno strumento di condanna definitivo per la sua vita.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>L&#x27;influenza di Emir si concretizza ulteriormente attraverso la figura di Tufan, il suo fidato braccio destro. Presso il confine della trappola, Tufan esercita una pressione insostenibile su Tarık, spingendolo a compiere un gesto imperdonabile. Senza rendersi conto delle reali conseguenze, il fratello di Kemal esegue l&#x27;ordine supremo e spezza la vita di una donna innocente. Il pianto disperato e le parole letali pronunciate tra i singhiozzi rivelano una profonda ferita nell&#x27;anima di chi è diventato una pedina. Quel colpo sparato nell&#x27;ombra non distrugge solo Karen, ma fa crollare ogni possibilità di riscatto economico e personale per l&#x27;esecutore.</p>
 <p>L&#x27;inganno ordito da Emir mostra tutta la sua spietatezza quando la pistola consegnata come simbolo di rivalsa diventa la prova regina del delitto. Tarık si ritrova legato a doppio filo al suo aguzzino, incapace di liberarsi dalla ragnatela che lo avvolge. La ricerca di emancipazione dalla famiglia Soydere si trasforma così in una vera e propria trappola senza via d&#x27;uscita. Oltre al dramma personale del ragazzo, questa mossa crudele finisce per colpire il punto più vulnerabile di Kemal. Distruggendo la vita della testimone, Emir riesce contemporaneamente a proteggere i suoi segreti e a gettare nell&#x27;oscurità il destino dell&#x27;intera famiglia avversaria.</p>
-<h2>Perché il salvataggio di Karen non salva Ozan</h2>
+<h2 id="c6">Perché il salvataggio di Karen non salva Ozan</h2>
 <p>Dimostrare l&#x27;estraneità di Ozan rispetto al crimine commesso nella tragica notte richiedeva una testimonianza decisiva. Karen rappresentava l&#x27;unico anello di congiunzione in grado di smascherare la complessa messinscena creata da Emir. Per impedire che la verità venisse a galla, il rivale di Kemal ordina il rapimento della donna, tenendo la sua esistenza in perenne pericolo. Kemal reagisce con coraggio smisurato e riesce a strappare la testimone dalle mani dei suoi sequestratori. Tuttavia, per ottenere una piena confessione, il protagonista deve accettare un patto difficile: rintracciare e trarre in salvo anche il marito della donna, anch&#x27;egli prigioniero.</p>
 <p>L&#x27;operazione condotta all&#x27;alba permette a Kemal di superare ostacoli mortali e liberare il marito di Karen, ponendo le basi per la sconfitta di Emir. Con il successo della missione, Kemal organizza un incontro e chiama subito Nihan per condividerle la svolta tanto attesa. Insieme si dirigono verso l&#x27;abitazione della testimone, certi di poter finalmente scagionare Ozan da ogni accusa. La speranza si infrange però contro una scena agghiacciante: Karen giace priva di vita con un&#x27;arma da fuoco nella mano. La messinscena del suicidio serve a nascondere un assassinio vero, cancellando per sempre la voce capace di riscrivere la storia.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>Il finto suicidio architettato nella casa della donna spezza definitivamente le illusioni di Nihan e Kemal. La morte della complice fondamentale impedisce di smantellare la fitta rete di inganni creata intorno alla figura di Ozan. Con la scomparsa di Karen muore anche la possibilità immediata di dimostrare che quella tragica notte fu solo una finzione mirata a incriminare il ragazzo. Il silenzio calato sulla scena del delitto diventa un ostacolo insormontabile per la giustizia. Invece di festeggiare la liberazione dei due ostaggi, Kemal si ritrova a gestire una realtà ancora più sinistra e dolorosa di quanto potesse immaginare.</p>
-<h2>Cosa spinge Kemal al dilemma sul fratello Tarık</h2>
+<h2 id="c7">Cosa spinge Kemal al dilemma sul fratello Tarık</h2>
 <p>La scoperta della verità dietro la morte della testimone pone Kemal di fronte alla prova più devastante della propria esistenza. Il vero colpevole del delitto non è un nemico qualunque, ma il suo stesso sangue. Quando emerge la responsabilità di Tarık nell&#x27;omicidio di Karen, il protagonista si trova sospeso tra il dovere morale verso la giustizia e il legame profondo con il proprio nucleo familiare. Denunciare l&#x27;assassino significa condannare il fratello, ma proteggerlo equivale a coprire una spaventosa menzogna. Questo conflitto interiore minaccia di lacerare irrimediabilmente la casa dei Soydere, trascinando tutti i suoi componenti in un vortice di dolorose conseguenze.</p>
 <p>Mentre la ricerca di riscatto per Ozan rimane paralizzata dalla perdita della testimone chiave, la relazione tra Kemal e Nihan viene messa a dura prova. I due giovani devono continuare a combattere uniti in un ambiente saturo di tradimenti e macchinazioni, ma l&#x27;ombra del coinvolgimento di Tarık complica ogni mossa futura. Sulla strada verso la verità si frappone ora un ostacolo personale drammatico. Kemal comprende che ogni tentativo di fare luce sugli inganni di Emir costringerà la sua famiglia a pagare un prezzo altissimo. Il cammino verso la giustizia impone una scelta lacerante che segnerà in modo indelebile il destino di tutti.</p>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=lXX1rbgOjeQ" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/lXX1rbgOjeQ/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>NIHAN FINALMENTE CONFESSA: &quot;KEMAL, OZAN E&#x27; UN ASSASSINO&quot;! Anticipazioni Endless Love 9-10 Maggi</span></a></li><li><a href="https://www.youtube.com/watch?v=2x6eVZ8HpgQ" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/2x6eVZ8HpgQ/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TARIK SCEGLIE EMIR E MINACCIA KEMAL: &quot;RIPORTO NIHAN A CASA DA EMIR&quot; - Anticipazioni Endless Lov</span></a></li><li><a href="https://www.youtube.com/watch?v=7vHcciIRqOg" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/7vHcciIRqOg/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>KEMAL NOTIZIA SHOCK! TARIK: &quot;HO UCCISO IO OZAN!&quot; - Anticipazioni Endless Love 2^ Stagione</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Kemal dovrebbe consegnare Tarık alla giustizia o proteggere la famiglia? E fino a dove arriverà Emir per coprire le proprie tracce?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=zH2jIZE4-SQ">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di Endless Love</h2><div class="griglia"><article class="scheda">
+  <a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/"><div class="foto"><img src="https://i.ytimg.com/vi/DSiProJJ1ls/hqdefault.jpg" alt="Endless Love" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/"><div class="foto"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/"><div class="foto"><img src="https://i.ytimg.com/vi/uu2oAzTOWQU/hqdefault.jpg" alt="Endless Love" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></h3>
+    <div class="quando">25 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=Endless Love, la scoperta spaventosa di Kemal: Karen trovata morta — e dietro il grilletto c&#x27;è Tarık — https://soapoperaitalia.com/endless-love/endless-love-la-trama-completa-perche-nihan-sposa-emir-e-come-finisce/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://soapoperaitalia.com/endless-love/endless-love-la-trama-completa-perche-nihan-sposa-emir-e-come-finisce/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://soapoperaitalia.com/endless-love/endless-love-la-trama-completa-perche-nihan-sposa-emir-e-come-finisce/&text=Endless Love, la scoperta spaventosa di Kemal: Karen trovata morta — e dietro il grilletto c&#x27;è Tarık" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">SPAVENTOSA SCOPERTA DI KEMAL, KAREN TROVATA MORTA E TARIK... Endless Love</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=zH2jIZE4-SQ">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di Endless Love</h3><ol class="numerata"><li><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></li><li><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></li><li><a href="/endless-love/endless-love-chi-e-galip-kozcuoglu-le-due-volte-in-cui-nihan-e-stata-venduta/">Endless Love, chi è Galip Kozcuoğlu: le due volte in cui Nihan è stata venduta</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-zeynep-soydere-perche-emir-lha-scelta-e-cosa-ha-distrutto/">Endless Love, chi è davvero Zeynep Soydere: perché Emir l&#x27;ha scelta e cosa ha distrutto</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>SPAVENTOSA SCOPERTA DI KEMAL, KAREN TROVATA MORTA E TARIK... Endless Love</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su Endless Love</h3><ul><li><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></li><li><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></li><li><a href="/endless-love/endless-love-chi-e-galip-kozcuoglu-le-due-volte-in-cui-nihan-e-stata-venduta/">Endless Love, chi è Galip Kozcuoğlu: le due volte in cui Nihan è stata venduta</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-zeynep-soydere-perche-emir-lha-scelta-e-cosa-ha-distrutto/">Endless Love, chi è davvero Zeynep Soydere: perché Emir l&#x27;ha scelta e cosa ha distrutto</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

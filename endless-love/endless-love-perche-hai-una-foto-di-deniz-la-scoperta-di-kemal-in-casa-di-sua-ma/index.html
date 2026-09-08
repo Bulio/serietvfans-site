@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/endless-love/">Endless Love</a> › Endless Love, «Perché hai una foto di Deniz?»: la scoperta di Kemal in casa di sua madre e la verità sulla paternità</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/endless-love/">Endless Love</a>
   <h1>Endless Love, «Perché hai una foto di Deniz?»: la scoperta di Kemal in casa di sua madre e la verità sulla paternità</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>6 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Una fotografia custodita gelosamente da Fehime, un gruppo sanguigno falsificato, una malattia indotta con delle gocce e il diario segreto di Nihan: ricostruiamo l&#x27;intera pista che porta Kemal alla verità — Deniz è sua figlia, e Emir ha corrotto mezzo ospedale per nasconderlo.</p><ol><li><a href="#c1">La foto nascosta da Fehime</a></li><li><a href="#c2">La trasfusione e il gruppo sanguigno &quot;sbagliato&quot;</a></li><li><a href="#c3">Il falso medico e la carta d&#x27;identità</a></li><li><a href="#c4">Il diario di Nihan: la verità che Fehime conosceva</a></li><li><a href="#c5">Come Zeynep svela il segreto di Fehime</a></li><li><a href="#c6">Perché Emir ha avvelenato la piccola Deniz</a></li><li><a href="#c7">Cosa spinge Kemal a cercare la verita</a></li><li><a href="#c8">Quando Kemal scopre il diario di Nihan</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>Endless Love</strong> — Serie conclusa in Italia · le puntate su Mediaset Infinity</span></div>
   
-  <p class="occhiello">Una fotografia custodita gelosamente da Fehime, un gruppo sanguigno falsificato, una malattia indotta con delle gocce e il diario segreto di Nihan: ricostruiamo l&#x27;intera pista che porta Kemal alla verità — Deniz è sua figlia, e Emir ha corrotto mezzo ospedale per nasconderlo.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: Endless Love, «Perché hai una foto di Deniz?»: la scoperta di Kemal in casa di sua madre e la verità sulla paternità" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/iYuBiPdu3Wc/maxresdefault.jpg" alt="Endless Love, «Perché hai una foto di Deniz?»: la scoperta di Kemal in casa di sua madre e la verità sulla paternità" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/iYuBiPdu3Wc/hqdefault.jpg 480w, https://i.ytimg.com/vi/iYuBiPdu3Wc/sddefault.jpg 640w, https://i.ytimg.com/vi/iYuBiPdu3Wc/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/iYuBiPdu3Wc/hqdefault.jpg&quot;, &quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,45 +409,67 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>«Deniz è mia figlia, lo sento nel mio cuore»: contro ogni prova, contro ogni esame, Kemal non molla — e ha ragione lui.</strong></p>
-  <h2>La foto nascosta da Fehime</h2>
+  <h2 id="c1">La foto nascosta da Fehime</h2>
 <p>È Zeynep ad accendere la miccia: rivela a Kemal che la madre, Fehime, custodisce da tempo una fotografia della piccola Deniz. Un dettaglio apparentemente insignificante che diventa il fulcro di un&#x27;indagine personale: perché mai sua madre dovrebbe conservare la foto della figlia di Nihan ed &quot;Emir&quot;? Leyla prova a proteggerlo dalle illusioni — «una fotografia non è una prova di paternità» — ma Kemal è irremovibile: «Deniz è mia figlia, lo percepisco con tutto il cuore. Sono pronto a fare cento test del DNA».</p>
-<h2>La trasfusione e il gruppo sanguigno &quot;sbagliato&quot;</h2>
+<h2 id="c2">La trasfusione e il gruppo sanguigno &quot;sbagliato&quot;</h2>
 <p>Il sospetto covava da tempo, ed era esploso durante l&#x27;emergenza medica di Deniz: ricoverata d&#x27;urgenza per un&#x27;anemia acuta, la bambina aveva bisogno di una trasfusione. Con Nihan impossibilitata a donare, Kemal si offrì volontario — sperando in cuor suo che la compatibilità confermasse il legame. Il risultato lo devastò: gruppi sanguigni differenti. Quello che Kemal non sapeva è che dietro le quinte c&#x27;era la solita regia: Emir aveva corrotto il medico per alterare il gruppo sanguigno di Deniz nella cartella clinica — e, peggio ancora, la stessa malattia era stata orchestrata da lui, con gocce somministrate alla bambina per indurle la febbre. Un piano per spezzare ogni filo tra Kemal e la famiglia di Nihan.</p>
-<h2>Il falso medico e la carta d&#x27;identità</h2>
+<h2 id="c3">Il falso medico e la carta d&#x27;identità</h2>
 <p>L&#x27;indagine di Kemal scava e trova la prima crepa: l&#x27;uomo che ha &quot;curato&quot; Deniz non è un medico qualificato ma uno dei soci dell&#x27;ospedale — la conferma che Emir può comprare chiunque. Con l&#x27;aiuto di Leyla ottiene perfino la carta d&#x27;identità della bambina, ma il gruppo sanguigno riportato lo delude ancora. È Zeynep a tenere accesa la speranza: la foto tra le cose della madre non è un caso. E infatti non lo è.</p>
-<h2>Il diario di Nihan: la verità che Fehime conosceva</h2>
+<h2 id="c4">Il diario di Nihan: la verità che Fehime conosceva</h2>
 <p>La risposta al mistero è dolce e clamorosa insieme: Fehime aveva trovato il diario di Nihan — il quaderno in cui la donna annotava ogni dettaglio della vita della figlia, recapitato all&#x27;ufficio di Kemal per svelargli la verità in sua assenza. Sfogliandolo per curiosità, Fehime ha scoperto che Deniz è figlia di Kemal: e prima di restituire il diario, ha trattenuto una foto della bambina — un ricordo di sua nipote. La nonna sapeva prima del padre. Ora che tutti i tasselli sono sul tavolo, per Kemal comincia l&#x27;ultima battaglia: dimostrare la paternità davanti al mondo e riprendersi la sua famiglia — con Emir pronto, come sempre, a vendere l&#x27;anima pur di impedirlo.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Come Zeynep svela il segreto di Fehime</h2>
+<h2 id="c5">Come Zeynep svela il segreto di Fehime</h2>
 <p>Zeynep gioca un ruolo decisivo in questa intricata vicenda familiare quando scopre che la madre conserva con grande cura una fotografia di Deniz. Rendendosi conto dell&#x27;importanza di quel gesto, decide immediatamente di confidarsi con Kemal, accendendo in lui una speranza che non si era mai del tutto spenta. La presenza di quell&#x27;immagine tra le cose personali di Fehime non appariva affatto logica, considerando che la bambina veniva ufficialmente ritenuta la figlia di Nihan e del rivale Emir. Questo indizio spinge Kemal a riconsiderare ogni certezza e a mettere in discussione le versioni ufficiali circolate fino a quel momento.</p>
 <p>D&#x27;altro canto Fehime si trovava in una posizione estremamente delicata dopo essere entrata casualmente in possesso del diario segreto scritto da Nihan. Leggendo quelle pagine piene di confessioni intime destinate a Kemal, la donna aveva finalmente compreso la reale paternità della piccola, scoprendo così di essere la nonna paterna di Deniz. Prima di permettere che il quaderno venisse recapitato all&#x27;ufficio del figlio, Fehime ha voluto trattenere per sé quella fotografia, mossa dal desiderio profondo di custodire un ricordo tangibile di sua nipote. Un gesto dettato dall&#x27;affetto materno che ha finito per spalancare le porte alla verità.</p>
-<h2>Perché Emir ha avvelenato la piccola Deniz</h2>
+<h2 id="c6">Perché Emir ha avvelenato la piccola Deniz</h2>
 <p>Il piano ordito da Emir per mantenere il controllo sulla vita di Nihan e allontanare definitivamente Kemal si è spinto fino a livelli estremi di crudeltà. L&#x27;uomo non ha esitato a manipolare la salute della bambina, somministrandole segretamente delle gocce capaci di provocarle una forte febbre e di indurle un&#x27;anemia acuta. Questo malessere improvviso ha reso necessario il ricovero d&#x27;urgenza della piccola in ospedale, creando una situazione di estrema gravità. L&#x27;obiettivo primario di Emir era costringere la famiglia ad affrontare una crisi medica, preparando il terreno per la successiva falsificazione dei documenti sanitari e delle analisi del sangue.</p>
 <p>Sfruttando il proprio potere economico e la mancanza di scrupoli, Emir è riuscito a corrompere un socio della struttura ospedaliera, il quale si è spacciato per il medico curante della bambina. Attraverso questa complicità, l&#x27;antagonista ha fatto alterare i dati relativi al gruppo sanguigno presenti nella cartella clinica ufficiale e perfino sulla carta d&#x27;identità di Deniz. Quando Kemal si è offerto volontario per la trasfusione data l&#x27;impossibilità di Nihan di donare, il risultato sballato lo ha devastato, facendogli credere che non vi fosse alcuna compatibilità biologica. Un inganno perfetto orchestrato nei minimi dettagli per spezzare ogni legame di paternità.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Cosa spinge Kemal a cercare la verita</h2>
+<h2 id="c7">Cosa spinge Kemal a cercare la verita</h2>
 <p>Nonostante i risultati clinici negativi e le delusioni accumulate, Kemal continua a fidarsi ciecamente delle proprie sensazioni ed è convinto nell&#x27;intimo che Deniz sia sua figlia. A nulla servono i tentativi di Leyla di ridimensionare il suo entusiasmo e di proteggerlo da possibili delusioni dolorose. La donna cerca di fargli capire che il semplice possesso di una fotografia da parte della madre non costituisce una prova legale di paternità. Tuttavia Kemal si dimostra del tutto irremovibile, dichiarandosi pronto ad affrontare qualsiasi ostacolo e a sottoporsi anche a cento test del DNA pur di fare chiarezza.</p>
 <p>La determinazione del protagonista viene alimentata dalla scoperta di diverse anomalie nelle procedure mediche seguite durante il ricovero della piccola. Grazie al supporto fondamentale di Leyla, Kemal riesce a recuperare la carta d&#x27;identità della bambina, anche se il gruppo sanguigno riportato sul documento sembra smentire ancora una volta la sua ipotesi. Ciononostante, la certezza che l&#x27;uomo che ha curato Deniz non fosse un medico qualificato ma un complice prezzolato spinge Kemal a non arrendersi. Il suo istinto paterno resta incrollabile di fronte alle manipolazioni e lo guida nell&#x27;indagine.</p>
-<h2>Quando Kemal scopre il diario di Nihan</h2>
+<h2 id="c8">Quando Kemal scopre il diario di Nihan</h2>
 <p>La svolta definitiva nell&#x27;intricata vicenda arrives con il diario segreto in cui Nihan annotava scrupolosamente ogni singolo momento della crescita della bambina. Questo prezioso quaderno era stato originariamente spedito presso l&#x27;ufficio di Kemal affinché l&#x27;uomo potesse finalmente conoscere tutta la verità in assenza della donna. Tuttavia il plico era stato intercettato per caso da Fehime, la quale, spinta da una forte curiosità, lo aveva sfogliato rivelando a se stessa il grande segreto. La lettura di quelle pagine intense ha cambiato per sempre la prospettiva della madre di Kemal, confermandole che Deniz fosse a tutti gli effetti sua nipote.</p>
 <p>Una volta ricomposti tutti i tasselli di questo complesso mosaico, per Kemal si apre una fase del tutto nuova ed estremamente combattiva. Ora che sa che Fehime conosceva la verità prima di lui e che il diario contiene le prove trascurate, l&#x27;uomo è pronto ad affrontare la battaglia finale. Il suo obiettivo prioritario diventa dimostrare la propria paternità dinanzi a tutti e riprendersi la famiglia che gli è stata ingiustamente sottratta. Sul suo cammino si erge ancora una volta Emir, determinato a vendere la propria anima pur di impedire che la verità trionfi.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=d8pXN6Gghdg" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/d8pXN6Gghdg/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>NIHAN RIESCE A FUGGIRE DA EMIR E DA&#x27; ALLA LUCE DENIZ, FIGLIA DI KEMAL! Anticipazioni Endless Lo</span></a></li><li><a href="https://www.youtube.com/watch?v=t6R9HNxX2aM" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/t6R9HNxX2aM/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>KEMAL INCASTRA EMIR, FA&#x27;SCOPRIRE ALLA STAMPA CHE LA MADRE E&#x27; VIVA - Anticipazioni Endless Love</span></a></li><li><a href="https://www.youtube.com/watch?v=zJ9Xlqag31Q" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/zJ9Xlqag31Q/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>KEMAL A SUA MADRE: &quot;NON POSSO SPOSARE ASU, HO NIHAN NEL CUORE!&quot;-Anticipazioni Endless Love 1 Gi</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Il cuore di un padre che &quot;sente&quot; la verità contro le prove falsificate: vi ha commosso la tenacia di Kemal? E la scena della nonna col diario?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=iYuBiPdu3Wc">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di Endless Love</h2><div class="griglia"><article class="scheda">
+  <a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/"><div class="foto"><img src="https://i.ytimg.com/vi/DSiProJJ1ls/hqdefault.jpg" alt="Endless Love" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/"><div class="foto"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/"><div class="foto"><img src="https://i.ytimg.com/vi/uu2oAzTOWQU/hqdefault.jpg" alt="Endless Love" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></h3>
+    <div class="quando">25 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=Endless Love, «Perché hai una foto di Deniz?»: la scoperta di Kemal in casa di sua madre e la verità sulla paternità — https://soapoperaitalia.com/endless-love/endless-love-la-trama-completa-perche-nihan-sposa-emir-e-come-finisce/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://soapoperaitalia.com/endless-love/endless-love-la-trama-completa-perche-nihan-sposa-emir-e-come-finisce/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://soapoperaitalia.com/endless-love/endless-love-la-trama-completa-perche-nihan-sposa-emir-e-come-finisce/&text=Endless Love, «Perché hai una foto di Deniz?»: la scoperta di Kemal in casa di sua madre e la verità sulla paternità" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">KEMAL SCIOCCATO DA SUA MADRE: &quot;PERCHE&#x27; HAI UNA FOTO DI DENIZ?&quot; - Anticipazioni</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=iYuBiPdu3Wc">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di Endless Love</h3><ol class="numerata"><li><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></li><li><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></li><li><a href="/endless-love/endless-love-chi-e-galip-kozcuoglu-le-due-volte-in-cui-nihan-e-stata-venduta/">Endless Love, chi è Galip Kozcuoğlu: le due volte in cui Nihan è stata venduta</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-zeynep-soydere-perche-emir-lha-scelta-e-cosa-ha-distrutto/">Endless Love, chi è davvero Zeynep Soydere: perché Emir l&#x27;ha scelta e cosa ha distrutto</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>KEMAL SCIOCCATO DA SUA MADRE: &quot;PERCHE&#x27; HAI UNA FOTO DI DENIZ?&quot; - Anticipazioni</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su Endless Love</h3><ul><li><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></li><li><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></li><li><a href="/endless-love/endless-love-chi-e-galip-kozcuoglu-le-due-volte-in-cui-nihan-e-stata-venduta/">Endless Love, chi è Galip Kozcuoğlu: le due volte in cui Nihan è stata venduta</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-zeynep-soydere-perche-emir-lha-scelta-e-cosa-ha-distrutto/">Endless Love, chi è davvero Zeynep Soydere: perché Emir l&#x27;ha scelta e cosa ha distrutto</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

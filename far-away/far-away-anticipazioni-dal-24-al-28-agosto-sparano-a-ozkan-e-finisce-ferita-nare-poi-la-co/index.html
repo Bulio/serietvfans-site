@@ -4,15 +4,15 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Far Away, anticipazioni dal 24 al 28 agosto | Serie TV Fans</title>
-<meta name="description" content="Şahin punta la pistola contro Özkan, ma a finire ferita a un fianco è Nare — e quella ferita porta dritta a una sala operatoria. Anticipazioni Far Away…">
+<meta name="description" content="Far Away: Şahin punta la pistola contro Özkan ma a restare ferita è Nare. Ecco perché quel colpo la porta in sala operatoria e chi rischia di fare il…">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://serietvfans.com/far-away/far-away-anticipazioni-dal-24-al-28-agosto-sparano-a-ozkan-e-finisce-ferita-nare-poi-la-co/">
 <meta property="og:title" content="Far Away, anticipazioni dal 24 al 28 agosto | Serie TV Fans">
-<meta property="og:description" content="Şahin punta la pistola contro Özkan, ma a finire ferita a un fianco è Nare — e quella ferita porta dritta a una sala operatoria. Anticipazioni Far Away…">
+<meta property="og:description" content="Far Away: Şahin punta la pistola contro Özkan ma a restare ferita è Nare. Ecco perché quel colpo la porta in sala operatoria e chi rischia di fare il…">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Serie TV Fans">
 <meta property="og:url" content="https://serietvfans.com/far-away/far-away-anticipazioni-dal-24-al-28-agosto-sparano-a-ozkan-e-finisce-ferita-nare-poi-la-co/">
-<meta property="og:image" content="https://i.ytimg.com/vi/wKTze5zNfvA/maxresdefault.jpg">
+<meta property="og:image" content="https://serietvfans.com/img/far-away-anticipazioni-dal-24-al-28-agosto-sparano-a-ozkan-e-finisce-ferita-nare-poi-la-co.jpg">
 <meta property="og:locale" content="it_IT">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#7b1e2b">
@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -318,12 +367,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7778653397776213" crossorigin="anonymous"></script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "96259d7e67ce47fba4573364859712a6"}'></script>
 <script>(function(){var f=0;function go(){if(f)return;f=1;(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","y3rpoig6jk");}["pointerdown","keydown","touchstart","scroll"].forEach(function(v){addEventListener(v,go,{once:1,passive:1})});setTimeout(go,2500)})();</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Far Away, anticipazioni dal 24 al 28 agosto: sparano a Özkan e finisce ferita Nare, poi la corsa al trapianto", "datePublished": "2026-08-19", "dateModified": "2026-09-03", "description": "Şahin punta la pistola contro Özkan, ma a finire ferita a un fianco è Nare — e quella ferita porta dritta a una sala operatoria. Anticipazioni Far Away dal 24 al 28 agosto su Canale 5: gli uomini di Cihan ritrovano l'auto di Uğur, il medico nascosto da Mine ottiene il via libera per lasciare il Paese, e alla festa degli aquiloni Alya si trova faccia a faccia con sua madre Fikriye. Poi il malore di Fikriye all'uscita dal carcere, il trapianto di fegato che serve a Nare e il donatore compatibile che all'ultimo momento non può entrare in sala.", "inLanguage": "it-IT", "mainEntityOfPage": "https://serietvfans.com/far-away/far-away-anticipazioni-dal-24-al-28-agosto-sparano-a-ozkan-e-finisce-ferita-nare-poi-la-co/", "image": ["https://i.ytimg.com/vi/wKTze5zNfvA/maxresdefault.jpg"], "author": {"@type": "Organization", "name": "Serie TV Fans", "url": "https://serietvfans.com/chi-siamo/"}, "publisher": {"@type": "Organization", "name": "Serie TV Fans", "logo": {"@type": "ImageObject", "url": "https://serietvfans.com/favicon.svg"}}, "video": {"@type": "VideoObject", "name": "FAR AWAY DAL 24 AL 28 AGOSTO: sparano a un altro e finisce lei — \"NON ERA PER LEI\" 😱", "description": "Şahin punta la pistola contro Özkan, ma a finire ferita a un fianco è Nare — e quella ferita porta dritta a una sala operatoria. Anticipazioni Far Away dal 24 al 28 agosto su Canale 5: gli uomini di Cihan ritrovano l'auto di Uğur, il medico nascosto da Mine ottiene il via libera per lasciare il Paese, e alla festa degli aquiloni Alya si trova faccia a faccia con sua madre Fikriye. Poi il malore di Fikriye all'uscita dal carcere, il trapianto di fegato che serve a Nare e il donatore compatibile che all'ultimo momento non può entrare in sala.", "thumbnailUrl": "https://i.ytimg.com/vi/wKTze5zNfvA/maxresdefault.jpg", "uploadDate": "2026-08-19T12:00:00Z", "embedUrl": "https://www.youtube.com/embed/wKTze5zNfvA"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Far Away, anticipazioni dal 24 al 28 agosto: sparano a Özkan e finisce ferita Nare, poi la corsa al trapianto", "datePublished": "2026-08-19", "dateModified": "2026-09-08", "description": "Far Away: Şahin punta la pistola contro Özkan ma a restare ferita è Nare. Ecco perché quel colpo la porta in sala operatoria e chi rischia di fare il donatore.", "inLanguage": "it-IT", "mainEntityOfPage": "https://serietvfans.com/far-away/far-away-anticipazioni-dal-24-al-28-agosto-sparano-a-ozkan-e-finisce-ferita-nare-poi-la-co/", "image": ["https://serietvfans.com/img/far-away-anticipazioni-dal-24-al-28-agosto-sparano-a-ozkan-e-finisce-ferita-nare-poi-la-co.jpg"], "author": {"@type": "Organization", "name": "Serie TV Fans", "url": "https://serietvfans.com/chi-siamo/"}, "publisher": {"@type": "Organization", "name": "Serie TV Fans", "logo": {"@type": "ImageObject", "url": "https://serietvfans.com/favicon.svg"}}, "video": {"@type": "VideoObject", "name": "FAR AWAY DAL 24 AL 28 AGOSTO: sparano a un altro e finisce lei — \"NON ERA PER LEI\" 😱", "description": "Far Away: Şahin punta la pistola contro Özkan ma a restare ferita è Nare. Ecco perché quel colpo la porta in sala operatoria e chi rischia di fare il donatore.", "thumbnailUrl": "https://serietvfans.com/img/far-away-anticipazioni-dal-24-al-28-agosto-sparano-a-ozkan-e-finisce-ferita-nare-poi-la-co.jpg", "uploadDate": "2026-08-19T12:00:00Z", "embedUrl": "https://www.youtube.com/embed/wKTze5zNfvA"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://serietvfans.com/"}, {"@type": "ListItem", "position": 2, "name": "Far Away", "item": "https://serietvfans.com/serie/far-away/"}, {"@type": "ListItem", "position": 3, "name": "Far Away, anticipazioni dal 24 al 28 agosto: sparano a Özkan e finisce ferita Nare, poi la corsa al trapianto"}]}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,19 +385,18 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/far-away/">Far Away</a> › Far Away, anticipazioni dal 24 al 28 agosto: sparano a Özkan e finisce ferita Nare, poi la corsa al trapianto</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/far-away/">Far Away</a>
   <h1>Far Away, anticipazioni dal 24 al 28 agosto: sparano a Özkan e finisce ferita Nare, poi la corsa al trapianto</h1>
-  <div class="firma">Redazione Serie TV Fans · mercoledì 19 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-19">mercoledì 19 agosto 2026</time></span><span>aggiornato il 8 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Far Away: Şahin punta la pistola contro Özkan ma a restare ferita è Nare. Ecco perché quel colpo la porta in sala operatoria e chi rischia di fare il donatore.</p><ol><li><a href="#c1">Lo sparo che apre la settimana</a></li><li><a href="#c2">Gli uomini di Cihan trovano l&#x27;auto</a></li><li><a href="#c3">La festa degli aquiloni</a></li><li><a href="#c4">Alya davanti a Fikriye</a></li><li><a href="#c5">La vostra teoria: VITTIMA o MANIPOLATRICE</a></li><li><a href="#c6">Şahin punta l&#x27;arma</a></li><li><a href="#c7">Il trapianto che serve subito</a></li><li><a href="#c8">Il donatore ha la febbre</a></li><li><a href="#c9">Il cambio di orario dal 24 agosto</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>Far Away</strong> — Canale 5 · in streaming su Mediaset Infinity</span></div>
-  
-  <p class="occhiello">Şahin punta la pistola contro Özkan, ma a finire ferita a un fianco è Nare — e quella ferita porta dritta a una sala operatoria. Anticipazioni Far Away dal 24 al 28 agosto su Canale 5: gli uomini di Cihan ritrovano l&#x27;auto di Uğur, il medico nascosto da Mine ottiene il via libera per lasciare il Paese, e alla festa degli aquiloni Alya si trova faccia a faccia con sua madre Fikriye. Poi il malore di Fikriye all&#x27;uscita dal carcere, il trapianto di fegato che serve a Nare e il donatore compatibile che all&#x27;ultimo momento non può entrare in sala.</p>
+  <figure class="copertina"><img src="/img/far-away-anticipazioni-dal-24-al-28-agosto-sparano-a-ozkan-e-finisce-ferita-nare-poi-la-co.jpg" alt="Far Away"><figcaption>Immagine d&#x27;ambiente — Far Away</figcaption></figure>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
     <button type="button" class="avvia" data-yt="wKTze5zNfvA"
       aria-label="Riproduci il video: Far Away, anticipazioni dal 24 al 28 agosto: sparano a Özkan e finisce ferita Nare, poi la corsa al trapianto" onclick="ytGo(this)">
-      <img src="https://i.ytimg.com/vi/wKTze5zNfvA/maxresdefault.jpg" alt="Far Away, anticipazioni dal 24 al 28 agosto: sparano a Özkan e finisce ferita Nare, poi la corsa al trapianto" width="1280" height="720"
-        srcset="https://i.ytimg.com/vi/wKTze5zNfvA/hqdefault.jpg 480w, https://i.ytimg.com/vi/wKTze5zNfvA/sddefault.jpg 640w, https://i.ytimg.com/vi/wKTze5zNfvA/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+      <img src="/img/far-away-anticipazioni-dal-24-al-28-agosto-sparano-a-ozkan-e-finisce-ferita-nare-poi-la-co.jpg" alt="Far Away, anticipazioni dal 24 al 28 agosto: sparano a Özkan e finisce ferita Nare, poi la corsa al trapianto" width="1280" height="720"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/wKTze5zNfvA/hqdefault.jpg&quot;, &quot;/fallback/far-away.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,9 +407,9 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>Un uomo alza una pistola contro un altro uomo. Nessuno dei due, in quella stanza, è la persona che finirà in ospedale.</strong></p>
-  <h2>Lo sparo che apre la settimana</h2>
+  <h2 id="c1">Lo sparo che apre la settimana</h2>
 <p>Partiamo però da un&#x27;altra parte, perché in queste puntate di Far Away le anticipazioni aprono con una scena silenziosa, senza urla e senza pistole. Gli uomini di Cihan stanno battendo una zona fuori città, e trovano una macchina.</p>
-<h2>Gli uomini di Cihan trovano l&#x27;auto</h2>
+<h2 id="c2">Gli uomini di Cihan trovano l&#x27;auto</h2>
 <p>Non è una macchina qualunque. È l&#x27;auto di Uğur.</p>
 <p>Chi segue questa storia da tempo sa perfettamente cosa vuol dire quel nome, e sa anche come è finita. Uğur non c&#x27;è più. Quella pagina era stata voltata, la famiglia aveva ripreso a respirare, e nessuno la nominava più ad alta voce. Poi arriva una macchina abbandonata, ferma da chissà quanto, e il passato torna a bussare esattamente quando nessuno lo aspetta.</p>
 <p>E Cihan lo capisce subito. Non manda i suoi uomini a recuperare un rottame: manda i suoi uomini a prendere delle risposte. Quella macchina è l&#x27;unica cosa rimasta che possa dire dove Uğur sia stato, con chi abbia parlato, e cosa avesse in mente nelle sue ultime ore. In una famiglia dove tutti nascondono qualcosa, un oggetto che non può mentire vale più di dieci testimoni.</p>
@@ -371,9 +419,9 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <p>Quindi la domanda con cui entriamo nella parte centrale della settimana è questa: se il passato riemerge da una macchina abbandonata e un testimone scomodo lascia il Paese nello stesso momento, chi ci guadagna davvero da questo doppio movimento?</p>
 <p>Perché il posto dove tutti questi fili si incrociano è, incredibilmente, una festa.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>La festa degli aquiloni</h2>
+<h2 id="c3">La festa degli aquiloni</h2>
 <p>La festa degli aquiloni. Cielo aperto, bambini che corrono, colori ovunque, famiglie che si mescolano. È la scena più leggera dell&#x27;intera settimana ed è anche quella dove succede tutto, perché è l&#x27;unico momento in cui persone che si evitano da mesi si ritrovano costrette a stare nello stesso prato.</p>
-<h2>Alya davanti a Fikriye</h2>
+<h2 id="c4">Alya davanti a Fikriye</h2>
 <p>Nare incontra Şahin. E qui bisogna essere onesti su cosa vuol dire quell&#x27;incontro: non è un ritrovarsi romantico, è due persone che si guardano sapendo esattamente cosa si sono fatte. Poco più in là, Kaya si trova davanti Zerrin. Anche lì, nessun abbraccio: solo la distanza che si accorcia di qualche passo e non si sa ancora in che direzione andrà.</p>
 <p>Ma il confronto vero, quello che il pubblico aspetta da settimane, è un altro.</p>
 <p>Alya si trova faccia a faccia con sua madre. Con Fikriye.</p>
@@ -383,42 +431,64 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <p>E qui arriva la parte che cambia il tono della settimana. Perché Fikriye, in quei giorni, va in prigione. Va a trovare Halis.</p>
 <p>Non vi dico cosa si dicono, perché il punto non è quello. Il punto è quello che succede quando esce. Fikriye lascia il carcere e viene colta da un malore. In strada. Davanti agli occhi di sua figlia.</p>
 <p>Fermatevi un secondo su questa immagine, perché è costruita apposta. Alya ha appena rimesso in fila tutti i motivi per stare lontana da sua madre, e la prima cosa che il destino le mette davanti è quella stessa madre che si accascia. Quando una persona che hai deciso di odiare sta male sul serio, l&#x27;odio non sparisce: si mette in fila dietro alla paura, e ti lascia lì, in mezzo alla strada, senza sapere cosa fare delle tue mani.</p>
-<h2>La vostra teoria: VITTIMA o MANIPOLATRICE</h2>
+<h2 id="c5">La vostra teoria: VITTIMA o MANIPOLATRICE</h2>
 <p>Ed è il punto su cui il pubblico si divide sempre: Fikriye, in questa storia, è una vittima o una manipolatrice? Sui filoni che la riguardano lo spacco è praticamente a metà ogni volta.</p>
 <p>Detto questo, restiamo sulla domanda che tiene in piedi il resto della settimana: se Fikriye sta davvero male, quanto tempo ha Alya per decidere che tipo di figlia vuole essere?</p>
 <p>Perché mentre lei ci pensa, in un&#x27;altra stanza qualcuno alza una pistola.</p>
-<h2>Şahin punta l&#x27;arma</h2>
+<h2 id="c6">Şahin punta l&#x27;arma</h2>
 <p>Şahin punta l&#x27;arma contro Özkan. È il momento verso cui tutta questa settimana di Far Away stava scivolando, e succede in fretta, come succedono queste cose: senza discorsi, senza avvertimenti, con due uomini troppo vicini e nessuno capace di fare un passo indietro.</p>
 <p>E Nare, che è lì, reagisce nel modo più drammatico possibile. Si mette in mezzo. Il risultato è una ferita a un fianco, e Nare che finisce a terra.</p>
 <p>Guardate bene la catena, perché è il cuore di tutto: Şahin non voleva colpire Nare. Özkan non ha nemmeno alzato le mani. Eppure l&#x27;unica persona che paga il conto è la donna che ha provato a impedire che qualcuno morisse. In questa famiglia funziona sempre così: gli uomini alzano la voce e le armi, e chi finisce all&#x27;ospedale è quasi sempre qualcun altro.</p>
-<h2>Il trapianto che serve subito</h2>
+<h2 id="c7">Il trapianto che serve subito</h2>
 <p>In ospedale la situazione precipita più in fretta di quanto chiunque si aspettasse. Non si tratta di una ferita da medicare. A Nare serve un trapianto di fegato, e serve in tempi che non lasciano margine di trattativa.</p>
-<h2>Il donatore ha la febbre</h2>
+<h2 id="c8">Il donatore ha la febbre</h2>
 <p>E qui la storia fa una cosa crudele. Un donatore compatibile lo trovano davvero. È Kadir.</p>
 <p>Provate a immaginare quel momento: a una famiglia distrutta viene detto che sì, c&#x27;è una possibilità, ed è seduta lì nel corridoio, è una persona che conoscono, si può fare. Per qualche ora quella stanza d&#x27;ospedale è il posto più sollevato di tutta la serie.</p>
 <p>Non un incidente, non un ripensamento, non un colpo di scena costruito. La febbre. E con la febbre, l&#x27;operazione non si può fare. Il trapianto salta.</p>
 <p>Che è, se ci pensate, il modo più feroce di raccontare la sfortuna: non un nemico che sabota, non un piano che si rovescia. Un termometro. Tutta la macchina della speranza si ferma per il motivo più banale che esista, e nessuno ha nessuno da incolpare.</p>
 <p>A questo punto le anticipazioni ufficiali si fermano, e restano due strade: aspettare che la febbre passi, sperando che Nare regga, oppure ricominciare a cercare un altro donatore compatibile da zero. Le anticipazioni lasciano intendere che non ci sia tutto questo tempo a disposizione, ma su come andrà a finire, per ora, nessuno si sbilancia.</p>
-<h2>Il cambio di orario dal 24 agosto</h2>
+<h2 id="c9">Il cambio di orario dal 24 agosto</h2>
 <p>Una cosa però conviene segnarla, ed è la ragione per cui questa settimana pesa più delle altre. Dal 24 agosto Far Away cambia orario su Canale 5: si sposta al pomeriggio più tardi, e le puntate si accorciano. Quindi meno minuti a disposizione per raccontare tutto questo. E quando una serie ha meno spazio, non rallenta: stringe. Il che vuol dire che questi giorni, con la ferita, l&#x27;ospedale e il donatore che salta, correranno più veloci del solito.</p>
 <p>Intanto rimane lì, ferma davanti a quella porta chiusa, l&#x27;immagine con cui questa settimana ci saluta. Una barella pronta. Un chirurgo che si toglie i guanti. E in fondo al corridoio, un uomo con la febbre che si stringe una coperta addosso, senza sapere ancora che tutta la vita di Nare, in questo momento, sta appesa alla sua temperatura.</p>
 <p>Perché quello che c&#x27;è dentro riguarda una persona che, in queste puntate, non ha ancora detto una parola.</p>
   </div>
-  <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=-1mSuZOzD7Q" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/-1mSuZOzD7Q/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>FAR AWAY: MINE finge un crollo per riprendersi Cihan — e spunta il mistero Mariam 😱</span></a></li><li><a href="https://www.youtube.com/watch?v=jFCJr8Hibic" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/jFCJr8Hibic/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>FAR AWAY: DEMIR ricatta ZERRIN — lei sposa per salvare Şahin dal carcere 😨</span></a></li><li><a href="https://www.youtube.com/watch?v=pwnUjTOE-D0" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/pwnUjTOE-D0/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>FAR AWAY DAL 10 AL 14 AGOSTO: NARE SI SPARA dopo il no al divorzio — e sua madre lo sapeva 😱</span></a></li></ul></div>
+  <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=jFCJr8Hibic" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/jFCJr8Hibic/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>FAR AWAY: DEMIR ricatta ZERRIN — lei sposa per salvare Şahin dal carcere 😨</span></a></li><li><a href="https://www.youtube.com/watch?v=pwnUjTOE-D0" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/pwnUjTOE-D0/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>FAR AWAY DAL 10 AL 14 AGOSTO: NARE SI SPARA dopo il no al divorzio — e sua madre lo sapeva 😱</span></a></li><li><a href="https://www.youtube.com/watch?v=-1mSuZOzD7Q" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/-1mSuZOzD7Q/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>FAR AWAY: MINE finge un crollo per riprendersi Cihan — e spunta il mistero Mariam 😱</span></a></li></ul></div>
   
+  <section class="correlati-serie"><h2>Altre anticipazioni di Far Away</h2><div class="griglia"><article class="scheda">
+  <a href="/far-away/far-away-anticipazioni-dal-31-agosto-al-4-settembre-chi-ha-donato-il-fegato-a-nare/"><div class="foto"><img src="/img/far-away-anticipazioni-dal-31-agosto-al-4-settembre-chi-ha-donato-il-fegato-a-nare.jpg" alt="Far Away" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/far-away.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Far Away</span>
+    <h3><a href="/far-away/far-away-anticipazioni-dal-31-agosto-al-4-settembre-chi-ha-donato-il-fegato-a-nare/">Far Away, anticipazioni dal 31 agosto al 4 settembre: chi ha donato il fegato a Nare, e perché adesso sta male lui</a></h3>
+    <div class="quando">3 settembre 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/far-away/far-away-dal-31-agosto-la-madre-di-alya-sapeva-tutto-non-ricordo/"><div class="foto"><img src="/img/far-away-dal-31-agosto-la-madre-di-alya-sapeva-tutto-non-ricordo.jpg" alt="Far Away" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/far-away.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Far Away</span>
+    <h3><a href="/far-away/far-away-dal-31-agosto-la-madre-di-alya-sapeva-tutto-non-ricordo/">Far Away Dal 31 Agosto: la madre di Alya sapeva tutto — «non ricordo»</a></h3>
+    <div class="quando">31 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/far-away/far-away-chi-e-fikriye-la-madre-di-alya-cosa-ha-fatto-e-perche-conta/"><div class="foto"><img src="/img/far-away-chi-e-fikriye-la-madre-di-alya-cosa-ha-fatto-e-perche-conta.jpg" alt="Far Away" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/far-away.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Far Away</span>
+    <h3><a href="/far-away/far-away-chi-e-fikriye-la-madre-di-alya-cosa-ha-fatto-e-perche-conta/">Far Away, chi è Fikriye: la madre di Alya, cosa ha fatto e perché conta per gli Albora</a></h3>
+    <div class="quando">29 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=Far Away, anticipazioni dal 24 al 28 agosto: sparano a Özkan e finisce ferita Nare, poi la corsa al trapianto — https://serietvfans.com/far-away/far-away-anticipazioni-dal-24-al-28-agosto-sparano-a-ozkan-e-finisce-ferita-nare-poi-la-co/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/far-away/far-away-anticipazioni-dal-24-al-28-agosto-sparano-a-ozkan-e-finisce-ferita-nare-poi-la-co/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/far-away/far-away-anticipazioni-dal-24-al-28-agosto-sparano-a-ozkan-e-finisce-ferita-nare-poi-la-co/&text=Far Away, anticipazioni dal 24 al 28 agosto: sparano a Özkan e finisce ferita Nare, poi la corsa al trapianto" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">FAR AWAY DAL 24 AL 28 AGOSTO: sparano a un altro e finisce lei — &quot;NON ERA PER LEI&quot; 😱</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=wKTze5zNfvA">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di Far Away</h3><ol class="numerata"><li><a href="/far-away/far-away-anticipazioni-dal-31-agosto-al-4-settembre-chi-ha-donato-il-fegato-a-nare/">Far Away, anticipazioni dal 31 agosto al 4 settembre: chi ha donato il fegato a Nare, e perché adesso sta male lui</a></li><li><a href="/far-away/far-away-dal-31-agosto-la-madre-di-alya-sapeva-tutto-non-ricordo/">Far Away Dal 31 Agosto: la madre di Alya sapeva tutto — «non ricordo»</a></li><li><a href="/far-away/far-away-chi-e-fikriye-la-madre-di-alya-cosa-ha-fatto-e-perche-conta/">Far Away, chi è Fikriye: la madre di Alya, cosa ha fatto e perché conta per gli Albora</a></li><li><a href="/far-away/far-away-chi-e-nadim-il-capo-dei-baybars-cosa-vuole-e-perche-gli-albora-lo-accusano/">Far Away, chi è Nadim: il capo dei Baybars, cosa vuole e perché gli Albora lo accusano</a></li><li><a href="/far-away/far-away-sadakat-muore-cosa-sappiamo-e-chi-ha-motivo-di-volerla-morta/">Sadakat muore in Far Away? Cosa sappiamo: chi ha motivo di volerla morta e perché la serie non ha ancora risposto</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>FAR AWAY DAL 24 AL 28 AGOSTO: sparano a un altro e finisce lei — &quot;NON ERA PER LEI&quot; 😱</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su Far Away</h3><ul><li><a href="/far-away/far-away-anticipazioni-dal-31-agosto-al-4-settembre-chi-ha-donato-il-fegato-a-nare/">Far Away, anticipazioni dal 31 agosto al 4 settembre: chi ha donato il fegato a Nare, e perché adesso sta male lui</a></li><li><a href="/far-away/far-away-dal-31-agosto-la-madre-di-alya-sapeva-tutto-non-ricordo/">Far Away Dal 31 Agosto: la madre di Alya sapeva tutto — «non ricordo»</a></li><li><a href="/far-away/far-away-chi-e-fikriye-la-madre-di-alya-cosa-ha-fatto-e-perche-conta/">Far Away, chi è Fikriye: la madre di Alya, cosa ha fatto e perché conta per gli Albora</a></li><li><a href="/far-away/far-away-chi-e-nadim-il-capo-dei-baybars-cosa-vuole-e-perche-gli-albora-lo-accusano/">Far Away, chi è Nadim: il capo dei Baybars, cosa vuole e perché gli Albora lo accusano</a></li><li><a href="/far-away/far-away-sadakat-muore-cosa-sappiamo-e-chi-ha-motivo-di-volerla-morta/">Sadakat muore in Far Away? Cosa sappiamo: chi ha motivo di volerla morta e perché la serie non ha ancora risposto</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

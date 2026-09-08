@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/la-promessa/">La Promessa</a> › La Promessa, le lettere anonime scritte da Jana al Barone diventano la prova che può incastrarla: dopo la sua morte deve farle sparire</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/la-promessa/">La Promessa</a>
   <h1>La Promessa, le lettere anonime scritte da Jana al Barone diventano la prova che può incastrarla: dopo la sua morte deve farle sparire</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Convinta che il Barone sia l&#x27;uomo che ha ucciso sua madre — l&#x27;anello con il sigillo della tenuta al dito è per lei una prova — Jana comincia a mandargli biglietti minatori anonimi. Quando lui muore, però, quelle lettere diventano il pericolo più grande: se qualcuno le trovasse, il movente e il nome dell&#x27;autrice sarebbero serviti su un piatto.</p><ol><li><a href="#c1">L&#x27;anello e la certezza</a></li><li><a href="#c2">Chi è Jana e perché quell&#x27;anello vale una vita</a></li><li><a href="#c3">María la ferma appena in tempo</a></li><li><a href="#c4">La morte del Barone</a></li><li><a href="#c5">Le lettere da far sparire</a></li><li><a href="#c6">Perché conta: quelle lettere non incastrano soltanto lei</a></li><li><a href="#c7">Come María Fernández salva Jana da un gesto estremo</a></li><li><a href="#c8">Perché Pía uccide il Barone per difendere Teresa</a></li><li><a href="#c9">Cosa rischia Jana con le lettere rimaste nella stanza</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>La Promessa</strong> — Rete 4 · in streaming su Mediaset Infinity</span></div>
   
-  <p class="occhiello">Convinta che il Barone sia l&#x27;uomo che ha ucciso sua madre — l&#x27;anello con il sigillo della tenuta al dito è per lei una prova — Jana comincia a mandargli biglietti minatori anonimi. Quando lui muore, però, quelle lettere diventano il pericolo più grande: se qualcuno le trovasse, il movente e il nome dell&#x27;autrice sarebbero serviti su un piatto.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: La Promessa, le lettere anonime scritte da Jana al Barone diventano la prova che può incastrarla: dopo la sua morte deve farle sparire" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/t4nq6yUboDc/maxresdefault.jpg" alt="La Promessa, le lettere anonime scritte da Jana al Barone diventano la prova che può incastrarla: dopo la sua morte deve farle sparire" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/t4nq6yUboDc/hqdefault.jpg 480w, https://i.ytimg.com/vi/t4nq6yUboDc/sddefault.jpg 640w, https://i.ytimg.com/vi/t4nq6yUboDc/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/t4nq6yUboDc/hqdefault.jpg&quot;, &quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,46 +409,68 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>A fermare i suoi piani più estremi, appena in tempo, è María Fernández.</strong></p>
-  <h2>L&#x27;anello e la certezza</h2>
+  <h2 id="c1">L&#x27;anello e la certezza</h2>
 <p>Jana è arrivata alla tenuta per un motivo solo: scoprire chi ha ucciso sua madre e dove sia finito suo fratello. Quando nota al dito del Barone Juan un anello con il sigillo della Promessa, identico a quello che ricorda addosso a uno degli assassini, per lei il caso è chiuso — ed è pronta a tutto, compreso il gesto più estremo. Il Barone, però, si accorge di essere nel mirino e reagisce mettendola con le spalle al muro: la accusa del furto di alcuni oggetti spariti dalla sua stanza, un&#x27;accusa falsa che non fa che alimentare il suo desiderio di vendetta.</p>
-<h2>Chi è Jana e perché quell&#x27;anello vale una vita</h2>
+<h2 id="c2">Chi è Jana e perché quell&#x27;anello vale una vita</h2>
 <p>Chi arriva a questa storia adesso ha bisogno di sapere una cosa sola per capire tutto il resto: la ragazza che serve ai tavoli della tenuta non si chiama come dice di chiamarsi. Jana è entrata alla Promessa da estranea, con un nome preso in prestito e due obiettivi che non ha confidato a nessuno — capire chi abbia fatto morire sua madre Dolores, domestica in quella stessa casa anni prima, e ritrovare il fratellino che le fu portato via da bambina. Per questo un sigillo inciso su un anello non è un dettaglio ornamentale ma l&#x27;unico frammento di memoria che le sia rimasto: lo aveva visto addosso a uno degli uomini di quella notte. Ed è anche il motivo per cui l&#x27;accusa di furto la ferisce meno di quanto il Barone creda: chi sta già mentendo sul proprio nome ha poco da perdere davanti a una calunnia.</p>
-<h2>María la ferma appena in tempo</h2>
+<h2 id="c3">María la ferma appena in tempo</h2>
 <p>È María Fernández a intuire cosa stia per fare l&#x27;amica e a bloccarla un attimo prima che sia troppo tardi, evitandole di commettere un atto irreparabile dentro quella casa. A rendere tutto più difficile, in quelle stesse settimane, c&#x27;è la crescente vicinanza tra Manuel e Jimena, che rende la permanenza di Jana alla tenuta sempre più pesante.</p>
-<h2>La morte del Barone</h2>
+<h2 id="c4">La morte del Barone</h2>
 <p>Il Barone, respinto da Pía, sposta le proprie attenzioni sulla giovane Teresa. Pía se ne accorge e prova a mettere in guardia la ragazza, spiegandole che dietro quelle premure c&#x27;è ben altro; quando lui tenta di aggredirla, interviene e lo uccide. Teresa, Mauro e Jana la aiutano a far passare quella morte per una fatalità, e da quel momento le quattro donne condividono un segreto che nessuna può permettersi di far uscire.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Le lettere da far sparire</h2>
+<h2 id="c5">Le lettere da far sparire</h2>
 <p>C&#x27;è però un dettaglio che rischia di rovinare tutto, ed è opera di Jana stessa: nelle settimane precedenti aveva inviato al Barone dei biglietti minatori anonimi, quelli che lo avevano reso sempre più nervoso e sospettoso di tutti. Adesso che l&#x27;uomo è morto, quelle lettere sono la cosa più pericolosa che ci sia in quella casa — la prova di un movente e, per chi sapesse leggerle, di un&#x27;autrice. Farle sparire diventa la sua priorità assoluta. E resta aperta la domanda più importante: se il Barone non fosse davvero l&#x27;assassino di sua madre, tutta la vendetta di Jana si sarebbe consumata sull&#x27;uomo sbagliato.</p>
-<h2>Perché conta: quelle lettere non incastrano soltanto lei</h2>
+<h2 id="c6">Perché conta: quelle lettere non incastrano soltanto lei</h2>
 <p>Il punto non è che Jana rischia la galera. È che quei biglietti sono l&#x27;unico oggetto capace di trasformare una disgrazia in un movente. Finché la morte del Barone resta una fatalità il patto tra le quattro donne regge; il giorno in cui qualcuno mette in fila le lettere minatorie e i nomi di chi era in quella stanza, a cadere non è Jana da sola — cadono Pía, Teresa e María Fernández con lei, e Pía ha da nascondere molto più di un colpo assestato per difendersi. Poi c&#x27;è la coda più amara, quella che riguarda la ricerca da cui tutto è cominciato: se il Barone non era l&#x27;assassino di Dolores, Jana non ha soltanto sbagliato bersaglio, ha bruciato l&#x27;unica pista in suo possesso. E ricominciare significa tornare a fare domande su sua madre dentro una casa che ormai la tiene d&#x27;occhio.</p>
-<h2>Come María Fernández salva Jana da un gesto estremo</h2>
+<h2 id="c7">Come María Fernández salva Jana da un gesto estremo</h2>
 <p>L&#x27;intervento tempestivo di María Fernández si rivela fondamentale nel momento più oscuro e teso vissuto da Jana all&#x27;interno della tenuta. Tormentata dal ricordo della madre Dolores e con negli occhi il sigillo del Barone Juan, la giovane serva era ormai decisa ad andare fino in fondo con le sue intenzioni vendicative. María Fernández intuisce la gravità della situazione e ferma sul nascere l&#x27;atto irreparabile che l&#x27;amica sta per compiere tra le mura della Promessa. Fermando Jana a un passo dal precipizio, la cameriera evita una tragedia ancora più grande, salvandola da una scelta folle che avrebbe distrutto per sempre la ricerca di suo fratello e la verità sul suo passato.</p>
 <p>A rendere il quadro ancora più fragile ed esasperato c&#x27;è il profondo malessere personale che Jana vive quotidianamente sul posto di lavoro. La ragazza assiste impotente alla progressiva e dolorosa vicinanza tra Manuel e Jimena, un legame che rende la sua permanenza nella casa padronale ogni giorno più pesante e insopportabile. In questo clima di forte sofferenza emotiva, l&#x27;aiuto di María Fernández diventa l&#x27;unico riparo sicuro prima che la rabbia e la gelosia spingano Jana a compiere una sciocchezza. Fermare quel piano estremo era l&#x27;unico modo per proteggerla da se stessa e dalle sospettose attenzioni dei padroni della tenuta, già pronti a giudicare ogni suo minimo passo falso.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Perché Pía uccide il Barone per difendere Teresa</h2>
+<h2 id="c8">Perché Pía uccide il Barone per difendere Teresa</h2>
 <p>La tragica sequenza di eventi che porta alla fine del Barone nasce dal rifiuto secco che Pía oppone con fermezza alle sue sgradite avances. Non contento della risposta ricevuta, l&#x27;uomo sposta subito le sue attenzioni morbose verso la giovane Teresa, cercando di trarla in inganno con finti gesti premurosi. Pía capisce immediatamente il pericolo incombente e prova in tutti i modi a mettere in guardia la ragazza, rivelandole cosa si nasconda davvero dietro le parole del nobile. La situazione precipita definitivamente quando il Barone tenta di aggredire con la forza la giovane serva, spingendo Pía a intervenire con disperazione per salvarla, un gesto estremo che si conclude con la morte dell&#x27;uomo.</p>
 <p>Subito dopo la morte del Barone, per evitare ripercussioni spaventose, scatta una complessa operazione per nascondere la verità dietro una finta disgrazia. Teresa, Mauro e Jana si uniscono immediatamente a Pía per truccare la scena dell&#x27;incidente e far passare quella fine violenta come una banale quanto tragica fatalità. Da quel preciso istante, le quattro donne si ritrovano legate a doppio filo da un segreto comune che non deve assolutamente uscire allo scoperto. L&#x27;alleanza nata per proteggere Pía e Teresa diventa una questione di sopravvivenza per tutte quante, poiché la scoperta dell&#x27;omicidio porterebbe alla rovina immediata di ogni persona coinvolta nella copertura della vicenda.</p>
-<h2>Cosa rischia Jana con le lettere rimaste nella stanza</h2>
+<h2 id="c9">Cosa rischia Jana con le lettere rimaste nella stanza</h2>
 <p>Nonostante il piano per simulare la fatalità sia stato organizzato nei minimi dettagli, resta un grande ostacolo a minacciare la tranquillità di Jana. Nelle settimane precedenti al delitto, la ragazza aveva inviato al Barone diversi biglietti minatori anonimi, provocando in lui un forte stato di agitazione e un profondo sospetto verso chiunque. Ora che l&#x27;uomo è deceduto, quelle missive rimaste tra le sue carte costituiscono la prova più schiacciante di un chiaro movente. Se qualcuno dovesse ritrovare quei fogli e risalire alla mano che li ha scritti, l&#x27;intero castello di bugie crollerebbe all&#x27;istante, trascinando nella rovina non soltanto Jana ma anche le compagne che la stanno aiutando.</p>
 <p>Il recupero di quelle lettere diventa così la massima urgenza per la protagonista, spinta dal terrore di essere smascherata insieme alle sue alleate. A questa angoscia si aggiunge però un dubbio ancora più devastante e doloroso sul reale svolgimento dei fatti passati. Se l&#x27;anello con il sigillo del Barone Juan si rivelasse soltanto una coincidenza e non la prova dell&#x27;assassinio di Dolores, Jana avrebbe consumato la sua vendetta nei confronti della persona sbagliata. In quel caso, oltre al rischio della prigione, la ragazza si ritroverebbe con in mano un pugno di mosche, avendo irrimediabilmente distrutto l&#x27;unica traccia utile per ritrovare il fratellino scomparso.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=XE7ZJ-ieZQA" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/XE7ZJ-ieZQA/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni: Jana Scoperta! Il suo Segreto è in Pericolo?</span></a></li><li><a href="https://www.youtube.com/watch?v=iuQDWZvwNvc" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/iuQDWZvwNvc/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni: Jana sarà vittima di una vendetta e rischia la vita!</span></a></li><li><a href="https://www.youtube.com/watch?v=rbr1HWvI7i8" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/rbr1HWvI7i8/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni e Spoiler: Jana spiata! Qualcuno la minaccia?</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Il Barone era davvero l&#x27;assassino della madre di Jana?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=t4nq6yUboDc">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di La Promessa</h2><div class="griglia"><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/"><div class="foto"><img src="https://i.ytimg.com/vi/Rp8VhxDiDSk/hqdefault.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></h3>
+    <div class="quando">7 settembre 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/"><div class="foto"><img src="https://i.ytimg.com/vi/8JHt6ogwxQw/hqdefault.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Ángela beve tutto, Curro sfonda la porta</a></h3>
+    <div class="quando">6 settembre 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/"><div class="foto"><img src="/img/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Curro nasconde Ángela, Lorenzo furioso</a></h3>
+    <div class="quando">6 settembre 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=La Promessa, le lettere anonime scritte da Jana al Barone diventano la prova che può incastrarla: dopo la sua morte deve farle sparire — https://serietvfans.com/la-promessa/la-promessa-le-lettere-anonime-scritte-da-jana-al-barone-diventano-la-prova-che/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/la-promessa/la-promessa-le-lettere-anonime-scritte-da-jana-al-barone-diventano-la-prova-che/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/la-promessa/la-promessa-le-lettere-anonime-scritte-da-jana-al-barone-diventano-la-prova-che/&text=La Promessa, le lettere anonime scritte da Jana al Barone diventano la prova che può incastrarla: dopo la sua morte deve farle sparire" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">LA PROMESSA Spoiler agosto 2023 — La sconvolgente vendetta rimescola le carte</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=t4nq6yUboDc">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di La Promessa</h3><ol class="numerata"><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Ángela beve tutto, Curro sfonda la porta</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Curro nasconde Ángela, Lorenzo furioso</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>LA PROMESSA Spoiler agosto 2023 — La sconvolgente vendetta rimescola le carte</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su La Promessa</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-3-6-settembre-maria-affronta-la-gravidanza-da-sola/">La Promessa anticipazioni 3-6 settembre: Maria affronta la gravidanza da sola</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-carlo-arriva-maria-trema/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Carlo arriva, Maria trema</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/far-away/far-away-anticipazioni-dal-31-agosto-al-4-settembre-chi-ha-donato-il-fegato-a-nare/">Far Away, anticipazioni dal 31 agosto al 4 settembre: chi ha donato il fegato a Nare, e perché adesso sta male lui</a></li><li><a href="/far-away/far-away-dal-31-agosto-la-madre-di-alya-sapeva-tutto-non-ricordo/">Far Away Dal 31 Agosto: la madre di Alya sapeva tutto — «non ricordo»</a></li><li><a href="/forbidden-fruit/forbidden-fruit-dal-31-agosto-il-conto-a-nome-di-halit-che-e-morto/">Forbidden Fruit Dal 31 Agosto: il conto a nome di Halit, che è morto</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

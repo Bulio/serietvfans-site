@@ -4,15 +4,15 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Far Away, Deniz scompare | Serie TV Fans</title>
-<meta name="description" content="Alya ha passato anni a proteggere suo figlio da quella casa. Questa settimana scopre che proteggerlo non basta, se chi vuole colpirla è disposta a colpire…">
+<meta name="description" content="Far Away: il piccolo Deniz scompare subito dopo aver scoperto che Fikriye è sua nonna. Ecco chi glielo rivela, perché sceglie quel momento e cosa rischia…">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://serietvfans.com/far-away/far-away-deniz-scompare-chi-gli-rivela-che-fikriye-e-sua-nonna-e-perche-lo-fa-ne/">
 <meta property="og:title" content="Far Away, Deniz scompare | Serie TV Fans">
-<meta property="og:description" content="Alya ha passato anni a proteggere suo figlio da quella casa. Questa settimana scopre che proteggerlo non basta, se chi vuole colpirla è disposta a colpire…">
+<meta property="og:description" content="Far Away: il piccolo Deniz scompare subito dopo aver scoperto che Fikriye è sua nonna. Ecco chi glielo rivela, perché sceglie quel momento e cosa rischia…">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Serie TV Fans">
 <meta property="og:url" content="https://serietvfans.com/far-away/far-away-deniz-scompare-chi-gli-rivela-che-fikriye-e-sua-nonna-e-perche-lo-fa-ne/">
-<meta property="og:image" content="https://serietvfans.com/social.svg">
+<meta property="og:image" content="https://serietvfans.com/img/far-away-deniz-scompare-chi-gli-rivela-che-fikriye-e-sua-nonna-e-perche-lo-fa-ne.jpg">
 <meta property="og:locale" content="it_IT">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#7b1e2b">
@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -314,12 +363,12 @@ if(l.length){el.src=l.shift();el.dataset.fb=JSON.stringify(l)}else{el.onerror=nu
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7778653397776213" crossorigin="anonymous"></script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "96259d7e67ce47fba4573364859712a6"}'></script>
 <script>(function(){var f=0;function go(){if(f)return;f=1;(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","y3rpoig6jk");}["pointerdown","keydown","touchstart","scroll"].forEach(function(v){addEventListener(v,go,{once:1,passive:1})});setTimeout(go,2500)})();</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Far Away, Deniz scompare: chi gli rivela che Fikriye è sua nonna, e perché lo fa nel momento peggiore", "datePublished": "2026-08-24", "dateModified": "2026-09-04", "description": "Alya ha passato anni a proteggere suo figlio da quella casa. Questa settimana scopre che proteggerlo non basta, se chi vuole colpirla è disposta a colpire anche un bambino di sette anni pur di arrivare a lei.", "inLanguage": "it-IT", "mainEntityOfPage": "https://serietvfans.com/far-away/far-away-deniz-scompare-chi-gli-rivela-che-fikriye-e-sua-nonna-e-perche-lo-fa-ne/", "image": [], "author": {"@type": "Organization", "name": "Serie TV Fans", "url": "https://serietvfans.com/chi-siamo/"}, "publisher": {"@type": "Organization", "name": "Serie TV Fans", "logo": {"@type": "ImageObject", "url": "https://serietvfans.com/favicon.svg"}}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Far Away, Deniz scompare: chi gli rivela che Fikriye è sua nonna, e perché lo fa nel momento peggiore", "datePublished": "2026-08-24", "dateModified": "2026-09-07", "description": "Far Away: il piccolo Deniz scompare subito dopo aver scoperto che Fikriye è sua nonna. Ecco chi glielo rivela, perché sceglie quel momento e cosa rischia Alya.", "inLanguage": "it-IT", "mainEntityOfPage": "https://serietvfans.com/far-away/far-away-deniz-scompare-chi-gli-rivela-che-fikriye-e-sua-nonna-e-perche-lo-fa-ne/", "image": ["https://serietvfans.com/img/far-away-deniz-scompare-chi-gli-rivela-che-fikriye-e-sua-nonna-e-perche-lo-fa-ne.jpg"], "author": {"@type": "Organization", "name": "Serie TV Fans", "url": "https://serietvfans.com/chi-siamo/"}, "publisher": {"@type": "Organization", "name": "Serie TV Fans", "logo": {"@type": "ImageObject", "url": "https://serietvfans.com/favicon.svg"}}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://serietvfans.com/"}, {"@type": "ListItem", "position": 2, "name": "Far Away", "item": "https://serietvfans.com/serie/far-away/"}, {"@type": "ListItem", "position": 3, "name": "Far Away, Deniz scompare: chi gli rivela che Fikriye è sua nonna, e perché lo fa nel momento peggiore"}]}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -332,62 +381,88 @@ if(l.length){el.src=l.shift();el.dataset.fb=JSON.stringify(l)}else{el.onerror=nu
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/far-away/">Far Away</a> › Far Away, Deniz scompare: chi gli rivela che Fikriye è sua nonna, e perché lo fa nel momento peggiore</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/far-away/">Far Away</a>
   <h1>Far Away, Deniz scompare: chi gli rivela che Fikriye è sua nonna, e perché lo fa nel momento peggiore</h1>
-  <div class="firma">Redazione Serie TV Fans · lunedì 24 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-24">lunedì 24 agosto 2026</time></span><span>aggiornato il 7 settembre 2026</span><span>8 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Far Away: il piccolo Deniz scompare subito dopo aver scoperto che Fikriye è sua nonna. Ecco chi glielo rivela, perché sceglie quel momento e cosa rischia Alya.</p><ol><li><a href="#c1">Un passo indietro: chi è Fikriye</a></li><li><a href="#c2">La diagnosi che restringe i tempi di tutto</a></li><li><a href="#c3">Come Deniz scopre di avere una nonna</a></li><li><a href="#c4">La scomparsa</a></li><li><a href="#c5">Lo stesso schema, due volte</a></li><li><a href="#c6">Il piano contro Ecmel, e chi lo sente</a></li><li><a href="#c7">In parallelo: Nare, Şahin e un padre che conosce una lingua sola</a></li><li><a href="#c8">Perché Sadakat decide di colpire il piccolo Deniz</a></li><li><a href="#c9">Come Ecmel e Şahin cambiano gli equilibri</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>Far Away</strong> — Canale 5 · in streaming su Mediaset Infinity</span></div>
-  <figure class="copertina"><img src="/fallback/far-away.svg" alt="Far Away" width="1280" height="720"><figcaption>Far Away</figcaption></figure>
-  <p class="occhiello">Alya ha passato anni a proteggere suo figlio da quella casa. Questa settimana scopre che proteggerlo non basta, se chi vuole colpirla è disposta a colpire anche un bambino di sette anni pur di arrivare a lei.</p>
+  <figure class="copertina"><img src="/img/far-away-deniz-scompare-chi-gli-rivela-che-fikriye-e-sua-nonna-e-perche-lo-fa-ne.jpg" alt="Far Away"><figcaption>Immagine d&#x27;ambiente — Far Away</figcaption></figure>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   
   <div class="corpo">
   <p><strong>Ha sette anni, e l&#x27;ultima persona che lo vede prima che nessuno riesca più a trovarlo è una donna che fino a poche ore prima per lui non esisteva.</strong></p>
   <p>Deniz è sparito. Ha sette anni, e l&#x27;ultima persona che l&#x27;ha visto prima che nessuno riuscisse più a trovarlo è una donna che, fino a poche ore prima, per lui non esisteva nemmeno: sua nonna. Una nonna che Alya non voleva che conoscesse mai, e che invece gliel&#x27;ha rivelata qualcun altro — nel momento peggiore possibile, per fargli più male possibile.</p>
-<h2>Un passo indietro: chi è Fikriye</h2>
+<h2 id="c1">Un passo indietro: chi è Fikriye</h2>
 <p>Fikriye è la madre di Alya, una donna che tutti credevano morta e che invece è tornata, portando con sé una verità che Sadakat ha subito trasformato in un&#x27;arma. Perché in questa famiglia ogni segreto prima o poi diventa un coltello, e Sadakat sa sempre trovare l&#x27;impugnatura giusta.</p>
 <p>Alya ha passato anni a proteggere suo figlio da questa casa, dai suoi calcoli, dalle sue bugie di velluto. Ed è proprio questo che la settimana mette in discussione.</p>
-<h2>La diagnosi che restringe i tempi di tutto</h2>
+<h2 id="c2">La diagnosi che restringe i tempi di tutto</h2>
 <p>Comincia con un confronto durissimo tra Alya e Fikriye. Sua madre cerca ancora una volta di spiegarle perché è sparita, perché l&#x27;ha lasciata credere di essere sola al mondo per tutti quegli anni. Alya non è pronta a perdonare, non ancora, e le parole tra le due si fanno taglienti, piene di un dolore vecchio che non ha mai trovato le parole giuste per uscire.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>È nel mezzo di quello scontro che arriva l&#x27;imprevisto: Fikriye ha un malore, crolla davanti agli occhi di sua figlia e viene portata di corsa in ospedale. Lì, tra gli esami, arriva la diagnosi che cambia tutto — un tumore al polmone, che i medici definiscono aggressivo.</p>
 <p>Non è una diagnosi qualunque: è la stessa donna che Alya ha appena accusato di essere scappata, che adesso rischia di scapparle di nuovo, ma per un motivo che stavolta nessuno può controllare. E restringe improvvisamente i tempi di tutto: il perdono che Alya non ha ancora deciso di concedere, il rapporto con Deniz che non è nemmeno cominciato, ogni parola rimasta in sospeso tra madre e figlia per anni.</p>
-<h2>Come Deniz scopre di avere una nonna</h2>
+<h2 id="c3">Come Deniz scopre di avere una nonna</h2>
 <p>Ed è in questo momento di fragilità, con Fikriye ancora debole e Alya sconvolta, che Sadakat trova la crepa giusta in cui infilarsi. Durante l&#x27;ennesima lite in famiglia, con Deniz presente, rivela improvvisamente al bambino chi è davvero quella donna che ha appena conosciuto: sua nonna.</p>
 <p>Non lo fa con dolcezza e non lo fa per dargli una gioia. Lo fa nel momento più caotico possibile, davanti a tutti, come un colpo basso calcolato per ferire Alya nel punto più debole che ha: suo figlio.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>Alya va su tutte le furie. Ma è Deniz stesso, con quell&#x27;innocenza che a volte disarma più di qualsiasi discorso, a chiedere di poter passare del tempo con questa nonna appena scoperta. E Alya, per amore di suo figlio, cede.</p>
-<h2>La scomparsa</h2>
+<h2 id="c4">La scomparsa</h2>
 <p>Mentre Alya e Cihan sono impegnati a stare vicino a Fikriye, arriva la notizia che li getta nel panico: Deniz è scomparso. Nessuno sa dire con certezza da quanto, nessuno sa dire dove sia. In una famiglia dove i segreti si trasformano sempre in armi, ogni minuto di silenzio pesa come un macigno.</p>
 <p>Alya e Cihan si lanciano nella ricerca e, dopo ore che sembrano non finire mai, riescono a riportare Deniz a casa sano e salvo. Ma quello che conta in questa storia non è il dove è stato ritrovato: è che la scomparsa di un bambino di sette anni sia bastata a mostrare fino a che punto Sadakat sia disposta a spingersi, anche indirettamente, pur di restare al centro di questa famiglia.</p>
-<h2>Lo stesso schema, due volte</h2>
+<h2 id="c5">Lo stesso schema, due volte</h2>
 <p>C&#x27;è un altro momento, nella stessa settimana, che racconta esattamente lo stesso lato del personaggio. Arriva la cerimonia della circoncisione, un rito importante per questa famiglia, e Sadakat pretende che vi partecipi anche Deniz — nonostante il bambino sia appena passato attraverso la scomparsa e la scoperta shock sulla nonna.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>Alya vorrebbe risparmiargli altre pressioni, ma Sadakat non fa sconti: per lei la cerimonia è un&#x27;occasione da non perdere per riaffermare il proprio ruolo davanti a tutti, e usa Deniz ancora una volta come parte della scenografia. È lo stesso schema della rivelazione sulla nonna: quello che dovrebbe essere un momento di affetto, in mano a Sadakat diventa sempre uno strumento di potere.</p>
-<h2>Il piano contro Ecmel, e chi lo sente</h2>
+<h2 id="c6">Il piano contro Ecmel, e chi lo sente</h2>
 <p>Mentre tutti sono concentrati su Deniz, Sadakat sta preparando qualcosa di più pericoloso: comincia a tramare per eliminare Ecmel, l&#x27;uomo che da settimane si muove ai margini della famiglia allargata. Lo stesso Ecmel che poco tempo fa aveva provato a comprare la fedeltà di Şahin promettendogli terre e protezione in cambio di un tradimento contro Cihan, e che si era visto rifiutare l&#x27;offerta.</p>
 <p>Sadakat non ha mai dimenticato quanto quell&#x27;uomo sia pericoloso quando i suoi piani falliscono, e stavolta decide di anticiparlo invece di aspettare la prossima mossa. Ma Fikriye — ancora debole, e con l&#x27;orecchio fino di chi in questa casa ha imparato a sopravvivere ascoltando dietro le porte — la sente parlare del piano e avverte subito Alya. Cihan interviene di persona per fermare la situazione, ma non fa in tempo: Ecmel riesce a scappare, portandosi via quasi certamente anche la certezza che Sadakat sia disposta a tutto pur di restare al comando.</p>
 <p>Le anticipazioni lasciano intendere che non sarà l&#x27;ultimo tentativo contro di lui, ma è un punto che resta speculativo e va detto: non è ancora confermato cosa succederà nelle prossime puntate.</p>
-<h2>In parallelo: Nare, Şahin e un padre che conosce una lingua sola</h2>
+<h2 id="c7">In parallelo: Nare, Şahin e un padre che conosce una lingua sola</h2>
 <p>Un&#x27;altra storia si muove accanto a questa, più silenziosa ma non meno dolorosa. Nare, che da tempo vive sotto il controllo soffocante di suo padre Özkan, continua a incontrare di nascosto Şahin: incontri rubati, fatti di paura e di un affetto che nessuno dei due riesce più a nascondere del tutto.</p>
 <p>Ma Özkan li scopre. E quando un padre come lui scopre una cosa del genere la reazione non è mai leggera: per Özkan il controllo su sua figlia non è mai stato una forma discutibile di protezione, è sempre stata l&#x27;unica lingua che ha saputo parlare con lei, fatta di regole rigide e porte chiuse. Scoprire che ha continuato a vedere Şahin disobbedendo apertamente è, per lui, un affronto che non può restare senza conseguenze.</p>
-<h2>Perché Sadakat decide di colpire il piccolo Deniz</h2>
+<h2 id="c8">Perché Sadakat decide di colpire il piccolo Deniz</h2>
 <p>Sadakat gestisce i rapporti familiari trasformando ogni segreto in un arma affilata, e l&#x27;arrivo improvviso di Fikriye le offre il pretesto perfetto per colpire Alya. Alya ha cercato per anni di proteggere il figlio Deniz dalle manipolazioni della casa, ma la vulnerabilità causata dallo scontro con la madre e dalla successiva diagnosi di tumore al polmone crea una crepa inevitabile. Durante un acceso litigio di famiglia, Sadakat rivela al bambino di sette anni che Fikriye è sua nonna, scegliendo volutamente il momento peggiore per fare più male possibile ad Alya. Questo gesto spietato mostra come la donna sia disposta a strumentalizzare persino l&#x27;innocenza di un nipote pur di ferire la nuora e riaffermare il proprio dominio assoluto sulle dinamiche della casa.</p>
 <p>La reazione di Deniz alla sconvolgente rivelazione costringe Alya a cedere, permettendo al piccolo di trascorrere del tempo con Fikriye prima della sua drammatica scomparsa. Quando Deniz sparisce nel nulla, la paura travolge Alya e Cihan, che si mobilitano immediatamente per cercarlo e riescono infine a riportarlo a casa sano e salvo dopo ore d&#x27;angoscia. Tuttavia, nemmeno questo spavento ferma le mire di Sadakat, la quale pretende che il bambino partecipi subito dopo alla cerimonia della circoncisione. Usare Deniz ancora una volta come elemento di scenografia conferma il suo cinismo: per Sadakat ogni evento importante della vita familiare si trasforma in una semplice occasione per ostentare potere, ignorando la fragile serenità del bambino.</p>
-<h2>Come Ecmel e Şahin cambiano gli equilibri</h2>
+<h2 id="c9">Come Ecmel e Şahin cambiano gli equilibri</h2>
 <p>La tensione all&#x27;interno della famiglia non riguarda soltanto la gestione di Deniz, ma si estende alle minacce esterne incarnate da Ecmel. L&#x27;uomo ha cercato di spezzare l&#x27;alleanza tra i parenti promettendo terre e protezione a Şahin in cambio del tradimento verso Cihan. Il netto rifiuto di Şahin non ha fermato il pericolo, spingendo Sadakat a progettare un piano d&#x27;eliminazione diretta per prevenire nuove mosse. Quando Fikriye ascolta la macchinazione e la riferisce ad Alya, l&#x27;intervento sul campo di Cihan evita il peggio ma permette a Ecmel di fuggire. Questa fuga lascia la famiglia in uno stato di costante allarme, dimostrando come le trame di potere di Sadakat finiscano per generare ulteriore instabilità invece di proteggere la casa.</p>
 <p>In questo clima opprimente, si sviluppa parallelamente il drammatico rapporto tra Nare e Şahin, costretti a vedersi di nascosto a causa dell&#x27;atteggiamento di Özkan. Per il padre di Nare, la protezione della figlia si declina esclusivamente attraverso regole inflessibili e severe restrizioni della libertà personale. La scoperta degli incontri clandestini tra i due giovani scatena la dura reazione dell&#x27;uomo, che considera la disobbedienza un affronto intollerabile alla sua autorità patriarcale. La fedeltà di Şahin verso Cihan e il suo legame con Nare lo posizionano al centro di molteplici tensioni, evidenziando come la rigidità dei padri e i calcoli dei capifamiglia schiaccino costantemente i sentimenti e la sicurezza dei membri più giovani.</p>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=ihBWpAhHKq4" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/ihBWpAhHKq4/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>FAR AWAY: il vero padre di BORAN è ECMEL — e DENIZ rischia di annegare 😱</span></a></li><li><a href="https://www.youtube.com/watch?v=s3WyLXM5iRs" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/s3WyLXM5iRs/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>FAR AWAY: ALYA non crede a FERIDE — poi scopre la verità sulla sua malattia 😢</span></a></li><li><a href="https://www.youtube.com/watch?v=LgtMj_mgCy8" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/LgtMj_mgCy8/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>FAR AWAY: Cihan rifiuta il divorzio, la dichiarazione che sconvolge Alya 😍</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Quando Sadakat ha rivelato a Deniz che Fikriye è sua nonna, lo ha fatto per un residuo di affetto o per usarlo come arma contro Alya? Chi ha aiutato Deniz a scomparire?</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di Far Away</h2><div class="griglia"><article class="scheda">
+  <a href="/far-away/far-away-anticipazioni-dal-31-agosto-al-4-settembre-chi-ha-donato-il-fegato-a-nare/"><div class="foto"><img src="/img/far-away-anticipazioni-dal-31-agosto-al-4-settembre-chi-ha-donato-il-fegato-a-nare.jpg" alt="Far Away" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/far-away.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Far Away</span>
+    <h3><a href="/far-away/far-away-anticipazioni-dal-31-agosto-al-4-settembre-chi-ha-donato-il-fegato-a-nare/">Far Away, anticipazioni dal 31 agosto al 4 settembre: chi ha donato il fegato a Nare, e perché adesso sta male lui</a></h3>
+    <div class="quando">3 settembre 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/far-away/far-away-dal-31-agosto-la-madre-di-alya-sapeva-tutto-non-ricordo/"><div class="foto"><img src="/img/far-away-dal-31-agosto-la-madre-di-alya-sapeva-tutto-non-ricordo.jpg" alt="Far Away" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/far-away.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Far Away</span>
+    <h3><a href="/far-away/far-away-dal-31-agosto-la-madre-di-alya-sapeva-tutto-non-ricordo/">Far Away Dal 31 Agosto: la madre di Alya sapeva tutto — «non ricordo»</a></h3>
+    <div class="quando">31 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/far-away/far-away-chi-e-fikriye-la-madre-di-alya-cosa-ha-fatto-e-perche-conta/"><div class="foto"><img src="/img/far-away-chi-e-fikriye-la-madre-di-alya-cosa-ha-fatto-e-perche-conta.jpg" alt="Far Away" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/far-away.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Far Away</span>
+    <h3><a href="/far-away/far-away-chi-e-fikriye-la-madre-di-alya-cosa-ha-fatto-e-perche-conta/">Far Away, chi è Fikriye: la madre di Alya, cosa ha fatto e perché conta per gli Albora</a></h3>
+    <div class="quando">29 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=Far Away, Deniz scompare: chi gli rivela che Fikriye è sua nonna, e perché lo fa nel momento peggiore — https://serietvfans.com/far-away/far-away-deniz-scompare-chi-gli-rivela-che-fikriye-e-sua-nonna-e-perche-lo-fa-ne/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/far-away/far-away-deniz-scompare-chi-gli-rivela-che-fikriye-e-sua-nonna-e-perche-lo-fa-ne/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/far-away/far-away-deniz-scompare-chi-gli-rivela-che-fikriye-e-sua-nonna-e-perche-lo-fa-ne/&text=Far Away, Deniz scompare: chi gli rivela che Fikriye è sua nonna, e perché lo fa nel momento peggiore" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  
-  <div class="box"><h3>Ancora su Far Away</h3><ul><li><a href="/far-away/far-away-anticipazioni-dal-31-agosto-al-4-settembre-chi-ha-donato-il-fegato-a-nare/">Far Away, anticipazioni dal 31 agosto al 4 settembre: chi ha donato il fegato a Nare, e perché adesso sta male lui</a></li><li><a href="/far-away/far-away-dal-31-agosto-la-madre-di-alya-sapeva-tutto-non-ricordo/">Far Away Dal 31 Agosto: la madre di Alya sapeva tutto — «non ricordo»</a></li><li><a href="/far-away/far-away-chi-e-fikriye-la-madre-di-alya-cosa-ha-fatto-e-perche-conta/">Far Away, chi è Fikriye: la madre di Alya, cosa ha fatto e perché conta per gli Albora</a></li><li><a href="/far-away/far-away-chi-e-nadim-il-capo-dei-baybars-cosa-vuole-e-perche-gli-albora-lo-accusano/">Far Away, chi è Nadim: il capo dei Baybars, cosa vuole e perché gli Albora lo accusano</a></li><li><a href="/far-away/far-away-sadakat-muore-cosa-sappiamo-e-chi-ha-motivo-di-volerla-morta/">Sadakat muore in Far Away? Cosa sappiamo: chi ha motivo di volerla morta e perché la serie non ha ancora risposto</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
+  <div class="box"><h3>Ultime di Far Away</h3><ol class="numerata"><li><a href="/far-away/far-away-anticipazioni-dal-31-agosto-al-4-settembre-chi-ha-donato-il-fegato-a-nare/">Far Away, anticipazioni dal 31 agosto al 4 settembre: chi ha donato il fegato a Nare, e perché adesso sta male lui</a></li><li><a href="/far-away/far-away-dal-31-agosto-la-madre-di-alya-sapeva-tutto-non-ricordo/">Far Away Dal 31 Agosto: la madre di Alya sapeva tutto — «non ricordo»</a></li><li><a href="/far-away/far-away-chi-e-fikriye-la-madre-di-alya-cosa-ha-fatto-e-perche-conta/">Far Away, chi è Fikriye: la madre di Alya, cosa ha fatto e perché conta per gli Albora</a></li><li><a href="/far-away/far-away-chi-e-nadim-il-capo-dei-baybars-cosa-vuole-e-perche-gli-albora-lo-accusano/">Far Away, chi è Nadim: il capo dei Baybars, cosa vuole e perché gli Albora lo accusano</a></li><li><a href="/far-away/far-away-sadakat-muore-cosa-sappiamo-e-chi-ha-motivo-di-volerla-morta/">Sadakat muore in Far Away? Cosa sappiamo: chi ha motivo di volerla morta e perché la serie non ha ancora risposto</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>Ogni anticipazione, prima in video sul canale Serie TV Fans</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
+  </div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

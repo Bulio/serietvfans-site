@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/endless-love/">Endless Love</a> › Endless Love, Nihan brucia la casa di famiglia e sfida Emir: «Ora farai i conti con me» — il rapimento di Deniz e il ritorno di Kemal dal carcere</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/endless-love/">Endless Love</a>
   <h1>Endless Love, Nihan brucia la casa di famiglia e sfida Emir: «Ora farai i conti con me» — il rapimento di Deniz e il ritorno di Kemal dal carcere</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">La donna fragile che Emir credeva di controllare non esiste più: dopo la fuga a Londra con Deniz e il rapimento della bambina ordinato dal marito per costringerla a tornare, Nihan risponde con il gesto più simbolico e definitivo — dare fuoco alla casa di famiglia, il tempio del potere di Emir. E mentre le fiamme divorano il passato, Kemal esce dal carcere: l&#x27;alleanza per la resa dei conti è pronta.</p><ol><li><a href="#c1">Londra, il rifugio che non basta</a></li><li><a href="#c2">Il rapimento di Deniz: la leva del dolore</a></li><li><a href="#c3">Il rogo: la casa di famiglia in fiamme</a></li><li><a href="#c4">Kemal libero: l&#x27;alleanza della resa dei conti</a></li><li><a href="#c5">Come Nihan trasforma la rabbia in azione</a></li><li><a href="#c6">Perche Emir perde il controllo del suo potere</a></li><li><a href="#c7">Cosa spinge Kemal a cercare la giustizia</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>Endless Love</strong> — Serie conclusa in Italia · le puntate su Mediaset Infinity</span></div>
   
-  <p class="occhiello">La donna fragile che Emir credeva di controllare non esiste più: dopo la fuga a Londra con Deniz e il rapimento della bambina ordinato dal marito per costringerla a tornare, Nihan risponde con il gesto più simbolico e definitivo — dare fuoco alla casa di famiglia, il tempio del potere di Emir. E mentre le fiamme divorano il passato, Kemal esce dal carcere: l&#x27;alleanza per la resa dei conti è pronta.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: Endless Love, Nihan brucia la casa di famiglia e sfida Emir: «Ora farai i conti con me» — il rapimento di Deniz e il ritorno di Kemal dal carcere" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/M4JKc-kWnf4/maxresdefault.jpg" alt="Endless Love, Nihan brucia la casa di famiglia e sfida Emir: «Ora farai i conti con me» — il rapimento di Deniz e il ritorno di Kemal dal carcere" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/M4JKc-kWnf4/hqdefault.jpg 480w, https://i.ytimg.com/vi/M4JKc-kWnf4/sddefault.jpg 640w, https://i.ytimg.com/vi/M4JKc-kWnf4/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/M4JKc-kWnf4/hqdefault.jpg&quot;, &quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,25 +409,25 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>Il fuoco come purificazione: ogni stanza che brucia è un ricordo di sottomissione che sparisce. Da quelle ceneri, promettono le anticipazioni, Nihan rinasce come una fenice.</strong></p>
-  <h2>Londra, il rifugio che non basta</h2>
+  <h2 id="c1">Londra, il rifugio che non basta</h2>
 <p>Dopo anni di oppressione, Nihan era fuggita a Londra con la piccola Deniz: musei, parchi, una vita finalmente serena da madre presente — la felicità che Istanbul le aveva sempre negato. Ma l&#x27;ombra di Emir arriva ovunque: la sua rete di contatti e risorse inesauribili individua il nascondiglio londinese, e la sensazione di essere osservata a ogni angolo trasforma il rifugio in una trappola. L&#x27;ossessione di Emir non conosce confini — e il suo piano per riportarla a casa è il più crudele possibile.</p>
-<h2>Il rapimento di Deniz: la leva del dolore</h2>
+<h2 id="c2">Il rapimento di Deniz: la leva del dolore</h2>
 <p>La bambina sparisce nel nulla: rapita su ordine di Emir, che usa il dolore più lancinante — la perdita di una figlia — come leva per piegare Nihan. Lei capisce all&#x27;istante chi c&#x27;è dietro e prende la decisione che sperava di non dover mai prendere: tornare a Istanbul, la città del suo tormento, per affrontare il carnefice faccia a faccia. Al rendez-vous, Emir detta le condizioni con la solita freddezza: Nihan torni a vivere sotto il suo tetto. Ma la donna che ha davanti lo gela: pretende la figlia e la libertà, con una determinazione tagliente come vetro.</p>
-<h2>Il rogo: la casa di famiglia in fiamme</h2>
+<h2 id="c3">Il rogo: la casa di famiglia in fiamme</h2>
 <p>La risposta di Nihan al ricatto è l&#x27;atto più clamoroso delle anticipazioni: dare fuoco alla maestosa casa di famiglia — non semplici mattoni, ma il simbolo del dominio di Emir, delle catene invisibili, di ogni umiliazione subita. Le fiamme divorano stanze e corridoi pieni di ricordi dolorosi, segnando un punto di non ritorno: Nihan non sarà mai più vittima. Un messaggio inequivocabile scritto col fuoco: il terrore che Emir le incuteva non esiste più.</p>
-<h2>Kemal libero: l&#x27;alleanza della resa dei conti</h2>
+<h2 id="c4">Kemal libero: l&#x27;alleanza della resa dei conti</h2>
 <p>Nel momento esatto in cui Nihan riprende in mano la propria vita, il destino gioca la carta decisiva: Kemal esce dal carcere, con un obiettivo chiaro — giustizia per chi l&#x27;ha fatto soffrire e protezione per Nihan e Deniz. L&#x27;amore mai morto si riaccende, la fiducia reciproca si salda, e i due diventano una forza che Emir non ha mai dovuto affrontare: non più prede isolate, ma alleati nella stessa missione di liberazione. Lo scontro finale si avvicina — e stavolta, a giocare in difesa, sarà Emir.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Come Nihan trasforma la rabbia in azione</h2>
+<h2 id="c5">Come Nihan trasforma la rabbia in azione</h2>
 <p>La vita che Nihan aveva cercato di costruirsi a Londra rappresenta l&#x27;antitesi perfetta degli anni trascorsi a Istanbul sotto il giogo di Emir. Tra i parchi tranquilli e i musei della capitale britannica, la donna aveva finalmente assaporato una quotidianità serena, dedicandosi interamente al suo ruolo di madre presente per la piccola Deniz. Tuttavia, la costante sensazione di essere braccata ha spazzato via quell&#x27;illusione di pace, trasformando la tranquillità estera in una dolorosa prigione invisibile. Quando il piano di Emir si è compiuto con la sparizione della bambina, Nihan ha smesso di essere la figura fragile del passato per abbracciare una determinazione del tutto nuova e tagliente.</p>
 <p>Il ritorno forzato nella città che l&#x27;aveva vista soffrire non è un atto di resa, ma l&#x27;inizio di una controffensiva studiata per affrontare direttamente il suo aguzzino. Al rendez-vous fissato per decidere le sorti della piccola, Emir era convinto di poter imporre ancora una volta le sue regole spietate, chiedendo a Nihan di tornare a vivere insieme sotto lo stesso tetto in cambio della bambina. La risposta della donna ha però gelato ogni certezza del marito, poiché Nihan ha preteso senza esitazione la restituzione di Deniz e la sua immediata libertà, dimostrando di non temere più le minacce che per anni l&#x27;avevano tenuta legata a lui.</p>
 <p>Il gesto più eclatante di questa rinascita coincide con l&#x27;incendio appiccato alla maestosa dimora di famiglia, una struttura che rappresentava visivamente il dominio incontrastato di Emir e le catene di ogni sofferenza patita. Le fiamme che divorano le stanze e i corridoi carichi di memorie dolorose diventano lo strumento attraverso cui Nihan purifica la propria esistenza, cancellando per sempre i segni della sottomissione. Distruggendo quel simbolo di potere, la protagonista chiarisce di aver superato ogni forma di terrore, trasformando il proprio dolore in un atto simbolico di rottura definitiva che non lascia più alcun margine di trattativa.</p>
-<h2>Perche Emir perde il controllo del suo potere</h2>
+<h2 id="c6">Perche Emir perde il controllo del suo potere</h2>
 <p>La strategia di Emir si è sempre basata sulla manipolazione e sulla capacità di sfruttare le risorse economiche e i contatti per sottomettere chiunque provi a ostacolarlo. L&#x27;individuazione del rifugio di Nihan a Londra ha dimostrato ancora una volta l&#x27;estensione paurosa della sua rete di controllo, capace di abbattere ogni confine geografico pur di mantenere salda la presa sulla moglie. Nel momento in cui ha ordinato il rapimento della piccola Deniz, Emir era persuaso di utilizzare la leva più dolorosa per spezzare la resistenza della donna e costringerla a piegarsi nuovamente alla sua volontà insindacabile.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>Ciò che Emir non aveva previsto nella sua fredda pianificazione è la profonda trasformazione interiore di Nihan, nata proprio dalla necessità di proteggere la figlia. Pretendendo il rispetto delle sue condizioni durante l&#x27;incontro ravvicinato, Nihan ha spezzato lo schema abituale del ricatto, dimostrando che la sofferenza e la paura non sono più strumenti efficaci per sottometterla. Il fuoco che ha successivamente distrutto la residenza familiare ha colpito al cuore il monumento stesso della sua superiorità, lasciando l&#x27;uomo smarrito di fronte a un&#x27;avversaria che non risponde più ai suoi comandi e che ha deciso di distruggere le sue catene.</p>
 <p>Di fronte a un gesto così radicale, l&#x27;equilibrio delle forze in campo si modifica in modo irreversibile, obbligando Emir a confrontarsi con una realtà in cui non è più l&#x27;unico ad adoperare la forza. La perdita del controllo sulla figura di Nihan svela la fragilità del suo sistema di dominio, costruito unicamente sulla coercizione e sulla paura. Con la dimora ridotta in cenere e il rifiuto netto delle sue imposizioni, l&#x27;ossessione di Emir si scontra con una parete impenetrabile, costringendolo ad arretrare e a prepararsi a difendere una posizione di potere che comincia seriamente a scricchiolare sotto i colpi della donna.</p>
-<h2>Cosa spinge Kemal a cercare la giustizia</h2>
+<h2 id="c7">Cosa spinge Kemal a cercare la giustizia</h2>
 <p>La scarcerazione di Kemal avviene in un momento cruciale per gli equilibri di questa drammatica vicenda, segnando il ritorno in campo di un protagonista determinato a cambiare il corso degli eventi. L&#x27;esperienza vissuta dietro le sbarre ha rafforzato il suo desiderio di ottenere piena giustizia contro chi lo ha fatto soffrire ingiustamente, spingendolo ad agire con una chiarezza d&#x27;intenti priva di esitazioni. Il suo obiettivo primario diventa immediatamente la protezione di Nihan e della piccola Deniz, ponendosi come un ostacolo insormontabile tra la famiglia che ama e i tentativi di sopraffazione messi in atto da Emir.</p>
 <p>Il legame profondo tra Kemal e Nihan, che non si è mai spento nonostante le avversità e la separazione forzata, ritrova vigore e concretezza proprio nel momento del bisogno comune. La reciproca fiducia si salda in un&#x27;alleanza indistruttibile, fondata sulla volontà condivisa di mettere fine agli abusi e di conquistare finalmente la libertà tanto desiderata. Questa unione d&#x27;intenti trasforma i due protagonisti da prede isolate a una forza compatta e consapevole, in grado di coordinare le proprie mosse con intelligenza per smantellare punto per punto la rete di ricatti intessuta negli anni da Emir.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
@@ -385,19 +435,41 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=6n-78KVvlmk" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/6n-78KVvlmk/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TERRIBILE GESTO SENZA RITORNO DI TARIK, ISTIGATO DA EMIR - Anticipazioni Endless Love 20-26 Mag</span></a></li><li><a href="https://www.youtube.com/watch?v=spDma0vnVCE" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/spDma0vnVCE/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>NIHAN LASCIA EMIR E VA DA KEMAL! FINALMENTE! ESCE LA VERITA&#x27;&#x27;! Anticipazioni Endless Love 2-8 G</span></a></li><li><a href="https://www.youtube.com/watch?v=2x6eVZ8HpgQ" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/2x6eVZ8HpgQ/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TARIK SCEGLIE EMIR E MINACCIA KEMAL: &quot;RIPORTO NIHAN A CASA DA EMIR&quot; - Anticipazioni Endless Lov</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Il rogo della casa è liberazione o un gesto che Emir userà contro Nihan? E l&#x27;alleanza con Kemal appena uscito dal carcere basterà a salvare Deniz?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=M4JKc-kWnf4">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di Endless Love</h2><div class="griglia"><article class="scheda">
+  <a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/"><div class="foto"><img src="https://i.ytimg.com/vi/DSiProJJ1ls/hqdefault.jpg" alt="Endless Love" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/"><div class="foto"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/"><div class="foto"><img src="https://i.ytimg.com/vi/uu2oAzTOWQU/hqdefault.jpg" alt="Endless Love" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></h3>
+    <div class="quando">25 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=Endless Love, Nihan brucia la casa di famiglia e sfida Emir: «Ora farai i conti con me» — il rapimento di Deniz e il ritorno di Kemal dal carcere — https://soapoperaitalia.com/endless-love/endless-love-la-trama-completa-perche-nihan-sposa-emir-e-come-finisce/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://soapoperaitalia.com/endless-love/endless-love-la-trama-completa-perche-nihan-sposa-emir-e-come-finisce/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://soapoperaitalia.com/endless-love/endless-love-la-trama-completa-perche-nihan-sposa-emir-e-come-finisce/&text=Endless Love, Nihan brucia la casa di famiglia e sfida Emir: «Ora farai i conti con me» — il rapimento di Deniz e il ritorno di Kemal dal carcere" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">NIHAN TORNA TRASFORMATA E DETERMINATA: &quot;EMIR, ORA FARAI I CONTI CON ME&quot; - Endless Love</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=M4JKc-kWnf4">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di Endless Love</h3><ol class="numerata"><li><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></li><li><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></li><li><a href="/endless-love/endless-love-chi-e-galip-kozcuoglu-le-due-volte-in-cui-nihan-e-stata-venduta/">Endless Love, chi è Galip Kozcuoğlu: le due volte in cui Nihan è stata venduta</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-zeynep-soydere-perche-emir-lha-scelta-e-cosa-ha-distrutto/">Endless Love, chi è davvero Zeynep Soydere: perché Emir l&#x27;ha scelta e cosa ha distrutto</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>NIHAN TORNA TRASFORMATA E DETERMINATA: &quot;EMIR, ORA FARAI I CONTI CON ME&quot; - Endless Love</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su Endless Love</h3><ul><li><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></li><li><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></li><li><a href="/endless-love/endless-love-chi-e-galip-kozcuoglu-le-due-volte-in-cui-nihan-e-stata-venduta/">Endless Love, chi è Galip Kozcuoğlu: le due volte in cui Nihan è stata venduta</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-zeynep-soydere-perche-emir-lha-scelta-e-cosa-ha-distrutto/">Endless Love, chi è davvero Zeynep Soydere: perché Emir l&#x27;ha scelta e cosa ha distrutto</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

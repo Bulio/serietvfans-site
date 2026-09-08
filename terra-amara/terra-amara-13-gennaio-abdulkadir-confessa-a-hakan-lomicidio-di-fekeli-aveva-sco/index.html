@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/terra-amara/">Terra Amara</a> › Terra Amara 13 gennaio, Abdülkadir confessa a Hakan l&#x27;omicidio di Fekeli: «Aveva scoperto chi sono davvero» — e Betül fa firmare a Ergün le carte truccate</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/terra-amara/">Terra Amara</a>
   <h1>Terra Amara 13 gennaio, Abdülkadir confessa a Hakan l&#x27;omicidio di Fekeli: «Aveva scoperto chi sono davvero» — e Betül fa firmare a Ergün le carte truccate</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>6 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">La verità sulla morte di Fekeli esce dalla bocca del colpevole: davanti alla preoccupazione di Hakan, Abdülkadir ammette di essere stato lui, perché il vecchio aveva scoperto la sua vera identità — e chiede se può ancora contare sulla sua fiducia. Hakan prende tempo. Intanto Betül gioca su tre tavoli: la notte con Fikret, la promessa di un weekend ad Antalya a Ergün per fargli firmare senza leggere documenti che ha appena manomesso, e la fiducia di Züleyha. E Şermin tende a Gaffur la trappola dei terreni vicino alla diga.</p><ol><li><a href="#c1">«L&#x27;ho ucciso perché sapeva chi sono»</a></li><li><a href="#c2">I sospetti di Fikret e le voci del paese</a></li><li><a href="#c3">La notte con Betül e la fuga del mattino dopo</a></li><li><a href="#c4">La firma estorta a Ergün e la trappola dei terreni per Gaffur</a></li><li><a href="#c5">Come Abdulkadir ammette la sua colpa davanti ad Hakan</a></li><li><a href="#c6">Perche Fikret teme le mire di Mehmet Kara sulla holding</a></li><li><a href="#c7">Cosa spinge Betul a ingannare Ergun e Fikret</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>Terra Amara</strong> — Serie conclusa in Italia · tutte le puntate su Mediaset Infinity</span></div>
   
-  <p class="occhiello">La verità sulla morte di Fekeli esce dalla bocca del colpevole: davanti alla preoccupazione di Hakan, Abdülkadir ammette di essere stato lui, perché il vecchio aveva scoperto la sua vera identità — e chiede se può ancora contare sulla sua fiducia. Hakan prende tempo. Intanto Betül gioca su tre tavoli: la notte con Fikret, la promessa di un weekend ad Antalya a Ergün per fargli firmare senza leggere documenti che ha appena manomesso, e la fiducia di Züleyha. E Şermin tende a Gaffur la trappola dei terreni vicino alla diga.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: Terra Amara 13 gennaio, Abdülkadir confessa a Hakan l&#x27;omicidio di Fekeli: «Aveva scoperto chi sono davvero» — e Betül fa firmare a Ergün le carte truccate" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/HhfAdAJ24sM/maxresdefault.jpg" alt="Terra Amara 13 gennaio, Abdülkadir confessa a Hakan l&#x27;omicidio di Fekeli: «Aveva scoperto chi sono davvero» — e Betül fa firmare a Ergün le carte truccate" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/HhfAdAJ24sM/hqdefault.jpg 480w, https://i.ytimg.com/vi/HhfAdAJ24sM/sddefault.jpg 640w, https://i.ytimg.com/vi/HhfAdAJ24sM/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/HhfAdAJ24sM/hqdefault.jpg&quot;, &quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,41 +409,63 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>Il dettaglio che pesa: Fikret non si fida di Mehmet e teme che voglia impadronirsi della holding in assenza di Demir — mentre il paese mormora che sia lui a volersi prendere le ricchezze degli Yaman.</strong></p>
-  <h2>«L&#x27;ho ucciso perché sapeva chi sono»</h2>
+  <h2 id="c1">«L&#x27;ho ucciso perché sapeva chi sono»</h2>
 <p>Hakan si presenta da Abdülkadir mostrando un dolore sincero per la morte di Fekeli, e il socio non nega: spiega le circostanze che lo hanno spinto a quel gesto — il vecchio aveva scoperto la sua vera identità. Poi mette il futuro della loro alleanza nelle mani di Hakan: può ancora contare sulla sua fiducia o le loro strade devono separarsi? La risposta è sospesa, «ci penserò», e Hakan se ne va. Rimasto solo, Abdülkadir lascia esplodere la rabbia repressa: assecondare i desideri del socio significherebbe non vedere mai un centesimo dell&#x27;azienda.</p>
-<h2>I sospetti di Fikret e le voci del paese</h2>
+<h2 id="c2">I sospetti di Fikret e le voci del paese</h2>
 <p>A cena con Çetin, Fikret confida la sua sfiducia verso Mehmet: teme che stia manovrando per impadronirsi della holding ora che Demir non c&#x27;è, e sente come un dovere verso l&#x27;amico scomparso il compito di proteggere Züleyha e i bambini. Çetin gli suggerisce di parlarne con Lütfiye, ma lui obietta che dopo la morte di Fekeli la donna non è abbastanza lucida. Il paradosso è che le malelingue di Çukurova puntano proprio su di lui: si mormora che Fikret voglia mettere le mani sulle ricchezze degli Yaman — al punto che Lütfiye valuta di lasciare la città e cerca una casa propria per far tacere le voci, in un abbraccio commovente con Saniye.</p>
-<h2>La notte con Betül e la fuga del mattino dopo</h2>
+<h2 id="c3">La notte con Betül e la fuga del mattino dopo</h2>
 <p>Betül, spinta anche dalla madre — che sogna già una villa e un&#x27;automobile grazie a un matrimonio col nipote di Fekeli — cerca un chiarimento con Fikret. Al caffè lui le confida i timori su Mehmet Kara; lei prova a rassicurarlo, ricordandogli che Demir stesso aveva affidato loro la gestione dell&#x27;azienda, e gli prende la mano promettendo di stare attenta. La passeggiata per il paese finisce in un bacio appassionato e in una notte insieme. Ma il mattino dopo Fikret, visibilmente nervoso, inventa un appuntamento importante e se ne va, lasciandola delusa — salvo poi, uscito dalla stanza, rimproverarsi per l&#x27;accaduto.</p>
-<h2>La firma estorta a Ergün e la trappola dei terreni per Gaffur</h2>
+<h2 id="c4">La firma estorta a Ergün e la trappola dei terreni per Gaffur</h2>
 <p>La mossa più fredda Betül la gioca in ufficio: ottenuta da Züleyha la stanza che era di Ergün, ne approfitta per sottrarre alcuni documenti da una cartellina e nasconderli in tasca. Poi consola il collega spostato promettendogli un weekend ad Antalya e, mentre lui si perde nell&#x27;entusiasmo del viaggio, gli fa firmare senza controlli un elenco di pagamenti che sostiene di aver già verificato. Firma ottenuta, cartellina recuperata, e via — schivando anche il bacio. Sul fronte comico-crudele, Şermin e Füsun recitano ad alta voce davanti a Gaffur la storia dei terreni vicino alla diga che moltiplicherebbero il valore per cento: lui abbocca e propone a Saniye di investire i soldi messi da parte per Üzüm, ricevendo in cambio una minaccia di morte.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Come Abdulkadir ammette la sua colpa davanti ad Hakan</h2>
+<h2 id="c5">Come Abdulkadir ammette la sua colpa davanti ad Hakan</h2>
 <p>Il tragico destino di Fekeli trova finalmente una spiegazione diretta quando la verità viene pronunciata dal suo stesso artefice all&#x27;interno di un confronto ad alta tensione. Davanti al dolore genuino dimostrato da Hakan per la perdita del vecchio, Abdülkadir decide di non nascondersi più e chiarisce le motivazioni del suo gesto spietato. Fekeli si era spinto troppo oltre nelle sue indagini, arrivando a scoprire la reale identità dell&#x27;uomo, una verità scomoda che non poteva assolutamente rimanere impunita senza mettere in pericolo tutti i loro piani. Questa confessione schiacciante trasforma il legame tra i due soci in un terreno instabile, dove ogni parola pesa e mette a rischio la prosecuzione della loro collaborazione nella città.</p>
 <p>Dopo aver ammesso l&#x27;omicidio, Abdülkadir pone al socio una domanda fondamentale sul loro futuro comune, chiedendo apertamente se possa ancora contare sulla sua cieca fiducia o se sia giunto il momento di separare le rispettive strade. Hakan sceglie di non sbilanciarsi e prende tempo, lasciando l&#x27;alleato nell&#x27;incertezza con una risposta fredda e sospesa. Questa esitazione fa esplodere la rabbia repressa di Abdülkadir una volta rimasto solo nella stanza. Egli comprende infatti che seguire ciecamente la morale e le inclinazioni di Hakan rischia di vanificare ogni sforzo economico, impedendogli di mettere le mani sui guadagni dell&#x27;azienda e compromettendo definitivamente le sue enormi ambizioni finanziarie su tutto il territorio di Cukurova.</p>
-<h2>Perche Fikret teme le mire di Mehmet Kara sulla holding</h2>
+<h2 id="c6">Perche Fikret teme le mire di Mehmet Kara sulla holding</h2>
 <p>Durante un incontro serale al tavolo di un ristorante con il fidato Çetin, Fikret manifesta apertamente tutti i suoi sospetti nei confronti della figura ambigua di Mehmet Kara. Il giovane teme fortemente che l&#x27;uomo stia agendo nell&#x27;ombra con il preciso scopo di impadronirsi della holding Yaman, approfittando dell&#x27;assenza prolungata e misteriosa di Demir. Sentendosi legato da un profondo senso di dovere e lealtà verso l&#x27;amico scomparso, Fikret ritiene sia suo preciso compito tutelare Züleyha e i bambini da possibili manovre ingannevoli. Nemmeno il consiglio di Çetin di confidarsi con Lütfiye riesce a smuoverlo, poiché la donna appare ancora troppo provata ed emotivamente instabile a causa del recente e gravissimo lutto che ha sconvolto la famiglia.</p>
 <p>A complicare ulteriormente la situazione intervengono le velenose malelingue del paese, che ribaltano completamente la realtà dei fatti additando proprio Fikret come un arrampicatore sociale interessato al patrimonio degli Yaman. Queste insistenti voci di corridoio feriscono profondamente Lütfiye, la quale, pur soffrendo ancora per la scomparsa di Fekeli, valuta seriamente l&#x27;ipotesi di abbandonare la residenza per cercare un&#x27;abitazione tutta sua e mettere così a tacere i pettegolezzi. La drammatica decisione porta a un momento di intensa commozione tra le mura domestiche, culminato in un caloroso abbraccio consolatorio con Saniye, mentre la comunità locale continua a mormorare e a giudicare ingiustamente le vere intenzioni del ragazzo riguardo alla gestione delle ricchezze di famiglia.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Cosa spinge Betul a ingannare Ergun e Fikret</h2>
+<h2 id="c7">Cosa spinge Betul a ingannare Ergun e Fikret</h2>
 <p>Le ambizioni della giovane Betül vengono continuamente alimentate dalle ingerenze di sua madre Şermin, la quale sogna ad occhi aperti un futuro di grande prestigio, fatto di ville lussuose e automobili d&#x27;epoca garantite da un matrimonio strategico con il nipote di Fekeli. Muovendosi con scaltrezza, la ragazza affronta Fikret al caffè, cercando di rassicurarlo sulle mire di Mehmet Kara e ricordandogli che era stato lo stesso Demir ad affidare loro le redini dell&#x27;azienda. La passeggiata confidenziale sfocia in un appassionato bacio e in una notte trascorsa insieme, ma l&#x27;illusione dura pochissimo. Il mattino seguente Fikret, assalito dal nervosismo e dai sensi di colpa, scompare improvvisamente inventando un impegno e lasciando Betül profundamente delusa.</p>
 <p>Non appagata dagli intrighi sentimentali, Betül sposta le sue manovre all&#x27;interno degli uffici aziendali, sfruttando la cieca fiducia di Züleyha che le ha concesso la stanza precedentemente occupata da Ergün. Approfittando della situazione, la donna si impossessa di documenti riservati da una cartellina e li nasconde, per poi raggirare il collega trasferito promettendogli un romantico weekend ad Antalya. Distratto dalla prospettiva del viaggio, Ergün firma senza verificare un lungo elenco di pagamenti manomesso, permettendole di portare a termine l&#x27;inganno prima di liquidarlo ed evitare le sue avances. Nel frattempo Şermin orchestra insieme a Füsun una trappola ai danni di Gaffur, facendogli credere che i terreni presso la diga abbiano moltiplicato il valore, spingendolo al rischioso passo.</p>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=WglHA_nQqkM" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/WglHA_nQqkM/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TERRA AMARA Anticipazioni 12 Gennaio:Fikret devastato dalla morte di Fekeli.Sdraiato sulla sua </span></a></li><li><a href="https://www.youtube.com/watch?v=BY84_U_YXws" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/BY84_U_YXws/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>Terra Amara Anticipazioni 22 Marzo: Hakan salva Kerem Alì ma Fikret lo accusa di essere il colp</span></a></li><li><a href="https://www.youtube.com/watch?v=MG2wUFH5Bc4" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/MG2wUFH5Bc4/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TERRA AMARA Anticipazioni Sabato 23 Dicembre: Zuleyha alla prova più dura,Hakan assale Ranch Fe</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Hakan spezzerà l&#x27;alleanza con l&#x27;assassino di Fekeli o la convenienza vincerà di nuovo? E Betül sta davvero cadendo per Fikret o è solo l&#x27;ennesima mossa?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=HhfAdAJ24sM">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di Terra Amara</h2><div class="griglia"><article class="scheda">
+  <a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/"><div class="foto"><img src="/img/terra-amara-la-trama-completa-e-come-finisce.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></h3>
+    <div class="quando">30 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/"><div class="foto"><img src="https://i.ytimg.com/vi/_ypSJU-x7LY/hqdefault.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/"><div class="foto"><img src="https://i.ytimg.com/vi/B_MLx-0yh6M/hqdefault.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=Terra Amara 13 gennaio, Abdülkadir confessa a Hakan l&#x27;omicidio di Fekeli: «Aveva scoperto chi sono davvero» — e Betül fa firmare a Ergün le carte truccate — https://serietvfans.com/terra-amara/terra-amara-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/terra-amara/terra-amara-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/terra-amara/terra-amara-la-trama-completa-e-come-finisce/&text=Terra Amara 13 gennaio, Abdülkadir confessa a Hakan l&#x27;omicidio di Fekeli: «Aveva scoperto chi sono davvero» — e Betül fa firmare a Ergün le carte truccate" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">TERRA AMARA Anticipazioni 13 Gennaio: Hakan scopre chi ha ucciso Fekeli</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=HhfAdAJ24sM">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di Terra Amara</h3><ol class="numerata"><li><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></li><li><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></li><li><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></li><li><a href="/terra-amara/terra-amara-come-finisce-davvero-zuleyha-vince-tutto-e-resta-sola/">Terra Amara: come finisce davvero, Züleyha vince tutto e resta sola</a></li><li><a href="/terra-amara/terra-amara-come-muore-demir-yaman-chi-ha-dato-lordine-e-perche-doveva-essere-un-rapimento/">Terra Amara, come muore Demir Yaman: chi ha dato l&#x27;ordine e perché doveva essere un rapimento</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>TERRA AMARA Anticipazioni 13 Gennaio: Hakan scopre chi ha ucciso Fekeli</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su Terra Amara</h3><ul><li><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></li><li><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></li><li><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></li><li><a href="/terra-amara/terra-amara-come-finisce-davvero-zuleyha-vince-tutto-e-resta-sola/">Terra Amara: come finisce davvero, Züleyha vince tutto e resta sola</a></li><li><a href="/terra-amara/terra-amara-come-muore-demir-yaman-chi-ha-dato-lordine-e-perche-doveva-essere-un-rapimento/">Terra Amara, come muore Demir Yaman: chi ha dato l&#x27;ordine e perché doveva essere un rapimento</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

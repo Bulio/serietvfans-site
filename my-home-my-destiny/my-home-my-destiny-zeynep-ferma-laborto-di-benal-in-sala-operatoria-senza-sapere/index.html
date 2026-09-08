@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/my-home-my-destiny/">My Home My Destiny</a> › My Home My Destiny, Zeynep ferma l&#x27;aborto di Benal in sala operatoria senza sapere che il padre è Mehdi</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/my-home-my-destiny/">My Home My Destiny</a>
   <h1>My Home My Destiny, Zeynep ferma l&#x27;aborto di Benal in sala operatoria senza sapere che il padre è Mehdi</h1>
-  <div class="firma">Redazione Serie TV Fans · lunedì 17 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-17">lunedì 17 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>8 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Benal scopre di essere incinta di Mehdi e la ginecologa le mette davanti una scadenza: decidere subito. Zeynep la vede piangere da lontano, va a casa sua per aiutarla e scopre la gravidanza dai documenti dell&#x27;ospedale lasciati in salotto. Convinta che quel figlio meriti di nascere, la accompagna in ospedale — e all&#x27;ultimo momento corre in sala operatoria per interrompere la procedura, senza immaginare che il padre sia suo marito.</p><ol><li><a href="#c1">Chi sono Zeynep, Benal e Mehdi, per chi arriva adesso</a></li><li><a href="#c2">L&#x27;antefatto: la gravidanza che Benal non riesce a dire a nessuno</a></li><li><a href="#c3">La finestra, il pianto e i documenti sul tavolo</a></li><li><a href="#c4">Il ricordo di Benal: «Provo affetto per te, ma non ti amo»</a></li><li><a href="#c5">«È un diritto del padre saperlo»: il consiglio che Zeynep dà alla sua rivale</a></li><li><a href="#c6">La corsa in corridoio: Zeynep interrompe la procedura</a></li><li><a href="#c7">Il segreto che Benal è a un passo dal confessare</a></li><li><a href="#c8">Intanto Mehdi affronta Ekrem e scopre la sua doppia vita</a></li><li><a href="#c9">Bayram cacciato di casa e il treno sui binari</a></li><li><a href="#c10">Dove vedere My Home My Destiny</a></li><li><a href="#c11">Perché la generosità di Zeynep opprime Benal</a></li><li><a href="#c12">Come Mehdi scopre il segreto di Ekrem in ospedale</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>My Home My Destiny</strong> — Serie conclusa in Italia · le puntate su Mediaset Infinity</span></div>
   
-  <p class="occhiello">Benal scopre di essere incinta di Mehdi e la ginecologa le mette davanti una scadenza: decidere subito. Zeynep la vede piangere da lontano, va a casa sua per aiutarla e scopre la gravidanza dai documenti dell&#x27;ospedale lasciati in salotto. Convinta che quel figlio meriti di nascere, la accompagna in ospedale — e all&#x27;ultimo momento corre in sala operatoria per interrompere la procedura, senza immaginare che il padre sia suo marito.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: My Home My Destiny, Zeynep ferma l&#x27;aborto di Benal in sala operatoria senza sapere che il padre è Mehdi" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/-djleIeCLQs/maxresdefault.jpg" alt="My Home My Destiny, Zeynep ferma l&#x27;aborto di Benal in sala operatoria senza sapere che il padre è Mehdi" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/-djleIeCLQs/hqdefault.jpg 480w, https://i.ytimg.com/vi/-djleIeCLQs/sddefault.jpg 640w, https://i.ytimg.com/vi/-djleIeCLQs/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/-djleIeCLQs/hqdefault.jpg&quot;, &quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,51 +409,73 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>Una cartella dell&#x27;ospedale lasciata sul tavolo del salotto, una donna che piange dietro una finestra e una corsa lungo un corridoio. Zeynep salva quel bambino senza sapere di chi è figlio.</strong></p>
-  <h2>Chi sono Zeynep, Benal e Mehdi, per chi arriva adesso</h2>
+  <h2 id="c1">Chi sono Zeynep, Benal e Mehdi, per chi arriva adesso</h2>
 <p>Zeynep è la protagonista della serie: cresciuta in una famiglia adottiva benestante, si è ritrovata sposata a Mehdi in un matrimonio nato male e diventato, contro ogni previsione, la cosa più solida della sua vita. Mehdi è il meccanico che quel matrimonio l&#x27;ha voluto senza saperlo gestire, un uomo che sbaglia quasi sempre il modo e quasi mai le intenzioni. Benal è la donna che c&#x27;era prima: la relazione che Mehdi ha portato avanti mentre la data delle nozze era già fissata, e che nella serie funziona come la ferita che non si chiude mai del tutto.</p>
-<h2>L&#x27;antefatto: la gravidanza che Benal non riesce a dire a nessuno</h2>
+<h2 id="c2">L&#x27;antefatto: la gravidanza che Benal non riesce a dire a nessuno</h2>
 <p>Tutto comincia nello studio della sua ginecologa, che è anche un&#x27;amica. Benal confessa quello che non ha detto a nessuno: il bambino che aspetta è di Mehdi, e Mehdi ormai è sposato. La dottoressa non le fa la morale, le mette davanti una scelta secca — tenerlo o interrompere la gravidanza — e soprattutto un limite: i termini legali per l&#x27;interruzione stanno per scadere, quindi decidere in fretta non è un consiglio ma una necessità. Benal esce da quello studio con una scadenza addosso e nessuno con cui parlarne.</p>
-<h2>La finestra, il pianto e i documenti sul tavolo</h2>
+<h2 id="c3">La finestra, il pianto e i documenti sul tavolo</h2>
 <p>Zeynep, appena finita una telefonata rassicurante con Kibrit, guarda fuori dalla finestra della sua camera e vede Benal in casa che piange, sola. Capisce che c&#x27;è qualcosa che non va e decide di scoprire cosa. Si presenta a casa sua con l&#x27;intenzione dichiarata di aiutarla se serve, e mentre Benal è in cucina a preparare il caffè nota dei documenti dell&#x27;ospedale appoggiati in salotto. Convinta che si tratti di un problema di salute, li sbircia — ed è così che scopre la gravidanza. Quando Benal torna, Zeynep non gira intorno alla domanda.</p>
-<h2>Il ricordo di Benal: «Provo affetto per te, ma non ti amo»</h2>
+<h2 id="c4">Il ricordo di Benal: «Provo affetto per te, ma non ti amo»</h2>
 <p>Messa alle strette, Benal ammette lo stato di gravidanza e ammette anche che per lei non è una benedizione: il padre non sa nulla, perché la loro storia è finita da tempo. Zeynep ipotizza che sia l&#x27;ex marito e Benal la corregge subito, senza dire altro. È attraverso i suoi ricordi che lo spettatore capisce come sono andate davvero le cose: una sera Benal aveva chiesto a Mehdi di sposarla e vivere alla luce del sole, lui aveva risposto che il matrimonio non gli interessava, e lei gli aveva detto in faccia che era solo un modo gentile per dire che non la amava. Mehdi non lo aveva negato.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>«È un diritto del padre saperlo»: il consiglio che Zeynep dà alla sua rivale</h2>
+<h2 id="c5">«È un diritto del padre saperlo»: il consiglio che Zeynep dà alla sua rivale</h2>
 <p>Zeynep insiste su un punto solo: comunque sia finita quella storia, il padre ha il diritto di sapere, e forse la notizia potrebbe perfino farli tornare insieme. Benal si difende dicendo che non ha intenzione di rovinare la vita a nessuno, lasciando intendere che l&#x27;uomo sia impegnato con un&#x27;altra; quando Zeynep chiede se sia sposato, lo nega. Poi Zeynep dice la cosa che conta davvero: secondo lei Benal ha tutte le capacità e la voglia di crescere quel bambino da sola, e deve decidere con il cuore oltre che con la testa. Sta consigliando la propria rivale in amore, e lo fa in buona fede.</p>
-<h2>La corsa in corridoio: Zeynep interrompe la procedura</h2>
+<h2 id="c6">La corsa in corridoio: Zeynep interrompe la procedura</h2>
 <p>Poco dopo Benal la informa che è in ritardo per un appuntamento: deve andare a interrompere la gravidanza. Zeynep si scusa per le parole usate poco prima — non immaginava che la decisione fosse già stata presa — ma si rifiuta di lasciarla andare da sola e insiste per accompagnarla, finché Benal è costretta ad accettare. In ospedale, mentre Benal è già in sala operatoria in attesa che la procedura cominci, Zeynep resta in sala d&#x27;attesa e non riesce a restare ferma: si alza, corre lungo il corridoio e fa in tempo a fermare tutto.</p>
-<h2>Il segreto che Benal è a un passo dal confessare</h2>
+<h2 id="c7">Il segreto che Benal è a un passo dal confessare</h2>
 <p>Fermata la procedura, Zeynep cerca di convincerla a tenere il bambino con l&#x27;argomento più pesante di tutti: anche se il padre biologico non ci sarà, lei e Mehdi ci saranno sempre, per lei e per il piccolo. È in quel momento che Benal sente di non poter più mentire, e arriva a un passo dal dire la verità. Lo spettatore sa quello che Zeynep non sa — che quel bambino è di suo marito — ed è esattamente da qui che parte tutta la catena di segreti e ricatti che occuperà le settimane successive.</p>
-<h2>Intanto Mehdi affronta Ekrem e scopre la sua doppia vita</h2>
+<h2 id="c8">Intanto Mehdi affronta Ekrem e scopre la sua doppia vita</h2>
 <p>Nello stesso giorno Mehdi si presenta nell&#x27;ufficio di Ekrem, il padre adottivo di Zeynep, per chiedergli conto della falsa denuncia per violenza su minori. Ekrem lo tratta con disprezzo, sostenendo di aver fatto il proprio dovere di cittadino, e Mehdi gli detta le sue condizioni: mai più avvicinarsi a Zeynep o alla sua famiglia. Ekrem lo fa cacciare dalla sicurezza, ma Mehdi e Nuh lo pedinano in auto — e finiscono proprio in ospedale, dove lo vedono con i loro occhi incontrare l&#x27;amante e la figlia segreta.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Bayram cacciato di casa e il treno sui binari</h2>
+<h2 id="c9">Bayram cacciato di casa e il treno sui binari</h2>
 <p>Sullo sfondo, la mattina era cominciata con una scena che spiega il livello di disperazione di quella casa: Sakine prende un cuscino e prova a soffocare Bayram nel sonno, salvato solo dall&#x27;irruzione di Zeliha e Müjgan nella stanza. Zeliha mette il punto: Bayram è un alcolizzato che ha già compromesso l&#x27;adozione di Kibrit, e deve andarsene subito. Lui se ne va maledicendo tutti, vaga per la città ubriaco e finisce per crollare privo di sensi sui binari della ferrovia, mentre in lontananza si vede arrivare un treno.</p>
-<h2>Dove vedere My Home My Destiny</h2>
+<h2 id="c10">Dove vedere My Home My Destiny</h2>
 <p>My Home My Destiny è andata in onda in Italia su Canale 5: le puntate si possono recuperare in streaming su Mediaset Infinity.</p>
-<h2>Perché la generosità di Zeynep opprime Benal</h2>
+<h2 id="c11">Perché la generosità di Zeynep opprime Benal</h2>
 <p>La decisione di Zeynep di intervenire nella vita di Benal nasce da un sincero desiderio di protezione e solidarietà femminile, ma finisce per intrappolare la sua rivale in una rete di sensi di colpa. Quando Zeynep entra in casa di Benal e nota i documenti medici lasciati sul tavolo, agisce senza alcun sospetto sul legame tra la donna e suo marito Mehdi. Il suo consiglio di dare una possibilità al bambino e di informare il padre biologico viene offerto con assoluta buona fede. Tuttavia, per Benal queste parole rappresentano un macigno emotivo indicibile, poiché sa benissimo che rivelare la verità distruggerebbe proprio il matrimonio della persona che sta cercando con tanta generosità di aiutarla.</p>
 <p>L&#x27;offerta finale di Zeynep, che assicura a Benal il sostegno costante suo e di Mehdi per crescere il neonato, porta la tensione al punto di rottura. Questa promessa inconsapevole spinge Benal a un passo dalla confessione diretta all&#x27;interno della struttura ospedaliera. Interrompere l&#x27;aborto all&#x27;ultimo secondo preserva la vita del nascituro, ma trasforma irrimediabilmente la dinamica tra i personaggi. La scelta di fermare la procedura medica impedisce a Benal di chiudere per sempre con il passato, ponendo le basi per una catena di omissioni e possibili ricatti che coinvolgeranno la coppia nei giorni a seguire, lasciando Zeynep del tutto all&#x27;oscuro della vera paternità del piccolo.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Come Mehdi scopre il segreto di Ekrem in ospedale</h2>
+<h2 id="c12">Come Mehdi scopre il segreto di Ekrem in ospedale</h2>
 <p>Mentre Zeynep si trova impegnata nei corridoi della clinica con Benal, la trama parallela vede Mehdi affrontare direttamente Ekrem all&#x27;interno del suo ufficio. La questione centrale riguarda la denuncia fittizia per violenza su minori che il padre adottivo ha presentato contro il meccanico, un atto compiuto ostentando superiorità morale e disprezzo sociale. Senza farsi intimidire dalle minacce o dall&#x27;intervento del servizio di sicurezza fatto chiamare per cacciarlo, Mehdi decide di non archiviare la faccenda. Insieme a Nuh, organizza un pedinamento automobilistico per monitorare gli spostamenti dell&#x27;uomo, con l&#x27;intento preciso di stabilire dei confini inviolabili per proteggere Zeynep e la stabilità della propria famiglia.</p>
 <p>L&#x27;inseguimento si conclude proprio nella medesima struttura sanitaria dove si stanno svolgendo le vicende di Benal e Zeynep. È qui che Mehdi e Nuh assistono a una scena del tutto inaspettata, cogliendo Ekrem sul fatto insieme a una donna sconosciuta e a una bambina, rivelando la presenza di un&#x27;amante e di una figlia tenute nascoste a tutti. Questa clamorosa scoperta capovolge completamente i rapporti di forza tra i due uomini. L&#x27;immagine d&#x27;ineccepibile rispetto sociale di Ekrem crolla improvvisamente davanti agli occhi del meccanico, fornendo a Mehdi un&#x27;arma di ricatto morale in grado di smentire le accuse ricevute e di cambiare le sorti dei loro futuri confronti.</p>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=3XnL70CkHt0" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/3XnL70CkHt0/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>MY HOME MY DESTINY Anticipazioni e Trame Turche: Mehdi Lascia Zeynep per l&#x27;Amante Incinta?</span></a></li><li><a href="https://www.youtube.com/watch?v=A_21cg0B0Sg" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/A_21cg0B0Sg/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>MY HOME MY DESTINY Anticipazioni: Mehdi passa la notte con Nazli! Benal infuriata! Zeynep gelos</span></a></li><li><a href="https://www.youtube.com/watch?v=EXVnTyrbwwM" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/EXVnTyrbwwM/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>MY HOME MY DESTINY Anticipazioni 30-31 Ottobre: Zeynep, fine dell&#x27;incubo e ritorno a casa!</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Zeynep ha fatto bene a fermare quella procedura, sapendo che stava decidendo per una scelta non sua? E secondo voi Benal doveva dirle in quel momento che il padre era Mehdi?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=-djleIeCLQs">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di My Home My Destiny</h2><div class="griglia"><article class="scheda">
+  <a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/"><div class="foto"><img src="/img/my-home-my-destiny-la-trama-completa-e-come-finisce.jpg" alt="My Home My Destiny" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">My Home My Destiny</span>
+    <h3><a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/">My Home My Destiny: la trama completa e come finisce</a></h3>
+    <div class="quando">30 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/"><div class="foto"><img src="https://i.ytimg.com/vi/gxL0o63Nhqw/hqdefault.jpg" alt="My Home My Destiny" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">My Home My Destiny</span>
+    <h3><a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/">My Home My Destiny, anticipazioni del 17 novembre: Özlem indaga su Zeynep e scopre tutto, Nuh diventa autista di Barış e qualcuno manomette i macchinari di Bekir</a></h3>
+    <div class="quando">16 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/my-home-my-destiny/my-home-my-destiny-guida-alla-serie-chi-sono-demet-ozdemir-e-ibrahim-celikkol-qu/"><div class="foto"><img src="https://i.ytimg.com/vi/ssk6OdCLODA/hqdefault.jpg" alt="My Home My Destiny" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">My Home My Destiny</span>
+    <h3><a href="/my-home-my-destiny/my-home-my-destiny-guida-alla-serie-chi-sono-demet-ozdemir-e-ibrahim-celikkol-qu/">My Home My Destiny: guida alla serie, il cast, i personaggi e quante puntate sono</a></h3>
+    <div class="quando">16 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=My Home My Destiny, Zeynep ferma l&#x27;aborto di Benal in sala operatoria senza sapere che il padre è Mehdi — https://serietvfans.com/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/&text=My Home My Destiny, Zeynep ferma l&#x27;aborto di Benal in sala operatoria senza sapere che il padre è Mehdi" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">My Home My Destiny, Zeynep ferma l&#x27;aborto di Benal in sala operatoria senza sapere che il padre è Mehdi</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=-djleIeCLQs">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di My Home My Destiny</h3><ol class="numerata"><li><a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/">My Home My Destiny: la trama completa e come finisce</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/">My Home My Destiny, anticipazioni del 17 novembre: Özlem indaga su Zeynep e scopre tutto, Nuh diventa autista di Barış e qualcuno manomette i macchinari di Bekir</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-guida-alla-serie-chi-sono-demet-ozdemir-e-ibrahim-celikkol-qu/">My Home My Destiny: guida alla serie, il cast, i personaggi e quante puntate sono</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-1-dicembre-gli-spari-davanti-alla-vecchia-casa-zeynep-tra-le/">My Home My Destiny 1° dicembre, gli spari davanti alla vecchia casa: Zeynep tra le due madri quando l&#x27;uomo in moto estrae la pistola</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-10-novembre-mehdi-accoltellato-in-bagno-unora-prima-della-sca/">My Home My Destiny 10 novembre, Mehdi accoltellato in bagno un&#x27;ora prima della scarcerazione: corre a chiamare aiuto e al ritorno è lui l&#x27;accusato</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>Ogni anticipazione, prima in video sul canale Serie TV Fans</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su My Home My Destiny</h3><ul><li><a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/">My Home My Destiny: la trama completa e come finisce</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/">My Home My Destiny, anticipazioni del 17 novembre: Özlem indaga su Zeynep e scopre tutto, Nuh diventa autista di Barış e qualcuno manomette i macchinari di Bekir</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-guida-alla-serie-chi-sono-demet-ozdemir-e-ibrahim-celikkol-qu/">My Home My Destiny: guida alla serie, il cast, i personaggi e quante puntate sono</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-1-dicembre-gli-spari-davanti-alla-vecchia-casa-zeynep-tra-le/">My Home My Destiny 1° dicembre, gli spari davanti alla vecchia casa: Zeynep tra le due madri quando l&#x27;uomo in moto estrae la pistola</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-10-novembre-mehdi-accoltellato-in-bagno-unora-prima-della-sca/">My Home My Destiny 10 novembre, Mehdi accoltellato in bagno un&#x27;ora prima della scarcerazione: corre a chiamare aiuto e al ritorno è lui l&#x27;accusato</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

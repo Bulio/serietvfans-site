@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/endless-love/">Endless Love</a> › Endless Love 17-23 giugno, la roulette turca di Kemal ed Emir: due pistole, un tavolo — e Nihan che li separa con la dichiarazione shock</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/endless-love/">Endless Love</a>
   <h1>Endless Love 17-23 giugno, la roulette turca di Kemal ed Emir: due pistole, un tavolo — e Nihan che li separa con la dichiarazione shock</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Settimana al cardiopalma: il rifugio nel bosco di Kemal e Nihan viene bruciato dal tradimento di Zeynep — incinta davvero, e terrorizzata per il bambino — che rivela a Emir il nascondiglio. Il ricatto («ucciderò Kemal se non torni») strappa a Nihan un ultimo giorno d&#x27;amore e una lettera d&#x27;addio. E quando Kemal scopre l&#x27;accoltellamento di Leyla, sfida Emir al duello della roulette turca: uno morirà, l&#x27;altro finirà in prigione. A fermarli, un attimo prima, è Nihan.</p><ol><li><a href="#c1">Il rifugio nel bosco e i depistaggi di Kemal</a></li><li><a href="#c2">Il tradimento di Zeynep: la telefonata che brucia tutto</a></li><li><a href="#c3">L&#x27;ultimo giorno d&#x27;amore e la lettera dell&#x27;addio</a></li><li><a href="#c4">La roulette turca: due uomini, un colpo alla volta</a></li><li><a href="#c5">Come Nihan tenta di salvare la vita a Kemal</a></li><li><a href="#c6">Perche&#x27; Zeynep sceglie di tradire suo fratello Kemal</a></li><li><a href="#c7">Cosa spinge Emir a minacciare la famiglia di Nihan</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>Endless Love</strong> — Serie conclusa in Italia · le puntate su Mediaset Infinity</span></div>
   
-  <p class="occhiello">Settimana al cardiopalma: il rifugio nel bosco di Kemal e Nihan viene bruciato dal tradimento di Zeynep — incinta davvero, e terrorizzata per il bambino — che rivela a Emir il nascondiglio. Il ricatto («ucciderò Kemal se non torni») strappa a Nihan un ultimo giorno d&#x27;amore e una lettera d&#x27;addio. E quando Kemal scopre l&#x27;accoltellamento di Leyla, sfida Emir al duello della roulette turca: uno morirà, l&#x27;altro finirà in prigione. A fermarli, un attimo prima, è Nihan.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: Endless Love 17-23 giugno, la roulette turca di Kemal ed Emir: due pistole, un tavolo — e Nihan che li separa con la dichiarazione shock" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/MInXTEYyUYY/maxresdefault.jpg" alt="Endless Love 17-23 giugno, la roulette turca di Kemal ed Emir: due pistole, un tavolo — e Nihan che li separa con la dichiarazione shock" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/MInXTEYyUYY/hqdefault.jpg 480w, https://i.ytimg.com/vi/MInXTEYyUYY/sddefault.jpg 640w, https://i.ytimg.com/vi/MInXTEYyUYY/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/MInXTEYyUYY/hqdefault.jpg&quot;, &quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,25 +409,25 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>«Voglio diventare a tutti gli effetti la moglie di Emir»: la dichiarazione con cui Nihan disinnesca il duello è la bugia più dolorosa mai pronunciata per amore.</strong></p>
-  <h2>Il rifugio nel bosco e i depistaggi di Kemal</h2>
+  <h2 id="c1">Il rifugio nel bosco e i depistaggi di Kemal</h2>
 <p>La fuga sembra perfetta: un nascondiglio isolato tra le foreste, noto a pochissimi, e un sistema di falsi indizi disseminati ad arte che manda Emir a sbattere contro un vicolo cieco dopo l&#x27;altro. Mentre Ozan medita di costituirsi per liberare la sorella e Leyla rivela a Hüseyin e Fehime che il matrimonio di Nihan è una farsa da cui vuole divorziare, Emir stringe il cerchio: minaccia di strangolare Önder, ottiene da una Vildan terrorizzata la verità sul piano di Ozan e intima all&#x27;amica Yasemin di far rientrare Nihan.</p>
-<h2>Il tradimento di Zeynep: la telefonata che brucia tutto</h2>
+<h2 id="c2">Il tradimento di Zeynep: la telefonata che brucia tutto</h2>
 <p>La svolta arriva da chi nessuno sospettava: Zeynep, che ha appena scoperto di essere davvero incinta, è divorata dal terrore che Emir colpisca lei e il bambino. Nella scelta straziante tra la propria famiglia e il fratello, convince Ozan con una recita perfetta — sotto gli occhi ignari di Zehir — e poi chiama Emir: gli rivela dove si nascondono Kemal e Nihan. Il giorno dopo, Nihan apre la porta convinta sia Kemal e si trova davanti il marito: la minaccia è la solita, mortale — «ucciderò Kemal se non torni con me».</p>
-<h2>L&#x27;ultimo giorno d&#x27;amore e la lettera dell&#x27;addio</h2>
+<h2 id="c3">L&#x27;ultimo giorno d&#x27;amore e la lettera dell&#x27;addio</h2>
 <p>Nihan ottiene da Emir un solo giorno in più: ventiquattro ore da vivere come se esistesse solo il presente, per convincere Kemal che la rinuncia alla fuga sia una scelta sua. Tra una scomparsa nella pioggia, l&#x27;abbraccio del ritrovamento e una notte romantica, Kemal fiuta che qualcosa non va — e al risveglio trova la lettera: «Torno a casa, non sono pronta ad abbandonare la mia famiglia». Non ci crede un istante: e quando scopre la camera sporca di sangue e l&#x27;accoltellamento di Leyla — la punizione di Emir per il ritardo — la misura è colma.</p>
-<h2>La roulette turca: due uomini, un colpo alla volta</h2>
+<h2 id="c4">La roulette turca: due uomini, un colpo alla volta</h2>
 <p>Armato di pistola, Kemal si introduce a casa di Emir e lo sfida al duello più folle: la roulette turca — seduti uno di fronte all&#x27;altro, un colpo a turno, finché uno dei due non cade. Kemal sa che non esistono vincitori: uno morirà, l&#x27;altro finirà in prigione — ma per lui conta solo liberare Nihan. È Salih ad avvertire Zeynep, Zeynep a chiamare Nihan, e Nihan a irrompere un attimo prima dell&#x27;irreparabile con la dichiarazione che gela Kemal: vuole essere «a tutti gli effetti» la moglie di Emir. Lui non le crede — e affida a Zehir le indagini sull&#x27;aggressione a Leyla — mentre Emir, lungi dal ringraziare Zeynep, la minaccia: «Non riconoscerò mai un figlio che non sia di Nihan». Il tradimento non paga: e a Zeynep sta per presentare un conto salatissimo.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Come Nihan tenta di salvare la vita a Kemal</h2>
+<h2 id="c5">Come Nihan tenta di salvare la vita a Kemal</h2>
 <p>La drammatica scelta di Nihan di pronunciare la dolorosa frase con cui dichiara di voler diventare la moglie di Emir a tutti gli effetti nasce esclusivamente dal ricatto mortale subito nel rifugio nel bosco. Emir ha messo la ragazza di fronte a un&#x27;alternativa spietata, promettendo di uccidere Kemal se lei non dovesse rientrare immediatamente a casa. Per proteggere l&#x27;uomo che ama davvero, Nihan riesce a negoziare soltanto un ultimo giorno di liberta&#x27;, trascorrendo ventiquattro ore intense tra la pioggia, abbracci disperati e una notte d&#x27;amore romantica. Questo disperato tentativo di addolcire l&#x27;addio serve a convincere Kemal che la scelta di rinunciare alla fuga sia del tutto volontaria.</p>
 <p>Il piano di Nihan di mascherare la resa crolla al risveglio di Kemal, quando l&#x27;uomo trova la lettera d&#x27;addio in cui la ragazza afferma di voler tornare a casa perche&#x27; non si sente pronta ad abbandonare la propria famiglia. Kemal intuisce subito che la lettera nasconde una verita&#x27; diversa e la sua convinzione diventa certezza non appena scopre la camera sporca di sangue e l&#x27;accoltellamento subito da Leyla. La tragica aggressione a Leyla rappresenta infatti la punizione immediata inflitta da Emir per il ritardo di Nihan nel rispettare i patti. Questo ennesimo gesto spietato spinge Kemal a procurarsi una pistola e a presentarsi a casa del rivale.</p>
 <p>L&#x27;escalation verso la tragedia viene rallentata soltanto grazie alla tempestiva catena di notizie che parte da Salih. Dopo essere stato messo al corrente da Salih riguardo alle intenzioni vendicative di Kemal, Zeynep si affretta ad avvertire Nihan dell&#x27;imminente scontro mortale. Nihan corre quindi a casa di Emir e irrompe nella stanza un istante prima che la sfida alla roulette turca finisca in tragedia. Pronunciando la falsa dichiarazione d&#x27;amore e sottomissione verso il marito, Nihan riesce a disarmare la folle sfida a due, impedendo che uno dei due uomini muoia o finisca per sempre dietro le sbarre di una prigione.</p>
-<h2>Perche&#x27; Zeynep sceglie di tradire suo fratello Kemal</h2>
+<h2 id="c6">Perche&#x27; Zeynep sceglie di tradire suo fratello Kemal</h2>
 <p>Il tradimento di Zeynep rappresenta il punto di svolta decisivo che distrugge il piano di fuga perfetto organizzato per Kemal e Nihan nel bosco. Zeynep ha appena scoperto di essere incinta e vive nell&#x27;angoscia costante che Emir possa fare del male a lei o al bambino che porta in grembo. Messa di fronte al terrore di perdere il piccolo, la ragazza finisce per cedere alla paura e posiziona la propria incolumita&#x27; sopra la lealta&#x27; verso la famiglia e il fratello. Questa scelta dolorosa la porta a spezzare l&#x27;alleanza con Kemal, trasformandola nello strumento inconsapevole ma spietato della vendetta di Emir.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>Per raggiungere il suo scopo senza destare sospetti, Zeynep organizza una messa in scena impeccabile per manipolare Ozan, recitando la sua parte proprio sotto gli occhi del tutto ignari di Zehir. Dopo essere riuscita a farsi rivelare l&#x27;esatta posizione del nascondiglio segreto tra gli alberi, la ragazza chiama immediatamente Emir al telefono e gli consegna le coordinate della coppia. Il mattino seguente, quando Nihan apre la porta credendo di riabbracciare Kemal, si ritrova invece davanti il marito, arrivato a bruciare il loro rifugio d&#x27;amore proprio a causa della spia informatrice insospettabile che si nascondeva all&#x27;interno della stessa famiglia dei Soydere.</p>
 <p>La decisione di tradire il proprio sangue non porta pero&#x27; alcun beneficio a Zeynep, la quale si ritrova subito a fare i conti con la freddezza di Emir. Nonostante la preziosa soffiata sul nascondiglio, Emir non mostra alcuna gratitudine verso la donna e le scaglia contro una minaccia terribile. L&#x27;uomo le dichiara infatti con disprezzo che non intende in alcun modo riconoscere un figlio che non sia stato generato insieme a Nihan. Il grave gesto commesso ai danni di Kemal lascia cosi&#x27; Zeynep isolata e spaventata, costretta ad affrontare una punizione salatissima e la consapevolezza di aver distrutto la felicita&#x27; di suo fratello.</p>
-<h2>Cosa spinge Emir a minacciare la famiglia di Nihan</h2>
+<h2 id="c7">Cosa spinge Emir a minacciare la famiglia di Nihan</h2>
 <p>Mentre Kemal cerca di depistare le ricerche seminando indizi falsi per mandare la polizia e gli inseguitori contro una serie di vicoli ciechi, Emir stringe una morsa spietata attorno ai familiari di Nihan. L&#x27;imprenditore arrivista mostra tutta la sua ferocia arrivando a minacciare di strangolare Önder pur di ottenere informazioni utili al ritrovo della moglie. Successivamente, Emir sfrutta il terrore di Vildan per farsi rivelare la verita&#x27; sul piano segreto ideato da Ozan, il quale sta meditando di costituirsi alle autorita&#x27; per assumersi le proprie responsabilita&#x27; e permettere cosi&#x27; alla sorella Nihan di liberarsi dal matrimonio.</p>
 <p>Parallelamente alle azioni brutali di Emir, la situazione familiare si complica ulteriormente quando Leyla sceglie di rivelare la verita&#x27; a Hüseyin e Fehime, spiegando che il matrimonio tra Nihan ed Emir e&#x27; soltanto una finzione e che la giovane intende divorziare. Per contrastare ogni tentativo di fuga, Emir applica la sua pressione psicologica anche sulle persone vicine alla ragazza, intimando con forza all&#x27;amica Yasemin di fare qualsiasi cosa in suo potere per far rientrare subito Nihan. La rete di ricatti tesa da Emir non risparmia nessuno, trasformando la vita dei parenti di Nihan in un incubo costante e soffocante.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
@@ -385,19 +435,41 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=cno6OSoK05E" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/cno6OSoK05E/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>GRANDE PROVA D&#x27;AMORE DI NIHAN, SALVA KEMAL DA EMIR - Endless Love Anticipazioni 6-7-8 Maggio</span></a></li><li><a href="https://www.youtube.com/watch?v=yA_0KjYX3B8" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/yA_0KjYX3B8/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>KEMAL MUORE PER SALVARE NIHAN E DENIZ-ULTIMO ATTO DI UN AMORE INFINITO - Anticipazioni Endless </span></a></li><li><a href="https://www.youtube.com/watch?v=-O3zN_x5TGU" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/-O3zN_x5TGU/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>EMIR SI SFOGA CON ASU: &quot;NIHAN E&#x27; INCINTA DI KEMAL!&quot; - ASU SENZA PAROLE! Anticipazioni Endless L</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Il tradimento di Zeynep è perdonabile, visto il terrore per il bambino? E la roulette turca sventata è solo rimandata — chi dei due, prima o poi, premerà davvero il grilletto?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=MInXTEYyUYY">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di Endless Love</h2><div class="griglia"><article class="scheda">
+  <a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/"><div class="foto"><img src="https://i.ytimg.com/vi/DSiProJJ1ls/hqdefault.jpg" alt="Endless Love" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/"><div class="foto"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/"><div class="foto"><img src="https://i.ytimg.com/vi/uu2oAzTOWQU/hqdefault.jpg" alt="Endless Love" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></h3>
+    <div class="quando">25 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=Endless Love 17-23 giugno, la roulette turca di Kemal ed Emir: due pistole, un tavolo — e Nihan che li separa con la dichiarazione shock — https://soapoperaitalia.com/endless-love/endless-love-la-trama-completa-perche-nihan-sposa-emir-e-come-finisce/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://soapoperaitalia.com/endless-love/endless-love-la-trama-completa-perche-nihan-sposa-emir-e-come-finisce/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://soapoperaitalia.com/endless-love/endless-love-la-trama-completa-perche-nihan-sposa-emir-e-come-finisce/&text=Endless Love 17-23 giugno, la roulette turca di Kemal ed Emir: due pistole, un tavolo — e Nihan che li separa con la dichiarazione shock" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">ROULETTE TURCA PER KEMAL ED EMIR; ALMENO NIHAN È SALVA! - Anticipazioni Endless Love</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=MInXTEYyUYY">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di Endless Love</h3><ol class="numerata"><li><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></li><li><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></li><li><a href="/endless-love/endless-love-chi-e-galip-kozcuoglu-le-due-volte-in-cui-nihan-e-stata-venduta/">Endless Love, chi è Galip Kozcuoğlu: le due volte in cui Nihan è stata venduta</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-zeynep-soydere-perche-emir-lha-scelta-e-cosa-ha-distrutto/">Endless Love, chi è davvero Zeynep Soydere: perché Emir l&#x27;ha scelta e cosa ha distrutto</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>ROULETTE TURCA PER KEMAL ED EMIR; ALMENO NIHAN È SALVA! - Anticipazioni Endless Love</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su Endless Love</h3><ul><li><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></li><li><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></li><li><a href="/endless-love/endless-love-chi-e-galip-kozcuoglu-le-due-volte-in-cui-nihan-e-stata-venduta/">Endless Love, chi è Galip Kozcuoğlu: le due volte in cui Nihan è stata venduta</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-zeynep-soydere-perche-emir-lha-scelta-e-cosa-ha-distrutto/">Endless Love, chi è davvero Zeynep Soydere: perché Emir l&#x27;ha scelta e cosa ha distrutto</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

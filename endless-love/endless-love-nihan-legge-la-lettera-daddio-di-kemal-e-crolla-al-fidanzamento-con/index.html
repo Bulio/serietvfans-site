@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/endless-love/">Endless Love</a> › Endless Love, Nihan legge la lettera d&#x27;addio di Kemal e crolla al fidanzamento con Asu: in ospedale la scoperta che Emir seppellisce con una bugia</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/endless-love/">Endless Love</a>
   <h1>Endless Love, Nihan legge la lettera d&#x27;addio di Kemal e crolla al fidanzamento con Asu: in ospedale la scoperta che Emir seppellisce con una bugia</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Alla festa di fidanzamento di Kemal e Asu, Nihan apre la lettera che doveva leggere solo «se lui avesse rinunciato per sempre a lei» — e sviene davanti a tutti al bacio dei futuri sposi. In ospedale il medico rivela a Emir che Nihan è incinta: il marito capisce subito che il figlio è di Kemal e compra il silenzio del dottore, facendole dire che il test è negativo.</p><ol><li><a href="#c1">L&#x27;anello sepolto e il fidanzamento organizzato in tempi record</a></li><li><a href="#c2">Chi è Asu, la sposa che nessuno dei presenti conosce davvero</a></li><li><a href="#c3">La lettera, il bacio, il crollo</a></li><li><a href="#c4">«Sua moglie è incinta»: la bugia di Emir</a></li><li><a href="#c5">La trappola a Ozan: la fuga era una regia di Emir</a></li><li><a href="#c6">Perché conta: quella bugia in corsia decide gli anni successivi</a></li><li><a href="#c7">Come Emir incastra Tarik con la finta fuga</a></li><li><a href="#c8">Perche Nihan sviene mentre Kemal bacia Asu</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>Endless Love</strong> — Serie conclusa in Italia · le puntate su Mediaset Infinity</span></div>
   
-  <p class="occhiello">Alla festa di fidanzamento di Kemal e Asu, Nihan apre la lettera che doveva leggere solo «se lui avesse rinunciato per sempre a lei» — e sviene davanti a tutti al bacio dei futuri sposi. In ospedale il medico rivela a Emir che Nihan è incinta: il marito capisce subito che il figlio è di Kemal e compra il silenzio del dottore, facendole dire che il test è negativo.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: Endless Love, Nihan legge la lettera d&#x27;addio di Kemal e crolla al fidanzamento con Asu: in ospedale la scoperta che Emir seppellisce con una bugia" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/XX73Wr5V4Yc/maxresdefault.jpg" alt="Endless Love, Nihan legge la lettera d&#x27;addio di Kemal e crolla al fidanzamento con Asu: in ospedale la scoperta che Emir seppellisce con una bugia" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/XX73Wr5V4Yc/hqdefault.jpg 480w, https://i.ytimg.com/vi/XX73Wr5V4Yc/sddefault.jpg 640w, https://i.ytimg.com/vi/XX73Wr5V4Yc/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/XX73Wr5V4Yc/hqdefault.jpg&quot;, &quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,42 +409,64 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>La stessa notte, la trappola perfetta: la fuga di Ozan e Zeynep, orchestrata proprio da Emir con documenti falsi, finisce tra le sirene della polizia — e la colpa viene cucita addosso a Tarık.</strong></p>
-  <h2>L&#x27;anello sepolto e il fidanzamento organizzato in tempi record</h2>
+  <h2 id="c1">L&#x27;anello sepolto e il fidanzamento organizzato in tempi record</h2>
 <p>Kemal chiude simbolicamente con il passato: sotterra l&#x27;anello di Nihan e chiede ad Asu di sposarlo. In casa Soydere esplode la gioia e la festa di fidanzamento viene organizzata a tempo di record nel giardino della villa. Emir, fiutando l&#x27;occasione di ferire il rivale, impone a una Nihan devastata di partecipare: ogni luce, ogni brindisi, ogni dettaglio della celebrazione le riporta alla mente i momenti felici con Kemal, mentre Asu — vedendola arrivare — si stringe al fidanzato temendo che quella presenza possa fargli cambiare idea.</p>
-<h2>Chi è Asu, la sposa che nessuno dei presenti conosce davvero</h2>
+<h2 id="c2">Chi è Asu, la sposa che nessuno dei presenti conosce davvero</h2>
 <p>Nel giardino della villa quasi tutti brindano a una ragazza che non esiste. Alla società di Istanbul, Asu è la nipote dell&#x27;influente Hakkı, un cognome rispettabile e nessuna ombra alle spalle. La realtà è un&#x27;altra: è figlia di Galip, cresciuta lontano da casa dopo essere stata allontanata da bambina, e quindi sorella di Emir. Kemal, mentre le mette l&#x27;anello al dito, sta entrando senza saperlo dentro la famiglia che combatte da anni. Anche la proposta merita una precisazione, perché non nasce da un sentimento: è una mossa, il gesto di un uomo che ha deciso di chiudere una porta a chiave e getta via la chiave sotterrando l&#x27;anello dell&#x27;altra. Ecco perché la stretta di Asu al braccio del fidanzato, quando vede arrivare Nihan, non è gelosia da fidanzata insicura: è la paura di chi sa che il proprio posto poggia su un equivoco.</p>
-<h2>La lettera, il bacio, il crollo</h2>
+<h2 id="c3">La lettera, il bacio, il crollo</h2>
 <p>Provocata da Asu («non avvicinarti più a Kemal»), Nihan si apparta e apre la lettera che Kemal le aveva affidato con una raccomandazione precisa: leggerla solo se lui avesse rinunciato per sempre a lei. Le parole, cariche d&#x27;amore e disperazione, la travolgono. Al momento del taglio del nastro e del bacio dei futuri sposi, Nihan crolla a terra priva di sensi davanti agli invitati sbigottiti: Emir e Leyla si precipitano, ma non si riprende — e la corsa in ospedale diventa inevitabile. C&#x27;è anche un dettaglio che spezza il cuore col senno di poi: l&#x27;abbraccio di Ozan, che la ringrazia «per aver sacrificato tutta la vita per lui». Sarà il loro ultimo momento insieme prima della fuga.</p>
-<h2>«Sua moglie è incinta»: la bugia di Emir</h2>
+<h2 id="c4">«Sua moglie è incinta»: la bugia di Emir</h2>
 <p>In ospedale, il colpo di scena: il medico comunica a Emir che Nihan è incinta. L&#x27;uomo capisce all&#x27;istante ciò che non potrà mai dire ad alta voce — il bambino non può essere suo, è di Kemal — ma maschera lo stupore con freddezza chirurgica: convince il dottore a tacere «per farle una sorpresa», e a Nihan viene riferito che i valori sono un po&#x27; bassi e il test di gravidanza è negativo. Una menzogna che diventa la mina vagante di tutta la stagione.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>La trappola a Ozan: la fuga era una regia di Emir</h2>
+<h2 id="c5">La trappola a Ozan: la fuga era una regia di Emir</h2>
 <p>La stessa notte si consuma l&#x27;inganno più spietato: Ozan e Zeynep tentano la fuga all&#x27;estero con documenti falsi — procurati, dietro le quinte, proprio da Emir, che ha usato la complicità di Zeynep e scaricato l&#x27;organizzazione su Tarık, il fratello di Kemal, in cambio di una ricompensa. Al momento di salire in auto, le sirene squarciano la notte: i due vengono fermati, i documenti confiscati, e per Ozan — già nei guai per l&#x27;arma del presunto delitto ritrovata — la situazione precipita. Emir osserva da lontano con un sorriso freddo, e davanti a Nihan giura di non c&#x27;entrare nulla, indicando Tarık come responsabile. La rete è chiusa: ora dentro ci sono tutti.</p>
-<h2>Perché conta: quella bugia in corsia decide gli anni successivi</h2>
+<h2 id="c6">Perché conta: quella bugia in corsia decide gli anni successivi</h2>
 <p>Il test dichiarato negativo non è un espediente buono per una puntata: è il perno su cui si regge tutto quello che verrà dopo. Da quel momento esistono un padre che non sa di esserlo, una madre convinta di non avere nulla da difendere, e un solo uomo informato — quello che ha tutto l&#x27;interesse a tacere. Quel bambino, però, c&#x27;è, e più avanti gli spettatori ne conosceranno il nome: Deniz. Ogni decisione che Kemal prende in questa stagione, il matrimonio compreso, la prende senza l&#x27;unico dato che l&#x27;avrebbe cambiata. E nella stessa notte viene innescata una seconda mina, dentro casa Soydere: la fuga fallita di Ozan e Zeynep porta la firma di Emir, ma il conto viene presentato a Tarık. Un fratello che passa per traditore agli occhi dell&#x27;altro non è un incidente, è una crepa che qualcuno potrà allargare quando gli servirà.</p>
-<h2>Come Emir incastra Tarik con la finta fuga</h2>
+<h2 id="c7">Come Emir incastra Tarik con la finta fuga</h2>
 <p>La trappola orchestrata da Emir durante la notte della celebrazione si consuma ai danni di Ozan e Zeynep, ma finisce per colpire al cuore l&#x27;intera famiglia Soydere. Emir muove con abilità i fili dietro le quinte fornendo i documenti falsi necessari all&#x27;espatrio attraverso la complicità di Zeynep, preoccupandosi però di scaricare l&#x27;intera responsabilità organizzativa su Tarık, il fratello di Kemal, attirato dalla promessa di una cospicua ricompensa. Proprio nel momento in cui i due giovani si preparano a salire in auto per tentare la fuga all&#x27;estero, l&#x27;improvviso suono delle sirene della polizia spezza i loro piani. I documenti falsi vengono subito confiscati dalle forze dell&#x27;ordine e per Ozan, la cui posizione era già gravemente compromessa dal ritrovamento dell&#x27;arma del presunto delitto, la situazione precipita definitivamente.</p>
 <p>Mentre la polizia blocca i fuggitivi al buio, Emir osserva la scena a debita distanza mostrando un sorriso freddo e privo di alcun rimorso. Di fronte a Nihan sconvolta per l&#x27;arresto, l&#x27;uomo giura con falsa sincerità di non avere alcun ruolo nella vicenda e indica proprio Tarık come il solo e unico responsabile del disastro. Questa manipolazione calcolata consente ad Emir di ottenere un risultato perfetto: impedisce la partenza del cognato e contemporaneamente crea una spaccatura devastante dentro la famiglia Soydere. Tarık finisce per passare come un traditore agli occhi di Kemal, ignaro di come il fratello sia stato usato come pedina. L&#x27;inganno si chiude così senza lasciare scampo a nessuno dei coinvolti.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Perche Nihan sviene mentre Kemal bacia Asu</h2>
+<h2 id="c8">Perche Nihan sviene mentre Kemal bacia Asu</h2>
 <p>La presenza forzata di Nihan alla festa di fidanzamento nel giardino dei Soydere trasforma la serata in un tormento insopportabile, reso ancora più acuto dalle parole provocatorie di Asu che le intima di non avvicinarsi mai più a Kemal. Cercando un momento di isolamento, Nihan decide di aprire la lettera affidatale dal suo ex amato, rispettando la promessa di leggerla solo nel momento in cui lui avesse rinunciato per sempre al loro legame. Il contenuto sofferto del testo la devasta emotivamente e, proprio quando tutti si radunano per il taglio del nastro e assistono al bacio tra Kemal e Asu, la donna perde del tutto i sensi. Il crollo improvviso davanti agli invitati sgomenti spinge Emir e Leyla ad accorrere immediatamente per prestare i primi soccorsi.</p>
 <p>La corsa in ospedale segna l&#x27;inizio di un inganno destinato a condizionare le vite di tutti per molto tempo. Durante i controlli di emergenza, il medico informa Emir della gravidanza di Nihan, portando l&#x27;uomo a capire immediatamente che il figlio appartiene a Kemal e non a lui. Mantenendo un controllo assoluto, Emir convince il dottore a mantenere il segreto usando la scusa di voler preparare una sorpresa alla moglie. A Nihan viene quindi comunicato che i valori alterati indicano un semplice calo fisico e che il test di gravidanza ha dato esito negativo. Questa spietata menzogna tiene Kemal all&#x27;oscuro sul piccolo Deniz, lasciandolo libero di fidanzarsi con Asu senza immaginare di essere legato alla famiglia rivale di Galip.</p>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=-O3zN_x5TGU" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/-O3zN_x5TGU/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>EMIR SI SFOGA CON ASU: &quot;NIHAN E&#x27; INCINTA DI KEMAL!&quot; - ASU SENZA PAROLE! Anticipazioni Endless L</span></a></li><li><a href="https://www.youtube.com/watch?v=7NgUtv4f92s" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/7NgUtv4f92s/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>IL SOGNO SI AVVERA, KEMAL E NIHAN FINALMENTE SPOSI! Anticipazioni Endless Love 2^ Stagione</span></a></li><li><a href="https://www.youtube.com/watch?v=FT8HtrkFbaQ" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/FT8HtrkFbaQ/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>SHOCK KEMAL: &quot;BASTA NIHAN, E&#x27; FINITA&quot;; NIHAN PIANGE L&#x27;ADDIO DI KEMAL Anticipazioni Endless Love</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Quanto reggerà la bugia sulla gravidanza prima che Nihan — e Kemal — scoprano la verità? E qualcuno riuscirà mai a dimostrare la regia di Emir dietro l&#x27;arresto di Ozan?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=XX73Wr5V4Yc">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di Endless Love</h2><div class="griglia"><article class="scheda">
+  <a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/"><div class="foto"><img src="https://i.ytimg.com/vi/DSiProJJ1ls/hqdefault.jpg" alt="Endless Love" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/"><div class="foto"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/"><div class="foto"><img src="https://i.ytimg.com/vi/uu2oAzTOWQU/hqdefault.jpg" alt="Endless Love" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></h3>
+    <div class="quando">25 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=Endless Love, Nihan legge la lettera d&#x27;addio di Kemal e crolla al fidanzamento con Asu: in ospedale la scoperta che Emir seppellisce con una bugia — https://serietvfans.com/endless-love/endless-love-nihan-legge-la-lettera-daddio-di-kemal-e-crolla-al-fidanzamento-con/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/endless-love/endless-love-nihan-legge-la-lettera-daddio-di-kemal-e-crolla-al-fidanzamento-con/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/endless-love/endless-love-nihan-legge-la-lettera-daddio-di-kemal-e-crolla-al-fidanzamento-con/&text=Endless Love, Nihan legge la lettera d&#x27;addio di Kemal e crolla al fidanzamento con Asu: in ospedale la scoperta che Emir seppellisce con una bugia" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">EMIR SCONVOLTO DALLA NOTIZIA! SCOPRE CHE NIHAN E&#x27; INCINTA DI KEMAL! - Endless Love</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=XX73Wr5V4Yc">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di Endless Love</h3><ol class="numerata"><li><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></li><li><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></li><li><a href="/endless-love/endless-love-chi-e-galip-kozcuoglu-le-due-volte-in-cui-nihan-e-stata-venduta/">Endless Love, chi è Galip Kozcuoğlu: le due volte in cui Nihan è stata venduta</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-zeynep-soydere-perche-emir-lha-scelta-e-cosa-ha-distrutto/">Endless Love, chi è davvero Zeynep Soydere: perché Emir l&#x27;ha scelta e cosa ha distrutto</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>EMIR SCONVOLTO DALLA NOTIZIA! SCOPRE CHE NIHAN E&#x27; INCINTA DI KEMAL! - Endless Love</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su Endless Love</h3><ul><li><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></li><li><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></li><li><a href="/endless-love/endless-love-chi-e-galip-kozcuoglu-le-due-volte-in-cui-nihan-e-stata-venduta/">Endless Love, chi è Galip Kozcuoğlu: le due volte in cui Nihan è stata venduta</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-zeynep-soydere-perche-emir-lha-scelta-e-cosa-ha-distrutto/">Endless Love, chi è davvero Zeynep Soydere: perché Emir l&#x27;ha scelta e cosa ha distrutto</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

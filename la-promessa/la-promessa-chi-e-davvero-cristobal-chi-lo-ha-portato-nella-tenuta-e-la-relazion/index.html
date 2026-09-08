@@ -12,7 +12,7 @@
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Serie TV Fans">
 <meta property="og:url" content="https://serietvfans.com/la-promessa/la-promessa-chi-e-davvero-cristobal-chi-lo-ha-portato-nella-tenuta-e-la-relazion/">
-<meta property="og:image" content="https://serietvfans.com/social.svg">
+<meta property="og:image" content="https://serietvfans.com/img/la-promessa-chi-e-davvero-cristobal-chi-lo-ha-portato-nella-tenuta-e-la-relazion.jpg">
 <meta property="og:locale" content="it_IT">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#7b1e2b">
@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -314,12 +363,12 @@ if(l.length){el.src=l.shift();el.dataset.fb=JSON.stringify(l)}else{el.onerror=nu
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7778653397776213" crossorigin="anonymous"></script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "96259d7e67ce47fba4573364859712a6"}'></script>
 <script>(function(){var f=0;function go(){if(f)return;f=1;(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","y3rpoig6jk");}["pointerdown","keydown","touchstart","scroll"].forEach(function(v){addEventListener(v,go,{once:1,passive:1})});setTimeout(go,2500)})();</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "La Promessa, chi è davvero Cristóbal: chi lo ha portato nella tenuta, e la relazione che punisce negli altri", "datePublished": "2026-08-23", "dateModified": "2026-08-23", "description": "Il posto di maggiordomo spettava a Ricardo. Leocadia insiste con Alonso perché vada a un uomo che alla Promessa non ha mai lavorato, e la prima cosa che quell'uomo fa una volta entrato non riguarda il lavoro: riguarda la memoria.", "inLanguage": "it-IT", "mainEntityOfPage": "https://serietvfans.com/la-promessa/la-promessa-chi-e-davvero-cristobal-chi-lo-ha-portato-nella-tenuta-e-la-relazion/", "image": [], "author": {"@type": "Organization", "name": "Serie TV Fans", "url": "https://serietvfans.com/chi-siamo/"}, "publisher": {"@type": "Organization", "name": "Serie TV Fans", "logo": {"@type": "ImageObject", "url": "https://serietvfans.com/favicon.svg"}}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "La Promessa, chi è davvero Cristóbal: chi lo ha portato nella tenuta, e la relazione che punisce negli altri", "datePublished": "2026-08-23", "dateModified": "2026-09-08", "description": "Il posto di maggiordomo spettava a Ricardo. Leocadia insiste con Alonso perché vada a un uomo che alla Promessa non ha mai lavorato, e la prima cosa che quell'uomo fa una volta entrato non riguarda il lavoro: riguarda la memoria.", "inLanguage": "it-IT", "mainEntityOfPage": "https://serietvfans.com/la-promessa/la-promessa-chi-e-davvero-cristobal-chi-lo-ha-portato-nella-tenuta-e-la-relazion/", "image": ["https://serietvfans.com/img/la-promessa-chi-e-davvero-cristobal-chi-lo-ha-portato-nella-tenuta-e-la-relazion.jpg"], "author": {"@type": "Organization", "name": "Serie TV Fans", "url": "https://serietvfans.com/chi-siamo/"}, "publisher": {"@type": "Organization", "name": "Serie TV Fans", "logo": {"@type": "ImageObject", "url": "https://serietvfans.com/favicon.svg"}}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://serietvfans.com/"}, {"@type": "ListItem", "position": 2, "name": "La Promessa", "item": "https://serietvfans.com/serie/la-promessa/"}, {"@type": "ListItem", "position": 3, "name": "La Promessa, chi è davvero Cristóbal: chi lo ha portato nella tenuta, e la relazione che punisce negli altri"}]}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -332,55 +381,81 @@ if(l.length){el.src=l.shift();el.dataset.fb=JSON.stringify(l)}else{el.onerror=nu
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/la-promessa/">La Promessa</a> › La Promessa, chi è davvero Cristóbal: chi lo ha portato nella tenuta, e la relazione che punisce negli altri</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/la-promessa/">La Promessa</a>
   <h1>La Promessa, chi è davvero Cristóbal: chi lo ha portato nella tenuta, e la relazione che punisce negli altri</h1>
-  <div class="firma">Redazione Serie TV Fans · domenica 23 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-23">domenica 23 agosto 2026</time></span><span>aggiornato il 8 settembre 2026</span><span>6 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Il posto di maggiordomo spettava a Ricardo. Leocadia insiste con Alonso perché vada a un uomo che alla Promessa non ha mai lavorato, e la prima cosa che quell&#x27;uomo fa una volta entrato non riguarda il lavoro: riguarda la memoria.</p><ol><li><a href="#c1">Il posto era di Ricardo, e qualcuno ha insistito perché non lo fosse</a></li><li><a href="#c2">La prima mossa non riguarda il lavoro: riguarda la memoria</a></li><li><a href="#c3">Declassare invece di licenziare: lo schema</a></li><li><a href="#c4">Pía e Ricardo: separati da una firma</a></li><li><a href="#c5">La crepa da cui verrà fuori tutto</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>La Promessa</strong> — Rete 4 · in streaming su Mediaset Infinity</span></div>
-  <figure class="copertina"><img src="/fallback/la-promessa.svg" alt="La Promessa" width="1280" height="720"><figcaption>La Promessa</figcaption></figure>
-  <p class="occhiello">Il posto di maggiordomo spettava a Ricardo. Leocadia insiste con Alonso perché vada a un uomo che alla Promessa non ha mai lavorato, e la prima cosa che quell&#x27;uomo fa una volta entrato non riguarda il lavoro: riguarda la memoria.</p>
+  <figure class="copertina"><img src="/img/la-promessa-chi-e-davvero-cristobal-chi-lo-ha-portato-nella-tenuta-e-la-relazion.jpg" alt="La Promessa"><figcaption>Immagine d&#x27;ambiente — La Promessa</figcaption></figure>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   
   <div class="corpo">
   <p><strong>Legge a Pía un provvedimento davanti a tutta la servitù per una relazione dentro casa. E ne ha una anche lui, da anni, con una donna che dorme al piano nobile.</strong></p>
   <p>C&#x27;è una scena, in La Promessa, che fa male anche solo a riguardarla. Il corridoio della servitù, Pía in piedi davanti a tutti, e il maggiordomo che le legge a voce alta un provvedimento disciplinare. La sua colpa? Aver voluto bene a un uomo che lavora nella stessa casa: Ricardo. Nient&#x27;altro. E per questo Pía viene allontanata dalla tenuta.</p>
 <p>C&#x27;è però un dettaglio che trasforma quella scena nella cosa più ipocrita che si sia vista in questa serie. L&#x27;uomo che ha firmato quel provvedimento, il maggiordomo Cristóbal, una relazione segreta dentro quella casa ce l&#x27;ha anche lui. Con una donna che però non dorme nel corridoio della servitù: dorme al piano nobile. E non è cominciata la settimana scorsa — va avanti da anni.</p>
-<h2>Il posto era di Ricardo, e qualcuno ha insistito perché non lo fosse</h2>
+<h2 id="c1">Il posto era di Ricardo, e qualcuno ha insistito perché non lo fosse</h2>
 <p>La poltrona di maggiordomo si libera quando Rómulo lascia il posto. In una casa così quel posto non è un dettaglio di servizio: il maggiordomo decide chi lavora dove, chi viene promosso, chi viene mandato via. Tiene in mano la vita quotidiana di venti persone.</p>
 <p>Il successore naturale ce l&#x27;avevano già in casa, e lo conoscono tutti: Ricardo. Anni di servizio, la fiducia della cucina. Nessuno si sarebbe stupito di vederlo lì.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>Invece succede una cosa che, senza sapere il resto, sembra soltanto una scelta un po&#x27; strana: Leocadia comincia a insistere con il marchese Alonso perché il posto vada a un altro. A un uomo che alla Promessa non ha mai lavorato, Cristóbal Ballesteros. E lo motiva con la sua grandissima esperienza al servizio di altre famiglie nobili. Insiste, torna sull&#x27;argomento, non lo lascia cadere. Alla fine Alonso cede e lo assume.</p>
 <p>Vale la pena fermarsi qui, perché è il punto che quasi tutti si sono lasciati scivolare addosso. Assumere un maggiordomo è una faccenda della casa e la decide il padrone di casa: perché una signora del piano nobile, una che in cucina non mette piede, spende tutto quel credito personale per far arrivare un nome preciso? Nessuno fa una battaglia così per un uomo letto sul foglio delle referenze.</p>
-<h2>La prima mossa non riguarda il lavoro: riguarda la memoria</h2>
+<h2 id="c2">La prima mossa non riguarda il lavoro: riguarda la memoria</h2>
 <p>Appena arriva, Cristóbal non si comporta come un maggiordomo nuovo che deve farsi accettare. Si comporta come uno che deve prendere il controllo in fretta.</p>
 <p>E la prima cosa che fa è la più rivelatrice di tutte: vieta di nominare Rómulo. Non lo critica, non spiega, non discute — proibisce che quel nome venga pronunciato, e chi lo pronuncia rischia il licenziamento. La prima mossa di un uomo che deve organizzare il lavoro non riguarda il lavoro: riguarda la memoria. Sta cancellando il metro di paragone, perché finché quel metro esiste ogni sua decisione viene misurata con quella di prima.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Declassare invece di licenziare: lo schema</h2>
+<h2 id="c3">Declassare invece di licenziare: lo schema</h2>
 <p>Poi mette a posto le persone, una per una. Petra, che in quella casa aveva un suo spazio e la sua autonomia, si ritrova a dovergli riferire ogni singola decisione: da quel momento non decide più niente da sola. Lope viene retrocesso, dalla cucina passa a fare il valletto. E Ricardo — cioè l&#x27;uomo che quel posto avrebbe dovuto averlo — viene spostato a fare l&#x27;aiuto di camera di Alonso.</p>
 <p>Lo schema è raffinato: Cristóbal quasi non licenzia nessuno. Declassa. E fra le due cose c&#x27;è una differenza enorme. Uno che licenzi esce da quella porta e va a raccontare in giro quello che ha visto; uno che declassi resta dentro, con lo stipendio in bilico, e sta zitto. In poche settimane quell&#x27;uomo si è costruito una casa piena di persone che sanno cose e non hanno nessuna convenienza a dirle.</p>
 <p>Il che apre la domanda vera: se il suo sistema era piegare la gente senza cacciarla, perché con Pía e Ricardo è andato molto oltre?</p>
-<h2>Pía e Ricardo: separati da una firma</h2>
+<h2 id="c4">Pía e Ricardo: separati da una firma</h2>
 <p>La relazione fra Pía e Ricardo non è un segreto sepolto: in quella casa lo sanno. Cristóbal decide che non può stare in piedi, li rimprovera apertamente e la tratta come una vergogna da correggere. E non lo fa da solo: lo fa contando sull&#x27;appoggio senza riserve di Leocadia.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>Il conto arriva su Pía, allontanata dalla tenuta e separata dalla vita che si era costruita là dentro. Il modo in cui gliela comunicano è il vero schiaffo: non in privato, non in una stanza chiusa, ma nel corridoio della servitù, con un provvedimento letto davanti a tutti — perché il punto non era punire lei, il punto era che tutti gli altri vedessero.</p>
 <p>L&#x27;unico che si mette in mezzo è Manuel: arriva, capisce cosa sta succedendo, prende quell&#x27;ordine e lo strappa, poi caccia il maggiordomo davanti a tutta la servitù. È una delle poche volte in cui in quella casa qualcuno del piano nobile scende di sotto e si schiera.</p>
 <p>Ma la partita non finisce lì. Quando anche il marchese Alonso chiede che Pía torni, Cristóbal si oppone — e a sostenerlo contro il padrone di casa è Leocadia. Un maggiordomo che tiene testa al marchese sarebbe un suicidio per chiunque: per lui non lo è, e per una ragione sola. Sa di avere le spalle coperte.</p>
 <p>Alla fine Pía alla Promessa ci torna, ma a un prezzo che nessuno le ha chiesto se voleva pagare: Ricardo lascia la tenuta proprio perché lei possa rientrare. Quei due non vengono separati dal destino né da una disgrazia — vengono separati da una firma. E lei lo scopre quando lui è già andato via.</p>
-<h2>La crepa da cui verrà fuori tutto</h2>
+<h2 id="c5">La crepa da cui verrà fuori tutto</h2>
 <p>Rimettendo insieme i pezzi: l&#x27;uomo che ha punito due persone per essersi voluti bene sotto lo stesso tetto ha una storia sua sotto quello stesso tetto, con Leocadia. E non è nata l&#x27;altro ieri per noia o per convenienza — fra loro la complicità c&#x27;era già ai tempi in cui in quella casa comandava Cruz, e da allora non si è mai spenta.</p>
 <p>Il modo in cui la reggono spiega tutto il personaggio. Di giorno Cristóbal è impeccabile e severo, l&#x27;uomo del regolamento, quello che non fa passare niente a nessuno; lei sta attentissima a non lasciar trasparire il minimo sentimento davanti agli altri. Ma quella recita ha un senso preciso: se salta fuori non è uno scandalo qualsiasi. Lui perde il posto nello stesso identico modo in cui lo ha fatto perdere agli altri, e lei perde la faccia in una casa dove è arrivata da fuori e si è presa il potere un passo alla volta.</p>
 <p>E qui c&#x27;è la parte che le anticipazioni lasciano soltanto intendere, quindi la diamo per quello che è — non un fatto, ma la direzione in cui la storia sta andando. La scomparsa di Catalina non sembra un incidente: sembra il primo passo di un disegno più largo di Leocadia, che arriva ad assumere un investigatore privato per sapere dove si trovi. Se le cose stanno così, allora Cristóbal non è soltanto l&#x27;uomo con cui passa le notti: è l&#x27;unica persona in quella casa che sa, e che dal suo posto può decidere chi entra in una stanza e chi ne resta fuori.</p>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=5WNtKGFgagA" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/5WNtKGFgagA/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni Spagnole: Un altro Uomo nella Vita di Jana? Chi è?</span></a></li><li><a href="https://www.youtube.com/watch?v=QoXo1p1SMPk" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/QoXo1p1SMPk/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA: il Barone minaccia CATALINA — «resterai sola nella tenuta» 😭</span></a></li><li><a href="https://www.youtube.com/watch?v=wyKsR6Y1Noc" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/wyKsR6Y1Noc/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA: LEOCADIA confessa a CRISTÓBAL — «è stata lei dietro la fuga» 😱</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Chi comanda davvero alla Promessa: Cristóbal o Leocadia? Chi sarà il primo, in quella casa, ad accorgersi della loro relazione?</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di La Promessa</h2><div class="griglia"><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/"><div class="foto"><img src="https://i.ytimg.com/vi/Rp8VhxDiDSk/hqdefault.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></h3>
+    <div class="quando">7 settembre 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/"><div class="foto"><img src="https://i.ytimg.com/vi/8JHt6ogwxQw/hqdefault.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Ángela beve tutto, Curro sfonda la porta</a></h3>
+    <div class="quando">6 settembre 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/"><div class="foto"><img src="/img/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Curro nasconde Ángela, Lorenzo furioso</a></h3>
+    <div class="quando">6 settembre 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=La Promessa, chi è davvero Cristóbal: chi lo ha portato nella tenuta, e la relazione che punisce negli altri — https://serietvfans.com/la-promessa/la-promessa-chi-e-davvero-cristobal-chi-lo-ha-portato-nella-tenuta-e-la-relazion/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/la-promessa/la-promessa-chi-e-davvero-cristobal-chi-lo-ha-portato-nella-tenuta-e-la-relazion/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/la-promessa/la-promessa-chi-e-davvero-cristobal-chi-lo-ha-portato-nella-tenuta-e-la-relazion/&text=La Promessa, chi è davvero Cristóbal: chi lo ha portato nella tenuta, e la relazione che punisce negli altri" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  
-  <div class="box"><h3>Ancora su La Promessa</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-3-6-settembre-maria-affronta-la-gravidanza-da-sola/">La Promessa anticipazioni 3-6 settembre: Maria affronta la gravidanza da sola</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-carlo-arriva-maria-trema/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Carlo arriva, Maria trema</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/far-away/far-away-anticipazioni-dal-31-agosto-al-4-settembre-chi-ha-donato-il-fegato-a-nare/">Far Away, anticipazioni dal 31 agosto al 4 settembre: chi ha donato il fegato a Nare, e perché adesso sta male lui</a></li><li><a href="/far-away/far-away-dal-31-agosto-la-madre-di-alya-sapeva-tutto-non-ricordo/">Far Away Dal 31 Agosto: la madre di Alya sapeva tutto — «non ricordo»</a></li><li><a href="/forbidden-fruit/forbidden-fruit-dal-31-agosto-il-conto-a-nome-di-halit-che-e-morto/">Forbidden Fruit Dal 31 Agosto: il conto a nome di Halit, che è morto</a></li></ul></div>
+  <div class="box"><h3>Ultime di La Promessa</h3><ol class="numerata"><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Ángela beve tutto, Curro sfonda la porta</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Curro nasconde Ángela, Lorenzo furioso</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>Ogni anticipazione, prima in video sul canale Serie TV Fans</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
+  </div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/my-home-my-destiny/">My Home My Destiny</a> › My Home My Destiny 6-7 settembre, Zeynep diventa avvocato e lo dice alla tomba del fratello — poi Benal viene rapita da Serhat e Mehdi corre al magazzino</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/my-home-my-destiny/">My Home My Destiny</a>
   <h1>My Home My Destiny 6-7 settembre, Zeynep diventa avvocato e lo dice alla tomba del fratello — poi Benal viene rapita da Serhat e Mehdi corre al magazzino</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>8 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Due puntate che alternano la gioia più grande e la paura peggiore: Zeynep supera il colloquio nello studio legale e va a raccontarlo alla tomba del fratello — la promessa mantenuta, il sogno realizzato — mentre Mehdi le regala una toga con il suo nome cucito all&#x27;interno. Ma la tensione in casa per la presenza di Benal esplode, la donna se ne va sbattendo la porta e per strada viene trascinata via a forza dall&#x27;ex marito. A dare l&#x27;allarme sarà una ragazzina del quartiere; la polizia la libera, e Mehdi arriva giusto in tempo per sferrare un pugno al rapitore.</p><ol><li><a href="#c1">La torta del primo giorno di scuola e la confessione di Mehdi</a></li><li><a href="#c2">«Chi sei e perché vuoi fare l&#x27;avvocato?»</a></li><li><a href="#c3">Benal se ne va — e finisce nelle mani di Serhat</a></li><li><a href="#c4">La corsa al magazzino e il segreto su Nermin</a></li><li><a href="#c5">Come Zeynep supera il colloquio e visita la tomba</a></li><li><a href="#c6">Perché la presenza di Benal scatena la lite</a></li><li><a href="#c7">Cosa succede quando Serhat rapisce Benal e interviene Mehdi</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>My Home My Destiny</strong> — Serie conclusa in Italia · le puntate su Mediaset Infinity</span></div>
   
-  <p class="occhiello">Due puntate che alternano la gioia più grande e la paura peggiore: Zeynep supera il colloquio nello studio legale e va a raccontarlo alla tomba del fratello — la promessa mantenuta, il sogno realizzato — mentre Mehdi le regala una toga con il suo nome cucito all&#x27;interno. Ma la tensione in casa per la presenza di Benal esplode, la donna se ne va sbattendo la porta e per strada viene trascinata via a forza dall&#x27;ex marito. A dare l&#x27;allarme sarà una ragazzina del quartiere; la polizia la libera, e Mehdi arriva giusto in tempo per sferrare un pugno al rapitore.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: My Home My Destiny 6-7 settembre, Zeynep diventa avvocato e lo dice alla tomba del fratello — poi Benal viene rapita da Serhat e Mehdi corre al magazzino" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/DTQe0fBwHA4/maxresdefault.jpg" alt="My Home My Destiny 6-7 settembre, Zeynep diventa avvocato e lo dice alla tomba del fratello — poi Benal viene rapita da Serhat e Mehdi corre al magazzino" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/DTQe0fBwHA4/hqdefault.jpg 480w, https://i.ytimg.com/vi/DTQe0fBwHA4/sddefault.jpg 640w, https://i.ytimg.com/vi/DTQe0fBwHA4/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/DTQe0fBwHA4/hqdefault.jpg&quot;, &quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,25 +409,25 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>Il regalo più bello della serie: una toga da avvocato con nome e cognome ricamati dentro — per Zeynep, «il gesto più significativo della mia vita».</strong></p>
-  <h2>La torta del primo giorno di scuola e la confessione di Mehdi</h2>
+  <h2 id="c1">La torta del primo giorno di scuola e la confessione di Mehdi</h2>
 <p>Zeynep prepara una torta per festeggiare il primo giorno di scuola di Kibrit, ma davanti a quella tavola imbandita Mehdi non regge il senso di colpa e confessa: la bambina era scappata da scuola, e lui gliel&#x27;aveva tenuto nascosto. Zeynep incassa delusione e senso di tradimento, e sceglie comunque di trovare delle giustificazioni — anche se non manca di rimproverarlo per non averla avvertita. È il tratto che tiene in piedi quella coppia: litigano, ma parlano. Intanto Sakine la mette in guardia senza giri di parole: se non farà valere i suoi diritti sulla presenza di Benal in casa, non solo soffrirà, ma finirà per perdere l&#x27;amore del marito.</p>
-<h2>«Chi sei e perché vuoi fare l&#x27;avvocato?»</h2>
+<h2 id="c2">«Chi sei e perché vuoi fare l&#x27;avvocato?»</h2>
 <p>Al colloquio nello studio legale, a Zeynep viene chiesto di scrivere un testo personale rispondendo a due domande difficilissime. Davanti al foglio bianco va nel panico, poi trova le parole: è il risultato degli incontri e delle esperienze che ha attraversato, delle lezioni imparate superando ostacoli. Riceve l&#x27;esito in una busta sigillata e non la apre subito; quando lo fa, corre alla tomba del fratello per dirglielo — il sogno che avevano condiviso si è avverato, e la promessa è stata mantenuta. Poi il rientro in officina, l&#x27;abbraccio con Mehdi e il regalo che la commuove: una toga con il suo nome cucito all&#x27;interno.</p>
-<h2>Benal se ne va — e finisce nelle mani di Serhat</h2>
+<h2 id="c3">Benal se ne va — e finisce nelle mani di Serhat</h2>
 <p>In casa, però, il clima è irrespirabile: Benal, terrorizzata che l&#x27;ex marito la trovi, litiga con Mehdi nel corridoio, viene accusata da Zeynep di esagerare le minacce per restare, prepara la valigia e poi ci ripensa su insistenza di Müjgan. La resa dei conti arriva quando le due donne si scontrano apertamente davanti a tutti e Benal esce sbattendo la porta. Per strada viene avvicinata da Serhat, che la trascina via con la forza fino a un vecchio magazzino. Nessuno se ne accorgerebbe, se non fosse per una ragazzina del quartiere che vede tutto e avvisa la madre.</p>
-<h2>La corsa al magazzino e il segreto su Nermin</h2>
+<h2 id="c4">La corsa al magazzino e il segreto su Nermin</h2>
 <p>Zeynep chiama subito la polizia e avverte Mehdi supplicandolo di non intervenire di persona; lui naturalmente non ascolta e corre sul posto, dove gli agenti hanno già liberato Benal. Il suo primo gesto è un pugno a Serhat, prima di essere trattenuto — il secondo è correre all&#x27;ambulanza per accertarsi che stia bene, sotto lo sguardo sorpreso e ferito di Zeynep. In parallelo corre un altro filo: rispondendo per caso al telefono della moglie, Mehdi era venuto a sapere che Nermin è irreperibile e ne aveva ottenuto il nuovo indirizzo. L&#x27;ha trovata in una casa modesta di un quartiere difficile, le ha offerto aiuto e le ha proposto di trasferirsi temporaneamente da loro — senza dire nulla a Zeynep.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Come Zeynep supera il colloquio e visita la tomba</h2>
+<h2 id="c5">Come Zeynep supera il colloquio e visita la tomba</h2>
 <p>La strada verso la realizzazione professionale di Zeynep passa attraverso una prova davvero complessa all&#x27;interno dello studio legale. Quando le viene consegnato un foglio completamente bianco per rispondere a due quesiti intimi e profondi su chi sia veramente e sul motivo per cui desideri diventare un avvocato, la giovane donna prova un momento di forte panico. Tuttavia, raccogliendo le forze e scavando nel proprio vissuto, riesce a mettere nero su bianco tutte le esperienze attraversate e gli ostacoli superati lungo il suo cammino. Quelle risposte sincere trasformano la paura in una grande consapevolezza, portandola a completare il testo con profonda determinazione e maturità personale.</p>
 <p>Dopo aver completato la prova, Zeynep riceve l&#x27;esito decisivo racchiuso all&#x27;interno di una busta sigillata, ma sceglie di non scoprirne subito il contenuto per prendersi un momento tutto suo. La gioia per il superamento del colloquio la spinge a compiere un gesto altamente simbolico, portandola a correre direttamente verso la tomba del fratello per condividere con lui quel traguardo fondamentale. Davanti alla sepoltura, la ragazza avverte la profonda emozione di aver mantenuto una promessa fondamentale, coronando finalmente quel sogno che entrambi avevano condiviso per tantissimo tempo. Questo momento di raccoglimento rappresenta il punto d&#x27;arrivo di un lungo percorso fatto di sacrifici e speranze mai abbandonate.</p>
 <p>Al suo rientro in officina, Zeynep viene accolta dall&#x27;abbraccio caloroso di Mehdi, pronto a festeggiare questo successo straordinario con un pensiero inaspettato e commovente. L&#x27;uomo le consegna un regalo di inestimabile valore affettivo, ossia una toga da avvocato personalizzata con il suo nome e cognome ricamati accuratamente all&#x27;interno del tessuto. La giovane rimane profondamente colpita da un dono così pieno di significato, definendolo come il gesto più importante e toccante della sua intera vita. Questo dono suggella il riconoscimento del suo grande valore e la nascita ufficiale della sua nuova carriera nel campo della legge, coronando una giornata indimenticabile.</p>
-<h2>Perché la presenza di Benal scatena la lite</h2>
+<h2 id="c6">Perché la presenza di Benal scatena la lite</h2>
 <p>La convivenza all&#x27;interno dell&#x27;abitazione diventa via via sempre più insopportabile a causa del clima di costante tensione legato alla figura di Benal. La donna vive infatti nell&#x27;incubo perenne di essere rintracciata dal suo ex marito Serhat, e questa angoscia continua finisce per sfociare in un acceso confronto verbale con Mehdi proprio all&#x27;interno del corridoio di casa. Zeynep, dal canto suo, non riesce a credere fino in fondo alla buona fede della rivale e la accusa apertamente di ingigantire i pericoli e le minacce soltanto per trovare una scusa e rimanere ancora sotto quel tetto. Questa spiacevole situazione esaspera tutti gli equilibri familiari già precari.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>Esausta dai continui attacchi e dalle incomprensioni, Benal prende la decisione drastica di preparare la valigia per andarsene definitivamente, ma viene momentaneamente bloccata dal tempestivo intervento di Müjgan, la quale insiste affinché la donna ci ripensi e rimanga. Tuttavia, la pausa è solo momentanea, poiché lo scontro definitivo e inevitabile esplode davanti a tutti i presenti in casa con toni estremamente duri tra le due donne rivali. Al termine di questa ennesima discussione accesa, Benal decide di varcare la soglia ed esce di casa sbattendo violentemente la porta alle sue spalle, determinata a non subire ulteriormente quelle accuse continue.</p>
 <p>In questo contesto già estremamente complicato, Sakine decide di intervenire direttamente parlando con Zeynep per farla riflettere sulle conseguenze delle sue azioni e delle sue esitazioni. La madre la mette in guardia senza usare mezzi termini, spiegandole chiaramente che se non farà valere con fermezza i propri diritti riguardo alla presenza ingombrante di Benal nella loro vita quotidiana, rischierà di soffrire enormemente. Sakine sottolinea inoltre un pericolo ancora più grande per il futuro della figlia: la reale e concreta possibilità di perdere per sempre l&#x27;amore di suo marito Mehdi se continuerà a tollerare passivamente questa situazione ambigua e dolorosa.</p>
-<h2>Cosa succede quando Serhat rapisce Benal e interviene Mehdi</h2>
+<h2 id="c7">Cosa succede quando Serhat rapisce Benal e interviene Mehdi</h2>
 <p>Appena varcata la porta di casa, Benal viene sorpresa in strada dal suo pericoloso ex marito Serhat, il quale si avvicina con aggressività e la trascina via con la forza fino a un vecchio magazzino isolato. Il rapimento rischierebbe di passare del tutto inosservato, se non fosse per lo sguardo attento di una ragazzina del quartiere che assiste casualmente alla scena e corre immediatamente ad avvisare la propria madre. Una volta scoperta la sparizione della donna, Zeynep si attiva senza perdere tempo e avverte subito le forze dell&#x27;ordine, per poi contattare telefonicamente Mehdi supplicandolo con grande insistenza di non intervenire personalmente sul posto per evitare pericoli.</p>
 <p>Ignorando del tutto le preghiere della moglie, Mehdi decide di correre immediatamente al magazzino, dove gli agenti di polizia sono comunque già riusciti a trarre in salvo Benal. Non appena si trova di fronte a Serhat, l&#x27;uomo perde il controllo e gli sferra un violento pugno al volto prima che le forze dell&#x27;ordine riescano a trattenerlo a stento. Subito dopo, Mehdi si precipita verso l&#x27;ambulanza per accertarsi personalmente delle condizioni di salute di Benal, il tutto sotto lo sguardo profondamente sorpreso e ferito di Zeynep, la quale assiste alla scena provando una profonda amarezza per le attenzioni riservate alla rivale.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
@@ -385,19 +435,41 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=1TFCJPAnof4" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/1TFCJPAnof4/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>MY HOME MY DESTINY Anticipazioni: Mehdi ci ricasca, chiude Benal in camera! Arriva Zeynep a sal</span></a></li><li><a href="https://www.youtube.com/watch?v=3Rghu_4BTJA" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/3Rghu_4BTJA/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>MY HOME MY DESTINY Anticipazioni: Zeynep Rapita da Mehdi è in Grave Pericolo!</span></a></li><li><a href="https://www.youtube.com/watch?v=N7WqJ0smNXE" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/N7WqJ0smNXE/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>MY HOME MY DESTINY Anticipazioni 8-9 Gennaio:Mehdi muore per salvarla | Zeynep devastata dal do</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Mehdi ha fatto bene a tenere nascosta a Zeynep la vicenda di Nermin? E secondo voi la sua premura verso Benal è solo senso del dovere?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=DTQe0fBwHA4">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di My Home My Destiny</h2><div class="griglia"><article class="scheda">
+  <a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/"><div class="foto"><img src="/img/my-home-my-destiny-la-trama-completa-e-come-finisce.jpg" alt="My Home My Destiny" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">My Home My Destiny</span>
+    <h3><a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/">My Home My Destiny: la trama completa e come finisce</a></h3>
+    <div class="quando">30 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/"><div class="foto"><img src="https://i.ytimg.com/vi/-djleIeCLQs/hqdefault.jpg" alt="My Home My Destiny" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">My Home My Destiny</span>
+    <h3><a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/">My Home My Destiny, Zeynep ferma l&#x27;aborto di Benal in sala operatoria senza sapere che il padre è Mehdi</a></h3>
+    <div class="quando">17 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/"><div class="foto"><img src="https://i.ytimg.com/vi/gxL0o63Nhqw/hqdefault.jpg" alt="My Home My Destiny" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">My Home My Destiny</span>
+    <h3><a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/">My Home My Destiny, anticipazioni del 17 novembre: Özlem indaga su Zeynep e scopre tutto, Nuh diventa autista di Barış e qualcuno manomette i macchinari di Bekir</a></h3>
+    <div class="quando">16 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=My Home My Destiny 6-7 settembre, Zeynep diventa avvocato e lo dice alla tomba del fratello — poi Benal viene rapita da Serhat e Mehdi corre al magazzino — https://serietvfans.com/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/&text=My Home My Destiny 6-7 settembre, Zeynep diventa avvocato e lo dice alla tomba del fratello — poi Benal viene rapita da Serhat e Mehdi corre al magazzino" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">MY HOME MY DESTINY 6-7 Settembre: Zeynep tra gioia e dolore, Benal rapita</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=DTQe0fBwHA4">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di My Home My Destiny</h3><ol class="numerata"><li><a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/">My Home My Destiny: la trama completa e come finisce</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/">My Home My Destiny, Zeynep ferma l&#x27;aborto di Benal in sala operatoria senza sapere che il padre è Mehdi</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/">My Home My Destiny, anticipazioni del 17 novembre: Özlem indaga su Zeynep e scopre tutto, Nuh diventa autista di Barış e qualcuno manomette i macchinari di Bekir</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-guida-alla-serie-chi-sono-demet-ozdemir-e-ibrahim-celikkol-qu/">My Home My Destiny: guida alla serie, il cast, i personaggi e quante puntate sono</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-1-dicembre-gli-spari-davanti-alla-vecchia-casa-zeynep-tra-le/">My Home My Destiny 1° dicembre, gli spari davanti alla vecchia casa: Zeynep tra le due madri quando l&#x27;uomo in moto estrae la pistola</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>MY HOME MY DESTINY 6-7 Settembre: Zeynep tra gioia e dolore, Benal rapita</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su My Home My Destiny</h3><ul><li><a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/">My Home My Destiny: la trama completa e come finisce</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/">My Home My Destiny, Zeynep ferma l&#x27;aborto di Benal in sala operatoria senza sapere che il padre è Mehdi</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/">My Home My Destiny, anticipazioni del 17 novembre: Özlem indaga su Zeynep e scopre tutto, Nuh diventa autista di Barış e qualcuno manomette i macchinari di Bekir</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-guida-alla-serie-chi-sono-demet-ozdemir-e-ibrahim-celikkol-qu/">My Home My Destiny: guida alla serie, il cast, i personaggi e quante puntate sono</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-1-dicembre-gli-spari-davanti-alla-vecchia-casa-zeynep-tra-le/">My Home My Destiny 1° dicembre, gli spari davanti alla vecchia casa: Zeynep tra le due madri quando l&#x27;uomo in moto estrae la pistola</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

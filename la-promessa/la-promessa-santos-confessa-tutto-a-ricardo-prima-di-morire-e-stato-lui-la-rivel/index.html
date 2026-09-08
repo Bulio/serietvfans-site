@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/la-promessa/">La Promessa</a> › La Promessa, Santos confessa tutto a Ricardo prima di morire: &quot;è stato lui&quot;, la rivelazione che sconvolge il palazzo</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/la-promessa/">La Promessa</a>
   <h1>La Promessa, Santos confessa tutto a Ricardo prima di morire: &quot;è stato lui&quot;, la rivelazione che sconvolge il palazzo</h1>
-  <div class="firma">Redazione Serie TV Fans · mercoledì 29 luglio 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-07-29">mercoledì 29 luglio 2026</time></span><span>aggiornato il 29 agosto 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">A La Promessa sta per andare in scena uno dei momenti più drammatici di questa stagione: Santos, in punto di morte, decide di non portarsi nella tomba il suo ultimo segreto e confessa tutto a Ricardo. Le anticipazioni parlano di un discorso da.</p><ol><li><a href="#c1">Chi chiama Santos negli ultimi istanti di lucidità</a></li><li><a href="#c2">Perché Santos sceglie proprio Ricardo per la verità</a></li><li><a href="#c3">Perché Santos ha aspettato di morire per parlare</a></li><li><a href="#c4">Cosa perde la tenuta con la morte di Santos</a></li><li><a href="#c5">Come farà Ricardo a ricostruire il resto della verità</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>La Promessa</strong> — Rete 4 · in streaming su Mediaset Infinity</span></div>
   
-  <p class="occhiello">A La Promessa sta per andare in scena uno dei momenti più drammatici di questa stagione: Santos, in punto di morte, decide di non portarsi nella tomba il suo ultimo segreto e confessa tutto a Ricardo. Le anticipazioni parlano di un discorso da.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: La Promessa, Santos confessa tutto a Ricardo prima di morire: &quot;è stato lui&quot;, la rivelazione che sconvolge il palazzo" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/W55GD7VjuFw/maxresdefault.jpg" alt="La Promessa, Santos confessa tutto a Ricardo prima di morire: &quot;è stato lui&quot;, la rivelazione che sconvolge il palazzo" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/W55GD7VjuFw/hqdefault.jpg 480w, https://i.ytimg.com/vi/W55GD7VjuFw/sddefault.jpg 640w, https://i.ytimg.com/vi/W55GD7VjuFw/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/W55GD7VjuFw/hqdefault.jpg&quot;, &quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -360,44 +410,66 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
   <div class="corpo">
   <p><strong>A La Promessa sta per andare in scena uno dei momenti più drammatici di questa stagione: Santos, in punto di morte, decide di non portarsi nella tomba il suo ultimo segreto e confessa tutto a Ricardo. Le anticipazioni parlano di un discorso da brividi, di parole che arrivano proprio nell&#x27;ultimo istante di lucidità, e di una frase che da sola basta a cambiare tutto: &quot;è stato lui&quot;.</strong></p>
   <p>Per capire il peso di questa scena, bisogna partire da chi è Santos all&#x27;interno della tenuta della Promessa: una figura che, pur muovendosi spesso ai margini delle vicende principali dei nobili, ha sempre saputo più di quanto lasciasse trapelare. Chi vive e lavora tra le mura della Promessa da anni finisce inevitabilmente per vedere e sentire cose che ai padroni di casa sfuggono, ed è proprio in questa posizione, silenziosa ma privilegiata, che Santos ha accumulato un segreto che ha scelto di custodire fino all&#x27;ultimo.</p>
-<h2>Chi chiama Santos negli ultimi istanti di lucidità</h2>
+<h2 id="c1">Chi chiama Santos negli ultimi istanti di lucidità</h2>
 <p>Le anticipazioni raccontano che Santos si trova ormai in punto di morte, e che è proprio in questi ultimi istanti di lucidità che decide di parlare, chiamando a sé Ricardo per affidargli quello che fino a quel momento aveva tenuto per sé. Un discorso descritto come &quot;da brividi&quot;, capace di lasciare senza fiato chiunque lo ascolti, e che culmina in una frase tanto breve quanto devastante: &quot;è stato lui&quot;. Due parole che, prive di ulteriore contesto, aprono immediatamente un interrogativo enorme: chi è &quot;lui&quot;? E di cosa è davvero responsabile?</p>
 <p>Chi segue la Promessa da tempo sa quante vicende rimaste irrisolte pesano ancora sulla tenuta: intrighi, sospetti, colpe mai del tutto chiarite che hanno attraversato le stagioni senza mai trovare una risposta definitiva. Il fatto che sia proprio Santos, una figura defilata ma presente da sempre dietro le quinte della vita di palazzo, a fornire finalmente un nome, o comunque un&#x27;indicazione precisa, rende questa confessione potenzialmente il tassello che mancava per chiudere uno dei misteri più duraturi della soap.</p>
-<h2>Perché Santos sceglie proprio Ricardo per la verità</h2>
+<h2 id="c2">Perché Santos sceglie proprio Ricardo per la verità</h2>
 <p>Va sottolineato anche il destinatario scelto da Santos per questa rivelazione: Ricardo. Non un membro qualsiasi della famiglia, non un servitore come lui, ma proprio Ricardo, a cui evidentemente Santos riconosce l&#x27;autorità, o la fiducia, necessaria per gestire un&#x27;informazione così esplosiva. Una scelta che lascia intendere quanto Santos considerasse Ricardo l&#x27;unica persona in grado di usare questa verità nel modo giusto, forse per fare giustizia, forse per proteggere qualcuno che rischierebbe di essere travolto se la notizia uscisse nel modo sbagliato.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>Le anticipazioni descrivono la reazione di Ricardo come sconvolta: ascoltare la verità proprio nell&#x27;istante prima della morte di Santos, senza avere il tempo di fare ulteriori domande o di chiedere chiarimenti, lo lascia con un&#x27;informazione fondamentale ma incompleta, un nome o un&#x27;accusa che ora dovrà gestire da solo, senza poter più contare sulla fonte che gliel&#x27;ha rivelata. Una posizione scomodissima: sapere la verità, ma non avere più nessuno che possa confermarla o aggiungere dettagli.</p>
 <p>I fan della Promessa stanno già provando a ricostruire a chi si riferisca quel &quot;è stato lui&quot;. Le ipotesi che circolano tra chi segue più da vicino le vicende della tenuta riguardano diversi fronti aperti nella soap: potrebbe trattarsi di una responsabilità legata a vicende del passato mai completamente chiarite, un evento che ha segnato la vita di più di un personaggio all&#x27;interno del palazzo; potrebbe riguardare direttamente gli intrighi più recenti che stanno agitando la servitù e i nobili della Promessa; oppure potrebbe trattarsi di un nome che nessuno, fino a questo momento, aveva mai sospettato, proprio perché troppo vicino, troppo fidato, per essere messo in discussione.</p>
 <p>C&#x27;è poi da considerare cosa farà Ricardo con questa informazione. Conoscendo le dinamiche della Promessa, raramente una rivelazione di questo peso resta segreta a lungo: prima o poi Ricardo dovrà decidere se condividerla con qualcun altro, magari con un membro della famiglia di cui si fida, oppure se muoversi da solo per verificarne la fondatezza prima di esporsi. E considerando quanto la tenuta sia già attraversata da tensioni e sospetti reciproci, qualunque scelta faccia rischia di avere conseguenze enormi su equilibri che sembravano, fino a poco tempo fa, relativamente stabili.</p>
-<h2>Perché Santos ha aspettato di morire per parlare</h2>
+<h2 id="c3">Perché Santos ha aspettato di morire per parlare</h2>
 <p>Non va sottovalutato nemmeno il fatto che Santos abbia aspettato fino all&#x27;ultimo momento di vita per parlare. Una scelta che dice molto sul peso di questo segreto: se lo avesse rivelato prima, forse temeva conseguenze troppo gravi, per sé o per altri, oppure semplicemente non si sentiva pronto ad affrontare quello che sarebbe successo dopo aver parlato. Solo di fronte alla certezza della propria morte, quando ormai non c&#x27;è più nulla da perdere, trova la forza di liberarsi di un peso portato probabilmente per anni.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>Un altro aspetto che i fan più attenti stanno notando riguarda il tempismo di questa confessione, arrivata proprio mentre la tenuta della Promessa sta già affrontando altre vicende delicatissime, tra fughe sventate, segreti di famiglia che rischiano di emergere e alleanze che si stanno riscrivendo tra i nobili del palazzo. L&#x27;arrivo di un&#x27;accusa così pesante, proprio in questo momento già carico di tensione, rischia di essere la scintilla che fa esplodere definitivamente equilibri che si reggevano su un filo sottilissimo.</p>
 <p>Guardando all&#x27;insieme di questa storyline, quello che emerge con chiarezza è che la Promessa sta per entrare in una delle fasi più intense della stagione: una confessione in punto di morte, un nome non ancora rivelato al pubblico, e un Ricardo che si ritrova improvvisamente a dover gestire una verità capace di travolgere l&#x27;intera tenuta, senza avere più nessuno a cui chiedere conferma o aiuto.</p>
-<h2>Cosa perde la tenuta con la morte di Santos</h2>
+<h2 id="c4">Cosa perde la tenuta con la morte di Santos</h2>
 <p>Bisogna anche considerare cosa significhi, per una tenuta come la Promessa, perdere proprio in questo momento una figura come Santos. Chi vive dietro le quinte del palazzo da così tanti anni porta con sé una memoria che nessun altro possiede, fatta di dettagli, sguardi e conversazioni sorprese per caso nei corridoi. Con la sua morte, quella memoria si chiude per sempre, e Ricardo si ritrova erede di un solo frammento di verità, senza la possibilità di tornare indietro per chiedere altro. Un&#x27;eredità pesantissima, che lo costringe a muoversi con estrema cautela in un palazzo dove ogni parola detta nel posto sbagliato può costare carissimo.</p>
 <p>C&#x27;è poi da considerare in che momento arriva questa confessione per Ricardo. Le anticipazioni della Promessa lo hanno già mostrato alle prese con altre tensioni dentro il palazzo, tra rapporti di famiglia complicati e un clima generale di sospetto che negli ultimi giorni ha attraversato praticamente ogni angolo della tenuta. Ricevere ora, proprio in questo contesto già teso, una rivelazione così pesante da parte di Santos significa per Ricardo dover gestire due fronti contemporaneamente: quello pubblico, fatto delle dinamiche di potere e di rispetto che regolano i rapporti tra nobili e servitù, e quello privato, il peso emotivo di custodire da solo un segreto capace di travolgere qualcuno a lui vicino.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>Va anche ricordato quanto la figura di Santos fosse, fino a questo momento, percepita da tutti come una presenza discreta, quasi marginale rispetto alle grandi trame che coinvolgono i nobili della Promessa. Proprio per questo la sua confessione pesa doppio: non arriva da chi si trova già al centro degli intrighi di palazzo, ma da chi osservava tutto da un angolo defilato, senza mai essere sospettato di sapere così tanto. È un promemoria di quanto, nella Promessa, siano spesso i personaggi più silenziosi a custodire le verità più pericolose, proprio perché nessuno pensava di doverli temere.</p>
 <p>Non si può nemmeno escludere che la scelta di Ricardo su cosa fare con questa informazione diventi, nelle prossime puntate, un banco di prova per il suo stesso personaggio. Scegliere di agire subito, magari confrontandosi apertamente con la persona coinvolta, oppure custodire il segreto in attesa del momento più giusto, sono due strade che raccontano cose molto diverse sul tipo di uomo che Ricardo vuole essere all&#x27;interno della tenuta. E conoscendo il modo in cui la Promessa costruisce i suoi personaggi, è probabile che questa decisione avrà conseguenze dirette sul rapporto di Ricardo con il resto della famiglia.</p>
-<h2>Come farà Ricardo a ricostruire il resto della verità</h2>
+<h2 id="c5">Come farà Ricardo a ricostruire il resto della verità</h2>
 <p>Infine, resta il fatto che Santos si è portato con sé, insieme al segreto rivelato, anche tutti i dettagli di contorno che avrebbero potuto aiutare Ricardo a capire meglio la situazione: il come, il quando, le circostanze esatte di quello che sta accusando. Ricardo dovrà quindi ricostruire da solo il resto del quadro, magari confrontando quella singola frase con episodi e comportamenti che negli ultimi tempi aveva osservato senza dargli troppo peso, e che ora, alla luce di questa confessione, potrebbero assumere un significato completamente diverso.</p>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=9URo8dGeaBc" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/9URo8dGeaBc/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA ANTICIPAZIONI: SANTOS confessa tutto a RICARDO prima di morire, &quot;È STATO LUI&quot; 😱</span></a></li><li><a href="https://www.youtube.com/watch?v=Fqc5xiBYAmU" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/Fqc5xiBYAmU/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>La Promessa Anticipazioni: SHOCK 😱 – &#x27;Addio Teresa!&#x27; Un Colpo di Scena Che Spezza il Cuore</span></a></li><li><a href="https://www.youtube.com/watch?v=KG1g1kqfPT0" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/KG1g1kqfPT0/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>CRUDELE CRUZ, LASCIA MORIRE FERNANDO: &quot;CI VEDIAMO ALL&#x27;INFERNO!&quot; Anticipazioni La Promessa</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>E voi cosa ne pensate? Chi credete sia il &quot;lui&quot; a cui si riferisce Santos nella sua ultima confessione a Ricardo? E secondo voi Ricardo userà questa informazione per fare giustizia, oppure sceglierà di tenerla nascosta per proteggere qualcuno a cui tiene?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=W55GD7VjuFw">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di La Promessa</h2><div class="griglia"><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/"><div class="foto"><img src="https://i.ytimg.com/vi/Rp8VhxDiDSk/hqdefault.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></h3>
+    <div class="quando">7 settembre 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/"><div class="foto"><img src="https://i.ytimg.com/vi/8JHt6ogwxQw/hqdefault.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Ángela beve tutto, Curro sfonda la porta</a></h3>
+    <div class="quando">6 settembre 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/"><div class="foto"><img src="/img/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Curro nasconde Ángela, Lorenzo furioso</a></h3>
+    <div class="quando">6 settembre 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=La Promessa, Santos confessa tutto a Ricardo prima di morire: &quot;è stato lui&quot;, la rivelazione che sconvolge il palazzo — https://serietvfans.com/la-promessa/la-promessa-santos-confessa-tutto-a-ricardo-prima-di-morire-e-stato-lui-la-rivel/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/la-promessa/la-promessa-santos-confessa-tutto-a-ricardo-prima-di-morire-e-stato-lui-la-rivel/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/la-promessa/la-promessa-santos-confessa-tutto-a-ricardo-prima-di-morire-e-stato-lui-la-rivel/&text=La Promessa, Santos confessa tutto a Ricardo prima di morire: &quot;è stato lui&quot;, la rivelazione che sconvolge il palazzo" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">LA PROMESSA — Santos confessa tutto a Ricardo prima di morire: &quot;è stato lui&quot;, la rivelazione che sconvolge il palazzo</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=W55GD7VjuFw">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di La Promessa</h3><ol class="numerata"><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Ángela beve tutto, Curro sfonda la porta</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Curro nasconde Ángela, Lorenzo furioso</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>LA PROMESSA — Santos confessa tutto a Ricardo prima di morire: &quot;è stato lui&quot;, la rivelazione che sconvolge il palazzo</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su La Promessa</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-3-6-settembre-maria-affronta-la-gravidanza-da-sola/">La Promessa anticipazioni 3-6 settembre: Maria affronta la gravidanza da sola</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-carlo-arriva-maria-trema/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Carlo arriva, Maria trema</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/far-away/far-away-anticipazioni-dal-31-agosto-al-4-settembre-chi-ha-donato-il-fegato-a-nare/">Far Away, anticipazioni dal 31 agosto al 4 settembre: chi ha donato il fegato a Nare, e perché adesso sta male lui</a></li><li><a href="/far-away/far-away-dal-31-agosto-la-madre-di-alya-sapeva-tutto-non-ricordo/">Far Away Dal 31 Agosto: la madre di Alya sapeva tutto — «non ricordo»</a></li><li><a href="/forbidden-fruit/forbidden-fruit-dal-31-agosto-il-conto-a-nome-di-halit-che-e-morto/">Forbidden Fruit Dal 31 Agosto: il conto a nome di Halit, che è morto</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

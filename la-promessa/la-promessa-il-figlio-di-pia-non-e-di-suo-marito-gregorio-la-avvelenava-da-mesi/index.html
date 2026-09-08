@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/la-promessa/">La Promessa</a> › La Promessa, il figlio di Pía non è di suo marito: Gregorio la avvelenava da mesi</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/la-promessa/">La Promessa</a>
   <h1>La Promessa, il figlio di Pía non è di suo marito: Gregorio la avvelenava da mesi</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 28 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-28">venerdì 28 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Perché Pía Adarre non si difende mai? La risposta sta a ritroso: il figlio tolto, i mesi di veleno, e un cognome che in quella casa non è un cognome qualunque.</p><ol><li><a href="#c1">Primo passo indietro: il figlio che non vive con lei</a></li><li><a href="#c2">I mesi in cui suo marito la avvelenava</a></li><li><a href="#c3">Chi è il vero padre di Diego</a></li><li><a href="#c4">Non è sfortuna, è una gestione</a></li><li><a href="#c5">Perché conta: la leva su Pía è sempre la stessa</a></li><li><a href="#c6">Tre cognomi per un bambino solo</a></li><li><a href="#c7">Dove vedere La Promessa</a></li><li><a href="#c8">Come Manuel affronta Cristóbal nel corridoio della servitù</a></li><li><a href="#c9">Perché Juan Ezquerdo dominava incontrastato nella tenuta</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>La Promessa</strong> — Rete 4 · in streaming su Mediaset Infinity</span></div>
   
-  <p class="occhiello">Perché Pía Adarre non si difende mai? La risposta sta a ritroso: il figlio tolto, i mesi di veleno, e un cognome che in quella casa non è un cognome qualunque.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: La Promessa, il figlio di Pía non è di suo marito: Gregorio la avvelenava da mesi" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/eCb7nQMKcig/maxresdefault.jpg" alt="La Promessa, il figlio di Pía non è di suo marito: Gregorio la avvelenava da mesi" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/eCb7nQMKcig/hqdefault.jpg 480w, https://i.ytimg.com/vi/eCb7nQMKcig/sddefault.jpg 640w, https://i.ytimg.com/vi/eCb7nQMKcig/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/eCb7nQMKcig/hqdefault.jpg&quot;, &quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -361,51 +411,73 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
   <p><strong>Raccontata in ordine sembra sfortuna. Raccontata al contrario, si vede benissimo che sfortuna non era.</strong></p>
   <p>C&#x27;è una scena de La Promessa che chi la guarda non si toglie più dalla testa: il corridoio della servitù, Cristóbal che legge ad alta voce un provvedimento disciplinare, e Pía in piedi davanti a tutti che non dice una parola. Aspetta che finisca. Poi arriva Manuel, strappa il foglio e caccia via il maggiordomo.</p>
 <p>Ma la domanda che nessuno fa è un&#x27;altra: perché Pía non si difende mai? Non è timidezza, e non è il posto che occupa in quella casa. È che ha già perso tutto quello che si poteva perdere, una volta sola e in silenzio, molti anni prima che a La Promessa arrivasse Cristóbal.</p>
-<h2>Primo passo indietro: il figlio che non vive con lei</h2>
+<h2 id="c1">Primo passo indietro: il figlio che non vive con lei</h2>
 <p>Il punto di partenza è questo: Pía non vive con suo figlio. Diego è cresciuto fuori dalla tenuta, affidato a una balia, e la madre lo vede quasi mai. Una donna che lavora in una casa enorme, con decine di stanze vuote, non può tenere con sé un bambino di pochi anni — e non perché lo dica una regola scritta. È una decisione presa per lei.</p>
 <p>Poi si presenta Gregorio Castillo e reclama diritti su Pía e soprattutto su Diego, che davanti alla legge risulta suo figlio legittimo e ne porta il nome. Un uomo che quel bambino non ha mai visto né mantenuto dice «è mio», e ha ragione: la legge, in questa storia, sta sempre dalla parte di chi ha fatto del male a Pía.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>I mesi in cui suo marito la avvelenava</h2>
+<h2 id="c2">I mesi in cui suo marito la avvelenava</h2>
 <p>Se Gregorio ha tanta voglia di quel bambino, però, viene da chiedersi perché quando quel bambino doveva ancora nascere abbia fatto tutto il possibile per farlo morire. Mentre Pía era incinta, l&#x27;uomo che l&#x27;aveva sposata le ha somministrato veleno per mesi. Non un gesto d&#x27;impulso, non una lite finita male: un poco alla volta, ogni giorno, per farle perdere la gravidanza.</p>
 <p>E lei non lo sapeva: stava male, si sentiva mancare, e attribuiva tutto alla gravidanza. Ringraziava il marito che le portava da bere. Diego nasce lo stesso, ed è l&#x27;unica cosa, in tutta la vicenda, andata storta a chi decideva.</p>
-<h2>Chi è il vero padre di Diego</h2>
+<h2 id="c3">Chi è il vero padre di Diego</h2>
 <p>Perché un marito dovrebbe volere che sua moglie perda il figlio che porta in grembo? Perché sapeva che non era suo, e sapeva benissimo di chi era. Il padre di Diego è Juan Ezquerdo, barone di Linaja: il padre di Cruz, cioè della marchesa che ha comandato dentro quella casa per anni.</p>
 <p>Va detto con le parole giuste: Juan Ezquerdo ha abusato di Pía, ripetutamente. Lei era una domestica sotto quel tetto, lui il padre della padrona di casa: non c&#x27;era una porta a cui bussare né una persona a cui raccontarlo che non fosse legata a lui.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Non è sfortuna, è una gestione</h2>
+<h2 id="c4">Non è sfortuna, è una gestione</h2>
 <p>Rimettete in fila i pezzi. Pía resta incinta di un uomo intoccabile. Viene fatta sposare a un altro, che di quella gravidanza sa tutto e passa mesi ad avvelenarla per cancellarla. Il bambino nasce lo stesso e viene sistemato fuori, lontano, dove nessuno lo veda crescere e nessuno gli guardi la faccia. Ogni singolo passaggio serve a tenere quel bambino lontano dal cognome che gli spetterebbe.</p>
 <p>E Pía non ha mai denunciato niente. Non perché non capisse: perché aveva già calcolato come sarebbe finita. Una domestica che accusa il padre della marchesa, nella Spagna di quegli anni, non ottiene giustizia — ottiene di essere licenziata e di perdere anche quel poco che le resta. Ecco perché nel corridoio non si difende: sa già quanto vale la sua parola dentro quella casa.</p>
-<h2>Perché conta: la leva su Pía è sempre la stessa</h2>
+<h2 id="c5">Perché conta: la leva su Pía è sempre la stessa</h2>
 <p>Pía a un certo punto sparisce da La Promessa e per un lungo periodo tutti la danno per morta. Poi torna, e appena rimette piede in casa si vede benissimo: cambiano i padroni, cambiano i maggiordomi, cambia perfino chi comanda dietro le quinte, ma la leva su di lei resta una sola. Diego.</p>
 <p>Gregorio lo usa per rivendicarla, la casa per tenerla al suo posto. E il provvedimento letto in corridoio arriva esattamente quando lei ha di nuovo il figlio nel pensiero. Vent&#x27;anni di vicende, tre uomini al comando, uno strumento solo: per piegare Pía Adarre non serve minacciarla, basta nominarle suo figlio.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Tre cognomi per un bambino solo</h2>
+<h2 id="c6">Tre cognomi per un bambino solo</h2>
 <p>C&#x27;è un dettaglio che passa quasi sempre inosservato. Diego, per la legge, è un Castillo. Per il sangue è un Ezquerdo. Per la vita che fa è il figlio di una balia in un paese qualunque. Tre identità, e nessuna delle tre è quella vera.</p>
 <p>Quel bambino è l&#x27;unica prova vivente di quello che è successo dentro La Promessa, e finché resta lontano, con un cognome che non è il suo, quella prova non la legge nessuno. Resta da capire che cosa succede il giorno in cui qualcuno, in quella casa, decide di guardarlo bene in faccia.</p>
-<h2>Dove vedere La Promessa</h2>
+<h2 id="c7">Dove vedere La Promessa</h2>
 <p>Per seguire La Promessa il canale è Rete 4; le puntate restano poi consultabili in streaming su Mediaset Infinity. Il palinsesto si muove spesso, quindi l&#x27;orario esatto va cercato ogni volta sulla guida TV.</p>
-<h2>Come Manuel affronta Cristóbal nel corridoio della servitù</h2>
+<h2 id="c8">Come Manuel affronta Cristóbal nel corridoio della servitù</h2>
 <p>Nel corridoio riservato alla servitù si consuma una scena fondamentale per comprendere la figura di Pía Adarre e la sua totale rinuncia a difendersi. Quando il maggiordomo Cristóbal legge a voce alta il provvedimento disciplinare preso contro di lei davanti agli altri lavoratori, la donna rimane immobile senza pronunciare una singola parola di protesta. Pía non cerca scuse e non prova a spiegare le proprie ragioni perché conosce fin troppo bene le regole non scritte di quel palazzo. Sapendo che la parola di una semplice domestica non ha alcun valore di fronte al potere dei padroni, sceglie un silenzio consapevole, maturato in anni di ingiustizie subite senza possibilità di appello.</p>
 <p>L&#x27;interruzione improvvisa di quella punizione pubblica arriva grazie all&#x27;intervento di Manuel, che compie un gesto di rottura prendendo il foglio dalle mani di Cristóbal per strapparlo e cacciare immediatamente il maggiordomo. Nonostante questo gesto eclatante da parte del giovane signore, l&#x27;atteggiamento di Pía non cambia e la sua prudenza resta incrollabile. La donna sa benissimo che le dinamiche di potere dentro la tenuta sono complesse e che nessun atto di protezione improvviso può cancellare il peso delle minacce reali. Il suo unico pensiero rimane concentrato sul figlio Diego, la sola leva con cui chiunque al comando può continuare a condizionare ogni sua scelta.</p>
-<h2>Perché Juan Ezquerdo dominava incontrastato nella tenuta</h2>
+<h2 id="c9">Perché Juan Ezquerdo dominava incontrastato nella tenuta</h2>
 <p>Il potere di Juan Ezquerdo all&#x27;interno de La Promessa derivava direttamente dal suo titolo di barone di Linaja e dal legame di parentela con Cruz, la marchesa che ha retto con pugno di ferro le sorti della casa per lungo tempo. In qualità di padre della padrona, l&#x27;uomo godeva di una posizione di totale impunità che gli permetteva di agire senza dover rendere conto a nessuno. Quando ha abusato ripetutamente di Pía, la servitù e il personale non avevano alcuna possibilità di intervenire o di denunciare gli accertati soprusi. La struttura gerarchica della tenuta rendeva impossibile per una domestica trovare un alleato tra le pareti di quella dimora.</p>
 <p>La scoperta della gravidanza ha trasformato una violenza in un potenziale scandalo per l&#x27;intera famiglia nobile, spingendo verso una soluzione calcolata nei minimi dettagli. Il matrimonio di facciata con Gregorio Castillo e l&#x27;allontanamento immediato del piccolo Diego affidato a una balia sono serviti a proteggere il nome degli Ezquerdo. Attribuendo la paternità legale a un altro uomo, la famiglia ha tentato di cancellare ogni traccia dell&#x27;accaduto, lasciando Pía incastrata in un matrimonio con un marito che ha persino tentato di avvelenarla per eliminare quel bambino. La lontananza dal figlio rappresenta per Pía il prezzo permanente pagato per aver subito le attenzioni del barone.</p>
   </div>
-  <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=0FuwKZMhuPc" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/0FuwKZMhuPc/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA: Curro è figlio dell&#x27;amore tra Alonso e Dolores o Alonso ha abusato di Dolores?</span></a></li><li><a href="https://www.youtube.com/watch?v=1mWzY8xsAqs" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/1mWzY8xsAqs/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni Spagnole | Pia costretta a separarsi da suo figlio! Cruz lo aveva rap</span></a></li><li><a href="https://www.youtube.com/watch?v=I11Pq6fGvHE" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/I11Pq6fGvHE/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>CLAMOROSO: PIA RICATTA CRUZ:&quot;O MANTIENE MIO FIGLIO O PARLO!&quot; - Anticipazioni La Promessa 8-14 L</span></a></li></ul></div>
+  <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=1mWzY8xsAqs" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/1mWzY8xsAqs/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni Spagnole | Pia costretta a separarsi da suo figlio! Cruz lo aveva rap</span></a></li><li><a href="https://www.youtube.com/watch?v=I11Pq6fGvHE" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/I11Pq6fGvHE/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>CLAMOROSO: PIA RICATTA CRUZ:&quot;O MANTIENE MIO FIGLIO O PARLO!&quot; - Anticipazioni La Promessa 8-14 L</span></a></li><li><a href="https://www.youtube.com/watch?v=JY3mexNp4Us" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/JY3mexNp4Us/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>JANA SALVA IL FIGLIO DI PIA! CRUZ E PETRA LO AVEVANO RAPITO - Anticipazioni La Promessa</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Pía è una vittima o è una complice? Ha taciuto e ha protetto quella casa anche quando quella casa le toglieva tutto: voi da che parte state?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=eCb7nQMKcig">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di La Promessa</h2><div class="griglia"><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/"><div class="foto"><img src="https://i.ytimg.com/vi/Rp8VhxDiDSk/hqdefault.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></h3>
+    <div class="quando">7 settembre 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/"><div class="foto"><img src="https://i.ytimg.com/vi/8JHt6ogwxQw/hqdefault.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Ángela beve tutto, Curro sfonda la porta</a></h3>
+    <div class="quando">6 settembre 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/"><div class="foto"><img src="/img/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Curro nasconde Ángela, Lorenzo furioso</a></h3>
+    <div class="quando">6 settembre 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=La Promessa, il figlio di Pía non è di suo marito: Gregorio la avvelenava da mesi — https://serietvfans.com/la-promessa/la-promessa-il-figlio-di-pia-non-e-di-suo-marito-gregorio-la-avvelenava-da-mesi/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/la-promessa/la-promessa-il-figlio-di-pia-non-e-di-suo-marito-gregorio-la-avvelenava-da-mesi/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/la-promessa/la-promessa-il-figlio-di-pia-non-e-di-suo-marito-gregorio-la-avvelenava-da-mesi/&text=La Promessa, il figlio di Pía non è di suo marito: Gregorio la avvelenava da mesi" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">LA PROMESSA: il figlio di Pía non è di suo marito, e lui la avvelenava</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=eCb7nQMKcig">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di La Promessa</h3><ol class="numerata"><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Ángela beve tutto, Curro sfonda la porta</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Curro nasconde Ángela, Lorenzo furioso</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>LA PROMESSA: il figlio di Pía non è di suo marito, e lui la avvelenava</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su La Promessa</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-3-6-settembre-maria-affronta-la-gravidanza-da-sola/">La Promessa anticipazioni 3-6 settembre: Maria affronta la gravidanza da sola</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-carlo-arriva-maria-trema/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Carlo arriva, Maria trema</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/far-away/far-away-anticipazioni-dal-31-agosto-al-4-settembre-chi-ha-donato-il-fegato-a-nare/">Far Away, anticipazioni dal 31 agosto al 4 settembre: chi ha donato il fegato a Nare, e perché adesso sta male lui</a></li><li><a href="/far-away/far-away-dal-31-agosto-la-madre-di-alya-sapeva-tutto-non-ricordo/">Far Away Dal 31 Agosto: la madre di Alya sapeva tutto — «non ricordo»</a></li><li><a href="/forbidden-fruit/forbidden-fruit-dal-31-agosto-il-conto-a-nome-di-halit-che-e-morto/">Forbidden Fruit Dal 31 Agosto: il conto a nome di Halit, che è morto</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

@@ -12,7 +12,7 @@
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Serie TV Fans">
 <meta property="og:url" content="https://serietvfans.com/il-paradiso-delle-signore/il-paradiso-delle-signore-marcello-incastra-rita-con-una-vecchia-reflex-la-carte/">
-<meta property="og:image" content="https://i.ytimg.com/vi/kgiwhLez9uY/maxresdefault.jpg">
+<meta property="og:image" content="https://serietvfans.com/img/il-paradiso-delle-signore-marcello-incastra-rita-con-una-vecchia-reflex-la-carte.jpg">
 <meta property="og:locale" content="it_IT">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#7b1e2b">
@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -318,12 +367,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7778653397776213" crossorigin="anonymous"></script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "96259d7e67ce47fba4573364859712a6"}'></script>
 <script>(function(){var f=0;function go(){if(f)return;f=1;(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","y3rpoig6jk");}["pointerdown","keydown","touchstart","scroll"].forEach(function(v){addEventListener(v,go,{once:1,passive:1})});setTimeout(go,2500)})();</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Il Paradiso delle Signore, Marcello incastra Rita con una vecchia reflex: la cartella consegnata al bar sbagliato — e Carmelo impone a Mimmo il trasferimento in Sicilia", "datePublished": "2026-08-14", "dateModified": "2026-09-04", "description": "Settimana spezzata dalle feste (21-25 aprile) ma densissima: Marcello ha ormai tutti gli indizi sulla talpa e pedina Rita fino a un bar di periferia, dove la fotografa mentre consegna una cartella a un uomo estraneo al Paradiso — scatti che possono distruggerla. Intanto a Milano piomba Carmelo, il padre di Mimmo, che scopre la sospensione del figlio e gli impone il trasferimento in Sicilia: la mannaia che strappa ad Agata la confessione d'amore. E Marta consegna a Enrico la verità più dolorosa: non potrà diventare madre.", "inLanguage": "it-IT", "mainEntityOfPage": "https://serietvfans.com/il-paradiso-delle-signore/il-paradiso-delle-signore-marcello-incastra-rita-con-una-vecchia-reflex-la-carte/", "image": ["https://i.ytimg.com/vi/kgiwhLez9uY/maxresdefault.jpg"], "author": {"@type": "Organization", "name": "Serie TV Fans", "url": "https://serietvfans.com/chi-siamo/"}, "publisher": {"@type": "Organization", "name": "Serie TV Fans", "logo": {"@type": "ImageObject", "url": "https://serietvfans.com/favicon.svg"}}, "video": {"@type": "VideoObject", "name": "Il paradiso delle signore 9: Marcello smaschera Rita e lei..", "description": "Settimana spezzata dalle feste (21-25 aprile) ma densissima: Marcello ha ormai tutti gli indizi sulla talpa e pedina Rita fino a un bar di periferia, dove la fotografa mentre consegna una cartella a un uomo estraneo al Paradiso — scatti che possono distruggerla. Intanto a Milano piomba Carmelo, il padre di Mimmo, che scopre la sospensione del figlio e gli impone il trasferimento in Sicilia: la mannaia che strappa ad Agata la confessione d'amore. E Marta consegna a Enrico la verità più dolorosa: non potrà diventare madre.", "thumbnailUrl": "https://i.ytimg.com/vi/kgiwhLez9uY/maxresdefault.jpg", "uploadDate": "2026-08-14T12:00:00Z", "embedUrl": "https://www.youtube.com/embed/kgiwhLez9uY"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Il Paradiso delle Signore, Marcello incastra Rita con una vecchia reflex: la cartella consegnata al bar sbagliato — e Carmelo impone a Mimmo il trasferimento in Sicilia", "datePublished": "2026-08-14", "dateModified": "2026-09-08", "description": "Settimana spezzata dalle feste (21-25 aprile) ma densissima: Marcello ha ormai tutti gli indizi sulla talpa e pedina Rita fino a un bar di periferia, dove la fotografa mentre consegna una cartella a un uomo estraneo al Paradiso — scatti che possono distruggerla. Intanto a Milano piomba Carmelo, il padre di Mimmo, che scopre la sospensione del figlio e gli impone il trasferimento in Sicilia: la mannaia che strappa ad Agata la confessione d'amore. E Marta consegna a Enrico la verità più dolorosa: non potrà diventare madre.", "inLanguage": "it-IT", "mainEntityOfPage": "https://serietvfans.com/il-paradiso-delle-signore/il-paradiso-delle-signore-marcello-incastra-rita-con-una-vecchia-reflex-la-carte/", "image": ["https://serietvfans.com/img/il-paradiso-delle-signore-marcello-incastra-rita-con-una-vecchia-reflex-la-carte.jpg"], "author": {"@type": "Organization", "name": "Serie TV Fans", "url": "https://serietvfans.com/chi-siamo/"}, "publisher": {"@type": "Organization", "name": "Serie TV Fans", "logo": {"@type": "ImageObject", "url": "https://serietvfans.com/favicon.svg"}}, "video": {"@type": "VideoObject", "name": "Il paradiso delle signore 9: Marcello smaschera Rita e lei..", "description": "Settimana spezzata dalle feste (21-25 aprile) ma densissima: Marcello ha ormai tutti gli indizi sulla talpa e pedina Rita fino a un bar di periferia, dove la fotografa mentre consegna una cartella a un uomo estraneo al Paradiso — scatti che possono distruggerla. Intanto a Milano piomba Carmelo, il padre di Mimmo, che scopre la sospensione del figlio e gli impone il trasferimento in Sicilia: la mannaia che strappa ad Agata la confessione d'amore. E Marta consegna a Enrico la verità più dolorosa: non potrà diventare madre.", "thumbnailUrl": "https://serietvfans.com/img/il-paradiso-delle-signore-marcello-incastra-rita-con-una-vecchia-reflex-la-carte.jpg", "uploadDate": "2026-08-14T12:00:00Z", "embedUrl": "https://www.youtube.com/embed/kgiwhLez9uY"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://serietvfans.com/"}, {"@type": "ListItem", "position": 2, "name": "Il Paradiso delle Signore", "item": "https://serietvfans.com/serie/il-paradiso-delle-signore/"}, {"@type": "ListItem", "position": 3, "name": "Il Paradiso delle Signore, Marcello incastra Rita con una vecchia reflex: la cartella consegnata al bar sbagliato — e Carmelo impone a Mimmo il trasferimento in Sicilia"}]}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,19 +385,18 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/il-paradiso-delle-signore/">Il Paradiso delle Signore</a> › Il Paradiso delle Signore, Marcello incastra Rita con una vecchia reflex: la cartella consegnata al bar sbagliato — e Carmelo impone a Mimmo il trasferimento in Sicilia</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/il-paradiso-delle-signore/">Il Paradiso delle Signore</a>
   <h1>Il Paradiso delle Signore, Marcello incastra Rita con una vecchia reflex: la cartella consegnata al bar sbagliato — e Carmelo impone a Mimmo il trasferimento in Sicilia</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 8 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Settimana spezzata dalle feste (21-25 aprile) ma densissima: Marcello ha ormai tutti gli indizi sulla talpa e pedina Rita fino a un bar di periferia, dove la fotografa mentre consegna una cartella a un uomo estraneo al Paradiso — scatti che possono distruggerla. Intanto a Milano piomba Carmelo, il padre di Mimmo, che scopre la sospensione del figlio e gli impone il trasferimento in Sicilia: la mannaia che strappa ad Agata la confessione d&#x27;amore. E Marta consegna a Enrico la verità più dolorosa: non potrà diventare madre.</p><ol><li><a href="#c1">La talpa ha i giorni contati: pedinamenti, buste e una reflex</a></li><li><a href="#c2">Carmelo scopre la sospensione: «Trasferimento in Sicilia» — e Agata confessa</a></li><li><a href="#c3">Marta ed Enrico: la confessione che cambia tutto — e il messaggio che gela il sangue</a></li><li><a href="#c4">Elvira rallenta, Rosa se ne va, Odile tra due fuochi</a></li><li><a href="#c5">Come Marcello incastra la commessa Rita</a></li><li><a href="#c6">Perche Carmelo pretende il ritorno di Mimmo</a></li><li><a href="#c7">Cosa nasconde Marta al tormentato Enrico</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>Il Paradiso delle Signore</strong> — Rai 1, dal lunedì al venerdì · in streaming su RaiPlay</span></div>
-  
-  <p class="occhiello">Settimana spezzata dalle feste (21-25 aprile) ma densissima: Marcello ha ormai tutti gli indizi sulla talpa e pedina Rita fino a un bar di periferia, dove la fotografa mentre consegna una cartella a un uomo estraneo al Paradiso — scatti che possono distruggerla. Intanto a Milano piomba Carmelo, il padre di Mimmo, che scopre la sospensione del figlio e gli impone il trasferimento in Sicilia: la mannaia che strappa ad Agata la confessione d&#x27;amore. E Marta consegna a Enrico la verità più dolorosa: non potrà diventare madre.</p>
+  <figure class="copertina"><img src="/img/il-paradiso-delle-signore-marcello-incastra-rita-con-una-vecchia-reflex-la-carte.jpg" alt="Il Paradiso delle Signore"><figcaption>Immagine d&#x27;ambiente — Il Paradiso delle Signore</figcaption></figure>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
     <button type="button" class="avvia" data-yt="kgiwhLez9uY"
       aria-label="Riproduci il video: Il Paradiso delle Signore, Marcello incastra Rita con una vecchia reflex: la cartella consegnata al bar sbagliato — e Carmelo impone a Mimmo il trasferimento in Sicilia" onclick="ytGo(this)">
-      <img src="https://i.ytimg.com/vi/kgiwhLez9uY/maxresdefault.jpg" alt="Il Paradiso delle Signore, Marcello incastra Rita con una vecchia reflex: la cartella consegnata al bar sbagliato — e Carmelo impone a Mimmo il trasferimento in Sicilia" width="1280" height="720"
-        srcset="https://i.ytimg.com/vi/kgiwhLez9uY/hqdefault.jpg 480w, https://i.ytimg.com/vi/kgiwhLez9uY/sddefault.jpg 640w, https://i.ytimg.com/vi/kgiwhLez9uY/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+      <img src="/img/il-paradiso-delle-signore-marcello-incastra-rita-con-una-vecchia-reflex-la-carte.jpg" alt="Il Paradiso delle Signore, Marcello incastra Rita con una vecchia reflex: la cartella consegnata al bar sbagliato — e Carmelo impone a Mimmo il trasferimento in Sicilia" width="1280" height="720"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/kgiwhLez9uY/hqdefault.jpg&quot;, &quot;/fallback/il-paradiso-delle-signore.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,42 +407,64 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>Il brivido in corridoio: il mezzo sorriso di Lucia Giorgi, la nuova capocommessa della Galleria Milano Moda, quando sente la voce su Rita — che ruolo ha davvero in questa storia?</strong></p>
-  <h2>La talpa ha i giorni contati: pedinamenti, buste e una reflex</h2>
+  <h2 id="c1">La talpa ha i giorni contati: pedinamenti, buste e una reflex</h2>
 <p>Rita, la commessa dai modi miti e dallo sguardo furbo, tesse da mesi un intreccio di bugie — e Marcello ha deciso che il sipario deve calare. Il sospetto è pesante: sarebbe stata lei a far recapitare un disegno di Botteri a un&#x27;azienda rivale. Il piano è da investigatore: pedinamenti discreti, domande alle persone giuste, scambi di buste cronometrati. Vuole prove, non chiacchiere. E le prove arrivano il 25 aprile: Marcello segue Rita fino a un bar periferico e la fotografa con una vecchia reflex mentre consegna una cartella a un uomo elegante estraneo al Paradiso. Nel frattempo Odile origlia Giulia Furlan bisbigliare con Lucia Giorgi — nomi, cifre, un bozzetto «finito per caso in mani sbagliate»: Rita è al centro di un giro molto più grosso di lei.</p>
-<h2>Carmelo scopre la sospensione: «Trasferimento in Sicilia» — e Agata confessa</h2>
+<h2 id="c2">Carmelo scopre la sospensione: «Trasferimento in Sicilia» — e Agata confessa</h2>
 <p>L&#x27;arrivo di Carmelo, il padre di Mimmo, orgoglioso e di vecchio stampo, innesca la bomba familiare. Convinto di trovare il figlio in pieno servizio, viene inizialmente ingannato da una messinscena in commissariato — un collega complice loda Mimmo per un incarico d&#x27;archivio inventato — ma il senso di colpa morde, e Mimmo alla fine confessa la sospensione. La reazione è feroce: delusione, rabbia, e l&#x27;imposizione che cade come una mannaia — chiedere il trasferimento in Sicilia. È lì che Agata, senza fiato all&#x27;idea di perderlo, lascia crollare ogni difesa e confessa il suo amore in un sussurro strozzato. Mimmo, commosso e pieno di paura, si trova davanti alla scelta: l&#x27;amore o l&#x27;obbedienza al padre.</p>
-<h2>Marta ed Enrico: la confessione che cambia tutto — e il messaggio che gela il sangue</h2>
+<h2 id="c3">Marta ed Enrico: la confessione che cambia tutto — e il messaggio che gela il sangue</h2>
 <p>Per Enrico è la settimana della speranza: la data del processo è arrivata, Umberto gli offre una camera a Villa Guarnieri e per un attimo il vedovo immagina una vita condivisa con la piccola Anita. Ma la sera, Marta gli consegna la verità più dolorosa in un sussurro: non potrà diventare madre. Enrico ascolta con gli occhi lucidi, sente franare gli scenari — e la ama forse ancora di più. Marta trova poi la pace con Anita in caffetteria, tra lacrime e un abbraccio. La quiete però dura poco: un messaggio criptico raggiunge Enrico — «Sappiamo dove vive Marta». Il processo non basta a proteggerlo: il pericolo si sta avvicinando.</p>
-<h2>Elvira rallenta, Rosa se ne va, Odile tra due fuochi</h2>
+<h2 id="c4">Elvira rallenta, Rosa se ne va, Odile tra due fuochi</h2>
 <p>Attorno ai due fronti caldi, il magazzino continua a vivere: la gravidanza di Elvira si fa sentire — capogiri, mani che tremano — e Salvo nasconde il panico dietro battute dolci, strappandole una promessa di riposo che lei, fatta per correre, faticherà a mantenere. Rosa lascia davvero il Paradiso con una lettera di dimissioni sul tavolo di Roberto, salvo poi tremare durante l&#x27;intervista ad Adelaide quando la contessa — appena tornata da un&#x27;operazione delicatissima — descrive la relazione con Marcello come un siparietto mondano. E Odile è contesa tra Matteo, che si ripete «solo amici» senza crederci, e il corteggiamento insistente di Guido, il produttore cinematografico dal sorriso disarmante.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Come Marcello incastra la commessa Rita</h2>
+<h2 id="c5">Come Marcello incastra la commessa Rita</h2>
 <p>Il clima all&#x27;interno del magazzino e diventato decisamente teso dopo le prime indiscrezioni sulla presenza di una figura sleale pronta a danneggiare la reputazione dell&#x27;azienda. Marcello, deciso a proteggere l&#x27;ambiente di lavoro e il prezioso bozzetto di Botteri finito sventuratamente nelle mani della concorrenza rivale, sceglie di prendere in mano la situazione attraverso un&#x27;accurata attivita di controllo. Sospettando fortemente di Rita, ragazza dai modi all&#x27;apparenza docili ma dotata di uno sguardo particolarmente furbo, l&#x27;uomo comincia a seguirne ogni movimento passo dopo passo. Armato unicamente di una vecchia macchina reflex e di molta pazienza, l&#x27;investigatore improvvisato attende il momento propizio per documentare la verita, raccogliendo testimonianze e monitorando ogni singolo spostamento della sospettata.</p>
 <p>La svolta decisiva avviene proprio nella giornata del venticinque aprile, quando il pedinamento conduce Marcello fino ai tavoli di un locale situato in una zona periferica della citta. L&#x27;obiettivo della macchina fotografica riesce a immortalare il momento esatto in cui la giovane commessa consegna una cartella ricca di documenti riservati a un uomo elegante completamente estraneo alla cerchia del Paradiso. Contemporaneamente, il quadro si arricchisce delle informazioni carpite da Odile, la quale ascolta di nascosto una conversazione segreta tra Giulia Furlan e Lucia Giorgi. La nuova capocommessa della Galleria Milano Moda palesa un sorriso equivoco mentre si parla del bozzetto perduto, dimostrando come l&#x27;intrigo coinvolga piu persone.</p>
-<h2>Perche Carmelo pretende il ritorno di Mimmo</h2>
+<h2 id="c6">Perche Carmelo pretende il ritorno di Mimmo</h2>
 <p>L&#x27;inaspettata visita a Milano da parte di Carmelo, padre di Mimmo e figura fortemente legata alle tradizioni d&#x27;altri tempi, spalanca le porte a tensioni inevitabili in famiglia. L&#x27;uomo giunge in citta convinto che il figlio stia svolgendo regolarmente le proprie mansioni all&#x27;interno della polizia, del tutto ignaro del provvedimento disciplinare che lo ha recentemente colpito. Per evitare un doloroso scontro immediato, il giovane agente tenta di coprire la verita allestendo un&#x27;ingegnosa messinscena all&#x27;interno del commissariato. Un collega compiacente decide infatti di aiutarlo inventando di sana pianta un finto incarico d&#x27;archivio di grande responsabilita, riuscendo momentaneamente a lusingare l&#x27;orgoglio del genitore e a nascondere la triste realta dei fatti.</p>
 <p>Il castello di menzogne dura tuttavia pochissimo, poiche il crescente senso di colpa spinge Mimmo a confessare spontaneamente al genitore di essere stato sospeso dal servizio. La scoperta provoca nell&#x27;anziano padre una reazione furibonda, segnata da una profonda delusione e dalla ferrea pretesa che il ragazzo richieda un immediato trasferimento in Sicilia. Questa punizione improvvisa sconvolge Agata, la quale, di fronte alla prospettiva di una separazione definitiva, crolla ed esprime con un sussurro strozzato tutto l&#x27;amore provato per lui. Il giovane poliziotto si ritrova cosi drammaticamente diviso tra l&#x27;ossequio verso la volonta paterna e l&#x27;inaspettato sentimento appena sbocciato.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Cosa nasconde Marta al tormentato Enrico</h2>
+<h2 id="c7">Cosa nasconde Marta al tormentato Enrico</h2>
 <p>Per Enrico la settimana sembrava finalmente segnare un punto di svolta positivo, grazie al felice sopraggiungere della tanto attesa data del processo. Il vedovo, incoraggiato anche dalla generosa offerta di Umberto di alloggiare in una stanza a Villa Guarnieri, aveva iniziato ad assaporare l&#x27;idea di una vita familiare tranquilla accanto alla piccola Anita. Tuttavia, la serenita gia conquistata dura soltanto poche ore, infrangendosi contro una confessione intima e dolorosa pronunciata direttamente da Marta. La donna trova infatti il coraggio di svelargli a fior di labbra di non poter diventare madre, spezzando gli scenari futuri ma suscitando nell&#x27;uomo un sentimento ancora piu profondo e sincero.</p>
 <p>Dopo aver condiviso questo macigno emotivo e aver trovato un momento di conforto tra le lacrime e gli abbracci con la piccola Anita in caffetteria, la situazione precipita di nuovo nell&#x27;ombra. Un messaggio dal contenuto criptico giunge infatti ad Enrico, riportando la frase agghiacciante «Sappiamo dove vive Marta» e dimostrando come lo svolgimento del processo non sia sufficiente a garantire la protezione desiderata. Parallelamente, il clima al magazzino resta assai inquieto: Elvira combatte con i primi malesseri della gravidanza e mani tremanti tra le battute dolci di Salvo, mentre Rosa firma la lettera di dimissioni consegnandola a Roberto.</p>
 <p>Negli stessi giorni, ulteriori incertezze scuotono le vite degli altri protagonisti attorno al grande negozio milanese. Rosa affronta un&#x27;intervista con la contessa Adelaide, rientrata dopo un delicato intervento chirurgico, tremando visibilmente mentre la nobildonna ridimensiona la storia con Marcello a semplice siparietto mondano. Al contempo, Odile si ritrova divisa tra i tentativi di Matteo, che prova a convincersi di voler mantenere solo un&#x27;amicizia, e la presenza pressante di Guido, il produttore dal sorriso disarmante pronto a conquistarla. Questi intrecci mostrano come ogni personaggio stia affrontando una scelta decisiva per il proprio futuro emotivo.</p>
   </div>
   
   <div class="riquadro"><h3>E secondo voi?</h3><p>Le foto di Marcello basteranno a incastrare Rita o la Galleria Milano Moda la scaricherà come un peso morto? E Mimmo sceglierà Agata o obbedirà a Carmelo?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=kgiwhLez9uY">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di Il Paradiso delle Signore</h2><div class="griglia"><article class="scheda">
+  <a href="/il-paradiso-delle-signore/il-paradiso-delle-signore-10-si-sposta-alle-14-e-sfida-beautiful-la-mossa-piu-ri/"><div class="foto"><img src="/img/il-paradiso-delle-signore-10-si-sposta-alle-14-e-sfida-beautiful-la-mossa-piu-ri.jpg" alt="Il Paradiso delle Signore" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/il-paradiso-delle-signore.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Il Paradiso delle Signore</span>
+    <h3><a href="/il-paradiso-delle-signore/il-paradiso-delle-signore-10-si-sposta-alle-14-e-sfida-beautiful-la-mossa-piu-ri/">Il Paradiso delle Signore 10 si sposta alle 14 e sfida Beautiful: la mossa più rischiosa del palinsesto Rai dell&#x27;autunno</a></h3>
+    <div class="quando">14 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/il-paradiso-delle-signore/il-paradiso-delle-signore-14-18-aprile-rosa-consegna-le-dimissioni-a-roberto-e-f/"><div class="foto"><img src="/img/il-paradiso-delle-signore-14-18-aprile-rosa-consegna-le-dimissioni-a-roberto-e-f.jpg" alt="Il Paradiso delle Signore" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/il-paradiso-delle-signore.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Il Paradiso delle Signore</span>
+    <h3><a href="/il-paradiso-delle-signore/il-paradiso-delle-signore-14-18-aprile-rosa-consegna-le-dimissioni-a-roberto-e-f/">Il Paradiso delle Signore 14-18 aprile, Rosa consegna le dimissioni a Roberto e firma con Tancredi — mentre un uomo sconosciuto fa domande su Enrico in magazzino</a></h3>
+    <div class="quando">14 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/il-paradiso-delle-signore/il-paradiso-delle-signore-16-20-dicembre-adelaide-invita-umberto-alla-cena-di-na/"><div class="foto"><img src="/img/il-paradiso-delle-signore-16-20-dicembre-adelaide-invita-umberto-alla-cena-di-na.jpg" alt="Il Paradiso delle Signore" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/il-paradiso-delle-signore.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Il Paradiso delle Signore</span>
+    <h3><a href="/il-paradiso-delle-signore/il-paradiso-delle-signore-16-20-dicembre-adelaide-invita-umberto-alla-cena-di-na/">Il Paradiso delle Signore 16-20 dicembre, Adelaide invita Umberto alla cena di Natale ma lascia fuori Marcello — e Clara confessa a Jerome il bacio con Alfredo</a></h3>
+    <div class="quando">14 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=Il Paradiso delle Signore, Marcello incastra Rita con una vecchia reflex: la cartella consegnata al bar sbagliato — e Carmelo impone a Mimmo il trasferimento in Sicilia — https://serietvfans.com/il-paradiso-delle-signore/il-paradiso-delle-signore-marcello-incastra-rita-con-una-vecchia-reflex-la-carte/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/il-paradiso-delle-signore/il-paradiso-delle-signore-marcello-incastra-rita-con-una-vecchia-reflex-la-carte/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/il-paradiso-delle-signore/il-paradiso-delle-signore-marcello-incastra-rita-con-una-vecchia-reflex-la-carte/&text=Il Paradiso delle Signore, Marcello incastra Rita con una vecchia reflex: la cartella consegnata al bar sbagliato — e Carmelo impone a Mimmo il trasferimento in Sicilia" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">Il paradiso delle signore 9: Marcello smaschera Rita e lei..</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=kgiwhLez9uY">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di Il Paradiso delle Signore</h3><ol class="numerata"><li><a href="/il-paradiso-delle-signore/il-paradiso-delle-signore-10-si-sposta-alle-14-e-sfida-beautiful-la-mossa-piu-ri/">Il Paradiso delle Signore 10 si sposta alle 14 e sfida Beautiful: la mossa più rischiosa del palinsesto Rai dell&#x27;autunno</a></li><li><a href="/il-paradiso-delle-signore/il-paradiso-delle-signore-14-18-aprile-rosa-consegna-le-dimissioni-a-roberto-e-f/">Il Paradiso delle Signore 14-18 aprile, Rosa consegna le dimissioni a Roberto e firma con Tancredi — mentre un uomo sconosciuto fa domande su Enrico in magazzino</a></li><li><a href="/il-paradiso-delle-signore/il-paradiso-delle-signore-16-20-dicembre-adelaide-invita-umberto-alla-cena-di-na/">Il Paradiso delle Signore 16-20 dicembre, Adelaide invita Umberto alla cena di Natale ma lascia fuori Marcello — e Clara confessa a Jerome il bacio con Alfredo</a></li><li><a href="/il-paradiso-delle-signore/il-paradiso-delle-signore-9-finale-da-terremoto-il-plagio-di-tancredi-smascherat/">Il Paradiso delle Signore 9, finale da terremoto: il plagio di Tancredi smascherato da Rita Marengo, Adelaide lo mette all&#x27;angolo — e Salvatore diventa papà</a></li><li><a href="/il-paradiso-delle-signore/il-paradiso-delle-signore-il-destino-di-mimmo-burgio-dal-ragazzo-timido-di-parta/">Il Paradiso delle Signore, il destino di Mimmo Burgio: dal ragazzo timido di Partanna all&#x27;eroe che disarma il sicario tra le camicie di seta</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>Il paradiso delle signore 9: Marcello smaschera Rita e lei..</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su Il Paradiso delle Signore</h3><ul><li><a href="/il-paradiso-delle-signore/il-paradiso-delle-signore-10-si-sposta-alle-14-e-sfida-beautiful-la-mossa-piu-ri/">Il Paradiso delle Signore 10 si sposta alle 14 e sfida Beautiful: la mossa più rischiosa del palinsesto Rai dell&#x27;autunno</a></li><li><a href="/il-paradiso-delle-signore/il-paradiso-delle-signore-14-18-aprile-rosa-consegna-le-dimissioni-a-roberto-e-f/">Il Paradiso delle Signore 14-18 aprile, Rosa consegna le dimissioni a Roberto e firma con Tancredi — mentre un uomo sconosciuto fa domande su Enrico in magazzino</a></li><li><a href="/il-paradiso-delle-signore/il-paradiso-delle-signore-16-20-dicembre-adelaide-invita-umberto-alla-cena-di-na/">Il Paradiso delle Signore 16-20 dicembre, Adelaide invita Umberto alla cena di Natale ma lascia fuori Marcello — e Clara confessa a Jerome il bacio con Alfredo</a></li><li><a href="/il-paradiso-delle-signore/il-paradiso-delle-signore-9-finale-da-terremoto-il-plagio-di-tancredi-smascherat/">Il Paradiso delle Signore 9, finale da terremoto: il plagio di Tancredi smascherato da Rita Marengo, Adelaide lo mette all&#x27;angolo — e Salvatore diventa papà</a></li><li><a href="/il-paradiso-delle-signore/il-paradiso-delle-signore-il-destino-di-mimmo-burgio-dal-ragazzo-timido-di-parta/">Il Paradiso delle Signore, il destino di Mimmo Burgio: dal ragazzo timido di Partanna all&#x27;eroe che disarma il sicario tra le camicie di seta</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

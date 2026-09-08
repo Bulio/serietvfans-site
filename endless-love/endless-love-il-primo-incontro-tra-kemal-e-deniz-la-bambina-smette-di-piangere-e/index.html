@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/endless-love/">Endless Love</a> › Endless Love, il primo incontro tra Kemal e Deniz: la bambina smette di piangere e gli stringe il dito — e Zeynep mente, «sono solo la babysitter»</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/endless-love/">Endless Love</a>
   <h1>Endless Love, il primo incontro tra Kemal e Deniz: la bambina smette di piangere e gli stringe il dito — e Zeynep mente, «sono solo la babysitter»</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Uscito dopo un anno di carcere, Kemal torna in famiglia con la sola idea della vendetta e rifiuta ogni riconciliazione con la sorella. Ma proprio durante la cena organizzata dalla madre accade l&#x27;imprevisto: attirato dal pianto di una bambina, entra nella stanza di Zeynep e trova Deniz, che si calma appena lo vede e gli stringe il dito. Alla domanda diretta — di chi è questa bambina? — Zeynep risponde in lacrime che è solo la babysitter. Intanto Nihan, ricattata da Emir, chiede aiuto a Hakan per riprendersi la figlia.</p><ol><li><a href="#c1">Il ritorno e la lista della vendetta</a></li><li><a href="#c2">La cena di famiglia e il muro contro Zeynep</a></li><li><a href="#c3">Il dito stretto e la bugia</a></li><li><a href="#c4">Nihan si affida a Hakan</a></li><li><a href="#c5">Come Kemal organizza la sua fredda vendetta</a></li><li><a href="#c6">Perche&#x27; Zeynep nasconde la verita&#x27; a Kemal</a></li><li><a href="#c7">Cosa spinge Nihan a cercare Hakan</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>Endless Love</strong> — Serie conclusa in Italia · le puntate su Mediaset Infinity</span></div>
   
-  <p class="occhiello">Uscito dopo un anno di carcere, Kemal torna in famiglia con la sola idea della vendetta e rifiuta ogni riconciliazione con la sorella. Ma proprio durante la cena organizzata dalla madre accade l&#x27;imprevisto: attirato dal pianto di una bambina, entra nella stanza di Zeynep e trova Deniz, che si calma appena lo vede e gli stringe il dito. Alla domanda diretta — di chi è questa bambina? — Zeynep risponde in lacrime che è solo la babysitter. Intanto Nihan, ricattata da Emir, chiede aiuto a Hakan per riprendersi la figlia.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: Endless Love, il primo incontro tra Kemal e Deniz: la bambina smette di piangere e gli stringe il dito — e Zeynep mente, «sono solo la babysitter»" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/vRwwG53vl00/maxresdefault.jpg" alt="Endless Love, il primo incontro tra Kemal e Deniz: la bambina smette di piangere e gli stringe il dito — e Zeynep mente, «sono solo la babysitter»" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/vRwwG53vl00/hqdefault.jpg 480w, https://i.ytimg.com/vi/vRwwG53vl00/sddefault.jpg 640w, https://i.ytimg.com/vi/vRwwG53vl00/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/vRwwG53vl00/hqdefault.jpg&quot;, &quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,25 +409,25 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>Il ricatto sulle scale: Emir promette a Nihan che potrà riabbracciare Deniz se tornerà con lui. Lei rifiuta, e la sua ira si scatena di nuovo.</strong></p>
-  <h2>Il ritorno e la lista della vendetta</h2>
+  <h2 id="c1">Il ritorno e la lista della vendetta</h2>
 <p>Kemal esce dopo dodici mesi di detenzione e la prima cosa che fa non è riabbracciare i suoi, ma cominciare a saldare i conti. Il primo obiettivo è la guardia carceraria che gli ha reso l&#x27;inferno la vita dentro, sequestrata e tenuta prigioniera in un camper. Il secondo è l&#x27;uomo responsabile della sua condanna: si presenta a casa sua e la trova vuota, poi gli annuncia con freddezza che starà lontano da moglie e figlio per un anno intero, esattamente come è successo a lui — e in un fascicolo trova anche il motivo per non provare alcuna pietà.</p>
-<h2>La cena di famiglia e il muro contro Zeynep</h2>
+<h2 id="c2">La cena di famiglia e il muro contro Zeynep</h2>
 <p>Fehime organizza una cena per festeggiare il ritorno del figlio: ci sono tutti, Leyla, Zeynep e Tarık. Ma l&#x27;atmosfera si spezza subito, perché Kemal non ha alcuna intenzione di perdonare la sorella: le rinfaccia il dolore causato un anno prima e respinge ogni tentativo di riavvicinamento. Quello che non sa è che proprio in quella casa, quella sera, sta per incontrare sua figlia.</p>
-<h2>Il dito stretto e la bugia</h2>
+<h2 id="c3">Il dito stretto e la bugia</h2>
 <p>Attirato dal pianto di una bambina, Kemal entra nella stanza di Zeynep e trova Deniz sul letto. La piccola smette di piangere appena lo vede, come se avvertisse un legame che nessuno le ha spiegato, e gli stringe il dito: è il momento più tenero della serie, e insieme il più crudele. Zeynep entra e lo trova lì; alla domanda diretta — è tua figlia? — risponde tra le lacrime che no, è solo la babysitter. Kemal riparte con la sua rabbia intatta, ignaro di aver appena tenuto in braccio sua figlia.</p>
-<h2>Nihan si affida a Hakan</h2>
+<h2 id="c4">Nihan si affida a Hakan</h2>
 <p>Sul fronte opposto, Nihan combatte da sola per riavere la bambina. Emir la ferma sulle scale con l&#x27;ennesimo ricatto — torna con me e potrai riabbracciarla — e davanti al suo rifiuto categorico riprende a tramare. È allora che lei si rivolge a Hakan e gli confida tutto: è stato Emir a rapire Deniz e a minacciarla. Lui diventa l&#x27;ultima speranza per riportarla a casa. E Zeynep, intrappolata tra gli ordini di Kozcuoğlu e il fratello che non la perdona, resta il nodo su cui si regge — e si spezzerà — l&#x27;intera trama.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Come Kemal organizza la sua fredda vendetta</h2>
+<h2 id="c5">Come Kemal organizza la sua fredda vendetta</h2>
 <p>Dopo essere rimasto rinchiuso per dodici lunghi mesi in una cella, Kemal torna infine in libertà con un unico preciso obiettivo in mente. Invece di correre a riabbracciare i suoi cari che lo hanno aspettato a lungo, l&#x27;uomo sceglie di mettere al primo posto la pianificazione della sua personale resa dei conti. Il periodo trascorso in carcere lo ha segnato profondamente, trasformando il suo carattere e spingendolo a voler saldare ogni singolo debito accumulato durante quel periodo buio. La sua priorità assoluta diviene quindi quella di far pagare chiunque gli abbia procurato ingiustamente sofferenza, muovendosi con estrema determinazione e senza cedere a sentimenti o nostalgie verso il passato.</p>
 <p>Il primo nome che figura nella lista di Kemal è quello della guardia carceraria che durante l&#x27;anno di detenzione gli ha reso la vita un vero e proprio inferno. Per punire l&#x27;uomo delle soperchierie commesse tra le mura della prigione, Kemal decide di passare all&#x27;azione sequestrandolo e tenendolo chiuso e prigioniero all&#x27;interno di un camper. Questa decisione drammatica rappresenta il segnale chiaro di come l&#x27;esperienza dietro le sbarre abbia cambiato il suo modo di agire. Non c&#x27;è più spazio per la mediazione o la pazienza, ma solo per una giustizia sommaria pensata per restituire punto su punto tutte le soperchierie e le vessazioni subite nell&#x27;ultimo anno.</p>
 <p>Subito dopo, Kemal concentra la propria attenzione sull&#x27;uomo direttamente responsabile della sua condanna. Presentatosi presso la sua abitazione, la trova completamente vuota, ma non desiste dal suo intento. Con totale freddezza gli annuncia la punizione riservata: dovrà rimanere lontano dalla moglie e dal figlio per un anno intero, replicando esattamente la stessa atroce distanza che Kemal ha dovuto patire. A confermare la bontà della sua azione è il contenuto di un fascicolo speciale in cui trova la ragione definitiva per non mostrare alcuna pietà. Questo calcolo preciso dimostra quanto la sua rabbia sia lucida e strutturata, tesa a infliggere lo stesso identico patimento patito.</p>
-<h2>Perche&#x27; Zeynep nasconde la verita&#x27; a Kemal</h2>
+<h2 id="c6">Perche&#x27; Zeynep nasconde la verita&#x27; a Kemal</h2>
 <p>L&#x27;occasione per il riavvicinamento familiare sembra presentarsi quando la madre Fehime decide di organizzare una speciale cena per festeggiare il ritorno del figlio. Alla tavola si riuniscono tutti i componenti della famiglia, compresi Leyla, Zeynep e Tarık, sperando in un momento di gioia. L&#x27;atmosfera festosa dura tuttavia ben poco, poiché Kemal si mostra del tutto indisposto a concedere il perdono alla sorella Zeynep. Cosciente del dolore che la giovane gli ha provocato esattamente un anno prima, respinge senza esitazione ogni suo tentativo di riavvicinamento, innalzando un muro emotivo insormontabile che trasforma la serata celebrativa in un momento carico di altissima tensione.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>In quella medesima abitazione si consuma tuttavia una tragedia sfiorata, poiché all&#x27;insaputa di Kemal nella casa si trova proprio sua figlia. Quando il pianto della neonata attira la sua attenzione, l&#x27;uomo cammina fino alla stanza di Zeynep e si trova davanti Deniz adagiata sul letto. Il momento è incredibilmente toccante: la piccola smette immediatamente di piangere non appena lo vede, quasi avvertendo una connessione profonda e misteriosa, e gli stringe spontaneamente il dito. Quel gesto così dolce rappresenta però anche il momento più crudele dell&#x27;intera vicenda, sospeso com&#x27;è tra la vicinanza fisica e la totale inconsapevolezza del padre.</p>
 <p>Sorpreso da Zeynep mentre tiene in braccio la piccola, Kemal le domanda direttamente di chi sia la bambina e se sia sua figlia. Zeynep, visibilmente scossa e con gli occhi pieni di lacrime, sceglie di mentire affermando di essere soltanto la sua babysitter. La giovane si trova infatti drammaticamente intrappolata tra i perentori ordini ricevuti da Kozcuoğlu e il rigido rifiuto del fratello di perdonarla. Con questa ennesima bugia pronunciata tra le lacrime, Zeynep spinge Kemal ad andarsene con la sua rabbia del tutto intatta, lasciandolo completamente all&#x27;oscuro del fatto di aver appena stretto a sé la sua vera figlia.</p>
-<h2>Cosa spinge Nihan a cercare Hakan</h2>
+<h2 id="c7">Cosa spinge Nihan a cercare Hakan</h2>
 <p>Mentre Kemal porta avanti la sua personale crociata, Nihan si trova ad affrontare da sola una battaglia disperata per riuscire a riabbracciare la piccola Deniz. La donna viene bloccata lungo le scale da Emir, il quale mette in atto l&#x27;ennesimo e spietato ricatto: le garantisce che potrà riavere la bambina soltanto a patto che accetti di tornare insieme a lui. Di fronte a questo ultimatum intriso di arroganza, Nihan trova la forza di opporre un rifiuto netto e categorico, preferendo la lotta alla resa, pur sapendo che questa sua presa di posizione scatenerà inevitabilmente conseguenze gravissime ed imprevedibili.</p>
 <p>La ferma opposizione della donna scatena immediatamente la violenta ira di Emir, il quale riprende senza indugio a macchinare e tramare alle sue spalle per mantenere il controllo totale della situazione. Vedendosi sottratta ogni possibilità di trattativa ordinaria e consapevole della pericolosità del suo avversario, Nihan capisce di non poter vincere la sfida da sola. Il rapimento della piccola Deniz e le continue minacce subite rendono il clima irrespirabile e spingono la madre a cercare una via d&#x27;uscita istituzionale, mossa dalla necessità primaria di strappare la figlia dalle grinfie del suo aguzzino prima che sia troppo tardi.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
@@ -385,19 +435,41 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=d8pXN6Gghdg" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/d8pXN6Gghdg/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>NIHAN RIESCE A FUGGIRE DA EMIR E DA&#x27; ALLA LUCE DENIZ, FIGLIA DI KEMAL! Anticipazioni Endless Lo</span></a></li><li><a href="https://www.youtube.com/watch?v=HfmSAExmdgQ" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/HfmSAExmdgQ/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>NIHAN TOCCA IL CUORE DI KEMAL CHE RISPONDE: &quot;NEI MIEI OCCHI C&#x27;E&#x27; SOLO BUIO&quot; - Endless Love</span></a></li><li><a href="https://www.youtube.com/watch?v=ZSeGfnZ5aak" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/ZSeGfnZ5aak/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>KEMAL E NIHAN PRONTI ALLA GUERRA CONTRO EMIR!INTANTO TUFAN...Anticipazioni Endless Love 21-22 M</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Zeynep poteva davvero dire la verità a Kemal, con Emir a tenerle il coltello dalla parte del manico? E quel dito stretto è il segno che il legame padre-figlia esiste comunque?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=vRwwG53vl00">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di Endless Love</h2><div class="griglia"><article class="scheda">
+  <a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/"><div class="foto"><img src="https://i.ytimg.com/vi/DSiProJJ1ls/hqdefault.jpg" alt="Endless Love" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/"><div class="foto"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/"><div class="foto"><img src="https://i.ytimg.com/vi/uu2oAzTOWQU/hqdefault.jpg" alt="Endless Love" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></h3>
+    <div class="quando">25 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=Endless Love, il primo incontro tra Kemal e Deniz: la bambina smette di piangere e gli stringe il dito — e Zeynep mente, «sono solo la babysitter» — https://soapoperaitalia.com/endless-love/endless-love-la-trama-completa-perche-nihan-sposa-emir-e-come-finisce/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://soapoperaitalia.com/endless-love/endless-love-la-trama-completa-perche-nihan-sposa-emir-e-come-finisce/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://soapoperaitalia.com/endless-love/endless-love-la-trama-completa-perche-nihan-sposa-emir-e-come-finisce/&text=Endless Love, il primo incontro tra Kemal e Deniz: la bambina smette di piangere e gli stringe il dito — e Zeynep mente, «sono solo la babysitter»" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">KEMAL INCONTRA SUA FIGLIA MA ZEYNEP GLI DICE: &quot;SONO UNA BABYSITTER&quot;!</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=vRwwG53vl00">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di Endless Love</h3><ol class="numerata"><li><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></li><li><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></li><li><a href="/endless-love/endless-love-chi-e-galip-kozcuoglu-le-due-volte-in-cui-nihan-e-stata-venduta/">Endless Love, chi è Galip Kozcuoğlu: le due volte in cui Nihan è stata venduta</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-zeynep-soydere-perche-emir-lha-scelta-e-cosa-ha-distrutto/">Endless Love, chi è davvero Zeynep Soydere: perché Emir l&#x27;ha scelta e cosa ha distrutto</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>KEMAL INCONTRA SUA FIGLIA MA ZEYNEP GLI DICE: &quot;SONO UNA BABYSITTER&quot;!</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su Endless Love</h3><ul><li><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></li><li><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></li><li><a href="/endless-love/endless-love-chi-e-galip-kozcuoglu-le-due-volte-in-cui-nihan-e-stata-venduta/">Endless Love, chi è Galip Kozcuoğlu: le due volte in cui Nihan è stata venduta</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-zeynep-soydere-perche-emir-lha-scelta-e-cosa-ha-distrutto/">Endless Love, chi è davvero Zeynep Soydere: perché Emir l&#x27;ha scelta e cosa ha distrutto</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

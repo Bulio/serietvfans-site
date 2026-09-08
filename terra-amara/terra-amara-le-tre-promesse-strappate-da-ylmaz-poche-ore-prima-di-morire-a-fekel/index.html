@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/terra-amara/">Terra Amara</a> › Terra Amara, le tre promesse strappate da Yılmaz poche ore prima di morire: a Fekeli, a Demir e a Züleyha</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/terra-amara/">Terra Amara</a>
   <h1>Terra Amara, le tre promesse strappate da Yılmaz poche ore prima di morire: a Fekeli, a Demir e a Züleyha</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">La mattina sembra quella della svolta: Yılmaz dice di sentirsi meglio, la voce è più ferma, e fuori dall&#x27;ospedale mezza Çukurova aspetta notizie. In quelle ore, però, lui chiede la stessa cosa a tre persone diverse — Fekeli, Demir e Züleyha — come se sapesse già come sarebbe andata a finire. Il suo cuore si ferma poco dopo, mentre lei gli tiene il viso tra le mani.</p><ol><li><a href="#c1">«Se dovesse succedermi qualcosa, occupati di loro»</a></li><li><a href="#c2">La promessa di Demir</a></li><li><a href="#c3">«Sei stata l&#x27;unico amore della mia vita»</a></li><li><a href="#c4">«Era mio figlio, anche senza lo stesso sangue»</a></li><li><a href="#c5">Come Fekeli reagisce davanti alle parole del ragazzo</a></li><li><a href="#c6">Perche Demir decide di superare il passato con Yilmaz</a></li><li><a href="#c7">Cosa prova Mujgan di fronte all ultimo saluto a Yilmaz</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>Terra Amara</strong> — Serie conclusa in Italia · tutte le puntate su Mediaset Infinity</span></div>
   
-  <p class="occhiello">La mattina sembra quella della svolta: Yılmaz dice di sentirsi meglio, la voce è più ferma, e fuori dall&#x27;ospedale mezza Çukurova aspetta notizie. In quelle ore, però, lui chiede la stessa cosa a tre persone diverse — Fekeli, Demir e Züleyha — come se sapesse già come sarebbe andata a finire. Il suo cuore si ferma poco dopo, mentre lei gli tiene il viso tra le mani.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: Terra Amara, le tre promesse strappate da Yılmaz poche ore prima di morire: a Fekeli, a Demir e a Züleyha" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/VFb0ETXgCOE/maxresdefault.jpg" alt="Terra Amara, le tre promesse strappate da Yılmaz poche ore prima di morire: a Fekeli, a Demir e a Züleyha" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/VFb0ETXgCOE/hqdefault.jpg 480w, https://i.ytimg.com/vi/VFb0ETXgCOE/sddefault.jpg 640w, https://i.ytimg.com/vi/VFb0ETXgCOE/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/VFb0ETXgCOE/hqdefault.jpg&quot;, &quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,25 +409,25 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>Nello stesso istante, a casa sua, Fekeli sente un dolore fortissimo al petto.</strong></p>
-  <h2>«Se dovesse succedermi qualcosa, occupati di loro»</h2>
+  <h2 id="c1">«Se dovesse succedermi qualcosa, occupati di loro»</h2>
 <p>La prima promessa è per Fekeli, arrivato in ospedale sollevato dalla notizia del miglioramento. Yılmaz gli chiede di prendersi cura di Müjgan e di suo figlio, e la risposta è che non ce ne sarà bisogno, perché non gli succederà nulla. Poi però l&#x27;anziano si lascia andare a parole che pesano come pietre: Kerem Ali è una parte del suo cuore, Müjgan è come una figlia, e lui — che ha già seppellito i suoi cari — dovrebbe morire prima di quel ragazzo, non dopo.</p>
-<h2>La promessa di Demir</h2>
+<h2 id="c2">La promessa di Demir</h2>
 <p>La seconda è la più inattesa. Tornato a casa, Demir racconta a Sevda che Yılmaz ha voluto parlargli: ricordava tutto, e lo ha ringraziato sinceramente per avergli salvato la vita, chiedendogli poi di occuparsi di Züleyha e dei bambini se le cose fossero andate male. Demir ha promesso. E alla domanda di Sevda, se sia davvero addolorato per lui, risponde che il passato non conta più: ha fatto tutto il possibile perché i suoi figli non restassero orfani, e ha pregato con il cuore perché si salvasse.</p>
-<h2>«Sei stata l&#x27;unico amore della mia vita»</h2>
+<h2 id="c3">«Sei stata l&#x27;unico amore della mia vita»</h2>
 <p>La terza promessa è quella accanto al letto. Züleyha gli racconta che il loro sogno era vivere felici insieme con i figli, e che finalmente lo stanno realizzando, anche se in ritardo. Lui le accarezza il viso, le chiede di prendersi cura del bambino, ammette di non stare bene e le confessa di aver già parlato con Demir. Poi, con il respiro sempre più corto, le dice che è stata l&#x27;unico amore della sua vita. Il cuore si ferma proprio in quel momento; il medico tenta la rianimazione mentre lei urla il suo nome, ma non c&#x27;è niente da fare. Nello stesso istante, a casa, Fekeli si porta una mano al petto per un dolore improvviso — e poco dopo il telefono squilla.</p>
-<h2>«Era mio figlio, anche senza lo stesso sangue»</h2>
+<h2 id="c4">«Era mio figlio, anche senza lo stesso sangue»</h2>
 <p>Il corpo viene portato davanti alla casa di Fekeli, che ha voluto così: che Yılmaz rivedesse un&#x27;ultima volta la sua casa e le persone che amava. Müjgan gli chiede perdono per non avergli detto quanto lo amasse e per non aver sopportato che amasse un&#x27;altra, e trova conforto solo nel figlio che le ha lasciato. La bara viene portata a spalla fino alla moschea e poi al cimitero; sulla tomba Züleyha sussurra di aspettarla. Fekeli, distrutto, stringe al petto il piccolo Adnan chiamandolo con il nome del padre. E la sera, davanti a una sala piena di gente e al governatore della città, pronuncia la frase che chiude tutto: Yılmaz era suo figlio, anche se non avevano lo stesso sangue.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Come Fekeli reagisce davanti alle parole del ragazzo</h2>
+<h2 id="c5">Come Fekeli reagisce davanti alle parole del ragazzo</h2>
 <p>Quando Fekeli arriva in ospedale, l&#x27;atmosfera sembra improvvisamente piu leggera perche le notizie sul miglioramento di Yılmaz lasciano sperare in una guarigione insperata. Tuttavia, il dialogo tra i due prende subito una piega emotiva molto profonda. Yılmaz gli chiede espressamente di occuparsi di Müjgan e del piccolo Kerem Ali se dovesse accadere l&#x27;irreparabile. Fekeli cerca subito di scacciare quei pensieri infausti, ricordando al giovane che non ce ne sara alcun bisogno perche sopravvivera. Eppure l&#x27;anziano uomo non puo nascondere il peso di un dolore antico: avendo gia dovuto seppellire i propri cari nel corso della sua vita, afferma con forza che spetterebbe a lui morire prima del ragazzo, definendo Kerem Ali come una vera parte del proprio cuore e Müjgan alla stregua di una figlia.</p>
 <p>Il legame viscerale tra i due si manifesta con drammatica precisione nel momento esatto in cui il cuore di Yılmaz cessa di battere. Fekeli si trova a casa sua quando viene sorpreso da un dolore lancinante e improvviso al petto, quasi un presagio di quanto sta accadendo in ospedale poco prima che il telefono squilli per dare la notizia tragica. Distrutto dal dolore, l&#x27;uomo pretende che il corpo del ragazzo venga portato un&#x27;ultima volta davanti alla sua abitazione, desiderando con tutto se stesso che Yılmaz possa rivedere i luoghi familiari e riabbracciare simbolicamente le persone che lo hanno amato. La serata si conclude poi con una testimonianza pubblica davanti a una sala gremita e al governatore della citta.</p>
 <p>In quel contesto cosi solenne e doloroso, Fekeli trova la forza di pronunciare parole che definiscono in modo definitivo la natura del loro rapporto speciale. Davanti a tutti i presenti dichiara apertamente che Yılmaz era a tutti gli effetti suo figlio, un legame indissolubile che andava oltre la mancanza dello stesso sangue. Questo sentimento si riflette pienamente anche durante i momenti piu sconvolgenti del funerale al cimitero, quando l&#x27;anziano stringe a se il piccolo Adnan e lo chiama con il nome del padre scomparso, cercando di trattenere un&#x27;eredita d&#x27;amore che non si estinguera con la morte. Per Fekeli la perdita rappresenta un colpo devastante, ma la promessa fatta al ragazzo rimane un impegno sacro da sostenere per il futuro.</p>
-<h2>Perche Demir decide di superare il passato con Yilmaz</h2>
+<h2 id="c6">Perche Demir decide di superare il passato con Yilmaz</h2>
 <p>Rientrato a casa dopo gli ultimi drammatici eventi, Demir sceglie di aprirsi e raccontare a Sevda quanto accaduto in ospedale prima del peggioramento fatale. Yılmaz ha voluto un confronto diretto con lui, dimostrando di ricordare nitidamente ogni singolo dettaglio di cio che era successo in precedenza. Con grande umilta e sincerita, il giovane ha ringraziato Demir per avergli salvato la vita sul luogo dell&#x27;incidente, superando ogni antica rivalita. In quel momento di estrema fragilita, Yılmaz ha poi affidato a Demir una responsabilita enorme, chiedendogli di prendersi cura di Züleyha e dei bambini nell&#x27;eventualita in cui le sue condizioni di salute fossero precipitate in modo irreversibile.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>Di fronte a quella richiesta accorata, Demir non ha esitated a dare la propria parola, accettando di farsi carico della sicurezza e del futuro della famiglia rivale. Quando Sevda gli domanda chiaramente se il suo dolore per la sorte di Yılmaz sia sincero, Demir risponde senza esitazioni spiegando che il passato non ha piu alcuna importanza di fronte alla tragedia. L&#x27;uomo chiarisce di aver fatto tutto cio che era nelle sue possibilita per evitare che i bambini rimanessero orfani in tenera eta, sottolineando come la priorita assoluta fosse salvaguardare la presenza del padre nella vita dei piccoli.</p>
 <p>Il racconto di Demir rivela un cambiamento profondo, dettato dalla consapevolezza della gravita della situazione e dal rispetto per la vita umana. L&#x27;uomo ammette di aver pregato con tutto il cuore affinche Yılmaz potesse salvarsi e superare quella prova terribile, dimostrando quanto le ostilita del passato siano state completamente cancellate dal desiderio di protezione verso i piu deboli. La promessa strappata sul letto di ospedale diventa cosi un patto solenne che lega Demir al destino di Züleyha e dei bambini, segnando un punto di svolta decisivo nell&#x27;evoluzione dei rapporti umani all&#x27;interno della vicenda.</p>
-<h2>Cosa prova Mujgan di fronte all ultimo saluto a Yilmaz</h2>
+<h2 id="c7">Cosa prova Mujgan di fronte all ultimo saluto a Yilmaz</h2>
 <p>L&#x27;arrivo del corpo di Yılmaz davanti alla casa di Fekeli rappresenta un momento di straziante confronto per Müjgan, che si trova costretta a fare i conti con i propri sentimenti inespressi. Davanti alla salma, la donna trova il coraggio di chiedergli perdono per tutte le incomprensioni passate, ammettendo di non essere stata in grado di dimostrargli appieno quanto lo amasse davvero. Il suo dolore e accresciuto dal rimpianto di non aver saputo sopportare l&#x27;idea che lui nutrisse un sentimento cosi profondo verso un&#x27;altra persona, una gelosia che ha segnato irrimediabilmente il loro percorso insieme prima della tragica conclusione.</p>
 <p>In mezzo a tanto sconforto e alla consapevolezza degli errori commessi durante il loro matrimonio, Müjgan riesce a trovare un unico autentico motivo di sollievo nella figura del piccolo Kerem Ali. Il bambino rappresenta l&#x27;eredita piu preziosa lasciatale da Yılmaz, l&#x27;unico vero conforto a cui potersi aggrappare per trovare la forza di andare avanti dopo una perdita cosi devastante e improvvisa. La presenza del figlio diventa per lei il simbolo concreto di un affetto che, nonostante le incomprensioni e i drammi del passato, ha dato vita a un legame indistruttibile destinato a rimanere vivo nel tempo.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
@@ -385,19 +435,41 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=20xj0KMjcEI" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/20xj0KMjcEI/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TERRA AMARA Anticipazioni: Demir resta scioccato dall&#x27;ospite a cena! Perchè? Chi sarà?</span></a></li><li><a href="https://www.youtube.com/watch?v=2iGCIt57fdw" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/2iGCIt57fdw/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TERRA AMARA - SPOILER  -  Demir spara a Fekeli!</span></a></li><li><a href="https://www.youtube.com/watch?v=HGY8mQN4C-8" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/HGY8mQN4C-8/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TERRA AMARA Anticipazioni: Demir spara a Fekeli! Perchè?</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>La promessa fatta a Demir è la scena più sorprendente di tutta la serie?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=VFb0ETXgCOE">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di Terra Amara</h2><div class="griglia"><article class="scheda">
+  <a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/"><div class="foto"><img src="/img/terra-amara-la-trama-completa-e-come-finisce.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></h3>
+    <div class="quando">30 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/"><div class="foto"><img src="https://i.ytimg.com/vi/_ypSJU-x7LY/hqdefault.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/"><div class="foto"><img src="https://i.ytimg.com/vi/B_MLx-0yh6M/hqdefault.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=Terra Amara, le tre promesse strappate da Yılmaz poche ore prima di morire: a Fekeli, a Demir e a Züleyha — https://serietvfans.com/terra-amara/terra-amara-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/terra-amara/terra-amara-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/terra-amara/terra-amara-la-trama-completa-e-come-finisce/&text=Terra Amara, le tre promesse strappate da Yılmaz poche ore prima di morire: a Fekeli, a Demir e a Züleyha" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">TERRA AMARA Anticipazioni: L&#x27;illusione dura poco, Yılmaz muore!</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=VFb0ETXgCOE">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di Terra Amara</h3><ol class="numerata"><li><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></li><li><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></li><li><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></li><li><a href="/terra-amara/terra-amara-come-finisce-davvero-zuleyha-vince-tutto-e-resta-sola/">Terra Amara: come finisce davvero, Züleyha vince tutto e resta sola</a></li><li><a href="/terra-amara/terra-amara-come-muore-demir-yaman-chi-ha-dato-lordine-e-perche-doveva-essere-un-rapimento/">Terra Amara, come muore Demir Yaman: chi ha dato l&#x27;ordine e perché doveva essere un rapimento</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>TERRA AMARA Anticipazioni: L&#x27;illusione dura poco, Yılmaz muore!</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su Terra Amara</h3><ul><li><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></li><li><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></li><li><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></li><li><a href="/terra-amara/terra-amara-come-finisce-davvero-zuleyha-vince-tutto-e-resta-sola/">Terra Amara: come finisce davvero, Züleyha vince tutto e resta sola</a></li><li><a href="/terra-amara/terra-amara-come-muore-demir-yaman-chi-ha-dato-lordine-e-perche-doveva-essere-un-rapimento/">Terra Amara, come muore Demir Yaman: chi ha dato l&#x27;ordine e perché doveva essere un rapimento</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

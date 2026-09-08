@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/my-home-my-destiny/">My Home My Destiny</a> › My Home My Destiny 22-23 novembre, Barış entra di notte nella stanza di Savaş e trova i fascicoli sul caso di Mehdi: i suoi sospetti su Zeynep hanno un fondamento</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/my-home-my-destiny/">My Home My Destiny</a>
   <h1>My Home My Destiny 22-23 novembre, Barış entra di notte nella stanza di Savaş e trova i fascicoli sul caso di Mehdi: i suoi sospetti su Zeynep hanno un fondamento</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Doveva essere la settimana della partenza per Sofia. Invece Barış comincia a mettere insieme i pezzi — una telefonata con una voce di troppo in sottofondo, un appuntamento fissato in un orario che non torna, e una pila di documenti nella stanza del fratello.</p><ol><li><a href="#c1">Il rientro con i fiori</a></li><li><a href="#c2">Due serate parallele</a></li><li><a href="#c3">Chi è Savaş, e perché quei fascicoli erano proprio da lui</a></li><li><a href="#c4">La porta in faccia di Buse</a></li><li><a href="#c5">I fascicoli nella stanza di Savaş</a></li><li><a href="#c6">Perché conta: il problema non è Mehdi, è restare l&#x27;ultimo a sapere</a></li><li><a href="#c7">Come Sultan e Ali Rıza gestiscono la tensione</a></li><li><a href="#c8">Cosa nasconde Nuh nella ricerca sul caso Mehdi</a></li><li><a href="#c9">Perché Zeynep e Barış rischiano di saltare Sofia</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>My Home My Destiny</strong> — Serie conclusa in Italia · le puntate su Mediaset Infinity</span></div>
   
-  <p class="occhiello">Doveva essere la settimana della partenza per Sofia. Invece Barış comincia a mettere insieme i pezzi — una telefonata con una voce di troppo in sottofondo, un appuntamento fissato in un orario che non torna, e una pila di documenti nella stanza del fratello.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: My Home My Destiny 22-23 novembre, Barış entra di notte nella stanza di Savaş e trova i fascicoli sul caso di Mehdi: i suoi sospetti su Zeynep hanno un fondamento" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/4So5SAYYUm8/maxresdefault.jpg" alt="My Home My Destiny 22-23 novembre, Barış entra di notte nella stanza di Savaş e trova i fascicoli sul caso di Mehdi: i suoi sospetti su Zeynep hanno un fondamento" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/4So5SAYYUm8/hqdefault.jpg 480w, https://i.ytimg.com/vi/4So5SAYYUm8/sddefault.jpg 640w, https://i.ytimg.com/vi/4So5SAYYUm8/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/4So5SAYYUm8/hqdefault.jpg&quot;, &quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,46 +409,68 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>Nel frattempo Sultan ed Emine tornano a lavorare, accolte con petali di rosa.</strong></p>
-  <h2>Il rientro con i fiori</h2>
+  <h2 id="c1">Il rientro con i fiori</h2>
 <p>Dopo le scuse della famiglia, Sultan ed Emine tornano a casa Barış e vengono accolte da Ali Rıza e Savaş con due enormi mazzi di fiori e petali di rosa sparsi in terra: nessuno dei due ha ancora smaltito il senso di colpa per l&#x27;accusa di furto. Sultan mette anche in chiaro le cose a modo suo, appendendo la propria licenza in cucina — un messaggio indirizzato soprattutto a Özlem.</p>
-<h2>Due serate parallele</h2>
+<h2 id="c2">Due serate parallele</h2>
 <p>Barış e Zeynep hanno in programma una cena fuori con Nuh, ma lui chiede di essere lasciato libero per continuare a cercare Buse, l&#x27;amante di Ercan. Zeynep se la cava con una scusa costruita bene e i due cenano da soli: Barış le regala una borsa porta documenti e due biglietti per Sofia. Nella stessa serata, però, Ali Rıza si trova per caso nello stesso locale dove Nuh sta cercando informazioni, e lo invita al suo tavolo; Nuh accetta per non destare sospetti e la serata finisce con Ali Rıza ubriaco fradicio e lui costretto a riportarlo a casa e a restare lì. Per farsi dare l&#x27;indirizzo di Buse, non avendo contanti, Nuh finisce per cedere a una dipendente del locale il proprio orologio.</p>
-<h2>Chi è Savaş, e perché quei fascicoli erano proprio da lui</h2>
+<h2 id="c3">Chi è Savaş, e perché quei fascicoli erano proprio da lui</h2>
 <p>Savaş è il fratello di Barış, e nella struttura della famiglia è la persona a cui vengono affidate le cose che non si dicono ad alta voce. Non è la prima volta che il nome di Mehdi passa dalle sue mani: sul passato dell&#x27;uomo che Zeynep aveva sposato erano già state raccolte informazioni, e quello che era emerso non era rassicurante. È per questo che la scena notturna è più ambigua di come Barış la legge sul momento — quei documenti possono essere la prova che il fratello sta coprendo Zeynep, oppure il residuo di una ricerca che era partita da lui stesso. In una casa dove tutti proteggono qualcun altro, la stessa pila di carte può raccontare due storie opposte.</p>
-<h2>La porta in faccia di Buse</h2>
+<h2 id="c4">La porta in faccia di Buse</h2>
 <p>Il mattino dopo i due vengono trovati addormentati sul divano e si prendono una ramanzina da Sultan, mentre Ali Rıza comincia a chiedersi se dietro quel rimprovero non ci sia dell&#x27;altro. Zeynep, ottenuto l&#x27;indirizzo, va a cercare Buse — e si scontra con un muro: la donna prende i soldi di Ercan e della situazione di Mehdi in carcere non le importa niente; a nulla serve insistere perché parli con lui. Zeynep torna a casa senza niente in mano, e l&#x27;unica cosa che resta da fare è far arrivare a Mehdi i soldi della vendita del furgone.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>I fascicoli nella stanza di Savaş</h2>
+<h2 id="c5">I fascicoli nella stanza di Savaş</h2>
 <p>Barış, però, non si è mai davvero tranquillizzato. Di notte entra nella stanza del fratello mentre dorme e trova diversi fascicoli sul caso di Mehdi: i suoi sospetti hanno una base, e adesso la domanda è doppia — Zeynep è davvero diventata l&#x27;avvocata di Mehdi, e Savaş la sta coprendo? Quando la chiama per chiederle spiegazioni, sente in sottofondo la voce di Nuh che fissa un appuntamento per le nove del mattino seguente. Un orario che non ha senso, visto che per Sofia si parte nel pomeriggio.</p>
-<h2>Perché conta: il problema non è Mehdi, è restare l&#x27;ultimo a sapere</h2>
+<h2 id="c6">Perché conta: il problema non è Mehdi, è restare l&#x27;ultimo a sapere</h2>
 <p>Barış non ha paura di un ex marito in carcere: ha paura di essere l&#x27;unico, nella sua casa, a cui non viene detto niente. La telefonata con la voce di Nuh in sottofondo e l&#x27;appuntamento alle nove del mattino sono piccoli, ma dicono una cosa sola — esiste una giornata di Zeynep di cui lui non sa nulla, ed è la giornata prima della partenza. È il punto in cui la relazione smette di essere una scelta reciproca e comincia a somigliare a una gestione. E la direzione in cui tutto questo porta è già leggibile: il colpo che romperà davvero l&#x27;equilibrio non sarà una scoperta romantica, sarà il momento in cui Barış apprenderà che Zeynep ha accettato di difendere Mehdi come avvocato. Sofia, a quel punto, sarà una città su due biglietti mai usati.</p>
-<h2>Come Sultan e Ali Rıza gestiscono la tensione</h2>
+<h2 id="c7">Come Sultan e Ali Rıza gestiscono la tensione</h2>
 <p>Il ritorno al lavoro di Sultan ed Emine nella casa di Barış segna un momento estremamente delicato all&#x27;interno delle dinamiche famigliari, soprattutto a causa dei recenti avvenimenti legati alle ingiuste accuse di furto. Per cercare di riparare al danno commesso e alleviare un forte senso di colpa mai sopito, Ali Rıza e Savaş decidono di preparare un&#x27;accoglienza calorosa facendosi trovare con due imponenti mazzi di fiori e spargendo petali di rosa sul pavimento. Tuttavia questo gesto simbolico non basta a cancellare l&#x27;accaduto e Sultan sceglie immediatamente di mettere in chiaro la propria posizione professionale mostrando grande determinazione di fronte a tutti.</p>
 <p>La decisione di appendere la propria licenza direttamente tra le mura della cucina rappresenta una scelta comunicativa ben precisa, pensata in modo particolare come messaggio diretto nei confronti di Özlem. L&#x27;atmosfera all&#x27;interno della residenza resta comunque carica di sospetti e incomprensioni, come dimostra la reazione del mattino seguente quando Sultan scopre Ali Rıza e Nuh addormentati insieme sul divano. Il severo rimprovero avanzato dalla donna spinge infatti Ali Rıza a riflettere a fondo e a domandarsi se dietro quel comportamento così rigido e autoritario non si nasconda in realtà qualcos&#x27;altro che le famiglie non hanno ancora espresso chiaramente.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Cosa nasconde Nuh nella ricerca sul caso Mehdi</h2>
+<h2 id="c8">Cosa nasconde Nuh nella ricerca sul caso Mehdi</h2>
 <p>La figura di Nuh si rivela centrale per comprendere le vicende che ruotano attorno alla complessa situazione giudiziaria di Mehdi, attualmente rinchiuso in carcere. Pur di aiutare il suo amico e recuperare informazioni fondamentali per la sua difesa, l&#x27;uomo si mette sulle tracce di Buse, identificata come l&#x27;amante di Ercan. Questo percorso investigativo personale lo porta ad rinunciare persino alla cena prevista con Barış e Zeynep e a compiere un gesto estremo all&#x27;interno del locale in cui sta cercando indizi. Trovandosi del tutto sprovvisto di contanti necessari per pagare la dritta, Nuh decide infatti di cedere il proprio orologio a una dipendente pur di ottenere l&#x27;indirizzo cercato.</p>
 <p>Durante quella medesima serata, la presenza casuale di Ali Rıza nello stesso locale costringe Nuh a cambiare improvvisamente i propri piani per evitare di sollevare inutili sospetti. L&#x27;invito al tavolo da parte del vecchio zio si trasforma presto in una situazione difficile da gestire, con Ali Rıza che finisce per ubriacarsi completamente. Nuh si vede quindi costretto a riaccompagnarlo a casa e a trascorrere l&#x27;intera notte addormentato sul divano al suo fianco. Il giorno dopo, con l&#x27;indirizzo finalmente in mano, la missione di far parlare Buse fallisce miseramente, spingendo la rete di aiuti verso l&#x27;unica alternativa rimasta, ovvero raccogliere fondi vendendo il furgone per inviarli a Mehdi.</p>
-<h2>Perché Zeynep e Barış rischiano di saltare Sofia</h2>
+<h2 id="c9">Perché Zeynep e Barış rischiano di saltare Sofia</h2>
 <p>Il rapporto personale tra Barış e Zeynep raggiunge un punto di forte rottura proprio mentre si avvicina la data stabilita per il viaggio a Sofia. Durante la romantica cena a due, organizzata grazie a una scusa formulata con attenzione da Zeynep per coprire l&#x27;assenza di Nuh, Barış dimostra la propria dedizione regalando alla donna una borsa porta documenti assieme ai biglietti aerei per la capitale bulgara. Questa apparente serenità di coppia viene però minata dal costante lavoro sotterraneo legato a Mehdi e dal coinvolgimento di Savaş, nella cui camera da letto si trovano custoditi diversi fascicoli riservati che riguardano direttamente il passato e la vicenda legale dell&#x27;ex marito.</p>
 <p>La scoperta notturna di questi documenti riservati spinge Barış a cercare una conferma immediata ai propri dubbi attraverso una telefonata diretta a Zeynep. È durante questa conversazione che l&#x27;uomo coglie in sottofondo la voce inconfondibile di Nuh, intento a fissare un appuntamento cruciale per le nove del mattino successivo. Un orario del genere appare del tutto incompatibile con i programmi ufficiali della coppia, dato che la partenza per Sofia è fissata soltanto per il pomeriggio. Questa inattesa discrepanza conferma a Barış l&#x27;esistenza di un piano nascosto orchestrato a sua insaputa, portando la coppia verso una dolorosa e definitiva crisi di fiducia.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=gxL0o63Nhqw" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/gxL0o63Nhqw/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>MY HOME MY DESTINY Anticipazioni 17 Novembre: Baris ha capito tutto, Zeynep sta per essere scop</span></a></li><li><a href="https://www.youtube.com/watch?v=1jsgIYR3vuU" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/1jsgIYR3vuU/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>MY HOME MY DESTINY Anticipazioni 3 Novembre: Mehdi si sposa con Benal, Zeynep può vivere in pac</span></a></li><li><a href="https://www.youtube.com/watch?v=ELR_b-TZI6s" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/ELR_b-TZI6s/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>MY HOME MY DESTINY Anticipazioni 15-16 Novembre: Zeynep tesa per il peso delle bugie a Baris e </span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Barış affronterà Zeynep prima della partenza?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=4So5SAYYUm8">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di My Home My Destiny</h2><div class="griglia"><article class="scheda">
+  <a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/"><div class="foto"><img src="/img/my-home-my-destiny-la-trama-completa-e-come-finisce.jpg" alt="My Home My Destiny" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">My Home My Destiny</span>
+    <h3><a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/">My Home My Destiny: la trama completa e come finisce</a></h3>
+    <div class="quando">30 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/"><div class="foto"><img src="https://i.ytimg.com/vi/-djleIeCLQs/hqdefault.jpg" alt="My Home My Destiny" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">My Home My Destiny</span>
+    <h3><a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/">My Home My Destiny, Zeynep ferma l&#x27;aborto di Benal in sala operatoria senza sapere che il padre è Mehdi</a></h3>
+    <div class="quando">17 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/"><div class="foto"><img src="https://i.ytimg.com/vi/gxL0o63Nhqw/hqdefault.jpg" alt="My Home My Destiny" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">My Home My Destiny</span>
+    <h3><a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/">My Home My Destiny, anticipazioni del 17 novembre: Özlem indaga su Zeynep e scopre tutto, Nuh diventa autista di Barış e qualcuno manomette i macchinari di Bekir</a></h3>
+    <div class="quando">16 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=My Home My Destiny 22-23 novembre, Barış entra di notte nella stanza di Savaş e trova i fascicoli sul caso di Mehdi: i suoi sospetti su Zeynep hanno un fondamento — https://serietvfans.com/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/&text=My Home My Destiny 22-23 novembre, Barış entra di notte nella stanza di Savaş e trova i fascicoli sul caso di Mehdi: i suoi sospetti su Zeynep hanno un fondamento" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">My Home My Destiny anticipazioni 22-23 novembre: Barış scopre tutto</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=4So5SAYYUm8">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di My Home My Destiny</h3><ol class="numerata"><li><a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/">My Home My Destiny: la trama completa e come finisce</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/">My Home My Destiny, Zeynep ferma l&#x27;aborto di Benal in sala operatoria senza sapere che il padre è Mehdi</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/">My Home My Destiny, anticipazioni del 17 novembre: Özlem indaga su Zeynep e scopre tutto, Nuh diventa autista di Barış e qualcuno manomette i macchinari di Bekir</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-guida-alla-serie-chi-sono-demet-ozdemir-e-ibrahim-celikkol-qu/">My Home My Destiny: guida alla serie, il cast, i personaggi e quante puntate sono</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-1-dicembre-gli-spari-davanti-alla-vecchia-casa-zeynep-tra-le/">My Home My Destiny 1° dicembre, gli spari davanti alla vecchia casa: Zeynep tra le due madri quando l&#x27;uomo in moto estrae la pistola</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>My Home My Destiny anticipazioni 22-23 novembre: Barış scopre tutto</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su My Home My Destiny</h3><ul><li><a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/">My Home My Destiny: la trama completa e come finisce</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/">My Home My Destiny, Zeynep ferma l&#x27;aborto di Benal in sala operatoria senza sapere che il padre è Mehdi</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/">My Home My Destiny, anticipazioni del 17 novembre: Özlem indaga su Zeynep e scopre tutto, Nuh diventa autista di Barış e qualcuno manomette i macchinari di Bekir</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-guida-alla-serie-chi-sono-demet-ozdemir-e-ibrahim-celikkol-qu/">My Home My Destiny: guida alla serie, il cast, i personaggi e quante puntate sono</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-1-dicembre-gli-spari-davanti-alla-vecchia-casa-zeynep-tra-le/">My Home My Destiny 1° dicembre, gli spari davanti alla vecchia casa: Zeynep tra le due madri quando l&#x27;uomo in moto estrae la pistola</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

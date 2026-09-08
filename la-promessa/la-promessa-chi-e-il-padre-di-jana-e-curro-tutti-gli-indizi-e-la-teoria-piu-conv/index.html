@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/la-promessa/">La Promessa</a> › La Promessa, chi è il padre di Jana e Curro? Tutti gli indizi e la teoria più convincente</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/la-promessa/">La Promessa</a>
   <h1>La Promessa, chi è il padre di Jana e Curro? Tutti gli indizi e la teoria più convincente</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Chi è il padre di Jana e Curro ne La Promessa? Ora che Lorenzo è stato escluso, ripercorriamo tutta la storia di Dolores, i candidati possibili e la teoria che spiega anche perché Jana non parla mai di suo padre.</p><ol><li><a href="#c1">La cronologia: da Carmen a Cruz, dove nasce il mistero</a></li><li><a href="#c2">Dolores, Eugenia e la casa fuori dal palazzo</a></li><li><a href="#c3">Perché il Barone non è il padre</a></li><li><a href="#c4">La teoria: il marito di Dolores, il maggiordomo prima di Rómulo</a></li><li><a href="#c5">Perché Jana non parla mai di suo padre</a></li><li><a href="#c6">Come Cruz e Lorenzo organizzarono il rapimento di Marcos</a></li><li><a href="#c7">Perché Jana conserva ricordi felici con Simona e Candela</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>La Promessa</strong> — Rete 4 · in streaming su Mediaset Infinity</span></div>
   
-  <p class="occhiello">Chi è il padre di Jana e Curro ne La Promessa? Ora che Lorenzo è stato escluso, ripercorriamo tutta la storia di Dolores, i candidati possibili e la teoria che spiega anche perché Jana non parla mai di suo padre.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: La Promessa, chi è il padre di Jana e Curro? Tutti gli indizi e la teoria più convincente" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/BJ69Etldewc/maxresdefault.jpg" alt="La Promessa, chi è il padre di Jana e Curro? Tutti gli indizi e la teoria più convincente" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/BJ69Etldewc/hqdefault.jpg 480w, https://i.ytimg.com/vi/BJ69Etldewc/sddefault.jpg 640w, https://i.ytimg.com/vi/BJ69Etldewc/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/BJ69Etldewc/hqdefault.jpg&quot;, &quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,45 +409,67 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>Una domanda accompagna La Promessa fin dal primo episodio: chi è il padre di Jana? Con Lorenzo ormai fuori dalla lista dei candidati, è il momento di rimettere in fila tutto quello che sappiamo su Dolores e sui suoi figli.</strong></p>
-  <h2>La cronologia: da Carmen a Cruz, dove nasce il mistero</h2>
+  <h2 id="c1">La cronologia: da Carmen a Cruz, dove nasce il mistero</h2>
 <p>Per capire chi possa essere il padre di Jana bisogna tornare indietro di trent&#x27;anni rispetto agli eventi della serie. Alonso e Carmen si sposano e hanno due gemelli, Tomás e Catalina. Poi Carmen muore improvvisamente, per una malattia mai davvero chiarita, e la sua presunta grande amica Cruz — appena tornata da Cuba — non impiega molto a sposare Alonso e a diventare la nuova marchesa di Luján. Poco dopo nasce Manuel, il loro primogenito.</p>
 <p>Questo passaggio è decisivo per la nostra storia: con la morte di Carmen e l&#x27;arrivo di Cruz, Dolores — la madre di Jana — perde con ogni probabilità il suo posto alla tenuta, perché la nuova marchesa porta con sé la propria servitù di fiducia, Petra e Rómulo. Eppure Jana bambina alla Promessa c&#x27;è stata, e ci sono i ricordi di mezza servitù a dimostrarlo: Catalina rammenta di averla pettinata come una bambola, Simona e Candela ricordano la piccola che veniva in cucina a chiedere il miele, e perfino Eugenia, in più di un&#x27;occasione, ha scambiato Jana per Dolores.</p>
-<h2>Dolores, Eugenia e la casa fuori dal palazzo</h2>
+<h2 id="c2">Dolores, Eugenia e la casa fuori dal palazzo</h2>
 <p>La spiegazione più coerente è che Dolores non abbia mai perso davvero il legame con il palazzo: sarebbe diventata la cameriera personale — e probabilmente la confidente — di donna Eugenia, la sorella di Cruz, entrata alla Promessa insieme al marito Lorenzo. Il fatto che Eugenia vivesse alla tenuta solo a periodi spiegherebbe anche un dettaglio importante: Dolores abitava con i figli in una casa separata, da domestica esterna, ed entrava a palazzo solo quando la sua signora c&#x27;era.</p>
 <p>È proprio in quella casa che la tragedia si consuma. Nel 1898, all&#x27;alba, gli incappucciati del primo episodio fanno irruzione per portare via il piccolo Marcos. Dolores viene uccisa, il bambino finisce nelle mani di Eugenia e viene cresciuto come Curro. Della cospirazione è ormai confermata la partecipazione di Cruz e Lorenzo, ma l&#x27;identità degli incappucciati non è mai stata rivelata. A palazzo, intanto, viene fatta circolare la versione ufficiale: Dolores e i suoi figli sarebbero caduti da un dirupo mentre giocavano vicino al fiume, e i corpi non sono mai stati ritrovati.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Perché il Barone non è il padre</h2>
+<h2 id="c3">Perché il Barone non è il padre</h2>
 <p>La teoria più diffusa tra i fan vuole che il Barone abbia abusato di Dolores e che Jana e Curro siano figli suoi. Ma ci sono almeno due argomenti forti contro questa lettura. Il primo: Dolores viene sempre descritta come una donna fiera, l&#x27;immagine stessa di Jana — difficile credere che avrebbe subito in silenzio senza correre da Alonso, o che sarebbe rimasta alla Promessa dopo la morte di Carmen, quando ormai nulla la legava alla casa. Il secondo: nella serie nessuno ha mai accennato a un&#x27;altra domestica con figli nati fuori dal matrimonio, come accaduto per Pía. Candela conosceva bene Dolores e le sue circostanze: se ci fosse stato uno scandalo simile, ne avrebbe parlato.</p>
 <p>Quanto al rapporto speciale tra il Barone e Curro, si spiega senza bisogno del sangue: per un uomo ambizioso e di fortuna recente come lui, i cognomi contano più della parentela. In Curro il Barone non vedeva un nipote da amare ma un erede da plasmare fin dall&#x27;infanzia — cosa impossibile con Manuel, che ha un padre presente. Non a caso è Curro stesso a dire che suo nonno non lo ha mai davvero considerato.</p>
-<h2>La teoria: il marito di Dolores, il maggiordomo prima di Rómulo</h2>
+<h2 id="c4">La teoria: il marito di Dolores, il maggiordomo prima di Rómulo</h2>
 <p>Escludendo il Barone, Lorenzo (ormai fuori dai giochi), Alonso — che amava Carmen e difficilmente avrebbe tradito la sua memoria proprio con la domestica a lei più vicina — e Rómulo, troppo vecchio per Dolores, resta una sola strada convincente: il padre di Jana e Curro è qualcuno che non abbiamo ancora conosciuto. Un servitore che, come Dolores, perse il lavoro quando Cruz sposò Alonso e portò a palazzo la propria gente. La candidatura più solida è quella del maggiordomo che precedette Rómulo: un marito legittimo spiegherebbe perché Dolores, a differenza di Pía, non fu mai travolta da uno scandalo.</p>
 <p>C&#x27;è anche una variante suggestiva legata a Gregorio Castillo, il nuovo maggiordomo, che incolpa Rómulo della morte di suo fratello: e se quel fratello fosse proprio il marito di Dolores? Gregorio sarebbe allora lo zio di Jana e Curro. È una pista affascinante ma debole: né Rómulo né Jana mostrano di riconoscere il cognome, e un complotto come il rapimento di Marcos non è qualcosa che si dimentica. Più probabile che il rancore di Gregorio c&#x27;entri con gli uomini che il Barone portò a Cuba.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Perché Jana non parla mai di suo padre</h2>
+<h2 id="c5">Perché Jana non parla mai di suo padre</h2>
 <p>Resta la domanda che i fan si fanno dal primo episodio: perché Jana nomina sempre e solo Dolores? La risposta più coerente con il personaggio è anche la più amara: perché suo padre li ha traditi. Secondo questa ricostruzione fu lui — non necessariamente presente quella mattina tra gli incappucciati — a vendere la famiglia e a provocare la disgrazia, consegnando di fatto Marcos ai rapitori. Da quel giorno, per Jana, quell&#x27;uomo ha smesso di essere suo padre. Se fosse semplicemente morto, ne parlerebbe con affetto: il silenzio assoluto racconta un&#x27;altra storia. E lascia aperta la porta a un ritorno futuro capace di rimettere in discussione tutte le certezze della protagonista.</p>
-<h2>Come Cruz e Lorenzo organizzarono il rapimento di Marcos</h2>
+<h2 id="c6">Come Cruz e Lorenzo organizzarono il rapimento di Marcos</h2>
 <p>Quando la prima marchesa Carmen si spense a causa di una misteriosa e mai chiarita malattia, l&#x27;equilibrio all&#x27;interno del palazzo della Promessa cambiò per sempre. Cruz tornò rapidamente da Cuba e non perse tempo a sposare Alonso, diventando la nuova padrona e portando con sé servitori fidati come Rómulo e Petra. Questo improvviso cambio ai vertici costrinse Dolores a lasciare la tenuta principale per trasferirsi in un&#x27;abitazione esterna con i propri figli. La donna continuò comunque a prestare servizio per la sola Eugenia durante le sue visite. Fu proprio la presenza di Cruz a incrinare la tranquillità della servitù, ponendo le basi per gli eventi drammatici che avrebbero segnato l&#x27;inizio della storia.</p>
 <p>Nel millenovecentonovantotto la situazione precipitò con il violento blitz all&#x27;alba portato avanti da uomini incappucciati nella casa isolata di Dolores. La donna fu brutalmente uccisa sul posto, mentre il piccolo Marcos venne sottratto alla madre per finire tra le braccia di Eugenia e Lorenzo, che lo crebbero sotto la falsa identità di Curro. La partecipazione diretta di Cruz alla cospirazione permise di coprire immediatamente il terribile delitto inventando una versione ufficiale comoda per tutti. A palazzo si raccontò infatti che la domestica e i suoi bambini erano tragicamente caduti da un dirupo nei pressi del fiume e che per questa ragione i loro corpi non vennero mai più ritrovati.</p>
-<h2>Perché Jana conserva ricordi felici con Simona e Candela</h2>
+<h2 id="c7">Perché Jana conserva ricordi felici con Simona e Candela</h2>
 <p>Nonostante la sistemazione lontana dal palazzo principale, Jana da bambina visse momenti di grande familiarità tra le mura della Promessa, lasciando tracce indelebili nella memoria di molti residenti. La giovane Catalina ricorda infatti chiaramente di aver pettinato la piccola come se fosse una bambola, dimostrando quanto la presenza di Dolores fosse ancora ben radicata e tollerata nell&#x27;ambiente. Anche nella cucina della tenuta il ricordo della bambina è rimasto vivo nel tempo grazie a Simona e Candela, che si ricordano ancora di quando si presentava spontaneamente per domandare del miele. Persino la fragile Eugenia, in diverse occasioni successive, ha finito per scambiare la presenza della ragazza per quella della sua cara e mai dimenticata domestica.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>L&#x27;assenza totale di qualsiasi menzione del padre da parte di Jana trova una spiegazione profonda nel dolore causato da un tragico tradimento familiare avvenuto in passato. L&#x27;ipotesi più solida suggerisce che l&#x27;uomo fosse il vecchio maggiordomo sostituito da Rómulo dopo il matrimonio tra Alonso e Cruz. Questo servitore, rimasto senza lavoro e roso dal rancore, potrebbe aver venduto la propria famiglia agli incappucciati, provocando la morte di Dolores e la sparizione del piccolo Marcos. Per questa ragione la protagonista evita accuratamente di citarlo nelle sue conversazioni, preferendo ricordare soltanto la madre. Per la ragazza quell&#x27;uomo ha cessato di esistere nel momento esatto in cui ha condannato i suoi cari al disastro.</p>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=HMRZRG9J6xA" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/HMRZRG9J6xA/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni Spoiler Teoria: Ramona confessa a Jana che Dolores è viva! Abel innam</span></a></li><li><a href="https://www.youtube.com/watch?v=HkbV1EdlMYE" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/HkbV1EdlMYE/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni: Ramona è decisa! Darà a Jana e Curro la lettera di Dolores! Ci riusc</span></a></li><li><a href="https://www.youtube.com/watch?v=GmD3Dm5W2eo" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/GmD3Dm5W2eo/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni: Ramona darà la lettera di Dolores a Jana e Curro? Scopriranno la ver</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Secondo voi chi è davvero il padre di Jana e Curro? Il maggiordomo scomparso, il fratello di Gregorio o qualcuno che non abbiamo ancora incontrato?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=BJ69Etldewc">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di La Promessa</h2><div class="griglia"><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/"><div class="foto"><img src="https://i.ytimg.com/vi/Rp8VhxDiDSk/hqdefault.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></h3>
+    <div class="quando">7 settembre 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/"><div class="foto"><img src="https://i.ytimg.com/vi/8JHt6ogwxQw/hqdefault.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Ángela beve tutto, Curro sfonda la porta</a></h3>
+    <div class="quando">6 settembre 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/"><div class="foto"><img src="/img/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Curro nasconde Ángela, Lorenzo furioso</a></h3>
+    <div class="quando">6 settembre 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=La Promessa, chi è il padre di Jana e Curro? Tutti gli indizi e la teoria più convincente — https://serietvfans.com/la-promessa/la-promessa-chi-e-il-padre-di-jana-e-curro-tutti-gli-indizi-e-la-teoria-piu-conv/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/la-promessa/la-promessa-chi-e-il-padre-di-jana-e-curro-tutti-gli-indizi-e-la-teoria-piu-conv/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/la-promessa/la-promessa-chi-e-il-padre-di-jana-e-curro-tutti-gli-indizi-e-la-teoria-piu-conv/&text=La Promessa, chi è il padre di Jana e Curro? Tutti gli indizi e la teoria più convincente" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">Anticipazioni Agosto 2026 ⚠️ LA PROMESSA SPOILER - Il Padre di Jana</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=BJ69Etldewc">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di La Promessa</h3><ol class="numerata"><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Ángela beve tutto, Curro sfonda la porta</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Curro nasconde Ángela, Lorenzo furioso</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>Anticipazioni Agosto 2026 ⚠️ LA PROMESSA SPOILER - Il Padre di Jana</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su La Promessa</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-3-6-settembre-maria-affronta-la-gravidanza-da-sola/">La Promessa anticipazioni 3-6 settembre: Maria affronta la gravidanza da sola</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-carlo-arriva-maria-trema/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Carlo arriva, Maria trema</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/far-away/far-away-anticipazioni-dal-31-agosto-al-4-settembre-chi-ha-donato-il-fegato-a-nare/">Far Away, anticipazioni dal 31 agosto al 4 settembre: chi ha donato il fegato a Nare, e perché adesso sta male lui</a></li><li><a href="/far-away/far-away-dal-31-agosto-la-madre-di-alya-sapeva-tutto-non-ricordo/">Far Away Dal 31 Agosto: la madre di Alya sapeva tutto — «non ricordo»</a></li><li><a href="/forbidden-fruit/forbidden-fruit-dal-31-agosto-il-conto-a-nome-di-halit-che-e-morto/">Forbidden Fruit Dal 31 Agosto: il conto a nome di Halit, che è morto</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/la-promessa/">La Promessa</a> › La Promessa 8-12 gennaio, Jimena trova la lettera d&#x27;amore di Manuel per Jana e minaccia di leggerla ad alta voce a tavola</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/la-promessa/">La Promessa</a>
   <h1>La Promessa 8-12 gennaio, Jimena trova la lettera d&#x27;amore di Manuel per Jana e minaccia di leggerla ad alta voce a tavola</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Settimana esplosiva alla tenuta: Manuel, davanti alle fotografie di Jana scattate da Blanca, scrive una lettera che non avrebbe mai dovuto uscire dall&#x27;hangar. Ma a cena, nel silenzio glaciale del tavolo dei signori, Jimena estrae proprio quel foglio e annuncia che lo leggerà ad alta voce per «ravvivare la serata». Intanto la baronessa Elisa ricatta Alonso pretendendo che Cruz venga rinchiusa in sanatorio, Catalina annuncia la partenza e Jana ottiene dal medico la conferma più temuta: Pía è stata avvelenata con la cicuta.</p><ol><li><a href="#c1">La lettera nell&#x27;hangar</a></li><li><a href="#c2">Il ricatto della baronessa: Cruz in sanatorio</a></li><li><a href="#c3">Catalina se ne va, Salvador non riesce a tornare</a></li><li><a href="#c4">La conferma sulla cicuta e il piano di Gregorio</a></li><li><a href="#c5">Come Martina affronta Manuel per il comportamento di Jimena</a></li><li><a href="#c6">Quando Salvador torna dal fronte trasformato dal dolore</a></li><li><a href="#c7">Perché la baronessa Elisa pretende la reclusione di Cruz</a></li><li><a href="#c8">Come Catalina sceglie di abbandonare la tenuta di famiglia</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>La Promessa</strong> — Rete 4 · in streaming su Mediaset Infinity</span></div>
   
-  <p class="occhiello">Settimana esplosiva alla tenuta: Manuel, davanti alle fotografie di Jana scattate da Blanca, scrive una lettera che non avrebbe mai dovuto uscire dall&#x27;hangar. Ma a cena, nel silenzio glaciale del tavolo dei signori, Jimena estrae proprio quel foglio e annuncia che lo leggerà ad alta voce per «ravvivare la serata». Intanto la baronessa Elisa ricatta Alonso pretendendo che Cruz venga rinchiusa in sanatorio, Catalina annuncia la partenza e Jana ottiene dal medico la conferma più temuta: Pía è stata avvelenata con la cicuta.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: La Promessa 8-12 gennaio, Jimena trova la lettera d&#x27;amore di Manuel per Jana e minaccia di leggerla ad alta voce a tavola" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/x3IZXjDkdd4/maxresdefault.jpg" alt="La Promessa 8-12 gennaio, Jimena trova la lettera d&#x27;amore di Manuel per Jana e minaccia di leggerla ad alta voce a tavola" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/x3IZXjDkdd4/hqdefault.jpg 480w, https://i.ytimg.com/vi/x3IZXjDkdd4/sddefault.jpg 640w, https://i.ytimg.com/vi/x3IZXjDkdd4/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/x3IZXjDkdd4/hqdefault.jpg&quot;, &quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,45 +409,67 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>Il dettaglio che umilia Manuel prima ancora della lettera: è Martina a fargli notare che è strano che un marito non sappia dove sia passata la giornata sua moglie.</strong></p>
-  <h2>La lettera nell&#x27;hangar</h2>
+  <h2 id="c1">La lettera nell&#x27;hangar</h2>
 <p>Chiuso nell&#x27;hangar tra i ricordi delle parole di Blanca, Manuel ritrova le fotografie che l&#x27;amica aveva scattato a Jana. Le guarda a lungo, con un sorriso che dice più di qualsiasi dichiarazione, poi prende un foglio e comincia a scrivere una lettera destinata proprio a lei, mettendoci dentro tutto ciò che non può dire ad alta voce. Un gesto privato che diventerà pubblico nel modo peggiore: a cena, con il tavolo dei signori avvolto da un silenzio pesantissimo, Jimena — appena rientrata da casa dei genitori — estrae il foglio e annuncia di volerlo leggere davanti a tutti.</p>
-<h2>Il ricatto della baronessa: Cruz in sanatorio</h2>
+<h2 id="c2">Il ricatto della baronessa: Cruz in sanatorio</h2>
 <p>Sull&#x27;altro fronte, Elisa affronta Alonso chiedendo «la testa» di Cruz e minacciando di denunciarla per tentato omicidio. Il marchese la supplica di desistere spiegando che uno scandalo simile travolgerebbe il prestigio della casa; lei acconsente a soprassedere sulla denuncia, ma pone una condizione: Cruz dev&#x27;essere internata in un ospedale psichiatrico insieme alla sorella Eugenia, insinuando che la malattia possa essere ereditaria. Alonso riferisce tutto alla moglie, che rifiuta con sdegno l&#x27;etichetta di pazza e rilancia — Lorenzo ed Elisa hanno un accordo e una relazione. La pazienza del marchese finisce: la decisione non è negoziabile.</p>
-<h2>Catalina se ne va, Salvador non riesce a tornare</h2>
+<h2 id="c3">Catalina se ne va, Salvador non riesce a tornare</h2>
 <p>Esclusa dalla gestione della tenuta, Catalina comunica ad Alonso di voler partire senza nemmeno una destinazione: ottiene il permesso dopo un primo scontro, e nemmeno le suppliche di Manuel e Martina la fanno desistere — non vuole più vivere secondo gli ordini di altri. In cucina l&#x27;annuncio getta tristezza tra la servitù. Intanto Salvador, tornato vivo dal fronte contro ogni previsione, fatica a riprendersi: si mostra freddo e distante con María, che si confida con Jana; Rómulo gli concede il riposo di cui ha bisogno, mentre Teresa affida al destino la speranza che quell&#x27;amore superi le ferite della guerra.</p>
-<h2>La conferma sulla cicuta e il piano di Gregorio</h2>
+<h2 id="c4">La conferma sulla cicuta e il piano di Gregorio</h2>
 <p>Il filo più cupo resta quello di Pía. Colta da un malore improvviso, viene soccorsa da Jana, che nota pupille dilatate e polso debole; poco dopo, incontrato un medico, ottiene la conferma dei suoi sospetti — la governante è stata avvelenata con la cicuta. La notizia getta un&#x27;ombra su tutta la servitù e apre la caccia al responsabile, mentre in cucina Candela caccia in malo modo Petra, che continuava a disprezzare Pía per il bambino che aspetta. E Gregorio, sempre più deciso, la spinge a lasciare per sempre la tenuta e a investire insieme in un&#x27;attività propria: liberarsi dalla dipendenza dai padroni prima che nasca il figlio.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Come Martina affronta Manuel per il comportamento di Jimena</h2>
+<h2 id="c5">Come Martina affronta Manuel per il comportamento di Jimena</h2>
 <p>L&#x27;atmosfera all&#x27;interno del palazzo si fa estremamente tesa quando Martina decide di intervenire direttamente nei confronti di Manuel, mettendo in evidenza una mancanza gravissima per un marito. La giovane gli fa notare con fermezza quanto sia assurdo e umiliante che lui non abbia la minima idea di dove la moglie abbia trascorso l&#x27;intera giornata. Jimena è infatti rientrata soltanto di recente dalla residenza dei propri genitori, lasciando il coniuge completamente all&#x27;oscuro dei suoi spostamenti. Questa osservazione punge nell&#x27;orgoglio il giovane marchese, evidenziando la profonda distanza emotiva che oramai separa la coppia e anticipando le drammatiche conseguenze che si verificheranno da lì a poco.</p>
 <p>Nel frattempo, rifugiatosi all&#x27;interno del suo hangar per cercare un momento di solitudine, Manuel ritrova gli scatti fotografici realizzati da Blanca, i quali ritraggono Jana. Guardare quelle immagini risveglia in lui sentimenti impossibili da reprimere, spingendolo a prendere carta e penna per dare sfogo a tutto ciò che prova attraverso una lettera segreta. Il testo, inteso come uno sfogo del tutto personale, finisce però per cadere nelle mani sbagliate. Durante una cena segnata da un silenzio glaciale tra i signori, Jimena estrae la lettera con freddezza e annuncia a tutti i presenti la volontà di leggerla ad alta voce per animare la serata.</p>
-<h2>Quando Salvador torna dal fronte trasformato dal dolore</h2>
+<h2 id="c6">Quando Salvador torna dal fronte trasformato dal dolore</h2>
 <p>Il ritorno di Salvador dal fronte bellico rappresenta un evento del tutto inaspettato, considerando che il giovane era ormai dato per disperso o deceduto. Tuttavia, la gioia iniziale per la sua sopravvivenza lascia subito il posto a una profonda preoccupazione a causa delle sue visibili difficoltà di reinserimento. Il ragazzo appare visibilmente trasformato dalle drammatiche esperienze vissute in guerra, mostrando un atteggiamento estremamente freddo, schivo e distaccato verso María. Sconsolata e smarrita di fronte a questo inatteso cambiamento del fidanzato, la cameriera cerca conforto confidandosi con Jana e raccontandole la sofferenza per questa distanza affettiva.</p>
 <p>Comprendendo lo stato di profondo esaurimento fisico e psicologico in cui versa il servitore, Rómulo decide di concedergli un periodo di riposo per permettergli di recuperare le forze. Intanto, all&#x27;interno della servitù ci si interroga sul futuro della coppia, mentre Teresa sceglie di affidarsi al destino, sperando con tutto il cuore che il sentimento sincero che lega María e Salvador possa infine prevalere sulle terribili ferite mentali inferte dal conflitto mondiale. La strada per ritrovare la serenità perduta si preannuncia tuttavia lunga e irta di ostacoli per entrambi i giovani.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Perché la baronessa Elisa pretende la reclusione di Cruz</h2>
+<h2 id="c7">Perché la baronessa Elisa pretende la reclusione di Cruz</h2>
 <p>La tensione raggiunge livelli altissimi all&#x27;interno della tenuta quando la baronessa Elisa decide di affrontare direttamente Alonso con una richiesta spietata. La donna pretende la punizione di Cruz e minaccia di sporgere una denuncia formale per tentato omicidio, un atto che trascinerebbe l&#x27;intera famiglia in un baratro senza uscita. Spaventato dalle terribili conseguenze e intenzionato a proteggere a ogni costo il prestigio della propria casata, il marchese supplica la nobildonna di desistere da questo intento distruttivo. Di fronte a queste preghiere, Elisa sceglie di non procedere con le vie legali, ma impone una condizione durissima e non trattabile per il futuro della tenuta. Pretende infatti che Cruz venga immediatamente internata in un sanatorio o ospedale psichiatrico, affiancando la sorella Eugenia e insinuando apertamente la presenza di una patologia ereditaria.</p>
 <p>Quando Alonso affronta la consorte per riferirle quanto concordato, la reazione di Cruz è un misto di rabbia e sdegno assoluto di fronte all&#x27;etichetta di pazzia che le viene imposta. La marchesa rifiuta categoricamente l&#x27;idea del ricovero coatto e tenta di difendersi svelando quanto ha scoperto sulle intenzioni dei suoi nemici. Denuncia infatti l&#x27;esistenza di un accordo segreto e di una relazione sentimentale tra la baronessa Elisa e Lorenzo, indicando chiaramente la trappola orchestrata ai suoi danni. Tuttavia, le sue spiegazioni non riescono a far recedere il marito dalla scelta intrapresa per evitare uno scandalo pubblico. La pazienza del marchese appare completamente esaurita e la decisione sull&#x27;isolamento della donna diventa ormai irreversibile e non più negoziabile all&#x27;interno della famiglia.</p>
-<h2>Come Catalina sceglie di abbandonare la tenuta di famiglia</h2>
+<h2 id="c8">Come Catalina sceglie di abbandonare la tenuta di famiglia</h2>
 <p>La decisione di Catalina di allontanarsi definitivamente da palazzo segna un momento di profonda rottura nelle dinamiche familiari. Ormai completamente esclusa da qualsiasi attività di gestione della tenuta, la giovane comunica ad Alonso la volontà irremovibile di partire senza rivelare quale sarà la sua destinazione finale. Nonostante un duro scontro iniziale con il padre, la ragazza riesce a ottenere il permesso necessario per allontanarsi e rifiuta con fermezza le suppliche accorate di Manuel e Martina, giunti nel tentativo di farla desistere. Catalina riconosce di non poter più accettare un&#x27;esistenza sottomessa agli ordini altrui, provocando un&#x27;ondata di profonda tristezza anche tra i membri della servitù, che vedono sfumare una delle poche figure di riferimento giuste della casa.</p>
 <p>Parallelamente, il clima tra i domestici resta drammatico a causa delle condizioni di Pía, colpita da un grave malore improvviso. Jana si prende cura di lei notando le pupille dilatate e il polso debole, ricevendo poi dal medico la drammatica conferma che si tratta di avvelenamento da cicuta. Mentre comincia la caccia al responsabile nell&#x27;ombra, la tensione esplode in cucina con Candela che allontana Petra in malo modo, stanca delle sue continue cattiverie contro la governante incinta. In questo scenario di costante pericolo, Gregorio sollecita la donna a lasciare per sempre la tenuta. Il suo obiettivo è investire insieme in un&#x27;attività indipendente, garantendo così al nascituro una vita lontana dal controllo dei padroni.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=uwCUmF5ViEU" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/uwCUmF5ViEU/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni 6-10 Novembre: Cruz spedita in sanatorio! Jimena trova lettera Jana !</span></a></li><li><a href="https://www.youtube.com/watch?v=Cfss3I00vWo" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/Cfss3I00vWo/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni 6 Gennaio: Jimena e Blanca, confronto su Manuel! Cruz sospetta di Lor</span></a></li><li><a href="https://www.youtube.com/watch?v=FYWVsFcWT3c" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/FYWVsFcWT3c/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni: Cruz smascherata da Jana e Manuel! Pia ricatta Cruz!</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Jimena leggerà davvero quella lettera davanti a tutti? E Alonso ha il diritto di far internare Cruz per evitare uno scandalo?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=x3IZXjDkdd4">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di La Promessa</h2><div class="griglia"><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/"><div class="foto"><img src="https://i.ytimg.com/vi/Rp8VhxDiDSk/hqdefault.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></h3>
+    <div class="quando">7 settembre 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/"><div class="foto"><img src="https://i.ytimg.com/vi/8JHt6ogwxQw/hqdefault.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Ángela beve tutto, Curro sfonda la porta</a></h3>
+    <div class="quando">6 settembre 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/"><div class="foto"><img src="/img/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Curro nasconde Ángela, Lorenzo furioso</a></h3>
+    <div class="quando">6 settembre 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=La Promessa 8-12 gennaio, Jimena trova la lettera d&#x27;amore di Manuel per Jana e minaccia di leggerla ad alta voce a tavola — https://serietvfans.com/la-promessa/la-promessa-8-12-gennaio-jimena-trova-la-lettera-damore-di-manuel-per-jana-e-min/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/la-promessa/la-promessa-8-12-gennaio-jimena-trova-la-lettera-damore-di-manuel-per-jana-e-min/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/la-promessa/la-promessa-8-12-gennaio-jimena-trova-la-lettera-damore-di-manuel-per-jana-e-min/&text=La Promessa 8-12 gennaio, Jimena trova la lettera d&#x27;amore di Manuel per Jana e minaccia di leggerla ad alta voce a tavola" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">LA PROMESSA Anticipazioni 8-12 Gennaio: Jimena scopre la lettera d&#x27;amore</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=x3IZXjDkdd4">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di La Promessa</h3><ol class="numerata"><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Ángela beve tutto, Curro sfonda la porta</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Curro nasconde Ángela, Lorenzo furioso</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>LA PROMESSA Anticipazioni 8-12 Gennaio: Jimena scopre la lettera d&#x27;amore</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su La Promessa</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-3-6-settembre-maria-affronta-la-gravidanza-da-sola/">La Promessa anticipazioni 3-6 settembre: Maria affronta la gravidanza da sola</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-carlo-arriva-maria-trema/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Carlo arriva, Maria trema</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/far-away/far-away-anticipazioni-dal-31-agosto-al-4-settembre-chi-ha-donato-il-fegato-a-nare/">Far Away, anticipazioni dal 31 agosto al 4 settembre: chi ha donato il fegato a Nare, e perché adesso sta male lui</a></li><li><a href="/far-away/far-away-dal-31-agosto-la-madre-di-alya-sapeva-tutto-non-ricordo/">Far Away Dal 31 Agosto: la madre di Alya sapeva tutto — «non ricordo»</a></li><li><a href="/forbidden-fruit/forbidden-fruit-dal-31-agosto-il-conto-a-nome-di-halit-che-e-morto/">Forbidden Fruit Dal 31 Agosto: il conto a nome di Halit, che è morto</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

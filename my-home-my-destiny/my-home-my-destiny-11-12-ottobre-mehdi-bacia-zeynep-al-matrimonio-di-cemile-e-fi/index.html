@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/my-home-my-destiny/">My Home My Destiny</a> › My Home My Destiny 11-12 ottobre, Mehdi bacia Zeynep al matrimonio di Cemile e finisce pestato a sangue nella sua officina: Burhan si porta via le chiavi</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/my-home-my-destiny/">My Home My Destiny</a>
   <h1>My Home My Destiny 11-12 ottobre, Mehdi bacia Zeynep al matrimonio di Cemile e finisce pestato a sangue nella sua officina: Burhan si porta via le chiavi</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Due puntate che partono dal gesto più atteso e finiscono nel modo più brutale. Al ricevimento per le nozze di Cemile, Mehdi segue Zeynep in una stanza e la bacia; lei si stacca e gli dice chiaramente che il loro matrimonio è finito. Poche ore dopo, mentre lui prova a costruirsi alleanze dentro casa, Burhan arriva in officina con i suoi uomini — e Mehdi si lascia picchiare senza alzare un dito.</p><ol><li><a href="#c1">Il ballo, il bacio e la frase che chiude tutto</a></li><li><a href="#c2">«Non voglio fare la spia di mio padre»</a></li><li><a href="#c3">Sakine passa dall&#x27;altra parte, Nermin installa le telecamere</a></li><li><a href="#c4">La proposta rifiutata e la vendetta di Burhan</a></li><li><a href="#c5">Perche&#x27; Zeynep decide di interrompere il matrimonio</a></li><li><a href="#c6">Come Burhan organizza la vendetta contro Mehdi</a></li><li><a href="#c7">Cosa spinge Kibrit a rifiutare di spiare</a></li><li><a href="#c8">Chi sostiene Zeynep contro le minacce di Mehdi</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>My Home My Destiny</strong> — Serie conclusa in Italia · le puntate su Mediaset Infinity</span></div>
   
-  <p class="occhiello">Due puntate che partono dal gesto più atteso e finiscono nel modo più brutale. Al ricevimento per le nozze di Cemile, Mehdi segue Zeynep in una stanza e la bacia; lei si stacca e gli dice chiaramente che il loro matrimonio è finito. Poche ore dopo, mentre lui prova a costruirsi alleanze dentro casa, Burhan arriva in officina con i suoi uomini — e Mehdi si lascia picchiare senza alzare un dito.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: My Home My Destiny 11-12 ottobre, Mehdi bacia Zeynep al matrimonio di Cemile e finisce pestato a sangue nella sua officina: Burhan si porta via le chiavi" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/GYSmA5FzI4o/sddefault.jpg" alt="My Home My Destiny 11-12 ottobre, Mehdi bacia Zeynep al matrimonio di Cemile e finisce pestato a sangue nella sua officina: Burhan si porta via le chiavi" width="640" height="480"
         srcset="https://i.ytimg.com/vi/GYSmA5FzI4o/hqdefault.jpg 480w, https://i.ytimg.com/vi/GYSmA5FzI4o/sddefault.jpg 640w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/GYSmA5FzI4o/hqdefault.jpg&quot;, &quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,45 +409,67 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>Nermin fa installare telecamere di sorveglianza fuori casa per documentare gli appostamenti di Mehdi.</strong></p>
-  <h2>Il ballo, il bacio e la frase che chiude tutto</h2>
+  <h2 id="c1">Il ballo, il bacio e la frase che chiude tutto</h2>
 <p>Alla festa Mehdi chiede a Zeynep di ballare e lei accetta, più per non guastare l&#x27;atmosfera che per desiderio. Quando poi esce dalla sala per sistemare gli addobbi, lui la segue in una stanza e la bacia senza dire una parola. Zeynep in un primo momento non lo respinge, ma si stacca subito e mette le cose in chiaro: non tornerà con lui. Mehdi non regge il rifiuto e passa alle accuse — c&#x27;è un altro uomo, lo ha sostituito in fretta — e arriva a trattenerla per un braccio. È lì che lei esplode: gli intima di non toccarla, gli dice che non è cambiato affatto, che il matrimonio è finito e che sono entrambi liberi. La scena viene osservata da Sakine, che continua a sperare in un ritorno.</p>
-<h2>«Non voglio fare la spia di mio padre»</h2>
+<h2 id="c2">«Non voglio fare la spia di mio padre»</h2>
 <p>Il giorno dopo Kibrit riceve i messaggi di Mehdi: sembrano rivolti a lei, ma diventano subito domande su cosa faccia Zeynep, e la ragazzina — che quel gioco lo ha già visto — chiude la conversazione. La mattina rifiuta di andare a scuola e, messa alle strette, confessa il motivo vero: i compagni la bullizzano e la chiamano assassina dopo una lite finita male. Zeynep decide di tenerla a casa e di parlare con i professori, e per farle piacere l&#x27;accompagna in officina dal padre. Anche lì Mehdi va dritto al punto che gli interessa — chi è Barış, cosa fa Zeynep — e si giustifica dicendo di volerle solo proteggere. Kibrit ascolta, resta gentile, ma non cede: non farà da informatrice tra due adulti.</p>
-<h2>Sakine passa dall&#x27;altra parte, Nermin installa le telecamere</h2>
+<h2 id="c3">Sakine passa dall&#x27;altra parte, Nermin installa le telecamere</h2>
 <p>Mehdi convoca Sakine in officina, allontanando prima la figlia con una scusa, e la trova disponibile: per lei quei due sono ancora innamorati, e lo ha visto al matrimonio. Accetta di aiutarlo, ma lo avverte che Sultan ed Emine hanno grande influenza su Zeynep e non lo vedono di buon occhio. Quando lui prova a screditare Barış, però, lei lo corregge — l&#x27;ha incontrato una volta sola, le è parso rispettoso, e non può giudicare oltre. Dall&#x27;altra parte della città, intanto, Nermin e Barış hanno fatto installare telecamere di videosorveglianza all&#x27;esterno di casa, proprio per documentare quando Mehdi si apposta. E in studio arriva una bella notizia: Barış assume tutti e tre gli stagisti, Zeynep compresa.</p>
-<h2>La proposta rifiutata e la vendetta di Burhan</h2>
+<h2 id="c4">La proposta rifiutata e la vendetta di Burhan</h2>
 <p>Burhan si presenta a casa con fiori e dolci per chiedere formalmente la mano di Müjgan, dichiarando di non voler litigare con nessuno. Mehdi non gli risponde nemmeno: si rivolge alla sorella e le chiede se davvero intende chiamare padre l&#x27;uomo che ritiene responsabile della morte del loro. Davanti a quel ricatto morale Müjgan rinuncia, e Burhan esce in silenzio — per poi confidare a un suo uomo di avere un piano per distruggere Mehdi. Lo mette in atto lo stesso giorno: arriva in officina con i suoi scagnozzi e lo pesta selvaggiamente. Mehdi non reagisce a un solo colpo, incassa fino a crollare a terra privo di sensi. Prima di andarsene, Burhan si porta via le chiavi del locale, lasciandolo chiuso dentro — e raccomanda a tutti di sparire, perché le telecamere potrebbero aver ripreso tutto.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Perche&#x27; Zeynep decide di interrompere il matrimonio</h2>
+<h2 id="c5">Perche&#x27; Zeynep decide di interrompere il matrimonio</h2>
 <p>La decisione di Zeynep maturata durante la festa di nozze di Cemile segna una svolta nella vicenda della coppia. Inizialmente la ragazza accetta di ballare con Mehdi solo per non rovinare il clima di gioia tra gli invitati. Tuttavia, quando si allontana in una stanza per sistemare gli addobbi, lui la raggiunge e la bacia all&#x27;improvviso. Sebbene all&#x27;inizio lei non riesca a respingerlo immediatamente, trova subito la forza di staccarsi con fermezza e gli dichiara aperto che la loro storia e la loro unione coniugale sono giunte definitivamente al termine.</p>
 <p>Reagendo negativamente a questo rifiuto, Mehdi manifesta una profonda incapacita&#x27; di accettare la realta&#x27; e comincia ad accusare Zeynep, sostenendo che ci sia un altro uomo e che lo abbia sostituito troppo velocemente. La situazione peggiora quando arriva a trattenere la ragazza per un braccio. Davanti a questa reazione aggressiva, Zeynep esplode con determinazione, ordinandogli di non toccarla mai piu&#x27; e ribadendo che lui non e&#x27; cambiato. Gli spiega che il matrimonio e&#x27; finito e che sono entrambi liberi, sotto gli occhi della madre Sakine.</p>
-<h2>Come Burhan organizza la vendetta contro Mehdi</h2>
+<h2 id="c6">Come Burhan organizza la vendetta contro Mehdi</h2>
 <p>L&#x27;astio tra Burhan e Mehdi raggiunge il punto di rottura quando il primo si reca a casa portando fiori e dolci per chiedere la mano di Müjgan, assicurando di non voler litigare. Mehdi rifiuta di parlare con lui e fa leva sui sentimenti della sorella, chiedendole se sia davvero disposta a chiamare padre l&#x27;uomo responsabile della morte del loro genitore. Questo pesante ricatto morale spinge Müjgan a rinunciare alla proposta, costringendo Burhan ad allontanarsi in silenzio, ma con il fermo proposito di distruggere l&#x27;avversario.</p>
 <p>Lo stesso giorno, Burhan mette in atto la sua feroce ritorsione presentandosi all&#x27;officina insieme ai suoi scagnozzi per pestare selvaggiamente il rivale. Durante la brutalita&#x27; dell&#x27;aggressione, Mehdi sceglie di non reagire e incassa ogni colpo senza alzare un dito, fino a crollare a terra privo di sensi. Prima di allontanarsi, Burhan si appropria delle chiavi della struttura e lo chiude dentro. Consapevole dei rischi legati alle telecamere della zona, l&#x27;uomo ordina ai suoi complici di sparire immediatamente per evitare di essere scoperti.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Cosa spinge Kibrit a rifiutare di spiare</h2>
+<h2 id="c7">Cosa spinge Kibrit a rifiutare di spiare</h2>
 <p>La giovane Kibrit viene coinvolta nelle tensioni tra gli adulti quando riceve diversi messaggi inviati da Mehdi sul proprio telefono. Sebbene le comunicazioni sembrino rivolte a lei, diventano subito domande insistenti per scoprire le attivita&#x27; di Zeynep. Riconoscendo quella manipolazione, la ragazza chiude la conversazione. La mattina dopo rifiuta di andare a scuola e confessa di subire attacchi di bullismo da parte dei compagni, che la chiamano assassina a causa di una lite finita male, spingendo Zeynep a tenerla a casa per parlare con i professori.</p>
 <p>Per farle piacere, Zeynep la accompagna poi nell&#x27;officina del padre. Anche in questa occasione Mehdi va dritto al punto e chiede dettagli su chi sia Barış e cosa faccia Zeynep, giustificandosi con il pretesto di volerle proteggere. Nonostante la sua gentilezza complessiva, Kibrit dimostra grande maturita&#x27; e rifiuta nettamente di fare la spia tra due persone adulte. Successivamente Mehdi fa allontanare la figlia con una scusa per poter parlare da solo con Sakine e cercare la sua complicita&#x27; nei confronti dell&#x27;ex moglie.</p>
-<h2>Chi sostiene Zeynep contro le minacce di Mehdi</h2>
+<h2 id="c8">Chi sostiene Zeynep contro le minacce di Mehdi</h2>
 <p>La preoccupazione per gli appostamenti di Mehdi spinge Nermin e Barış ad adottare precise misure di sicurezza per proteggere la casa. I due fanno installare un sistema di telecamere di videosorveglianza all&#x27;esterno dell&#x27;abitazione, con l&#x27;obiettivo di documentare ogni presenza sospetta dell&#x27;uomo nei paraggi. Sul fronte lavorativo arrivano notizie molto positive per il futuro della protagonista: l&#x27;avvocato Barış decide infatti di assumere ufficialmente nel suo studio legale tutti e tre gli stagisti che avevano iniziato il percorso, assicurando un posto professionale anche a Zeynep.</p>
 <p>Nel frattempo Sakine continua a sperare in un ritorno di fiamma tra i due giovani dopo aver assistito al bacio durante la festa di nozze. Convocata nell&#x27;officina da Mehdi, la donna si dichiara disponibile ad aiutarlo, pur mettendo in guardia l&#x27;uomo dalla forte influenza negativa esercitata su Zeynep da Sultan ed Emine. Quando Mehdi prova a screditare Barış, Sakine lo corregge subito spiegando di aver incontrato l&#x27;avvocato una sola volta e di averlo trovato una persona rispettosa, rifiutandosi di giudicarlo negativamente senza motivi concreti.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=Ukc1Roo8dN0" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/Ukc1Roo8dN0/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>MY HOME MY DESTINY Anticipazioni 15 Dicembre: Benal lascia la figlia a Zeynep | Mehdi la porta </span></a></li><li><a href="https://www.youtube.com/watch?v=RJiBNb4EjaU" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/RJiBNb4EjaU/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>MY HOME MY DESTINY 18-19 Settembre: Mehdi fà riassumere Zeynep e poi picchia brutalmente Burhan</span></a></li><li><a href="https://www.youtube.com/watch?v=Yhy9J2buqjk" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/Yhy9J2buqjk/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>MY HOME MY DESTINY Anticipazioni: Mehdi in carcere riflette mentre Zeynep soffre di crisi di pa</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Perché Mehdi non si è difeso? Punizione che sente di meritare o resa?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=GYSmA5FzI4o">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di My Home My Destiny</h2><div class="griglia"><article class="scheda">
+  <a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/"><div class="foto"><img src="/img/my-home-my-destiny-la-trama-completa-e-come-finisce.jpg" alt="My Home My Destiny" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">My Home My Destiny</span>
+    <h3><a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/">My Home My Destiny: la trama completa e come finisce</a></h3>
+    <div class="quando">30 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/"><div class="foto"><img src="https://i.ytimg.com/vi/-djleIeCLQs/hqdefault.jpg" alt="My Home My Destiny" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">My Home My Destiny</span>
+    <h3><a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/">My Home My Destiny, Zeynep ferma l&#x27;aborto di Benal in sala operatoria senza sapere che il padre è Mehdi</a></h3>
+    <div class="quando">17 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/"><div class="foto"><img src="https://i.ytimg.com/vi/gxL0o63Nhqw/hqdefault.jpg" alt="My Home My Destiny" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">My Home My Destiny</span>
+    <h3><a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/">My Home My Destiny, anticipazioni del 17 novembre: Özlem indaga su Zeynep e scopre tutto, Nuh diventa autista di Barış e qualcuno manomette i macchinari di Bekir</a></h3>
+    <div class="quando">16 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=My Home My Destiny 11-12 ottobre, Mehdi bacia Zeynep al matrimonio di Cemile e finisce pestato a sangue nella sua officina: Burhan si porta via le chiavi — https://serietvfans.com/my-home-my-destiny/my-home-my-destiny-11-12-ottobre-mehdi-bacia-zeynep-al-matrimonio-di-cemile-e-fi/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/my-home-my-destiny/my-home-my-destiny-11-12-ottobre-mehdi-bacia-zeynep-al-matrimonio-di-cemile-e-fi/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/my-home-my-destiny/my-home-my-destiny-11-12-ottobre-mehdi-bacia-zeynep-al-matrimonio-di-cemile-e-fi/&text=My Home My Destiny 11-12 ottobre, Mehdi bacia Zeynep al matrimonio di Cemile e finisce pestato a sangue nella sua officina: Burhan si porta via le chiavi" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">MY HOME MY DESTINY Anticipazioni 11 e 12 Ottobre: Mehdi bacia Zeynep e poi finisce in ospedale</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=GYSmA5FzI4o">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di My Home My Destiny</h3><ol class="numerata"><li><a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/">My Home My Destiny: la trama completa e come finisce</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/">My Home My Destiny, Zeynep ferma l&#x27;aborto di Benal in sala operatoria senza sapere che il padre è Mehdi</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/">My Home My Destiny, anticipazioni del 17 novembre: Özlem indaga su Zeynep e scopre tutto, Nuh diventa autista di Barış e qualcuno manomette i macchinari di Bekir</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-guida-alla-serie-chi-sono-demet-ozdemir-e-ibrahim-celikkol-qu/">My Home My Destiny: guida alla serie, il cast, i personaggi e quante puntate sono</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-1-dicembre-gli-spari-davanti-alla-vecchia-casa-zeynep-tra-le/">My Home My Destiny 1° dicembre, gli spari davanti alla vecchia casa: Zeynep tra le due madri quando l&#x27;uomo in moto estrae la pistola</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>MY HOME MY DESTINY Anticipazioni 11 e 12 Ottobre: Mehdi bacia Zeynep e poi finisce in ospedale</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su My Home My Destiny</h3><ul><li><a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/">My Home My Destiny: la trama completa e come finisce</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/">My Home My Destiny, Zeynep ferma l&#x27;aborto di Benal in sala operatoria senza sapere che il padre è Mehdi</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/">My Home My Destiny, anticipazioni del 17 novembre: Özlem indaga su Zeynep e scopre tutto, Nuh diventa autista di Barış e qualcuno manomette i macchinari di Bekir</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-guida-alla-serie-chi-sono-demet-ozdemir-e-ibrahim-celikkol-qu/">My Home My Destiny: guida alla serie, il cast, i personaggi e quante puntate sono</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-1-dicembre-gli-spari-davanti-alla-vecchia-casa-zeynep-tra-le/">My Home My Destiny 1° dicembre, gli spari davanti alla vecchia casa: Zeynep tra le due madri quando l&#x27;uomo in moto estrae la pistola</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/la-promessa/">La Promessa</a> › La Promessa, Jana e Curro finalmente uniti come fratelli: la foto di Dolores, l&#x27;abbraccio e il patto segreto</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/la-promessa/">La Promessa</a>
   <h1>La Promessa, Jana e Curro finalmente uniti come fratelli: la foto di Dolores, l&#x27;abbraccio e il patto segreto</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Da estranei a fratelli ritrovati: il percorso completo di Jana e Curro — l&#x27;arrivo alla tenuta, gli indizi sul passato di Dolores, la rivelazione con la foto di quindici anni prima, il rifiuto iniziale di Curro e l&#x27;abbraccio che ricuce quindici anni di separazione.</p><ol><li><a href="#c1">I due obiettivi di Jana</a></li><li><a href="#c2">Da padrone arrogante a fratello: la trasformazione di Curro</a></li><li><a href="#c3">La foto di quindici anni prima</a></li><li><a href="#c4">L&#x27;abbraccio e il patto</a></li><li><a href="#c5">Come Jana e le sue alleate scoprono la verità</a></li><li><a href="#c6">Perché Curro cambia atteggiamento verso Jana alla tenuta</a></li><li><a href="#c7">Cosa comporta il patto segreto tra Curro e Jana</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>La Promessa</strong> — Rete 4 · in streaming su Mediaset Infinity</span></div>
   
-  <p class="occhiello">Da estranei a fratelli ritrovati: il percorso completo di Jana e Curro — l&#x27;arrivo alla tenuta, gli indizi sul passato di Dolores, la rivelazione con la foto di quindici anni prima, il rifiuto iniziale di Curro e l&#x27;abbraccio che ricuce quindici anni di separazione.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: La Promessa, Jana e Curro finalmente uniti come fratelli: la foto di Dolores, l&#x27;abbraccio e il patto segreto" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/yU4nzRiacfQ/sddefault.jpg" alt="La Promessa, Jana e Curro finalmente uniti come fratelli: la foto di Dolores, l&#x27;abbraccio e il patto segreto" width="640" height="480"
         srcset="https://i.ytimg.com/vi/yU4nzRiacfQ/hqdefault.jpg 480w, https://i.ytimg.com/vi/yU4nzRiacfQ/sddefault.jpg 640w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/yU4nzRiacfQ/hqdefault.jpg&quot;, &quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,41 +409,63 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>Una foto sbiadita, una madre uccisa e due bambini separati dalla notte degli incappucciati: la storia più commovente della Promessa arriva finalmente al suo punto di svolta.</strong></p>
-  <h2>I due obiettivi di Jana</h2>
+  <h2 id="c1">I due obiettivi di Jana</h2>
 <p>Fin dal primo giorno alla Promessa, Jana insegue due verità: chi ha ucciso sua madre Dolores, e dove sia finito il fratellino rapito. Sul primo fronte il labirinto di segreti resta aperto — con l&#x27;anello visto nei suoi incubi al dito del Barone a legare il passato oscuro alla famiglia Luján. Sul secondo, la svolta arriva presto: il fratello perduto è Curro. Al suo fianco, in ogni passo, le alleate di sempre: María Fernández, la prima a conoscere la vera ragione del suo arrivo, e la governante Pía, preziosa per la sua conoscenza della tenuta. Sono le loro indagini a far emergere il ruolo di Dolores come cameriera personale di donna Eugenia — e la scoperta clamorosa che la sorella di Cruz, creduta sterile per malattia, avrebbe &quot;dato alla luce&quot; un bambino durante un viaggio.</p>
-<h2>Da padrone arrogante a fratello: la trasformazione di Curro</h2>
+<h2 id="c2">Da padrone arrogante a fratello: la trasformazione di Curro</h2>
 <p>L&#x27;inizio non è stato promettente: il Curro arrivato alla tenuta trattava con arroganza il personale, Jana compresa, e solo l&#x27;intervento di Manuel evitò il peggio. A cambiare tutto è stata la compassione: quando Jana ha scoperto i maltrattamenti di Lorenzo sul ragazzo, si è battuta per proteggerlo in ogni modo — e Curro, poco a poco, si è aperto, confidandole la confusione per le angherie del &quot;padre&quot; e della zia Cruz. Incalzata dalle sue domande, perfino Cruz ha ceduto qualcosa: Lorenzo non è il suo padre biologico — anche se la versione del &quot;tradimento di Eugenia&quot; si è poi rivelata una menzogna, smontata da Simona: la vera madre di Curro è Dolores.</p>
-<h2>La foto di quindici anni prima</h2>
+<h2 id="c3">La foto di quindici anni prima</h2>
 <p>Il momento della verità arriva dopo un gesto di gratitudine di Curro: Jana estrae una fotografia di oltre quindici anni prima e gliela mette tra le mani. La donna ritratta è Dolores, la loro madre; il bambino tra le sue braccia è lui, Marcos; la bambina accanto è lei. «Siamo fratelli». La reazione però non è quella sognata: nei giorni successivi Curro la evita, e quando lei lo affronta risponde evasivo — non vuole parlarne. Per Jana è una ferita profonda: arriva a temere che il fratello non voglia riconoscerla, a chiedersi se rivelare la verità sia stato un errore.</p>
-<h2>L&#x27;abbraccio e il patto</h2>
+<h2 id="c4">L&#x27;abbraccio e il patto</h2>
 <p>Poi, dopo giorni di silenzio, Curro si presenta da lei: l&#x27;ha deciso, la aiuterà a cercare la verità sulle loro origini e sulla madre perduta. L&#x27;abbraccio che segue — lungo, tenero, il primo tra i due fratelli separati — è tra i momenti più belli dell&#x27;intera serie: «È un privilegio avere te come sorella». Resta un solo patto da rispettare: mantenere il segreto sulla parentela, perché Curro — che non si vergogna delle sue origini — teme le conseguenze sociali sulla sua storia con Martina. Jana non promette il silenzio assoluto, ma giura di essere sempre dalla sua parte. E qualche giorno dopo, un dono speciale di Curro sigilla il nuovo inizio: insieme, ora, possono affrontare il passato oscuro della famiglia e cercare giustizia per Dolores.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Come Jana e le sue alleate scoprono la verità</h2>
+<h2 id="c5">Come Jana e le sue alleate scoprono la verità</h2>
 <p>Fin dai suoi primi momenti all&#x27;interno della tenuta, la giovane Jana ha sempre mantenuto ben saldo il ricordo del drammatico passato della propria famiglia. La ragazza è arrivata con due obiettivi fondamentali che hanno guidato ogni sua singola azione: scoprire l&#x27;identità di chi ha brutalmente ucciso la madre Dolores e ritrovare il fratellino Marcos, strappato via durante quella terribile notte degli incappucciati. In questa complessa ricerca, la giovane non è rimasta sola, trovando un sostegno cruciale in Maria Fernandez, la prima persona a conoscere la vera motivazione del suo arrivo. A lei si è poi unita la governante Pia, la cui profonda conoscenza di ogni angolo e segreto della struttura si è rivelata determinante per portare alla luce preziosi dettagli legati alla storia di Dolores.</p>
 <p>Le indagini condotte con costanza dalle tre donne hanno permesso di far emergere un dettaglio fondamentale sul passato: Dolores lavorava infatti come cameriera personale di donna Eugenia. Questa scoperta ha aperto la strada a una serie di interrogativi e rivelazioni cruciali per ricostruire quanto accaduto quindici anni prima. La sorella di Cruz, che tutti credevano sterile a causa della sua grave malattia, avrebbe miracolosamente dato alla luce un bambino nel corso di un viaggio lontano dalla tenuta. Tuttavia, questa versione ufficiale sostenuta da Cruz si è dimostrata una falsa ricostruzione, crollata definitivamente grazie all&#x27;intervento di Simona. La cuoca ha infatti smontato la menzogna sul presunto tradimento, permettendo di comprendere come la vera madre del ragazzo fosse proprio la povera Dolores.</p>
-<h2>Perché Curro cambia atteggiamento verso Jana alla tenuta</h2>
+<h2 id="c6">Perché Curro cambia atteggiamento verso Jana alla tenuta</h2>
 <p>Il legame tra i due giovani non è iniziato nel migliore dei modi all&#x27;interno della tenuta dei Lujan. Al suo arrivo, Curro si mostrava infatti come un padrone estremamente arrogante nei confronti di tutto il personale di servizio, rivolgendosi senza alcun rispetto anche alla stessa Jana. La situazione avrebbe potuto degenerare rapidamente in scontri ancora più gravi se non fosse intervenuto Manuel per fermare i comportamenti del ragazzo e riportare la calma tra le mura della tenuta. Nonostante questo avvio difficile e conflittuale, l&#x27;atteggiamento della giovane cameriera è cambiato radicalmente quando si è accorta dei continui e spietati maltrattamenti che Lorenzo infliggeva quotidianamente al ragazzo, spingendola a intervenire con determinazione per cercare di proteggerlo.</p>
 <p>La profonda compassione dimostrata da Jana ha gradualmente abbattuto il muro di arroganza del ragazzo, portandolo a fidarsi di lei e ad aprirsi sul proprio doloroso vissuto. Curro ha iniziato così a confidare alla giovane tutta la sua crescente confusione di fronte alle cattiverie e alle angherie subite sia da Lorenzo, da lui sempre considerato come un padre, sia dalla zia Cruz. Messa con le spalle al muro dalle incalzanti domande del giovane, persino Cruz si è vista costretta a cedere una parte della verità, ammettendo che Lorenzo non era in realtà il suo genitore biologico. Questo momento di sincerità ha segnato una svolta fondamentale nella vita del ragazzo, preparando il terreno per la successiva rivelazione portata da Jana tramite la fotografia.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Cosa comporta il patto segreto tra Curro e Jana</h2>
+<h2 id="c7">Cosa comporta il patto segreto tra Curro e Jana</h2>
 <p>Dopo aver ricevuto l&#x27;antica fotografia sbiadita ed essere fuggito per giorni dalle spiegazioni, Curro ha infine trovato il coraggio di affrontare la verità e si è presentato di fronte a Jana. Il ragazzo ha comunicato alla sorella ritrovata la decisione di volerla aiutare a scoprire tutta la verità sulle loro tragiche origini e sulla morte di Dolores. Questo momento si è concretizzato in un lungo e commovente abbraccio, il primo vero gesto d&#x27;affetto tra due fratelli separati da quindici anni di sofferenze, accompagnato dalle toccanti parole del giovane che ha definito un privilegio avere una sorella come lei. Tuttavia, la felicità del ricongiungimento si è scontrata con la necessità di stringere un patto ben preciso per il loro immediato futuro.</p>
 <p>Pur non vergognandosi minimamente delle proprie vere origini popolari, il ragazzo ha chiesto a Jana di mantenere il più assoluto segreto sulla loro parentela, temendo le pesanti conseguenze sociali sulla sua importante storia d&#x27;amore con Martina. La giovane cameriera non ha potuto promettere un silenzio eterno sulla questione, ma ha giurato che sarà sempre al suo fianco per sostenerlo in ogni momento. A distanza di pochi giorni, un dono speciale offerto da Curro ha suggellato ufficialmente questo nuovo capitolo della loro vita. Ora che si sono finalmente ritrovati e uniti come veri fratelli, i due possono unire le proprie forze per affrontare insieme il passato oscuro legato alla famiglia Lujan e cercare giustizia per la loro madre Dolores.</p>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=uHwo0V4Mgqs" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/uHwo0V4Mgqs/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA - SPOILER SPAGNOLI -Jana racconta a Curro che sono Fratelli!</span></a></li><li><a href="https://www.youtube.com/watch?v=JKt8aAdHs4E" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/JKt8aAdHs4E/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni: Jana fà una scoperta scioccante su lei e Curro!</span></a></li><li><a href="https://www.youtube.com/watch?v=-FCrVM2SyF0" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/-FCrVM2SyF0/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni: Un Nuovo Misterioso Personaggio rivelerà finalmente a Jana la verità</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>L&#x27;abbraccio tra Jana e Curro vi ha commosso come noi? E quanto reggerà il segreto sulla loro parentela ora che Martina è nel quadro?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=yU4nzRiacfQ">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di La Promessa</h2><div class="griglia"><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/"><div class="foto"><img src="https://i.ytimg.com/vi/Rp8VhxDiDSk/hqdefault.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></h3>
+    <div class="quando">7 settembre 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/"><div class="foto"><img src="https://i.ytimg.com/vi/8JHt6ogwxQw/hqdefault.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Ángela beve tutto, Curro sfonda la porta</a></h3>
+    <div class="quando">6 settembre 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/"><div class="foto"><img src="/img/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Curro nasconde Ángela, Lorenzo furioso</a></h3>
+    <div class="quando">6 settembre 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=La Promessa, Jana e Curro finalmente uniti come fratelli: la foto di Dolores, l&#x27;abbraccio e il patto segreto — https://serietvfans.com/la-promessa/la-promessa-jana-e-curro-finalmente-uniti-come-fratelli-la-foto-di-dolores-labbr/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/la-promessa/la-promessa-jana-e-curro-finalmente-uniti-come-fratelli-la-foto-di-dolores-labbr/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/la-promessa/la-promessa-jana-e-curro-finalmente-uniti-come-fratelli-la-foto-di-dolores-labbr/&text=La Promessa, Jana e Curro finalmente uniti come fratelli: la foto di Dolores, l&#x27;abbraccio e il patto segreto" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">LA PROMESSA Anticipazioni: Jana e Curro finalmente uniti come fratelli</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=yU4nzRiacfQ">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di La Promessa</h3><ol class="numerata"><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Ángela beve tutto, Curro sfonda la porta</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Curro nasconde Ángela, Lorenzo furioso</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>LA PROMESSA Anticipazioni: Jana e Curro finalmente uniti come fratelli</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su La Promessa</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-3-6-settembre-maria-affronta-la-gravidanza-da-sola/">La Promessa anticipazioni 3-6 settembre: Maria affronta la gravidanza da sola</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-carlo-arriva-maria-trema/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Carlo arriva, Maria trema</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/far-away/far-away-anticipazioni-dal-31-agosto-al-4-settembre-chi-ha-donato-il-fegato-a-nare/">Far Away, anticipazioni dal 31 agosto al 4 settembre: chi ha donato il fegato a Nare, e perché adesso sta male lui</a></li><li><a href="/far-away/far-away-dal-31-agosto-la-madre-di-alya-sapeva-tutto-non-ricordo/">Far Away Dal 31 Agosto: la madre di Alya sapeva tutto — «non ricordo»</a></li><li><a href="/forbidden-fruit/forbidden-fruit-dal-31-agosto-il-conto-a-nome-di-halit-che-e-morto/">Forbidden Fruit Dal 31 Agosto: il conto a nome di Halit, che è morto</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

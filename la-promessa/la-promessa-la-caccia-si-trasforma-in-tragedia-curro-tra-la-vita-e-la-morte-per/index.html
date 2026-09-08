@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/la-promessa/">La Promessa</a> › La Promessa, la caccia si trasforma in tragedia: Curro tra la vita e la morte per ordine di Cruz e Lorenzo, e Vera viene riconosciuta</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/la-promessa/">La Promessa</a>
   <h1>La Promessa, la caccia si trasforma in tragedia: Curro tra la vita e la morte per ordine di Cruz e Lorenzo, e Vera viene riconosciuta</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">La battuta di caccia organizzata «in onore» di Curro nasconde un sicario assoldato da Lorenzo: il prossimo Barone di Linaja cade gravemente ferito insieme a Feliciano, e la famiglia deve decidere se operarlo alla tenuta o trasferirlo a Puebla de Tera. Intanto un&#x27;ospite di Margarita riconosce Vera, e il suo segreto sta per esplodere.</p><ol><li><a href="#c1">La trappola perfetta: una caccia «in onore» della vittima</a></li><li><a href="#c2">Chi è Lorenzo de la Mata, l&#x27;uomo che dovrebbe proteggerlo</a></li><li><a href="#c3">Alonso lo manda incontro al suo assassino</a></li><li><a href="#c4">Perché Lorenzo si sfila all&#x27;ultimo momento</a></li><li><a href="#c5">La decisione che vale una vita: operarlo alla Promessa o trasferirlo?</a></li><li><a href="#c6">Vera riconosciuta: il segreto della cameriera sta per esplodere</a></li><li><a href="#c7">Perché conta: chi ha sparato rischia meno di chi ha chiesto il sangue</a></li><li><a href="#c8">Cosa spinge Feliciano a lottare dopo il ferimento</a></li><li><a href="#c9">Perché Maria Fernandez decide di lasciare la Promessa</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>La Promessa</strong> — Rete 4 · in streaming su Mediaset Infinity</span></div>
   
-  <p class="occhiello">La battuta di caccia organizzata «in onore» di Curro nasconde un sicario assoldato da Lorenzo: il prossimo Barone di Linaja cade gravemente ferito insieme a Feliciano, e la famiglia deve decidere se operarlo alla tenuta o trasferirlo a Puebla de Tera. Intanto un&#x27;ospite di Margarita riconosce Vera, e il suo segreto sta per esplodere.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: La Promessa, la caccia si trasforma in tragedia: Curro tra la vita e la morte per ordine di Cruz e Lorenzo, e Vera viene riconosciuta" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/BCst9EBtHLE/maxresdefault.jpg" alt="La Promessa, la caccia si trasforma in tragedia: Curro tra la vita e la morte per ordine di Cruz e Lorenzo, e Vera viene riconosciuta" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/BCst9EBtHLE/hqdefault.jpg 480w, https://i.ytimg.com/vi/BCst9EBtHLE/sddefault.jpg 640w, https://i.ytimg.com/vi/BCst9EBtHLE/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/BCst9EBtHLE/hqdefault.jpg&quot;, &quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,44 +409,66 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>Alonso, per togliere il nipote dall&#x27;imbarazzo della sua pessima mira, lo sposta proprio nel punto in cui il killer lo sta aspettando: lo zio, senza saperlo, manda Curro incontro a morte certa.</strong></p>
-  <h2>La trappola perfetta: una caccia «in onore» della vittima</h2>
+  <h2 id="c1">La trappola perfetta: una caccia «in onore» della vittima</h2>
 <p>Il piano di Cruz e Lorenzo è diabolico nella sua semplicità: una giornata di caccia con banchetto per celebrare Curro, prossimo Barone di Linaja — con un sicario appostato tra gli alberi. Lorenzo, guarda caso, si sfila all&#x27;ultimo fingendo una sciatica fulminante che lo inchioda a letto. Curro, che di caccia capisce poco, si prepara ignaro con il cugino Manuel, felice degli onori che gli zii gli riservano. Sul campo la sua scarsa mira lo rende lo zimbello del Marchese di Aguinaga: e qui il destino gioca la carta più crudele.</p>
-<h2>Chi è Lorenzo de la Mata, l&#x27;uomo che dovrebbe proteggerlo</h2>
+<h2 id="c2">Chi è Lorenzo de la Mata, l&#x27;uomo che dovrebbe proteggerlo</h2>
 <p>Per capire l&#x27;enormità del piano bisogna sapere chi lo firma. Lorenzo è il capitano che Curro ha chiamato padre per tutta la vita, il marito di Eugenia, e non è mai stato un padre affettuoso: il disprezzo, le punizioni e le mani addosso hanno accompagnato il ragazzo da quando era bambino. Non è suo figlio, e in casa lo sanno in pochi. Con Cruz lo lega qualcosa di più solido di una parentela acquisita — i due hanno già lavorato insieme a cose che non si raccontano — e il titolo di Barone di Linaja arriva proprio adesso. Il giorno in cui Curro diventa erede è lo stesso in cui diventa un ostacolo, e la festa in suo onore è il modo più elegante di metterlo in un bosco.</p>
-<h2>Alonso lo manda incontro al suo assassino</h2>
+<h2 id="c3">Alonso lo manda incontro al suo assassino</h2>
 <p>Per risparmiare al nipote l&#x27;imbarazzo, Alonso gli suggerisce di spostarsi in una posizione più facile — esattamente quella che serve al killer per avere il bersaglio pulito. La «sfortuna» colpisce due volte: sia Curro sia Feliciano, suo compagno di caccia, restano gravemente feriti. Proprio Feliciano, che aveva appena chiesto a Teresa di sposarlo e condiviso con lei e Petra la gioia della fiducia crescente dei signori, si sottopone all&#x27;intervento e migliora. Per Curro invece è tutto appeso a un filo.</p>
-<h2>Perché Lorenzo si sfila all&#x27;ultimo momento</h2>
+<h2 id="c4">Perché Lorenzo si sfila all&#x27;ultimo momento</h2>
 <p>La sciatica fulminante che lo inchioda a letto arriva con un tempismo che non serve commentare. Chi organizza una battuta di caccia e poi non ci va ottiene due cose insieme: non deve reggere lo sguardo di chi sta per essere colpito, e ha decine di testimoni pronti a giurare che era altrove. È la parte del piano che non richiede un sicario, solo un letto.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>La decisione che vale una vita: operarlo alla Promessa o trasferirlo?</h2>
+<h2 id="c5">La decisione che vale una vita: operarlo alla Promessa o trasferirlo?</h2>
 <p>Con il dottor Sandoval fuori dai giochi, l&#x27;unico responsabile della salute di Curro resta Abel — e serve con urgenza una trasfusione di sangue: chi sarà il donatore? Cruz e Lorenzo spingono perché il ragazzo resti al palazzo, convinti che Abel non saprà salvarlo; il capitano, anzi, si dice fiducioso che sia «questione di ore». Ma Rómulo e Pía cominciano a fiutare che dietro la disgrazia non c&#x27;è la sfortuna: c&#x27;è qualcosa di losco. La verità è più vicina di quanto i congiurati credano.</p>
-<h2>Vera riconosciuta: il segreto della cameriera sta per esplodere</h2>
+<h2 id="c6">Vera riconosciuta: il segreto della cameriera sta per esplodere</h2>
 <p>Come se non bastasse, alla tenuta arriva un&#x27;amica ospite di Margarita — e Vera, vedendola, va nel panico: la conosce. La cameriera si rifiuta di accompagnarla e suggerisce a donna Pía che «non è un buon momento per ricevere ospiti». Chi è davvero Vera? Il suo passato sta per venire alla luce. Sul fronte della servitù, María Fernández scopre che la Marchesa non intende riprenderla e prepara le valigie per cercare lavoro lontano dalla Promessa, mentre Catalina — riappacificatasi con Pelayo — supplica il conte di intercedere. E Salvador, stremato dalle bugie, era a un passo dal confessarle tutto.</p>
-<h2>Perché conta: chi ha sparato rischia meno di chi ha chiesto il sangue</h2>
+<h2 id="c7">Perché conta: chi ha sparato rischia meno di chi ha chiesto il sangue</h2>
 <p>L&#x27;agguato lascia dietro di sé due tracce che i congiurati non hanno calcolato. La prima è Alonso: è stato lui, in buona fede, a spostare il nipote nel punto giusto per il tiratore, e quando la ricostruzione arriverà il marchese scoprirà di essere stato usato dentro casa propria da sua moglie. Un uomo che si è sempre rifiutato di credere al peggio dei suoi non potrà più permetterselo. La seconda è la trasfusione: cercare un donatore significa cercare compatibilità tra le persone di quella famiglia, cioè fare ad alta voce domande su chi è parente di chi. Curro è stato colpito perché la sua nascita valeva un titolo; potrebbe essere salvato dall&#x27;unica procedura capace di dire come è nato davvero. E a fiutare per primi che non è stata sfortuna non sono i signori, ma Rómulo e Pía: la verità sta partendo dal piano di sotto.</p>
-<h2>Cosa spinge Feliciano a lottare dopo il ferimento</h2>
+<h2 id="c8">Cosa spinge Feliciano a lottare dopo il ferimento</h2>
 <p>La battuta di caccia avrebbe dovuto rappresentare un momento di festa per la famiglia nobile, ma per Feliciano si è trasformata in un incubo improvviso proprio nel periodo più felice della sua esistenza. Il giovane cameriere aveva da poco vissuto un passaggio fondamentale compiendo il passo verso un futuro condiviso insieme a Teresa, alla quale aveva chiesto con enorme emozione di diventargli moglie. Insieme alla sua amata e a Petra, Feliciano stava assaporando una serenità del tutto nuova, legata soprattutto alla profonda soddisfazione per la crescita della fiducia che i signori della tenuta stavano dimostrando nei suoi confronti. Trovarsi al fianco del cugino di Manuel durante la battuta sembrava il coronamento di questa fase fortunata, prima che gli spari nel bosco cancellassero ogni sua grande gioia.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>Quando i colpi esplosi dal sicario lo hanno raggiunto, Feliciano si è ritrovato gravemente ferito accanto a Curro, facendo temere il peggio a tutta la servitù del palazzo. A differenza del futuro Barone di Linaja, il cameriere si è sottoposto tempestivamente all&#x27;intervento chirurgico necessario e la sua situazione ha iniziato a mostrare incoraggianti segnali di miglioramento. Mentre la sua fibra gli consente di superare la prova principale, il contrasto con il destino del giovane nobile rimane drammatico. Curro lotta infatti ancora tra la vita e la morte, mentre Cruz e Lorenzo sperano segretamente che le sue condizioni precipitino definitivamente prima che il dottor Abel riesca a salvarlo tramite una delicata procedura di trasfusione per cui occorrerà trovare rapidamente un donatore idoneo all&#x27;interno della residenza dei marchesi.</p>
-<h2>Perché Maria Fernandez decide di lasciare la Promessa</h2>
+<h2 id="c9">Perché Maria Fernandez decide di lasciare la Promessa</h2>
 <p>Mentre la tenuta è sconvolta dal tragico agguato nel bosco, al piano di sotto si consuma un&#x27;altra amara vicenda che vede protagonista María Fernández. La domestica scopre con profondo sconforto che la Marchesa non ha alcuna intenzione di perdonarla né di consentirle il rientro in servizio, ponendola di fronte a una realtà inevitabile. Senza più speranze di un chiarimento con la signora, la ragazza inizia con grande amarezza a preparare le proprie valigie con l&#x27;obiettivo di cercare un nuovo lavoro lontano dalla struttura. La sua sofferenza non lascia indifferente Catalina che, dopo la recente riappacificazione con Pelayo, decide di supplicare il conte affinché intervenga per convincere la padrona a fare un passo indietro su questa punizione davvero troppo severa ed ingiusta per la povera giovane ragazza.</p>
 <p>La partenza imminente della cameriera accresce la tensione accumulata da Salvador, arrivato al limite della sopportazione per via delle menzogne e ormai vicinissimo a rivelarle la verità. Contestualmente, la tranquillità della servitù è messa a dura prova dall&#x27;atteggiamento sfuggente di Vera, sopraffatta dal terrore quando un&#x27;amica ospite di Margarita rischia di smascherarla. La nuova arrivata cerca in ogni modo di proteggere la propria reale identità, chiedendo disperatamente a donna Pía di respingere le visite. Tutti questi intrecci tra le mura della tenuta si sviluppano proprio mentre il maggiordomo Rómulo e la governante iniziano a sospettare che dietro il ferimento di Curro si nasconda una spietata macchinazione orchestrata dall&#x27;alto per eliminare definitivamente il giovane erede al titolo di Barone di Linaja, senza lasciare alcuna traccia apparente colpevole.</p>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=8eAoXYVLnbk" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/8eAoXYVLnbk/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni: Cosa nasconde Romulo? Curro riconosce Jana?</span></a></li><li><a href="https://www.youtube.com/watch?v=J25erAN4nC8" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/J25erAN4nC8/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>Anticipazioni La Promessa 18 Luglio: Cruz Spinge Lorenzo a Ingannare Margarita con Clausole Sub</span></a></li><li><a href="https://www.youtube.com/watch?v=vFhZwxDv-nQ" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/vFhZwxDv-nQ/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni: Eredità Barone, Curro tra Cruz e Lorenzo!</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Curro sopravviverà all&#x27;agguato? E chi sarà il donatore di sangue che potrebbe salvarlo — e magari svelare più di un segreto di famiglia?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=BCst9EBtHLE">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di La Promessa</h2><div class="griglia"><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/"><div class="foto"><img src="https://i.ytimg.com/vi/Rp8VhxDiDSk/hqdefault.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></h3>
+    <div class="quando">7 settembre 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/"><div class="foto"><img src="https://i.ytimg.com/vi/8JHt6ogwxQw/hqdefault.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Ángela beve tutto, Curro sfonda la porta</a></h3>
+    <div class="quando">6 settembre 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/"><div class="foto"><img src="/img/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Curro nasconde Ángela, Lorenzo furioso</a></h3>
+    <div class="quando">6 settembre 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=La Promessa, la caccia si trasforma in tragedia: Curro tra la vita e la morte per ordine di Cruz e Lorenzo, e Vera viene riconosciuta — https://serietvfans.com/la-promessa/la-promessa-la-caccia-si-trasforma-in-tragedia-curro-tra-la-vita-e-la-morte-per/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/la-promessa/la-promessa-la-caccia-si-trasforma-in-tragedia-curro-tra-la-vita-e-la-morte-per/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/la-promessa/la-promessa-la-caccia-si-trasforma-in-tragedia-curro-tra-la-vita-e-la-morte-per/&text=La Promessa, la caccia si trasforma in tragedia: Curro tra la vita e la morte per ordine di Cruz e Lorenzo, e Vera viene riconosciuta" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">LA PROMESSA ANTICIPAZIONI SETTIMANALI: CURRO MUORE E VERA VIENE SCOPERTA</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=BCst9EBtHLE">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di La Promessa</h3><ol class="numerata"><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Ángela beve tutto, Curro sfonda la porta</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Curro nasconde Ángela, Lorenzo furioso</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>LA PROMESSA ANTICIPAZIONI SETTIMANALI: CURRO MUORE E VERA VIENE SCOPERTA</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su La Promessa</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-3-6-settembre-maria-affronta-la-gravidanza-da-sola/">La Promessa anticipazioni 3-6 settembre: Maria affronta la gravidanza da sola</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-carlo-arriva-maria-trema/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Carlo arriva, Maria trema</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/far-away/far-away-anticipazioni-dal-31-agosto-al-4-settembre-chi-ha-donato-il-fegato-a-nare/">Far Away, anticipazioni dal 31 agosto al 4 settembre: chi ha donato il fegato a Nare, e perché adesso sta male lui</a></li><li><a href="/far-away/far-away-dal-31-agosto-la-madre-di-alya-sapeva-tutto-non-ricordo/">Far Away Dal 31 Agosto: la madre di Alya sapeva tutto — «non ricordo»</a></li><li><a href="/forbidden-fruit/forbidden-fruit-dal-31-agosto-il-conto-a-nome-di-halit-che-e-morto/">Forbidden Fruit Dal 31 Agosto: il conto a nome di Halit, che è morto</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/my-home-my-destiny/">My Home My Destiny</a> › My Home My Destiny 31 luglio-1 agosto, l&#x27;abbraccio all&#x27;orfanotrofio cambia tutto: Mehdi e Zeynep decidono di adottare Kibrit — e Benal bussa alla porta con il test in tasca</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/my-home-my-destiny/">My Home My Destiny</a>
   <h1>My Home My Destiny 31 luglio-1 agosto, l&#x27;abbraccio all&#x27;orfanotrofio cambia tutto: Mehdi e Zeynep decidono di adottare Kibrit — e Benal bussa alla porta con il test in tasca</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>8 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Due puntate che spostano l&#x27;asse della storia. Dopo la crisi di Kibrit, che la caccia accusandola di darle false speranze, Zeynep si ritrova davanti Mehdi — e per la prima volta lui non la respinge: si abbracciano, e da quell&#x27;abbraccio nasce la decisione di adottare la ragazza e di non separarsi più. La stessa sera, però, Benal si presenta a casa loro con un test di gravidanza positivo.</p><ol><li><a href="#c1">L&#x27;anticipo restituito e la frase nel libro di poesie</a></li><li><a href="#c2">La sera in discoteca e il bambino per strada</a></li><li><a href="#c3">L&#x27;abbraccio che apre una nuova fase</a></li><li><a href="#c4">Il test in tasca</a></li><li><a href="#c5">Come Mehdi e Zeynep affrontano i problemi economici</a></li><li><a href="#c6">Cosa unisce Mehdi e Zeynep durante la notte</a></li><li><a href="#c7">Perche Benal decide di affrontare direttamente Mehdi</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>My Home My Destiny</strong> — Serie conclusa in Italia · le puntate su Mediaset Infinity</span></div>
   
-  <p class="occhiello">Due puntate che spostano l&#x27;asse della storia. Dopo la crisi di Kibrit, che la caccia accusandola di darle false speranze, Zeynep si ritrova davanti Mehdi — e per la prima volta lui non la respinge: si abbracciano, e da quell&#x27;abbraccio nasce la decisione di adottare la ragazza e di non separarsi più. La stessa sera, però, Benal si presenta a casa loro con un test di gravidanza positivo.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: My Home My Destiny 31 luglio-1 agosto, l&#x27;abbraccio all&#x27;orfanotrofio cambia tutto: Mehdi e Zeynep decidono di adottare Kibrit — e Benal bussa alla porta con il test in tasca" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/VLdQr_42hvk/maxresdefault.jpg" alt="My Home My Destiny 31 luglio-1 agosto, l&#x27;abbraccio all&#x27;orfanotrofio cambia tutto: Mehdi e Zeynep decidono di adottare Kibrit — e Benal bussa alla porta con il test in tasca" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/VLdQr_42hvk/hqdefault.jpg 480w, https://i.ytimg.com/vi/VLdQr_42hvk/sddefault.jpg 640w, https://i.ytimg.com/vi/VLdQr_42hvk/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/VLdQr_42hvk/hqdefault.jpg&quot;, &quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,25 +409,25 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>In discoteca Mehdi vede Ekrem con un&#x27;altra donna: il segreto del suocero comincia a uscire.</strong></p>
-  <h2>L&#x27;anticipo restituito e la frase nel libro di poesie</h2>
+  <h2 id="c1">L&#x27;anticipo restituito e la frase nel libro di poesie</h2>
 <p>Zeynep sta raccogliendo le sue cose per lasciare la casa quando incontra Mehdi che rientra. Lo ringrazia per aver messo a disposizione un alloggio ai suoi genitori, ma gli dice che non lo userà: ha ritirato l&#x27;anticipo dell&#x27;affitto e vuole ridarglielo perché paghi la multa che tiene chiusa l&#x27;officina. Lui rifiuta — finché sono legalmente sposati, il suo benessere economico è responsabilità sua — e le chiede perché continui ad aiutarlo con la denuncia, con Kibrit, con l&#x27;officina, dopo aver chiesto il divorzio. Zeynep gli racconta di aver trovato i suoi libri di poesie e di essersi fermata su una frase, e chiude il discorso a modo suo: lo avrebbe aiutato comunque, perché per lei è una persona che ha bisogno di assistenza legale come tutte le altre.</p>
-<h2>La sera in discoteca e il bambino per strada</h2>
+<h2 id="c2">La sera in discoteca e il bambino per strada</h2>
 <p>Nuh ed Emine organizzano un&#x27;uscita a quattro sperando di avvicinarli. In un locale Mehdi riconosce Ekrem, il padre adottivo di Zeynep, in atteggiamenti intimi con una donna che non è sua moglie, e trascina fuori tutti per risparmiarle quella scena. Fuori, però, ne trovano un&#x27;altra: un uomo che sta picchiando un bambino per strada. Zeynep interviene senza pensarci e Mehdi la segue, mettendo in fuga l&#x27;aggressore; il bambino, rimasto solo, passa la serata con loro. È la sera in cui ciascuno dei due comincia davvero a vedere le qualità dell&#x27;altro.</p>
-<h2>L&#x27;abbraccio che apre una nuova fase</h2>
+<h2 id="c3">L&#x27;abbraccio che apre una nuova fase</h2>
 <p>Il giorno dopo Zeynep va all&#x27;istituto da Kibrit, che ha una crisi violenta e la caccia accusandola di essere egoista e di illuderla. Sconvolta, esce e trova Mehdi ad aspettarla: per la prima volta lui non la respinge, si capiscono senza dirsi niente e si abbracciano. Sarà lei stessa a raccontarlo alla psichiatra — quell&#x27;abbraccio ha aperto una fase nuova del suo matrimonio e della sua vita. Dall&#x27;alto delle scale, Kibrit ha visto tutto. I due decidono di avviare le pratiche di adozione e di non separarsi più; Mehdi vuole fare le cose per bene e chiede a Zeynep di mantenere la parola data, e lei promette che il bene della ragazza viene prima di tutto. Quando lo dicono a Kibrit, il suo sorriso torna.</p>
-<h2>Il test in tasca</h2>
+<h2 id="c4">Il test in tasca</h2>
 <p>Le notizie a casa sono accolte con gioia da tutti — niente divorzio per almeno un anno e Kibrit che verrà a vivere con loro — tranne che da una parte della famiglia: per ospitarla bisognerà togliere a Yasemin la stanza che le era stata promessa, e Müjgan ne approfitta per accusare di nuovo Zeynep di manipolare il fratello. La discussione viene interrotta da qualcuno che bussa: è Benal, che nel frattempo ha fatto diversi test di gravidanza risultati tutti positivi e ha provato inutilmente a telefonare a Mehdi, vedendosi rifiutare ogni chiamata. Ora è lì, sulla porta, decisa a dirglielo di persona. E intanto, in un ristorante, Faruk chiede a Emine di tenerlo costantemente aggiornato su Zeynep, perché considera Mehdi un uomo pericoloso.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Come Mehdi e Zeynep affrontano i problemi economici</h2>
+<h2 id="c5">Come Mehdi e Zeynep affrontano i problemi economici</h2>
 <p>Zeynep sta raccogliendo le sue cose personali con l intenzione di abbandonare la casa quando si imbatte in Mehdi al suo rientro. Durante questo confronto la giovane donna ci tiene a ringraziare apertamente il marito per la grande generosità dimostrata nel mettere a disposizione un alloggio destinato ai suoi genitori. Tuttavia Zeynep specifica con chiarezza che non intende usufruire di quel gesto e gli consegna l anticipo dell affitto appena ritirato. Il suo obiettivo primario è permettere a Mehdi di saldare la multa che tiene bloccata l officina, consentendogli così di riaprire la propria attività lavorativa senza ulteriori impedimenti.</p>
 <p>Di fronte alla somma di denaro offerta, Mehdi rifiuta categoricamente di accettare i soldi portati da Zeynep per coprire le spese dell officina. L uomo le ricorda fermamente che fino a quando risulteranno legalmente sposati, il suo benessere economico rimane unicamente una sua precisa responsabilità personale. Mehdi coglie l occasione per chiederle le motivazioni profonde che la spingono a continuare ad aiutarlo con i problemi legali, la denuncia e il destino di Kibrit, nonostante la richiesta di divorzio. Zeynep gli rivela di aver letto i suoi libri di poesie e di essere rimasta colpita da una frase, ribadendo comunque di agire solo per fornirgli assistenza legale.</p>
 <p>Nel tentativo di riavvicinare i due coniugi in un momento di forte tensione, Nuh ed Emine decidono di organizzare un uscita a quattro in un locale. La serata prende però una piega del tutto inaspettata quando Mehdi nota all interno della discoteca la presenza di Ekrem, il padre adottivo di Zeynep. L uomo si trova in atteggiamenti decisamente intimi con una donna sconosciuta che non è sua moglie. Per evitare a Zeynep l enorme dolore di scoprire il segreto sconvolgente del genitore adottivo, Mehdi sceglie subito di trascinare tutti fuori dal locale prima che la ragazza possa rendersi conto della situazione.</p>
-<h2>Cosa unisce Mehdi e Zeynep durante la notte</h2>
+<h2 id="c6">Cosa unisce Mehdi e Zeynep durante la notte</h2>
 <p>Appena usciti dalla discoteca, il gruppo assiste a una scena drammatica che si sta consumando proprio lungo la strada. Un uomo sconosciuto sta picchiando con violenza un bambino indifeso, scatenando l immediata reazione di Zeynep che interviene senza esitare per proteggere il piccolo. Mehdi segue prontamente la moglie nell azione e riesce a mettere in fuga l aggressore, salvando il bambino da ulteriori violenze. Rimanendo da solo, il piccolo trascorre il resto della serata insieme a loro due, trasformando quella notte difficile in un momento speciale dove sia Mehdi che Zeynep cominciano a osservare e apprezzare le rispettive qualità umane.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>L indomani Zeynep si reca all istituto per far visita a Kibrit, ma l incontro si rivela estremamente drammatico e doloroso. La giovane ospite della struttura vive infatti una crisi emotiva molto violenta e scaglia parole durissime contro Zeynep, accusandola di essere un egoista e di continuare a illuderla con false speranze per il futuro. Sconvolta da questo rifiuto aggressivo, Zeynep decide di uscire dall orfanotrofio in lacrime, dove ad attenderla trova inaspettatamente Mehdi. Per la prima volta nella loro complessa storia, l uomo non la respinge ma le offre un abbraccio carico di intesa silenziosa e profonda comprensione reciproca.</p>
 <p>Quel gesto d affetto all orfanotrofio viene osservato di nascosto da Kibrit dall alto delle scale, mutando per sempre il corso degli eventi. Zeynep confida in seguito alla propria psichiatra che proprio quell abbraccio inaspettato ha segnato l inizio di una fase del tutto nuova nel suo matrimonio e nella sua vita. I due sposi prendono la decisione condivisa di rinunciare al divorzio per almeno un anno e di avviare immediatamente le pratiche legali per l adozione. Mehdi chiede alla moglie di mantenere la promessa fatta sul benessere della ragazza, e quando la notizia viene comunicata a Kibrit sul suo volto torna finalmente il sorriso.</p>
-<h2>Perche Benal decide di affrontare direttamente Mehdi</h2>
+<h2 id="c7">Perche Benal decide di affrontare direttamente Mehdi</h2>
 <p>La notizia dell adozione imminente e dell interruzione della pratica di divorzio porta una grande gioia in casa, anche se non tutti i familiari accolgono la novità con entusiasmo. L arrivo permanente di Kibrit richiede di liberare la stanza precedentemente promessa a Yasemin, scatenando la reazione stizzita di Müjgan. La donna approfitta subito della situazione per rivolgere pesanti accuse contro Zeynep, sostenendo che stia manipolando abilmente il fratello per ottenere ciò che desidera. Le fortissime tensioni domestiche vengono tuttavia brusche interrotte dall arrivo improvviso di una persona inaspettata che bussa con insistenza alla porta di casa.</p>
 <p>Sulla soglia dell abitazione si presenta Benal, mossa dalla necessità assoluta di parlare con il proprietario di casa. Nel corso delle ultime giornate la donna ha effettuato diversi test di gravidanza ed è risultata sempre positiva, scoprendo di attendere un figlio. Benal ha provato ripetutamente a mettersi in contatto telefonico con Mehdi per comunicargli la notizia, ma l uomo ha rifiutato sistematicamente ogni sua chiamata. Non avendo altre opzioni a disposizione, Benal sceglie di presentarsi di persona con il test in tasca, determinata a svelare la verità sul bambino direttamente a Mehdi, proprio mentre la famiglia festeggia l adozione.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
@@ -385,19 +435,41 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=QiBDNher9Qc" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/QiBDNher9Qc/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>MY HOME MY DESTINY Anticipazioni Turche: Nasce la Bambina di Benal! Mehdi diventa Papà!</span></a></li><li><a href="https://www.youtube.com/watch?v=vT454NXmnL0" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/vT454NXmnL0/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>MY HOME MY DESTINY Anticipazioni: Mehdi geloso alla follia, rinchiude Zeynep in casa!</span></a></li><li><a href="https://www.youtube.com/watch?v=7_JsuSQZoOU" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/7_JsuSQZoOU/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>MY HOME, MY DESTINY Anticipazioni: Zeynep e Mehdi finalmente innamorati!</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>L&#x27;adozione di Kibrit era il vero inizio della loro storia?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=VLdQr_42hvk">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di My Home My Destiny</h2><div class="griglia"><article class="scheda">
+  <a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/"><div class="foto"><img src="/img/my-home-my-destiny-la-trama-completa-e-come-finisce.jpg" alt="My Home My Destiny" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">My Home My Destiny</span>
+    <h3><a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/">My Home My Destiny: la trama completa e come finisce</a></h3>
+    <div class="quando">30 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/"><div class="foto"><img src="https://i.ytimg.com/vi/-djleIeCLQs/hqdefault.jpg" alt="My Home My Destiny" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">My Home My Destiny</span>
+    <h3><a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/">My Home My Destiny, Zeynep ferma l&#x27;aborto di Benal in sala operatoria senza sapere che il padre è Mehdi</a></h3>
+    <div class="quando">17 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/"><div class="foto"><img src="https://i.ytimg.com/vi/gxL0o63Nhqw/hqdefault.jpg" alt="My Home My Destiny" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">My Home My Destiny</span>
+    <h3><a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/">My Home My Destiny, anticipazioni del 17 novembre: Özlem indaga su Zeynep e scopre tutto, Nuh diventa autista di Barış e qualcuno manomette i macchinari di Bekir</a></h3>
+    <div class="quando">16 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=My Home My Destiny 31 luglio-1 agosto, l&#x27;abbraccio all&#x27;orfanotrofio cambia tutto: Mehdi e Zeynep decidono di adottare Kibrit — e Benal bussa alla porta con il test in tasca — https://serietvfans.com/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/&text=My Home My Destiny 31 luglio-1 agosto, l&#x27;abbraccio all&#x27;orfanotrofio cambia tutto: Mehdi e Zeynep decidono di adottare Kibrit — e Benal bussa alla porta con il test in tasca" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">MY HOME MY DESTINY Anticipazioni 31 luglio-1 agosto: Zeynep e Mehdi finalmente uniti?</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=VLdQr_42hvk">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di My Home My Destiny</h3><ol class="numerata"><li><a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/">My Home My Destiny: la trama completa e come finisce</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/">My Home My Destiny, Zeynep ferma l&#x27;aborto di Benal in sala operatoria senza sapere che il padre è Mehdi</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/">My Home My Destiny, anticipazioni del 17 novembre: Özlem indaga su Zeynep e scopre tutto, Nuh diventa autista di Barış e qualcuno manomette i macchinari di Bekir</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-guida-alla-serie-chi-sono-demet-ozdemir-e-ibrahim-celikkol-qu/">My Home My Destiny: guida alla serie, il cast, i personaggi e quante puntate sono</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-1-dicembre-gli-spari-davanti-alla-vecchia-casa-zeynep-tra-le/">My Home My Destiny 1° dicembre, gli spari davanti alla vecchia casa: Zeynep tra le due madri quando l&#x27;uomo in moto estrae la pistola</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>MY HOME MY DESTINY Anticipazioni 31 luglio-1 agosto: Zeynep e Mehdi finalmente uniti?</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su My Home My Destiny</h3><ul><li><a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/">My Home My Destiny: la trama completa e come finisce</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/">My Home My Destiny, Zeynep ferma l&#x27;aborto di Benal in sala operatoria senza sapere che il padre è Mehdi</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/">My Home My Destiny, anticipazioni del 17 novembre: Özlem indaga su Zeynep e scopre tutto, Nuh diventa autista di Barış e qualcuno manomette i macchinari di Bekir</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-guida-alla-serie-chi-sono-demet-ozdemir-e-ibrahim-celikkol-qu/">My Home My Destiny: guida alla serie, il cast, i personaggi e quante puntate sono</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-1-dicembre-gli-spari-davanti-alla-vecchia-casa-zeynep-tra-le/">My Home My Destiny 1° dicembre, gli spari davanti alla vecchia casa: Zeynep tra le due madri quando l&#x27;uomo in moto estrae la pistola</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

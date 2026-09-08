@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/endless-love/">Endless Love</a> › Endless Love, la clamorosa scoperta di Kemal: la moglie Asu è la sorella di Emir — e il tentato suicidio che gli impedisce di lasciarla</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/endless-love/">Endless Love</a>
   <h1>Endless Love, la clamorosa scoperta di Kemal: la moglie Asu è la sorella di Emir — e il tentato suicidio che gli impedisce di lasciarla</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Le anticipazioni turche ricostruiscono l&#x27;arco più amaro della serie: Kemal, rassegnato a un futuro senza Nihan, sposa Asu — ignorando che la «nipote di Hakkı» è in realtà la sorella segreta di Emir. Quando la verità esplode, il senso di tradimento gli impone la rottura: ma il tentato suicidio di Asu lo incatena a una seconda possibilità che non voleva concedere.</p><ol><li><a href="#c1">Asu, la seconda scelta che non si rassegna</a></li><li><a href="#c2">Le nozze e la lezione di Nihan</a></li><li><a href="#c3">La scoperta: «Mia moglie è la sorella di Emir»</a></li><li><a href="#c4">I tasselli mancanti: chi è la madre, e cosa accadrà se Emir saprà</a></li><li><a href="#c5">Come Kemal accetta la proposta di nozze con Asu</a></li><li><a href="#c6">Perche Nihan sceglie di sostenere le decisioni di Kemal</a></li><li><a href="#c7">Cosa spinge Asu a compiere un gesto estremo</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>Endless Love</strong> — Serie conclusa in Italia · le puntate su Mediaset Infinity</span></div>
   
-  <p class="occhiello">Le anticipazioni turche ricostruiscono l&#x27;arco più amaro della serie: Kemal, rassegnato a un futuro senza Nihan, sposa Asu — ignorando che la «nipote di Hakkı» è in realtà la sorella segreta di Emir. Quando la verità esplode, il senso di tradimento gli impone la rottura: ma il tentato suicidio di Asu lo incatena a una seconda possibilità che non voleva concedere.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: Endless Love, la clamorosa scoperta di Kemal: la moglie Asu è la sorella di Emir — e il tentato suicidio che gli impedisce di lasciarla" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/qnEqP2V3LDg/maxresdefault.jpg" alt="Endless Love, la clamorosa scoperta di Kemal: la moglie Asu è la sorella di Emir — e il tentato suicidio che gli impedisce di lasciarla" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/qnEqP2V3LDg/hqdefault.jpg 480w, https://i.ytimg.com/vi/qnEqP2V3LDg/sddefault.jpg 640w, https://i.ytimg.com/vi/qnEqP2V3LDg/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/qnEqP2V3LDg/hqdefault.jpg&quot;, &quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,25 +409,25 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>Il dettaglio che spiazza: davanti al dolore di Nihan per le nozze di Kemal, perfino Emir si incrina — per la prima volta ascolta il cuore invece della ragione.</strong></p>
-  <h2>Asu, la seconda scelta che non si rassegna</h2>
+  <h2 id="c1">Asu, la seconda scelta che non si rassegna</h2>
 <p>Presentata come nipote dell&#x27;influente Hakkı, Asu ama Kemal dal primo giorno — e non ha mai avuto il suo cuore, che appartiene a Nihan. Le circostanze però la favoriscono: convinto che con il vero amore non ci sia più speranza, Kemal la accetta come compagna. Ne nasce il triangolo più doloroso: Nihan consumata dalla gelosia al pensiero delle loro notti, Asu che piange amaramente sapendo di non essere amata «mai come Nihan», e la casa comprata da Kemal accanto a quella della rivale a rendere tutto incandescente. Fino al bacio rubato durante la malattia di Hakkı — con Nihan ad assistere di nascosto.</p>
-<h2>Le nozze e la lezione di Nihan</h2>
+<h2 id="c2">Le nozze e la lezione di Nihan</h2>
 <p>La gratitudine verso Hakkı morente e il bisogno di voltare pagina portano Kemal alla proposta di matrimonio, accettata da Asu con entusiasmo. Nihan risponde con la grandezza che la definisce: «L&#x27;amore vero non consiste nel possesso, ma nel lasciare all&#x27;altro la libertà di scegliere». E la scena più inattesa è di Emir: vedere Nihan devastata dalla decisione di Kemal gli incrina qualcosa dentro — per la prima volta, il mostro mostra compassione. A pagare in silenzio è anche Tufan: l&#x27;annuncio delle nozze spegne ogni sua speranza con Asu.</p>
-<h2>La scoperta: «Mia moglie è la sorella di Emir»</h2>
+<h2 id="c3">La scoperta: «Mia moglie è la sorella di Emir»</h2>
 <p>Poi la bomba: Kemal scopre che Asu è la sorella segreta di Emir. Il tradimento è totale — la donna che ha sposato gli ha nascosto il legame di sangue con il suo peggior nemico — e la fiducia si sgretola: la decisione di chiudere la relazione è immediata. Ma il destino gioca la carta più crudele: Asu tenta il suicidio, e Kemal, sentendosi responsabile di quella sofferenza, le concede una seconda possibilità che il cuore non vorrebbe dare. Nihan, ancora una volta, lo sostiene incondizionatamente: la sua felicità prima di tutto, anche tra le braccia di un&#x27;altra.</p>
-<h2>I tasselli mancanti: chi è la madre, e cosa accadrà se Emir saprà</h2>
+<h2 id="c4">I tasselli mancanti: chi è la madre, e cosa accadrà se Emir saprà</h2>
 <p>Le anticipazioni si fermano sulla soglia del mistero più grande: perché Asu ed Emir sono fratelli, chi è la loro madre, quale tragedia avvolge quel legame — e soprattutto cosa accadrebbe se Emir scoprisse la verità: «le conseguenze potrebbero essere fatali». I tasselli, per chi segue la serie, cominciano a comporsi: la donna in coma da trent&#x27;anni, la bambina creduta frutto di un tradimento, la vendetta coltivata da Hakkı. La saga corre verso il punto in cui tutti i segreti dei Kozcuoğlu esploderanno insieme — e nessun matrimonio, nessuna alleanza e nessuna pietà sopravviverà intatta.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Come Kemal accetta la proposta di nozze con Asu</h2>
+<h2 id="c5">Come Kemal accetta la proposta di nozze con Asu</h2>
 <p>La decisione di Kemal di legarsi in modo definitivo ad Asu nasce da un profondo senso di rassegnazione e dalla convinzione che il futuro con Nihan sia ormai del tutto irraggiungibile. Spinto da un forte sentimento di gratitudine nei confronti del moribondo Hakkı, l&#x27;uomo sceglie di fare il passo decisivo ponendo la proposta di matrimonio alla donna che lo ha sempre amato. Questa scelta trasforma radicalmente gli equilibri tra i protagonisti, soprattutto dopo l&#x27;acquisto della casa situata proprio accanto a quella della rivale. La vicinanza fisica rende la convivenza emotiva estremamente complessa, scatenando sofferenze incrociate e momenti di grande tensione vissuti nel quotidiano di tutti i personaggi coinvolti.</p>
 <p>Il legame tra Kemal ed Asu appare segnato da un&#x27;asimmetria affettiva che non garantisce alcuna reale serenità alla coppia. Nonostante la gioia dimostrata dalla giovane di fronte alla prospettiva delle nozze, la consapevolezza di non essere amata con la stessa intensità riservata a Nihan continua a farla soffrire amaramente. A complicare il quadro interviene anche la presenza di Tufan, il quale vede infrangersi definitivamente ogni speranza nutrita per il futuro con la nipote di Hakkı. Ogni gesto e ogni evento, compreso quel bacio rubato durante la malattia del vecchio mentore a cui Nihan assiste in segreto, contribuiscono a rendere la situazione sempre più esplosiva e drammatica.</p>
 <p>Il quadro generale si appesantisce ulteriormente a causa dell&#x27;ombra della famiglia Kozcuoğlu e della vendetta preparata nel tempo. L&#x27;apparente idillio delle nozze nasconde inganni profondi legati alla vera identità della sposa, la quale tace la propria parentela segreta con Emir. Mentre Kemal si sforza di costruire una vita normale accanto a una compagna devota, la trama rivela come le bugie e le omissioni finiscano per condizionare ogni singola scelta. La presenza di Hakkı e le dinamiche familiari irrisolte gettano un&#x27;ombra costante sul cammino dei due promessi sposi, preparando il terreno per le scoperte sconvolgenti destinate a minare l&#x27;intera unione.</p>
-<h2>Perche Nihan sceglie di sostenere le decisioni di Kemal</h2>
+<h2 id="c6">Perche Nihan sceglie di sostenere le decisioni di Kemal</h2>
 <p>Di fronte alle sofferenze causate da questo intreccio affettivo, Nihan dimostra un atteggiamento di straordinaria maturità e generosità. Pur essendo consumata dalla gelosia all&#x27;idea delle notti trascorse da Kemal con un&#x27;altra donna, la protagonista comprende che il vero amore richiede di rispettare le scelte dell&#x27;altro senza pretendere alcun possesso. La sua forza interiore le permette di mettere la felicità dell&#x27;uomo che ama al di sopra dei propri desideri, sostenendolo anche quando lui si trova costretto a restare accanto ad Asu. Questa posizione di totale abnegazione evidenzia la profondità del sentimento che lega la coppia principale della storia.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>La sofferenza visibile di Nihan produce un impatto del tutto inaspettato perfino sul suo spietato antagonista, Emir. Vedere la donna completamente devastata dalla notizia del matrimonio di Kemal provoca un&#x27;incrinatura nella rigidità dell&#x27;uomo, che per la prima volta nella serie sembra mettere da parte la pura ragione per ascoltare i propri sentimenti. Questo raro momento di compassione mostra come la disperazione della protagonista riesca a toccare anche chi ha sempre agito come un mostro insensibile. Tuttavia, nonostante questo momentaneo cambiamento di atteggiamento, la complessità delle relazioni resta immutata e la sofferenza di Nihan continua ad alimentare la drammaticità degli eventi.</p>
 <p>Il sostegno incondizionato offerto da Nihan diventa fondamentale nel momento in cui Kemal scopre la terribile verità sull&#x27;identità della moglie. Nonostante il dolore che la situazione le provoca, la donna rimane al fianco del protagonista mentre lui cerca di gestire le conseguenze del tradimento subito. La capacità di comprendere la responsabilità morale avvertita da Kemal nei confronti di Asu dimostra l&#x27;elevatura del suo carattere. In questo contesto di costante tensione, la rivalità tra le due donne e l&#x27;ombra del passato dei Kozcuoğlu mantengono altissima l&#x27;attenzione, mentre i personaggi cercano di orientarsi tra i propri doveri e la verità.</p>
-<h2>Cosa spinge Asu a compiere un gesto estremo</h2>
+<h2 id="c7">Cosa spinge Asu a compiere un gesto estremo</h2>
 <p>La rivelazione dell&#x27;inganno e della vera parentela con Emir distrugge istantaneamente la fiducia che Kemal aveva riposto nella sposa. Scoprire che la donna amata e sposata è in realtà la sorella segreta del suo peggior nemico ferisce profondamente l&#x27;uomo, spingendolo ad azzerare ogni rapporto e a prendere la ferma decisione di interrompere immediatamente il matrimonio. Di fronte alla prospettiva della rottura definitiva e all&#x27;abbandono dell&#x27;uomo per cui ha lottato a lungo, Asu crolla emotivamente. La disperazione e il terrore di perdere per sempre il marito la portano a tentare il suicidio, un atto estremo che modifica le carte in tavola.</p>
 <p>Di fronte alla tragedia del tentato suicidio, Kemal viene investito da un fortissimo senso di colpa e di responsabilità morale per il gesto compiuto da Asu. Nonostante il disprezzo per la menzogna subita e la volontà interiore di separarsi, l&#x27;uomo si sente inceppato e incapace di voltarle le spalle in un momento così drammatico. Il condizionamento emotivo lo costringe ad accordare alla moglie una seconda possibilità che il suo cuore non avrebbe mai voluto concedere. Questo sacrificio forzato lo riallaccia a un&#x27;unione priva di sentimento autentico, intrappolandolo di nuovo in un circolo di sofferenza e costrizione che impedisce ogni reale serenità.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
@@ -385,19 +435,41 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=NemztRxrfus" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/NemztRxrfus/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>KEMAL ACCOLTELLATO DA DUE UOMINI DI EMIR, Nihan disperata! Endless Love Anticipazioni Turche</span></a></li><li><a href="https://www.youtube.com/watch?v=Q2t42Gy9r0g" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/Q2t42Gy9r0g/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA SECONDA VITA DI VILDAN: &quot;VAI NIHAN, SCAPPA DA EMIR!&quot; - Anticipazioni Endless Love Turchia</span></a></li><li><a href="https://www.youtube.com/watch?v=_1dqNzWAaCg" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/_1dqNzWAaCg/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>EMIR:&quot;UCCIDETE LEYLA&quot;, TREMENDA VENDETTA CONTRO NIHAN -Endless Love Anticipazioni Turche</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Kemal ha fatto bene a restare con Asu dopo il tentato suicidio o la pietà è la peggior fondamenta per un matrimonio? E quando Emir scoprirà di avere una sorella, chi proteggerà e chi distruggerà?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=qnEqP2V3LDg">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di Endless Love</h2><div class="griglia"><article class="scheda">
+  <a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/"><div class="foto"><img src="https://i.ytimg.com/vi/DSiProJJ1ls/hqdefault.jpg" alt="Endless Love" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/"><div class="foto"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/"><div class="foto"><img src="https://i.ytimg.com/vi/uu2oAzTOWQU/hqdefault.jpg" alt="Endless Love" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></h3>
+    <div class="quando">25 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=Endless Love, la clamorosa scoperta di Kemal: la moglie Asu è la sorella di Emir — e il tentato suicidio che gli impedisce di lasciarla — https://soapoperaitalia.com/endless-love/endless-love-la-trama-completa-perche-nihan-sposa-emir-e-come-finisce/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://soapoperaitalia.com/endless-love/endless-love-la-trama-completa-perche-nihan-sposa-emir-e-come-finisce/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://soapoperaitalia.com/endless-love/endless-love-la-trama-completa-perche-nihan-sposa-emir-e-come-finisce/&text=Endless Love, la clamorosa scoperta di Kemal: la moglie Asu è la sorella di Emir — e il tentato suicidio che gli impedisce di lasciarla" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">CLAMOROSA SCOPERTA DI KEMAL - Endless Love Anticipazioni Turche</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=qnEqP2V3LDg">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di Endless Love</h3><ol class="numerata"><li><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></li><li><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></li><li><a href="/endless-love/endless-love-chi-e-galip-kozcuoglu-le-due-volte-in-cui-nihan-e-stata-venduta/">Endless Love, chi è Galip Kozcuoğlu: le due volte in cui Nihan è stata venduta</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-zeynep-soydere-perche-emir-lha-scelta-e-cosa-ha-distrutto/">Endless Love, chi è davvero Zeynep Soydere: perché Emir l&#x27;ha scelta e cosa ha distrutto</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>CLAMOROSA SCOPERTA DI KEMAL - Endless Love Anticipazioni Turche</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su Endless Love</h3><ul><li><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></li><li><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></li><li><a href="/endless-love/endless-love-chi-e-galip-kozcuoglu-le-due-volte-in-cui-nihan-e-stata-venduta/">Endless Love, chi è Galip Kozcuoğlu: le due volte in cui Nihan è stata venduta</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-zeynep-soydere-perche-emir-lha-scelta-e-cosa-ha-distrutto/">Endless Love, chi è davvero Zeynep Soydere: perché Emir l&#x27;ha scelta e cosa ha distrutto</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

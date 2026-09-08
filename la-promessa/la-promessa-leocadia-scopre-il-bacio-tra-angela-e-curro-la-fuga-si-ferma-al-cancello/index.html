@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/la-promessa/">La Promessa</a> › La Promessa, Leocadia scopre il bacio tra Ángela e Curro: la fuga si ferma davanti al cancello</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/la-promessa/">La Promessa</a>
   <h1>La Promessa, Leocadia scopre il bacio tra Ángela e Curro: la fuga si ferma davanti al cancello</h1>
-  <div class="firma">Redazione Serie TV Fans · mercoledì 26 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-26">mercoledì 26 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Leocadia vede con i suoi occhi il bacio tra Ángela e Curro. Quella notte i due provano a scappare, ma davanti al cancello Ángela si ferma — e il conto lo paga Pía.</p><ol><li><a href="#c1">L&#x27;antefatto: il rapimento, e una protezione che diventa gabbia</a></li><li><a href="#c2">Leocadia vede, e la stanza si chiude a chiave</a></li><li><a href="#c3">Perché Ángela si ferma davanti al cancello?</a></li><li><a href="#c4">Il conto lo paga Pía: il trasferimento ad Aranjuez</a></li><li><a href="#c5">Manuel affronta Cristóbal, e scopre chi ha firmato</a></li><li><a href="#c6">Perché conta: adesso Leocadia sa, e sapere è una leva</a></li><li><a href="#c7">Dove seguire La Promessa</a></li><li><a href="#c8">Come Lorenzo de la Mata manipola Leocadia</a></li><li><a href="#c9">Perché Pía deve abbandonare il piccolo Diego</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>La Promessa</strong> — Rete 4 · in streaming su Mediaset Infinity</span></div>
   
-  <p class="occhiello">Leocadia vede con i suoi occhi il bacio tra Ángela e Curro. Quella notte i due provano a scappare, ma davanti al cancello Ángela si ferma — e il conto lo paga Pía.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: La Promessa, Leocadia scopre il bacio tra Ángela e Curro: la fuga si ferma davanti al cancello" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/ZrhF8uDg-UA/maxresdefault.jpg" alt="La Promessa, Leocadia scopre il bacio tra Ángela e Curro: la fuga si ferma davanti al cancello" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/ZrhF8uDg-UA/hqdefault.jpg 480w, https://i.ytimg.com/vi/ZrhF8uDg-UA/sddefault.jpg 640w, https://i.ytimg.com/vi/ZrhF8uDg-UA/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/ZrhF8uDg-UA/hqdefault.jpg&quot;, &quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -361,51 +411,73 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
   <p><strong>A far uscire allo scoperto la relazione non è una distrazione dei due ragazzi: è Lorenzo, che va da Leocadia e gliela racconta.</strong></p>
   <p>La relazione tra Ángela e Curro non viene fuori per una disattenzione. Viene fuori perché Lorenzo de la Mata va da Leocadia e gliela racconta, con l&#x27;unico scopo di togliersi di mezzo il rivale prima delle nozze.</p>
 <p>Leocadia in un primo momento non gli crede: conosce l&#x27;ostilità del capitano verso il ragazzo e sospetta che stia manipolando anche lei pur di strapparle un sì. Difende la figlia, dice che una cosa del genere Ángela non gliel&#x27;avrebbe nascosta. Ma Lorenzo insiste, racconta di aver visto la complicità tra i due e aggiunge che a coprire gli incontri sarebbe stata Pía — così il sospetto scivola anche sulla servitù.</p>
-<h2>L&#x27;antefatto: il rapimento, e una protezione che diventa gabbia</h2>
+<h2 id="c1">L&#x27;antefatto: il rapimento, e una protezione che diventa gabbia</h2>
 <p>Ángela, tornata alla tenuta dopo la prigionia, prova a fare come se niente fosse. Ma i rumori improvvisi, le stanze vuote, la sensazione continua di essere osservata le riportano addosso quei giorni. Leocadia se ne accorge e le resta attaccata giorno e notte: controlla gli spostamenti, decide dove può stare e con chi.</p>
 <p>È protezione, sulla carta. Addosso a una ragazza a cui la libertà è appena stata tolta con la forza, diventa un&#x27;altra gabbia. Ángela non vuole essere trattata come una che non è più in grado di decidere per sé, ed è esattamente questo il motivo per cui si stringe a Curro.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Leocadia vede, e la stanza si chiude a chiave</h2>
+<h2 id="c2">Leocadia vede, e la stanza si chiude a chiave</h2>
 <p>Non affronta subito la figlia. Comincia a osservare, cerca conferme, aspetta. E la conferma arriva quando meno se l&#x27;aspetta: sorprende Ángela e Curro mentre si baciano, convinti di essere finalmente al riparo da sguardi.</p>
 <p>Quello che segue è un confronto in una stanza chiusa a chiave, con una durezza che sua madre non le aveva mai riservato. Ángela prova a spiegarle che non è un capriccio, che Curro c&#x27;è stato nei giorni peggiori dopo il rapimento. Leocadia risponde con i pericoli appena corsi e con lo scandalo di una storia clandestina, e le ordina di chiudere. Dietro le parole c&#x27;è una paura che non dice: come reagirà Lorenzo ora che ha avuto ragione.</p>
-<h2>Perché Ángela si ferma davanti al cancello?</h2>
+<h2 id="c3">Perché Ángela si ferma davanti al cancello?</h2>
 <p>Quella stessa notte i due si vedono di nascosto nei giardini e prendono in considerazione l&#x27;idea più rischiosa di tutte: andarsene insieme. Curro le giura che la proteggerà. Si avviano verso il cancello.</p>
 <p>Poi, al momento di attraversarlo, Ángela si ferma. Non è un ripensamento sentimentale: è che il rapimento le ha appena insegnato quanto poco basti a perdere la libertà, e teme le conseguenze più di quanto desideri la fuga. Teme la reazione di sua madre e del capitano, e teme soprattutto di condannare Curro a vivere nascosto per il resto dei suoi giorni. Si sfila dall&#x27;abbraccio e corre a rifugiarsi da Martina, l&#x27;unica amica che le è rimasta.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Il conto lo paga Pía: il trasferimento ad Aranjuez</h2>
+<h2 id="c4">Il conto lo paga Pía: il trasferimento ad Aranjuez</h2>
 <p>La scoperta di Leocadia ha già messo in moto conseguenze che i due ragazzi non immaginano. Cristóbal comunica a Pía che dovrà lasciare la tenuta per trasferirsi ad Aranjuez, e non glielo propone: glielo ordina, dicendo che i marchesi hanno già approvato.</p>
 <p>Pía capisce al volo che non si tratta di organizzazione del personale. Ha coperto gli incontri, sa cose che in quella casa non conviene lasciar girare, e adesso che Leocadia ha scoperto tutto è diventata una presenza scomoda. La parte peggiore è un&#x27;altra: separarsi da Diego proprio quando il bambino ha più bisogno di lei.</p>
-<h2>Manuel affronta Cristóbal, e scopre chi ha firmato</h2>
+<h2 id="c5">Manuel affronta Cristóbal, e scopre chi ha firmato</h2>
 <p>Manuel va dal maggiordomo e chiede che l&#x27;ordine venga ritirato. Cristóbal non arretra e mette sul tavolo i nomi di chi lo ha autorizzato: Alonso e Leocadia. È lì che il marchesino comincia a fare due più due, perché non riesce a spiegarsi come suo padre abbia potuto avallare una misura così crudele.</p>
 <p>Il sospetto che si fa strada è che il trasferimento serva a Ángela e Curro più che a Pía: senza di lei alla tenuta, i due avrebbero molte più difficoltà a vedersi e Lorenzo avrebbe la strada libera per controllare ogni movimento della ragazza.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Perché conta: adesso Leocadia sa, e sapere è una leva</h2>
+<h2 id="c6">Perché conta: adesso Leocadia sa, e sapere è una leva</h2>
 <p>Finché la relazione era un sospetto di Lorenzo, era una carta sola in mano a lui. Adesso che Leocadia l&#x27;ha vista, quella carta è in mano a due persone che si controllano a vicenda, e il capitano può usarla per pretendere le nozze come unico modo di mettere a tacere i pettegolezzi.</p>
 <p>Il paradosso è che proprio questo sta incrinando la loro alleanza. Leocadia non approva la storia della figlia, ma comincia a leggere l&#x27;ossessione del capitano per quello che è, e a chiedersi se l&#x27;uomo che dice di voler salvare Ángela non sia il pericolo peggiore di tutti.</p>
-<h2>Dove seguire La Promessa</h2>
+<h2 id="c7">Dove seguire La Promessa</h2>
 <p>La Promessa è trasmessa da Rete 4, e chi salta una puntata la ritrova in streaming su Mediaset Infinity. La messa in onda viene spostata di frequente, quindi il riferimento più affidabile resta la guida TV del giorno.</p>
-<h2>Come Lorenzo de la Mata manipola Leocadia</h2>
+<h2 id="c8">Come Lorenzo de la Mata manipola Leocadia</h2>
 <p>Lorenzo de la Mata intende eliminare definitivamente il rivale Curro prima delle nozze imminenti e sceglie di andare direttamente da Leocadia per svelarle la relazione segreta della figlia Ángela. Inizialmente la donna rifiuta categoricamente di credere alle sue parole, conoscendo bene la profonda ostilità che il capitano nutre da tempo verso il giovane e sospettando che l&#x27;uomo stia manipolando la verità solo per strapparle un sì definitivo. Lorenzo però insiste con estrema decisione, raccontando di aver notato una chiara complicità tra i due ragazzi e accusando apertamente Pía di aver coperto i loro incontri. In questo modo, il sospetto di Leocadia scivola inevitabilmente sull&#x27;intera servitù della tenuta.</p>
 <p>Quando Manuel viene a conoscenza della punizione inflitta a Pía, decide di affrontare subito il maggiordomo Cristóbal per pretendere che l&#x27;ordine di trasferimento venga annullato. Il maggiordomo però non arretra di un passo di fronte alle insistenze del marchesino e mette sul tavolo i nomi di chi ha autorizzato la misura: Alonso e Leocadia. È proprio in quel momento che il giovane Manuel inizia a fare due più due, non riuscendo a spiegarsi come suo padre abbia potuto avallare una decisione tanto dura. Il sospetto crescente è che l&#x27;allontanamento della donna serva a privare Ángela e Curro del loro unico sostegno, lasciando il capitano Lorenzo libero di controllare la ragazza.</p>
-<h2>Perché Pía deve abbandonare il piccolo Diego</h2>
+<h2 id="c9">Perché Pía deve abbandonare il piccolo Diego</h2>
 <p>Il trasferimento forzato verso Aranjuez rappresenta la punizione immediata che travolge Pía dopo che Leocadia scopre la verità. Cristóbal comunica alla donna che dovrà abbandonare la tenuta senza alcuna possibilità di replica, specificando chiaramente che i marchesi hanno già espresso la loro piena approvazione. Pía intuisce subito che non si tratta affatto di un semplice riassetto del personale, ma della diretta conseguenza di aver coperto i segreti della giovane coppia. La parte più crudele di questo ordine riguarda la sfera affettiva, poiché la costringe a separarsi dal piccolo Diego proprio nel momento in cui il bambino avrebbe più bisogno della sua presenza fisica e della sua protezione.</p>
 <p>La fallita fuga notturna rivela quanto il recente rapimento abbia segnato la psicologia di Ángela. Dopo il durissimo scontro a porte chiuse con Leocadia, la ragazza si ritrova nei giardini con Curro e accetta di tentare l&#x27;allontanamento definitivo. Tuttavia, una volta giunta davanti al cancello principale, si blocca improvvisamente. L&#x27;esperienza della prigionia le ha insegnato quanto sia facile perdere la libertà, alimentando il terrore per le possibili conseguenze della fuga e per le reazioni di sua madre e di Lorenzo. Consapevole di rischiare di condannare anche Curro a una vita da fuggiasco, Ángela si sfila dall&#x27;abbraccio e cerca rifugio da Martina, la sua unica amica rimasta.</p>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=j_sqMzV7Aa4" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/j_sqMzV7Aa4/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA: LEOCADIA sorprende Ángela e Curro — il bacio che cambia tutto 😨</span></a></li><li><a href="https://www.youtube.com/watch?v=LoWXuQ4rM90" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/LoWXuQ4rM90/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA: Curro FERMA le Nozze e RIVELA &quot;Ángela è tua Figlia!&quot; La rivelazione che cambia tut</span></a></li><li><a href="https://www.youtube.com/watch?v=wyKsR6Y1Noc" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/wyKsR6Y1Noc/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA: LEOCADIA confessa a CRISTÓBAL — «è stata lei dietro la fuga» 😱</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Leocadia sta davvero proteggendo sua figlia, o è lei la minaccia più seria che Ángela ha in casa?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=ZrhF8uDg-UA">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di La Promessa</h2><div class="griglia"><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/"><div class="foto"><img src="https://i.ytimg.com/vi/Rp8VhxDiDSk/hqdefault.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></h3>
+    <div class="quando">7 settembre 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/"><div class="foto"><img src="https://i.ytimg.com/vi/8JHt6ogwxQw/hqdefault.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Ángela beve tutto, Curro sfonda la porta</a></h3>
+    <div class="quando">6 settembre 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/"><div class="foto"><img src="/img/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Curro nasconde Ángela, Lorenzo furioso</a></h3>
+    <div class="quando">6 settembre 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=La Promessa, Leocadia scopre il bacio tra Ángela e Curro: la fuga si ferma davanti al cancello — https://serietvfans.com/la-promessa/la-promessa-leocadia-scopre-il-bacio-tra-angela-e-curro-la-fuga-si-ferma-al-cancello/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/la-promessa/la-promessa-leocadia-scopre-il-bacio-tra-angela-e-curro-la-fuga-si-ferma-al-cancello/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/la-promessa/la-promessa-leocadia-scopre-il-bacio-tra-angela-e-curro-la-fuga-si-ferma-al-cancello/&text=La Promessa, Leocadia scopre il bacio tra Ángela e Curro: la fuga si ferma davanti al cancello" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">LA PROMESSA: LEOCADIA scopre Ángela e Curro — e la fuga finisce male</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=ZrhF8uDg-UA">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di La Promessa</h3><ol class="numerata"><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Ángela beve tutto, Curro sfonda la porta</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Curro nasconde Ángela, Lorenzo furioso</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>LA PROMESSA: LEOCADIA scopre Ángela e Curro — e la fuga finisce male</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su La Promessa</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-3-6-settembre-maria-affronta-la-gravidanza-da-sola/">La Promessa anticipazioni 3-6 settembre: Maria affronta la gravidanza da sola</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-carlo-arriva-maria-trema/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Carlo arriva, Maria trema</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/far-away/far-away-anticipazioni-dal-31-agosto-al-4-settembre-chi-ha-donato-il-fegato-a-nare/">Far Away, anticipazioni dal 31 agosto al 4 settembre: chi ha donato il fegato a Nare, e perché adesso sta male lui</a></li><li><a href="/far-away/far-away-dal-31-agosto-la-madre-di-alya-sapeva-tutto-non-ricordo/">Far Away Dal 31 Agosto: la madre di Alya sapeva tutto — «non ricordo»</a></li><li><a href="/forbidden-fruit/forbidden-fruit-dal-31-agosto-il-conto-a-nome-di-halit-che-e-morto/">Forbidden Fruit Dal 31 Agosto: il conto a nome di Halit, che è morto</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/endless-love/">Endless Love</a> › Endless Love, il finale della prima stagione: Ozan muore, Kemal spara a Emir e Nihan esplode — «È colpa tua»</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/endless-love/">Endless Love</a>
   <h1>Endless Love, il finale della prima stagione: Ozan muore, Kemal spara a Emir e Nihan esplode — «È colpa tua»</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>8 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">L&#x27;ultima puntata della prima stagione di Endless Love è un crescendo devastante: la gravidanza di Nihan scatena la vendetta di Emir, Ozan viene trovato senza vita in ospedale, Zeynep crolla davanti al test del DNA e lo scontro finale tra Kemal ed Emir finisce con uno sparo.</p><ol><li><a href="#c1">La gravidanza di Nihan e l&#x27;ordine di uccidere Kemal</a></li><li><a href="#c2">Le foto in cella: Ozan scopre il tradimento di Zeynep</a></li><li><a href="#c3">Il test del DNA e la resa dei conti tra fratelli</a></li><li><a href="#c4">Il colpo di pistola di Hakkı e la morte di Ozan</a></li><li><a href="#c5">Lo sparo in casa Kozcuoğlu e la furia di Nihan</a></li><li><a href="#c6">Come Emir ricatta Tufan usando sua madre</a></li><li><a href="#c7">Perché Ozan crolla prima del ricovero in ospedale</a></li><li><a href="#c8">Cosa nasconde il test del DNA orchestrato da Kemal</a></li><li><a href="#c9">Quale destino travolge la famiglia Sezin e Galip</a></li><li><a href="#c10">Come finisce lo scontro armato tra Kemal ed Emir</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>Endless Love</strong> — Serie conclusa in Italia · le puntate su Mediaset Infinity</span></div>
   
-  <p class="occhiello">L&#x27;ultima puntata della prima stagione di Endless Love è un crescendo devastante: la gravidanza di Nihan scatena la vendetta di Emir, Ozan viene trovato senza vita in ospedale, Zeynep crolla davanti al test del DNA e lo scontro finale tra Kemal ed Emir finisce con uno sparo.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: Endless Love, il finale della prima stagione: Ozan muore, Kemal spara a Emir e Nihan esplode — «È colpa tua»" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/6QAsNe-bWyY/maxresdefault.jpg" alt="Endless Love, il finale della prima stagione: Ozan muore, Kemal spara a Emir e Nihan esplode — «È colpa tua»" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/6QAsNe-bWyY/hqdefault.jpg 480w, https://i.ytimg.com/vi/6QAsNe-bWyY/sddefault.jpg 640w, https://i.ytimg.com/vi/6QAsNe-bWyY/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/6QAsNe-bWyY/hqdefault.jpg&quot;, &quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,50 +409,72 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>Una lettera d&#x27;amore scritta in cella, delle foto infilate sotto la porta e un colpo di pistola che cambia tutto: il finale di stagione più drammatico delle soap turche, scena per scena.</strong></p>
-  <h2>La gravidanza di Nihan e l&#x27;ordine di uccidere Kemal</h2>
+  <h2 id="c1">La gravidanza di Nihan e l&#x27;ordine di uccidere Kemal</h2>
 <p>La notizia che Nihan aspetta un figlio — e che il padre è Kemal — scuote Emir dalle fondamenta e accende in lui una sete di vendetta inestinguibile: Kemal diventa l&#x27;ostacolo da rimuovere a ogni costo. L&#x27;ordine di ucciderlo finisce sulle spalle di Tufan, che trema — finché Emir non gioca la carta più spietata: una videochiamata mostra la madre di Tufan prigioniera e terrorizzata. «Completa l&#x27;incarico e tua madre sarà libera». Il cappio è stretto.</p>
-<h2>Le foto in cella: Ozan scopre il tradimento di Zeynep</h2>
+<h2 id="c2">Le foto in cella: Ozan scopre il tradimento di Zeynep</h2>
 <p>Nel silenzio della prigione, Ozan scrive una lettera d&#x27;amore alla moglie lontana. Ma sotto la porta della cella scivola una busta bianca: dentro, le fotografie di Zeynep tra le braccia di Emir. Il mondo di Ozan crolla: si scaglia contro le sbarre, chiama la moglie travolgendola di accuse e giura vendetta contro entrambi. Zeynep, terrorizzata, corre a implorare l&#x27;aiuto di Emir; Ozan tenta un&#x27;ultima chiamata alla sorella, ma Nihan — sconvolta dalla notizia della gravidanza — ignora il numero sconosciuto. Poi il crollo: Ozan perde conoscenza e viene ricoverato d&#x27;urgenza, mentre nella sua stanza si aggira un uomo misterioso travestito da medico.</p>
-<h2>Il test del DNA e la resa dei conti tra fratelli</h2>
+<h2 id="c3">Il test del DNA e la resa dei conti tra fratelli</h2>
 <p>Anche Kemal ormai conosce il vero volto della sorella: i messaggi con Emir sono una prova inconfutabile. La convoca a casa e la mette davanti alle sue bugie; quando estrae il risultato del test del DNA — il figlio che Zeynep aspetta non sarebbe di Ozan — la ragazza crolla e confessa tutto: Emir l&#x27;ha usata come pedina, e lei, accecata da un amore mai esistito, è caduta nella trappola. Ma il colpo di teatro è di Kemal: quel test è falso, l&#x27;ha orchestrato lui per costringerla alla verità. «Ci hai distrutti tutti, Zeynep». E il beffardo contrappasso arriva via telefono a Emir: il laboratorio conferma che il bambino è davvero di Ozan.</p>
-<h2>Il colpo di pistola di Hakkı e la morte di Ozan</h2>
+<h2 id="c4">Il colpo di pistola di Hakkı e la morte di Ozan</h2>
 <p>Intanto Galip, il padre di Emir, affronta Hakkı con una pistola: vuole sapere se Asu è sua figlia. Hakkı nega, poi con un gesto fulmineo estrae un&#x27;arma da sotto le coperte e compie l&#x27;impensabile: si toglie la vita davanti a lui, seppellendo per sempre la verità che Galip cercava. E in ospedale si consuma la tragedia più grande: un&#x27;infermiera entra nella stanza di Ozan e lo trova senza vita. Davanti al corpo del figlio, il cuore di Önder cede sotto gli occhi di Vildan. Nel giorno più nero dei Sezin, perfino il matrimonio lampo di Tarık e Banu all&#x27;ufficio del registro sembra un&#x27;oasi irreale di speranza.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Lo sparo in casa Kozcuoğlu e la furia di Nihan</h2>
+<h2 id="c5">Lo sparo in casa Kozcuoğlu e la furia di Nihan</h2>
 <p>Kemal, fuori di sé, si presenta da Emir — che lo aspetta con una pistola nella cintura e Tufan avvertito. Il confronto degenera subito: pugni, sangue, e la provocazione più velenosa («Zeynep si è offerta volontariamente»). Poi la colluttazione per l&#x27;arma, e lo sparo che spezza tutto: Emir si accascia, colpito. Kemal chiama la polizia con le mani tremanti: «Ho commesso un omicidio». Fuori dal cancello, Asu lo vede con le mani insanguinate; e Nihan, raggiunta dalla notizia della morte del fratello, crolla in ginocchio urlando il suo dolore — poi si avventa su Kemal: «È colpa tua se mio fratello è morto. Tu lo hai privato della vita». Sipario sulla prima stagione: tutto il resto è da ricostruire.</p>
-<h2>Come Emir ricatta Tufan usando sua madre</h2>
+<h2 id="c6">Come Emir ricatta Tufan usando sua madre</h2>
 <p>La gravidanza di Nihan scatena in Emir una ferocia inarrestabile quando scopre che il vero padre del nascituro è Kemal. Considerandolo ormai l&#x27;ostacolo principale da eliminare a ogni costo, decide di darne l&#x27;ordine di uccisione direttamente a Tufan. Quest&#x27;ultimo, di fronte a un mandato così drammatico, esita e trema all&#x27;idea di compiere un gesto simile. Ma la reazione del suo capo non si fa attendere: con estrema spietatezza, Emir mostra una videochiamata in cui la madre di Tufan appare prigioniera e visibilmente terrorizzata, costringendo il sottoposto a piegarsi al ricatto per poter salvare la vita della donna.</p>
 <p>L&#x27;ordine di completare l&#x27;incarico per ottenere la liberazione della madre mette Tufan in una posizione senza alcuna via d&#x27;uscita, mentre le tensioni tra le fazioni opposte raggiungono rapidamente il punto di non ritorno. Nel frattempo, l&#x27;ossessione sfrenata di Emir per la vendetta personale continua a travolgere chiunque gli stia accanto, trasformando ogni legame affettivo in un&#x27;arma spietata di manipolazione. Kemal diventa così il bersaglio diretto di una trappola orchestrata nei minimi dettagli, in cui le minacce feroci e i ricatti spingono tutti i protagonisti verso uno scontro finale da cui nessuno potrà uscire privo di profonde ferite.</p>
-<h2>Perché Ozan crolla prima del ricovero in ospedale</h2>
+<h2 id="c7">Perché Ozan crolla prima del ricovero in ospedale</h2>
 <p>Nel silenzio della sua prigione, Ozan dedica i suoi ultimi momenti di calma alla stesura di una toccante lettera d&#x27;amore destinata a Zeynep, ignorando l&#x27;inganno in cui è avvolto. La svolta drammatica avviene quando sotto la porta della cella viene fatta scivolare una busta bianca contenente le fotografie che ritraggono la moglie tra le braccia di Emir. Sconvolto e furioso, il giovane si scaglia contro le sbarre della prigione, per poi chiamare la sposa travolgendola di accuse e giurando vendetta contro entrambi. Terrorizzata, Zeynep corre subito a implorare l&#x27;aiuto di Emir per cercare protezione.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>Nel tentativo disperato di trovare conforto in quel momento buio, Ozan prova a fare un&#x27;ultima e concitata telefonata a sua sorella, ma Nihan ignora quel numero sconosciuto perché ancora completamente turbata dalla sconvolgente notizia della propria gravidanza. Privato di qualsiasi sostegno familiare, Ozan crolla a terra, perde conoscenza e viene ricoverato d&#x27;urgenza in ospedale. Tuttavia, nemmeno la struttura sanitaria offre un riparo sicuro: all&#x27;interno della sua stanza di degenza si aggira infatti un uomo misterioso travestito da medico, mentre una terribile tragedia stende la sua ombra sul ragazzo e sull&#x27;intera famiglia Sezin.</p>
-<h2>Cosa nasconde il test del DNA orchestrato da Kemal</h2>
+<h2 id="c8">Cosa nasconde il test del DNA orchestrato da Kemal</h2>
 <p>Entrato finalmente in possesso dei messaggi compromettenti scambiati tra la sorella ed Emir, Kemal ottiene la prova inconfutabile delle continue bugie di Zeynep e decide di affrontarla direttamente a casa sua. Per costringerla ad ammettere la gravità delle sue responsabilità, il giovane le mostra il risultato di un test del DNA secondo cui il figlio in arrivo non sarebbe di Ozan. Sopraffatta di fronte all&#x27;evidenza schiacciante, la ragazza crolla in lacrime e confessa di essere stata usata come una semplice pedina da Emir, cadendo nella sua trappola spietata per via di un amore mai esistito.</p>
 <p>È proprio a quel punto che Kemal svela la verità a Zeynep, spiegando che quel referto era in realtà un falso preparato appositamente per spingerla a confessare ogni cosa, accusandola poi amaramente di aver distrutto l&#x27;intera famiglia. Contemporaneamente, una telefonata ufficiale proveniente dal laboratorio medico raggiunge Emir fornendo l&#x27;esito reale delle analisi: il bambino che Zeynep porta in grembo è davvero di Ozan. Questo beffardo contrappasso smentisce l&#x27;inganno orchestrato proprio mentre i rapporti di fiducia tra i fratelli sono ormai irreparabilmente compromessi dal peso delle manipolazioni svelate.</p>
-<h2>Quale destino travolge la famiglia Sezin e Galip</h2>
+<h2 id="c9">Quale destino travolge la famiglia Sezin e Galip</h2>
 <p>Mentre le drammatiche vicende personali dei protagonisti precipitano, Galip affronta Hakkı impugnando minacciosamente una pistola per scoprire se Asu sia réellement sua figlia. Di fronte al netto rifiuto dell&#x27;uomo di confermare la paternità o la parentela, la situazione prende una piega inaspettata e drammatica: Hakkı estrae un&#x27;arma nascosta sotto le coperte e si toglie la vita con un gesto fulmineo proprio davanti al suo rivale, portandosi dietro per sempre quel segreto. Nello stesso momento, la tragedia più devastante si consuma all&#x27;ospedale, dove un&#x27;infermiera entra nella stanza di degenza e trova Ozan ormai privo di vita.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>Di fronte allo spettacolo del corpo inanime del figlio, il cuore del padre Önder cede all&#x27;improvviso sotto gli occhi sconvolti e terrorizzati di Vildan, gettando i Sezin nel più disperato lutto. In questo cupo panorama di sofferenza e perdita, soltanto l&#x27;improvviso matrimonio celebrato in tutta fretta all&#x27;ufficio del registro tra Tarık e Banu appare come una parentesi di speranza del tutto irreale. Ma la rabbia esplode definitivamente quando Nihan apprende del decesso di Ozan: la donna crolla in ginocchio urlando il suo dolore, per poi avventarsi disperatamente contro Kemal accusandolo di aver privato della vita il fratello.</p>
-<h2>Come finisce lo scontro armato tra Kemal ed Emir</h2>
+<h2 id="c10">Come finisce lo scontro armato tra Kemal ed Emir</h2>
 <p>Fuori di sé per gli ultimi sconvolgenti avvenimenti, Kemal si presenta direttamente nell&#x27;abitazione di Emir per affrontarlo a viso aperto una volta per tutte. Ad attenderlo nel villino c&#x27;è Emir, che si mostra pronto allo scontro con una pistola infilata nella cintura e dopo aver debitamente preallertato Tufan. Il confronto finale tra i due nemici degenera immediatamente in una violenta colluttazione fatta di pugni e sangue, esasperata dalle velenose provocazioni di Emir che infanga Zeynep sostenendo che la ragazza si sia offerta a lui spontaneamente. La tensione sale alle stelle finché entrambi non cercano di strapparsi l&#x27;arma di mano.</p>
 <p>Durante la lotta esplode improvvisamente un colpo di pistola e Emir si accascia a terra, ferito dall&#x27;arma da fuoco. Kemal, scosso e con le mani tremanti, prende il telefono per chiamare le forze dell&#x27;ordine e ammettere di aver commesso un omicidio. Nel frattempo, all&#x27;esterno del cancello della tenuta, Asu osserva la scena scorgendo l&#x27;uomo che ama con le mani imbrattate di sangue. Lo scontro tragico si chiude così nel peggiore dei modi, lasciando indietro una scia di rovina, arresti e accuse incrociate prima che il sipario cali definitivamente sulla prima stagione.</p>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=CwCXl3ZuRHk" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/CwCXl3ZuRHk/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>EMIR UNA FURIA CONTRO KEMAL!INSOPPORTABILE CHE KEMAL ABBIA SALVATO NIHAN! Anticipazioni Endless</span></a></li><li><a href="https://www.youtube.com/watch?v=uoJrMJqAhVE" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/uoJrMJqAhVE/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>FURIA NIHAN SU ZEYNEP, SCOPRE CHE HA UCCISO OZAN! Endless Love Anticipazioni Turche</span></a></li><li><a href="https://www.youtube.com/watch?v=HEcZmW0r4dU" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/HEcZmW0r4dU/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TREMENDA VENDETTA DI EMIR, USA ZEYNEP PER COLPIRE KEMAL! Anticiapzioni Endless Love 13-14 Maggi</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Emir sopravvivrà allo sparo? E l&#x27;accusa di Nihan a Kemal è dolore cieco o c&#x27;è del vero?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=6QAsNe-bWyY">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di Endless Love</h2><div class="griglia"><article class="scheda">
+  <a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/"><div class="foto"><img src="https://i.ytimg.com/vi/DSiProJJ1ls/hqdefault.jpg" alt="Endless Love" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/"><div class="foto"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/"><div class="foto"><img src="https://i.ytimg.com/vi/uu2oAzTOWQU/hqdefault.jpg" alt="Endless Love" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></h3>
+    <div class="quando">25 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=Endless Love, il finale della prima stagione: Ozan muore, Kemal spara a Emir e Nihan esplode — «È colpa tua» — https://soapoperaitalia.com/endless-love/endless-love-la-trama-completa-perche-nihan-sposa-emir-e-come-finisce/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://soapoperaitalia.com/endless-love/endless-love-la-trama-completa-perche-nihan-sposa-emir-e-come-finisce/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://soapoperaitalia.com/endless-love/endless-love-la-trama-completa-perche-nihan-sposa-emir-e-come-finisce/&text=Endless Love, il finale della prima stagione: Ozan muore, Kemal spara a Emir e Nihan esplode — «È colpa tua»" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">FINALE PRIMA STAGIONE - NIHAN UNA FURIA CONTRO KEMAL: &quot;TI ODIO, LO HAI UCCISO&quot;</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=6QAsNe-bWyY">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di Endless Love</h3><ol class="numerata"><li><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></li><li><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></li><li><a href="/endless-love/endless-love-chi-e-galip-kozcuoglu-le-due-volte-in-cui-nihan-e-stata-venduta/">Endless Love, chi è Galip Kozcuoğlu: le due volte in cui Nihan è stata venduta</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-zeynep-soydere-perche-emir-lha-scelta-e-cosa-ha-distrutto/">Endless Love, chi è davvero Zeynep Soydere: perché Emir l&#x27;ha scelta e cosa ha distrutto</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>FINALE PRIMA STAGIONE - NIHAN UNA FURIA CONTRO KEMAL: &quot;TI ODIO, LO HAI UCCISO&quot;</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su Endless Love</h3><ul><li><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></li><li><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></li><li><a href="/endless-love/endless-love-chi-e-galip-kozcuoglu-le-due-volte-in-cui-nihan-e-stata-venduta/">Endless Love, chi è Galip Kozcuoğlu: le due volte in cui Nihan è stata venduta</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-zeynep-soydere-perche-emir-lha-scelta-e-cosa-ha-distrutto/">Endless Love, chi è davvero Zeynep Soydere: perché Emir l&#x27;ha scelta e cosa ha distrutto</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

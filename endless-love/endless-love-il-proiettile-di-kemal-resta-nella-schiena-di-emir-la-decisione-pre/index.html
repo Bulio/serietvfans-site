@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/endless-love/">Endless Love</a> › Endless Love, il proiettile di Kemal resta nella schiena di Emir: la decisione presa da Galip senza consultarlo — «Mi hai costretto a vivere con un pezzo di lui dentro»</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/endless-love/">Endless Love</a>
   <h1>Endless Love, il proiettile di Kemal resta nella schiena di Emir: la decisione presa da Galip senza consultarlo — «Mi hai costretto a vivere con un pezzo di lui dentro»</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Dopo lo scontro in cui parte il colpo che lo raggiunge all&#x27;addome, Emir arriva in sala operatoria in condizioni disperate. I medici scoprono che il proiettile si è conficcato nella colonna vertebrale: rimuoverlo significherebbe rischiare la paralisi totale, e la decisione viene rimessa al padre. Galip sceglie di lasciarlo dov&#x27;è. Al risveglio Emir si sente invincibile — finché durante una visita non si accorge di non sentire una gamba, prova ad alzarsi e cade a terra.</p><ol><li><a href="#c1">Lo sparo e la corsa in ospedale</a></li><li><a href="#c2">Chi è Galip, l&#x27;uomo chiamato a decidere</a></li><li><a href="#c3">La decisione impossibile di Galip</a></li><li><a href="#c4">«Non sento la gamba»</a></li><li><a href="#c5">La rabbia contro il padre</a></li><li><a href="#c6">Perché conta: da adesso Emir dipende da qualcosa che non controlla</a></li><li><a href="#c7">Come Kemal finisce in prigione dopo lo scontro</a></li><li><a href="#c8">Chi e la figlia abbandonata dal padre Galip</a></li><li><a href="#c9">Cosa prova Emir quando perde il controllo del corpo</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>Endless Love</strong> — Serie conclusa in Italia · le puntate su Mediaset Infinity</span></div>
   
-  <p class="occhiello">Dopo lo scontro in cui parte il colpo che lo raggiunge all&#x27;addome, Emir arriva in sala operatoria in condizioni disperate. I medici scoprono che il proiettile si è conficcato nella colonna vertebrale: rimuoverlo significherebbe rischiare la paralisi totale, e la decisione viene rimessa al padre. Galip sceglie di lasciarlo dov&#x27;è. Al risveglio Emir si sente invincibile — finché durante una visita non si accorge di non sentire una gamba, prova ad alzarsi e cade a terra.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: Endless Love, il proiettile di Kemal resta nella schiena di Emir: la decisione presa da Galip senza consultarlo — «Mi hai costretto a vivere con un pezzo di lui dentro»" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/b2zzkzld8Is/sddefault.jpg" alt="Endless Love, il proiettile di Kemal resta nella schiena di Emir: la decisione presa da Galip senza consultarlo — «Mi hai costretto a vivere con un pezzo di lui dentro»" width="640" height="480"
         srcset="https://i.ytimg.com/vi/b2zzkzld8Is/hqdefault.jpg 480w, https://i.ytimg.com/vi/b2zzkzld8Is/sddefault.jpg 640w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/b2zzkzld8Is/hqdefault.jpg&quot;, &quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,46 +409,68 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>La scoperta peggiore arriva dopo: a decidere per lui, senza consultarlo, era stato suo padre.</strong></p>
-  <h2>Lo sparo e la corsa in ospedale</h2>
+  <h2 id="c1">Lo sparo e la corsa in ospedale</h2>
 <p>Lo scontro fisico con Kemal degenera: per difendersi Emir estrae una pistola, ma nella colluttazione parte un colpo che gli si conficca nell&#x27;addome. Il pallore, il sangue che si allarga sulla camicia, l&#x27;immagine di un uomo che sembra già morto agli occhi di chi assiste. La corsa in ospedale è una lotta contro il tempo, e appena arrivato viene portato in sala operatoria per un intervento d&#x27;emergenza.</p>
-<h2>Chi è Galip, l&#x27;uomo chiamato a decidere</h2>
+<h2 id="c2">Chi è Galip, l&#x27;uomo chiamato a decidere</h2>
 <p>Nella stanza dove i chirurghi si fermano entra un padre, ma non un padre qualunque. Galip è stato per anni uno dei pilastri della holding di famiglia, una delle voci che pesavano su ogni decisione importante, prima che le quote passassero di mano e lo lasciassero ai margini di un mondo costruito con le sue mani. È anche un uomo con un precedente pesantissimo in fatto di scelte irreversibili: c&#x27;è una figlia che ha abbandonato, e a cui ha portato via la madre, e che per rientrare in quella famiglia userà anni di ricatti. Quando gli chiedono se estrarre o lasciare, quindi, non risponde soltanto un padre spaventato: risponde l&#x27;uomo che in quella casa ha sempre stabilito al posto degli altri che cosa fosse meglio per loro.</p>
-<h2>La decisione impossibile di Galip</h2>
+<h2 id="c3">La decisione impossibile di Galip</h2>
 <p>Durante l&#x27;operazione i chirurghi si fermano: il proiettile si è incastrato nella spina dorsale, e rimuoverlo comporta il rischio concreto di una paralisi totale e irreversibile. Il caso è troppo grave per decidere da soli, così viene convocato Galip. In una stanza appartata gli spiegano le due strade — estrarlo e rischiare tutto, o lasciarlo dov&#x27;è convivendo con le conseguenze. Dopo un&#x27;attesa carica di angoscia, il padre ordina di non rimuoverlo, sperando in una guarigione naturale.</p>
-<h2>«Non sento la gamba»</h2>
+<h2 id="c4">«Non sento la gamba»</h2>
 <p>Dopo giorni di agonia Emir si riprende, e con la ripresa torna anche la sua arroganza: si sente invincibile, parla addirittura di risurrezione, soprattutto sapendo che il nemico è finito in prigione. Poi la visita di controllo: il medico nota che non percepisce alcuna sensibilità in una gamba. Emir va nel panico, tenta di alzarsi per dimostrare la propria forza e cade rovinosamente. La spiegazione è impietosa — la paralisi non è permanente, ma il proiettile rimasto nella colonna gli causerà episodi ricorrenti di dolore intenso e paralisi temporanee, gestibili solo con antidolorifici.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>La rabbia contro il padre</h2>
+<h2 id="c5">La rabbia contro il padre</h2>
 <p>Il colpo finale arriva quando i medici gli rivelano chi ha deciso di lasciare il proiettile dov&#x27;era: suo padre. La reazione è furiosa — «mi hai costretto a vivere con una parte di Kemal dentro di me» — mentre Galip prova a spiegare di aver agito per il suo bene, per evitargli la paralisi totale. Da lì comincia una fase nuova per il personaggio: un uomo abituato a controllare tutto che deve fare i conti con un corpo che non risponde, con un dolore quotidiano e con il risentimento verso chi ha deciso al posto suo. La vulnerabilità, per Emir, è la prova più difficile di tutte.</p>
-<h2>Perché conta: da adesso Emir dipende da qualcosa che non controlla</h2>
+<h2 id="c6">Perché conta: da adesso Emir dipende da qualcosa che non controlla</h2>
 <p>Il personaggio costruito sul controllo assoluto — di persone, prove, documenti, medici — si ritrova con una variabile alloggiata dentro il corpo. Le paralisi temporanee non si comprano e non si negoziano: arrivano quando arrivano, e per un uomo la cui forza sta nel non mostrare mai un cedimento sono una condanna peggiore della prigione che ha sfiorato. Cambia anche il rapporto di forze in casa Kozcuoğlu: fino a ieri Emir minacciava, da oggi esiste un punto in cui può essere colpito senza che nessuno alzi una mano. E resta il particolare più amaro di tutti — la mano che gli ha imposto quel corpo è la stessa che, anni prima, aveva deciso al posto di un&#x27;altra figlia senza chiederle niente.</p>
-<h2>Come Kemal finisce in prigione dopo lo scontro</h2>
+<h2 id="c7">Come Kemal finisce in prigione dopo lo scontro</h2>
 <p>La drammatica sequenza degli eventi prende il via durante un accesissimo confronto diretto sul campo, nel quale la tensione accumulata tra i due rivali storici esplode in maniera del tutto incontrollabile. Sentendosi messo alle strette di fronte alla determinazione del suo avversario, Emir decide di estrarre un&#x27;arma da fuoco per difendere la propria incolumità fisica. Durante la violenta colluttazione che ne segue immediatamente, viene accidentalmente esploso un colpo a bruciapelo che ferisce gravemente lo stesso Emir all&#x27;addome. Mentre la ferita sanguina vistosamente sulla camicia e l&#x27;uomo appare ormai privo di vita agli occhi dei presenti, la corsa d&#x27;urgenza verso il pronto soccorso si trasforma in una disperata corsa contro il tempo per salvargli la vita, culminando con l&#x27;arresto e la successiva reclusione in prigione di Kemal.</p>
 <p>Una volta giunto in ospedale, le condizioni del paziente appaiono da subito estremamente critiche, costringendo l&#x27;équipe medica a trasferirlo d&#x27;urgenza all&#x27;interno della sala operatoria. È proprio nel corso di questo delicatissimo intervento che i chirurghi si rendono conto della vera gravità della situazione: il proiettile si è conficcato in profondità nella spina dorsale. Estrarre il corpo estraneo significherebbe esporre il paziente al rischio concreto di una paralisi totale e permanente, una prospettiva devastante che spinge i medici a fermare l&#x27;operazione. Di fronte a un quadro clinico così complesso e privo di garanzie, la responsabilità della scelta viene interamente trasferita nelle mani di Galip, chiamato a stabilire il destino del figlio in un momento di enorme apprensione.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Chi e la figlia abbandonata dal padre Galip</h2>
+<h2 id="c8">Chi e la figlia abbandonata dal padre Galip</h2>
 <p>Per comprendere appieno le dinamiche che muovono le azioni di Galip, occorre analizzare la sua figura di leader carismatico e autoritario. Per molti anni, quest&#x27;uomo ha rappresentato uno dei pilastri fondamentali della holding di famiglia, esercitando un potere decisionale praticamente assoluto su ogni aspetto societario. Tuttavia, il progressivo passaggio di mano delle quote di maggioranza lo ha gradualmente spinto ai margini di quell&#x27;impero economico che aveva contribuito a costruire con le proprie mani. Nonostante questa drastica perdita di potere aziendale, l&#x27;uomo ha conservato intatta la propria inclinazione a prevaricare gli altri componenti del nucleo familiare, imponendo costantemente la propria volontà e prendendo decisioni unilaterali senza mai consultare i diretti interessati.</p>
 <p>Questa sua feroce abitudine di determinare le sorti altrui affonda le radici in un passato segnato da azioni gravissime ed estreme. In passato, infatti, Galip si è reso responsabile dell&#x27;abbandono di una figlia, a cui ha strappato con la forza la figura materna. Quest&#x27;ultima, ferita e intenzionata a riprendersi il posto che le spettava di diritto all&#x27;interno della famiglia Kozcuoğlu, ha dovuto ricorrere a lunghi anni di spietati ricatti prima di poter finalmente fare il proprio rientro in casa. Questo precedente storico evidenzia come l&#x27;anziano patriarca sia abituato da sempre a valutare in totale autonomia ciò che ritiene opportuno per la sua stirpe, senza mostrare alcuna esitazione di fronte alle conseguenze umane delle sue drammatiche deliberazioni.</p>
-<h2>Cosa prova Emir quando perde il controllo del corpo</h2>
+<h2 id="c9">Cosa prova Emir quando perde il controllo del corpo</h2>
 <p>Al suo risveglio dopo lunghi giorni trascorsi in uno stato di sofferenza e agonia, Emir dimostra subito di non aver perso la consueta arroganza che lo contraddistingue. Convinto di essere oramai invincibile e arrivando persino a pronunciare parole di risurrezione, l&#x27;uomo trae un grandissimo sollievo dal sapere che il suo nemico giurato è finito dietro le sbarre in prigione. Tuttavia, questa sua incrollabile certezza crolla miseramente durante una successiva visita medica di controllo. In quell&#x27;occasione, infatti, il dottore si accorge che il paziente ha perso completamente la sensibilità a un arto inferiore. Sopraffatto dall&#x27;ansia e dal panico, Emir tenta disperatamente di rimettersi in piedi per dimostrare la propria forza, finendo però per cadere rovinosamente sul pavimento della stanza.</p>
 <p>Il quadro clinico tracciato dai medici rivela una realtà amara: pur non trattandosi di una paralisi permanente, la presenza della pallottola incastrata nella colonna vertebrale scatenerà improvvisi attacchi di dolore acuto e blocchi motori temporanei, che potranno essere placati solo mediante l&#x27;uso di potenti antidolorifici. La verità più atroce emerge quando Emir scopre che a prendere la decisione di lasciare il proiettile nel suo corpo è stato proprio Galip. Questa sconvolgente rivelazione scatena una rabbia cieca nell&#x27;uomo, il quale accusa il genitore di averlo condannato a vivere per sempre con un pezzo del suo nemico all&#x27;interno del proprio organismo, intaccando irrimediabilmente l&#x27;illusione di potere e totale controllo assoluto che aveva costruito nel tempo.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=tlrClPcR9_s" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/tlrClPcR9_s/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>Colpo di Scena in Endless Love: Kemal e Nihan Scoprono Tutto – Emir Decide di Eliminare Asu e M</span></a></li><li><a href="https://www.youtube.com/watch?v=EVctmOOX6s4" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/EVctmOOX6s4/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>EMIR E ZEYNEP SI SPOSANO! ZEYNEP CADE NELLA TRAPPOLA...Anticipazioni Endless Love 2^ Stagione</span></a></li><li><a href="https://www.youtube.com/watch?v=YTaphddrACw" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/YTaphddrACw/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TRIONFO KEMAL!RIVINCITA COMPLETA SU EMIR CHE SI SFOGA SU GALIP-Anticipazioni Endless Love 5-6 G</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Galip ha fatto la scelta giusta o ha condannato il figlio a una vita di dolore? E la fragilità cambierà davvero Emir?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=b2zzkzld8Is">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di Endless Love</h2><div class="griglia"><article class="scheda">
+  <a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/"><div class="foto"><img src="https://i.ytimg.com/vi/DSiProJJ1ls/hqdefault.jpg" alt="Endless Love" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/"><div class="foto"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/"><div class="foto"><img src="https://i.ytimg.com/vi/uu2oAzTOWQU/hqdefault.jpg" alt="Endless Love" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></h3>
+    <div class="quando">25 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=Endless Love, il proiettile di Kemal resta nella schiena di Emir: la decisione presa da Galip senza consultarlo — «Mi hai costretto a vivere con un pezzo di lui dentro» — https://soapoperaitalia.com/endless-love/endless-love-la-trama-completa-perche-nihan-sposa-emir-e-come-finisce/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://soapoperaitalia.com/endless-love/endless-love-la-trama-completa-perche-nihan-sposa-emir-e-come-finisce/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://soapoperaitalia.com/endless-love/endless-love-la-trama-completa-perche-nihan-sposa-emir-e-come-finisce/&text=Endless Love, il proiettile di Kemal resta nella schiena di Emir: la decisione presa da Galip senza consultarlo — «Mi hai costretto a vivere con un pezzo di lui dentro»" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">TERRIBILE RISVEGLIO PER EMIR: HA LE GAMBE PARALIZZATE!</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=b2zzkzld8Is">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di Endless Love</h3><ol class="numerata"><li><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></li><li><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></li><li><a href="/endless-love/endless-love-chi-e-galip-kozcuoglu-le-due-volte-in-cui-nihan-e-stata-venduta/">Endless Love, chi è Galip Kozcuoğlu: le due volte in cui Nihan è stata venduta</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-zeynep-soydere-perche-emir-lha-scelta-e-cosa-ha-distrutto/">Endless Love, chi è davvero Zeynep Soydere: perché Emir l&#x27;ha scelta e cosa ha distrutto</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>TERRIBILE RISVEGLIO PER EMIR: HA LE GAMBE PARALIZZATE!</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su Endless Love</h3><ul><li><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></li><li><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></li><li><a href="/endless-love/endless-love-chi-e-galip-kozcuoglu-le-due-volte-in-cui-nihan-e-stata-venduta/">Endless Love, chi è Galip Kozcuoğlu: le due volte in cui Nihan è stata venduta</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-zeynep-soydere-perche-emir-lha-scelta-e-cosa-ha-distrutto/">Endless Love, chi è davvero Zeynep Soydere: perché Emir l&#x27;ha scelta e cosa ha distrutto</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

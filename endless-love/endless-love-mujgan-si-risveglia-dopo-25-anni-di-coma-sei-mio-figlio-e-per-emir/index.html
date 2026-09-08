@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/endless-love/">Endless Love</a> › Endless Love, Müjgan si risveglia dopo 25 anni di coma: «Sei mio figlio» — e per Emir arriva la verità più atroce su Galip</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/endless-love/">Endless Love</a>
   <h1>Endless Love, Müjgan si risveglia dopo 25 anni di coma: «Sei mio figlio» — e per Emir arriva la verità più atroce su Galip</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Il momento che i fan aspettavano da sempre: Müjgan apre gli occhi e riconosce Emir. Ma il risveglio porta con sé due bombe: Galip ha deliberatamente tenuto la moglie sedata per anni — e quello che tutti credevano un tentato suicidio fu in realtà un tentato omicidio. Poi le tre parole della madre che demoliscono Emir: «Sei come tuo padre».</p><ol><li><a href="#c1">Il risveglio: «Sei mio figlio»</a></li><li><a href="#c2">La verità su Galip: non suicidio, tentato omicidio</a></li><li><a href="#c3">«Lascia Nihan»: la supplica della madre</a></li><li><a href="#c4">La confessione di Emir e le tre parole che lo annientano</a></li><li><a href="#c5">Come Nihan scopre il movimento e aiuta Emir</a></li><li><a href="#c6">Perché Galip ha tenuto sedata la moglie Müjgan</a></li><li><a href="#c7">Cosa rivela Müjgan a Nihan su Kemal</a></li><li><a href="#c8">Quanto influisce Galip sull&#x27;amore malato di Emir</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>Endless Love</strong> — Serie conclusa in Italia · le puntate su Mediaset Infinity</span></div>
   
-  <p class="occhiello">Il momento che i fan aspettavano da sempre: Müjgan apre gli occhi e riconosce Emir. Ma il risveglio porta con sé due bombe: Galip ha deliberatamente tenuto la moglie sedata per anni — e quello che tutti credevano un tentato suicidio fu in realtà un tentato omicidio. Poi le tre parole della madre che demoliscono Emir: «Sei come tuo padre».</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: Endless Love, Müjgan si risveglia dopo 25 anni di coma: «Sei mio figlio» — e per Emir arriva la verità più atroce su Galip" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/NqiFoIRVp94/maxresdefault.jpg" alt="Endless Love, Müjgan si risveglia dopo 25 anni di coma: «Sei mio figlio» — e per Emir arriva la verità più atroce su Galip" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/NqiFoIRVp94/hqdefault.jpg 480w, https://i.ytimg.com/vi/NqiFoIRVp94/sddefault.jpg 640w, https://i.ytimg.com/vi/NqiFoIRVp94/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/NqiFoIRVp94/hqdefault.jpg&quot;, &quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,45 +409,67 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>«Ho costruito intorno a Nihan un recinto, ho creato catene: solo così non avrebbe mai potuto lasciarmi»: la confessione di Emir alla madre è il ritratto più nudo mai fatto del suo amore malato.</strong></p>
-  <h2>Il risveglio: «Sei mio figlio»</h2>
+  <h2 id="c1">Il risveglio: «Sei mio figlio»</h2>
 <p>Dopo oltre un quarto di secolo di coma, in una mattina qualunque, Müjgan apre gli occhi e con voce debole chiama Emir: «Sei mio figlio». Per lui è la realizzazione di un sogno covato per venticinque anni: si avvicina al letto con cautela e, in lacrime, depone un bacio sulla fronte della madre. Il primo segnale l&#x27;aveva colto per caso Nihan, filmando un video nella stanza: una mano che si muove, subito mostrata a Emir. Da lì, il trasferimento in una clinica privata d&#x27;avanguardia e un risveglio graduale, gestito con cautela dai medici.</p>
-<h2>La verità su Galip: non suicidio, tentato omicidio</h2>
+<h2 id="c2">La verità su Galip: non suicidio, tentato omicidio</h2>
 <p>Il risveglio scoperchia gli abissi: il medico curante confida a Emir che Galip ha insistito per anni affinché Müjgan restasse in stato di incoscienza, nonostante i segnali di possibile risveglio. E c&#x27;è di peggio: tutti credevano che Müjgan avesse tentato il suicidio, ma fu Galip a spingerla dall&#x27;ultimo piano della casa, convinto — erroneamente — che la figlia che portava in grembo fosse del suo amante. Quando Müjgan apre gli occhi proprio durante una visita di Galip, lui tenta perfino di farla riaddormentare: solo l&#x27;arrivo provvidenziale di una vicina sventa il piano. Emir, ferito, porta la madre a casa propria sotto sorveglianza continua.</p>
-<h2>«Lascia Nihan»: la supplica della madre</h2>
+<h2 id="c3">«Lascia Nihan»: la supplica della madre</h2>
 <p>Ma il colpo più duro per Emir non arriva da Galip: arriva da Müjgan stessa. Osservando come il figlio tratta Nihan — il controllo, la sorveglianza, i toni autoritari smascherati quando la nuora lo rimprovera per il dispositivo con cui la spia — la donna rivive il proprio matrimonio oppressivo e si schiera senza esitazioni: «Emir, devi lasciare Nihan». Tra le due nasce un legame speciale: Müjgan arriva a rivelare alla nuora che Emir sa tutto della sua storia con Kemal e della vera paternità di Deniz — un avvertimento, e un atto di protezione.</p>
-<h2>La confessione di Emir e le tre parole che lo annientano</h2>
+<h2 id="c4">La confessione di Emir e le tre parole che lo annientano</h2>
 <p>Messo alle strette, Emir si apre come mai prima: dopo la presunta perdita della madre, solo con Nihan dimenticava quel vuoto — per questo l&#x27;ha ingabbiata. «La amo anche se lei non mi ama. È come una malattia. Se se ne andasse, giuro che morirei». E supplica: «Non chiedermi più di lasciarla». Müjgan, che ancora fatica a parlare, trova la forza per tre parole sole — «Sei come tuo padre» — e quelle tre parole valgono più di ogni processo: costringono Emir a guardare in faccia l&#x27;eredità di Galip che si porta dentro.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Come Nihan scopre il movimento e aiuta Emir</h2>
+<h2 id="c5">Come Nihan scopre il movimento e aiuta Emir</h2>
 <p>Il destino della famiglia cambia improvvisamente grazie a un momento del tutto casuale registrato all&#x27;interno della stanza dove la donna giaceva da tempo. Nihan si trovava infatti nella camera da letto e stava girando un semplice filmato quando ha notato un piccolissimo dettaglio che fino a quel momento era sfuggito a chiunque altro. Un leggero movimento della mano ha riaccesso immediatamente la speranza, spingendo la ragazza a mostrare subito il filmato a Emir per metterlo al corrente di quello strano segnale di vita. Quel filmato ha rappresentato la vera svolta nella gestione medica del caso, convincendo il figlio a prendere decisioni immediate e drastiche per tutelare la salute della madre.</p>
 <p>Dopo aver preso visione delle immagini mostrate da Nihan, Emir ha organizzato senza esitazione il trasferimento della madre in una struttura sanitaria privata altamente qualificata e d&#x27;avanguardia. In questo nuovo ambiente protetto, sotto la costante supervisione dei medici specializzati, si è svolto un percorso di risveglio lento e misurato con estrema cautela. La delicatezza del quadro clinico richiedeva infatti la massima attenzione da parte del personale sanitario per evitare qualunque tipo di complicazione. Quando Müjgan ha finalmente riaperto gli occhi pronunciando quelle deboli parole di riconoscimento, il figlio si è fatto avanti in lacrime, deponendo con dolcezza un bacio sulla sua fronte dopo oltre un quarto di secolo.</p>
-<h2>Perché Galip ha tenuto sedata la moglie Müjgan</h2>
+<h2 id="c6">Perché Galip ha tenuto sedata la moglie Müjgan</h2>
 <p>La drammatica verità sulle condizioni della donna è emersa gradualmente attraverso le scioccanti confidenze fatte dal medico curante a Emir. Per lunghissimi anni, Galip ha esercitato una pressione costante e deliberata sul personale sanitario affinché la consorte venisse mantenuta in uno stato di incoscienza artificiale permanente. Nonostante il quadro clinico mostrasse chiari e inequivocabili segnali di un possibile ritorno alla coscienza, l&#x27;uomo ha insistito per soffocare ogni minima speranza di ripresa. Dietro questa spietata decisione si nascondeva il terrore che potessero emergere le responsabilità per quanto accaduto in passato, quando la donna fu spinta violentemente dall&#x27;ultimo piano della loro abitazione dopo un&#x27;accusa infondata di tradimento.</p>
 <p>L&#x27;ossessione e il cinismo di Galip sono emersi in tutta la loro gravità perfino nel momento in cui la consorte ha riaperto gli occhi proprio mentre lui si trovava nella stanza per una visita. Vedendo che la donna stava riacquistando lucidità, l&#x27;uomo ha tentato immediatamente di somministrarle dei farmaci per farla riaddormentare e mettere a tacere la verità per sempre. Soltanto il provvidenziale e tempestivo arrivo di una vicina di casa ha impedito che il suo piano malefico venisse portato a compimento fino in fondo. Dopo aver scoperto questo sconvolgente retroscena e l&#x27;incolumità messa nuovamente a rischio, Emir ha maturato la scelta di portare via la madre per proteggerla nella propria casa.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Cosa rivela Müjgan a Nihan su Kemal</h2>
+<h2 id="c7">Cosa rivela Müjgan a Nihan su Kemal</h2>
 <p>All&#x27;interno della residenza dove viene accudita sotto attenta sorveglianza, la donna inizia a osservare con grande lucidità le dinamiche quotidiane che legano suo figlio alla giovane sposa. Riconoscendo immediatamente nel comportamento autoritario di Emir gli stessi atteggiamenti oppressivi che avevano caratterizzato il suo doloroso matrimonio con Galip, la madre decide di schierarsi apertamente a difesa della nuora. Quando assiste ai rimproveri che la ragazza rivolge al marito per via degli strumenti di spionaggio utilizzati per controllarla, la donna comprende pienamente la sofferenza della giovane e decide di intervenire con decisione. Nasce così un legame di profonda complicità e protezione tra le due figure femminili all&#x27;interno della casa.</p>
 <p>Il rapporto speciale creato con la nuora spinge la donna a compiere un gesto di grande coraggio e lealtà per tutelare la ragazza dai pericoli imminenti. Con una rivelazione inaspettata, mette al corrente la nuora del fatto che il marito è perfettamente a conoscenza di tutti i retroscena legati alla sua passata relazione con Kemal. Oltre a questo importante dettaglio, la madre svela anche che il figlio conosce la reale paternità della piccola Deniz, mettendo la giovane in guardia sulla pericolosità della situazione. Questo gesto rappresenta non solo un fondamentale atto di avvertimento nei confronti della nuora, ma costituisce una vera e propria presa di posizione contro le azioni oscure del figlio.</p>
-<h2>Quanto influisce Galip sull&#x27;amore malato di Emir</h2>
+<h2 id="c8">Quanto influisce Galip sull&#x27;amore malato di Emir</h2>
 <p>Messo di fronte alle proprie responsabilità e supplicato dalla madre di interrompere quel matrimonio morboso, Emir lascia emergere la parte più fragile e drammatica della sua personalità. Nel tentativo di giustificare il proprio comportamento ossessivo, l&#x27;uomo confessa che la presenza della sposa rappresenta l&#x27;unico mezzo capace di colmare il vuoto devastante lasciato dall&#x27;assenza materna durante la sua infanzia. Per impedire che la donna possa abbandonarlo, ammette di aver costruito attorno a lei una vera e propria gabbia fatta di catene e recinti invalicabili. L&#x27;uomo definisce questo sentimento come una vera e propria malattia da cui non può e non vuole guarire, dichiarandosi pronto a morire pur di non perderla.</p>
 <p>La disperata richiesta del figlio, che implora di non essere costretto a rinunciare al suo matrimonio, trova una risposta glaciale e definitiva da parte della madre. La donna, compiendo un enorme sforzo fisico a causa delle sue precarie condizioni di salute, pronuncia tre sole parole cariche di un significato devastante. Definendolo identico a suo padre, la madre distrugge ogni alibi dell&#x27;uomo, costringendolo a prendere atto della spaventosa eredità morale lasciatagli da Galip. Quel paragone così diretto ed esplicito rappresenta una condanna senza appello, evidenziando come l&#x27;ossessione e il controllo violento verso la propria consorte siano esattamente i medesimi tratti che hanno distrutto la vita familiare in passato.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=H3HmyNdX4rU" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/H3HmyNdX4rU/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>EMIR FURIOSO CON SUA MADRE, CERCA DI SOFFOCARLA! ARRIVA NIHAN A SALVARLA - Endless Love 7 Giugn</span></a></li><li><a href="https://www.youtube.com/watch?v=RyxBZrES_-w" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/RyxBZrES_-w/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>Emir Abbandonato dalla Madre in Endless Love – La Rivelazione Che Nessuno Si Aspettava</span></a></li><li><a href="https://www.youtube.com/watch?v=b2zzkzld8Is" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/b2zzkzld8Is/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TERRIBILE RISVEGLIO PER EMIR: HA LE GAMBE PARALIZZATE! Anticipazioni Endless Love 2^ Stagione</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Il risveglio di Müjgan può davvero cambiare Emir, o «sei come tuo padre» è una condanna definitiva? E Galip pagherà per il tentato omicidio?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=NqiFoIRVp94">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di Endless Love</h2><div class="griglia"><article class="scheda">
+  <a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/"><div class="foto"><img src="https://i.ytimg.com/vi/DSiProJJ1ls/hqdefault.jpg" alt="Endless Love" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/"><div class="foto"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/"><div class="foto"><img src="https://i.ytimg.com/vi/uu2oAzTOWQU/hqdefault.jpg" alt="Endless Love" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></h3>
+    <div class="quando">25 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=Endless Love, Müjgan si risveglia dopo 25 anni di coma: «Sei mio figlio» — e per Emir arriva la verità più atroce su Galip — https://soapoperaitalia.com/endless-love/endless-love-la-trama-completa-perche-nihan-sposa-emir-e-come-finisce/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://soapoperaitalia.com/endless-love/endless-love-la-trama-completa-perche-nihan-sposa-emir-e-come-finisce/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://soapoperaitalia.com/endless-love/endless-love-la-trama-completa-perche-nihan-sposa-emir-e-come-finisce/&text=Endless Love, Müjgan si risveglia dopo 25 anni di coma: «Sei mio figlio» — e per Emir arriva la verità più atroce su Galip" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">EMIR COMMOSSO, MUJGAN SI RISVEGLIA! &quot;MAMMA, MAMMA!&quot;,&quot;SEI MIO FIGLIO?&quot; - Endless Love</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=NqiFoIRVp94">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di Endless Love</h3><ol class="numerata"><li><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></li><li><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></li><li><a href="/endless-love/endless-love-chi-e-galip-kozcuoglu-le-due-volte-in-cui-nihan-e-stata-venduta/">Endless Love, chi è Galip Kozcuoğlu: le due volte in cui Nihan è stata venduta</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-zeynep-soydere-perche-emir-lha-scelta-e-cosa-ha-distrutto/">Endless Love, chi è davvero Zeynep Soydere: perché Emir l&#x27;ha scelta e cosa ha distrutto</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>EMIR COMMOSSO, MUJGAN SI RISVEGLIA! &quot;MAMMA, MAMMA!&quot;,&quot;SEI MIO FIGLIO?&quot; - Endless Love</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su Endless Love</h3><ul><li><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></li><li><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></li><li><a href="/endless-love/endless-love-chi-e-galip-kozcuoglu-le-due-volte-in-cui-nihan-e-stata-venduta/">Endless Love, chi è Galip Kozcuoğlu: le due volte in cui Nihan è stata venduta</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-zeynep-soydere-perche-emir-lha-scelta-e-cosa-ha-distrutto/">Endless Love, chi è davvero Zeynep Soydere: perché Emir l&#x27;ha scelta e cosa ha distrutto</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

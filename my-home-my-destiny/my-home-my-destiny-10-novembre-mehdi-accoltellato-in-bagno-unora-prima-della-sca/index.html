@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/my-home-my-destiny/">My Home My Destiny</a> › My Home My Destiny 10 novembre, Mehdi accoltellato in bagno un&#x27;ora prima della scarcerazione: corre a chiamare aiuto e al ritorno è lui l&#x27;accusato</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/my-home-my-destiny/">My Home My Destiny</a>
   <h1>My Home My Destiny 10 novembre, Mehdi accoltellato in bagno un&#x27;ora prima della scarcerazione: corre a chiamare aiuto e al ritorno è lui l&#x27;accusato</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>8 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Il giorno del rilascio è arrivato: l&#x27;avvocato è in carcere per le ultime firme, la famiglia aspetta in tribunale, Mehdi ha già salutato i compagni di cella. Basta una deviazione in bagno per lavarsi le mani perché tutto salti: Bekir lo aggredisce con un coltello, lui si difende e corre a chiamare aiuto — e in quei secondi qualcuno entra e usa quella stessa lama.</p><ol><li><a href="#c1">La cella nuova e l&#x27;anziano che lo protegge</a></li><li><a href="#c2">Chi è Mehdi, e cosa c&#x27;è in gioco fuori da quel bagno</a></li><li><a href="#c3">Il coltello nella notte</a></li><li><a href="#c4">Cinque minuti prima di uscire</a></li><li><a href="#c5">L&#x27;accusa e il rilascio annullato</a></li><li><a href="#c6">Perché conta: l&#x27;unico che può scagionarlo è l&#x27;uomo a terra</a></li><li><a href="#c7">Come l&#x27;anziano detenuto protegge il giovane Mehdi</a></li><li><a href="#c8">Perché Zeynep tenta un gesto disperato in ospedale</a></li><li><a href="#c9">Cosa spinge il terzo detenuto a incastrare Mehdi</a></li><li><a href="#c10">Quale destino attende la famiglia di Mehdi fuori</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>My Home My Destiny</strong> — Serie conclusa in Italia · le puntate su Mediaset Infinity</span></div>
   
-  <p class="occhiello">Il giorno del rilascio è arrivato: l&#x27;avvocato è in carcere per le ultime firme, la famiglia aspetta in tribunale, Mehdi ha già salutato i compagni di cella. Basta una deviazione in bagno per lavarsi le mani perché tutto salti: Bekir lo aggredisce con un coltello, lui si difende e corre a chiamare aiuto — e in quei secondi qualcuno entra e usa quella stessa lama.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: My Home My Destiny 10 novembre, Mehdi accoltellato in bagno un&#x27;ora prima della scarcerazione: corre a chiamare aiuto e al ritorno è lui l&#x27;accusato" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/wV69tHu2IjM/maxresdefault.jpg" alt="My Home My Destiny 10 novembre, Mehdi accoltellato in bagno un&#x27;ora prima della scarcerazione: corre a chiamare aiuto e al ritorno è lui l&#x27;accusato" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/wV69tHu2IjM/hqdefault.jpg 480w, https://i.ytimg.com/vi/wV69tHu2IjM/sddefault.jpg 640w, https://i.ytimg.com/vi/wV69tHu2IjM/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/wV69tHu2IjM/hqdefault.jpg&quot;, &quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,49 +409,71 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>Alla fine il rilascio viene annullato: la nuova accusa è di aver accoltellato un altro detenuto.</strong></p>
-  <h2>La cella nuova e l&#x27;anziano che lo protegge</h2>
+  <h2 id="c1">La cella nuova e l&#x27;anziano che lo protegge</h2>
 <p>Dimesso dall&#x27;ospedale, Mehdi viene riportato in carcere ma finisce in una cella diversa, dove nessuno sembra volerlo. A provocarlo è subito un detenuto di nome Bekir, e a evitare che la situazione degeneri è un anziano che comanda in quella cella: riconosce in Mehdi il figlio di un ex detenuto a cui era legato, e decide di prenderlo sotto la sua protezione. Anche l&#x27;avvocato lo mette in guardia — non cadere nelle provocazioni, non andare mai da solo in bagno, restare vigile fino all&#x27;udienza. Deve reggere una notte soltanto.</p>
-<h2>Chi è Mehdi, e cosa c&#x27;è in gioco fuori da quel bagno</h2>
+<h2 id="c2">Chi è Mehdi, e cosa c&#x27;è in gioco fuori da quel bagno</h2>
 <p>Per chi entra adesso: l&#x27;uomo che sta per uscire non è un detenuto qualsiasi che ha scontato la sua pena. Mehdi è un commerciante: fuori ha un negozio di pneumatici che senza di lui resta chiuso, ha una moglie, Zeynep, e una famiglia che in questi mesi ha imparato ad aspettare fuori dai tribunali. In cella ci è finito per un&#x27;accusa che qualcuno gli ha costruito addosso, e questo cambia il modo in cui vanno letti i dettagli della giornata. Un trasferimento in una cella dove nessuno lo vuole, un detenuto che lo provoca dal primo minuto, un terzo uomo che nello stesso bagno raccoglie la lama e rinfaccia alla vittima un incarico non portato a termine: presi uno per uno sembrano incidenti, messi in fila somigliano molto a un ambiente preparato. L&#x27;unico consiglio dell&#x27;avvocato che Mehdi non segue, andare in bagno da solo, è esattamente quello su cui il piano contava.</p>
-<h2>Il coltello nella notte</h2>
+<h2 id="c3">Il coltello nella notte</h2>
 <p>Le provocazioni continuano fino all&#x27;ora di dormire, e nel cuore della notte Bekir si avvicina alla branda di Mehdi con un coltello in mano. L&#x27;anziano si sveglia appena in tempo per dare l&#x27;allarme, e ne nasce una colluttazione violenta. Mehdi, però, sa perfettamente di non potersi permettere un incidente alla vigilia dell&#x27;udienza: lo respinge senza infierire, gli intima davanti a tutta la cella di stargli lontano e gli fa capire che lo terrà d&#x27;occhio.</p>
-<h2>Cinque minuti prima di uscire</h2>
+<h2 id="c4">Cinque minuti prima di uscire</h2>
 <p>La mattina dopo la famiglia è in tribunale per le ultime pratiche, poi si torna in carcere per le formalità finali. Mehdi raccoglie le sue cose, saluta i compagni di cella e va in bagno a lavarsi le mani da solo — esattamente quello che gli era stato sconsigliato. Bekir lo raggiunge e lo aggredisce di nuovo con la lama. Mehdi ha la meglio, lo lascia a terra insieme al coltello ed esce correndo a chiedere aiuto. Ma nel bagno c&#x27;era un terzo uomo, un altro detenuto della sua cella: raccoglie l&#x27;arma, colpisce Bekir rinfacciandogli di non aver portato a termine l&#x27;incarico ricevuto, e poi chiama lui stesso gli agenti.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>L&#x27;accusa e il rilascio annullato</h2>
+<h2 id="c5">L&#x27;accusa e il rilascio annullato</h2>
 <p>Gli agenti stavolta arrivano subito e trovano una scena costruita alla perfezione: Bekir a terra gravemente ferito e la versione del terzo uomo, che indica Mehdi come l&#x27;aggressore. Quando lui torna nel bagno e vede il corpo, viene circondato e portato via senza capire cosa sia successo. L&#x27;avvocato raggiunge Cemile e gli altri, ancora in attesa fuori, e dà la notizia che nessuno voleva sentire: c&#x27;è una nuova accusa, e la scarcerazione è annullata. Intanto a casa di Barış la giornata era cominciata benissimo — Ali Rıza aveva chiesto a Sultan di trovare una moglie al nipote, scoprendo che entrambi pensavano alla stessa persona, e aveva annunciato l&#x27;intenzione di vendere quella che ormai chiama una casa-museo.</p>
-<h2>Perché conta: l&#x27;unico che può scagionarlo è l&#x27;uomo a terra</h2>
+<h2 id="c6">Perché conta: l&#x27;unico che può scagionarlo è l&#x27;uomo a terra</h2>
 <p>La beffa di questa giornata non finisce con le manette. Bekir non è soltanto la vittima dell&#x27;aggressione: diventa l&#x27;unico testimone in grado di dire che a colpirlo non è stato Mehdi. E si trova nel posto peggiore possibile, un letto d&#x27;ospedale con la polizia alla porta e, tutt&#x27;intorno, gli uomini di chi quell&#x27;accusa l&#x27;ha cucita addosso: nessun avvocato può arrivarci, nessuna udienza può convocarlo. Da qui nasce la parte più disperata di questa storia, quella in cui Zeynep smette di aspettare i tempi della giustizia e prova a entrare in quella stanza con un camice addosso, fingendosi un&#x27;infermiera. Nel frattempo il conto si allunga fuori: la saracinesca del negozio resta abbassata, e ogni settimana di carcere in più è una settimana di lavoro che non torna. Se quel testimone dovesse mancare prima di parlare, con lui sparirebbe anche l&#x27;unica prova che Mehdi ha.</p>
-<h2>Come l&#x27;anziano detenuto protegge il giovane Mehdi</h2>
+<h2 id="c7">Come l&#x27;anziano detenuto protegge il giovane Mehdi</h2>
 <p>Dopo le dimissioni dall&#x27;ospedale, per il commerciante comincia una fase complicata all&#x27;interno della struttura carceraria. Il trasferimento in una cella sconosciuta si rivela difficile, poichè nessuno sembra volere la sua presenza. A cambiare le cose interviene un anziano detenuto che comanda la camerata e riconosce nel giovane il figlio di un suo ex compagno di prigionia. Questo legame spinge l&#x27;uomo a prendere Mehdi sotto la sua protezione, fermando sul nascere le provocazioni di Bekir. Senza questo intervento, la convivenza nella cella sarebbe degenerata subito.</p>
 <p>L&#x27;avvocato raccomanda al suo assistito la massima cautela in vista dell&#x27;udienza decisiva per la scarcerazione. Le indicazioni sono chiare: non cedere alle provocazioni di Bekir, stare vigile e non andare mai da solo in bagno. Nella notte, Bekir si avvicina al letto del rivale con un coltello in mano. Soltanto l&#x27;allarme lanciato dal vecchio protettore evita il peggio, permettendo a Mehdi di respingere l&#x27;aggressore senza infierire. Il commerciante gli intima davanti a tutti di stargli lontano, dimostrando di voler evitare qualsiasi problema prima dell&#x27;uscita.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Perché Zeynep tenta un gesto disperato in ospedale</h2>
+<h2 id="c8">Perché Zeynep tenta un gesto disperato in ospedale</h2>
 <p>Con la saracinesca del negozio di pneumatici ancora abbassata, la detenzione prolungata mina il futuro economico e personale dell&#x27;uomo. L&#x27;unico testimone in grado di scagionarlo è Bekir, ricoverato in ospedale e piantonato dalla polizia insieme agli uomini di chi ha organizzato la trappola. Nessun avvocato può avvicinarlo e la sua eventuale scomparsa cancellerebbe ogni prova d&#x27;innocenza. Di fronte a questo vicolo cieco, Zeynep decide di intervenire personalmente: indossa un camice da infermiera e cerca di intrufolarsi nella stanza del ferito per salvare il marito prima che sia troppo tardi.</p>
 <p>Nel frattempo, a casa di Barış la mattinata scorre su ritmi del tutto diversi. Ali Rıza chiede aiuto a Sultan per individuare una potenziale sposa per il nipote, accorgendosi che entrambi stanno pensando alla medesima persona. Inoltre, l&#x27;uomo manifesta chiaramente la decisione di vendere quella che considera ormai soltanto una casa-museo. Mentre in quella dimora si tracciano nuovi progetti familiari e immobiliari, all&#x27;esterno Zeynep e i suoi cari combattono una battaglia disperata contro il tempo per svelare l&#x27;inganno che tiene Mehdi ingiustamente bloccato dietro le sbarre.</p>
-<h2>Cosa spinge il terzo detenuto a incastrare Mehdi</h2>
+<h2 id="c9">Cosa spinge il terzo detenuto a incastrare Mehdi</h2>
 <p>L&#x27;aggressione avvenuta all&#x27;interno dei servizi igienici rappresenta l&#x27;estremizzazione di una cospirazione studiata con grande attenzione per impedire che il commerciante possa riassaporare la libertà. L&#x27;uomo che ha colpito Bekir non ha agito d&#x27;impulso, bensì ha approfittato del momento esatto in cui la vittima designata si era allontanata per cercare soccorso tra i corridoi della struttura. Raccolta la lama abbandonata a terra dopo la prima colluttazione, questo secondo aggressore ha punito il compagno per non aver eseguito l&#x27;ordine ricevuto, trasformando immediatamente la scena in una trappola perfetta. Con l&#x27;arrivo tempestivo delle guardie avvisate dallo stesso autore del gesto, il quadro indiziario è apparso subito schiacciante contro l&#x27;ex detenuto.</p>
 <p>La gravità di questo nuovo impianto accusatorio cancella all&#x27;istante i progressi formali ottenuti dall&#x27;avvocato proprio nell&#x27;ora precedente alla prevista uscita. Il commerciante, rientrato nel locale dopo aver chiamato aiuto, si è ritrovato circondato dagli agenti senza avere alcuna possibilità immediata di spiegare la dinamica reale dei fatti. Questa svolta drammatica vanifica le speranze dell&#x27;intera famiglia che attendeva notizie all&#x27;esterno dell&#x27;edificio, costringendo tutti a riorganizzare la difesa legale in condizioni ancora più svantaggiose. Nel frattempo, la presenza del ferito piantonato dalle forze dell&#x27;ordine e dagli uomini legati all&#x27;organizzazione del complotto rende il quadro generale ancora più cupo e difficile da sbrogliare.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Quale destino attende la famiglia di Mehdi fuori</h2>
+<h2 id="c10">Quale destino attende la famiglia di Mehdi fuori</h2>
 <p>Mentre dentro la struttura si consuma il dramma della nuova incriminazione, all&#x27;esterno le ripercussioni economiche ed emotive gravano pesantemente sui congiunti dell&#x27;uomo. Il negozio di pneumatici, attività fondamentale per il sostentamento di tutti, rimane inevitabilmente con le serrande abbassate, accumulando perdite con il passare delle settimane. La prolungata assenza del proprietario costringe la moglie Zeynep e Cemile a confrontarsi con una realtà quotidiana sempre più complessa e incerta. L&#x27;attesa estenuante vissuta fuori dalle aule giudiziarie si trasforma dunque nell&#x27;ennesima prova di resistenza per un nucleo familiare già duramente provato dagli avvenimenti passati e dalle ingiustizie subite nel corso del tempo.</p>
 <p>La consapevolezza che l&#x27;unico elemento in grado di ribaltare l&#x27;accusa sia la testimonianza diretta di Bekir spinge le persone vicine al commerciante verso scelte estreme. Trovandosi di fronte a un blocco invalicabile posto dai piantoni e dalle persone interessate a mantenere il segreto, l&#x27;iniziativa personale diventa l&#x27;unica strada percorribile per fare chiarezza. La decisione di camuffarsi da personale sanitario nasce proprio dall&#x27;impossibilità per i legali di accedere alla struttura ospedaliera prima che il testimone possa essere messo a tacere. L&#x27;urgenza di raccogliere una dichiarazione prima che le condizioni del ferito peggiorino spinge la famiglia a rischiare il tutto per tutto pur di dimostrare l&#x27;innocenza del proprio caro.</p>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=XtDHf6nAcDM" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/XtDHf6nAcDM/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>MY HOME MY DESTINY Anticipazioni 6-7 Novembre: Zeynep subisce ricatto morale dalla famiglia di </span></a></li><li><a href="https://www.youtube.com/watch?v=7_JsuSQZoOU" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/7_JsuSQZoOU/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>MY HOME, MY DESTINY Anticipazioni: Zeynep e Mehdi finalmente innamorati!</span></a></li><li><a href="https://www.youtube.com/watch?v=Gu9q3xsRJQE" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/Gu9q3xsRJQE/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>MY HOME MY DESTINY Anticipazioni Turche: Mehdi: &quot;Ok Zeynep, basta! Sposerò lei!</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Chi ha ordinato l&#x27;aggressione a Mehdi? Avete già un sospetto?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=wV69tHu2IjM">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di My Home My Destiny</h2><div class="griglia"><article class="scheda">
+  <a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/"><div class="foto"><img src="/img/my-home-my-destiny-la-trama-completa-e-come-finisce.jpg" alt="My Home My Destiny" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">My Home My Destiny</span>
+    <h3><a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/">My Home My Destiny: la trama completa e come finisce</a></h3>
+    <div class="quando">30 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/"><div class="foto"><img src="https://i.ytimg.com/vi/-djleIeCLQs/hqdefault.jpg" alt="My Home My Destiny" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">My Home My Destiny</span>
+    <h3><a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/">My Home My Destiny, Zeynep ferma l&#x27;aborto di Benal in sala operatoria senza sapere che il padre è Mehdi</a></h3>
+    <div class="quando">17 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/"><div class="foto"><img src="https://i.ytimg.com/vi/gxL0o63Nhqw/hqdefault.jpg" alt="My Home My Destiny" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">My Home My Destiny</span>
+    <h3><a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/">My Home My Destiny, anticipazioni del 17 novembre: Özlem indaga su Zeynep e scopre tutto, Nuh diventa autista di Barış e qualcuno manomette i macchinari di Bekir</a></h3>
+    <div class="quando">16 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=My Home My Destiny 10 novembre, Mehdi accoltellato in bagno un&#x27;ora prima della scarcerazione: corre a chiamare aiuto e al ritorno è lui l&#x27;accusato — https://serietvfans.com/my-home-my-destiny/my-home-my-destiny-10-novembre-mehdi-accoltellato-in-bagno-unora-prima-della-sca/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/my-home-my-destiny/my-home-my-destiny-10-novembre-mehdi-accoltellato-in-bagno-unora-prima-della-sca/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/my-home-my-destiny/my-home-my-destiny-10-novembre-mehdi-accoltellato-in-bagno-unora-prima-della-sca/&text=My Home My Destiny 10 novembre, Mehdi accoltellato in bagno un&#x27;ora prima della scarcerazione: corre a chiamare aiuto e al ritorno è lui l&#x27;accusato" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">MY HOME MY DESTINY Anticipazioni 10 Novembre: Mehdi sta finalmente uscendo di galera</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=wV69tHu2IjM">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di My Home My Destiny</h3><ol class="numerata"><li><a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/">My Home My Destiny: la trama completa e come finisce</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/">My Home My Destiny, Zeynep ferma l&#x27;aborto di Benal in sala operatoria senza sapere che il padre è Mehdi</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/">My Home My Destiny, anticipazioni del 17 novembre: Özlem indaga su Zeynep e scopre tutto, Nuh diventa autista di Barış e qualcuno manomette i macchinari di Bekir</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-guida-alla-serie-chi-sono-demet-ozdemir-e-ibrahim-celikkol-qu/">My Home My Destiny: guida alla serie, il cast, i personaggi e quante puntate sono</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-1-dicembre-gli-spari-davanti-alla-vecchia-casa-zeynep-tra-le/">My Home My Destiny 1° dicembre, gli spari davanti alla vecchia casa: Zeynep tra le due madri quando l&#x27;uomo in moto estrae la pistola</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>MY HOME MY DESTINY Anticipazioni 10 Novembre: Mehdi sta finalmente uscendo di galera</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su My Home My Destiny</h3><ul><li><a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/">My Home My Destiny: la trama completa e come finisce</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/">My Home My Destiny, Zeynep ferma l&#x27;aborto di Benal in sala operatoria senza sapere che il padre è Mehdi</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/">My Home My Destiny, anticipazioni del 17 novembre: Özlem indaga su Zeynep e scopre tutto, Nuh diventa autista di Barış e qualcuno manomette i macchinari di Bekir</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-guida-alla-serie-chi-sono-demet-ozdemir-e-ibrahim-celikkol-qu/">My Home My Destiny: guida alla serie, il cast, i personaggi e quante puntate sono</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-1-dicembre-gli-spari-davanti-alla-vecchia-casa-zeynep-tra-le/">My Home My Destiny 1° dicembre, gli spari davanti alla vecchia casa: Zeynep tra le due madri quando l&#x27;uomo in moto estrae la pistola</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/my-home-my-destiny/">My Home My Destiny</a> › My Home My Destiny, Mehdi e Zeynep finalmente insieme: la dichiarazione origliata, la vacanza a Sapanca e la prima notte d&#x27;amore</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/my-home-my-destiny/">My Home My Destiny</a>
   <h1>My Home My Destiny, Mehdi e Zeynep finalmente insieme: la dichiarazione origliata, la vacanza a Sapanca e la prima notte d&#x27;amore</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Il momento atteso dall&#x27;inizio della soap: Mehdi confessa alla sorella di essersi innamorato della moglie — senza sapere che Zeynep lo sta ascoltando. Dalla dichiarazione «Sei nel mio cuore, con la tua bontà e con i tuoi peccati» alla luna di miele a Sapanca, ecco come nasce il loro amore vero.</p><ol><li><a href="#c1">La confessione origliata</a></li><li><a href="#c2">Chi è Benal, e perché quell&#x27;ombra esisteva già prima delle nozze</a></li><li><a href="#c3">La confessione di Zeynep sul passato</a></li><li><a href="#c4">Sapanca: la luna di miele</a></li><li><a href="#c5">L&#x27;ombra di Benal</a></li><li><a href="#c6">Perché conta: il problema non sarà la gravidanza, sarà la distanza in metri</a></li><li><a href="#c7">Come Nermin organizza il soggiorno a Sapanca</a></li><li><a href="#c8">Perche&#x27; Zeliha decide di spostare Benal vicino</a></li><li><a href="#c9">Cosa nascondeva Mehdi prima delle nozze</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>My Home My Destiny</strong> — Serie conclusa in Italia · le puntate su Mediaset Infinity</span></div>
   
-  <p class="occhiello">Il momento atteso dall&#x27;inizio della soap: Mehdi confessa alla sorella di essersi innamorato della moglie — senza sapere che Zeynep lo sta ascoltando. Dalla dichiarazione «Sei nel mio cuore, con la tua bontà e con i tuoi peccati» alla luna di miele a Sapanca, ecco come nasce il loro amore vero.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: My Home My Destiny, Mehdi e Zeynep finalmente insieme: la dichiarazione origliata, la vacanza a Sapanca e la prima notte d&#x27;amore" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/EitrpYQCGno/maxresdefault.jpg" alt="My Home My Destiny, Mehdi e Zeynep finalmente insieme: la dichiarazione origliata, la vacanza a Sapanca e la prima notte d&#x27;amore" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/EitrpYQCGno/hqdefault.jpg 480w, https://i.ytimg.com/vi/EitrpYQCGno/sddefault.jpg 640w, https://i.ytimg.com/vi/EitrpYQCGno/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/EitrpYQCGno/hqdefault.jpg&quot;, &quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,46 +409,68 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>Un matrimonio combinato che diventa amore per caso, origliando una confidenza tra fratelli: la scena più dolce di My Home My Destiny parte da una porta socchiusa.</strong></p>
-  <h2>La confessione origliata</h2>
+  <h2 id="c1">La confessione origliata</h2>
 <p>La svolta arriva per caso: parlando con la sorella Cemile, Mehdi ammette di essersi innamorato della moglie — senza accorgersi che Zeynep sta ascoltando. Il confronto che segue è il più sincero della loro storia: lui le confessa di pensarla continuamente, di sentire «un vortice di emozioni incontrollabili»; lei gli confida la paura di sempre — in passato è riuscita a rovinare tutto, ed è convinta di non saper rendere felice chi la ama. La risposta di Mehdi è da incorniciare: «Sei nel mio cuore, con la tua bontà e con i tuoi peccati». Il primo bacio sfiorato viene interrotto sul più bello... dal cameriere del bar. Ma qualcosa è cambiato per sempre: i due smettono perfino di dormire separati.</p>
-<h2>Chi è Benal, e perché quell&#x27;ombra esisteva già prima delle nozze</h2>
+<h2 id="c2">Chi è Benal, e perché quell&#x27;ombra esisteva già prima delle nozze</h2>
 <p>La nuvola che chiude questo capitolo non arriva dal nulla: c&#x27;era prima ancora che Mehdi si innamorasse della moglie. Benal è la donna con cui aveva una relazione, e quella relazione non si era chiusa quando la data del matrimonio era già fissata — è andata avanti mentre in casa si preparavano le nozze. La ragazza non l&#x27;ha presa bene: quando ha capito che quel matrimonio non era una formalità ma una cosa vera, si è mossa nell&#x27;unico modo che poteva fare davvero male, presentandosi da Nermin e mettendo in fila davanti a lei tutte le bugie raccontate da Mehdi. Ecco perché la dichiarazione origliata è insieme la scena più dolce della soap e la più fragile: nel momento in cui i due si scelgono per la prima volta, c&#x27;è già una terza persona che ha in mano il conto di tutto quello che lui non ha detto.</p>
-<h2>La confessione di Zeynep sul passato</h2>
+<h2 id="c3">La confessione di Zeynep sul passato</h2>
 <p>Prima del grande passo c&#x27;è un nodo da sciogliere che dice molto sulla serie: Zeynep teme la reazione di Mehdi — cresciuto in un quartiere tradizionalista dove le donne arrivano &quot;intatte&quot; al matrimonio — alla verità sul proprio passato: ha già avuto delle relazioni. La sincerità vince: glielo racconta apertamente, aspettandosi il peggio. E Mehdi sorprende ancora: «Non sono nessuno per giudicare il tuo passato» — anche se il pensiero di Faruk un po&#x27; gli brucia. Dopo quella conversazione arriva il primo vero bacio: niente più gesti d&#x27;affetto sulla guancia.</p>
-<h2>Sapanca: la luna di miele</h2>
+<h2 id="c4">Sapanca: la luna di miele</h2>
 <p>Il coronamento arriva nel finale della prima stagione, con la vacanza organizzata da Nermin in uno degli hotel di famiglia a Sapanca: partono Zeynep, Mehdi, Cemile con la figlia, Sultan ed Emine, mentre Zeliha e Müjgan restano a Istanbul. Per i due sposi è una vera luna di miele — e lì, finalmente, la prima notte d&#x27;amore che i telespettatori aspettavano dall&#x27;inizio della soap.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>L&#x27;ombra di Benal</h2>
+<h2 id="c5">L&#x27;ombra di Benal</h2>
 <p>La felicità però ha già la sua nuvola all&#x27;orizzonte: quando emerge che Mehdi è il padre del bambino che aspetta Benal, tutti si aspettano che Zeynep si faccia da parte — e invece la ragazza sceglie l&#x27;amore: «Ti amo davvero e voglio stare con te». A complicare le cose ci pensa Zeliha, che appresa la gravidanza porta Benal via da casa di Nermin e le affitta una casa proprio accanto alla loro: una vicinanza che non piace a Zeynep — e nemmeno a Mehdi. La pace di Sapanca, come sempre in questa soap, è destinata a durare poco.</p>
-<h2>Perché conta: il problema non sarà la gravidanza, sarà la distanza in metri</h2>
+<h2 id="c6">Perché conta: il problema non sarà la gravidanza, sarà la distanza in metri</h2>
 <p>Che Zeynep scelga di restare è la prova che quel «ti amo» non era una frase da vacanza. Ma la mossa che decide davvero i mesi successivi è un&#x27;altra, ed è di una banalità feroce: affittare a Benal la casa accanto. Da quel momento la faccenda smette di essere un errore del passato da perdonare una volta e diventa una presenza quotidiana, sul pianerottolo, alla stessa ora di tutti. Ed è lì che il matrimonio comincia a incrinarsi non per i sentimenti ma per il metodo: Mehdi prenderà decisioni su Benal senza dirle niente, e Zeynep si ritroverà a scoprirle dopo, una alla volta. Arriverà perfino la sera in cui la troveranno addormentata nel loro letto, e la risposta di Zeynep dirà tutto: resterà accanto al marito, ma non dormirà dove ha dormito lei. Sapanca, insomma, non è l&#x27;inizio della loro storia serena: è l&#x27;ultimo momento in cui sono stati soli.</p>
-<h2>Come Nermin organizza il soggiorno a Sapanca</h2>
+<h2 id="c7">Come Nermin organizza il soggiorno a Sapanca</h2>
 <p>La decisione di concedersi un momento di tregua lontano dai problemi quotidiani prende forma grazie all&#x27;iniziativa diretta di Nermin. È lei infatti a mettere a disposizione la struttura ricettiva di famiglia situata nella località turistica di Sapanca, offrendo la possibilità di staccare la spina a un gruppo composto da diverse persone legate ai protagonisti. Per questo viaggio partono insieme Zeynep e Mehdi, accompagnati dalla sorella Cemile con la rispettiva figlia, oltre a Sultan ed Emine. L&#x27;organizzazione di questa trasferta lascia invece a Istanbul due figure della famiglia come Zeliha e Müjgan. Questo soggiorno rappresenta una vera e propria luna di miele per la coppia coniugale, trasformando l&#x27;evento in una tappa fondamentale dopo il matrimonio combinato iniziale.</p>
 <p>La vacanza nella struttura di Nermin diventa il teatro ideale in cui Zeynep e Mehdi riescono finalmente ad avvicinarsi in modo profondo e intimo. Lontani dall&#x27;ambiente domestico di Istanbul, i due sposi vivono la loro attesa prima notte d&#x27;amore, coronando un percorso sentimentale nato quasi per caso da una confessione origliata dietro la porta socchiusa. Questa parentesi di assoluta serenità a Sapanca sembra cancellare momentaneamente le insicurezze di Zeynep sul proprio passato e la presenza ingombrante dell&#x27;ex compagno Faruk. L&#x27;atmosfera idilliaca vissuta con gli altri componenti del gruppo al seguito racchiude tutta la dolcezza di una scelta di vita condivisa, prima che le complicazioni legate a Benal tornino a minacciare seriamente l&#x27;equilibrio della coppia.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Perche&#x27; Zeliha decide di spostare Benal vicino</h2>
+<h2 id="c8">Perche&#x27; Zeliha decide di spostare Benal vicino</h2>
 <p>La gestione della gravidanza di Benal crea immediatamente profonde spaccature all&#x27;interno delle dinamiche familiari dei protagonisti. Quando viene a galla che il nascituro è figlio di Mehdi, la situazione precipita rapidamente verso una tensione costante. Di fronte alla scoperta del bambino in arrivo, la reazione di Zeliha cambia del tutto l&#x27;assetto delle cose: la donna prende infatti la decisione di allontanare la futura madre dalla casa di Nermin. Zeliha sceglie di prendere in affitto un&#x27;abitazione situata esattamente accanto a quella in cui risiedono i due sposi. Questa mossa sposta l&#x27;intera vicenda a pochi metri di distanza dall&#x27;ingresso principale di Zeynep e Mehdi, trasformando un segreto taciuto prima del matrimonio in un&#x27;ombra viva presente ad ogni ora della giornata.</p>
 <p>Il trasferimento di Benal nella casa vicina mina in modo irreversibile la serenità della vita coniugale appena conquistata. Nonostante Zeynep avesse confermato il suo sentimento verso il marito accettando di restargli accanto, la vicinanza fisica dell&#x27;altra donna crea un clima insostenibile. Mehdi inizia a prendere decisioni personali riguardanti Benal senza informare la moglie, portando Zeynep a scoprire le cose solo in un secondo momento. La tensione raggiunge il culmine quando la ragazza viene ritrovata persino addormentata all&#x27;interno del letto matrimoniale della coppia. Questo episodio spinge Zeynep a prendere una posizione ben precisa: sebbene confermi la volontà di stare al fianco di Mehdi, si rifiuta categoricamente di dormire dove si è coricata l&#x27;amante del marito.</p>
-<h2>Cosa nascondeva Mehdi prima delle nozze</h2>
+<h2 id="c9">Cosa nascondeva Mehdi prima delle nozze</h2>
 <p>Le reticenze di Mehdi risalgono al periodo precedente al matrimonio combinato con Zeynep. Mentre nei quartieri tradizionalisti la figura femminile è vista secondo rigidi valori legati all&#x27;integrità morale della sposa, il giovane custodiva una relazione con Benal. Questo legame sentimentale non si era concluso nemmeno durante la fase di preparazione delle nozze ufficiose della coppia. Benal ha reagito negativamente quando ha visto che la relazione coniugale tra Mehdi e la sposa si stava trasformando in un legame autentico e profondo. Per rivelare l&#x27;inganno, la ragazza ha deciso di andare direttamente da Nermin ad elencare le bugie raccontate dall&#x27;uomo, mettendo allo scoperto una verità che rischia di compromettere il rapporto fin dai primi momenti di vicinanza.</p>
 <p>Dall&#x27;altra parte anche Zeynep ha vissuto con forte ansia la necessità di confidare il proprio passato al coniuge. Cresciuta consapevole del contesto sociale di Mehdi, la giovane temeva le sue possibili reazioni in merito alla relazione vissuta in precedenza con Faruk. Tuttavia la scelta della totale trasparenza ha premiato l&#x27;onestà della ragazza: il marito ha infatti respinto ogni intenzione di giudicare i suoi trascorsi affettivi. Il superamento di questo ostacolo ha spinto i due verso il loro primo bacio spontaneo sulla bocca, segnando il passaggio definitivo dai semplici gesti d&#x27;affetto sulla guancia a una vera unione romantica, pur rimanendo impreparati ad affrontare la presenza costante e ingombrante del bambino in arrivo.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=7_JsuSQZoOU" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/7_JsuSQZoOU/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>MY HOME, MY DESTINY Anticipazioni: Zeynep e Mehdi finalmente innamorati!</span></a></li><li><a href="https://www.youtube.com/watch?v=G6Ej5LRKIFI" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/G6Ej5LRKIFI/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>MY HOME MY DESTINY Anticipazioni Turchia: Zeynep e Mehdi Protagonisti di un Quadrilatero Perico</span></a></li><li><a href="https://www.youtube.com/watch?v=VLdQr_42hvk" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/VLdQr_42hvk/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>MY HOME,MY DESTINY: Anticipazioni 31 LUG-1AGO: Zeynep e Mehdi finalmente uniti?</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>La dichiarazione di Mehdi vi ha fatto battere il cuore? E la mossa di Zeliha di sistemare Benal nella casa accanto: aiuto sincero o sabotaggio?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=EitrpYQCGno">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di My Home My Destiny</h2><div class="griglia"><article class="scheda">
+  <a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/"><div class="foto"><img src="/img/my-home-my-destiny-la-trama-completa-e-come-finisce.jpg" alt="My Home My Destiny" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">My Home My Destiny</span>
+    <h3><a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/">My Home My Destiny: la trama completa e come finisce</a></h3>
+    <div class="quando">30 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/"><div class="foto"><img src="https://i.ytimg.com/vi/-djleIeCLQs/hqdefault.jpg" alt="My Home My Destiny" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">My Home My Destiny</span>
+    <h3><a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/">My Home My Destiny, Zeynep ferma l&#x27;aborto di Benal in sala operatoria senza sapere che il padre è Mehdi</a></h3>
+    <div class="quando">17 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/"><div class="foto"><img src="https://i.ytimg.com/vi/gxL0o63Nhqw/hqdefault.jpg" alt="My Home My Destiny" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">My Home My Destiny</span>
+    <h3><a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/">My Home My Destiny, anticipazioni del 17 novembre: Özlem indaga su Zeynep e scopre tutto, Nuh diventa autista di Barış e qualcuno manomette i macchinari di Bekir</a></h3>
+    <div class="quando">16 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=My Home My Destiny, Mehdi e Zeynep finalmente insieme: la dichiarazione origliata, la vacanza a Sapanca e la prima notte d&#x27;amore — https://serietvfans.com/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/&text=My Home My Destiny, Mehdi e Zeynep finalmente insieme: la dichiarazione origliata, la vacanza a Sapanca e la prima notte d&#x27;amore" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">MY HOME MY DESTINY Anticipazioni Turchia: Mehdi e Zeynep, finalmente l&#x27;amore</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=EitrpYQCGno">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di My Home My Destiny</h3><ol class="numerata"><li><a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/">My Home My Destiny: la trama completa e come finisce</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/">My Home My Destiny, Zeynep ferma l&#x27;aborto di Benal in sala operatoria senza sapere che il padre è Mehdi</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/">My Home My Destiny, anticipazioni del 17 novembre: Özlem indaga su Zeynep e scopre tutto, Nuh diventa autista di Barış e qualcuno manomette i macchinari di Bekir</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-guida-alla-serie-chi-sono-demet-ozdemir-e-ibrahim-celikkol-qu/">My Home My Destiny: guida alla serie, il cast, i personaggi e quante puntate sono</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-1-dicembre-gli-spari-davanti-alla-vecchia-casa-zeynep-tra-le/">My Home My Destiny 1° dicembre, gli spari davanti alla vecchia casa: Zeynep tra le due madri quando l&#x27;uomo in moto estrae la pistola</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>MY HOME MY DESTINY Anticipazioni Turchia: Mehdi e Zeynep, finalmente l&#x27;amore</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su My Home My Destiny</h3><ul><li><a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/">My Home My Destiny: la trama completa e come finisce</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/">My Home My Destiny, Zeynep ferma l&#x27;aborto di Benal in sala operatoria senza sapere che il padre è Mehdi</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/">My Home My Destiny, anticipazioni del 17 novembre: Özlem indaga su Zeynep e scopre tutto, Nuh diventa autista di Barış e qualcuno manomette i macchinari di Bekir</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-guida-alla-serie-chi-sono-demet-ozdemir-e-ibrahim-celikkol-qu/">My Home My Destiny: guida alla serie, il cast, i personaggi e quante puntate sono</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-1-dicembre-gli-spari-davanti-alla-vecchia-casa-zeynep-tra-le/">My Home My Destiny 1° dicembre, gli spari davanti alla vecchia casa: Zeynep tra le due madri quando l&#x27;uomo in moto estrae la pistola</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

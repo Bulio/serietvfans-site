@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/my-home-my-destiny/">My Home My Destiny</a> › My Home My Destiny, Ekrem scappa in America con l&#x27;amante e lascia Nermin in bancarotta: la caduta dagli attici agli scarafaggi</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/my-home-my-destiny/">My Home My Destiny</a>
   <h1>My Home My Destiny, Ekrem scappa in America con l&#x27;amante e lascia Nermin in bancarotta: la caduta dagli attici agli scarafaggi</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Il matrimonio-modello di Nermin ed Ekrem si sbriciola nel modo più vigliacco: dopo l&#x27;irruzione degli ufficiali giudiziari per frode, lui annuncia con un freddo messaggio telefonico la fuga in America con l&#x27;amante Meltem e la figlia segreta — che presto sarà raggiunta da un secondo figlio in arrivo. Per Nermin comincia la discesa: casa persa, quote cedute, un appartamento con gli scarafaggi. E la laurea di Zeynep diventa l&#x27;unico raggio di luce.</p><ol><li><a href="#c1">La doppia vita di Ekrem e il messaggio della vergogna</a></li><li><a href="#c2">La caduta di Nermin: dalla villa agli scarafaggi</a></li><li><a href="#c3">La laurea di Zeynep: il momento che chiude la prima stagione</a></li><li><a href="#c4">Barış entra in scena: divorzio, mantenimento e caccia a Ekrem</a></li><li><a href="#c5">Come Mehdi scopre la verità sulla povertà di Nermin</a></li><li><a href="#c6">Perché Barış rintraccia Ekrem e aiuta Zeynep nel momento difficile</a></li><li><a href="#c7">Cosa accade durante la festa di laurea di Zeynep</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>My Home My Destiny</strong> — Serie conclusa in Italia · le puntate su Mediaset Infinity</span></div>
   
-  <p class="occhiello">Il matrimonio-modello di Nermin ed Ekrem si sbriciola nel modo più vigliacco: dopo l&#x27;irruzione degli ufficiali giudiziari per frode, lui annuncia con un freddo messaggio telefonico la fuga in America con l&#x27;amante Meltem e la figlia segreta — che presto sarà raggiunta da un secondo figlio in arrivo. Per Nermin comincia la discesa: casa persa, quote cedute, un appartamento con gli scarafaggi. E la laurea di Zeynep diventa l&#x27;unico raggio di luce.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: My Home My Destiny, Ekrem scappa in America con l&#x27;amante e lascia Nermin in bancarotta: la caduta dagli attici agli scarafaggi" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/aCMwz6y-DXI/maxresdefault.jpg" alt="My Home My Destiny, Ekrem scappa in America con l&#x27;amante e lascia Nermin in bancarotta: la caduta dagli attici agli scarafaggi" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/aCMwz6y-DXI/hqdefault.jpg 480w, https://i.ytimg.com/vi/aCMwz6y-DXI/sddefault.jpg 640w, https://i.ytimg.com/vi/aCMwz6y-DXI/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/aCMwz6y-DXI/hqdefault.jpg&quot;, &quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,25 +409,25 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>Sarà Mehdi, scoprendo la suocera in povertà, a riportarla da Zeynep: «Raccontale tutto e trasferisciti da noi». Il gesto che nessuno si aspettava dall&#x27;uomo più discusso della serie.</strong></p>
-  <h2>La doppia vita di Ekrem e il messaggio della vergogna</h2>
+  <h2 id="c1">La doppia vita di Ekrem e il messaggio della vergogna</h2>
 <p>L&#x27;idillio coniugale di Nermin ed Ekrem era una facciata: dietro, un&#x27;altra famiglia — l&#x27;amante Meltem, contabile dell&#x27;azienda, e una figlia mai dichiarata. Quando gli ufficiali giudiziari bussano alla porta con un&#x27;indagine per frode sugli affari loschi dei due amanti, il castello crolla. E Ekrem sceglie l&#x27;uscita più codarda: comunica a Nermin la fuga in America non di persona, ma con un freddo messaggio telefonico. Le indagini successive di Barış riveleranno anche di peggio: Meltem è incinta del secondo figlio.</p>
-<h2>La caduta di Nermin: dalla villa agli scarafaggi</h2>
+<h2 id="c2">La caduta di Nermin: dalla villa agli scarafaggi</h2>
 <p>Un mese dopo la fuga, la vita di Nermin è irriconoscibile: la casa perduta, le quote delle società cedute per tamponare il disastro economico, un appartamento fatiscente con la cucina infestata dagli scarafaggi e l&#x27;acqua calda come lusso. All&#x27;inizio tiene tutto nascosto perfino a Zeynep, «in vacanza» per non farla soffrire. È Mehdi a scoprire la verità: si presenta nell&#x27;appartamento, la sprona a raccontare tutto alla figlia e la invita a trasferirsi da loro. La convivenza con Sakine — di nuovo gelosa della complicità tra Zeynep e la madre adottiva — sarà burrascosa, finché le due donne capiranno di essersi sacrificate entrambe, in modi diversi, per la stessa figlia.</p>
-<h2>La laurea di Zeynep: il momento che chiude la prima stagione</h2>
+<h2 id="c3">La laurea di Zeynep: il momento che chiude la prima stagione</h2>
 <p>In mezzo al caos, il traguardo sognato: Zeynep si laurea in legge, con tutta la famiglia riunita intorno a Sakine e un&#x27;Emine che assiste da lontano — le tensioni per la storia con Faruk non le impediscono di esserci. Nel discorso, la ragazza ringrazia le sue due madri, dichiara a Mehdi di aver capito che il suo posto è nel suo cuore — i due hanno appena vissuto la loro prima notte d&#x27;amore — e dedica il successo al fratello scomparso, al quale aveva promesso di costruirsi un futuro migliore. Una festa che è anche un preludio: da qui in poi cambierà tutto.</p>
-<h2>Barış entra in scena: divorzio, mantenimento e caccia a Ekrem</h2>
+<h2 id="c4">Barış entra in scena: divorzio, mantenimento e caccia a Ekrem</h2>
 <p>Per fare giustizia, Nermin assolda Barış — il capo dello studio legale dove lavora Zeynep — per le pratiche di divorzio e la richiesta di mantenimento. L&#x27;avvocato rintraccia Ekrem in Sudamerica e informa per prima Zeynep, che decide di tacere con la madre per non farla soffrire ancora. Intanto Barış si preoccupa anche della sua giovane dipendente: ormai divorziata da Mehdi — l&#x27;amore c&#x27;era, la violenza ha rovinato tutto — Zeynep fatica a metabolizzare, e lui la tiene occupata affidandole proprio il caso contro il padre. Nermin recupererà ciò che le è stato rubato? La caccia a Ekrem è appena cominciata.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Come Mehdi scopre la verità sulla povertà di Nermin</h2>
+<h2 id="c5">Come Mehdi scopre la verità sulla povertà di Nermin</h2>
 <p>La vita di Nermin subisce un crollo totale dopo l&#x27;improvvisa fuga di Ekrem con l&#x27;amante Meltem e la figlia segreta. Per nascondere il disastro economico alla figlia Zeynep, la donna decide di far credere a tutti di trovarsi semplicemente in vacanza. In realtà, la sua situazione economica è disperata: dopo aver ceduto le sue quote societarie per far fronte ai debiti accumulati ed essere stata costretta a lasciare la propria casa, la donna si ritrova a vivere in un bilocale fatiscente. L&#x27;appartamento è invaso dagli scarafaggi nella zona cucina e perfino avere un po&#x27; d&#x27;acqua calda rappresenta un lusso inaccessibile.</p>
 <p>Inaspettatamente, è proprio Mehdi a scoprire le condizioni di estrema povertà in cui è precipitata la suocera. L&#x27;uomo, spesso al centro di accese discussioni per il suo carattere, compie un gesto sorprendente presentandosi nell&#x27;abitazione degradata. Di fronte a quella sconvolgente realtà, Mehdi sprona con decisione Nermin a raccontare tutta la verità a Zeynep senza nascondersi più. Inoltre, per proteggerla e offrirle una soluzione concreta, le propone direttamente di trasferirsi nella loro casa di famiglia. Questa offerta inattesa dimostra la sensibilità del giovane verso la madre adottiva della moglie in un momento cruciale.</p>
 <p>L&#x27;arrivo di Nermin nella nuova casa scatena un&#x27;immediata reazione in Sakine, la quale prova un profondo senso di gelosia osservando l&#x27;intensa complicità che lega Zeynep alla madre adottiva. La convivenza si preannuncia subito molto complessa e segnata da continue tensioni quotidiane tra le due donne. Tuttavia, con il passare del tempo e il prosieguo delle giornate insieme, Sakine e Nermin riescono gradualmente a superare le incomprensioni iniziali. Entrambe le madri arrivano infatti a comprendere che, sia pure in modi completamente differenti, hanno compiuto enormi sacrifici personali unicamente per il bene della stessa ragazza.</p>
-<h2>Perché Barış rintraccia Ekrem e aiuta Zeynep nel momento difficile</h2>
+<h2 id="c6">Perché Barış rintraccia Ekrem e aiuta Zeynep nel momento difficile</h2>
 <p>Schiacciata dalla devastante frode finanziaria orchestrata da Ekrem e dalla contabile aziendale Meltem, Nermin decide di reagire per via legale. Per tutelare i suoi diritti, si rivolge direttamente a Barış, un rinomato avvocato che dirige lo studio legale dove lavora anche Zeynep. Nermin affida al legale l&#x27;incarico di avviare subito le pratiche formali per il divorzio, richiedere il giusto mantenimento e rintracciare il marito fuggito all&#x27;estero. Questo passo segna il primo tentante riscatto della donna, determinata a far valere la giustizia dopo essere stata lasciata sul lastrico senza alcuna spiegazione diretta.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>Nel corso delle sue accurate indagini, Barış riesce a far luce sulla complessa rete di menzogne intessuta da Ekrem e Meltem. L&#x27;avvocato scopre che l&#x27;uomo si è rifugiato in Sudamerica insieme alla donna e alla loro bambina, e rivela un ulteriore dettaglio sconvolgente: Meltem è nuovamente incinta e aspetta il secondo figlio da Ekrem. Barış sceglie di informare immediatamente Zeynep di queste scoperte. La ragazza, tuttavia, prende una decisione sofferta e complessa: sceglie di tacere la verità a Nermin per non arrecare alla madre adottiva un ulteriore e insostenibile dolore in un momento già drammatico.</p>
 <p>Barış dimostra grande vicinanza verso Zeynep, sostenendola mentre la ragazza attraversa un periodo personale estremamente complicato. Il matrimonio tra Zeynep e Mehdi è infatti giunto al capolinea con il divorzio: nonostante tra loro ci fosse un forte sentimento d&#x27;amore, le continue manifestazioni di violenza hanno irrimediabilmente compromesso la loro unione. Per aiutare la sua giovane dipendente a superare il trauma e a rimanere concentrata sul lavoro, il legale decide di affidarle personalmente l&#x27;importante causa contro il padre adottivo Ekrem, trasformandola nella principale figura operativa nella caccia legale all&#x27;uomo.</p>
-<h2>Cosa accade durante la festa di laurea di Zeynep</h2>
+<h2 id="c7">Cosa accade durante la festa di laurea di Zeynep</h2>
 <p>Nel bel mezzo del caos economico e personale provocato dalle azioni di Ekrem, giunge il traguardo tanto desiderato da Zeynep, la quale riesce a conseguire la laurea in legge. Questo importante evento rappresenta un momento di fondamentale svolta nella narrazione e segna ufficialmente la conclusione della prima stagione della serie televisiva. Per festeggiare il successo accademico della giovane, l&#x27;intera famiglia decide di riunirsi dimostrando grande vicinanza. Tutti si stringono con affetto intorno a Sakine in un clima di forte partecipazione emotiva, condividendo la gioia per l&#x27;importante traguardo raggiunto dalla ragazza dopo numerosi sacrifici.</p>
 <p>All&#x27;evento partecipa anche Emine, la quale sceglie tuttavia di assistere alle celebrazioni rimanendo a debita distanza dal resto del gruppo. La ragazza decide di mantenere questa posizione defilata a causa delle forti tensioni familiari nate per via della sua controversa e complessa relazione sentimentale con Faruk. Nonostante queste evidenti difficoltà relazionali, Emine non vuole assolutamente rinunciare a essere presente per condividere da lontano la felicità dell&#x27;amica. La festa diventa così un momento di profonda condivisione in cui le vicende personali dei vari personaggi si intrecciano prima che nuovi ed inevitabili stravolgimenti cambino radicalmente ogni equilibrio.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
@@ -385,19 +435,41 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=3pNC4m0SrQ8" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/3pNC4m0SrQ8/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>MY HOME MY DESTINY Anticipazioni Turchia: Zeynep scopre la figlia segreta di Ekrem!</span></a></li><li><a href="https://www.youtube.com/watch?v=mQ5BoPIU9x8" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/mQ5BoPIU9x8/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>MY HOME MY DESTINY Anticipazioni Turchia: La Figlia Segreta di Ekrem!</span></a></li><li><a href="https://www.youtube.com/watch?v=GeWd-fLP07M" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/GeWd-fLP07M/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>MY HOME MY DESTINY Anticipazioni 12 Gennaio: Zeynep, un raggio di luce prima di cadere in trapp</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Ekrem pagherà mai o la fuga in Sudamerica lo renderà irraggiungibile? E l&#x27;attenzione di Barış per Zeynep vi sembra già qualcosa di più del lavoro?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=aCMwz6y-DXI">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di My Home My Destiny</h2><div class="griglia"><article class="scheda">
+  <a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/"><div class="foto"><img src="/img/my-home-my-destiny-la-trama-completa-e-come-finisce.jpg" alt="My Home My Destiny" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">My Home My Destiny</span>
+    <h3><a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/">My Home My Destiny: la trama completa e come finisce</a></h3>
+    <div class="quando">30 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/"><div class="foto"><img src="https://i.ytimg.com/vi/-djleIeCLQs/hqdefault.jpg" alt="My Home My Destiny" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">My Home My Destiny</span>
+    <h3><a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/">My Home My Destiny, Zeynep ferma l&#x27;aborto di Benal in sala operatoria senza sapere che il padre è Mehdi</a></h3>
+    <div class="quando">17 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/"><div class="foto"><img src="https://i.ytimg.com/vi/gxL0o63Nhqw/hqdefault.jpg" alt="My Home My Destiny" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">My Home My Destiny</span>
+    <h3><a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/">My Home My Destiny, anticipazioni del 17 novembre: Özlem indaga su Zeynep e scopre tutto, Nuh diventa autista di Barış e qualcuno manomette i macchinari di Bekir</a></h3>
+    <div class="quando">16 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=My Home My Destiny, Ekrem scappa in America con l&#x27;amante e lascia Nermin in bancarotta: la caduta dagli attici agli scarafaggi — https://serietvfans.com/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/&text=My Home My Destiny, Ekrem scappa in America con l&#x27;amante e lascia Nermin in bancarotta: la caduta dagli attici agli scarafaggi" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">MY HOME MY DESTINY ANTICIPAZIONI: EKREM SI DÀ ALLA FUGA E LASCIA NERMIN IN BANCAROTTA</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=aCMwz6y-DXI">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di My Home My Destiny</h3><ol class="numerata"><li><a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/">My Home My Destiny: la trama completa e come finisce</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/">My Home My Destiny, Zeynep ferma l&#x27;aborto di Benal in sala operatoria senza sapere che il padre è Mehdi</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/">My Home My Destiny, anticipazioni del 17 novembre: Özlem indaga su Zeynep e scopre tutto, Nuh diventa autista di Barış e qualcuno manomette i macchinari di Bekir</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-guida-alla-serie-chi-sono-demet-ozdemir-e-ibrahim-celikkol-qu/">My Home My Destiny: guida alla serie, il cast, i personaggi e quante puntate sono</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-1-dicembre-gli-spari-davanti-alla-vecchia-casa-zeynep-tra-le/">My Home My Destiny 1° dicembre, gli spari davanti alla vecchia casa: Zeynep tra le due madri quando l&#x27;uomo in moto estrae la pistola</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>MY HOME MY DESTINY ANTICIPAZIONI: EKREM SI DÀ ALLA FUGA E LASCIA NERMIN IN BANCAROTTA</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su My Home My Destiny</h3><ul><li><a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/">My Home My Destiny: la trama completa e come finisce</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/">My Home My Destiny, Zeynep ferma l&#x27;aborto di Benal in sala operatoria senza sapere che il padre è Mehdi</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/">My Home My Destiny, anticipazioni del 17 novembre: Özlem indaga su Zeynep e scopre tutto, Nuh diventa autista di Barış e qualcuno manomette i macchinari di Bekir</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-guida-alla-serie-chi-sono-demet-ozdemir-e-ibrahim-celikkol-qu/">My Home My Destiny: guida alla serie, il cast, i personaggi e quante puntate sono</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-1-dicembre-gli-spari-davanti-alla-vecchia-casa-zeynep-tra-le/">My Home My Destiny 1° dicembre, gli spari davanti alla vecchia casa: Zeynep tra le due madri quando l&#x27;uomo in moto estrae la pistola</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

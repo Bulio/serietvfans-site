@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/my-home-my-destiny/">My Home My Destiny</a> › My Home My Destiny 3 novembre, Mehdi sposa Benal in carcere mentre Zeynep balla un valzer con Barış: due matrimoni opposti nella stessa sera</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/my-home-my-destiny/">My Home My Destiny</a>
   <h1>My Home My Destiny 3 novembre, Mehdi sposa Benal in carcere mentre Zeynep balla un valzer con Barış: due matrimoni opposti nella stessa sera</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>8 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Benal accetta di sposare Mehdi, ma mette in chiaro con lui che non c&#x27;è amore: lo fa per garantire alla figlia stabilità e un padre presente. La cerimonia si celebra in cella, davanti al celebrante e all&#x27;avvocato. Nello stesso momento, a casa di Barış, Zeynep si lascia andare a un valzer che dice molto più di quello che nessuno dei due riesce ad ammettere.</p><ol><li><a href="#c1">«Lo sposo per lei, non per te»</a></li><li><a href="#c2">Le biglie di Ramazan</a></li><li><a href="#c3">La cena, il gioco e il vaso rotto</a></li><li><a href="#c4">Il valzer e la foto in carcere</a></li><li><a href="#c5">Come Benal decide di sposare Mehdi in carcere</a></li><li><a href="#c6">Perche Zeynep vuole indietro le biglie di Ramazan</a></li><li><a href="#c7">Quale futuro attende Baris dopo il valzer con Zeynep</a></li><li><a href="#c8">Come Emine e Savas trovano un&#x27;intesa inaspettata</a></li><li><a href="#c9">Cosa rischia Savas dopo la partenza della governante</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>My Home My Destiny</strong> — Serie conclusa in Italia · le puntate su Mediaset Infinity</span></div>
   
-  <p class="occhiello">Benal accetta di sposare Mehdi, ma mette in chiaro con lui che non c&#x27;è amore: lo fa per garantire alla figlia stabilità e un padre presente. La cerimonia si celebra in cella, davanti al celebrante e all&#x27;avvocato. Nello stesso momento, a casa di Barış, Zeynep si lascia andare a un valzer che dice molto più di quello che nessuno dei due riesce ad ammettere.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: My Home My Destiny 3 novembre, Mehdi sposa Benal in carcere mentre Zeynep balla un valzer con Barış: due matrimoni opposti nella stessa sera" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/1jsgIYR3vuU/maxresdefault.jpg" alt="My Home My Destiny 3 novembre, Mehdi sposa Benal in carcere mentre Zeynep balla un valzer con Barış: due matrimoni opposti nella stessa sera" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/1jsgIYR3vuU/hqdefault.jpg 480w, https://i.ytimg.com/vi/1jsgIYR3vuU/sddefault.jpg 640w, https://i.ytimg.com/vi/1jsgIYR3vuU/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/1jsgIYR3vuU/hqdefault.jpg&quot;, &quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,48 +409,70 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>Zeynep chiede indietro una cosa sola dopo il divorzio: le biglie di suo fratello.</strong></p>
-  <h2>«Lo sposo per lei, non per te»</h2>
+  <h2 id="c1">«Lo sposo per lei, non per te»</h2>
 <p>Mentre allatta la piccola Müjgan, Benal si lascia convincere da Cemile a riconsiderare la proposta di Mehdi, e cambia idea: accetta, non per amore ma per proteggere la figlia. Quando lo raggiunge in carcere, portandogli la bambina perché possa finalmente tenerla in braccio, glielo dice apertamente: tra loro non ci sarà nulla, e l&#x27;unica ragione di quel matrimonio è la tutela della piccola. Pone anche una condizione — che lui sia un padre presente, se non per lei almeno per la bambina. Mehdi, travolto dall&#x27;emozione di quell&#x27;abbraccio, accetta tutto.</p>
-<h2>Le biglie di Ramazan</h2>
+<h2 id="c2">Le biglie di Ramazan</h2>
 <p>Cemile si dà da fare per organizzare le nozze al meglio possibile, abito compreso, quando arriva Sultan per conto di Zeynep. Dopo il divorzio, Zeynep non aveva mai chiesto nulla: adesso vuole indietro una cosa sola, le biglie di suo fratello Ramazan, che a suo tempo erano state un regalo di Mehdi. Cemile gliele consegna senza discutere, con l&#x27;augurio che prima o poi Zeynep capisca perché sta facendo tutto questo per il fratello.</p>
-<h2>La cena, il gioco e il vaso rotto</h2>
+<h2 id="c3">La cena, il gioco e il vaso rotto</h2>
 <p>La sera Zeynep ed Emine sono a cena da Barış e Savaş. Emine confida a Savaş il desiderio di studiare all&#x27;università e di imparare l&#x27;inglese, e lui si offre di aiutarla e magari di seguire insieme dei corsi online; in giardino, intanto, Zeynep gioca a biglie proprio con Savaş, e quel gioco semplice fa bene a entrambi. In cucina Barış compie il suo piccolo passo avanti chiedendole di chiamarlo per nome fuori dall&#x27;ufficio. Poi si gioca a tabù a coppie, e la complicità tra i due diventa evidente a tutti. A guastare l&#x27;atmosfera è un incidente: Emine fa cadere un vaso che apparteneva alla madre di Savaş, e lui ne resta scosso — è Barış a stemperare tutto assicurando che si può rimediare.</p>
-<h2>Il valzer e la foto in carcere</h2>
+<h2 id="c4">Il valzer e la foto in carcere</h2>
 <p>A sera inoltrata Zeynep e Barış restano soli in salotto, e lui le chiede di insegnargli qualche passo di danza: ballano un valzer, guardandosi negli occhi senza riuscire a dire nulla, fermati dai ruoli professionali e da tutto il resto. Savaş ed Emine li sorprendono e provano a ritirarsi in silenzio. Nello stesso giorno, in carcere, Mehdi e Benal firmano i documenti alla presenza di Cemile, Nuh e della bambina; viene scattata una foto di gruppo, poi lui torna in cella lasciando moglie e figlia sotto la tutela della sorella. E per Barış si apre subito un problema pratico: la governante deve partire per assistere la madre, e Savaş resterebbe senza l&#x27;assistenza di cui ha bisogno.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Come Benal decide di sposare Mehdi in carcere</h2>
+<h2 id="c5">Come Benal decide di sposare Mehdi in carcere</h2>
 <p>Mentre si trova intenta ad allattare la piccola Müjgan, Benal si ritrova al centro di un momento decisivo per il futuro della sua famiglia. Cemile interviene con insistenza per convincere la giovane donna a valutare nuovamente la proposta di matrimonio avanzata da Mehdi. Dopo un&#x27;attenta riflessione, Benal sceglie di cambiare radicalmente idea e di accettare le nozze, pur chiarificando fin da subito la sua posizione sentimentale. La decisione non nasce da un sentimento d&#x27;amore nei confronti dell&#x27;uomo, bensì dal desiderio profondo di garantire alla propria bambina una stabilità materiale ed emotiva. Per Benal, la presenza costante di una figura paterna nella vita di Müjgan rappresenta l&#x27;unica vera priorità che giustifica questo passo così importante.</p>
 <p>Spinta da questo proposito, Benal si reca personalmente in carcere portando con sé la neonata per consentire a Mehdi di prenderla finalmente tra le braccia. Nel corso di questo intenso incontro, la donna esplicita le sue condizioni senza lasciare spazio ad dubbi o fraintendimenti. Mette in chiaro che tra loro due non ci sarà alcuna relazione coniugale autentica e che l&#x27;unione legale servirà esclusivamente a tutelare la crescita di Müjgan. Chiede inoltre a Mehdi la promessa solenne di impegnarsi a essere un padre vigile e presente. Travolto dall&#x27;emozione profonda di poter stringere la figlia, Mehdi accetta con grande trasporto ogni clausola imposta, spianando la strada alla rapida celebrazione dietro le sbarre.</p>
-<h2>Perche Zeynep vuole indietro le biglie di Ramazan</h2>
+<h2 id="c6">Perche Zeynep vuole indietro le biglie di Ramazan</h2>
 <p>In seguito alla definitiva conclusione del matrimonio con Mehdi tramite il divorzio, Zeynep dimostra di non voler avanzare alcuna pretesa sui beni materiali dell&#x27;ex marito. L&#x27;unica richiesta avanzata dalla ragazza riguarda un oggetto dal valore puramente affettivo, vale a dire le biglie appartenute a suo fratello Ramazan. Tali biglie, che in passato erano state donate a Ramazan proprio da Mehdi, rappresentano un ricordo prezioso e insostituibile per la giovane. Per recuperare questo ricordo di famiglia, Sultan si reca direttamente da Cemile, agendo come portavoce e intermediaria per conto di Zeynep in un momento estremamente delicato di transizione per tutti i protagonisti coinvolti.</p>
 <p>Di fronte alla richiesta sollevata da Sultan, Cemile sceglie di non opporre alcuna resistenza e consegna prontamente le biglie di Ramazan senza sollevare discussioni. Nel compiere questo gesto, la donna esprime tuttavia l&#x27;augurio sincero che Zeynep possa un giorno comprendere le motivazioni profonde che la spingono ad agire continuamente in favore del fratello Mehdi. Poco dopo, durante la serata trascorsa presso la residenza di Barış e Savaş, Zeynep porta con sé quelle medesime biglie. Nel giardino della casa, si ritrova a condividere con Savaş un momento di gioco semplice e spontaneo proprio con quelle sfere, regalando a entrambi un prezioso attimo di serenità e sollievo.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Quale futuro attende Baris dopo il valzer con Zeynep</h2>
+<h2 id="c7">Quale futuro attende Baris dopo il valzer con Zeynep</h2>
 <p>A tarda notte, quando la casa inizia a svuotarsi, Zeynep e Barış si ritrovano da soli nel salotto in un&#x27;atmosfera carica di suggestione. Barış coglie l&#x27;occasione per chiedere alla ragazza di mostrargli qualche passo di danza, dando il via a un valzer intimo e avvolgente. Durante il ballo, i due si guardano intensamente negli occhi senza riuscire a pronunciare alcuna parola, frenati dal peso dei rispettivi ruoli professionali e dalle complesse situazioni personali che li circondano. Questo momento di profonda vicinanza non passa inosservato: Savaş ed Emine sorprendono inaspettatamente la coppia mentre danza e, per rispetto della loro intimità, decidono di ritirarsi in silenzio senza interrompere il loro momento.</p>
 <p>Mentre a casa di Barış si consuma questa vicinanza emotiva, in carcere si formalizza il matrimonio tra Mehdi e Benal con la firma dei documenti ufficiali di fronte al celebrante e all&#x27;avvocato. Alla presenza di Cemile, Nuh e della piccola Müjgan, la nuova famiglia scatta una foto ricordo prima che Mehdi faccia ritorno nella propria cella, affidando la moglie e la figlia alle cure della sorella. La giornata si chiude tuttavia con una nuova complicazione logistica per la famiglia di Barış. La governante di casa si vede costretta a partire improvvisamente per prestare assistenza alla propria madre malata, lasciando così Savaş del tutto privo del supporto pratico e dell&#x27;assistenza quotidiana di cui ha strettamente bisogno.</p>
-<h2>Come Emine e Savas trovano un&#x27;intesa inaspettata</h2>
+<h2 id="c8">Come Emine e Savas trovano un&#x27;intesa inaspettata</h2>
 <p>Durante la cena trascorsa nella residenza dei due fratelli, la presenza di Emine offre l&#x27;occasione per far emergere desideri personali rimasti a lungo messi da parte. La ragazza decide infatti di confidare a Savaş la sua profonda intenzione di riprendere gli studi e frequentare l&#x27;università, esprimendo contestualmente la volontà di imparare la lingua inglese. Di fronte a questa confessione, Savaş dimostra una grande sensibilità e si offre immediatamente di fornirle tutto l&#x27;aiuto necessario per supportarla nel suo percorso educativo. Il giovane propone persino di seguire insieme a lei dei corsi di formazione online, gettando così le basi per una complicità del tutto nuova e inaspettata tra i due ragazzi.</p>
 <p>Tuttavia la serenità della serata viene improvvisamente incrinata da un banale quanto spiacevole incidente capitato proprio a Emine nel corso della cena. La giovane fa sfortunatamente cadere un prezioso vaso appartenuto alla defunta madre di Savaş, scatenando una reazione di visibile turbamento nel ragazzo. La tensione potenziale viene prontamente raddrizzata dall&#x27;intervento tempestivo di Barış, il quale interviene per rassicurare il fratello spiegando che al danno commesso si può facilmente porre rimedio. Più tardi, la sintonia tra Savaş ed Emine si manifesta nuovamente quando i due cogliendo di sorpresa Barış e Zeynep intenti a ballare un valzer romantico in salotto, decidono di comune accordo di allontanarsi senza far rumore.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Cosa rischia Savas dopo la partenza della governante</h2>
+<h2 id="c9">Cosa rischia Savas dopo la partenza della governante</h2>
 <p>Proprio nel momento in cui la vita domestica sembrava aver trovato un suo equilibrio piacevole, un imprevisto familiare stravolge la gestione quotidiana a casa di Barış. La storica governante che si occupa della gestione della dimora deve allontanarsi in tutta fretta per raggiungere e assistere la propria madre colpita da gravi problemi di salute. Questa partenza improvvisa si trasforma immediatamente in un serio ostacolo pratico per la vita del giovane Savaş. Il ragazzo si ritrova infatti improvvisamente privo di quel supporto indispensabile per affrontare le sue necessità giornaliere, rimanendo del tutto scoperto proprio quando la presenza di Zeynep e il clima sereno creato in casa sembravano avergli restituito una nuova tranquillità.</p>
 <p>L&#x27;assenza della donna costringe Barış ad affrontare un dilemma organizzativo urgente, dovendo trovare al più presto una soluzione per garantire al fratello l&#x27;assistenza continua di cui ha stretto bisogno. Questa complicazione pratica irrompe proprio mentre l&#x27;avvocato cerca di gestire i complessi sentimenti nascenti nei confronti di Zeynep, vissuti a stento tra una partita a tabù e un ballo romantico interrotto. Intanto, sul fronte opposto della storia, la situazione legale e familiare di Mehdi trova una momentanea stabilizzazione formale dietro le sbarre. Con la firma dei documenti, lo scatto della foto di gruppo e il rientro dell&#x27;uomo in cella, Benal e la piccola Müjgan restano ora affidate alla protezione costante e vigile della sorella Cemile.</p>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=Ukc1Roo8dN0" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/Ukc1Roo8dN0/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>MY HOME MY DESTINY Anticipazioni 15 Dicembre: Benal lascia la figlia a Zeynep | Mehdi la porta </span></a></li><li><a href="https://www.youtube.com/watch?v=Yhy9J2buqjk" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/Yhy9J2buqjk/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>MY HOME MY DESTINY Anticipazioni: Mehdi in carcere riflette mentre Zeynep soffre di crisi di pa</span></a></li><li><a href="https://www.youtube.com/watch?v=C_UTRZWkxKo" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/C_UTRZWkxKo/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>MY HOME MY DESTINY Anticipazioni 8-9 Novembre: Primo bacio tra Baris e Zeynep mentre Mehdi ....</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Benal ha fatto la scelta giusta sposandolo per la bambina?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=1jsgIYR3vuU">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di My Home My Destiny</h2><div class="griglia"><article class="scheda">
+  <a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/"><div class="foto"><img src="/img/my-home-my-destiny-la-trama-completa-e-come-finisce.jpg" alt="My Home My Destiny" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">My Home My Destiny</span>
+    <h3><a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/">My Home My Destiny: la trama completa e come finisce</a></h3>
+    <div class="quando">30 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/"><div class="foto"><img src="https://i.ytimg.com/vi/-djleIeCLQs/hqdefault.jpg" alt="My Home My Destiny" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">My Home My Destiny</span>
+    <h3><a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/">My Home My Destiny, Zeynep ferma l&#x27;aborto di Benal in sala operatoria senza sapere che il padre è Mehdi</a></h3>
+    <div class="quando">17 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/"><div class="foto"><img src="https://i.ytimg.com/vi/gxL0o63Nhqw/hqdefault.jpg" alt="My Home My Destiny" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">My Home My Destiny</span>
+    <h3><a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/">My Home My Destiny, anticipazioni del 17 novembre: Özlem indaga su Zeynep e scopre tutto, Nuh diventa autista di Barış e qualcuno manomette i macchinari di Bekir</a></h3>
+    <div class="quando">16 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=My Home My Destiny 3 novembre, Mehdi sposa Benal in carcere mentre Zeynep balla un valzer con Barış: due matrimoni opposti nella stessa sera — https://serietvfans.com/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/&text=My Home My Destiny 3 novembre, Mehdi sposa Benal in carcere mentre Zeynep balla un valzer con Barış: due matrimoni opposti nella stessa sera" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">MY HOME MY DESTINY Anticipazioni 3 Novembre: Mehdi si sposa con Benal, Zeynep può vivere</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=1jsgIYR3vuU">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di My Home My Destiny</h3><ol class="numerata"><li><a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/">My Home My Destiny: la trama completa e come finisce</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/">My Home My Destiny, Zeynep ferma l&#x27;aborto di Benal in sala operatoria senza sapere che il padre è Mehdi</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/">My Home My Destiny, anticipazioni del 17 novembre: Özlem indaga su Zeynep e scopre tutto, Nuh diventa autista di Barış e qualcuno manomette i macchinari di Bekir</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-guida-alla-serie-chi-sono-demet-ozdemir-e-ibrahim-celikkol-qu/">My Home My Destiny: guida alla serie, il cast, i personaggi e quante puntate sono</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-1-dicembre-gli-spari-davanti-alla-vecchia-casa-zeynep-tra-le/">My Home My Destiny 1° dicembre, gli spari davanti alla vecchia casa: Zeynep tra le due madri quando l&#x27;uomo in moto estrae la pistola</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>MY HOME MY DESTINY Anticipazioni 3 Novembre: Mehdi si sposa con Benal, Zeynep può vivere</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su My Home My Destiny</h3><ul><li><a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/">My Home My Destiny: la trama completa e come finisce</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/">My Home My Destiny, Zeynep ferma l&#x27;aborto di Benal in sala operatoria senza sapere che il padre è Mehdi</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/">My Home My Destiny, anticipazioni del 17 novembre: Özlem indaga su Zeynep e scopre tutto, Nuh diventa autista di Barış e qualcuno manomette i macchinari di Bekir</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-guida-alla-serie-chi-sono-demet-ozdemir-e-ibrahim-celikkol-qu/">My Home My Destiny: guida alla serie, il cast, i personaggi e quante puntate sono</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-1-dicembre-gli-spari-davanti-alla-vecchia-casa-zeynep-tra-le/">My Home My Destiny 1° dicembre, gli spari davanti alla vecchia casa: Zeynep tra le due madri quando l&#x27;uomo in moto estrae la pistola</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

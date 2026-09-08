@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/endless-love/">Endless Love</a> › Endless Love 15-20 aprile, Banu mostra a Nihan le foto di quella notte: non è stato Ozan a uccidere — e Önder rivela che da anni qualcuno ricatta Emir</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/endless-love/">Endless Love</a>
   <h1>Endless Love 15-20 aprile, Banu mostra a Nihan le foto di quella notte: non è stato Ozan a uccidere — e Önder rivela che da anni qualcuno ricatta Emir</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Nihan ha sacrificato la propria vita per coprire un delitto che il fratello non ha commesso. Le prove le arrivano da una persona che ha tutto l&#x27;interesse a toglierla di mezzo — e proprio per questo sono credibili.</p><ol><li><a href="#c1">Lo chalet, il telefono spento e il sospetto di Emir</a></li><li><a href="#c2">«Ho sposato Emir per salvare Ozan»</a></li><li><a href="#c3">Le fotografie</a></li><li><a href="#c4">Il fronte Zeynep</a></li><li><a href="#c5">Come Nihan affronta la verita sulla trappola di Emir</a></li><li><a href="#c6">Perche Emir cerca di incastrare Kemal con tre documenti</a></li><li><a href="#c7">Cosa spinge Tarık e Zeynep nelle mani di Emir</a></li><li><a href="#c8">Chi protegge Nihan mentre Emir cerca lo chalet</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>Endless Love</strong> — Serie conclusa in Italia · le puntate su Mediaset Infinity</span></div>
   
-  <p class="occhiello">Nihan ha sacrificato la propria vita per coprire un delitto che il fratello non ha commesso. Le prove le arrivano da una persona che ha tutto l&#x27;interesse a toglierla di mezzo — e proprio per questo sono credibili.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: Endless Love 15-20 aprile, Banu mostra a Nihan le foto di quella notte: non è stato Ozan a uccidere — e Önder rivela che da anni qualcuno ricatta Emir" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/8FRoVyH_1iU/sddefault.jpg" alt="Endless Love 15-20 aprile, Banu mostra a Nihan le foto di quella notte: non è stato Ozan a uccidere — e Önder rivela che da anni qualcuno ricatta Emir" width="640" height="480"
         srcset="https://i.ytimg.com/vi/8FRoVyH_1iU/hqdefault.jpg 480w, https://i.ytimg.com/vi/8FRoVyH_1iU/sddefault.jpg 640w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/8FRoVyH_1iU/hqdefault.jpg&quot;, &quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,45 +409,67 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>Nella stessa settimana Emir finanzia il negozio di Tarık e invita Zeynep a un concerto in elicottero.</strong></p>
-  <h2>Lo chalet, il telefono spento e il sospetto di Emir</h2>
+  <h2 id="c1">Lo chalet, il telefono spento e il sospetto di Emir</h2>
 <p>Emir cerca Nihan e trova il cellulare spento. Asu gli dice che è andata a un incontro di lavoro alla fondazione; lungo la strada una deviazione lo porta però davanti a un piccolo chalet abbandonato — lo stesso in cui Nihan e Kemal si erano rifugiati poco tempo prima. Non trova nessuno, ma capisce che qualcuno c&#x27;è stato da poco. Alla fine la ritrova a una stazione di servizio, e lei si giustifica dicendo che in quella zona non prende. Kemal, nascosto in un&#x27;auto poco distante, guarda tutta la scena in silenzio.</p>
-<h2>«Ho sposato Emir per salvare Ozan»</h2>
+<h2 id="c2">«Ho sposato Emir per salvare Ozan»</h2>
 <p>Salih consiglia a Kemal di lasciar perdere Nihan e di non fidarsi di lei; Kemal sceglie il contrario, e ottiene finalmente la confessione che aspettava — Nihan gli dice di essere stata costretta a sposare Emir contro la propria volontà, per proteggere il fratello, e che oltre a questo non può aggiungere altro. È una risposta parziale che lo solleva e lo tormenta insieme, tanto da spingerlo a confidarsi con Salih e Leyla. Nel frattempo Kemal firma tre documenti forniti da una società di consulenza che, scopre poi, non esiste: è una trappola che potrebbe portarlo in carcere, e lui è convinto che dietro ci sia Emir. Con l&#x27;aiuto di Salih va a cercare Raşit per farsi dire come sono andate le cose.</p>
-<h2>Le fotografie</h2>
+<h2 id="c3">Le fotografie</h2>
 <p>È Banu a mettere in mano a Nihan le foto scattate la sera dell&#x27;omicidio di cui Ozan porta la colpa. Quelle immagini dicono una cosa sola: a uccidere non è stato suo fratello, è stato Emir. Nihan resta sconvolta e porta la questione a casa, davanti a Vildan e Önder. Vildan ammette di saperlo già. Ma è Önder ad aggiungere il pezzo che manca — da anni qualcuno ricatta Emir con dei video girati quella notte. Il quadro, che sembrava finalmente chiaro, si complica ancora.</p>
-<h2>Il fronte Zeynep</h2>
+<h2 id="c4">Il fronte Zeynep</h2>
 <p>Emir intanto lavora su più tavoli. Insinua a Ozan che Kemal sia tornato a Istanbul per vendicarsi, mettendo il ragazzo contro la sorella; offre a Tarık il capitale per aprire il suo negozio, e lui accetta, convinto di poter finalmente dimostrare al padre di che pasta è fatto. E soprattutto punta Zeynep. Lei in casa si difende come può — respinge le avance di Ozan e incassa la proposta di matrimonio che Salih fa alla famiglia senza preavviso; Tarık, esasperato dalle telefonate con Ozan, le impone di uscire solo accompagnata da lui. In famiglia si diffonde la voce che Zeynep voglia fidanzarsi con Salih, e tutti festeggiano. Quello che nessuno sa è che ha già accettato l&#x27;invito di Emir: un viaggio in elicottero, fuori città, per un concerto del suo cantante preferito.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Come Nihan affronta la verita sulla trappola di Emir</h2>
+<h2 id="c5">Come Nihan affronta la verita sulla trappola di Emir</h2>
 <p>Nihan ha vissuto per anni credendo che il proprio sacrificio fosse l&#x27;unico modo per salvare Ozan da una pesante condanna. Il dramma familiare, rimasto sepolto a lungo, torna a galla quando Banu decide di farle recapitare le immagini girate la sera dell&#x27;omicidio. Per la giovane donna si tratta di uno sconvolgimento profondo, poiché scopre che suo fratello non ha commesso alcun delitto. È stato invece Emir a compiere l&#x27;atto fatale, lasciando che il giovane portasse una colpa tremenda. Banu agisce con un preciso scopo personale, desiderando rimuovere l&#x27;ostacolo rappresentato dalla rivale. Tuttavia la genuinità di quelle fotografie risulta incontestabile e distrugge le fondamenta su cui Nihan aveva edificato le sue scelte matrimoniali e personali.</p>
 <p>Sconvolta da tale rivelazione, la protagonista porta le prove di fronte ai genitori per pretendere chiarezza su quanto accaduto in passato. Nel corso del teso confronto domestico, Vildan ammette senza esitazione di essere già al corrente della situazione reale. A rendere la vicenda ancora più complessa è la testimonianza di Önder, il quale spiega come la famiglia sia legata a doppio filo con le azioni del genero. Il padre rivela infatti che qualcuno possiede i filmati di quella tragica serata e ricatta Emir da moltissimo tempo. Questa sconcertante verità complica ogni equilibrio all&#x27;interno della casa, lasciando intendere che la trappola tesa dai ricattatori sia ancora del tutto attiva e piena di insidie.</p>
-<h2>Perche Emir cerca di incastrare Kemal con tre documenti</h2>
+<h2 id="c6">Perche Emir cerca di incastrare Kemal con tre documenti</h2>
 <p>Dopo aver ascoltato le parziali ammissioni dell&#x27;amata, il protagonista cerca conforto confrontandosi apertamente con i suoi alleati più stretti, Salih e Leyla. Nihan gli ha finalmente spiegato di aver sposato il rivale unicamente per tutelare la vita di Ozan, senza però potersi addentrare nei dettagli della vicenda. Questa confidenza ridona speranza all&#x27;uomo, ma aumenta contemporaneamente i suoi dubbi sulla pericolosità delle minacce in atto. Nel frattempo l&#x27;avversario muove le sue pedine nell&#x27;ombra per eliminare definitivamente il potenziale ostacolo. Kemal si ritrova infatti a siglare tre moduli contabili consegnati da un&#x27;agenzia di consulenza societaria che, in realtà, non esiste affatto sul mercato. La firma di queste carte rischia di trascinarlo dritto in prigione con accuse gravissime.</p>
 <p>Intuendo immediatamente la matrice del tranello, il giovane capisce che dietro l&#x27;operazione fittizia c&#x27;è la regia spietata del suo nemico storico. Per evitare la rovina giudiziaria e smascherare il piano avversario, l&#x27;ingegnere decide di muoversi tempestivamente insieme a Salih. I due amici uniscono le proprie forze per rintracciare Raşit, la persona chiave capace di chiarire l&#x27;intera dinamica e spiegare chi abbia realmente orchestrato la macchinazione. Il supporto del fedele compagno risulta decisivo per muoversi in un contesto sempre più insidioso, dove ogni mossa falsa può compromettere per sempre la libertà e la possibilità di fare luce sui segreti che ancora opprimono la vita di tutti i protagonisti.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Cosa spinge Tarık e Zeynep nelle mani di Emir</h2>
+<h2 id="c7">Cosa spinge Tarık e Zeynep nelle mani di Emir</h2>
 <p>L&#x27;influenza del perfido imprenditore si estende con fermezza anche sul resto della famiglia di Kemal, sfruttando i punti deboli di ciascun membro. Per prima cosa, l&#x27;uomo agisce su Ozan, insinuando che il rivale sia tornato in città guidato solo da un cieco desiderio di vendetta. Allo stesso tempo finanzia il progetto commerciale di Tarık, fornendogli la somma indispensabile per inaugurare il nuovo salone. Il ragazzo accetta con grande entusiasmo la proposta economica, convinto che quell&#x27;iniziativa gli permetterà finalmente di dimostrare al padre il proprio valore professionale. Senza rendersene conto, cade nella rete tesa da chi intende manipolare l&#x27;intero nucleo familiare per spingerlo a dividersi e creare costanti attriti interni.</p>
 <p>Sul versante opposto, la giovane sorella vive un momento di forte tensione personale all&#x27;interno delle mura domestiche. La ragazza respinge con decisione le continue attenzioni di Ozan e deve affrontare improvvisamente la proposta di matrimonio avanzata da Salih alla sua famiglia. La notizia genera un clima di grande festa tra i parenti, convinti che le nozze siano ormai imminenti. Tuttavia la situazione si complica ulteriormente quando Tarık scopre le continue chiamate con Ozan e le impone di uscire soltanto con la sua supervisione. Nonostante le strette limitazioni, la giovane decide di accettare il seducente invito del ricco rivale, preparandosi a fuggire in elicottero verso un concerto privato.</p>
-<h2>Chi protegge Nihan mentre Emir cerca lo chalet</h2>
+<h2 id="c8">Chi protegge Nihan mentre Emir cerca lo chalet</h2>
 <p>La tensione tra i coniugi si accende ulteriormente quando l&#x27;imprenditore nota l&#x27;improvvisa irreperibilità della moglie e tenta di contattarla al telefono senza successo. Chiedendo spiegazioni ad Asu, viene informato che la donna si trova a un appuntamento organizzato dalla fondazione caritatevole. Durante il tragitto, tuttavia, una deviazione stradale lo conduce nei pressi di un piccolo chalet abbandonato dove la donna si era nascosta precedentemente con Kemal. Sebbene la struttura risulti deserta al suo arrivo, l&#x27;uomo nota dettagli inequivocabili che confermano una recente presenza humana. Poco dopo incontra la consorte presso una stazione di rifornimento carburante, dove lei cerca di giustificare il proprio silenzio attribuendo la mancata risposta alla totale assenza di segnale telefonico.</p>
 <p>Tutta la complessa scena della spiegazione si svolge sotto lo sguardo vigile di Kemal, che rimane nascosto all&#x27;interno di un&#x27;autovettura posizionata a breve distanza. L&#x27;ingegnere preferisce non intervenire direttamente, lasciando che la giovane gestisca il sospettoso marito per evitare drammatiche conseguenze immediate. La vicinanza tra i due ex amanti continua a destare viva preoccupazione in Salih, il quale suggerisce espressamente all&#x27;amico di allontanarsi definitivamente da quella storia piena di pericoli. Salih ritiene infatti che riporre fiducia nella ragazza sia del tutto imprudente alla luce dei troppi misteri. Nonostante l&#x27;avvertimento e i gravi rischi legati alla situazione, il protagonista sceglie di ignorare i consigli ricevuti, rimanendo determinato a proteggerla.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=LbWnENhFlPA" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/LbWnENhFlPA/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>NIHAN PAZZA DI GELOSIA, MENTRE EMIR PROVA AD UCCIDERE ONDER! Anticipazioni Endless Love 22-26 A</span></a></li><li><a href="https://www.youtube.com/watch?v=GTWyYbZfkKs" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/GTWyYbZfkKs/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>ENDLESS LOVE Anticipazioni 11-12 Marzo: Kemal salva la vita a Nihan | Emir ossessionato di gelo</span></a></li><li><a href="https://www.youtube.com/watch?v=Kn5WN5GNm24" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/Kn5WN5GNm24/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>Endless Love: Emir Commette l’Inimmaginabile – Nihan Tra la Vita e la Morte</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Chi ricatta Emir da anni con quei video?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=8FRoVyH_1iU">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di Endless Love</h2><div class="griglia"><article class="scheda">
+  <a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/"><div class="foto"><img src="https://i.ytimg.com/vi/DSiProJJ1ls/hqdefault.jpg" alt="Endless Love" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/"><div class="foto"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/"><div class="foto"><img src="https://i.ytimg.com/vi/uu2oAzTOWQU/hqdefault.jpg" alt="Endless Love" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></h3>
+    <div class="quando">25 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=Endless Love 15-20 aprile, Banu mostra a Nihan le foto di quella notte: non è stato Ozan a uccidere — e Önder rivela che da anni qualcuno ricatta Emir — https://soapoperaitalia.com/endless-love/endless-love-la-trama-completa-perche-nihan-sposa-emir-e-come-finisce/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://soapoperaitalia.com/endless-love/endless-love-la-trama-completa-perche-nihan-sposa-emir-e-come-finisce/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://soapoperaitalia.com/endless-love/endless-love-la-trama-completa-perche-nihan-sposa-emir-e-come-finisce/&text=Endless Love 15-20 aprile, Banu mostra a Nihan le foto di quella notte: non è stato Ozan a uccidere — e Önder rivela che da anni qualcuno ricatta Emir" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">Endless Love anticipazioni settimanali dal 15 al 20 aprile</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=8FRoVyH_1iU">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di Endless Love</h3><ol class="numerata"><li><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></li><li><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></li><li><a href="/endless-love/endless-love-chi-e-galip-kozcuoglu-le-due-volte-in-cui-nihan-e-stata-venduta/">Endless Love, chi è Galip Kozcuoğlu: le due volte in cui Nihan è stata venduta</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-zeynep-soydere-perche-emir-lha-scelta-e-cosa-ha-distrutto/">Endless Love, chi è davvero Zeynep Soydere: perché Emir l&#x27;ha scelta e cosa ha distrutto</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>Endless Love anticipazioni settimanali dal 15 al 20 aprile</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su Endless Love</h3><ul><li><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></li><li><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></li><li><a href="/endless-love/endless-love-chi-e-galip-kozcuoglu-le-due-volte-in-cui-nihan-e-stata-venduta/">Endless Love, chi è Galip Kozcuoğlu: le due volte in cui Nihan è stata venduta</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-zeynep-soydere-perche-emir-lha-scelta-e-cosa-ha-distrutto/">Endless Love, chi è davvero Zeynep Soydere: perché Emir l&#x27;ha scelta e cosa ha distrutto</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

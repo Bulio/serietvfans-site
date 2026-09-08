@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/my-home-my-destiny/">My Home My Destiny</a> › My Home My Destiny 29-30 agosto, la lettera d&#x27;addio di Zeynep fa piangere Mehdi — poi lei la riprende e gli dà appuntamento al giardino del tè</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/my-home-my-destiny/">My Home My Destiny</a>
   <h1>My Home My Destiny 29-30 agosto, la lettera d&#x27;addio di Zeynep fa piangere Mehdi — poi lei la riprende e gli dà appuntamento al giardino del tè</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>6 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Scoperto che Cemile e Sultan avevano organizzato l&#x27;allontanamento di Benal, Mehdi torna a casa e affronta la famiglia. Zeynep, intanto, arriva alla conclusione più dolorosa: farsi da parte perché lui possa essere il padre che quel bambino merita, e gli lascia una lettera. Mehdi la legge e scoppia a piangere. Ma il giorno dopo le parole di Sakine rimettono tutto in discussione.</p><ol><li><a href="#c1">La resa dei conti in famiglia</a></li><li><a href="#c2">Le quattro donne e la proposta di Müjgan</a></li><li><a href="#c3">La lettera sul tavolo</a></li><li><a href="#c4">Il bacio visto da Sultan e il tè che cambia tutto</a></li><li><a href="#c5">Come Sakine spinge Zeynep a non mollare Mehdi</a></li><li><a href="#c6">Perche&#x27; Cemile nasconde la verita&#x27; a Mujgan</a></li><li><a href="#c7">Cosa spinge Sultan a seguire Emine e Faruk</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>My Home My Destiny</strong> — Serie conclusa in Italia · le puntate su Mediaset Infinity</span></div>
   
-  <p class="occhiello">Scoperto che Cemile e Sultan avevano organizzato l&#x27;allontanamento di Benal, Mehdi torna a casa e affronta la famiglia. Zeynep, intanto, arriva alla conclusione più dolorosa: farsi da parte perché lui possa essere il padre che quel bambino merita, e gli lascia una lettera. Mehdi la legge e scoppia a piangere. Ma il giorno dopo le parole di Sakine rimettono tutto in discussione.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: My Home My Destiny 29-30 agosto, la lettera d&#x27;addio di Zeynep fa piangere Mehdi — poi lei la riprende e gli dà appuntamento al giardino del tè" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/DLMIsqJcJI0/maxresdefault.jpg" alt="My Home My Destiny 29-30 agosto, la lettera d&#x27;addio di Zeynep fa piangere Mehdi — poi lei la riprende e gli dà appuntamento al giardino del tè" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/DLMIsqJcJI0/hqdefault.jpg 480w, https://i.ytimg.com/vi/DLMIsqJcJI0/sddefault.jpg 640w, https://i.ytimg.com/vi/DLMIsqJcJI0/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/DLMIsqJcJI0/hqdefault.jpg&quot;, &quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,41 +409,63 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>Sultan pedina Emine e scopre chi è il suo fidanzato segreto: Faruk, l&#x27;ex di Zeynep.</strong></p>
-  <h2>La resa dei conti in famiglia</h2>
+  <h2 id="c1">La resa dei conti in famiglia</h2>
 <p>Turbata, Cemile cerca conforto da Sultan, che le consiglia di non confessare nulla a Mehdi: quello che hanno fatto nasceva dall&#x27;affetto, e ammetterlo servirebbe solo a peggiorare le cose. Lei però si sente tradita da quel silenzio, e quando Mehdi rientra e accusa apertamente madre e sorella di aver cospirato contro Benal, decide di dire la verità — è stata lei, d&#x27;accordo con Benal, a organizzare l&#x27;allontanamento, con l&#x27;obiettivo di salvare il matrimonio del fratello. Zeliha, che della gravidanza non sapeva nulla, ascolta sbigottita. Mehdi non si placa, e più tardi, in un bar, si sfoga con Nuh: quello che lo tormenta non è l&#x27;inganno della famiglia, ma il fatto che Zeynep, da quando l&#x27;ha sposato, non abbia fatto altro che soffrire mettendo tutti davanti a se stessa.</p>
-<h2>Le quattro donne e la proposta di Müjgan</h2>
+<h2 id="c2">Le quattro donne e la proposta di Müjgan</h2>
 <p>Cemile e Müjgan si rifugiano a casa di Sultan, dove trovano anche Emine. Per la prima volta le due sorelle si parlano davvero: Cemile spiega di aver taciuto per paura che Müjgan usasse quella notizia per spingere il fratello a lasciare Zeynep, e confessa una cosa che non aveva mai detto a nessuno — di aver sposato il padre di sua figlia solo per garantirle un futuro, rinunciando alla propria giovinezza. Poi si discute del da farsi, e Müjgan avanza la proposta più fredda: che Mehdi faccia il padre per il bambino di un&#x27;altra e che Zeynep torni alla vita di prima, magari ritrovando Faruk. Emine reagisce con una veemenza che sorprende tutte.</p>
-<h2>La lettera sul tavolo</h2>
+<h2 id="c3">La lettera sul tavolo</h2>
 <p>Rientrato, Mehdi chiede scusa a Zeynep per averla lasciata sola davanti a tutto e le assicura di non voler chiudere il matrimonio, nonostante dovrà affrontare la paternità con Benal. Lei ascolta, ma quello che pesa non riguarda solo loro due: se resta, quel bambino non avrà entrambi i genitori sotto lo stesso tetto. Poco dopo Mehdi trova una lettera lasciata sul tavolo: Zeynep lo ringrazia per averle insegnato ad aprirsi, gli dice che il loro amore resterà intatto anche se le circostanze li separeranno, e gli spiega di volersi fare da parte perché lui possa essere il padre che quel figlio merita. Lui la legge e crolla in un pianto lungo.</p>
-<h2>Il bacio visto da Sultan e il tè che cambia tutto</h2>
+<h2 id="c4">Il bacio visto da Sultan e il tè che cambia tutto</h2>
 <p>Il giorno dopo Sakine parla alla figlia con una chiarezza che non le si conosceva: ha già sacrificato troppo per compiacere gli altri, e stavolta deve lottare per il suo amore. Zeynep decide di riprendersi la lettera sperando che non sia stata ancora letta. Intanto Sultan, ossessionata dall&#x27;idea di scoprire chi frequenti Emine, prova perfino a sbloccarle il telefono; alla fine la pedina e assiste a un bacio — l&#x27;uomo è Faruk, l&#x27;ex fidanzato di Zeynep. E Mehdi, dopo essere passato al cimitero e aver aiutato Bayram a rialzarsi offrendogli da mangiare, riceve un messaggio: Zeynep lo aspetta al giardino del tè. Lì gli dice che non intende rinunciare a loro, e tornano a casa insieme.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Come Sakine spinge Zeynep a non mollare Mehdi</h2>
+<h2 id="c5">Come Sakine spinge Zeynep a non mollare Mehdi</h2>
 <p>Le parole rivolte da Sakine a Zeynep segnano una svolta profonda nel corso degli eventi. La madre osserva con straordinaria chiarezza il percorso compiuto dalla figlia e comprende come lei abbia vissuto rinunciando continuamente a se stessa per compiacere gli altri. Sakine interviene direttamente per spronarla a non commettere l&#x27;errore di farsi da parte, invitandola a lottare finalmente per la propria felicita e per l&#x27;amore che la lega a Mehdi. Questo discorso diretto ed efficace spinge Zeynep a riesaminare immediatamente la sua dolorosa decisione. Spinta dal desiderio di rimediare prima che sia troppo tardi, la ragazza matura il proposito di recuperare la lettera d&#x27;addio lasciata sul tavolo, riponendo tutte le sue speranze nella possibilita che il marito non l&#x27;abbia ancora letta e compresa del tutto.</p>
 <p>Dopo aver deciso di prendere in mano il proprio destino, Zeynep invia un messaggio a Mehdi per fissare un appuntamento decisivo al giardino del tè. Questo luogo diviene il teatro di un chiarimento fondamentale, in cui la giovane donna dimostra di voler affrontare le difficolta anziche fuggire. Rivedendo il marito dopo momenti di profonda sofferenza, Zeynep gli dichiara apertamente di non avere alcuna intenzione di rinunciare al loro legame e alla vita costruita insieme. Questo momento di grande verita spazza via i dubbi nati dalla lettera e ricompatta la coppia, portandoli a prendere la decisione comune di ritornare a casa insieme per affrontare a testa alta la presenza di Benal e le imminenti responsabilita della paternita.</p>
-<h2>Perche&#x27; Cemile nasconde la verita&#x27; a Mujgan</h2>
+<h2 id="c6">Perche&#x27; Cemile nasconde la verita&#x27; a Mujgan</h2>
 <p>La scelta di Cemile di tacere sulla gravidanza di Benal nasce da precise motivazioni personali e familiari. Rifugiandosi a casa di Sultan insieme a Mujgan ed Emine, la donna trova il coraggio di svelare per la prima volta un doloroso segreto del suo passato, spiegando di aver sposato il padre di sua figlia soltanto per garantirle un futuro sicuro, rinunciando cosi alla propria giovinezza. Oltre a questa rivelazione, Cemile ammette di aver nascosto i dettagli a Mujgan per il timore che la sorella potesse sfruttare la notizia per spingere Mehdi a rompere definitivamente con Zeynep. Nonostante Sultan le avesse consigliato di mantenere il silenzio sostenendo che le loro azioni derivavano dall&#x27;affetto, Cemile sceglie di confessare la verita al rientro del fratello.</p>
 <p>Durante il confronto tra le quattro donne a casa di Sultan, le tensioni esplodono a causa della fredda proposta avanzata da Mujgan per risolvere la situazione. Mujgan suggerisce infatti che Mehdi assuma il ruolo di padre per il bambino di Benal e che Zeynep faccia ritorno alla sua esistenza precedente, magari riallacciando i rapporti con l&#x27;ex fidanzato Faruk. Questa prospettiva suscita una reazione improvvisa e veemente da parte di Emine, che sorprende tutte le presenti con la sua foga. Sullo sfondo resta anche la posizione di Zeliha, la quale assiste totalmente sbigottita alle rivelazioni sulla gravidanza di Benal, dimostrando di essere rimasta all&#x27;oscuro di tutta la cospirazione orchestrata per salvare il matrimonio del figlio.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Cosa spinge Sultan a seguire Emine e Faruk</h2>
+<h2 id="c7">Cosa spinge Sultan a seguire Emine e Faruk</h2>
 <p>L&#x27;atteggiamento sfuggente di Emine spinge Sultan a sviluppare una vera e propria ossessione per la vita sentimentale della figlia. Nel disperato tentativo di scoprire chi sia l&#x27;uomo misterioso che la ragazza frequenta in gran segreto, Sultan prova persino a sbloccare il suo telefono cellulare per trovare indizi o messaggi compromettenti. Non riuscendo nell&#x27;intento, la donna decide di passare all&#x27;azione diretta e inizia a pedinarla nascostamente per le vie della citta. Il suo inseguimento culmina in una scoperta sconvolgente: Sultan assiste di persona a un bacio appassionato tra Emine e il suo fidanzato segreto, scoprendo con immenso sconcerto che si tratta proprio di Faruk, l&#x27;ex fidanzato di Zeynep, creando cosi le premesse per un intreccio ancora piu complesso.</p>
 <p>Mentre si consumano questi intrecci, Mehdi vive un percorso emotivo particolarmente travagliato che parte dal confronto drammatico con la famiglia. Sfogandosi al bar con l&#x27;amico Nuh, l&#x27;uomo manifesta il proprio tormento non per le bugie subite dai parenti, ma per le sofferenze affrontate da Zeynep fin dal loro matrimonio. Dopo essersi scusato con lei per averla lasciata sola, Mehdi trova la lettera d&#x27;addio e crolla in un pianto dirotto. Crollato emotivamente, si reca al cimitero dove incontra Bayram in difficolta; Mehdi lo aiuta a rialzarsi e gli offre da mangiare, mostrando grande generosita prima di ricevere il messaggio di Zeynep che lo invita al giardino del tè per ripartire insieme.</p>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=6Je7ogYn0ZU" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/6Je7ogYn0ZU/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>MY HOME MY DESTINY Anticipazioni: Nuh e Cemile si separano | Cemile lascia Nuh e parte con Bena</span></a></li><li><a href="https://www.youtube.com/watch?v=0MUdvaxx8hs" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/0MUdvaxx8hs/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>MY HOME MY DESTINY 25-26 Ottobre: Sakine apre gli occhi su Mehdi! Intanto Mehdi rapisce Zeynep!</span></a></li><li><a href="https://www.youtube.com/watch?v=1TFCJPAnof4" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/1TFCJPAnof4/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>MY HOME MY DESTINY Anticipazioni: Mehdi ci ricasca, chiude Benal in camera! Arriva Zeynep a sal</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Zeynep ha fatto bene a strappare quella lettera?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=DLMIsqJcJI0">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di My Home My Destiny</h2><div class="griglia"><article class="scheda">
+  <a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/"><div class="foto"><img src="/img/my-home-my-destiny-la-trama-completa-e-come-finisce.jpg" alt="My Home My Destiny" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">My Home My Destiny</span>
+    <h3><a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/">My Home My Destiny: la trama completa e come finisce</a></h3>
+    <div class="quando">30 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/"><div class="foto"><img src="https://i.ytimg.com/vi/-djleIeCLQs/hqdefault.jpg" alt="My Home My Destiny" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">My Home My Destiny</span>
+    <h3><a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/">My Home My Destiny, Zeynep ferma l&#x27;aborto di Benal in sala operatoria senza sapere che il padre è Mehdi</a></h3>
+    <div class="quando">17 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/"><div class="foto"><img src="https://i.ytimg.com/vi/gxL0o63Nhqw/hqdefault.jpg" alt="My Home My Destiny" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">My Home My Destiny</span>
+    <h3><a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/">My Home My Destiny, anticipazioni del 17 novembre: Özlem indaga su Zeynep e scopre tutto, Nuh diventa autista di Barış e qualcuno manomette i macchinari di Bekir</a></h3>
+    <div class="quando">16 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=My Home My Destiny 29-30 agosto, la lettera d&#x27;addio di Zeynep fa piangere Mehdi — poi lei la riprende e gli dà appuntamento al giardino del tè — https://serietvfans.com/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/&text=My Home My Destiny 29-30 agosto, la lettera d&#x27;addio di Zeynep fa piangere Mehdi — poi lei la riprende e gli dà appuntamento al giardino del tè" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">MY HOME MY DESTINY Anticipazioni 30 Agosto: Zeynep rinuncia a Mehdi? Sultan scopre Emine</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=DLMIsqJcJI0">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di My Home My Destiny</h3><ol class="numerata"><li><a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/">My Home My Destiny: la trama completa e come finisce</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/">My Home My Destiny, Zeynep ferma l&#x27;aborto di Benal in sala operatoria senza sapere che il padre è Mehdi</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/">My Home My Destiny, anticipazioni del 17 novembre: Özlem indaga su Zeynep e scopre tutto, Nuh diventa autista di Barış e qualcuno manomette i macchinari di Bekir</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-guida-alla-serie-chi-sono-demet-ozdemir-e-ibrahim-celikkol-qu/">My Home My Destiny: guida alla serie, il cast, i personaggi e quante puntate sono</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-1-dicembre-gli-spari-davanti-alla-vecchia-casa-zeynep-tra-le/">My Home My Destiny 1° dicembre, gli spari davanti alla vecchia casa: Zeynep tra le due madri quando l&#x27;uomo in moto estrae la pistola</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>MY HOME MY DESTINY Anticipazioni 30 Agosto: Zeynep rinuncia a Mehdi? Sultan scopre Emine</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su My Home My Destiny</h3><ul><li><a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/">My Home My Destiny: la trama completa e come finisce</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/">My Home My Destiny, Zeynep ferma l&#x27;aborto di Benal in sala operatoria senza sapere che il padre è Mehdi</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/">My Home My Destiny, anticipazioni del 17 novembre: Özlem indaga su Zeynep e scopre tutto, Nuh diventa autista di Barış e qualcuno manomette i macchinari di Bekir</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-guida-alla-serie-chi-sono-demet-ozdemir-e-ibrahim-celikkol-qu/">My Home My Destiny: guida alla serie, il cast, i personaggi e quante puntate sono</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-1-dicembre-gli-spari-davanti-alla-vecchia-casa-zeynep-tra-le/">My Home My Destiny 1° dicembre, gli spari davanti alla vecchia casa: Zeynep tra le due madri quando l&#x27;uomo in moto estrae la pistola</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

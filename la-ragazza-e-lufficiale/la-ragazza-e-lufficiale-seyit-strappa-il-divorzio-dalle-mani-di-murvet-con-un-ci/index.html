@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/la-ragazza-e-lufficiale/">La Ragazza e l&#x27;Ufficiale</a> › La Ragazza e l&#x27;Ufficiale, Seyit strappa il divorzio dalle mani di Mürvet con un ciondolo e una promessa — mentre Şura annuncia le nozze con Petro</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/la-ragazza-e-lufficiale/">La Ragazza e l&#x27;Ufficiale</a>
   <h1>La Ragazza e l&#x27;Ufficiale, Seyit strappa il divorzio dalle mani di Mürvet con un ciondolo e una promessa — mentre Şura annuncia le nozze con Petro</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Nella puntata del 3 settembre Seyit torna dall&#x27;Anatolia deciso a non firmare il divorzio: sceglie un ciondolo in gioielleria — e proprio lì incrocia Şura, con la domanda che brucia da anni. Poi la festa di compleanno di Tina, l&#x27;annuncio-shock delle nozze di Şura con Petro, il pugno tra i due rivali e Celil che arriva a Istanbul nascosto in una bara, gravemente ferito.</p><ol><li><a href="#c1">L&#x27;incontro in gioielleria: la domanda mai fatta</a></li><li><a href="#c2">Il ciondolo al collo di Mürvet: niente divorzio</a></li><li><a href="#c3">L&#x27;annuncio di Şura e il pugno a Petro</a></li><li><a href="#c4">Celil nella bara e Billy incatenato: il finale al cardiopalma</a></li><li><a href="#c5">Perché Şura annuncia il matrimonio con Petro a tutti</a></li><li><a href="#c6">Cosa accade a Celil durante la fuga verso Istanbul</a></li><li><a href="#c7">Come Seyit intende ricominciare da capo con Mürvet</a></li><li><a href="#c8">Perché il destino di Celil sconvolge Güzide e Yahya</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>La Ragazza e l&#x27;Ufficiale</strong> — Serie conclusa in Italia · le puntate su Mediaset Infinity</span></div>
   
-  <p class="occhiello">Nella puntata del 3 settembre Seyit torna dall&#x27;Anatolia deciso a non firmare il divorzio: sceglie un ciondolo in gioielleria — e proprio lì incrocia Şura, con la domanda che brucia da anni. Poi la festa di compleanno di Tina, l&#x27;annuncio-shock delle nozze di Şura con Petro, il pugno tra i due rivali e Celil che arriva a Istanbul nascosto in una bara, gravemente ferito.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: La Ragazza e l&#x27;Ufficiale, Seyit strappa il divorzio dalle mani di Mürvet con un ciondolo e una promessa — mentre Şura annuncia le nozze con Petro" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/0SGbsEYn8WQ/maxresdefault.jpg" alt="La Ragazza e l&#x27;Ufficiale, Seyit strappa il divorzio dalle mani di Mürvet con un ciondolo e una promessa — mentre Şura annuncia le nozze con Petro" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/0SGbsEYn8WQ/hqdefault.jpg 480w, https://i.ytimg.com/vi/0SGbsEYn8WQ/sddefault.jpg 640w, https://i.ytimg.com/vi/0SGbsEYn8WQ/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/0SGbsEYn8WQ/hqdefault.jpg&quot;, &quot;/fallback/la-ragazza-e-lufficiale.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,46 +409,68 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>«Un barlume di speranza si era riacceso quando ti ho visto partire» — ma Şura trova Seyit in gioielleria a scegliere un regalo per Mürvet: le illusioni durano il tempo di un saluto.</strong></p>
-  <h2>L&#x27;incontro in gioielleria: la domanda mai fatta</h2>
+  <h2 id="c1">L&#x27;incontro in gioielleria: la domanda mai fatta</h2>
 <p>Rientrato in città dopo la lettera di divorzio, Seyit passa da una gioielleria per scegliere una collana per Mürvet — e la porta si apre su Şura. Nella tensione dell&#x27;incontro, lei osa finalmente la domanda che si porta dentro da anni: l&#x27;ha abbandonata quando il padre lo spinse a sposare una ragazza turca, o quando la tragedia colpì la sua famiglia? E confessa che il suo amore non è mai tramontato. La risposta di Seyit è amara: la sofferenza vera è stata il non essere mai creduto. «Le nostre strade ora divergono» — e se ne va.</p>
-<h2>Il ciondolo al collo di Mürvet: niente divorzio</h2>
+<h2 id="c2">Il ciondolo al collo di Mürvet: niente divorzio</h2>
 <p>Davanti a Mürvet, gelida dopo la richiesta di divorzio, Seyit rovescia il tavolo: non è il divorzio che vuole, ma un nuovo inizio. Le posa al collo il ciondolo scelto per lei, la bacia sulla guancia, e le riserve di Mürvet si sciolgono in un abbraccio: la notte insieme sigilla la riconciliazione. Seguono la colazione fuori — piccola rivoluzione contro le convenzioni —, la visita alla casa affittata a Pera e il progetto che Seyit le confida: aprire un ristorante dove chi ha perso la Crimea, chi non ha più una patria, possa ritrovare i sapori di casa. Peccato che dietro la porta ascolti Emine, per cui Pera è terra proibita.</p>
-<h2>L&#x27;annuncio di Şura e il pugno a Petro</h2>
+<h2 id="c3">L&#x27;annuncio di Şura e il pugno a Petro</h2>
 <p>Alla festa di compleanno di Valentina, Şura — ancora scossa dall&#x27;incontro in gioielleria — annuncia davanti a tutti che sposerà Petro, gelando i presenti. Ma la scelta puzza di ripicca: a Tina confesserà che ha accettato soprattutto per la lite con la sorella, e i suoi pensieri corrono ancora a Seyit. Quando Petro provoca il rivale — «presto Şura sarà mia moglie a tutti gli effetti, anche nell&#x27;alcova» — Seyit esplode: pugno, rissa, minaccia di morte. E intanto Petro, a porte chiuse, dice ad Alya che il matrimonio «non cambierà nulla tra loro»: Şura per lui è solo un obbligo. Alya, dal canto suo, lo ricatta: o l&#x27;aiuta a eliminare Billy garantendole la fuga, o rivelerà tutto — e Petro cede, a patto che lei recuperi da Billy la famosa lettera della baronessa destinata a Seyit.</p>
-<h2>Celil nella bara e Billy incatenato: il finale al cardiopalma</h2>
+<h2 id="c4">Celil nella bara e Billy incatenato: il finale al cardiopalma</h2>
 <p>Il colpo di scena arriva su una carrozza di rivoluzionari fermata a un posto di blocco: nella bara che i soldati vogliono aprire c&#x27;è Celil, che si finge morto — ed è gravemente ferito al petto. Portato a Istanbul in piena notte, viene affidato alle cure di Seyit mentre Güzide, il cuore in gola, bacia il ciondolo che lui le regalò pregando per la sua vita — sotto lo sguardo sempre più attento di Yahya, che intanto ha accettato un incarico ad Ankara con vista sul Parlamento. L&#x27;ultima immagine è da brividi: l&#x27;abito da sposa di Şura è pronto, e Billy è incatenato a un letto con la pistola di Alya puntata addosso.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Perché Şura annuncia il matrimonio con Petro a tutti</h2>
+<h2 id="c5">Perché Şura annuncia il matrimonio con Petro a tutti</h2>
 <p>Ancora profondamente turbata per il doloroso confronto avvenuto in gioielleria, Şura partecipa alla festa organizzata per il compleanno di Valentina. Durante l&#x27;evento, la ragazza gela improvvisamente tutti gli invitati annunciando la decisione di sposare Petro. In realtà si tratta di una scelta dettata dalla rivalità familiare: Şura confesserà infatti a Tina di aver accettato la proposta principalmente a causa dell&#x27;accesa lite avuta con la sorella. I suoi pensieri costanti continuano infatti ad andare verso Seyit, dimostrando come il legame con l&#x27;ufficiale non si sia affatto spezzato nonostante la decisione ufficiale di convolare a nozze con il rivale.</p>
 <p>La tensione aumenta drasticamente quando Petro affronta direttamente Seyit, provocandolo apertamente e dichiarando che presto Şura diventerà sua moglie a tutti gli effetti, compresa la vita nell&#x27;alcova. La reazione dell&#x27;ufficiale è immediata e furibonda: Seyit sferra un pugno al rivale scatenando una rissa violenta e lanciando una chiara minaccia di morte. A porte chiuse, tuttavia, Petro dimostra un atteggiamento del tutto calcolatore rivelando ad Alya che l&#x27;unione con Şura rappresenta un semplice obbligo che non cambierà nulla nei loro rapporti. Alya coglie l&#x27;occasione per ricattare Petro, esigendo aiuto per eliminare Billy e garantirsi la fuga.</p>
 <p>L&#x27;accordo tra Petro e Alya viene stretto a un patto preciso: la donna dovrà recuperare direttamente dalle mani di Billy la famosa lettera scritta dalla baronessa e destinata a Seyit. Nel frattempo, l&#x27;organizzazione dell&#x27;evento prosegue rapidamente e l&#x27;abito da sposa per Şura è già pronto per le nozze imminenti. Questa intricata rete di ricatti e segreti mostra come la decisione di Şura si inserisca in un contesto irto di pericoli, dove le reali intenzioni di Petro rischiano di compromettere la stabilità di tutti i protagonisti coinvolti nella vicenda.</p>
-<h2>Cosa accade a Celil durante la fuga verso Istanbul</h2>
+<h2 id="c6">Cosa accade a Celil durante la fuga verso Istanbul</h2>
 <p>Un drammatico evento segna la vicenda quando una carrozza appartenente a dei rivoluzionari viene fermata a un posto di blocco dai soldati. All&#x27;interno del mezzo si trova una bara che le guardie intendono aprire: al suo interno è nascosto Celil, il quale si finge morto per sfuggire ai controlli nonostante sia gravemente ferito al petto. Il piano riesce e l&#x27;uomo viene condotto di nascosto a Istanbul durante la notte, dove viene subito affidato alle cure di Seyit. Nel frattempo Güzide soffre enormemente per le sue sorti e bacia il ciondolo regalatole da Celil pregando fervidamente per la sua salvezza.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>La profonda devozione di Güzide viene notata da Yahya, il quale osserva i suoi gesti con attenzione sempre maggiore, mentre ha appena accettato un nuovo incarico ad Ankara guardando verso un futuro nel Parlamento. La situazione generale precipita in un finale ad altissima tensione: mentre l&#x27;abito nuziale di Şura attende la cerimonia, Billy viene sorpreso e incatenato a un letto, trovandosi completamente alla mercé di Alya che gli punta contro la pistola. Questi eventi paralleli preparano il terreno per sviluppi imprevedibili e carichi di pericolo per l&#x27;intera rete di alleati.</p>
-<h2>Come Seyit intende ricominciare da capo con Mürvet</h2>
+<h2 id="c7">Come Seyit intende ricominciare da capo con Mürvet</h2>
 <p>Dopo essere rientrato dall&#x27;Anatolia a seguito della richiesta di divorzio inviata da Mürvet, Seyit prende una decisione netta e rifiuta di mettere la firma sulla fine del loro matrimonio. L&#x27;ufficiale sceglie invece di sorprendere la moglie regalandole un ciondolo appena acquistato e ponendoglielo direttamente al collo, accompagnando il gesto con un bacio sulla guancia e con la promessa di un reale nuovo inizio. Di fronte a questa dimostrazione d&#x27;affetto, l&#x27;atteggiamento inizialmente gelido della donna cede lasciando spazio a un abbraccio liberatorio. I due trascorrono la notte insieme per sigillare la ritrovata intesa familiare.</p>
 <p>Il giorno seguente la coppia condivide una colazione all&#x27;aperto che infrange le rigide convenzioni sociali del tempo, per poi recarsi insieme a visitare la casa presa in affitto nel quartiere di Pera. In questa occasione Seyit svela a Mürvet il suo importante progetto professionale: intende aprire un ristorante pensato appositamente per chi ha dovuto abbandonare la Crimea e la propria patria, offrendo un luogo dove ritrovare i sapori di casa. Tuttavia i loro discorsi non restano riservati, poiché dietro la porta rimane nascosta ad ascoltare Emine, la quale considera la zona di Pera una terra assolutamente proibita.</p>
-<h2>Perché il destino di Celil sconvolge Güzide e Yahya</h2>
+<h2 id="c8">Perché il destino di Celil sconvolge Güzide e Yahya</h2>
 <p>Ferito in modo estremamente grave al petto durante le sue azioni, Celil riesce a raggiungere la città di Istanbul nascosto all&#x27;interno di una bara trasportata da una carrozza di rivoluzionari, riuscendo a ingannare i soldati fermi al posto di blocco che intendono ispezionare il carico. Giunto a destinazione nel cuore della notte, il ferito viene affidato senza indugio alle cure immediate di Seyit. Nel frattempo l&#x27;angoscia per le sue precarie condizioni fisiche travolge totalmente Güzide, la quale trova conforto pregando per la sua vita mentre bacia con profonda devozione il ciondolo che l&#x27;uomo le aveva regalato.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>Questo gesto di intima devozione e profonda sofferenza non passa inosservato agli occhi di Yahya, che osserva la donna con un&#x27;attenzione sempre più marcata e sospettosa. Nel medesimo periodo Yahya si prepara a cambiare vita dopo aver accettato un importante incarico professionale ad Ankara, con lo sguardo ormai rivolto verso un futuro all&#x27;interno del Parlamento. Questa complessa dinamica emotiva si intreccia con il clima di estremo pericolo che domina la città, dove ogni personaggio si trova costretto ad affrontare scelte decisive per il proprio avvenire mentre la situazione generale minaccia di precipitare definitivamente.</p>
   </div>
   
   <div class="riquadro"><h3>E secondo voi?</h3><p>Şura sta sposando Petro solo per ferire Seyit? E la nuova intesa tra Seyit e Mürvet reggerà all&#x27;ennesimo ritorno di fiamma?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=0SGbsEYn8WQ">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di La Ragazza e l&#x27;Ufficiale</h2><div class="griglia"><article class="scheda">
+  <a href="/la-ragazza-e-lufficiale/la-ragazza-e-lufficiale-la-trama-completa-e-come-finisce/"><div class="foto"><img src="/img/la-ragazza-e-lufficiale-la-trama-completa-e-come-finisce.jpg" alt="La Ragazza e l&#x27;Ufficiale" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-ragazza-e-lufficiale.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Ragazza e l&#x27;Ufficiale</span>
+    <h3><a href="/la-ragazza-e-lufficiale/la-ragazza-e-lufficiale-la-trama-completa-e-come-finisce/">La Ragazza e l&#x27;Ufficiale: la trama completa e come finisce</a></h3>
+    <div class="quando">30 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/la-ragazza-e-lufficiale/chi-e-kvanc-tatltug-il-seyit-de-la-ragazza-e-lufficiale-dal-basket-ai-record-tv/"><div class="foto"><img src="/img/chi-e-kvanc-tatltug-il-seyit-de-la-ragazza-e-lufficiale-dal-basket-ai-record-tv.jpg" alt="La Ragazza e l&#x27;Ufficiale" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-ragazza-e-lufficiale.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Ragazza e l&#x27;Ufficiale</span>
+    <h3><a href="/la-ragazza-e-lufficiale/chi-e-kvanc-tatltug-il-seyit-de-la-ragazza-e-lufficiale-dal-basket-ai-record-tv/">Chi è Kıvanç Tatlıtuğ, il Seyit de La Ragazza e l&#x27;Ufficiale: dal basket ai record TV, la moglie Başak e il figlio chiamato come il suo personaggio</a></h3>
+    <div class="quando">14 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/la-ragazza-e-lufficiale/la-ragazza-e-lufficiale-episodi-34-36-petro-strappa-il-biglietto-di-seyit-e-fa-c/"><div class="foto"><img src="https://i.ytimg.com/vi/xs4EmthhMN0/hqdefault.jpg" alt="La Ragazza e l&#x27;Ufficiale" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-ragazza-e-lufficiale.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Ragazza e l&#x27;Ufficiale</span>
+    <h3><a href="/la-ragazza-e-lufficiale/la-ragazza-e-lufficiale-episodi-34-36-petro-strappa-il-biglietto-di-seyit-e-fa-c/">La Ragazza e l&#x27;Ufficiale, episodi 34-36: Petro strappa il biglietto di Seyit e fa credere a Şura che sia stata lei a rifiutare le rose</a></h3>
+    <div class="quando">14 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=La Ragazza e l&#x27;Ufficiale, Seyit strappa il divorzio dalle mani di Mürvet con un ciondolo e una promessa — mentre Şura annuncia le nozze con Petro — https://serietvfans.com/la-ragazza-e-lufficiale/la-ragazza-e-lufficiale-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/la-ragazza-e-lufficiale/la-ragazza-e-lufficiale-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/la-ragazza-e-lufficiale/la-ragazza-e-lufficiale-la-trama-completa-e-come-finisce/&text=La Ragazza e l&#x27;Ufficiale, Seyit strappa il divorzio dalle mani di Mürvet con un ciondolo e una promessa — mentre Şura annuncia le nozze con Petro" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">LA RAGAZZA E L&#x27;UFFICIALE PUNTATA DEL 3 SETTEMBRE: SEYIT E MURVET FANNO SUL SERIO</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=0SGbsEYn8WQ">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di La Ragazza e l&#x27;Ufficiale</h3><ol class="numerata"><li><a href="/la-ragazza-e-lufficiale/la-ragazza-e-lufficiale-la-trama-completa-e-come-finisce/">La Ragazza e l&#x27;Ufficiale: la trama completa e come finisce</a></li><li><a href="/la-ragazza-e-lufficiale/chi-e-kvanc-tatltug-il-seyit-de-la-ragazza-e-lufficiale-dal-basket-ai-record-tv/">Chi è Kıvanç Tatlıtuğ, il Seyit de La Ragazza e l&#x27;Ufficiale: dal basket ai record TV, la moglie Başak e il figlio chiamato come il suo personaggio</a></li><li><a href="/la-ragazza-e-lufficiale/la-ragazza-e-lufficiale-episodi-34-36-petro-strappa-il-biglietto-di-seyit-e-fa-c/">La Ragazza e l&#x27;Ufficiale, episodi 34-36: Petro strappa il biglietto di Seyit e fa credere a Şura che sia stata lei a rifiutare le rose</a></li><li><a href="/la-ragazza-e-lufficiale/la-ragazza-e-lufficiale-il-gran-finale-laddio-straziante-di-seyit-e-sura-al-port/">La Ragazza e l&#x27;Ufficiale, il gran finale: l&#x27;addio straziante di Seyit e Şura al porto e la fine terribile di Petro</a></li><li><a href="/la-ragazza-e-lufficiale/la-ragazza-e-lufficiale-la-storia-vera-dietro-la-serie-kurt-seyit-e-sura-esistit/">La Ragazza e l&#x27;Ufficiale, la storia vera dietro la serie: Kurt Seyit e Şura esistiti davvero, e il romanzo scritto dalla nipote</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>LA RAGAZZA E L&#x27;UFFICIALE PUNTATA DEL 3 SETTEMBRE: SEYIT E MURVET FANNO SUL SERIO</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su La Ragazza e l&#x27;Ufficiale</h3><ul><li><a href="/la-ragazza-e-lufficiale/la-ragazza-e-lufficiale-la-trama-completa-e-come-finisce/">La Ragazza e l&#x27;Ufficiale: la trama completa e come finisce</a></li><li><a href="/la-ragazza-e-lufficiale/chi-e-kvanc-tatltug-il-seyit-de-la-ragazza-e-lufficiale-dal-basket-ai-record-tv/">Chi è Kıvanç Tatlıtuğ, il Seyit de La Ragazza e l&#x27;Ufficiale: dal basket ai record TV, la moglie Başak e il figlio chiamato come il suo personaggio</a></li><li><a href="/la-ragazza-e-lufficiale/la-ragazza-e-lufficiale-episodi-34-36-petro-strappa-il-biglietto-di-seyit-e-fa-c/">La Ragazza e l&#x27;Ufficiale, episodi 34-36: Petro strappa il biglietto di Seyit e fa credere a Şura che sia stata lei a rifiutare le rose</a></li><li><a href="/la-ragazza-e-lufficiale/la-ragazza-e-lufficiale-il-gran-finale-laddio-straziante-di-seyit-e-sura-al-port/">La Ragazza e l&#x27;Ufficiale, il gran finale: l&#x27;addio straziante di Seyit e Şura al porto e la fine terribile di Petro</a></li><li><a href="/la-ragazza-e-lufficiale/la-ragazza-e-lufficiale-la-storia-vera-dietro-la-serie-kurt-seyit-e-sura-esistit/">La Ragazza e l&#x27;Ufficiale, la storia vera dietro la serie: Kurt Seyit e Şura esistiti davvero, e il romanzo scritto dalla nipote</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

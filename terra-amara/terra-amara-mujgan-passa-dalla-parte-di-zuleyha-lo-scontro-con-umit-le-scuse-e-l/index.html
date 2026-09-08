@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/terra-amara/">Terra Amara</a> › Terra Amara, Müjgan passa dalla parte di Züleyha: lo scontro con Ümit, le scuse e la foto-avvertimento</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/terra-amara/">Terra Amara</a>
   <h1>Terra Amara, Müjgan passa dalla parte di Züleyha: lo scontro con Ümit, le scuse e la foto-avvertimento</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>8 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">La svolta che nessuno si aspettava: dopo lo scontro durissimo con Ümit — «mi hai usata, sei una bugiarda» — Müjgan chiede scusa a Züleyha e la mette in guardia con una fotografia che immortala Demir e la dottoressa abbracciati. Intanto la villa saccheggiata da uomini armati fa esplodere la rabbia di Demir contro Fikret.</p><ol><li><a href="#c1">La villa devastata e la rabbia di Demir</a></li><li><a href="#c2">«Mi hai usata»: Müjgan contro Ümit</a></li><li><a href="#c3">Perché proprio Müjgan riconosce il gioco di Ümit</a></li><li><a href="#c4">Le scuse a Züleyha e la fotografia</a></li><li><a href="#c5">Le lacrime di Züleyha</a></li><li><a href="#c6">Perché conta: quella fotografia esiste, e non è in mano a Züleyha</a></li><li><a href="#c7">Perché il passato di Müjgan spiega lo scontro</a></li><li><a href="#c8">Cosa significa la fotografia trovata da Müjgan</a></li><li><a href="#c9">Come Fikret diventa il bersaglio della rabbia di Demir</a></li><li><a href="#c10">Cosa rischia Züleyha dopo il gesto leale di Müjgan</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>Terra Amara</strong> — Serie conclusa in Italia · tutte le puntate su Mediaset Infinity</span></div>
   
-  <p class="occhiello">La svolta che nessuno si aspettava: dopo lo scontro durissimo con Ümit — «mi hai usata, sei una bugiarda» — Müjgan chiede scusa a Züleyha e la mette in guardia con una fotografia che immortala Demir e la dottoressa abbracciati. Intanto la villa saccheggiata da uomini armati fa esplodere la rabbia di Demir contro Fikret.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: Terra Amara, Müjgan passa dalla parte di Züleyha: lo scontro con Ümit, le scuse e la foto-avvertimento" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/VYOLHf7Gy5Y/maxresdefault.jpg" alt="Terra Amara, Müjgan passa dalla parte di Züleyha: lo scontro con Ümit, le scuse e la foto-avvertimento" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/VYOLHf7Gy5Y/hqdefault.jpg 480w, https://i.ytimg.com/vi/VYOLHf7Gy5Y/sddefault.jpg 640w, https://i.ytimg.com/vi/VYOLHf7Gy5Y/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/VYOLHf7Gy5Y/hqdefault.jpg&quot;, &quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,49 +409,71 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>«Se potessi tornare indietro, farei tutto diversamente»: la frase che Müjgan non aveva mai pronunciato arriva nel momento in cui può ancora salvare qualcuno — la sua ex rivale.</strong></p>
-  <h2>La villa devastata e la rabbia di Demir</h2>
+  <h2 id="c1">La villa devastata e la rabbia di Demir</h2>
 <p>Il rientro di Demir alla villa è uno shock: il simbolo dell&#x27;eleganza Yaman è un cumulo di rovine. Gaffur e Raşit raccontano l&#x27;orrore — un&#x27;orda di uomini armati che ha neutralizzato le guardie, imprigionato gli operai e minacciato di incendiare tutto — mentre Sevda rassicura sul punto essenziale: nessun ferito, volevano solo depredare. Ma la domanda sul mandante brucia, e Demir ha già la sua risposta: Fikret. Züleyha ha sporto denuncia; lui promette che gliela farà pagare fino all&#x27;ultimo frammento.</p>
-<h2>«Mi hai usata»: Müjgan contro Ümit</h2>
+<h2 id="c2">«Mi hai usata»: Müjgan contro Ümit</h2>
 <p>Il cuore della puntata è il confronto tra le due dottoresse. Müjgan entra nella stanza di Ümit e scoperchia il passato: la competizione professionale, la fiducia conquistata solo per trascinarla nei suoi piani. «Mi hai tradita. Sei una bugiarda». Ümit respinge tutto con freddezza — «i tuoi problemi non mi riguardano» — e prova a colpire dove fa male, rinfacciandole le crudeltà passate verso Züleyha e Yılmaz. Ma Müjgan ha una risposta che pesa: «Ho avuto le mie ragioni: ho agito per amore, per dare un padre a mio figlio. Tu invece non hai scuse». L&#x27;amicizia, se mai è esistita, finisce lì.</p>
-<h2>Perché proprio Müjgan riconosce il gioco di Ümit</h2>
+<h2 id="c3">Perché proprio Müjgan riconosce il gioco di Ümit</h2>
 <p>La svolta sorprende meno se si guarda da chi Müjgan è stata cresciuta a Çukurova. La persona che l&#x27;ha consigliata, protetta e guidata per tutto il suo matrimonio è stata la zia Behice: modi impeccabili, un&#x27;aria di mondo più raffinato e, dietro, una lunga abitudine a costruire la realtà attorno alle proprie convenienze. Müjgan ha passato anni a fidarsi di qualcuno che le riempiva la testa e chiamava affetto il proprio interesse. È l&#x27;unica ragione per cui, davanti a Ümit, riconosce il meccanismo prima di chiunque altro: non lo deduce, se lo ricorda. E per questo la frase che le rivolge — mi hai avvicinata solo per usarmi — non è un&#x27;accusa nuova, è una diagnosi già sperimentata su di sé.</p>
-<h2>Le scuse a Züleyha e la fotografia</h2>
+<h2 id="c4">Le scuse a Züleyha e la fotografia</h2>
 <p>Poi la mossa che riscrive anni di rivalità: Müjgan convoca Züleyha e si scusa — sinceramente — per tutto il dolore causato. Ma non è lì solo per il passato: la avverte che Ümit è «un&#x27;ombra pronta a distruggere ogni tua felicità» e cala la prova, una fotografia di Demir e Ümit abbracciati in un momento intimo. La reazione di Züleyha spiazza tutti: conosce già quella storia — appartiene al periodo dopo la morte di Yılmaz, prima del loro riavvicinamento — e Demir è stato perdonato. Il punto di Müjgan però è un altro: «Demir si sarà pure pentito, ma Ümit non accetterà di perderlo. Ho paura che non vi lascerà in pace».</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Le lacrime di Züleyha</h2>
+<h2 id="c5">Le lacrime di Züleyha</h2>
 <p>Il congedo tra le due donne è quasi una pace: «Se le tue intenzioni sono davvero buone, ti ringrazio», dice Züleyha con la voce che trema. Ma rimasta sola, davanti a quella foto, le lacrime arrivano: perché un tradimento perdonato non è un tradimento dimenticato, e l&#x27;ombra di Ümit ha appena ricominciato ad allungarsi sul suo matrimonio. La profezia di Müjgan — la nuova, inattesa alleata — è destinata ad avverarsi molto presto.</p>
-<h2>Perché conta: quella fotografia esiste, e non è in mano a Züleyha</h2>
+<h2 id="c6">Perché conta: quella fotografia esiste, e non è in mano a Züleyha</h2>
 <p>Il punto della scena non è il tradimento, che era già noto e già perdonato. Il punto è che di quel tradimento esiste un&#x27;immagine: qualcuno l&#x27;ha scattata, qualcuno l&#x27;ha conservata, e oggi passa di mano tra due donne come si passa un documento. Da questo momento il perdono di Züleyha smette di essere una faccenda privata tra marito e moglie e diventa materiale a disposizione di chiunque decida di usarlo — un&#x27;arma pronta, che aspetta soltanto il momento giusto e la persona interessata. È anche la prova che Ümit non ha archiviato niente: chi conserva le prove di una storia finita non sta elaborando un lutto, sta preparando un ritorno. Müjgan lo capisce e lo dice ad alta voce. Züleyha resta sola con la foto in mano, e per la prima volta piange non per quello che è successo, ma per quello che sta per succedere.</p>
-<h2>Perché il passato di Müjgan spiega lo scontro</h2>
+<h2 id="c7">Perché il passato di Müjgan spiega lo scontro</h2>
 <p>Lo scontro nella stanza di Ümit rivela la profonda spaccatura tra le due dottoresse. Müjgan affronta la rivale accusandola apertamente di aver conquistato la sua fiducia solo per trascinarla nei suoi piani calcolati. Sentendosi usata, rinfaccia a Ümit la falsità dimostrata nel tempo. La replica dell&#x27;altra donna è glaciale: sostiene che i problemi altrui non la riguardino e cerca di colpire rinfacciando le crudeltà passate commesse da Müjgan verso Züleyha e Yılmaz. Tuttavia, la dottoressa risponde con fermezza spiegando di aver agito per amore e per dare un padre a suo figlio, lasciando la collega senza alcuna scusa per giustificare le proprie malefatte.</p>
 <p>La capacità di comprendere la manipolazione deriva dall&#x27;insegnamento ricevuto dalla zia Behice, la figura che ha guidato Müjgan durante il matrimonio a Çukurova. Abituata a vivere accanto a una donna esperta nel plasmare la realtà per tornaconto personale, la dottoressa ha riconosciuto immediatamente il medesimo meccanismo nell&#x27;atteggiamento di Ümit. Chiedere scusa a Züleyha e consegnarle la fotografia diventa l&#x27;unico modo per riscattarsi e spezzare quel circolo di inganni. Mettendo in guardia l&#x27;ex rivale sull&#x27;ombra che minaccia il suo matrimonio, Müjgan compie una scelta di lealtà inattesa, dimostrando di aver finalmente compreso gli errori commessi lungo il suo doloroso percorso.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Cosa significa la fotografia trovata da Müjgan</h2>
+<h2 id="c8">Cosa significa la fotografia trovata da Müjgan</h2>
 <p>La consegna della fotografia segna un punto di svolta tra Züleyha e la sua nuova alleata. Nello scatto, Demir e Ümit appaiono abbracciati in un momento intimo risalente al periodo successivo alla scomparsa di Yılmaz. Sebbene Züleyha fosse a conoscenza del tradimento e avesse già perdonato il marito prima del riavvicinamento, la prova visiva cambia la prospettiva. Müjgan sottolinea infatti che il vero pericolo non risiede nel comportamento di Demir, ormai pentito, ma nell&#x27;ossessione di Ümit. La dottoressa teme che la rivale non accetterà mai di perdere l&#x27;uomo e farà di tutto per distruggere la felicità coniugale appena ritrovata.</p>
 <p>Accogliendo il gesto sincero, Züleyha ringrazia Müjgan con voce tremante per il supporto dimostrato. Tuttavia, rimasta sola con la fotografia tra le mani, la donna si lascia andare alle lacrime. Quel pianto non nasce dal ricordo del tradimento passato, ma dalla consapevolezza che l&#x27;immagine rappresenta un&#x27;arma materiale pronta a essere usata contro la sua famiglia. Conservare quella prova dimostra che Ümit non ha affatto chiuso il capitolo con Demir e sta preparando una vendetta calcolata. Züleyha comprende così la gravità della profezia ricevuta, conscia che la presenza dell&#x27;altra donna continuerà a proiettare un&#x27;ombra scura sul suo futuro.</p>
-<h2>Come Fikret diventa il bersaglio della rabbia di Demir</h2>
+<h2 id="c9">Come Fikret diventa il bersaglio della rabbia di Demir</h2>
 <p>Il rientro di Demir alla villa stravolge gli equilibri della tenuta Yaman, ridotta a un cumulo di rovine dopo l&#x27;assalto improvviso. Le testimonianze raccolte da Gaffur e Raşit descrivono momenti di vero terrore, con guardie immobilizzate, lavoratori rinchiusi e la costante minaccia di dare tutto alle fiamme. Sebbene Sevda cerchi di riportare la calma sottolineando l&#x27;assenza di feriti e spiegando che gli aggressori cercavano soltanto di depredare la proprietà, il proprietario non riesce a considerare l&#x27;accaduto un semplice furto. Per lui la violenza dell&#x27;attacco ha un mandante preciso e la rabbia si indirizza immediatamente verso Fikret, ritenuto l&#x27;unico responsabile di questo sconvolgimento.</p>
 <p>Di fronte alla devastazione subita, Züleyha decide di agire per vie ufficiali sporgendo immediatamente denuncia alle autorità per fermare i responsabili. Demir, dal canto suo, reagisce con un furore incontenibile e promette di far pagare a Fikret ogni singolo frammento distrutto della sua dimora. La decisione della donna di rivolgersi alla legge non placa l&#x27;ira del marito, determinato a farsi giustizia da solo contro quello che considera il suo nemico principale. Il saccheggio della villa trasforma la tensione latente in uno scontro aperto, destinato a produrre conseguenze gravissime nei rapporti tra i protagonisti e a destabilizzare l&#x27;intera vita della tenuta.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Cosa rischia Züleyha dopo il gesto leale di Müjgan</h2>
+<h2 id="c10">Cosa rischia Züleyha dopo il gesto leale di Müjgan</h2>
 <p>L&#x27;incontro tra Müjgan e Züleyha segna la fine di una lunga rivalità nata nel passato, trasformandosi in una preziosa occasione di chiarezza. Quando la dottoressa si presenta per chiedere scusa e consegnare la fotografia intima che ritrae Demir e Ümit abbracciati, la reazione dell&#x27;altra donna appare inizialmente controllata. Züleyha spiega infatti di essere già a conoscenza di quella relazione, vissuta dal marito nel periodo successivo alla scomparsa di Yılmaz e ampiamente perdonata prima del loro riavvicinamento. Tuttavia, la presenza fisica di quello scatto trasforma una vicenda privata in un pericolo concreto, confermando che qualcuno possiede ancora le prove di quel tradimento passato.</p>
 <p>Il vero allarme lanciato da Müjgan riguarda proprio l&#x27;atteggiamento di Ümit, descritta come un&#x27;ombra pericolosa determinata a distruggere la serenità familiare ritrovata. Rimasta sola con l&#x27;immagine tra le mani, Züleyha non riesce a trattenere le lacrime di fronte al timore che quel perdono accordato non basti a proteggere il suo matrimonio. Capisce che la conservazione di quella prova fotografica dimostra la volontà dell&#x27;altra donna di non rinunciare a Demir. La lealtà dimostrata dalla dottoressa lascia così Züleyha con una amara consapevolezza: la minaccia rappresentata dalla rivale è tutt&#x27;altro che superata e rischia di travolgere il suo futuro.</p>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=ZxM2QZ6s8tQ" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/ZxM2QZ6s8tQ/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TERRA AMARA Anticipazioni 2 Marzo: Hakan salva Fikret | Sermin sviene dalla rabbia perchè.....</span></a></li><li><a href="https://www.youtube.com/watch?v=uZOqmfWYXWs" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/uZOqmfWYXWs/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>BITTER LAND: Fikret esplode di rabbia, nessuno se lo aspettava 😡 #bitterland #shorts</span></a></li><li><a href="https://www.youtube.com/watch?v=vQ4eauF-LV4" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/vQ4eauF-LV4/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TERRA AMARA Anticipazioni: Zuleyha e figli cacciati fuori dalla villa, chi ha osato tanto?</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>La redenzione di Müjgan vi convince o è tardiva? E Züleyha ha fatto bene a perdonare Demir per la storia con Ümit?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=VYOLHf7Gy5Y">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di Terra Amara</h2><div class="griglia"><article class="scheda">
+  <a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/"><div class="foto"><img src="/img/terra-amara-la-trama-completa-e-come-finisce.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></h3>
+    <div class="quando">30 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/"><div class="foto"><img src="https://i.ytimg.com/vi/_ypSJU-x7LY/hqdefault.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/"><div class="foto"><img src="https://i.ytimg.com/vi/B_MLx-0yh6M/hqdefault.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=Terra Amara, Müjgan passa dalla parte di Züleyha: lo scontro con Ümit, le scuse e la foto-avvertimento — https://serietvfans.com/terra-amara/terra-amara-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/terra-amara/terra-amara-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/terra-amara/terra-amara-la-trama-completa-e-come-finisce/&text=Terra Amara, Müjgan passa dalla parte di Züleyha: lo scontro con Ümit, le scuse e la foto-avvertimento" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">TERRA AMARA Anticipazioni: Müjgan alleata di Züleyha, le racconta tutto</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=VYOLHf7Gy5Y">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di Terra Amara</h3><ol class="numerata"><li><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></li><li><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></li><li><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></li><li><a href="/terra-amara/terra-amara-come-finisce-davvero-zuleyha-vince-tutto-e-resta-sola/">Terra Amara: come finisce davvero, Züleyha vince tutto e resta sola</a></li><li><a href="/terra-amara/terra-amara-come-muore-demir-yaman-chi-ha-dato-lordine-e-perche-doveva-essere-un-rapimento/">Terra Amara, come muore Demir Yaman: chi ha dato l&#x27;ordine e perché doveva essere un rapimento</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>TERRA AMARA Anticipazioni: Müjgan alleata di Züleyha, le racconta tutto</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su Terra Amara</h3><ul><li><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></li><li><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></li><li><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></li><li><a href="/terra-amara/terra-amara-come-finisce-davvero-zuleyha-vince-tutto-e-resta-sola/">Terra Amara: come finisce davvero, Züleyha vince tutto e resta sola</a></li><li><a href="/terra-amara/terra-amara-come-muore-demir-yaman-chi-ha-dato-lordine-e-perche-doveva-essere-un-rapimento/">Terra Amara, come muore Demir Yaman: chi ha dato l&#x27;ordine e perché doveva essere un rapimento</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

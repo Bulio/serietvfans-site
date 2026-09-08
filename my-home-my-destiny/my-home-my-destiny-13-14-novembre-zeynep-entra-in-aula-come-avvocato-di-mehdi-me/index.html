@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/my-home-my-destiny/">My Home My Destiny</a> › My Home My Destiny 13-14 novembre, Zeynep entra in aula come avvocato di Mehdi mentre Barış la aspetta al ristorante</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/my-home-my-destiny/">My Home My Destiny</a>
   <h1>My Home My Destiny 13-14 novembre, Zeynep entra in aula come avvocato di Mehdi mentre Barış la aspetta al ristorante</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>6 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Due puntate costruite su una scelta che Zeynep rimanda fino all&#x27;ultimo secondo. La famiglia di Mehdi finisce per strada, lei la accoglie in casa propria, e quando l&#x27;avvocato si ritira dal caso — l&#x27;accusa è passata a tentato omicidio — resta un&#x27;unica persona che possa difenderlo in tempo per la prima udienza. Quel giorno Barış la aspetta a pranzo, e lei entra invece in tribunale.</p><ol><li><a href="#c1">Lo sfratto e il furgoncino</a></li><li><a href="#c2">L&#x27;avvocato che si tira indietro</a></li><li><a href="#c3">Il ristorante e il tribunale</a></li><li><a href="#c4">La difesa e le bugie</a></li><li><a href="#c5">Chi sono le persone accolte nella casa di Zeynep</a></li><li><a href="#c6">Perche&#x27; Baris attende invano Zeynep al ristorante</a></li><li><a href="#c7">Cosa scopre Zeynep durante la prima udienza</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>My Home My Destiny</strong> — Serie conclusa in Italia · le puntate su Mediaset Infinity</span></div>
   
-  <p class="occhiello">Due puntate costruite su una scelta che Zeynep rimanda fino all&#x27;ultimo secondo. La famiglia di Mehdi finisce per strada, lei la accoglie in casa propria, e quando l&#x27;avvocato si ritira dal caso — l&#x27;accusa è passata a tentato omicidio — resta un&#x27;unica persona che possa difenderlo in tempo per la prima udienza. Quel giorno Barış la aspetta a pranzo, e lei entra invece in tribunale.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: My Home My Destiny 13-14 novembre, Zeynep entra in aula come avvocato di Mehdi mentre Barış la aspetta al ristorante" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/tb1ETUJXG5E/maxresdefault.jpg" alt="My Home My Destiny 13-14 novembre, Zeynep entra in aula come avvocato di Mehdi mentre Barış la aspetta al ristorante" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/tb1ETUJXG5E/hqdefault.jpg 480w, https://i.ytimg.com/vi/tb1ETUJXG5E/sddefault.jpg 640w, https://i.ytimg.com/vi/tb1ETUJXG5E/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/tb1ETUJXG5E/hqdefault.jpg&quot;, &quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,41 +409,63 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>Il desiderio di compleanno di Kibrit, che compie diciotto anni a mezzanotte, è uno solo: che Zeynep difenda suo padre.</strong></p>
-  <h2>Lo sfratto e il furgoncino</h2>
+  <h2 id="c1">Lo sfratto e il furgoncino</h2>
 <p>Con Mehdi di nuovo in cella, accusato ingiustamente dell&#x27;aggressione a Bekir, la sua attività fallita e nessuno in grado di pagare l&#x27;affitto, il proprietario di casa avvia lo sfratto e fa buttare le loro cose in strada. Cemile, Nuh, Kibrit, Benal e la piccola Müjgan si ritrovano senza un tetto, con il furgoncino da lavoro come unico bene. È Kibrit a raccontarlo a Zeynep al telefono, ed è Zeynep a non pensarci due volte: li carica tutti e li porta a casa sua, soprattutto per non lasciare la bambina al freddo. In casa le reazioni si dividono — Sakine li accoglie con empatia, Nermin chiede a voce alta perché mai sua figlia debba farsi carico dei problemi dell&#x27;uomo che l&#x27;ha fatta soffrire.</p>
-<h2>L&#x27;avvocato che si tira indietro</h2>
+<h2 id="c2">L&#x27;avvocato che si tira indietro</h2>
 <p>Il legale di famiglia mette le cose in chiaro: si occupa di diritto di famiglia e divorzi, per un processo penale servirebbe un altro professionista — e i soldi per pagarlo non ci sono. Cemile e Kibrit allora chiedono direttamente a Zeynep di assumere la difesa, scatenando la reazione furiosa di Nermin, che trova la richiesta semplicemente inaccettabile. Poi la situazione precipita: le condizioni di Bekir peggiorano e l&#x27;accusa passa da aggressione a tentato omicidio, con il rischio che diventi omicidio. A quel punto l&#x27;avvocato ammette di non essere all&#x27;altezza e si ritira dal caso, lasciando Mehdi senza difensore alla prima udienza.</p>
-<h2>Il ristorante e il tribunale</h2>
+<h2 id="c3">Il ristorante e il tribunale</h2>
 <p>Barış, che nel frattempo ha una bellissima notizia — il suo studio ha dimostrato che Ekrem ha sottratto illecitamente il denaro dell&#x27;azienda, i fondi sono bloccati e si può procedere — invita Zeynep a pranzo. Lei accetta, ma la mattina dell&#x27;appuntamento resta immobile davanti alla porta senza sapere dove andare. Mentre tutti si dirigono in tribunale e Barış si siede al ristorante ad aspettarla, l&#x27;aula si riempie: ci sono l&#x27;imputato, la famiglia, l&#x27;accusa, e nessun difensore. Poi la porta si apre ed entra Zeynep: da quel momento è lei l&#x27;avvocato di Mehdi.</p>
-<h2>La difesa e le bugie</h2>
+<h2 id="c4">La difesa e le bugie</h2>
 <p>Nel colloquio riservato Mehdi le giura di essere stato incastrato da un altro detenuto, con ogni probabilità d&#x27;accordo con l&#x27;uomo che uccise suo padre e che si trova nello stesso carcere. Zeynep gli crede, e quando quel detenuto testimonia contro di lui deve zittire il suo stesso cliente, richiamato all&#x27;ordine anche dal giudice. Chiede quindi più tempo per preparare la difesa e, fuori dall&#x27;aula, espone il piano: recuperare i filmati di sorveglianza del giorno dell&#x27;aggressione e chiedere il trasferimento di Mehdi in un altro istituto. C&#x27;è però una condizione che pone a tutti — le sue madri non devono saperlo. E quando Barış la chiama, lei inventa una scusa: teme la sua delusione, ma soprattutto sa che il contratto con il suo studio non le permette di seguire cause per conto proprio. A coprirla saranno Emine e Savaş, che alla fine si offre persino di aiutarla a impostare la difesa.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Chi sono le persone accolte nella casa di Zeynep</h2>
+<h2 id="c5">Chi sono le persone accolte nella casa di Zeynep</h2>
 <p>La drammatica spirale di sventure che ha colpito l&#x27;attività di Mehdi culmina nello sfratto esecutivo stabilito dal proprietario dell&#x27;immobile, incapace di riscuotere l&#x27;affitto arretrato. Senza più un tetto sopra la testa e con il solo furgoncino da lavoro rimasto a disposizione, Cemile, Nuh, Benal, Kibrit e la piccola Müjgan finiscono improvvisamente in mezzo alla strada. È la giovanissima Kibrit, sul punto di compiere diciotto anni allo scoccare della mezzanotte, a comunicare telefonicamente a Zeynep la disperata situazione. La reazione della donna è immediata: li accoglie tutti nella propria abitazione per evitare che la bambina rimanga esposta al gelo. Questa decisione spacca la casa in due, contrapponendo la calorosa empatia di Sakine alla dura e aperta contrarietà di Nermin.</p>
 <p>Di fronte alla richiesta formale avanzata da Cemile e Kibrit affinché Zeynep assuma il ruolo di difesa, Nermin esplode in una feroce protesta, ritenendo inaccettabile che la figlia debba farsi carico delle sventure dell&#x27;uomo che l&#x27;ha fatta soffrire. Nel frattempo il quadro clinico del ferito Bekir peggiora gravemente, spingendo le autorità a riqualificare il capo d&#x27;imputazione da semplice aggressione a tentato omicidio, con la concreta minaccia che la carica si trasformi in omicidio in caso di decesso. Il legale storicamente legato alla famiglia, specializzato esclusivamente in diritto di famiglia e pratiche di divorzio, ammette di non possedere le competenze per un procedimento penale così grave e si ritira, lasciando l&#x27;imputato privo di difensore per mancanza di denaro.</p>
-<h2>Perche&#x27; Baris attende invano Zeynep al ristorante</h2>
+<h2 id="c6">Perche&#x27; Baris attende invano Zeynep al ristorante</h2>
 <p>Sul fronte professionale si registra una svolta positiva grazie allo studio legale guidato da Barış, il quale riesce a raccogliere le prove schiaccianti del furto di denaro aziendale commesso da Ekrem. Il blocco tempestivo dei fondi consente finalmente di procedere con le azioni legali adeguate, spingendo l&#x27;uomo a voler condividere questo importante successo invitando la sua giovane collaboratrice a pranzo in un ristorante. La mattina stabilita per l&#x27;appuntamento trova tuttavia Zeynep completamente bloccata dinanzi alla porta della propria abitazione, lacerata dal dubbio su quale direzione prendere. Mentre Barış si accomoda al tavolo del locale in trepidante attesa, l&#x27;aula del tribunale si riempie gradualmente con la presenza del giudice, dell&#x27;accusa, dei familiari dell&#x27;imputato e del detenuto stesso.</p>
 <p>L&#x27;assenza di un avvocato a rappresentare l&#x27;imputato minaccia di compromettere irrimediabilmente l&#x27;esito della prima udienza. Proprio nel momento di massima tensione, la porta dell&#x27;aula giudiziaria si apre ed entra Zeynep, la quale sceglie di scendere in campo in prima persona come difensore ufficiale di Mehdi. La determinazione della donna risponde direttamente all&#x27;unico e accorato desiderio di compleanno espresso da Kibrit, la quale chiedeva soltanto che il padre venisse difeso. Questo colpo di scena trasforma radicalmente il corso del processo, ponendo la protagonista al centro di un complesso incrocio tra responsabilità legali e dinamiche personali, mentre il suo datore di lavoro continua ad aspettarla inutilmente al ristorante prescelto per la celebrazione.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Cosa scopre Zeynep durante la prima udienza</h2>
+<h2 id="c7">Cosa scopre Zeynep durante la prima udienza</h2>
 <p>Durante il colloquio riservato con il suo nuovo legale, Mehdi dichiara con fermezza la propria estraneità ai fatti, giurando di essere stato incastrato da un altro carcerato in complotto con l&#x27;uomo responsabile dell&#x27;assassinio di suo padre, anch&#x27;egli rinchiuso nello stesso istituto. Quando questo presunto testimone chiave depone in aula contro di lui, la rabbiosa reazione dell&#x27;imputato costringe Zeynep a zittire il proprio cliente, il quale viene richiamato all&#x27;ordine anche dal giudice. Ripreso il controllo della situazione, l&#x27;avvocato chiede una proroga al tribunale per impostare una solida linea difensiva basata sull&#x27;acquisizione delle registrazioni delle telecamere di videosorveglianza relative al giorno dell&#x27;aggressione, sollecitando parallelamente il trasferimento immediato del detenuto in una struttura carceraria differente.</p>
 <p>L&#x27;assunzione di questo incarico impone tuttavia a Zeynep di mantenere il segreto assoluto con Sakine e Nermin, le quali non dovranno assolutamente venire a conoscenza della sua presenza al processo. Al tempo stesso, quando Barış la chiama al telefono, la donna si vede costretta a inventare una bugia per giustificare la propria assenza, frenata dalla paura di deludere l&#x27;uomo e dalla consapevolezza che il suo contratto lavorativo vieta espressamente di curare cause private. In questa delicata operazione di copertura, la giovane trova il sostegno fondamentale di Emine nel proteggere le sue menzogne, mentre Savaş si dimostra pronto ad aiutarla concretamente nell&#x27;impostazione strategica della difesa di fronte alle imminenti sfide giudiziarie che la attendono.</p>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=vuKhmXJDHks" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/vuKhmXJDHks/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>MY HOME MY DESTINY Anticipazioni: Mehdi salva la vita a Zeynep e famiglia! Ma resta ferito! Mor</span></a></li><li><a href="https://www.youtube.com/watch?v=C_UTRZWkxKo" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/C_UTRZWkxKo/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>MY HOME MY DESTINY Anticipazioni 8-9 Novembre: Primo bacio tra Baris e Zeynep mentre Mehdi ....</span></a></li><li><a href="https://www.youtube.com/watch?v=XtDHf6nAcDM" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/XtDHf6nAcDM/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>MY HOME MY DESTINY Anticipazioni 6-7 Novembre: Zeynep subisce ricatto morale dalla famiglia di </span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Zeynep ha fatto bene a nasconderlo a Barış?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=tb1ETUJXG5E">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di My Home My Destiny</h2><div class="griglia"><article class="scheda">
+  <a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/"><div class="foto"><img src="/img/my-home-my-destiny-la-trama-completa-e-come-finisce.jpg" alt="My Home My Destiny" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">My Home My Destiny</span>
+    <h3><a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/">My Home My Destiny: la trama completa e come finisce</a></h3>
+    <div class="quando">30 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/"><div class="foto"><img src="https://i.ytimg.com/vi/-djleIeCLQs/hqdefault.jpg" alt="My Home My Destiny" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">My Home My Destiny</span>
+    <h3><a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/">My Home My Destiny, Zeynep ferma l&#x27;aborto di Benal in sala operatoria senza sapere che il padre è Mehdi</a></h3>
+    <div class="quando">17 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/"><div class="foto"><img src="https://i.ytimg.com/vi/gxL0o63Nhqw/hqdefault.jpg" alt="My Home My Destiny" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">My Home My Destiny</span>
+    <h3><a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/">My Home My Destiny, anticipazioni del 17 novembre: Özlem indaga su Zeynep e scopre tutto, Nuh diventa autista di Barış e qualcuno manomette i macchinari di Bekir</a></h3>
+    <div class="quando">16 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=My Home My Destiny 13-14 novembre, Zeynep entra in aula come avvocato di Mehdi mentre Barış la aspetta al ristorante — https://serietvfans.com/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/&text=My Home My Destiny 13-14 novembre, Zeynep entra in aula come avvocato di Mehdi mentre Barış la aspetta al ristorante" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">MY HOME MY DESTINY Anticipazioni 13-14 Novembre: Zeynep di nuovo a un bivio tra passato e futuro</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=tb1ETUJXG5E">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di My Home My Destiny</h3><ol class="numerata"><li><a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/">My Home My Destiny: la trama completa e come finisce</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/">My Home My Destiny, Zeynep ferma l&#x27;aborto di Benal in sala operatoria senza sapere che il padre è Mehdi</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/">My Home My Destiny, anticipazioni del 17 novembre: Özlem indaga su Zeynep e scopre tutto, Nuh diventa autista di Barış e qualcuno manomette i macchinari di Bekir</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-guida-alla-serie-chi-sono-demet-ozdemir-e-ibrahim-celikkol-qu/">My Home My Destiny: guida alla serie, il cast, i personaggi e quante puntate sono</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-1-dicembre-gli-spari-davanti-alla-vecchia-casa-zeynep-tra-le/">My Home My Destiny 1° dicembre, gli spari davanti alla vecchia casa: Zeynep tra le due madri quando l&#x27;uomo in moto estrae la pistola</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>MY HOME MY DESTINY Anticipazioni 13-14 Novembre: Zeynep di nuovo a un bivio tra passato e futuro</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su My Home My Destiny</h3><ul><li><a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/">My Home My Destiny: la trama completa e come finisce</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/">My Home My Destiny, Zeynep ferma l&#x27;aborto di Benal in sala operatoria senza sapere che il padre è Mehdi</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/">My Home My Destiny, anticipazioni del 17 novembre: Özlem indaga su Zeynep e scopre tutto, Nuh diventa autista di Barış e qualcuno manomette i macchinari di Bekir</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-guida-alla-serie-chi-sono-demet-ozdemir-e-ibrahim-celikkol-qu/">My Home My Destiny: guida alla serie, il cast, i personaggi e quante puntate sono</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-1-dicembre-gli-spari-davanti-alla-vecchia-casa-zeynep-tra-le/">My Home My Destiny 1° dicembre, gli spari davanti alla vecchia casa: Zeynep tra le due madri quando l&#x27;uomo in moto estrae la pistola</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

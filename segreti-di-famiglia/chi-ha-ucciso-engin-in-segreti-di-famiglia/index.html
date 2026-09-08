@@ -12,7 +12,7 @@
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Serie TV Fans">
 <meta property="og:url" content="https://serietvfans.com/segreti-di-famiglia/chi-ha-ucciso-engin-in-segreti-di-famiglia/">
-<meta property="og:image" content="https://serietvfans.com/social.svg">
+<meta property="og:image" content="https://serietvfans.com/img/chi-ha-ucciso-engin-in-segreti-di-famiglia.jpg">
 <meta property="og:locale" content="it_IT">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#7b1e2b">
@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -314,12 +363,12 @@ if(l.length){el.src=l.shift();el.dataset.fb=JSON.stringify(l)}else{el.onerror=nu
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7778653397776213" crossorigin="anonymous"></script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "96259d7e67ce47fba4573364859712a6"}'></script>
 <script>(function(){var f=0;function go(){if(f)return;f=1;(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","y3rpoig6jk");}["pointerdown","keydown","touchstart","scroll"].forEach(function(v){addEventListener(v,go,{once:1,passive:1})});setTimeout(go,2500)})();</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Chi ha ucciso Engin in Segreti di Famiglia: la verità sulla morte di Engin Tilmen e il piano che nessuno aveva previsto", "datePublished": "2026-08-29", "dateModified": "2026-09-03", "description": "Engin Tilmen non muore per mano di Ceylin, che pure finisce arrestata e processata per quel delitto, e nemmeno per mano di Yekta o di Çınar. Il colpo al cuore che lo uccide nel bosco, la notte in cui evade dall'ospedale, è di Niyazi Karaçam: un poliziotto del laboratorio della scientifica schiacciato dai debiti con uno strozzino, che accetta l'incarico per poter pagare. Il colpo di scena vero però riguarda il mandante. Da un video recuperato dal portatile di Ceylin viene fuori che a costruire quella fine era stato Engin stesso, avvelenamento in carcere compreso. Qui sotto l'ordine esatto dei fatti, e i punti che la serie lascia deliberatamente in ombra.", "inLanguage": "it-IT", "mainEntityOfPage": "https://serietvfans.com/segreti-di-famiglia/chi-ha-ucciso-engin-in-segreti-di-famiglia/", "image": [], "author": {"@type": "Organization", "name": "Serie TV Fans", "url": "https://serietvfans.com/chi-siamo/"}, "publisher": {"@type": "Organization", "name": "Serie TV Fans", "logo": {"@type": "ImageObject", "url": "https://serietvfans.com/favicon.svg"}}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Chi ha ucciso Engin in Segreti di Famiglia: la verità sulla morte di Engin Tilmen e il piano che nessuno aveva previsto", "datePublished": "2026-08-29", "dateModified": "2026-09-07", "description": "Engin Tilmen non muore per mano di Ceylin, che pure finisce arrestata e processata per quel delitto, e nemmeno per mano di Yekta o di Çınar. Il colpo al cuore che lo uccide nel bosco, la notte in cui evade dall'ospedale, è di Niyazi Karaçam: un poliziotto del laboratorio della scientifica schiacciato dai debiti con uno strozzino, che accetta l'incarico per poter pagare. Il colpo di scena vero però riguarda il mandante. Da un video recuperato dal portatile di Ceylin viene fuori che a costruire quella fine era stato Engin stesso, avvelenamento in carcere compreso. Qui sotto l'ordine esatto dei fatti, e i punti che la serie lascia deliberatamente in ombra.", "inLanguage": "it-IT", "mainEntityOfPage": "https://serietvfans.com/segreti-di-famiglia/chi-ha-ucciso-engin-in-segreti-di-famiglia/", "image": ["https://serietvfans.com/img/chi-ha-ucciso-engin-in-segreti-di-famiglia.jpg"], "author": {"@type": "Organization", "name": "Serie TV Fans", "url": "https://serietvfans.com/chi-siamo/"}, "publisher": {"@type": "Organization", "name": "Serie TV Fans", "logo": {"@type": "ImageObject", "url": "https://serietvfans.com/favicon.svg"}}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://serietvfans.com/"}, {"@type": "ListItem", "position": 2, "name": "Segreti di Famiglia", "item": "https://serietvfans.com/serie/segreti-di-famiglia/"}, {"@type": "ListItem", "position": 3, "name": "Chi ha ucciso Engin in Segreti di Famiglia: la verità sulla morte di Engin Tilmen e il piano che nessuno aveva previsto"}]}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -332,43 +381,69 @@ if(l.length){el.src=l.shift();el.dataset.fb=JSON.stringify(l)}else{el.onerror=nu
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/segreti-di-famiglia/">Segreti di Famiglia</a> › Chi ha ucciso Engin in Segreti di Famiglia: la verità sulla morte di Engin Tilmen e il piano che nessuno aveva previsto</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/segreti-di-famiglia/">Segreti di Famiglia</a>
   <h1>Chi ha ucciso Engin in Segreti di Famiglia: la verità sulla morte di Engin Tilmen e il piano che nessuno aveva previsto</h1>
-  <div class="firma">Redazione Serie TV Fans · sabato 29 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-29">sabato 29 agosto 2026</time></span><span>aggiornato il 7 settembre 2026</span><span>8 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Engin Tilmen non muore per mano di Ceylin, che pure finisce arrestata e processata per quel delitto, e nemmeno per mano di Yekta o di Çınar. Il colpo al cuore che lo uccide nel bosco, la notte in cui evade dall&#x27;ospedale, è di Niyazi Karaçam: un poliziotto del laboratorio della scientifica schiacciato dai debiti con uno strozzino, che accetta l&#x27;incarico per poter pagare. Il colpo di scena vero però riguarda il mandante. Da un video recuperato dal portatile di Ceylin viene fuori che a costruire quella fine era stato Engin stesso, avvelenamento in carcere compreso. Qui sotto l&#x27;ordine esatto dei fatti, e i punti che la serie lascia deliberatamente in ombra.</p><ol><li><a href="#c1">Chi ha ucciso Engin in Segreti di Famiglia?</a></li><li><a href="#c2">Perché Engin era finito in carcere?</a></li><li><a href="#c3">Come è morto Engin la notte della fuga dall&#x27;ospedale?</a></li><li><a href="#c4">Perché tutti hanno creduto che fosse stata Ceylin?</a></li><li><a href="#c5">Chi è Niyazi Karaçam e come viene smascherato?</a></li><li><a href="#c6">Perché Engin avrebbe organizzato la propria morte?</a></li><li><a href="#c7">Quando Engin esce di scena e che cosa resta senza risposta?</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>Segreti di Famiglia</strong> — Rete 4 · in streaming su Mediaset Infinity</span></div>
-  <figure class="copertina"><img src="/fallback/segreti-di-famiglia.svg" alt="Segreti di Famiglia" width="1280" height="720"><figcaption>Segreti di Famiglia</figcaption></figure>
-  <p class="occhiello">Engin Tilmen non muore per mano di Ceylin, che pure finisce arrestata e processata per quel delitto, e nemmeno per mano di Yekta o di Çınar. Il colpo al cuore che lo uccide nel bosco, la notte in cui evade dall&#x27;ospedale, è di Niyazi Karaçam: un poliziotto del laboratorio della scientifica schiacciato dai debiti con uno strozzino, che accetta l&#x27;incarico per poter pagare. Il colpo di scena vero però riguarda il mandante. Da un video recuperato dal portatile di Ceylin viene fuori che a costruire quella fine era stato Engin stesso, avvelenamento in carcere compreso. Qui sotto l&#x27;ordine esatto dei fatti, e i punti che la serie lascia deliberatamente in ombra.</p>
+  <figure class="copertina"><img src="/img/chi-ha-ucciso-engin-in-segreti-di-famiglia.jpg" alt="Segreti di Famiglia"><figcaption>Immagine d&#x27;ambiente — Segreti di Famiglia</figcaption></figure>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   
   <div class="corpo">
   <p><strong>A premere il grilletto è Niyazi Karaçam, un agente di polizia in servizio nel laboratorio della questura, pagato per farlo. Ma la parte che ribalta tutto arriva dopo: a organizzare quella morte era stato Engin Tilmen in persona.</strong></p>
-  <h2>Chi ha ucciso Engin in Segreti di Famiglia?</h2>
+  <h2 id="c1">Chi ha ucciso Engin in Segreti di Famiglia?</h2>
 <p>La risposta breve è un nome che per settimane nessuno sospetta: Niyazi Karaçam, agente di polizia in servizio nel laboratorio della scientifica. È lui a sparare a Engin Tilmen, un colpo solo, al cuore, in un bosco, nella notte in cui Engin evade dall&#x27;ospedale dove era stato ricoverato. Non c&#x27;è un movente personale: Niyazi è un uomo schiacciato dai debiti con uno strozzino e accetta l&#x27;incarico perché ha bisogno di quei soldi. Ma la risposta breve non basta, perché in Segreti di Famiglia la domanda che conta non è chi ha impugnato la pistola: è chi ha pagato perché quella pistola venisse impugnata. E quando la serie lo rivela, il mandante è l&#x27;unica persona che nessuno aveva messo nell&#x27;elenco dei sospettati, per il motivo più semplice del mondo: era la vittima. Da un video nascosto nel portatile di Ceylin, recuperato dopo che i file erano stati cancellati, esce fuori che il piano l&#x27;aveva scritto Engin. Compreso l&#x27;avvelenamento che lo aveva portato dal carcere all&#x27;ospedale. Il risultato è una delle costruzioni più crudeli di tutta la serie: un uomo che si fa uccidere per lasciare in eredità un&#x27;accusa di omicidio alla donna che lo aveva appena incastrato. Nel mezzo, fra il colpo e la verità, ci sono un arresto ingiusto, un processo e un procuratore che si dimette.</p>
-<h2>Perché Engin era finito in carcere?</h2>
+<h2 id="c2">Perché Engin era finito in carcere?</h2>
 <p>Perché è lui l&#x27;assassino di İnci Erguvan, la sorella minore di Ceylin: il delitto da cui parte tutta la serie. Engin è l&#x27;avvocato che lavora fianco a fianco con Ceylin, il suo amico più stretto, la persona a cui lei si appoggia nei giorni peggiori — ed è per questo che la scoperta fa il male che fa. La notte dell&#x27;omicidio İnci si rifugia da lui dopo essere stata cacciata di casa dalla moglie del professore Ozan, e prova a spiegargli che con l&#x27;insegnante non c&#x27;è mai stata nessuna relazione. Engin, convinto del contrario da tempo e divorato dalla gelosia, non le crede: la colpisce alla testa con un posacenere e la uccide. Poi ne nasconde il corpo in una valigia, che finisce in un cassonetto. Il padre Yekta Tilmen, avvocato abituato a ripulire i guai dei propri clienti, prova a scaricare la colpa su Osman, il cognato della ragazza, e a far sparire ogni traccia dall&#x27;appartamento del figlio. Non basta: Ceylin e il procuratore Ilgaz Kaya costruiscono una trappola attorno a un video del delitto che in realtà non esiste, ed Engin ci cade dentro correndo a comprarlo. Di quella trappola abbiamo già raccontato i dettagli — i mobili nuovi di zecca, l&#x27;orecchino, la barchetta di carta — in un articolo dedicato.</p>
-<h2>Come è morto Engin la notte della fuga dall&#x27;ospedale?</h2>
+<h2 id="c3">Come è morto Engin la notte della fuga dall&#x27;ospedale?</h2>
 <p>L&#x27;arresto non chiude niente, anzi apre la parte più oscura. In carcere Engin viene messo in isolamento su richiesta di Ilgaz. Pochi giorni dopo si sente male: il veleno era stato passato sulle pagine di un libro che lui stesso aveva chiesto di ricevere. Lo portano d&#x27;urgenza in ospedale, dove si riprende. È lì che, con l&#x27;aiuto del padre, organizza l&#x27;evasione: il piano funziona ed Engin lascia l&#x27;ospedale al volante di un&#x27;auto. Quello che non sa, o che finge di non sapere, è che in quell&#x27;auto c&#x27;è anche Ceylin. Quando se ne accorge la strattona fuori dall&#x27;abitacolo e la abbandona sul posto. È notte, Ceylin perde i sensi. Quando riapre gli occhi si ritrova in un bosco con una pistola in mano e il corpo di Engin steso davanti a sé, senza il minimo ricordo di come ci sia arrivata. Getta l&#x27;arma e si allontana di corsa. Il proiettile che lo ha ucciso è entrato nel cuore. Tutto quello che quella scena racconta a chi la trova — l&#x27;arma, la donna, il movente perfetto della sorella da vendicare — punta in una sola direzione. Ed è esattamente l&#x27;effetto che chi l&#x27;ha allestita voleva ottenere.</p>
-<h2>Perché tutti hanno creduto che fosse stata Ceylin?</h2>
+<h2 id="c4">Perché tutti hanno creduto che fosse stata Ceylin?</h2>
 <p>Perché al posto loro lo avrebbe creduto chiunque. Ceylin ha il movente più solido immaginabile: Engin le aveva ucciso la sorella. È l&#x27;ultima persona vista con lui. È stata trovata con la pistola. E non ha memoria di quella notte, quindi non può nemmeno opporre una versione alternativa. L&#x27;accusa di omicidio le costa il carcere, e a quel punto la serie ribalta i ruoli di partenza: Ilgaz, il procuratore rigido e attaccato alle regole che all&#x27;inizio era il suo avversario naturale, si dimette dalla magistratura per poterla difendere da avvocato. È il gesto che segna il punto di non ritorno fra i due. Ceylin alla fine viene scagionata ed esce, e scoprirà solo dopo che Ilgaz aveva rinunciato al proprio lavoro per lei. Vale la pena fermarsi un istante su questo passaggio, perché spiega perché «chi ha ucciso Engin» sia una delle domande più cercate su questa serie: non è una curiosità su un personaggio che esce di scena, è il caso giudiziario che regge mezza stagione e che decide il destino della protagonista. Finché quel nome non salta fuori, Ceylin resta un&#x27;imputata.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Chi è Niyazi Karaçam e come viene smascherato?</h2>
+<h2 id="c5">Chi è Niyazi Karaçam e come viene smascherato?</h2>
 <p>Niyazi Karaçam è un agente di polizia che lavora nel laboratorio della questura: uno che sta dentro l&#x27;indagine, non fuori. È il dettaglio che rende la cosa così difficile da vedere, perché la persona che maneggia le prove è la stessa che ha sparato. Il suo movente non ha niente di romanzesco: doveva dei soldi a uno strozzino e ha accettato l&#x27;incarico per estinguere il debito. Oltre a uccidere Engin, è lui a ferire Ceylin e a sistemare la scena in modo che l&#x27;accusa ricadesse su di lei. La sua identità viene fuori nel diciottesimo episodio della versione turca originale, ed è uno dei momenti che hanno fatto più rumore fra il pubblico in Turchia, anche perché per settimane moltissimi spettatori erano convinti che il killer fosse una donna. La fine di Niyazi arriva poco dopo e non lascia granché in mano agli inquirenti: braccato da Ilgaz, ignora l&#x27;alt, corre su una superstrada e si getta sotto un camion in corsa. Muore così, portandosi dietro quello che sapeva. Ed è il motivo per cui la questione del mandante resta aperta ancora a lungo dopo che il nome dell&#x27;esecutore è ormai noto a tutti.</p>
-<h2>Perché Engin avrebbe organizzato la propria morte?</h2>
+<h2 id="c6">Perché Engin avrebbe organizzato la propria morte?</h2>
 <p>Questa è la parte che va spiegata con onestà, perché le fonti dicono il fatto ma non il movente per esteso. Il fatto è documentato: nel ventitreesimo episodio turco Ilgaz ed Eren fanno recuperare da un tecnico i file cancellati dal portatile di Ceylin e trovano un video in cui compare Engin. In quel video Engin dichiara di essersi fatto avvelenare da sé in carcere e di aver ingaggiato lui stesso Niyazi. Non è il sospetto di un personaggio né una tesi dell&#x27;accusa: è la spiegazione che la serie mette in bocca al morto. Il perché è più scivoloso. Engin viene descritto come un profilo psicopatico, e l&#x27;unica lettura che regge alla luce di quello che si vede è che l&#x27;intera messinscena servisse a incastrare Ceylin per il suo stesso omicidio: la donna che lo aveva smascherato paga al posto suo, e lui esce di scena scegliendo il come e il quando invece di marcire in una cella. Ma su questo, non esistendo una spiegazione esplicita, preferiamo dire quello che la serie mostra e fermarci lì, invece di attribuirgli un ragionamento che nessuna fonte gli mette in bocca.</p>
-<h2>Quando Engin esce di scena e che cosa resta senza risposta?</h2>
+<h2 id="c7">Quando Engin esce di scena e che cosa resta senza risposta?</h2>
 <p>Engin Tilmen è interpretato da Onur Durmaz. Il personaggio è presente dalla prima alla quattordicesima puntata della numerazione turca — la morte cade lì — e poi ricompare soltanto nel settantunesimo e nel settantaduesimo episodio, in filmati di flashback. In Italia la serie è passata prima da Canale 5, poi dallo streaming di Mediaset Infinity e infine da Rete 4: la numerazione italiana non coincide con quella turca, perché gli episodi originali sono stati spezzati in puntate più corte, quindi i numeri qui sopra servono a collocare i fatti dentro la storia, non a dire in che puntata italiana li vedrete. Sul resto, due avvertenze. La prima riguarda il cognome della madre di Engin, Laçin: compare in due forme diverse fra l&#x27;enciclopedia turca e la scheda cast ufficiale di Kanal D, e finché le fonti non vanno d&#x27;accordo preferiamo lasciarla senza cognome piuttosto che sceglierne uno a caso. La seconda riguarda la domanda stessa: chi cerca «chi ha ucciso Engin» a volte sta cercando l&#x27;altra metà della storia, cioè chi ha ucciso İnci. Le due risposte sono legate ma non sono la stessa. İnci è stata uccisa da Engin. Engin è stato ucciso da Niyazi Karaçam, su mandato di Engin.</p>
   </div>
   
   <div class="riquadro"><h3>E secondo voi?</h3><p>Vi aspettavate che dietro la morte di Engin ci fosse Engin stesso, o avevate puntato su Yekta? E secondo voi Ilgaz avrebbe dovuto dimettersi per difendere Ceylin?</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di Segreti di Famiglia</h2><div class="griglia"><article class="scheda">
+  <a href="/segreti-di-famiglia/segreti-di-famiglia-ceylin-recupera-dalla-spazzatura-lo-spazzolino-che-ilgaz-ave/"><div class="foto"><img src="https://i.ytimg.com/vi/BRxPNp4LTrw/hqdefault.jpg" alt="Segreti di Famiglia" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/segreti-di-famiglia.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Segreti di Famiglia</span>
+    <h3><a href="/segreti-di-famiglia/segreti-di-famiglia-ceylin-recupera-dalla-spazzatura-lo-spazzolino-che-ilgaz-ave/">Segreti di Famiglia, Ceylin recupera dalla spazzatura lo spazzolino che Ilgaz aveva buttato — e il DNA sotto le unghie di İnci ha un nome</a></h3>
+    <div class="quando">14 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/segreti-di-famiglia/segreti-di-famiglia-ceylin-scopre-chi-ha-ucciso-sua-sorella-il-posacenere-insang/"><div class="foto"><img src="https://i.ytimg.com/vi/NAKa2vFcVZQ/hqdefault.jpg" alt="Segreti di Famiglia" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/segreti-di-famiglia.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Segreti di Famiglia</span>
+    <h3><a href="/segreti-di-famiglia/segreti-di-famiglia-ceylin-scopre-chi-ha-ucciso-sua-sorella-il-posacenere-insang/">Segreti di Famiglia, Ceylin scopre chi ha ucciso sua sorella: il posacenere insanguinato, la barchetta di carta e la trappola sul terrazzo che smaschera Engin</a></h3>
+    <div class="quando">14 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/segreti-di-famiglia/segreti-di-famiglia-cnar-racconta-la-notte-dellomicidio-la-telefonata-di-inci-i/"><div class="foto"><img src="https://i.ytimg.com/vi/xOKHNr-0Lfs/hqdefault.jpg" alt="Segreti di Famiglia" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/segreti-di-famiglia.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Segreti di Famiglia</span>
+    <h3><a href="/segreti-di-famiglia/segreti-di-famiglia-cnar-racconta-la-notte-dellomicidio-la-telefonata-di-inci-i/">Segreti di Famiglia, Çınar racconta la notte dell&#x27;omicidio: la telefonata di İnci, i vestiti sporchi di sangue e il taxi preso da sola</a></h3>
+    <div class="quando">14 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=Chi ha ucciso Engin in Segreti di Famiglia: la verità sulla morte di Engin Tilmen e il piano che nessuno aveva previsto — https://serietvfans.com/segreti-di-famiglia/chi-ha-ucciso-engin-in-segreti-di-famiglia/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/segreti-di-famiglia/chi-ha-ucciso-engin-in-segreti-di-famiglia/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/segreti-di-famiglia/chi-ha-ucciso-engin-in-segreti-di-famiglia/&text=Chi ha ucciso Engin in Segreti di Famiglia: la verità sulla morte di Engin Tilmen e il piano che nessuno aveva previsto" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  
-  <div class="box"><h3>Ancora su Segreti di Famiglia</h3><ul><li><a href="/segreti-di-famiglia/segreti-di-famiglia-ceylin-recupera-dalla-spazzatura-lo-spazzolino-che-ilgaz-ave/">Segreti di Famiglia, Ceylin recupera dalla spazzatura lo spazzolino che Ilgaz aveva buttato — e il DNA sotto le unghie di İnci ha un nome</a></li><li><a href="/segreti-di-famiglia/segreti-di-famiglia-ceylin-scopre-chi-ha-ucciso-sua-sorella-il-posacenere-insang/">Segreti di Famiglia, Ceylin scopre chi ha ucciso sua sorella: il posacenere insanguinato, la barchetta di carta e la trappola sul terrazzo che smaschera Engin</a></li><li><a href="/segreti-di-famiglia/segreti-di-famiglia-cnar-racconta-la-notte-dellomicidio-la-telefonata-di-inci-i/">Segreti di Famiglia, Çınar racconta la notte dell&#x27;omicidio: la telefonata di İnci, i vestiti sporchi di sangue e il taxi preso da sola</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
+  <div class="box"><h3>Ultime di Segreti di Famiglia</h3><ol class="numerata"><li><a href="/segreti-di-famiglia/segreti-di-famiglia-ceylin-recupera-dalla-spazzatura-lo-spazzolino-che-ilgaz-ave/">Segreti di Famiglia, Ceylin recupera dalla spazzatura lo spazzolino che Ilgaz aveva buttato — e il DNA sotto le unghie di İnci ha un nome</a></li><li><a href="/segreti-di-famiglia/segreti-di-famiglia-ceylin-scopre-chi-ha-ucciso-sua-sorella-il-posacenere-insang/">Segreti di Famiglia, Ceylin scopre chi ha ucciso sua sorella: il posacenere insanguinato, la barchetta di carta e la trappola sul terrazzo che smaschera Engin</a></li><li><a href="/segreti-di-famiglia/segreti-di-famiglia-cnar-racconta-la-notte-dellomicidio-la-telefonata-di-inci-i/">Segreti di Famiglia, Çınar racconta la notte dell&#x27;omicidio: la telefonata di İnci, i vestiti sporchi di sangue e il taxi preso da sola</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>Ogni anticipazione, prima in video sul canale Serie TV Fans</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
+  </div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

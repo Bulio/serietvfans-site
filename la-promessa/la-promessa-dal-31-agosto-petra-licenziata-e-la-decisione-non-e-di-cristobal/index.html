@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/la-promessa/">La Promessa</a> › La Promessa dal 31 agosto: Petra licenziata, e la decisione non è di Cristóbal</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/la-promessa/">La Promessa</a>
   <h1>La Promessa dal 31 agosto: Petra licenziata, e la decisione non è di Cristóbal</h1>
-  <div class="firma">Redazione Serie TV Fans · giovedì 27 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-27">giovedì 27 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Anticipazioni de La Promessa dal 31 agosto al 6 settembre: il licenziamento della governante, il viaggio d&#x27;addio di Curro e Ángela, la minaccia di Lorenzo e l&#x27;unica persona che non perde niente.</p><ol><li><a href="#c1">Chi è Petra, e cosa le viene tolto</a></li><li><a href="#c2">L&#x27;antefatto: Cristóbal declassava, non licenziava</a></li><li><a href="#c3">Chi ha deciso davvero il licenziamento di Petra?</a></li><li><a href="#c4">Il viaggio d&#x27;addio di Curro e Ángela</a></li><li><a href="#c5">Lorenzo minaccia, e Curro tiene</a></li><li><a href="#c6">Perché conta: la tenuta si sta svuotando di chi ricorda</a></li><li><a href="#c7">Dove vedere La Promessa</a></li><li><a href="#c8">Come Leocadia manovra il destino di Angela</a></li><li><a href="#c9">Perche Cristobal esegue gli ordini di Leocadia</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>La Promessa</strong> — Rete 4 · in streaming su Mediaset Infinity</span></div>
   
-  <p class="occhiello">Anticipazioni de La Promessa dal 31 agosto al 6 settembre: il licenziamento della governante, il viaggio d&#x27;addio di Curro e Ángela, la minaccia di Lorenzo e l&#x27;unica persona che non perde niente.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: La Promessa dal 31 agosto: Petra licenziata, e la decisione non è di Cristóbal" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/HkmMIhvGe8s/maxresdefault.jpg" alt="La Promessa dal 31 agosto: Petra licenziata, e la decisione non è di Cristóbal" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/HkmMIhvGe8s/hqdefault.jpg 480w, https://i.ytimg.com/vi/HkmMIhvGe8s/sddefault.jpg 640w, https://i.ytimg.com/vi/HkmMIhvGe8s/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/HkmMIhvGe8s/hqdefault.jpg&quot;, &quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -361,51 +411,73 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
   <p><strong>Cristóbal glielo comunica. Cristóbal non lo ha deciso: è la differenza su cui si regge tutta la settimana.</strong></p>
   <p>Petra viene licenziata. Non retrocessa, non spostata in un altro incarico: licenziata, con l&#x27;annuncio dato davanti alla servitù. E a dirglielo in faccia è don Cristóbal, il maggiordomo arrivato per ultimo in quella casa.</p>
 <p>È qui che conviene rallentare, perché è il punto che spiega tutta la settimana dal 31 agosto al 6 settembre. Cristóbal glielo comunica. Cristóbal non lo ha deciso.</p>
-<h2>Chi è Petra, e cosa le viene tolto</h2>
+<h2 id="c1">Chi è Petra, e cosa le viene tolto</h2>
 <p>Petra è la governante de La Promessa, il ruolo che nella gerarchia di quella casa comanda su tutto il personale femminile: chi entra in servizio, chi viene mandato via, chi sale e chi resta dov&#x27;è. Per anni è stata la donna più fedele ai marchesi, e in particolare a donna Cruz — una fedeltà che non era un sentimento ma una posizione.</p>
 <p>Petra ha spiato, ha coperto, ha ricattato. Sa cose. Ed è esattamente per questo che finora nessuno se l&#x27;era sentita di mandarla via a cuor leggero.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>L&#x27;antefatto: Cristóbal declassava, non licenziava</h2>
+<h2 id="c2">L&#x27;antefatto: Cristóbal declassava, non licenziava</h2>
 <p>Quando il maggiordomo è arrivato non ha cacciato nessuno. Ha fatto una cosa più efficace: ha declassato. Ha tolto autonomia a Petra, ha retrocesso Lope a valletto, ha spostato Ricardo. Nessuno fuori dalla porta, tutti ridimensionati — perché chi viene cacciato parla, e chi resta dentro con meno potere sta zitto.</p>
 <p>Questa settimana quella prudenza finisce, e la servitù resta senza parole. Non perché non se lo aspettasse da settimane: perché fino a quel momento tutti si erano raccontati che quella casa avesse ancora dei limiti.</p>
-<h2>Chi ha deciso davvero il licenziamento di Petra?</h2>
+<h2 id="c3">Chi ha deciso davvero il licenziamento di Petra?</h2>
 <p>La decisione è di donna Leocadia. Cristóbal non è arrivato a La Promessa per caso né per meriti: è stata Leocadia a insistere con don Alonso perché venisse assunto, i due si conoscono da prima, dai tempi di Cruz, ed è a lei che il maggiordomo risponde.</p>
 <p>Quindi la scena va guardata su due piani. Sopra c&#x27;è un maggiordomo che esercita la sua autorità davanti al personale. Sotto c&#x27;è una signora che non è nella stanza e che ha appena tolto di mezzo l&#x27;ultima persona che veniva dal mondo di prima. Perché è questo che è Petra per Leocadia: non un&#x27;insubordinata, una testimone. Ha visto i marchesi quando comandavano davvero, ha visto entrare Leocadia come amica di famiglia, ha visto cosa è cambiato e quando.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Il viaggio d&#x27;addio di Curro e Ángela</h2>
+<h2 id="c4">Il viaggio d&#x27;addio di Curro e Ángela</h2>
 <p>L&#x27;altra metà della settimana sembra una storia d&#x27;amore ed è la stessa storia di prima. Curro e Ángela partono per un viaggio d&#x27;addio — un addio, non una fuga — e lungo il fiume restano soli. Prima litigano, poi la tensione cede e i due si riavvicinano. È la scena più bella dei sette giorni ed è anche la più crudele, perché quel riavvicinamento sta dentro una separazione che ha già una data.</p>
 <p>Il motivo per cui si lasciano viene da lontano. Leocadia doveva impedire che Ángela finisse nelle mani del capitano Lorenzo de la Mata, e ha risolto il problema come fa sempre: facendolo risolvere a un altro. Ha messo Curro davanti a una controproposta — le nozze con il capitano si fermano, ma Ángela sposa Beltrán. Curro ha accettato per salvarla, poi ha raccontato tutto ad Ángela, e alla fine è stata lei a chiedere a Beltrán di sposarla, convinta di stare scegliendo.</p>
-<h2>Lorenzo minaccia, e Curro tiene</h2>
+<h2 id="c5">Lorenzo minaccia, e Curro tiene</h2>
 <p>Il capitano scopre del viaggio e va allo scontro diretto: affronta Curro e lo minaccia. La novità non è la minaccia, è la risposta. Curro non cede alle provocazioni e resta in piedi davanti a un uomo che per anni ha usato la paura come unico strumento. È l&#x27;unica cosa della settimana che va nella direzione opposta a tutte le altre: ha ceduto sul piano dove non aveva strumenti, tiene su quello dove ce li ha.</p>
 <p>C&#x27;è poi una quarta vicenda, la più silenziosa: Enora chiede una pausa a Toño. Una frase piccola che nella grammatica de La Promessa vuol dire una cosa sola.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Perché conta: la tenuta si sta svuotando di chi ricorda</h2>
+<h2 id="c6">Perché conta: la tenuta si sta svuotando di chi ricorda</h2>
 <p>Fate il conto di chi perde qualcosa. Petra il posto. Curro Ángela. Ángela la libertà di scegliere, senza accorgersene. Lorenzo il controllo su Curro. Una sola persona non perde niente e guadagna su tutti i tavoli: Leocadia toglie di mezzo la testimone, sistema la figlia dove voleva lei, e non è mai nella stanza quando succede.</p>
 <p>Guardate anche come si sta svuotando quella casa: Cruz non c&#x27;è più, Rómulo se n&#x27;è andato, Ricardo è uscito perché Pía potesse rientrare, e adesso Petra. Uno dopo l&#x27;altro, tutti quelli che sapevano com&#x27;era prima. E resta una domanda che dentro la tenuta nessuno sembra essersi posto: Petra esce sapendo tutto quello che sa. Dove va, il giorno dopo, una donna così?</p>
-<h2>Dove vedere La Promessa</h2>
+<h2 id="c7">Dove vedere La Promessa</h2>
 <p>La settimana de La Promessa si segue su Rete 4, con le puntate poi recuperabili in streaming su Mediaset Infinity. Il palinsesto viene rimaneggiato spesso, quindi la guida TV del giorno resta l&#x27;unica indicazione sicura.</p>
-<h2>Come Leocadia manovra il destino di Angela</h2>
+<h2 id="c8">Come Leocadia manovra il destino di Angela</h2>
 <p>Leocadia dimostra ancora una volta la sua capacita di gestire le dinamiche della tenuta senza esporsi mai direttamente in prima persona. Per evitare che la figlia Angela finisse legata al capitano Lorenzo de la Mata, la nobildonna ha ideato un piano ben preciso ponendo Curro di fronte a un ricatto morale inevitabile. Il ragazzo ha accettato la proposta di fermare le nozze con il capitano in cambio del matrimonio tra Angela e Beltran, convinto che fosse l&#x27;unico modo per proteggerla. Dopo aver scoperto la verita direttamente da Curro, la giovane ha finito per chiedere essa stessa a Beltran di sposarla, rimanendo del tutto ignara di essere soltanto una pedina mossa dalla madre.</p>
 <p>Questo accordo porta inevitabilmente al doloroso viaggio di addio tra Curro e Angela, due giovani destinati a separarsi nonostante il sentimento che li unisce. Durante la loro permanenza lungo il fiume, le tensioni esplodono in un primo momento in un acceso litigio, per poi lasciare spazio a un inevitabile riavvicinamento emotivo. Tuttavia, questa parentesi di felicita appare estremamente crudele proprio perche racchiusa entro un termine gia fissato dalle imminenti nozze con Beltran. Nemmeno l&#x27;intervento minaccioso del capitano Lorenzo de la Mata riesce a piegare la determinazione di Curro, il quale trova la forza di resistere alle provocazioni e difendere la dignita della ragazza.</p>
-<h2>Perche Cristobal esegue gli ordini di Leocadia</h2>
+<h2 id="c9">Perche Cristobal esegue gli ordini di Leocadia</h2>
 <p>L&#x27;arrivo di don Cristobal al palazzo non e mai stato il frutto del caso o del merito personale, bensi il risultato della precisa volonta di donna Leocadia. La donna ha infatti insistito a lungo con don Alonso affinche l&#x27;uomo venisse assunto come maggiordomo, forte di una conoscenza pregressa che risale ai tempi in cui Cruz era ancora presente. Cristobal risponde direttamente a Leocadia e ha iniziato il suo mandato evitando licenziamenti affrettati, preferendo ridimensionare il potere della servitu attraverso declassamenti mirati. Togliendo autorita a Petra, spostando Ricardo e riducendo Lope al ruolo di valletto, il maggiordomo ha cercato di mantenere il controllo assoluto ed evitare pericolose fughe di notizie.</p>
 <p>Il licenziamento improvviso e pubblico di Petra segna un punto di svolta fondamentale nella gestione della servitu all&#x27;interno della tenuta. La governante non rappresenta soltanto una figura insubordinata, ma soprattutto una testimone scomoda di un&#x27;epoca oramai passata, avendo assistito all&#x27;ascesa di Leocadia e ai segreti piu intimi dei marchesi. Ora che la casa si sta progressivamente svuotando dei suoi volti storici come Romulo, Cruz e Ricardo, l&#x27;uscita di scena della donna piu fedele del passato lascia un vuoto inquietante. Con questo gesto, Leocadia elimina l&#x27;ultimo ostacolo tra la servitu senza sporcarsi le mani, lasciando aperta la grande incognita su quali azioni intendera intraprendere Petra con tutti i segreti che custodisce.</p>
   </div>
-  <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=9UNQ989ZIEY" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/9UNQ989ZIEY/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni: Curro e Lorenzo Alleati! Jimena caccia Jana e Manuel lo scopre!</span></a></li><li><a href="https://www.youtube.com/watch?v=j_sqMzV7Aa4" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/j_sqMzV7Aa4/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA: LEOCADIA sorprende Ángela e Curro — il bacio che cambia tutto 😨</span></a></li><li><a href="https://www.youtube.com/watch?v=vFhZwxDv-nQ" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/vFhZwxDv-nQ/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni: Eredità Barone, Curro tra Cruz e Lorenzo!</span></a></li></ul></div>
+  <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=vFhZwxDv-nQ" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/vFhZwxDv-nQ/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni: Eredità Barone, Curro tra Cruz e Lorenzo!</span></a></li><li><a href="https://www.youtube.com/watch?v=9UNQ989ZIEY" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/9UNQ989ZIEY/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni: Curro e Lorenzo Alleati! Jimena caccia Jana e Manuel lo scopre!</span></a></li><li><a href="https://www.youtube.com/watch?v=LoWXuQ4rM90" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/LoWXuQ4rM90/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA: Curro FERMA le Nozze e RIVELA &quot;Ángela è tua Figlia!&quot; La rivelazione che cambia tut</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Petra è una vittima di Leocadia o si è meritata quello che le sta succedendo? Su questa il pubblico si spacca sempre in due.</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=HkmMIhvGe8s">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di La Promessa</h2><div class="griglia"><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/"><div class="foto"><img src="https://i.ytimg.com/vi/Rp8VhxDiDSk/hqdefault.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></h3>
+    <div class="quando">7 settembre 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/"><div class="foto"><img src="https://i.ytimg.com/vi/8JHt6ogwxQw/hqdefault.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Ángela beve tutto, Curro sfonda la porta</a></h3>
+    <div class="quando">6 settembre 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/"><div class="foto"><img src="/img/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Curro nasconde Ángela, Lorenzo furioso</a></h3>
+    <div class="quando">6 settembre 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=La Promessa dal 31 agosto: Petra licenziata, e la decisione non è di Cristóbal — https://serietvfans.com/la-promessa/la-promessa-dal-31-agosto-petra-licenziata-e-la-decisione-non-e-di-cristobal/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/la-promessa/la-promessa-dal-31-agosto-petra-licenziata-e-la-decisione-non-e-di-cristobal/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/la-promessa/la-promessa-dal-31-agosto-petra-licenziata-e-la-decisione-non-e-di-cristobal/&text=La Promessa dal 31 agosto: Petra licenziata, e la decisione non è di Cristóbal" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">LA PROMESSA DAL 31 AGOSTO: Petra cacciata, e non l&#x27;ha deciso Cristóbal</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=HkmMIhvGe8s">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di La Promessa</h3><ol class="numerata"><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Ángela beve tutto, Curro sfonda la porta</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Curro nasconde Ángela, Lorenzo furioso</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>LA PROMESSA DAL 31 AGOSTO: Petra cacciata, e non l&#x27;ha deciso Cristóbal</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su La Promessa</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-3-6-settembre-maria-affronta-la-gravidanza-da-sola/">La Promessa anticipazioni 3-6 settembre: Maria affronta la gravidanza da sola</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-carlo-arriva-maria-trema/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Carlo arriva, Maria trema</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/far-away/far-away-anticipazioni-dal-31-agosto-al-4-settembre-chi-ha-donato-il-fegato-a-nare/">Far Away, anticipazioni dal 31 agosto al 4 settembre: chi ha donato il fegato a Nare, e perché adesso sta male lui</a></li><li><a href="/far-away/far-away-dal-31-agosto-la-madre-di-alya-sapeva-tutto-non-ricordo/">Far Away Dal 31 Agosto: la madre di Alya sapeva tutto — «non ricordo»</a></li><li><a href="/forbidden-fruit/forbidden-fruit-dal-31-agosto-il-conto-a-nome-di-halit-che-e-morto/">Forbidden Fruit Dal 31 Agosto: il conto a nome di Halit, che è morto</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

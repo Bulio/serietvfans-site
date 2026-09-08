@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/forbidden-fruit/">Forbidden Fruit</a> › Forbidden Fruit, Feride accusa Yıldız davanti al bambino: perché ha scelto proprio il giorno della fusione</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/forbidden-fruit/">Forbidden Fruit</a>
   <h1>Forbidden Fruit, Feride accusa Yıldız davanti al bambino: perché ha scelto proprio il giorno della fusione</h1>
-  <div class="firma">Redazione Serie TV Fans · lunedì 17 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-17">lunedì 17 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Feride attacca Yıldız apertamente e sceglie di farlo davanti al figlio, tirando fuori colpe vere e presunte per distruggerla non solo come donna ma come madre. La scena arriva mentre l&#x27;Argun Holding entra nella fase più delicata della fusione con la holding di Hasan Ali, e il momento non è scelto a caso: colpita come madre, Yıldız perde la lucidità con cui si è sempre difesa sul piano degli affari.</p><ol><li><a href="#c1">Chi sono Feride e Yıldız, per chi arriva adesso</a></li><li><a href="#c2">L&#x27;accusa: colpe vere e presunte, tutte davanti al figlio</a></li><li><a href="#c3">Perché proprio adesso: la fusione entra nel vivo</a></li><li><a href="#c4">La strategia dietro la crudeltà: dove Yıldız non sa difendersi</a></li><li><a href="#c5">Il bambino è la vera vittima della scena</a></li><li><a href="#c6">Hasan Ali osserva: una famiglia divisa negozia male</a></li><li><a href="#c7">Le due strade di Ender: approfittarne o allearsi</a></li><li><a href="#c8">Perché conta: il confine tra vita privata e potere è saltato</a></li><li><a href="#c9">Dove vedere Forbidden Fruit</a></li><li><a href="#c10">Come Şahika e Mert approfittano della grande fusione</a></li><li><a href="#c11">Perché Çağatay e la sua famiglia rischiano la rovina</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>Forbidden Fruit</strong> — Canale 5 · in streaming su Mediaset Infinity</span></div>
   
-  <p class="occhiello">Feride attacca Yıldız apertamente e sceglie di farlo davanti al figlio, tirando fuori colpe vere e presunte per distruggerla non solo come donna ma come madre. La scena arriva mentre l&#x27;Argun Holding entra nella fase più delicata della fusione con la holding di Hasan Ali, e il momento non è scelto a caso: colpita come madre, Yıldız perde la lucidità con cui si è sempre difesa sul piano degli affari.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: Forbidden Fruit, Feride accusa Yıldız davanti al bambino: perché ha scelto proprio il giorno della fusione" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/FSHPqRd47bw/maxresdefault.jpg" alt="Forbidden Fruit, Feride accusa Yıldız davanti al bambino: perché ha scelto proprio il giorno della fusione" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/FSHPqRd47bw/hqdefault.jpg 480w, https://i.ytimg.com/vi/FSHPqRd47bw/sddefault.jpg 640w, https://i.ytimg.com/vi/FSHPqRd47bw/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/FSHPqRd47bw/hqdefault.jpg&quot;, &quot;/fallback/forbidden-fruit.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,49 +409,71 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>Gli adulti di Villa Argun si feriscono da sempre. Ma quando le accuse volano davanti a un bambino, qualcosa si rompe per sempre — e il momento scelto da Feride non ha niente di casuale.</strong></p>
-  <h2>Chi sono Feride e Yıldız, per chi arriva adesso</h2>
+  <h2 id="c1">Chi sono Feride e Yıldız, per chi arriva adesso</h2>
 <p>Feride è la madre di Çağatay e la donna che non ha mai accettato fino in fondo il ruolo che Yıldız si è conquistata dentro la famiglia Argun. Yıldız è la protagonista che ha passato mesi a difendersi da accuse, sospetti e tradimenti, provando a ricostruire qualcosa che somigliasse a una vita normale: il rapporto con suo figlio, un ruolo in famiglia, una credibilità pagata a carissimo prezzo. Tra le due donne non c&#x27;è mai stata vera pace, solo tregue di convenienza, sorrisi di facciata e una diffidenza mai superata.</p>
-<h2>L&#x27;accusa: colpe vere e presunte, tutte davanti al figlio</h2>
+<h2 id="c2">L&#x27;accusa: colpe vere e presunte, tutte davanti al figlio</h2>
 <p>Le anticipazioni raccontano una scena durissima, in cui Feride accusa Yıldız apertamente senza risparmiare nulla: colpe vere e presunte, scelte discutibili del passato, ombre mai chiarite. È un attacco frontale costruito per distruggerla non solo come donna, ma come madre. E il dettaglio della presenza del bambino cambia completamente il peso di tutto: in questa serie gli adulti si feriscono da sempre, ma quando le accuse volano davanti a un figlio si rompe qualcosa che non si rimette a posto con una scusa.</p>
-<h2>Perché proprio adesso: la fusione entra nel vivo</h2>
+<h2 id="c3">Perché proprio adesso: la fusione entra nel vivo</h2>
 <p>La domanda che il pubblico si sta facendo è perché lo scontro esploda proprio ora, e la risposta a Villa Argun ha sempre a che fare con il potere. L&#x27;accusa arriva mentre la fusione tra l&#x27;Argun Holding e la holding di Hasan Ali entra nel vivo: l&#x27;operazione più importante degli ultimi anni, quella che ridisegna gerarchie, quote e poltrone. Ender si oppone con tutte le sue forze, mentre Mert e Şahika spingono per chiudere l&#x27;accordo e prendersi il controllo della nuova struttura. In un momento simile, indebolire Yıldız significa toglierle ogni voce in capitolo sul futuro dell&#x27;impero.</p>
-<h2>La strategia dietro la crudeltà: dove Yıldız non sa difendersi</h2>
+<h2 id="c4">La strategia dietro la crudeltà: dove Yıldız non sa difendersi</h2>
 <p>Ed è qui che la mossa di Feride rivela il calcolo. Screditare Yıldız davanti al figlio non è solo crudeltà: è il modo di colpirla nell&#x27;unico punto in cui non può rispondere con la freddezza abituale. Una Yıldız attaccata sul piano degli affari reagisce colpo su colpo, come ha sempre fatto; una Yıldız attaccata come madre, davanti a suo figlio, perde lucidità, reagisce d&#x27;istinto e sbaglia. E ogni errore commesso in questa fase diventa un argomento in più nelle mani di chi vuole tagliarla fuori dalla partita per la holding.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Il bambino è la vera vittima della scena</h2>
+<h2 id="c5">Il bambino è la vera vittima della scena</h2>
 <p>Le anticipazioni non raccontano ancora nel dettaglio la reazione del piccolo, ed è forse l&#x27;aspetto più pesante di tutta la vicenda. Chi segue la serie sa che quel bambino è già passato attraverso prove enormi: conteso, allontanato, usato come strumento di pressione nelle guerre tra adulti. Sentire certe parole su sua madre rischia di segnare il suo rapporto con tutte le figure che gli stanno attorno, e le conseguenze emotive di questa scena difficilmente resteranno senza strascichi — probabilmente nel momento peggiore per chi oggi ha scelto di parlare davanti a lui.</p>
-<h2>Hasan Ali osserva: una famiglia divisa negozia male</h2>
+<h2 id="c6">Hasan Ali osserva: una famiglia divisa negozia male</h2>
 <p>C&#x27;è poi il fronte della trattativa. L&#x27;uomo della fusione osserva tutto, e ogni crepa dentro la famiglia Argun è per lui un&#x27;informazione preziosa: se le donne di casa si fanno la guerra in pubblico e le accuse volano davanti ai bambini, il messaggio che arriva dall&#x27;altra parte del tavolo è che l&#x27;impero è vulnerabile. Da qui nasce anche il sospetto, tra il pubblico, che qualcuno dentro la villa stia alimentando apposta questi scontri proprio per indebolire la posizione della famiglia nella trattativa — un&#x27;ipotesi che darebbe alla scena un significato completamente diverso.</p>
-<h2>Le due strade di Ender: approfittarne o allearsi</h2>
+<h2 id="c7">Le due strade di Ender: approfittarne o allearsi</h2>
 <p>Anche Ender gioca una partita tutta sua. La sua opposizione alla fusione non è una questione di principio: sa che il nuovo assetto, così come lo stanno costruendo Mert e Şahika, la lascerebbe ai margini dell&#x27;impero. Una Yıldız travolta dalle accuse è una rivale in meno al tavolo, ma è anche un precedente pericoloso, perché dimostra che in questa fase chiunque può essere abbattuto con uno scandalo pubblico. Chi conosce Ender sa che sta già facendo il calcolo tra le due opzioni: sfruttarne la caduta, oppure allearsi proprio con lei contro il fronte opposto.</p>
-<h2>Perché conta: il confine tra vita privata e potere è saltato</h2>
+<h2 id="c8">Perché conta: il confine tra vita privata e potere è saltato</h2>
 <p>È questo il salto di qualità della stagione. Finché le battaglie si combattevano nei consigli di amministrazione e nei salotti, tutti potevano fingere che i bambini, i matrimoni e gli affetti fossero un territorio protetto. L&#x27;accusa di Feride davanti al figlio di Yıldız dimostra che quel territorio non esiste più: da adesso in poi tutto è arma e tutto è bersaglio, e ogni membro della famiglia sa che il colpo successivo può arrivare nel punto più intimo e indifeso. Come reagirà Yıldız resta la vera incognita — ma il personaggio si è sempre rialzato proprio quando lo davano per finito.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Dove vedere Forbidden Fruit</h2>
+<h2 id="c9">Dove vedere Forbidden Fruit</h2>
 <p>Forbidden Fruit è andata in onda in Italia su Canale 5: le puntate si possono recuperare in streaming su Mediaset Infinity.</p>
-<h2>Come Şahika e Mert approfittano della grande fusione</h2>
+<h2 id="c10">Come Şahika e Mert approfittano della grande fusione</h2>
 <p>La grande operazione commerciale tra l&#x27;Argun Holding e l&#x27;impero guidato da Hasan Ali rappresenta la svolta strategica più imponente degli ultimi tempi per tutti i protagonisti. In questo scenario così intricato, personaggi determinati come Şahika e Mert vedono l&#x27;accordo come un&#x27;occasione irripetibile per stravolgere le attuali gerarchie e prendere finalmente il comando della nuova entità societaria. Dal canto suo, Ender percepisce chiaramente la minaccia e tenta con ogni mezzo di bloccare le trattative, consapevole che il piano dei suoi avversari la spingerebbe inevitabilmente ai margini della gestione. La tensione tra queste fazioni si intreccia inevitabilmente con i drammi personali vissuti all&#x27;interno della lussuosa residenza della famiglia Argun.</p>
 <p>Durante queste delicate negoziazioni, l&#x27;atteggiamento vigile di Hasan Ali dimostra quanto ogni minimo passo falso della controparte possa alterare gli equilibri di forza al tavolo degli affari. L&#x27;imprenditore nota immediatamente le profonde spaccature che dividono la famiglia Argun, trasformando le liti domestiche in informazioni strategiche di fondamentale importanza per la trattativa. Le pesanti invettive scagliate da Feride contro Yıldız rivelano a tutti l&#x27;estrema vulnerabilità di una dinastia incapace di presentarsi compatta di fronte a un partner commerciale così potente. Molti sospettano infatti che qualcuno dentro la villa stia manovrando nell&#x27;ombra e alimentando intenzionalmente il caos per minare la posizione del gruppo prima che l&#x27;accordo aziendale sia definitivo.</p>
-<h2>Perché Çağatay e la sua famiglia rischiano la rovina</h2>
+<h2 id="c11">Perché Çağatay e la sua famiglia rischiano la rovina</h2>
 <p>L&#x27;intensa rivalità tra Feride e Yıldız affonda le sue radici in un passato segnato da incomprensioni mai superate e da un&#x27;evidente mancanza di fiducia reciproca. La madre di Çağatay non ha mai accettato la presenza della giovane donna dentro la cerchia familiare, vedendola sempre con forte sospetto e rifiutando qualsiasi possibilità di riconciliazione autentica. Yıldız ha dovuto affrontare un percorso doloroso, costellato di tradimenti e accuse, per cercare di costruire una quotidianità serena e proteggere il legame con suo figlio. Il bambino stesso ha subito le conseguenze delle continue lotte tra gli adulti, venendo ripetutamente conteso, allontanato e persino utilizzato come strumento di ricatto durante le guerre per il potere.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>Quando Feride decide di rinfacciare a Yıldız le sue presunte colpe e le scelte discutibili del passato direttamente di fronte al piccolo, la ferita diventa irrimediabile. Colpire la protagonista nel suo ruolo materno rappresenta una tattica precisa per privarla della solita lucidità che ha sempre dimostrato nel difendere la propria posizione aziendale. Quando viene attaccata sul piano personale e affettivo, la donna tende a reagire d&#x27;istinto, rischiando di commettere passi falsi fatali per il suo futuro economico. Ogni errore commesso in un momento di fragilità diventa una risorsa preziosa per chi mira a tagliarla fuori dalle decisioni e dal controllo della neonata struttura societaria.</p>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=-iw8jm__Vo0" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/-iw8jm__Vo0/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>FORBIDDEN FRUIT: Hasan Ali entra nella holding — nessuno si fida di nessuno 😨</span></a></li><li><a href="https://www.youtube.com/watch?v=4dfY6Ntt54Y" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/4dfY6Ntt54Y/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>FORBIDDEN FRUIT: Feride accusa Yıldız davanti a Çağatay, il sospetto che distrugge tutto 😨</span></a></li><li><a href="https://www.youtube.com/watch?v=pC9iUim1Hs4" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/pC9iUim1Hs4/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>Forbidden Fruit: Halit torna e si porta via il bambino davanti a tutti</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Feride ha passato ogni limite accusando Yıldız davanti al bambino, o ha detto ad alta voce quello che in tanti alla villa pensano da tempo? E vi aspettate una vendetta immediata o una contromossa fredda costruita sulla fusione?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=FSHPqRd47bw">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di Forbidden Fruit</h2><div class="griglia"><article class="scheda">
+  <a href="/forbidden-fruit/forbidden-fruit-dal-31-agosto-il-conto-a-nome-di-halit-che-e-morto/"><div class="foto"><img src="/img/forbidden-fruit-dal-31-agosto-il-conto-a-nome-di-halit-che-e-morto.jpg" alt="Forbidden Fruit" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/forbidden-fruit.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Forbidden Fruit</span>
+    <h3><a href="/forbidden-fruit/forbidden-fruit-dal-31-agosto-il-conto-a-nome-di-halit-che-e-morto/">Forbidden Fruit Dal 31 Agosto: il conto a nome di Halit, che è morto</a></h3>
+    <div class="quando">31 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/forbidden-fruit/forbidden-fruit-che-fine-fa-zehra-perche-resta-lunica-libera/"><div class="foto"><img src="/img/forbidden-fruit-che-fine-fa-zehra-perche-resta-lunica-libera.jpg" alt="Forbidden Fruit" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/forbidden-fruit.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Forbidden Fruit</span>
+    <h3><a href="/forbidden-fruit/forbidden-fruit-che-fine-fa-zehra-perche-resta-lunica-libera/">Forbidden Fruit, che fine fa Zehra: perché resta l&#x27;unica libera mentre le altre finiscono in cella</a></h3>
+    <div class="quando">29 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/forbidden-fruit/forbidden-fruit-halit-e-vivo-o-e-morto-perche-al-funerale-si-sente-sono-vivo/"><div class="foto"><img src="/img/forbidden-fruit-halit-e-vivo-o-e-morto-perche-al-funerale-si-sente-sono-vivo.jpg" alt="Forbidden Fruit" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/forbidden-fruit.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Forbidden Fruit</span>
+    <h3><a href="/forbidden-fruit/forbidden-fruit-halit-e-vivo-o-e-morto-perche-al-funerale-si-sente-sono-vivo/">Forbidden Fruit, Halit è vivo o è morto: perché al funerale qualcuno sente «sono vivo»</a></h3>
+    <div class="quando">29 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=Forbidden Fruit, Feride accusa Yıldız davanti al bambino: perché ha scelto proprio il giorno della fusione — https://serietvfans.com/forbidden-fruit/forbidden-fruit-feride-accusa-yldz-davanti-al-bambino-perche-ha-scelto-proprio-i/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/forbidden-fruit/forbidden-fruit-feride-accusa-yldz-davanti-al-bambino-perche-ha-scelto-proprio-i/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/forbidden-fruit/forbidden-fruit-feride-accusa-yldz-davanti-al-bambino-perche-ha-scelto-proprio-i/&text=Forbidden Fruit, Feride accusa Yıldız davanti al bambino: perché ha scelto proprio il giorno della fusione" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">Forbidden Fruit, Feride accusa Yıldız davanti al bambino: perché ha scelto proprio il giorno della fusione</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=FSHPqRd47bw">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di Forbidden Fruit</h3><ol class="numerata"><li><a href="/forbidden-fruit/forbidden-fruit-dal-31-agosto-il-conto-a-nome-di-halit-che-e-morto/">Forbidden Fruit Dal 31 Agosto: il conto a nome di Halit, che è morto</a></li><li><a href="/forbidden-fruit/forbidden-fruit-che-fine-fa-zehra-perche-resta-lunica-libera/">Forbidden Fruit, che fine fa Zehra: perché resta l&#x27;unica libera mentre le altre finiscono in cella</a></li><li><a href="/forbidden-fruit/forbidden-fruit-halit-e-vivo-o-e-morto-perche-al-funerale-si-sente-sono-vivo/">Forbidden Fruit, Halit è vivo o è morto: perché al funerale qualcuno sente «sono vivo»</a></li><li><a href="/forbidden-fruit/forbidden-fruit-chi-e-davvero-zeynep-la-sorella-per-bene-che-ha-finito-peggio-di-yildiz/">Forbidden Fruit: chi è davvero Zeynep, la sorella «per bene» che ha finito peggio di Yıldız</a></li><li><a href="/forbidden-fruit/forbidden-fruit-cosa-dice-il-testamento-di-halit-la-quota-del-bambino-va-a-una-f/">Forbidden Fruit, cosa dice il testamento di Halit: la quota del bambino va a una fondazione, e Mert tradisce Kerim</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>Ogni anticipazione, prima in video sul canale Serie TV Fans</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su Forbidden Fruit</h3><ul><li><a href="/forbidden-fruit/forbidden-fruit-dal-31-agosto-il-conto-a-nome-di-halit-che-e-morto/">Forbidden Fruit Dal 31 Agosto: il conto a nome di Halit, che è morto</a></li><li><a href="/forbidden-fruit/forbidden-fruit-che-fine-fa-zehra-perche-resta-lunica-libera/">Forbidden Fruit, che fine fa Zehra: perché resta l&#x27;unica libera mentre le altre finiscono in cella</a></li><li><a href="/forbidden-fruit/forbidden-fruit-halit-e-vivo-o-e-morto-perche-al-funerale-si-sente-sono-vivo/">Forbidden Fruit, Halit è vivo o è morto: perché al funerale qualcuno sente «sono vivo»</a></li><li><a href="/forbidden-fruit/forbidden-fruit-chi-e-davvero-zeynep-la-sorella-per-bene-che-ha-finito-peggio-di-yildiz/">Forbidden Fruit: chi è davvero Zeynep, la sorella «per bene» che ha finito peggio di Yıldız</a></li><li><a href="/forbidden-fruit/forbidden-fruit-cosa-dice-il-testamento-di-halit-la-quota-del-bambino-va-a-una-f/">Forbidden Fruit, cosa dice il testamento di Halit: la quota del bambino va a una fondazione, e Mert tradisce Kerim</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

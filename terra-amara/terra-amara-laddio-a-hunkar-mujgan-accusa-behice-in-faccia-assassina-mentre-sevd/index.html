@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/terra-amara/">Terra Amara</a> › Terra Amara, l&#x27;addio a Hünkar: Müjgan accusa Behice in faccia — «Assassina» — mentre Sevda viene arrestata al funerale</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/terra-amara/">Terra Amara</a>
   <h1>Terra Amara, l&#x27;addio a Hünkar: Müjgan accusa Behice in faccia — «Assassina» — mentre Sevda viene arrestata al funerale</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Çukurova piange Hünkar, uccisa da Behice: il lutto alla tenuta, l&#x27;autopsia, il furto silenzioso di Fikret nello studio di Demir e il funerale interrotto dall&#x27;arresto di Sevda. E Müjgan, davanti alla recita della zia, pronuncia finalmente la parola che nessuno osava dire.</p><ol><li><a href="#c1">Il lutto alla tenuta e l&#x27;autopsia</a></li><li><a href="#c2">Fikret si intrufola nello studio di Demir</a></li><li><a href="#c3">La veglia: il Corano, le preghiere e la recita di Behice</a></li><li><a href="#c4">«Sei stata tu»: Müjgan affronta la zia</a></li><li><a href="#c5">L&#x27;arresto di Sevda al funerale</a></li><li><a href="#c6">Come Fikret approfitta della tragedia alla tenuta</a></li><li><a href="#c7">Perché Sevda finisce in arresto durante il funerale</a></li><li><a href="#c8">Cosa spinge Müjgan ad accusare Behice di omicidio</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>Terra Amara</strong> — Serie conclusa in Italia · tutte le puntate su Mediaset Infinity</span></div>
   
-  <p class="occhiello">Çukurova piange Hünkar, uccisa da Behice: il lutto alla tenuta, l&#x27;autopsia, il furto silenzioso di Fikret nello studio di Demir e il funerale interrotto dall&#x27;arresto di Sevda. E Müjgan, davanti alla recita della zia, pronuncia finalmente la parola che nessuno osava dire.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: Terra Amara, l&#x27;addio a Hünkar: Müjgan accusa Behice in faccia — «Assassina» — mentre Sevda viene arrestata al funerale" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/uh1Za5oFN-4/maxresdefault.jpg" alt="Terra Amara, l&#x27;addio a Hünkar: Müjgan accusa Behice in faccia — «Assassina» — mentre Sevda viene arrestata al funerale" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/uh1Za5oFN-4/hqdefault.jpg 480w, https://i.ytimg.com/vi/uh1Za5oFN-4/sddefault.jpg 640w, https://i.ytimg.com/vi/uh1Za5oFN-4/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/uh1Za5oFN-4/hqdefault.jpg&quot;, &quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,43 +409,65 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>Un velo nero, una preghiera recitata per finta e una nipote che non riesce più a mentirsi: nei giorni dell&#x27;addio a Hünkar, Behice recita la parte della devota mentre tutti cercano il suo assassino.</strong></p>
-  <h2>Il lutto alla tenuta e l&#x27;autopsia</h2>
+  <h2 id="c1">Il lutto alla tenuta e l&#x27;autopsia</h2>
 <p>Hünkar è stata uccisa: la perfida Behice le ha spietatamente tolto la vita, ed è stato Demir, dopo lunghe ricerche, a trovare il corpo della madre e a riportarlo a casa. Il dolore travolge tutti — Demir, Fekeli, e anche Züleyha, che l&#x27;aveva perdonata e ormai la considerava una vera madre. Alla tenuta arrivano le personalità più importanti del paese, Yılmaz porta le condoglianze con il suo padrino, Gülten si stringe al fratello. Poi il comandante della Guardia informa Demir: sul corpo va disposta l&#x27;autopsia, perché Hünkar non è morta di morte naturale.</p>
-<h2>Fikret si intrufola nello studio di Demir</h2>
+<h2 id="c2">Fikret si intrufola nello studio di Demir</h2>
 <p>Mentre la casa è assorbita dal lutto, va in scena un episodio che pesa come un macigno sui sospetti futuri: Fikret approfitta della distrazione generale, si intrufola nello studio di Demir, fruga tra foto e documenti — comprese le carte di Hünkar e di Adnan — e trova la dichiarazione scritta da Yılmaz in cui si conferma che fu Müjgan a sparare a Züleyha. La prende e sparisce. Il nipote di Fekeli, ancora una volta, dimostra di nascondere molto più di quanto mostri.</p>
-<h2>La veglia: il Corano, le preghiere e la recita di Behice</h2>
+<h2 id="c3">La veglia: il Corano, le preghiere e la recita di Behice</h2>
 <p>La sera la tenuta si riempie: gli uomini leggono il Corano in giardino, le donne pregano dentro la villa, Saniye e le ragazze cucinano per tutti con il cuore a pezzi. La piccola Üzüm, che sa cosa significa perdere una mamma, prova a incoraggiare Demir; Fekeli, devastato, gli dice che quel dolore non passerà mai — si impara solo a sopportarlo. E in mezzo alle donne che si chiedono chi possa aver ucciso la signora Yaman, siede una Behice avvolta in un velo nero, che finge di pregare e di soffrire. Demir intanto confida a Sevda un dettaglio decisivo: non è stata una rapina come l&#x27;assassino vuol far credere — i gioielli sono spariti, ma i soldi nella borsa sono rimasti. Chi ha ucciso Hünkar voleva la sua morte, non il bottino.</p>
-<h2>«Sei stata tu»: Müjgan affronta la zia</h2>
+<h2 id="c4">«Sei stata tu»: Müjgan affronta la zia</h2>
 <p>Il giorno dopo, mentre Saniye, Züleyha e Gülten preparano Hünkar per l&#x27;ultimo viaggio, a casa Fekeli va in scena la resa dei conti familiare: Behice parla della morte con un&#x27;ironia che gela il sangue, e per Müjgan è la conferma dei sospetti. Senza giri di parole, la dottoressa dice alla zia che pensa sia stata lei a uccidere Hünkar. Behice sfodera le sue doti teatrali: urla, si indigna, fa la valigia e se ne va in taxi, lasciando la nipote senza parole.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>L&#x27;arresto di Sevda al funerale</h2>
+<h2 id="c5">L&#x27;arresto di Sevda al funerale</h2>
 <p>Al funerale, davanti a una folla immensa, accade l&#x27;impensabile: le guardie arrestano Sevda, ufficialmente accusata dell&#x27;omicidio. Saniye la aggredisce accusandola di aver distrutto la famiglia, la donna giura di essere innocente ma viene portata via. Behice, nel sentire dell&#x27;arresto, non riesce a nascondere la soddisfazione — e da buona narcisista rigira il senso di colpa sulla nipote, che corre a riprenderla in stazione, fingendo di perdonarla. Al cimitero, intanto, Fekeli non riesce a staccarsi dalla tomba: metà del suo cuore, dice, è sepolta con la sua amata Hünkar. E la scena più struggente è quella di nonna Azize che, confusa, continua a cercare la figlia: «Hünkar è uscita e non è più tornata a casa».</p>
-<h2>Come Fikret approfitta della tragedia alla tenuta</h2>
+<h2 id="c6">Come Fikret approfitta della tragedia alla tenuta</h2>
 <p>Il momento di supremo dolore che travolge l&#x27;intera tenuta Yaman si trasforma in un&#x27;occasione irripetibile per chi muove le proprie pedine nell&#x27;ombra. Mentre la casa è completamente assorbita dal lutto per la perdita della padrona e le personalità più importanti del paese giungono per esprimere la loro vicinanza a Demir, Fikret sceglie di agire sfuggendo al controllo generale. Il nipote di Fekeli si intrufola nello studio privato del padrone di casa, approfittando della distrazione di tutti i presenti. Tra quelle mura comincia a frugare con attenzione fra scartoffie, immagini private e carte personali che appartengono sia a Hünkar sia ad Adnan, dimostrando di avere un obiettivo ben preciso ben lontano dal cordoglio sincero che gli altri stanno manifestando alla villa.</p>
 <p>La ricerca condotta di nascosto culmina nel ritrovamento di un documento scottante e compromettente: si tratta della dichiarazione scritta di pugno da Yılmaz, nella quale si conferma in modo inequivocabile che fu Müjgan a sparare a Züleyha. Fikret non esita ad impossessarsi di questo foglio fondamentale e scompare nel nulla prima che qualcuno possa rendersi conto della sua intrusione nello studio. Questa mossa calcolata mette in evidenza la natura ambigua del ragazzo, confermando come egli stia nascondendo segreti profondi e intenzioni ben diverse da quelle che mostra apertamente a suo zio e alla comunità. Un gesto che pesa fortemente sul clima di sospetto generale, destinato a influenzare gli eventi drammatici che si stanno consumando attorno all&#x27;omicidio della donna.</p>
-<h2>Perché Sevda finisce in arresto durante il funerale</h2>
+<h2 id="c7">Perché Sevda finisce in arresto durante il funerale</h2>
 <p>Mentre le indagini sulla morte della matriarca proseguono, Demir confida a Sevda un dettaglio fondamentale emerso prima dell&#x27;ispezione ufficiale: non si è trattato di una rapina finita male come l&#x27;assassino vorrebbe far credere. Sebbene i gioielli siano spariti, la borsa di Hünkar conteneva ancora tutto il denaro, segno che il responsabile cercava esclusivamente la sua morte. Tuttavia, proprio nel bel mezzo delle esequie celebrate davanti a una folla imponente, le forze dell&#x27;ordine fanno irruzione interrompendo la cerimonia. Il comandante della Guardia e i suoi uomini arrestano ufficialmente Sevda con l&#x27;accusa formale di essere l&#x27;autrice del delitto, sconvolgendo tutti i presenti. L&#x27;evento scatena la rabbia immediata di Saniye, la quale aggredisce verbalmente la donna accusandola senza mezzi termini di aver distrutto la famiglia Yaman.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>Disperata e sotto gli occhi di tutta la comunità, Sevda giura a gran voce la propria totale estraneità ai fatti mentre viene condotta via dai militari. In quel tragico frangente, Behice assiste alla scena senza riuscire a nascondere una profonda soddisfazione personale per il piegarsi degli eventi a suo favore. La donna ne approfitta subito per manipolare la situazione a proprio vantaggio: da abile narcisista, ribalta l&#x27;intero senso di colpa sulla nipote. Müjgan, sopraffatta dai dubbi ma condizionata dalle abili manovre psicologiche della zia, si precipita alla stazione per fermare Behice e riportarla a casa, fingendo di perdonarla e crollando nuovamente nella rete di inganni ordita dall&#x27;assassina della signora.</p>
-<h2>Cosa spinge Müjgan ad accusare Behice di omicidio</h2>
+<h2 id="c8">Cosa spinge Müjgan ad accusare Behice di omicidio</h2>
 <p>All&#x27;interno di casa Fekeli la tensione accumulata esplode in uno scontro diretto tra la dottoressa e la zia. Behice si spinge a parlare della tragica scomparsa di Hünkar usando un tono intriso di una tale ironia da far gelare il sangue a chiunque la ascolti. Questo atteggiamento cinico rappresenta per Müjgan la conferma definitiva dei sospetti che ormai covava nel profondo del cuore. La giovane medica decide quindi di abbandonare ogni esitazione e affronta direttamente la parente, pronunciando ad alta voce l&#x27;accusa diretta di essere l&#x27;assassina della matriarca. Reagendo con la sua solita teatralità, Behice comincia a urlare, fa finta di essere profondamente indignata, prepara in fretta le valigie e sale su un taxi per abbandonare la dimora, lasciando la nipote sconvolta e smarrita di fronte a tanta veemenza.</p>
 <p>Nel frattempo, il dolore devasta chiunque fosse legato alla donna, mettendo a dura prova gli affetti più cari. Al cimitero, Fekeli rimane incatenato alla sepoltura senza trovare la forza di allontanarsi dalla tomba della sua amata, dichiarando distrutto che metà del proprio cuore è morta e rimarrà sepolta per sempre insieme a lei. Alla tenuta, le immagini più dolorose mostrano Züleyha, Saniye e Gülten intente a preparare la salma per l&#x27;ultimo saluto, mentre la piccola Üzüm cerca di confortare Demir ricordandogli la sofferenza condivisa di chi perde la madre. A rendere l&#x27;atmosfera ancora più struggente sono le condizioni di nonna Azize che, confusa dal vuoto improvviso, continua ad aspettarla invano ripetendo a tutti che la figlia è soltanto uscita e non è mai più tornata a casa.</p>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=sbwQnN7neSE" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/sbwQnN7neSE/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TERRA AMARA: Mujgan vuole divorziare da Yilmaz e viene anche arrestata!</span></a></li><li><a href="https://www.youtube.com/watch?v=RQy6wb16cnc" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/RQy6wb16cnc/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TERRA AMARA Anticipazioni:Demir ringrazia Zuleyha per il Bellissimo Gesto! Mujgan seppellisce B</span></a></li><li><a href="https://www.youtube.com/watch?v=17GxpkKWL1o" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/17GxpkKWL1o/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TERRA AMARA Anticipazioni 09-10 Ottobre: Demir e Umit, Fikret e Mujgan, i baci d&#x27;amore e vendet</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Müjgan avrà il coraggio di andare fino in fondo contro sua zia, o la manipolazione di Behice vincerà ancora? E quanto pagherà Sevda per un delitto che non ha commesso?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=uh1Za5oFN-4">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di Terra Amara</h2><div class="griglia"><article class="scheda">
+  <a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/"><div class="foto"><img src="/img/terra-amara-la-trama-completa-e-come-finisce.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></h3>
+    <div class="quando">30 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/"><div class="foto"><img src="https://i.ytimg.com/vi/_ypSJU-x7LY/hqdefault.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/"><div class="foto"><img src="https://i.ytimg.com/vi/B_MLx-0yh6M/hqdefault.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=Terra Amara, l&#x27;addio a Hünkar: Müjgan accusa Behice in faccia — «Assassina» — mentre Sevda viene arrestata al funerale — https://serietvfans.com/terra-amara/terra-amara-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/terra-amara/terra-amara-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/terra-amara/terra-amara-la-trama-completa-e-come-finisce/&text=Terra Amara, l&#x27;addio a Hünkar: Müjgan accusa Behice in faccia — «Assassina» — mentre Sevda viene arrestata al funerale" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">Terra Amara: LA PESANTE ACCUSA DI MUJGAN A BEHICE &quot;ASSASSINA&quot; E IL TERRIBILE ARRESTO</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=uh1Za5oFN-4">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di Terra Amara</h3><ol class="numerata"><li><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></li><li><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></li><li><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></li><li><a href="/terra-amara/terra-amara-come-finisce-davvero-zuleyha-vince-tutto-e-resta-sola/">Terra Amara: come finisce davvero, Züleyha vince tutto e resta sola</a></li><li><a href="/terra-amara/terra-amara-come-muore-demir-yaman-chi-ha-dato-lordine-e-perche-doveva-essere-un-rapimento/">Terra Amara, come muore Demir Yaman: chi ha dato l&#x27;ordine e perché doveva essere un rapimento</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>Terra Amara: LA PESANTE ACCUSA DI MUJGAN A BEHICE &quot;ASSASSINA&quot; E IL TERRIBILE ARRESTO</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su Terra Amara</h3><ul><li><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></li><li><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></li><li><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></li><li><a href="/terra-amara/terra-amara-come-finisce-davvero-zuleyha-vince-tutto-e-resta-sola/">Terra Amara: come finisce davvero, Züleyha vince tutto e resta sola</a></li><li><a href="/terra-amara/terra-amara-come-muore-demir-yaman-chi-ha-dato-lordine-e-perche-doveva-essere-un-rapimento/">Terra Amara, come muore Demir Yaman: chi ha dato l&#x27;ordine e perché doveva essere un rapimento</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

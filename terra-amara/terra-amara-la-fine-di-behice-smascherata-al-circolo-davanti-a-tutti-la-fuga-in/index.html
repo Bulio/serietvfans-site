@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/terra-amara/">Terra Amara</a> › Terra Amara, la fine di Behice: smascherata al circolo davanti a tutti, la fuga in campagna e la confessione prima del salto nel dirupo</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/terra-amara/">Terra Amara</a>
   <h1>Terra Amara, la fine di Behice: smascherata al circolo davanti a tutti, la fuga in campagna e la confessione prima del salto nel dirupo</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">L&#x27;epilogo del personaggio più odiato della serie: Züleyha ottiene dall&#x27;investigatore il fascicolo che prova come Behice abbia ucciso i suoi ex mariti per l&#x27;eredità, insabbiando le morti grazie ai certificati falsificati dal padre di Müjgan. Lo sbatte in faccia alla donna al circolo, davanti a tutti; lei fugge con le valigie e i contanti sull&#x27;auto della nipote, inseguita da Fekeli, Züleyha e Demir. E in mezzo alla campagna, messa alle strette, confessa l&#x27;omicidio di Hünkar prima di lasciarsi cadere nel dirupo.</p><ol><li><a href="#c1">Il fascicolo dell&#x27;investigatore</a></li><li><a href="#c2">Lo smascheramento al circolo</a></li><li><a href="#c3">L&#x27;inseguimento e la pistola scarica</a></li><li><a href="#c4">«L&#x27;ho uccisa io, era una donna disgustosa»</a></li><li><a href="#c5">Come Züleyha incastra Behice con le prove del detective</a></li><li><a href="#c6">Perché Fekeli affronta Behice con la pistola scarica</a></li><li><a href="#c7">Cosa spinge Demir ad armarsi verso il dirupo</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>Terra Amara</strong> — Serie conclusa in Italia · tutte le puntate su Mediaset Infinity</span></div>
   
-  <p class="occhiello">L&#x27;epilogo del personaggio più odiato della serie: Züleyha ottiene dall&#x27;investigatore il fascicolo che prova come Behice abbia ucciso i suoi ex mariti per l&#x27;eredità, insabbiando le morti grazie ai certificati falsificati dal padre di Müjgan. Lo sbatte in faccia alla donna al circolo, davanti a tutti; lei fugge con le valigie e i contanti sull&#x27;auto della nipote, inseguita da Fekeli, Züleyha e Demir. E in mezzo alla campagna, messa alle strette, confessa l&#x27;omicidio di Hünkar prima di lasciarsi cadere nel dirupo.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: Terra Amara, la fine di Behice: smascherata al circolo davanti a tutti, la fuga in campagna e la confessione prima del salto nel dirupo" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/F-cpDDy6vqQ/maxresdefault.jpg" alt="Terra Amara, la fine di Behice: smascherata al circolo davanti a tutti, la fuga in campagna e la confessione prima del salto nel dirupo" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/F-cpDDy6vqQ/hqdefault.jpg 480w, https://i.ytimg.com/vi/F-cpDDy6vqQ/sddefault.jpg 640w, https://i.ytimg.com/vi/F-cpDDy6vqQ/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/F-cpDDy6vqQ/hqdefault.jpg&quot;, &quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,25 +409,25 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>Il momento che gela: Fekeli le consegna la sua pistola perché scelga da sé il proprio destino — lei però la punta contro di lui e preme il grilletto. L&#x27;arma è scarica.</strong></p>
-  <h2>Il fascicolo dell&#x27;investigatore</h2>
+  <h2 id="c1">Il fascicolo dell&#x27;investigatore</h2>
 <p>Züleyha incontra il detective incaricato di indagare su Behice e riceve la cartella con tutte le prove: la donna ha ucciso i mariti precedenti e ne ha insabbiato le morti. C&#x27;è però un limite, e l&#x27;investigatore glielo dice chiaramente — quel materiale non basta a incriminarla per l&#x27;omicidio di Hünkar. Nel frattempo Behice ha già organizzato la fuga: Müjgan le ha ceduto i propri gioielli per finanziarla e le ha detto in faccia di essere felice di non doverla rivedere mai più.</p>
-<h2>Lo smascheramento al circolo</h2>
+<h2 id="c2">Lo smascheramento al circolo</h2>
 <p>Al circolo, mentre Şermin e Füsun la insultano definendola la principale sospettata, entra Züleyha con la cartella in mano: le prove sono lì. Behice grida alla calunnia, ma l&#x27;altra elenca gli omicidi commessi per l&#x27;eredità e sgancia il colpo peggiore proprio davanti a Müjgan — a falsificare i certificati di morte era stato suo padre. È il momento in cui la nipote perde ogni certezza; Behice invece afferra valigie e contanti e scappa. Züleyha, poco dopo, si rimprovererà amaramente di aver scelto il circolo invece della polizia, dandole di fatto il tempo di fuggire.</p>
-<h2>L&#x27;inseguimento e la pistola scarica</h2>
+<h2 id="c3">L&#x27;inseguimento e la pistola scarica</h2>
 <p>Behice fugge con l&#x27;auto di Müjgan, tallonata da Fekeli e Züleyha e — più indietro — da Demir, uscito con la pistola per vendicare la madre dopo che Şermin gli ha raccontato tutto. Il veicolo si guasta in aperta campagna e lei prosegue a piedi, finché non viene raggiunta. Fekeli compie allora un gesto che ha diviso il pubblico: le porge la propria arma perché decida da sé il proprio destino. Behice se la punta alla tempia, poi la rivolta contro di lui pretendendo le chiavi per scappare — e quando lui la sfida a sparare, preme il grilletto. La pistola è scarica.</p>
-<h2>«L&#x27;ho uccisa io, era una donna disgustosa»</h2>
+<h2 id="c4">«L&#x27;ho uccisa io, era una donna disgustosa»</h2>
 <p>Capito di non avere più vie d&#x27;uscita, Behice confessa davanti a tutti l&#x27;omicidio di Hünkar, ammettendo di averlo fatto perché la donna voleva cacciarla da Çukurova. Fekeli le dice che merita di morire, e confida che se avesse quarant&#x27;anni di meno non esiterebbe — ma ha promesso a Dio di non uccidere più nessuno. Poi arriva Demir con l&#x27;arma carica: prende la mira, e Behice, con un sorriso sul volto, indietreggia fino a lasciarsi cadere dal dirupo, mentre nella sua mente rivive il momento esatto dell&#x27;omicidio. La trovano senza vita molti metri più in basso: Fekeli sembra provare sollievo, Müjgan resta profondamente scossa.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Come Züleyha incastra Behice con le prove del detective</h2>
+<h2 id="c5">Come Züleyha incastra Behice con le prove del detective</h2>
 <p>Züleyha ottiene un fascicolo decisivo dal detective incaricato di indagare sul passato oscuro di Behice, scoprendo la verità sulle morti dei suoi precedenti mariti. Il materiale raccolto prova in modo inoppugnabile come la donna abbia assassinato i coniugi per impossessarsi della loro eredità, usufruendo dei certificati falsificati dal padre di Müjgan per insabbiare i delitti. Tuttavia, l&#x27;investigatore mette chiaramente in guardia Züleyha spiegando che quelle carte non bastano legalmente per incriminarla dell&#x27;omicidio di Hünkar. Questo limite spinge Züleyha a presentarsi direttamente al circolo per affrontare pubblicamente la rivale, mostrando a tutti i presenti i documenti che svelano la vera natura criminale della perfida donna.</p>
 <p>All&#x27;interno del circolo, mentre Şermin e Füsun accusano apertamente Behice definendola la principale sospettata dei recenti avvenimenti, Züleyha fa il suo ingresso mostrando la cartella con le prove schiaccianti. Di fronte alle grida di calunnia di Behice, Züleyha elenca ciascun omicidio commesso per l&#x27;eredità e rivela il dettaglio più sconvolgente davanti a Müjgan, dimostrando il coinvolgimento del padre della ragazza nella falsificazione dei certificati. Questa terribile verità distrugge ogni certezza della nipote. Sfruttando la confusione, Behice afferra contanti e valigie per fuggire, spingendo successivamente Züleyha a un amaro pentimento per aver scelto la piazza pubblica invece di avvisare subito le forze dell&#x27;ordine.</p>
 <p>Prima dello scontro al circolo, Müjgan aveva già preso le distanze dalla zia dandole i propri gioielli per finanziarle la fuga definitiva da Çukurova, affermando senza esitazione di essere felice di non doverla rivedere mai più. Tuttavia, la rivelazione sul proprio padre devasta la ragazza, che vede crollare l&#x27;immagine della propria famiglia di fronte all&#x27;intera comunità. Behice fugge utilizzando proprio l&#x27;automobile della nipote, portando con sé i soldi e il bagaglio preparato in fretta. La fuga disperata in macchina mette in moto una reazione catena che coinvolge Fekeli, Züleyha e Demir, mentre la nipote resta sconvolta dalle indicibili verità e dalle terribili conseguenze apprese.</p>
-<h2>Perché Fekeli affronta Behice con la pistola scarica</h2>
+<h2 id="c6">Perché Fekeli affronta Behice con la pistola scarica</h2>
 <p>La fuga di Behice a bordo dell&#x27;auto di Müjgan si interrompe improvvisamente in aperta campagna a causa di un guasto meccanico al veicolo. La donna prosegue a piedi nel tentativo di seminare i suoi inseguitori, ma viene rapidamente raggiunta da Fekeli e Züleyha, che l&#x27;avevano tallonata fin dal primo momento. Poco più indietro si trova anche Demir, messo al corrente dell&#x27;intera vicenda da Şermin e arrivato armato per vendicare la madre Hünkar. Messa alle strette dai suoi inseguitori, la fuggitiva comprende di non avere alcuna via di scampo mentre si trova circondata nel terreno impervio, costretta a gestire una tensione che raggiunge rapidamente il punto di non ritorno.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>In quel momento drammatico, Fekeli compie un gesto inaspettato porgendo la propria arma alla fuggitiva affinché sia lei stessa a decidere il proprio destino. Behice dapprima si punta la pistola alla tempia, ma subito dopo la rivolta contro Fekeli pretendendo le chiavi per scappare. Quando l&#x27;uomo la sfida apertamente a sparare senza mostrare alcun timore, la donna preme il grilletto senza esitare. Tuttavia, la pistola si rivela completamente scarica, frustrando il suo disperato tentativo di eliminare l&#x27;uomo e dimostrando la determinazione di Fekeli nel confrontarla senza correre il rischio di essere ucciso o di violare la propria linea morale.</p>
 <p>Fekeli dichiara apertamente a Behice che lei meriterebbe di morire per le sue azioni atroci, confidando che se avesse quarant&#x27;anni di meno non esiterebbe affatto ad punirla di persona. Tuttavia, l&#x27;uomo spiega di aver fatto una solenne promessa a Dio di non uccidere mai più nessuno, motivo per cui ha scelto di non macchiarsi le mani del suo sangue. Questo principio guida il suo comportamento durante l&#x27;intero confronto, impedendogli di compiere una vendetta diretta. Soltanto dopo il tragico epilogo della vicenda e la caduta della donna dal dirupo, Fekeli manifesterà chiaramente un profondo senso di sollievo per la fine della drammatica minaccia.</p>
-<h2>Cosa spinge Demir ad armarsi verso il dirupo</h2>
+<h2 id="c7">Cosa spinge Demir ad armarsi verso il dirupo</h2>
 <p>Demir viene informato da Şermin di tutte le scioccanti rivelazioni emerse al circolo e della precipitosa fuga di Behice. Preso dalla rabbia e dal desiderio di vendicare la madre Hünkar, l&#x27;uomo decide di armarsi con una pistola carica e si mette immediatamente sulle tracce della assassina. La sua corsa sfrenata lo porta ad avvistare i fuggitivi in aperta campagna, raggiungendo il luogo dello scontro proprio mentre la tensione tra Fekeli e Behice ha toccato il culmine. Demir arriva sul posto determinato a far giustizia per il delitto che ha distrutto la sua famiglia, affrontando la donna senza alcuna intenzione di concederle pietà.</p>
 <p>Messa con le spalle al muro, Behice decide di confessare apertamente l&#x27;omicidio di Hünkar davanti a tutti i presenti. La donna dichiara senza alcun rimorso di aver commesso il delitto perché Hünkar intendeva cacciarla definitivamente da Çukurova, definendo la vittima una donna disgustosa. Mentre pronuncia queste parole e vede Demir prendere la mira con l&#x27;arma carica verso di lei, la mente di Behice rivive con precisione l&#x27;istante esatto in cui ha tolto la vita alla rivale. La freddezza della confessione e il ricordo del delitto confermano la totale assenza di pentimento nella criminale di fronte alla fine imminente.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
@@ -385,19 +435,41 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=7L5CsKmuau4" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/7L5CsKmuau4/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TERRA AMARA Anticipazioni: Ci siamo! Zuleyha scopre tutto! Behice finalmente pagherà i suoi cri</span></a></li><li><a href="https://www.youtube.com/watch?v=MG2wUFH5Bc4" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/MG2wUFH5Bc4/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TERRA AMARA Anticipazioni Sabato 23 Dicembre: Zuleyha alla prova più dura,Hakan assale Ranch Fe</span></a></li><li><a href="https://www.youtube.com/watch?v=ka4w9PifWSw" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/ka4w9PifWSw/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TERRA AMARA: che fine hanno fatto ZÜLEYHA e DEMIR oggi? La verità 😱</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Fekeli ha fatto bene a offrirle quella scelta o doveva consegnarla alla giustizia? E la fine di Behice vi ha soddisfatti o avreste voluto vederla in tribunale?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=F-cpDDy6vqQ">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di Terra Amara</h2><div class="griglia"><article class="scheda">
+  <a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/"><div class="foto"><img src="/img/terra-amara-la-trama-completa-e-come-finisce.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></h3>
+    <div class="quando">30 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/"><div class="foto"><img src="https://i.ytimg.com/vi/_ypSJU-x7LY/hqdefault.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/"><div class="foto"><img src="https://i.ytimg.com/vi/B_MLx-0yh6M/hqdefault.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=Terra Amara, la fine di Behice: smascherata al circolo davanti a tutti, la fuga in campagna e la confessione prima del salto nel dirupo — https://serietvfans.com/terra-amara/terra-amara-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/terra-amara/terra-amara-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/terra-amara/terra-amara-la-trama-completa-e-come-finisce/&text=Terra Amara, la fine di Behice: smascherata al circolo davanti a tutti, la fuga in campagna e la confessione prima del salto nel dirupo" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">TERRA AMARA Anticipazioni: Finalmente è morta! Ora vivranno in pace?</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=F-cpDDy6vqQ">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di Terra Amara</h3><ol class="numerata"><li><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></li><li><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></li><li><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></li><li><a href="/terra-amara/terra-amara-come-finisce-davvero-zuleyha-vince-tutto-e-resta-sola/">Terra Amara: come finisce davvero, Züleyha vince tutto e resta sola</a></li><li><a href="/terra-amara/terra-amara-come-muore-demir-yaman-chi-ha-dato-lordine-e-perche-doveva-essere-un-rapimento/">Terra Amara, come muore Demir Yaman: chi ha dato l&#x27;ordine e perché doveva essere un rapimento</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>TERRA AMARA Anticipazioni: Finalmente è morta! Ora vivranno in pace?</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su Terra Amara</h3><ul><li><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></li><li><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></li><li><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></li><li><a href="/terra-amara/terra-amara-come-finisce-davvero-zuleyha-vince-tutto-e-resta-sola/">Terra Amara: come finisce davvero, Züleyha vince tutto e resta sola</a></li><li><a href="/terra-amara/terra-amara-come-muore-demir-yaman-chi-ha-dato-lordine-e-perche-doveva-essere-un-rapimento/">Terra Amara, come muore Demir Yaman: chi ha dato l&#x27;ordine e perché doveva essere un rapimento</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

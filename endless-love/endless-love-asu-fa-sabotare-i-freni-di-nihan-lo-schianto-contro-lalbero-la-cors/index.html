@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/endless-love/">Endless Love</a> › Endless Love, Asu fa sabotare i freni di Nihan: lo schianto contro l&#x27;albero, la corsa in ospedale — e il sangue di Zeynep che la salva</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/endless-love/">Endless Love</a>
   <h1>Endless Love, Asu fa sabotare i freni di Nihan: lo schianto contro l&#x27;albero, la corsa in ospedale — e il sangue di Zeynep che la salva</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">La gelosia di Asu supera il punto di non ritorno: dopo aver spiato dalla finestra la serata di complicità tra Kemal e Nihan, ordina a un suo uomo di sabotare i freni dell&#x27;auto della rivale. Il giorno dopo Nihan, all&#x27;inseguimento di Kemal che è partito con Deniz, perde il controllo e si schianta contro un albero: sala operatoria, trasfusione d&#x27;urgenza — e la donatrice che nessuno si aspettava.</p><ol><li><a href="#c1">La finestra sulla serata proibita</a></li><li><a href="#c2">Chi è Asu, e cosa aveva promesso a Nihan</a></li><li><a href="#c3">L&#x27;inseguimento e lo schianto</a></li><li><a href="#c4">La gara di solidarietà e la donatrice inattesa</a></li><li><a href="#c5">Asu davanti allo specchio: l&#x27;ossessione che si ritorce</a></li><li><a href="#c6">Perché conta: il sangue di Zeynep rimette in gioco un rapporto rotto</a></li><li><a href="#c7">Come Zeynep decide di salvare la vita a Nihan</a></li><li><a href="#c8">Perche Kemal provoca Nihan prima del tragico impatto</a></li><li><a href="#c9">Cosa spinge Asu a ordinare il sabotaggio dell auto</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>Endless Love</strong> — Serie conclusa in Italia · le puntate su Mediaset Infinity</span></div>
   
-  <p class="occhiello">La gelosia di Asu supera il punto di non ritorno: dopo aver spiato dalla finestra la serata di complicità tra Kemal e Nihan, ordina a un suo uomo di sabotare i freni dell&#x27;auto della rivale. Il giorno dopo Nihan, all&#x27;inseguimento di Kemal che è partito con Deniz, perde il controllo e si schianta contro un albero: sala operatoria, trasfusione d&#x27;urgenza — e la donatrice che nessuno si aspettava.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: Endless Love, Asu fa sabotare i freni di Nihan: lo schianto contro l&#x27;albero, la corsa in ospedale — e il sangue di Zeynep che la salva" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/64SfSemciuM/maxresdefault.jpg" alt="Endless Love, Asu fa sabotare i freni di Nihan: lo schianto contro l&#x27;albero, la corsa in ospedale — e il sangue di Zeynep che la salva" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/64SfSemciuM/hqdefault.jpg 480w, https://i.ytimg.com/vi/64SfSemciuM/sddefault.jpg 640w, https://i.ytimg.com/vi/64SfSemciuM/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/64SfSemciuM/hqdefault.jpg&quot;, &quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,46 +409,68 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>L&#x27;ironia più crudele: a salvare Nihan è Zeynep, la sorella di Kemal — e quel sacrificio rinsalda proprio il legame che Asu voleva distruggere.</strong></p>
-  <h2>La finestra sulla serata proibita</h2>
+  <h2 id="c1">La finestra sulla serata proibita</h2>
 <p>Tutto precipita dopo la scoperta di Kemal: Deniz è sua figlia. Nihan, in ansia per le conseguenze, si trasferisce per qualche giorno in un&#x27;altra casa con la bambina — ma Kemal la trova, e la notte scorre in una lunga conversazione sul divano su futuro e speranze per Deniz. Una complicità che non vivevano da tempo, e che ha una spettatrice non invitata: Asu, dalla finestra, li osserva — e la gelosia le divora il cuore. In una stanza appartata, con sguardo gelido, ordina a un uomo di fiducia di sabotare i freni della macchina di Nihan.</p>
-<h2>Chi è Asu, e cosa aveva promesso a Nihan</h2>
+<h2 id="c2">Chi è Asu, e cosa aveva promesso a Nihan</h2>
 <p>Asu è la donna che in questa fase della storia occupa il posto che vorrebbe: accanto a Kemal, con un fidanzamento che ha più a che fare con la strategia che con il sentimento. Ma il dettaglio che rende feroce questo episodio è un altro — era stata lei ad accettare un patto con Nihan, quello di tenere Kemal lontano dalla verità su Deniz. Aveva costruito la propria posizione esattamente su quel silenzio. Quando Kemal scopre da solo di essere il padre della bambina, Asu non perde soltanto un uomo: perde l&#x27;unica cosa che la rendeva necessaria a qualcuno. È da lì che nasce l&#x27;ordine dato a bassa voce in una stanza appartata.</p>
-<h2>L&#x27;inseguimento e lo schianto</h2>
+<h2 id="c3">L&#x27;inseguimento e lo schianto</h2>
 <p>La mattina dopo, un diverbio innesca la tragedia: Kemal, esasperato dal nascondersi di Nihan, la provoca minacciando di portarle via la bambina — non lo pensa davvero, vuole scuoterla — e parte in auto con Deniz. Nihan, nel panico, si lancia all&#x27;inseguimento: i freni non rispondono, l&#x27;auto sbanda e si schianta violentemente contro un albero. Kemal accorre al suono dell&#x27;impatto: Nihan è ferita gravemente, la vita appesa a un filo, su una strada quasi deserta.</p>
-<h2>La gara di solidarietà e la donatrice inattesa</h2>
+<h2 id="c4">La gara di solidarietà e la donatrice inattesa</h2>
 <p>In ospedale è corsa contro il tempo: Nihan ha perso troppo sangue e parte la caccia ai donatori compatibili. Perfino Emir mobilita in massa i dipendenti della holding con lo stesso gruppo sanguigno. Ma la soluzione ce l&#x27;ha Kemal, che si ricorda della compatibilità della sorella: Zeynep corre in ospedale senza esitare e dona il sangue che stabilizza i segni vitali di Nihan. Nonostante le tensioni passate, il gesto salda un legame nuovo — e il sollievo attraversa corsie e famiglie.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Asu davanti allo specchio: l&#x27;ossessione che si ritorce</h2>
+<h2 id="c5">Asu davanti allo specchio: l&#x27;ossessione che si ritorce</h2>
 <p>Chi non festeggia è Asu: sperava che l&#x27;«incidente» la liberasse per sempre della rivale, e si ritrova con i piani sventati e un rimorso che non aveva previsto — nemmeno un pensiero era andato a Deniz, la bambina che sarebbe rimasta orfana. Le tornano in mente le promesse fatte a Nihan quando accettò di tenere Kemal lontano dalla verità su Deniz: segreti e bugie che ora si ritorcono contro di lei. Nihan è fuori pericolo, Kemal e Zeynep vegliano al suo capezzale — ma le cicatrici lasciate dal sabotaggio promettono una resa dei conti che non tarderà.</p>
-<h2>Perché conta: il sangue di Zeynep rimette in gioco un rapporto rotto</h2>
+<h2 id="c6">Perché conta: il sangue di Zeynep rimette in gioco un rapporto rotto</h2>
 <p>La trasfusione non è un espediente per salvare la protagonista: è il punto in cui due storie che sembravano chiuse tornano a toccarsi. Zeynep era stata la leva con cui Emir aveva colpito Kemal, la sorella che aveva scelto la parte sbagliata, e ora è la sola persona compatibile con la donna che quel fratello ama. Emir, che mobilita i dipendenti della holding, resta a guardare mentre il problema lo risolve la famiglia che lui aveva provato a smontare. La conseguenza si vedrà dopo, e non riguarda Nihan: da questo momento Kemal ha un debito verso una sorella che aveva smesso di considerare tale, e nessuno dei due potrà più usare l&#x27;altro con la stessa disinvoltura. Quanto ad Asu, il piano fallito le lascia una cosa che non aveva messo in conto — il pensiero della bambina che sarebbe rimasta senza madre.</p>
-<h2>Come Zeynep decide di salvare la vita a Nihan</h2>
+<h2 id="c7">Come Zeynep decide di salvare la vita a Nihan</h2>
 <p>Quando la situazione nella struttura ospedaliera si fa disperata a causa della gravissima perdita di sangue subita da Nihan, la ricerca di un donatore compatibile diventa l&#x27;unica speranza per strapparla alla morte. Nel momento in cui perfino Emir si attiva per mobilitare in massa i dipendenti della sua holding con lo stesso gruppo sanguigno, è proprio Kemal a trovare la vera soluzione ricordando la compatibilità con la propria sorella. Zeynep non mostra la minima esitazione quando viene informata del pericolo: si reca immediatamente in ospedale per la donazione e consente ai medici di stabilizzare i parametri vitali della donna amata da suo fratello, ponendo fine all&#x27;angoscia generale nelle corsie.</p>
 <p>Questa scelta assume un valore profondo se si considerano i dolorosi trascorsi familiari e la frattura che si era creata nel tempo tra i due consanguinei. Zeynep era stata in passato lo strumento attraverso cui Emir aveva cercato di fare del male a Kemal, finendo per schierarsi dalla parte sbagliata e rompendo quel rapporto affettivo. Tuttavia, trovandosi di fronte all&#x27;emergenza della rivale gravemente ferita sulla strada quasi deserta, la giovane azzera ogni distanza per offrire il proprio aiuto. Il suo intervento evita una tragedia irreparabile e spinge Kemal a riconsiderare completamente il debito di gratitudine nei confronti di una sorella che aveva ormai allontanato dalla propria esistenza.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Perche Kemal provoca Nihan prima del tragico impatto</h2>
+<h2 id="c8">Perche Kemal provoca Nihan prima del tragico impatto</h2>
 <p>La drammatica sequenza degli eventi si mette in moto all&#x27;alba, a seguito di un acceso diverbio nato tra la giovane madre e l&#x27;uomo che ha da poco scoperto la verità sulla bambina. Kemal è profondamente esasperato dal continuo nascondersi di Nihan e dalla sua ansia costante, legata alle inevitabili conseguenze della scoperta sulla paternità della piccola Deniz. Per scuoterla e spingerla ad affrontare la realtà, l&#x27;uomo pronuncia una minaccia deliberata, affermando di volerle portare via la figlia pur senza pensarlo veramente. Subito dopo sale in macchina insieme alla bambina e si allontana, scatenando nella rivale un panico immediato che la spinge a mettersi alla guida per inseguirlo.</p>
 <p>Fino a quel momento la situazione era rimasta incanalata nei binari di un confronto lungo e intimo, iniziato dopo che Kemal era riuscito a rintracciare la casa in cui la donna si era trasferita temporaneamente con Deniz. La notte passata a conversare sul divano aveva fatto riaffiorare un&#x27;intensa complicità, focalizzata sui desideri e sulle speranze per il futuro della bambina. Tuttavia, l&#x27;incapacità di gestire la tensione della mattina seguente trasforma un semplice tentativo di scossa in un&#x27;involontaria trappola mortale. Nihan parte all&#x27;inseguimento senza immaginare che la vettura sia stata sabotata, finendo per sbandare e schiantarsi contro un albero su una strada quasi deserta.</p>
-<h2>Cosa spinge Asu a ordinare il sabotaggio dell auto</h2>
+<h2 id="c9">Cosa spinge Asu a ordinare il sabotaggio dell auto</h2>
 <p>La lucida follia di Asu trae origine da un fragile castello di bugie e strategie che crolla definitivamente nel momento in cui Kemal scopre la verità su Deniz senza il suo aiuto. In precedenza, la donna aveva stretto un accordo preciso con Nihan per mantenere il silenzio della paternità e difendere la propria posizione accanto al promesso sposo. Essendo legata a Kemal da un fidanzamento basato sull&#x27;opportunismo strategico anziché sul sentimento reale, Asu comprende che la rivelazione distrugge l&#x27;unico elemento che la rendeva davvero indispensabile. La visione dei due rivali vicini sul divano attraverso la finestra fa esplodere una gelosia cieca che la porta a ordinare il sabotaggio dei freni in una stanza appartata.</p>
 <p>Il fallimento del piano criminale produce tuttavia conseguenze del tutto inaspettate per la responsabile del sabotaggio, costringendola a fare i conti con una dolorosa realtà e con un imprevisto senso di colpa. Mentre Nihan lotta tra la vita e la morte e poi viene salvata dalla donazione di Zeynep, Asu comprende di non aver minimamente considerato il destino della piccola Deniz, che sarebbe rimasta del tutto orfana in caso di esito fatale. Rivedendo la condotta tenuta e le promesse tradite, la donna si ritrova prigioniera delle sue stesse bugie, mentre la guarigione della rivale e la vigilanza di Kemal al suo capezzale preparano il terreno per un inevitabile regolamento di conti.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=GTWyYbZfkKs" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/GTWyYbZfkKs/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>ENDLESS LOVE Anticipazioni 11-12 Marzo: Kemal salva la vita a Nihan | Emir ossessionato di gelo</span></a></li><li><a href="https://www.youtube.com/watch?v=5cLt8bxlfEk" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/5cLt8bxlfEk/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TREMENDA SOFFERENZA PER NIHAN,SALVA LA VITA A KEMAL MA LUI LA CACCIA VIA! Endless Love Anticipa</span></a></li><li><a href="https://www.youtube.com/watch?v=cfkIul6mkqU" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/cfkIul6mkqU/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>NIHAN DISPERATA PER AMORE SI UBRIACA DALLA GELOSIA PER KEMAL E ASU - Anticipazioni Endless Love</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Kemal scoprirà che dietro l&#x27;incidente c&#x27;è Asu — e cosa farà quando saprà che ha rischiato di uccidere la madre di sua figlia?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=64SfSemciuM">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di Endless Love</h2><div class="griglia"><article class="scheda">
+  <a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/"><div class="foto"><img src="https://i.ytimg.com/vi/DSiProJJ1ls/hqdefault.jpg" alt="Endless Love" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/"><div class="foto"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/"><div class="foto"><img src="https://i.ytimg.com/vi/uu2oAzTOWQU/hqdefault.jpg" alt="Endless Love" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></h3>
+    <div class="quando">25 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=Endless Love, Asu fa sabotare i freni di Nihan: lo schianto contro l&#x27;albero, la corsa in ospedale — e il sangue di Zeynep che la salva — https://soapoperaitalia.com/endless-love/endless-love-la-trama-completa-perche-nihan-sposa-emir-e-come-finisce/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://soapoperaitalia.com/endless-love/endless-love-la-trama-completa-perche-nihan-sposa-emir-e-come-finisce/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://soapoperaitalia.com/endless-love/endless-love-la-trama-completa-perche-nihan-sposa-emir-e-come-finisce/&text=Endless Love, Asu fa sabotare i freni di Nihan: lo schianto contro l&#x27;albero, la corsa in ospedale — e il sangue di Zeynep che la salva" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">NIHAN TRA LA VITA E LA MORTE, ASU PROVA AD UCCIDERLA! - Endless Love</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=64SfSemciuM">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di Endless Love</h3><ol class="numerata"><li><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></li><li><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></li><li><a href="/endless-love/endless-love-chi-e-galip-kozcuoglu-le-due-volte-in-cui-nihan-e-stata-venduta/">Endless Love, chi è Galip Kozcuoğlu: le due volte in cui Nihan è stata venduta</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-zeynep-soydere-perche-emir-lha-scelta-e-cosa-ha-distrutto/">Endless Love, chi è davvero Zeynep Soydere: perché Emir l&#x27;ha scelta e cosa ha distrutto</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>NIHAN TRA LA VITA E LA MORTE, ASU PROVA AD UCCIDERLA! - Endless Love</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su Endless Love</h3><ul><li><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></li><li><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></li><li><a href="/endless-love/endless-love-chi-e-galip-kozcuoglu-le-due-volte-in-cui-nihan-e-stata-venduta/">Endless Love, chi è Galip Kozcuoğlu: le due volte in cui Nihan è stata venduta</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-zeynep-soydere-perche-emir-lha-scelta-e-cosa-ha-distrutto/">Endless Love, chi è davvero Zeynep Soydere: perché Emir l&#x27;ha scelta e cosa ha distrutto</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

@@ -12,7 +12,7 @@
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Serie TV Fans">
 <meta property="og:url" content="https://serietvfans.com/far-away/far-away-chi-e-fikriye-la-madre-di-alya-cosa-ha-fatto-e-perche-conta/">
-<meta property="og:image" content="https://serietvfans.com/social.svg">
+<meta property="og:image" content="https://serietvfans.com/img/far-away-chi-e-fikriye-la-madre-di-alya-cosa-ha-fatto-e-perche-conta.jpg">
 <meta property="og:locale" content="it_IT">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#7b1e2b">
@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -314,12 +363,12 @@ if(l.length){el.src=l.shift();el.dataset.fb=JSON.stringify(l)}else{el.onerror=nu
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7778653397776213" crossorigin="anonymous"></script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "96259d7e67ce47fba4573364859712a6"}'></script>
 <script>(function(){var f=0;function go(){if(f)return;f=1;(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","y3rpoig6jk");}["pointerdown","keydown","touchstart","scroll"].forEach(function(v){addEventListener(v,go,{once:1,passive:1})});setTimeout(go,2500)})();</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Far Away, chi è Fikriye: la madre di Alya, cosa ha fatto e perché conta per gli Albora", "datePublished": "2026-08-29", "dateModified": "2026-08-29", "description": "Chi è Fikriye in Far Away, che cosa ha fatto ad Alya quando era una bambina e perché il suo ritorno pesa su tutta la famiglia: il segreto usato da Sadakat contro Deniz, l'omicidio che Fikriye ha fatto fallire, l'indagine di Cihan sul suo passato e la diagnosi che ha rimesso in fila i conti tra madre e figlia.", "inLanguage": "it-IT", "mainEntityOfPage": "https://serietvfans.com/far-away/far-away-chi-e-fikriye-la-madre-di-alya-cosa-ha-fatto-e-perche-conta/", "image": [], "author": {"@type": "Organization", "name": "Serie TV Fans", "url": "https://serietvfans.com/chi-siamo/"}, "publisher": {"@type": "Organization", "name": "Serie TV Fans", "logo": {"@type": "ImageObject", "url": "https://serietvfans.com/favicon.svg"}}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Far Away, chi è Fikriye: la madre di Alya, cosa ha fatto e perché conta per gli Albora", "datePublished": "2026-08-29", "dateModified": "2026-09-07", "description": "Chi è Fikriye in Far Away, che cosa ha fatto ad Alya quando era una bambina e perché il suo ritorno pesa su tutta la famiglia: il segreto usato da Sadakat contro Deniz, l'omicidio che Fikriye ha fatto fallire, l'indagine di Cihan sul suo passato e la diagnosi che ha rimesso in fila i conti tra madre e figlia.", "inLanguage": "it-IT", "mainEntityOfPage": "https://serietvfans.com/far-away/far-away-chi-e-fikriye-la-madre-di-alya-cosa-ha-fatto-e-perche-conta/", "image": ["https://serietvfans.com/img/far-away-chi-e-fikriye-la-madre-di-alya-cosa-ha-fatto-e-perche-conta.jpg"], "author": {"@type": "Organization", "name": "Serie TV Fans", "url": "https://serietvfans.com/chi-siamo/"}, "publisher": {"@type": "Organization", "name": "Serie TV Fans", "logo": {"@type": "ImageObject", "url": "https://serietvfans.com/favicon.svg"}}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://serietvfans.com/"}, {"@type": "ListItem", "position": 2, "name": "Far Away", "item": "https://serietvfans.com/serie/far-away/"}, {"@type": "ListItem", "position": 3, "name": "Far Away, chi è Fikriye: la madre di Alya, cosa ha fatto e perché conta per gli Albora"}]}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -332,57 +381,83 @@ if(l.length){el.src=l.shift();el.dataset.fb=JSON.stringify(l)}else{el.onerror=nu
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/far-away/">Far Away</a> › Far Away, chi è Fikriye: la madre di Alya, cosa ha fatto e perché conta per gli Albora</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/far-away/">Far Away</a>
   <h1>Far Away, chi è Fikriye: la madre di Alya, cosa ha fatto e perché conta per gli Albora</h1>
-  <div class="firma">Redazione Serie TV Fans · sabato 29 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-29">sabato 29 agosto 2026</time></span><span>aggiornato il 7 settembre 2026</span><span>8 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Chi è Fikriye in Far Away, che cosa ha fatto ad Alya quando era una bambina e perché il suo ritorno pesa su tutta la famiglia: il segreto usato da Sadakat contro Deniz, l&#x27;omicidio che Fikriye ha fatto fallire, l&#x27;indagine di Cihan sul suo passato e la diagnosi che ha rimesso in fila i conti tra madre e figlia.</p><ol><li><a href="#c1">Che cosa lega Fikriye ad Alya</a></li><li><a href="#c2">Perché Alya non riesce a perdonare sua madre</a></li><li><a href="#c3">Come Deniz ha scoperto di avere una nonna</a></li><li><a href="#c4">Chi ha impedito a Sadakat di far uccidere Ecmel</a></li><li><a href="#c5">Perché Cihan ha mandato Erol a indagare sul passato di Fikriye</a></li><li><a href="#c6">Cosa succede a Fikriye dopo il malore</a></li><li><a href="#c7">Chi interpreta Fikriye nella serie originale</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>Far Away</strong> — Canale 5 · in streaming su Mediaset Infinity</span></div>
-  <figure class="copertina"><img src="/fallback/far-away.svg" alt="Far Away" width="1280" height="720"><figcaption>Far Away</figcaption></figure>
-  <p class="occhiello">Chi è Fikriye in Far Away, che cosa ha fatto ad Alya quando era una bambina e perché il suo ritorno pesa su tutta la famiglia: il segreto usato da Sadakat contro Deniz, l&#x27;omicidio che Fikriye ha fatto fallire, l&#x27;indagine di Cihan sul suo passato e la diagnosi che ha rimesso in fila i conti tra madre e figlia.</p>
+  <figure class="copertina"><img src="/img/far-away-chi-e-fikriye-la-madre-di-alya-cosa-ha-fatto-e-perche-conta.jpg" alt="Far Away"><figcaption>Immagine d&#x27;ambiente — Far Away</figcaption></figure>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   
   <div class="corpo">
   <p><strong>Fikriye è la madre di Alya: la donna che l&#x27;ha lasciata da bambina e che è ricomparsa a Mardin anni dopo, quando ormai sua figlia era entrata in casa Albora.</strong></p>
   <p>Fikriye è la madre di Alya, la protagonista di Far Away. È la donna che ha lasciato sua figlia quando era una bambina e che ricompare a Mardin molti anni dopo, quando ormai Alya è un medico, è la vedova di Boran Albora e vive dentro la tenuta di una famiglia che non è la sua. Non è una comparsa messa lì per allungare una storyline: è la persona che porta dentro quella villa il pezzo di passato che Alya non conosce, e questo la rende utile o pericolosa a seconda di chi la guarda.</p>
 <p>Chi la incontra per la prima volta la trova quasi sempre in una posizione strana. Sta in mezzo alle stanze degli Albora ma non appartiene a nessuna delle loro alleanze: non ha il cognome, non ha denaro, non ha un ruolo nella tenuta. Ha soltanto delle informazioni. In una famiglia costruita su quello che non si dice, tanto basta per pesare.</p>
-<h2>Che cosa lega Fikriye ad Alya</h2>
+<h2 id="c1">Che cosa lega Fikriye ad Alya</h2>
 <p>Per capire il peso di Fikriye bisogna partire da dove stava Alya prima che lei ricomparisse. Alya non è di Mardin: faceva il medico in Canada, ha sposato Boran Albora lontano dalla sua famiglia e ha avuto da lui un figlio, Deniz. Quando Boran muore, porta il bambino nella terra del padre per il lutto, con l&#x27;idea di ripartire appena finito. Cihan, fratello di Boran e capofamiglia, si mette di traverso: il figlio di Boran è l&#x27;erede degli Albora e non cresce dall&#x27;altra parte del mondo. Alya resta. E resta dentro una casa dove non ha nessuno dalla propria parte.</p>
 <p>È in quel vuoto che arriva Fikriye. Alya era cresciuta convinta di non avere più una madre; scopre invece che quella madre è viva, che è a pochi chilometri e che ha deciso di rifarsi viva proprio adesso, adesso che sua figlia porta un cognome che a Mardin conta. Il sospetto si forma da solo, e in casa Albora nessuno fa niente per smontarlo. Sadakat, la matriarca, l&#x27;ha trattata fin dal primo momento come un&#x27;intrusa da tenere a distanza.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Perché Alya non riesce a perdonare sua madre</h2>
+<h2 id="c2">Perché Alya non riesce a perdonare sua madre</h2>
 <p>La ferita tra le due non è soltanto un abbandono, ed è per questo che non si chiude con una spiegazione. Alya bambina non è stata lasciata e basta: è stata ceduta. Fikriye l&#x27;ha consegnata a Caroline, e ogni volta che prova a riavvicinarsi si scontra con quel fatto, che nessuna delle due può riscrivere. Da lì nasce il modo in cui Alya legge sua madre: non come una donna che torna, ma come una donna che manovra.</p>
 <p>Fikriye ci prova lo stesso. Cerca di raccontarle perché è sparita, perché l&#x27;ha lasciata credere sola al mondo per tutti quegli anni. Alya non è pronta ad ascoltarla, e i loro confronti finiscono male con una regolarità quasi meccanica: le parole si affilano subito, ed esce fuori una rabbia vecchia che non ha mai trovato una forma decente per uscire. Succede anche in situazioni che non dovrebbero contenerlo, come la festa degli aquiloni portata avanti per i bambini: ad Alya basta trovarsi sua madre davanti perché la giornata cambi colore.</p>
 <p>Il pubblico si è spaccato esattamente su questo punto, e la spaccatura è il motivo per cui il personaggio funziona. Chi la guarda dalla parte di Alya vede una manipolatrice arrivata al momento giusto. Chi la guarda da fuori vede una donna che ha fatto una cosa orribile in condizioni che nessuno ha mai raccontato per intero — e finché quel racconto manca, ognuna delle due letture resta in piedi.</p>
-<h2>Come Deniz ha scoperto di avere una nonna</h2>
+<h2 id="c3">Come Deniz ha scoperto di avere una nonna</h2>
 <p>C&#x27;è un momento preciso in cui Fikriye smette di essere un problema privato di Alya e diventa un affare di famiglia. A provocarlo non è lei: è Sadakat. Nel mezzo di una lite domestica, con il bambino presente, la matriarca dice a Deniz chi è davvero quella signora che ha appena conosciuto. Sua nonna. Sette anni, davanti a tutti, nel momento più caotico disponibile.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>Non è un gesto d&#x27;affetto e non vuole esserlo: è la mossa più economica per ferire Alya nel punto in cui non ha difese, cioè suo figlio. Alya va fuori di sé. Ma è Deniz stesso a chiedere di poter passare del tempo con questa nonna comparsa dal nulla, e sua madre finisce per cedere. Poco dopo il bambino sparisce per ore, e Alya e Cihan lo ritrovano sano e salvo senza che venga mai chiarito chi lo avesse tenuto lontano: la sequenza completa di quella scomparsa l&#x27;abbiamo ricostruita nell&#x27;articolo dedicato. Per Fikriye il conto è comunque salato — la sua esistenza è diventata pubblica nel modo peggiore in cui poteva diventarlo.</p>
-<h2>Chi ha impedito a Sadakat di far uccidere Ecmel</h2>
+<h2 id="c4">Chi ha impedito a Sadakat di far uccidere Ecmel</h2>
 <p>Il momento che ribalta il personaggio arriva quando nessuno se lo aspetta da lei. Sadakat decide che Ecmel — l&#x27;uomo che si porta dietro il segreto sulla vera paternità di Boran — non è più un fastidio da gestire ma un rischio da togliere di mezzo. Chiama Hasan, l&#x27;uomo di fiducia della villa, e gli ordina di scoprire dove si trova. Non per parlargli, non per spaventarlo.</p>
 <p>A scoprire il piano è Fikriye. Avverte Alya e Cihan, Cihan interviene di persona ed Ecmel riesce a scappare prima che l&#x27;ordine venga eseguito. Il dettaglio che conta è che non chiede niente in cambio: non lo usa per farsi perdonare da sua figlia, non lo mette sul tavolo come merce di scambio con gli Albora. Lo fa e basta.</p>
 <p>Da quel giorno il personaggio ha una funzione che prima non aveva. La donna considerata la presenza più debole della casa è l&#x27;unica che sia mai riuscita a bloccare un ordine diretto della matriarca. E Sadakat sa perfettamente chi gliel&#x27;ha bloccato: non è il genere di persona che lascia correre chi la fa sembrare vulnerabile, neanche quando quella persona le ha evitato un guaio molto peggiore.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Perché Cihan ha mandato Erol a indagare sul passato di Fikriye</h2>
+<h2 id="c5">Perché Cihan ha mandato Erol a indagare sul passato di Fikriye</h2>
 <p>C&#x27;è un secondo filo, più lento, che tiene Fikriye al centro della serie anche quando non compare. Cihan chiede a Erol di indagare su di lei, e la richiesta ha una precisazione che vale tutta la scena: non sul presente, sul passato. Cihan non sospetta che Fikriye stia facendo qualcosa adesso. Sospetta che ci sia qualcosa da trovare molto più indietro, in una vita di cui in quella casa nessuno ha mai visto un documento.</p>
 <p>Che qualcosa ci sia, lo spettatore lo intuisce da un viaggio. Fikriye va al carcere di Midyat e chiede di vedere Halis, lo stesso uomo che insieme a Ecmel aveva provato a comprare Şahin contro Cihan. Alya la segue, la aspetta fuori dalle mura, sta lì tutto il tempo che serve. Poi Fikriye esce e ha un malore proprio davanti a lei, e sua figlia torna indietro senza la sola risposta per cui era andata fin là: chi c&#x27;era, dall&#x27;altra parte di quel colloquio. Noi lo sappiamo, Alya no. È una delle cose che questa serie fa meglio — dare allo spettatore un&#x27;informazione in più e lasciargli il fastidio di vedere i personaggi muoversi senza.</p>
-<h2>Cosa succede a Fikriye dopo il malore</h2>
+<h2 id="c6">Cosa succede a Fikriye dopo il malore</h2>
 <p>I malori non erano un espediente. Durante la cerimonia della circoncisione di Deniz — un rito che per gli Albora vale quanto un matrimonio, con la casa aperta a tutta la comunità — lo scontro tra madre e figlia esplode nel pieno dei festeggiamenti, e Fikriye crolla a terra davanti agli invitati. In ospedale arriva la diagnosi: un tumore al polmone, che i medici descrivono come aggressivo.</p>
 <p>Da quel momento cambia la velocità di tutto. Alya e Cihan la invitano a trasferirsi alla villa per il periodo delle cure, e la donna che quella famiglia non aveva mai accettato ci entra con le valigie. È la posizione più scomoda della serie, e la scrittura non fa niente per addolcirla: Fikriye dorme sotto lo stesso tetto della persona a cui ha appena fatto fallire un omicidio, e attraversa ogni giorno gli stessi corridoi. Sadakat la guarda arrivare senza dire una parola.</p>
 <p>Ed è qui che si capisce perché il personaggio conta più di quanto il suo tempo in scena lasci pensare. Fikriye tiene insieme tre cose che negli Albora stanno di solito separate: il passato di Alya, cioè la sola parte della protagonista che la famiglia non controlla; il segreto peggiore di Sadakat, cioè fin dove è disposta ad arrivare; e un orologio, perché la malattia mette una scadenza a un perdono che nessuna delle due ha ancora deciso di concedere.</p>
-<h2>Chi interpreta Fikriye nella serie originale</h2>
+<h2 id="c7">Chi interpreta Fikriye nella serie originale</h2>
 <p>Far Away è l&#x27;edizione italiana di Uzak Şehir, prodotta per la rete turca Kanal D, che la manda in onda in prima serata al lunedì. Fikriye è interpretata da Nursel Köse, attrice di lungo corso: il suo ingresso nel cast è stato annunciato dalle agenzie di stampa turche proprio come l&#x27;arrivo della madre di Alya, con una formula che spiega la funzione del personaggio meglio di qualsiasi riassunto di trama — l&#x27;arrivo di quella donna nella tenuta è il segnale di sviluppi destinati a cambiare gli equilibri.</p>
 <p>Su un punto conviene essere netti, perché è quello su cui circolano più voci non verificate: qui non trovate il destino finale del personaggio, e chiunque ve lo racconti come un fatto acquisito lo sta ricavando da fonti che non lo confermano. Quello che si può dire di Fikriye è quanto già ha spostato — l&#x27;unica donna capace di fermare Sadakat, l&#x27;unica strada per arrivare al passato di Alya, e la sola persona che possa dire a Deniz da dove viene metà del suo sangue.</p>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=9VR_4M2ziyY" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/9VR_4M2ziyY/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>FAR AWAY: ALYA entra nella stanza segreta di Cihan — e scopre cosa le nascondeva 😱</span></a></li><li><a href="https://www.youtube.com/watch?v=LgtMj_mgCy8" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/LgtMj_mgCy8/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>FAR AWAY: Cihan rifiuta il divorzio, la dichiarazione che sconvolge Alya 😍</span></a></li><li><a href="https://www.youtube.com/watch?v=SYr_sUICFk0" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/SYr_sUICFk0/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>FAR AWAY: Alya confessa di essere stata VENDUTA per 300mila euro, Cihan dichiara guerra 💔</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Fikriye per voi è una madre che sta provando davvero a rimediare, o una donna che ha trovato il momento buono per rientrare in una famiglia ricca?</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di Far Away</h2><div class="griglia"><article class="scheda">
+  <a href="/far-away/far-away-anticipazioni-dal-31-agosto-al-4-settembre-chi-ha-donato-il-fegato-a-nare/"><div class="foto"><img src="/img/far-away-anticipazioni-dal-31-agosto-al-4-settembre-chi-ha-donato-il-fegato-a-nare.jpg" alt="Far Away" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/far-away.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Far Away</span>
+    <h3><a href="/far-away/far-away-anticipazioni-dal-31-agosto-al-4-settembre-chi-ha-donato-il-fegato-a-nare/">Far Away, anticipazioni dal 31 agosto al 4 settembre: chi ha donato il fegato a Nare, e perché adesso sta male lui</a></h3>
+    <div class="quando">3 settembre 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/far-away/far-away-dal-31-agosto-la-madre-di-alya-sapeva-tutto-non-ricordo/"><div class="foto"><img src="/img/far-away-dal-31-agosto-la-madre-di-alya-sapeva-tutto-non-ricordo.jpg" alt="Far Away" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/far-away.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Far Away</span>
+    <h3><a href="/far-away/far-away-dal-31-agosto-la-madre-di-alya-sapeva-tutto-non-ricordo/">Far Away Dal 31 Agosto: la madre di Alya sapeva tutto — «non ricordo»</a></h3>
+    <div class="quando">31 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/far-away/far-away-chi-e-nadim-il-capo-dei-baybars-cosa-vuole-e-perche-gli-albora-lo-accusano/"><div class="foto"><img src="/img/far-away-chi-e-nadim-il-capo-dei-baybars-cosa-vuole-e-perche-gli-albora-lo-accusano.jpg" alt="Far Away" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/far-away.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Far Away</span>
+    <h3><a href="/far-away/far-away-chi-e-nadim-il-capo-dei-baybars-cosa-vuole-e-perche-gli-albora-lo-accusano/">Far Away, chi è Nadim: il capo dei Baybars, cosa vuole e perché gli Albora lo accusano</a></h3>
+    <div class="quando">29 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=Far Away, chi è Fikriye: la madre di Alya, cosa ha fatto e perché conta per gli Albora — https://serietvfans.com/far-away/far-away-chi-e-fikriye-la-madre-di-alya-cosa-ha-fatto-e-perche-conta/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/far-away/far-away-chi-e-fikriye-la-madre-di-alya-cosa-ha-fatto-e-perche-conta/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/far-away/far-away-chi-e-fikriye-la-madre-di-alya-cosa-ha-fatto-e-perche-conta/&text=Far Away, chi è Fikriye: la madre di Alya, cosa ha fatto e perché conta per gli Albora" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  
-  <div class="box"><h3>Ancora su Far Away</h3><ul><li><a href="/far-away/far-away-anticipazioni-dal-31-agosto-al-4-settembre-chi-ha-donato-il-fegato-a-nare/">Far Away, anticipazioni dal 31 agosto al 4 settembre: chi ha donato il fegato a Nare, e perché adesso sta male lui</a></li><li><a href="/far-away/far-away-dal-31-agosto-la-madre-di-alya-sapeva-tutto-non-ricordo/">Far Away Dal 31 Agosto: la madre di Alya sapeva tutto — «non ricordo»</a></li><li><a href="/far-away/far-away-chi-e-nadim-il-capo-dei-baybars-cosa-vuole-e-perche-gli-albora-lo-accusano/">Far Away, chi è Nadim: il capo dei Baybars, cosa vuole e perché gli Albora lo accusano</a></li><li><a href="/far-away/far-away-sadakat-muore-cosa-sappiamo-e-chi-ha-motivo-di-volerla-morta/">Sadakat muore in Far Away? Cosa sappiamo: chi ha motivo di volerla morta e perché la serie non ha ancora risposto</a></li><li><a href="/far-away/far-away-chi-e-mariam-il-nome-sulla-chiavetta-di-boran-che-mine-usa-per-dividere/">Far Away, chi è Meryem: il nome sulla chiavetta di Boran che Mine usa per dividere Alya e Cihan</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
+  <div class="box"><h3>Ultime di Far Away</h3><ol class="numerata"><li><a href="/far-away/far-away-anticipazioni-dal-31-agosto-al-4-settembre-chi-ha-donato-il-fegato-a-nare/">Far Away, anticipazioni dal 31 agosto al 4 settembre: chi ha donato il fegato a Nare, e perché adesso sta male lui</a></li><li><a href="/far-away/far-away-dal-31-agosto-la-madre-di-alya-sapeva-tutto-non-ricordo/">Far Away Dal 31 Agosto: la madre di Alya sapeva tutto — «non ricordo»</a></li><li><a href="/far-away/far-away-chi-e-nadim-il-capo-dei-baybars-cosa-vuole-e-perche-gli-albora-lo-accusano/">Far Away, chi è Nadim: il capo dei Baybars, cosa vuole e perché gli Albora lo accusano</a></li><li><a href="/far-away/far-away-sadakat-muore-cosa-sappiamo-e-chi-ha-motivo-di-volerla-morta/">Sadakat muore in Far Away? Cosa sappiamo: chi ha motivo di volerla morta e perché la serie non ha ancora risposto</a></li><li><a href="/far-away/far-away-chi-e-mariam-il-nome-sulla-chiavetta-di-boran-che-mine-usa-per-dividere/">Far Away, chi è Meryem: il nome sulla chiavetta di Boran che Mine usa per dividere Alya e Cihan</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>Ogni anticipazione, prima in video sul canale Serie TV Fans</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
+  </div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/terra-amara/">Terra Amara</a> › Terra Amara 10 dicembre, Demir fa rapire Ümit per costringerla ad abortire: a salvarla è Sevda, che chiama la polizia e resta ad aspettarla fuori</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/terra-amara/">Terra Amara</a>
   <h1>Terra Amara 10 dicembre, Demir fa rapire Ümit per costringerla ad abortire: a salvarla è Sevda, che chiama la polizia e resta ad aspettarla fuori</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>6 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Ümit si presenta senza invito all&#x27;inaugurazione della fondazione dedicata a Hünkar e dice a Demir di essere incinta di quattro mesi. Lui le ordina di abortire; quando lei rifiuta, passa ai fatti — e organizza tutto alle spalle di Züleyha.</p><ol><li><a href="#c1">L&#x27;annuncio all&#x27;inaugurazione della fondazione</a></li><li><a href="#c2">L&#x27;auto, la pistola alla tempia, lo studio medico</a></li><li><a href="#c3">La foto che gira in tutto il paese</a></li><li><a href="#c4">«Fatma Özkan»: Sevda cacciata dalla villa</a></li><li><a href="#c5">Come Betül usa la foto scattata a Demir</a></li><li><a href="#c6">Cosa accade durante il rapimento orchestrato da Demir</a></li><li><a href="#c7">Perché Demir decide di cacciare Sevda dalla tenuta</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>Terra Amara</strong> — Serie conclusa in Italia · tutte le puntate su Mediaset Infinity</span></div>
   
-  <p class="occhiello">Ümit si presenta senza invito all&#x27;inaugurazione della fondazione dedicata a Hünkar e dice a Demir di essere incinta di quattro mesi. Lui le ordina di abortire; quando lei rifiuta, passa ai fatti — e organizza tutto alle spalle di Züleyha.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: Terra Amara 10 dicembre, Demir fa rapire Ümit per costringerla ad abortire: a salvarla è Sevda, che chiama la polizia e resta ad aspettarla fuori" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/BWzT0n0QlXU/maxresdefault.jpg" alt="Terra Amara 10 dicembre, Demir fa rapire Ümit per costringerla ad abortire: a salvarla è Sevda, che chiama la polizia e resta ad aspettarla fuori" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/BWzT0n0QlXU/hqdefault.jpg 480w, https://i.ytimg.com/vi/BWzT0n0QlXU/sddefault.jpg 640w, https://i.ytimg.com/vi/BWzT0n0QlXU/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/BWzT0n0QlXU/hqdefault.jpg&quot;, &quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,41 +409,63 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>Nella stessa settimana Betül fa distribuire in tutta Çukurova la foto che inchioda Demir.</strong></p>
-  <h2>L&#x27;annuncio all&#x27;inaugurazione della fondazione</h2>
+  <h2 id="c1">L&#x27;annuncio all&#x27;inaugurazione della fondazione</h2>
 <p>L&#x27;evento è dedicato alla fondazione benefica in memoria di Hünkar, con corsi di alfabetizzazione e formazione professionale per le donne e una donazione di un milione di lire da parte di Fekeli. Züleyha sta parlando dal palco quando entra Ümit, che nessuno ha invitato. Demir la porta in disparte, e lì lei glielo dice: aspetta un figlio suo, da quattro mesi. Lui la accusa di mentire, poi le ordina di interrompere la gravidanza, poi la caccia. Betül ascolta tutto da dietro l&#x27;angolo — e da quel momento non mollerà più la presa.</p>
-<h2>L&#x27;auto, la pistola alla tempia, lo studio medico</h2>
+<h2 id="c2">L&#x27;auto, la pistola alla tempia, lo studio medico</h2>
 <p>Demir confida a Sevda di essersi messo nei guai e di aver trovato un medico disposto a intervenire di nascosto. Lei lo supplica di fermarsi, lui risponde che Ümit non vuole un figlio, vuole solo vendicarsi. Poco dopo, mentre Ümit è alla guida, un uomo sbuca dai sedili posteriori, le punta una pistola alla tempia e la addormenta. Si risveglia in uno studio medico, ma la polizia irrompe prima che sia troppo tardi: l&#x27;uomo viene arrestato, lei riesce a uscire. Fuori la aspetta Sevda, che la fa salire in macchina e le dice che a chiamare la polizia è stata lei. Poi va da Fekeli e gli chiede di ospitarla qualche giorno, il tempo di farla sparire da Çukurova.</p>
-<h2>La foto che gira in tutto il paese</h2>
+<h2 id="c3">La foto che gira in tutto il paese</h2>
 <p>Şermin, frugando in camera di Züleyha, trova una foto di Demir con Ümit nascosta in un cassetto. La mostra a Betül, che la definisce «un biglietto d&#x27;oro»: all&#x27;alba ne fa distribuire copie in tutta Çukurova, poi rimette l&#x27;originale al suo posto come se niente fosse. Il paese si riempie di chiacchiere, la foto arriva alla villa, arriva a Fekeli, arriva in ospedale — dove un ispettore ministeriale annuncia un&#x27;inchiesta su Ümit e la sospensione dal servizio. Demir, umiliato in pubblico, dice a Züleyha una frase che la gela: avrebbe dovuto spararle quando ne aveva l&#x27;occasione.</p>
-<h2>«Fatma Özkan»: Sevda cacciata dalla villa</h2>
+<h2 id="c4">«Fatma Özkan»: Sevda cacciata dalla villa</h2>
 <p>È di nuovo Şermin a mettere il colpo finale: porta a Demir una copia della carta d&#x27;identità di Ümit e gli fa notare il nome della madre, lo stesso che compare su quella di Sevda. Demir la ferma mentre sta preparando le valigie, la trascina in macchina, la accusa di aver complottato per rovinargli la vita dopo essere stata trattata come una seconda madre. Sevda giura di aver saputo solo di recente, di aver provato a fermare la figlia e di non esserci riuscita; poi, davanti a tutti, tenta di afferrargli la pistola dalla cintura e lo implora di ucciderla. Demir non le crede e ordina agli uomini di buttarla fuori dalla villa. Mentre la trascinano oltre il cancello, lei piange e spera soltanto che Ümit — che nel frattempo si è dispersa tra i treni fermi alla stazione di Adana — sia riuscita a scappare.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Come Betül usa la foto scattata a Demir</h2>
+<h2 id="c5">Come Betül usa la foto scattata a Demir</h2>
 <p>Quando Şermin rovista all&#x27;interno della stanza da letto appartenente a Züleyha, scopre una fotografia rimasta nascosta in un cassetto che ritrae Demir insieme a Ümit. La donna corre subito a mostrare lo scatto a Betül, la quale intuisce la portata dell&#x27;evento ed esclama che l&#x27;immagine rappresenta un autentico biglietto d&#x27;oro per rovinare il rivale. Rifiutando l&#x27;idea di tenere semplicemente la foto per sé, Betül prepara una mossa strategica ed efficace: ordina di far realizzare molteplici riproduzioni e, alle prime luci dell&#x27;alba, invia i suoi uomini a distribuire le copie in ogni quartiere e strada di Çukurova. Per evitare qualsiasi sospetto immediato, la ragazza riposiziona con attenzione la fotografia originale all&#x27;interno del cassetto, lasciando che Züleyha rimanga del tutto all&#x27;oscuro della manovra appena compiuta.</p>
 <p>La diffusione repentina delle copie scatena un vortice insostenibile di pettegolezzi e chiacchiere che travolge l&#x27;intero paese, arrivando prima alla villa di famiglia, poi tra le mani di Fekeli e infine nei corridoi dell&#x27;ospedale. Tanta risonanza attira l&#x27;attenzione diretta di un ispettore ministeriale, che decide di intervenire ufficialmente annunciando l&#x27;avvio formale di un&#x27;inchiesta nei confronti di Ümit e decretando la sua sospensione dal servizio sanitario. Demir, colpito duramente nel proprio prestigio e umiliato pubblicamente davanti all&#x27;intera comunità, sfoga la sua profonda rabbia con Züleyha pronunciando una frase raggelante e colma di astio: dichiara infatti che avrebbe dovuto sparare a Ümit nel momento esatto in cui ne aveva avuto l&#x27;occasione per chiudere i conti.</p>
-<h2>Cosa accade durante il rapimento orchestrato da Demir</h2>
+<h2 id="c6">Cosa accade durante il rapimento orchestrato da Demir</h2>
 <p>In seguito al drammatico confronto avvenuto in disparte durante la cerimonia di inaugurazione della fondazione per Hünkar, dove Ümit lo ha informato di essere incinta di quattro mesi, Demir affronta Sevda ammettendo di trovarsi in un enorme guaio. L&#x27;imprenditore le rivela di aver già assoldato in gran segreto un medico disposto a eseguire un&#x27;interruzione di gravidanza clandestina, ignorando le suppliche accorate di Sevda che lo implora di fermarsi. Convinto che la giovane stia usando il bambino al solo scopo di vendicarsi di lui, Demir agisce alle spalle di Züleyha e pianifica il sequestro: mentre Ümit si trova alla guida, un uomo nascosto sui sedili posteriori si alza all&#x27;improvviso, le punta una pistola alla tempia e la addormenta per condurla nello studio medico.</p>
 <p>Al suo risveglio nello studio medico clandestino, Ümit scopre di essere caduta in una trappola terribile, ma la situazione viene risolta dall&#x27;arrivo improvviso delle forze dell&#x27;ordine, che irrompono nella struttura prima che il medico possa procedere con l&#x27;intervento coatto. Dopo l&#x27;arresto dell&#x27;aggressore, la ragazza guadagna l&#x27;uscita dove trova ad attenderla Sevda a bordo della propria vettura. La donna la fa salire immediatamente in macchina e le confessa di essere stata lei stessa a chiamare la polizia dopo non essere riuscita a far ragionare Demir. Successivamente Sevda accompagna Ümit da Fekeli, supplicandolo di nasconderla e ospitarla nella sua dimora per qualche giorno, con l&#x27;obiettivo di guadagnare il tempo necessario per farla sparire definitivamente da Çukurova e metterla in salvo.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Perché Demir decide di cacciare Sevda dalla tenuta</h2>
+<h2 id="c7">Perché Demir decide di cacciare Sevda dalla tenuta</h2>
 <p>A infliggere il colpo definitivo alla permanenza di Sevda presso la tenuta è di nuovo Şermin, la quale porta a Demir una copia del documento d&#x27;identità appartenente a Ümit. La donna mostra con insistenza come il nome della madre sia Fatma Özkan, ovvero la medesima identità riportata sulla carta di Sevda. Sconvolto dalla scoperta, Demir ferma la donna mentre sta preparando le valigie nella sua stanza, la trascina con la forza verso la macchina e la accusa di aver cospirato nell&#x27;ombra per distruggere la sua vita, a dispetto del fatto che fosse stata sempre accolta e considerata come una seconda madre. Inutili risultano i tentativi di difesa di Sevda, che giura di aver appreso la verità soltanto recentemente e di aver fatto il possibile per fermare la figlia.</p>
 <p>Davanti agli sguardi di tutti gli stanti, Sevda vive momenti di autentica disperazione e arriva a compiere un gesto estremo, provando ad afferrare la pistola riposta nella cintura di Demir e supplicandolo tra le lacrime di ucciderla direttamente per porre fine a quel tormento. Sordo ad ogni preghiera e ormai privo di qualsiasi fiducia nei suoi confronti, Demir ordina ai propri servitori di afferrarla e gettarla brutalmente oltre i cancelli della tenuta. Mentre viene trascinata via senza pietà, la donna piange sconsolata senza pensare a se stessa, rivolgendo le sue ultime speranze al destino di Ümit: confida infatti che la giovane sia riuscita a mimetizzarsi tra i treni fermi alla stazione di Adana e a fuggire lontano dai pericoli.</p>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=SEyERa6JyuY" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/SEyERa6JyuY/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TERRA AMARA: Zuleyha spezza il cuore di Demir ma rifiuta di scappare con Yilmaz. Sevda è libera</span></a></li><li><a href="https://www.youtube.com/watch?v=g9IHEcEnUso" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/g9IHEcEnUso/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TERRA AMARA Anticipazione 9 Dicembre | Zuleyha non trova pace: Umit incinta e Demir furioso con</span></a></li><li><a href="https://www.youtube.com/watch?v=C5fqJNfonOI" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/C5fqJNfonOI/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TERRA AMARA Anticipazioni 16 Dicembre: Demir seppellisce Sevda e si tiene dentro un dolore imme</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Sevda meritava di essere cacciata così?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=BWzT0n0QlXU">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di Terra Amara</h2><div class="griglia"><article class="scheda">
+  <a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/"><div class="foto"><img src="/img/terra-amara-la-trama-completa-e-come-finisce.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></h3>
+    <div class="quando">30 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/"><div class="foto"><img src="https://i.ytimg.com/vi/_ypSJU-x7LY/hqdefault.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/"><div class="foto"><img src="https://i.ytimg.com/vi/B_MLx-0yh6M/hqdefault.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=Terra Amara 10 dicembre, Demir fa rapire Ümit per costringerla ad abortire: a salvarla è Sevda, che chiama la polizia e resta ad aspettarla fuori — https://serietvfans.com/terra-amara/terra-amara-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/terra-amara/terra-amara-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/terra-amara/terra-amara-la-trama-completa-e-come-finisce/&text=Terra Amara 10 dicembre, Demir fa rapire Ümit per costringerla ad abortire: a salvarla è Sevda, che chiama la polizia e resta ad aspettarla fuori" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">Terra Amara anticipazioni puntata di domenica 10 dicembre</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=BWzT0n0QlXU">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di Terra Amara</h3><ol class="numerata"><li><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></li><li><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></li><li><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></li><li><a href="/terra-amara/terra-amara-come-finisce-davvero-zuleyha-vince-tutto-e-resta-sola/">Terra Amara: come finisce davvero, Züleyha vince tutto e resta sola</a></li><li><a href="/terra-amara/terra-amara-come-muore-demir-yaman-chi-ha-dato-lordine-e-perche-doveva-essere-un-rapimento/">Terra Amara, come muore Demir Yaman: chi ha dato l&#x27;ordine e perché doveva essere un rapimento</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>Terra Amara anticipazioni puntata di domenica 10 dicembre</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su Terra Amara</h3><ul><li><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></li><li><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></li><li><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></li><li><a href="/terra-amara/terra-amara-come-finisce-davvero-zuleyha-vince-tutto-e-resta-sola/">Terra Amara: come finisce davvero, Züleyha vince tutto e resta sola</a></li><li><a href="/terra-amara/terra-amara-come-muore-demir-yaman-chi-ha-dato-lordine-e-perche-doveva-essere-un-rapimento/">Terra Amara, come muore Demir Yaman: chi ha dato l&#x27;ordine e perché doveva essere un rapimento</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

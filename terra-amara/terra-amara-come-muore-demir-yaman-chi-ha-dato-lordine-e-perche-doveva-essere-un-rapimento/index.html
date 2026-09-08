@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/terra-amara/">Terra Amara</a> › Terra Amara, come muore Demir Yaman: chi ha dato l&#x27;ordine e perché doveva essere un rapimento</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/terra-amara/">Terra Amara</a>
   <h1>Terra Amara, come muore Demir Yaman: chi ha dato l&#x27;ordine e perché doveva essere un rapimento</h1>
-  <div class="firma">Redazione Serie TV Fans · lunedì 24 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-24">lunedì 24 agosto 2026</time></span><span>aggiornato il 29 agosto 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Degli operai entrano in un edificio da demolire, aprono una cella frigorifera e dentro trovano un uomo che a Çukurova tutti davano per scomparso da mesi. È Demir Yaman — ed è il momento in cui Terra Amara smette di essere la storia di una sparizione e diventa la storia di un errore.</p><ol><li><a href="#c1">Gli operai aprono la cella frigorifera</a></li><li><a href="#c2">Il corpo non è stato fatto sparire: è stato conservato</a></li><li><a href="#c3">La sera del rapimento, l&#x27;ordine era portarlo via</a></li><li><a href="#c4">Il colpo che parte per sbaglio</a></li><li><a href="#c5">Chi ha dato l&#x27;ordine davvero</a></li><li><a href="#c6">Il mandante era già morto</a></li><li><a href="#c7">Züleyha aspetta senza sapere niente</a></li><li><a href="#c8">La catena completa, dall&#x27;ultimo al primo</a></li><li><a href="#c9">A chi doveva servire quel corpo</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>Terra Amara</strong> — Serie conclusa in Italia · tutte le puntate su Mediaset Infinity</span></div>
   
-  <p class="occhiello">Degli operai entrano in un edificio da demolire, aprono una cella frigorifera e dentro trovano un uomo che a Çukurova tutti davano per scomparso da mesi. È Demir Yaman — ed è il momento in cui Terra Amara smette di essere la storia di una sparizione e diventa la storia di un errore.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: Terra Amara, come muore Demir Yaman: chi ha dato l&#x27;ordine e perché doveva essere un rapimento" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/JEs9TXxg0go/maxresdefault.jpg" alt="Terra Amara, come muore Demir Yaman: chi ha dato l&#x27;ordine e perché doveva essere un rapimento" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/JEs9TXxg0go/hqdefault.jpg 480w, https://i.ytimg.com/vi/JEs9TXxg0go/sddefault.jpg 640w, https://i.ytimg.com/vi/JEs9TXxg0go/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/JEs9TXxg0go/hqdefault.jpg&quot;, &quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,7 +409,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>Una squadra di operai arriva davanti a un edificio da buttare giù. Roba di ordinaria amministrazione: si entra, si controlla che dentro non sia rimasto niente, e poi si demolisce.</strong></p>
-  <h2>Gli operai aprono la cella frigorifera</h2>
+  <h2 id="c1">Gli operai aprono la cella frigorifera</h2>
 <p>In una delle stanze c&#x27;è una cella frigorifera. La aprono.</p>
 <p>E dentro c&#x27;è un uomo che a Çukurova tutti davano per scomparso da mesi.</p>
 <p>Quell&#x27;uomo è Demir Yaman. E quello è il momento in cui Terra Amara smette di essere la storia di una sparizione e diventa la storia di un errore.</p>
@@ -367,34 +417,34 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>Oggi risaliamo la catena al contrario. Partiamo dagli operai che aprono quella cella e torniamo indietro, un passaggio alla volta, fino alla persona che ha messo in moto tutto. E vi avviso subito: in fondo alla catena non c&#x27;è il nome che vi aspettate.</p>
 <p>Fermiamoci un attimo su questo dettaglio, perché il pubblico l&#x27;ha guardato come una cattiveria gratuita e invece è la cosa più fredda di tutta la vicenda.</p>
-<h2>Il corpo non è stato fatto sparire: è stato conservato</h2>
+<h2 id="c2">Il corpo non è stato fatto sparire: è stato conservato</h2>
 <p>Quel corpo non è stato nascosto per farlo sparire. Se volevi far sparire un uomo a Çukurova, avevi la campagna, avevi il fiume, avevi cento posti migliori di un frigorifero dentro un edificio in centro.</p>
 <p>Il corpo è stato messo in una cella frigorifera per conservarlo.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>L&#x27;ordine, quello di nasconderlo lì, arriva da Abdülkadir e a eseguirlo è Bedir. E il ragionamento dietro è agghiacciante nella sua praticità: quel cadavere poteva ancora servire. Un corpo che si ritrova quando fa comodo a te, e non quando capita, è una carta da giocare. Finché nessuno lo trova, la moglie di quell&#x27;uomo continua ad aspettare. E una donna che aspetta è una donna che non fa domande giuste.</p>
 <p>Ecco perché a Çukurova sono passati mesi in cui tutti parlavano di Demir al presente.</p>
 <p>Ma se il corpo è stato conservato per servire più avanti, allora vuol dire che chi lo ha nascosto non aveva previsto di doverlo nascondere. E qui c&#x27;è il secondo passo indietro. Quella sera, cosa doveva succedere davvero?</p>
-<h2>La sera del rapimento, l&#x27;ordine era portarlo via</h2>
+<h2 id="c3">La sera del rapimento, l&#x27;ordine era portarlo via</h2>
 <p>Gli uomini che vanno a prendere Demir Yaman hanno un compito solo. Portarlo via. Non è una mia interpretazione: è quello che la serie racconta, ed è il motivo per cui poi va tutto a rotoli.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>Perché Demir non è il tipo che sale in macchina e sta buono. È l&#x27;uomo che per tutta Terra Amara ha risolto ogni cosa alzandosi in piedi per primo. E anche quella sera fa esattamente quello che ha sempre fatto: reagisce. Prova a prendere la pistola di uno dei due, quella di Lutfì.</p>
-<h2>Il colpo che parte per sbaglio</h2>
+<h2 id="c4">Il colpo che parte per sbaglio</h2>
 <p>Parte un colpo. E Demir Yaman muore così, in un modo che non ha niente della morte che uno come lui si sarebbe aspettato: senza un nemico davanti, senza una resa dei conti, per una mano che scivola su un&#x27;arma.</p>
 <p>Il personaggio più temuto della serie, quello per cui a Çukurova la gente abbassava la voce, non viene ucciso da un rivale. Viene ucciso per sbaglio, da due uomini che non erano nemmeno arrivati per quello, e che nel momento in cui si accorgono di cosa hanno combinato hanno un solo problema: cosa facciamo adesso del corpo.</p>
 <p>Da lì nasce la cella frigorifera. Non era un piano. Era una toppa.</p>
 <p>Però una domanda resta in piedi, ed è quella che tiene su tutto il resto: chi li aveva mandati?</p>
-<h2>Chi ha dato l&#x27;ordine davvero</h2>
+<h2 id="c5">Chi ha dato l&#x27;ordine davvero</h2>
 <p>Terzo passo: chi ha dato l&#x27;ordine di rapirlo.</p>
 <p>L&#x27;ordine operativo arriva da Abdülkadir, che nella serie è il socio in affari di Hakan. Ed è qui che quasi tutti si fermano, perché a quel punto viene naturale dire: ecco, è stato Hakan.</p>
 <p>Solo che Abdülkadir non stava facendo un favore a Hakan. Stava eseguendo la volontà di un&#x27;altra persona. Il nome è Erkan Gümüşoğlu, ed è il fratello di Hakan.</p>
-<h2>Il mandante era già morto</h2>
+<h2 id="c6">Il mandante era già morto</h2>
 <p>E adesso tenetevi forte, perché la cosa che rende questa storia una tragedia vera è che Erkan, quando Demir viene rapito, è già morto.</p>
 <p>Erkan muore investito da Fekeli. Il rapimento di Demir è la conseguenza di quella morte: è un conto aperto da qualcuno che non c&#x27;è più, portato avanti da un uomo che quel conto non l&#x27;ha aperto lui.</p>
 <p>Fermatevi un secondo su questa catena, perché è perfetta nella sua crudeltà. Demir Yaman muore per sbaglio, durante un rapimento ordinato da un uomo già morto, eseguito da persone che non lo odiavano, e finisce in un frigorifero di un terzo che pensava di poterci guadagnare.</p>
 <p>In tutta questa fila non c&#x27;è una sola persona che quella sera volesse la morte di Demir. E lui è morto lo stesso.</p>
 <p>Adesso ditemi la vostra, perché su questo il pubblico si spacca sempre in due.</p>
 <p>Secondo voi Demir Yaman è una VITTIMA o è uno che si è tirato addosso tutto quanto? C&#x27;è chi dice che ha passato tre stagioni a farsi nemici e che prima o poi il conto doveva arrivare, e c&#x27;è chi dice che l&#x27;uomo di cui parliamo alla fine è stato ammazzato per un incidente, in una faccenda che non lo riguardava nemmeno.</p>
-<h2>Züleyha aspetta senza sapere niente</h2>
+<h2 id="c7">Züleyha aspetta senza sapere niente</h2>
 <p>Quarto passo: la persona che ha pagato il prezzo più alto senza sapere niente.</p>
 <p>Perché mentre succede tutto questo, mentre il corpo di suo marito sta in una cella frigorifera, lei è a Çukurova e non sa niente. Aspetta. Cerca. Tiene in piedi una casa, dei figli e un&#x27;azienda con la testa di una che ancora spera.</p>
 <p>E c&#x27;è una cosa che fa male più di tutto il resto, ed è questa: nel tempo in cui Züleyha non sa dove sia finito Demir, la sua vita si intreccia con quella di Hakan Gümüşoğlu.</p>
@@ -402,9 +452,9 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <p>Ora, attenzione, e ci tengo che sia chiarissimo: quello che sto per dire è una mia lettura, non un fatto della trama. La serie non dice mai che Hakan abbia voluto la morte di Demir, e non lo dico nemmeno io.</p>
 <p>Però secondo me è proprio questa la ragione per cui il pubblico non ha mai perdonato del tutto quel matrimonio. Non è gelosia per Demir. È che quella storia nasce dentro un buco di informazione: Züleyha decide con quello che sa, e quello che sa è pochissimo. Chi guarda da fuori sa più cose di lei, e vedere una persona scegliere con metà delle carte in mano è insopportabile.</p>
 <p>E infatti, quando la verità viene a galla, non ripara più niente. Il tempo in cui si poteva fare qualcosa era passato da un pezzo.</p>
-<h2>La catena completa, dall&#x27;ultimo al primo</h2>
+<h2 id="c8">La catena completa, dall&#x27;ultimo al primo</h2>
 <p>Adesso mettiamo in fila tutta la catena, dall&#x27;ultimo al primo, così come l&#x27;abbiamo risalita.</p>
-<h2>A chi doveva servire quel corpo</h2>
+<h2 id="c9">A chi doveva servire quel corpo</h2>
 <p>Degli operai trovano un corpo in una cella frigorifera. Il corpo è stato messo lì da Bedir, su ordine di Abdülkadir, per tenerselo buono in caso servisse. Il corpo è di un uomo ucciso per errore durante un rapimento. Il rapimento era stato ordinato per conto di Erkan Gümüşoğlu, che a quel punto era già morto, ammazzato in un incidente causato da Fekeli. E in cima a tutto, la moglie di quell&#x27;uomo passa mesi a cercarlo mentre siede allo stesso tavolo del fratello di chi ha dato il via a tutto.</p>
 <p>Ecco perché, quando qualcuno riassume questa parte di Terra Amara dicendo semplicemente &quot;Demir è stato ucciso&quot;, secondo me si perde la cosa più importante.</p>
 <p>Demir Yaman non è stato ucciso. È stato perso. Da persone che non sapevano cosa stavano facendo, per un conto aperto da un morto, e conservato in un frigorifero da qualcuno che ci vedeva un affare.</p>
@@ -414,19 +464,41 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=vkoVZKUB9bc" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/vkoVZKUB9bc/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TERRA AMARA Anticipazioni: Umit informa Demir e Zuleyha di essere incinta | Demir diventa una f</span></a></li><li><a href="https://www.youtube.com/watch?v=C5fqJNfonOI" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/C5fqJNfonOI/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TERRA AMARA Anticipazioni 16 Dicembre: Demir seppellisce Sevda e si tiene dentro un dolore imme</span></a></li><li><a href="https://www.youtube.com/watch?v=Zv-kQG3pde8" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/Zv-kQG3pde8/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TERRA AMARA Anticipazioni:  Nuovo arrivo a Cukurova! Qualcuno vuole vendicarsi degli Yaman. Chi</span></a></li></ul></div>
   
+  <section class="correlati-serie"><h2>Altre anticipazioni di Terra Amara</h2><div class="griglia"><article class="scheda">
+  <a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/"><div class="foto"><img src="/img/terra-amara-la-trama-completa-e-come-finisce.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></h3>
+    <div class="quando">30 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/"><div class="foto"><img src="https://i.ytimg.com/vi/_ypSJU-x7LY/hqdefault.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/"><div class="foto"><img src="https://i.ytimg.com/vi/B_MLx-0yh6M/hqdefault.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=Terra Amara, come muore Demir Yaman: chi ha dato l&#x27;ordine e perché doveva essere un rapimento — https://serietvfans.com/terra-amara/terra-amara-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/terra-amara/terra-amara-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/terra-amara/terra-amara-la-trama-completa-e-come-finisce/&text=Terra Amara, come muore Demir Yaman: chi ha dato l&#x27;ordine e perché doveva essere un rapimento" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">TERRA AMARA: Demir non doveva morire, l&#x27;ordine era rapirlo — non ucciderlo 😱</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=JEs9TXxg0go">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di Terra Amara</h3><ol class="numerata"><li><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></li><li><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></li><li><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></li><li><a href="/terra-amara/terra-amara-come-finisce-davvero-zuleyha-vince-tutto-e-resta-sola/">Terra Amara: come finisce davvero, Züleyha vince tutto e resta sola</a></li><li><a href="/terra-amara/terra-amara-chi-era-davvero-mehmet-kara-chi-lo-scopri-e-chi-scelse-di-tacere/">Terra Amara, chi era davvero Mehmet Kara: chi lo scoprì e chi scelse di tacere</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>TERRA AMARA: Demir non doveva morire, l&#x27;ordine era rapirlo — non ucciderlo 😱</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su Terra Amara</h3><ul><li><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></li><li><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></li><li><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></li><li><a href="/terra-amara/terra-amara-come-finisce-davvero-zuleyha-vince-tutto-e-resta-sola/">Terra Amara: come finisce davvero, Züleyha vince tutto e resta sola</a></li><li><a href="/terra-amara/terra-amara-chi-era-davvero-mehmet-kara-chi-lo-scopri-e-chi-scelse-di-tacere/">Terra Amara, chi era davvero Mehmet Kara: chi lo scoprì e chi scelse di tacere</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

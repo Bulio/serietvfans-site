@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/segreti-di-famiglia/">Segreti di Famiglia</a> › Segreti di Famiglia, Çınar racconta la notte dell&#x27;omicidio: la telefonata di İnci, i vestiti sporchi di sangue e il taxi preso da sola</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/segreti-di-famiglia/">Segreti di Famiglia</a>
   <h1>Segreti di Famiglia, Çınar racconta la notte dell&#x27;omicidio: la telefonata di İnci, i vestiti sporchi di sangue e il taxi preso da sola</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>8 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">La puntata del 7 luglio scioglie il nodo centrale della serie. Per far parlare Çınar, Ceylin ricorre a una bugia coperta da Eren: gli fa credere di aver convinto Ilgaz a non denunciarlo per la droga. E allora il ragazzo racconta tutto — la chiamata di İnci in fuga dopo l&#x27;aggressione, i vestiti sporchi di sangue, i soldi presi al padre, il recupero della droga a casa di Ozan mentre lei rientrava in taxi da sola. Poi scoppia in lacrime: se l&#x27;avesse accompagnata, forse sarebbe ancora viva.</p><ol><li><a href="#c1">Gli alibi che crollano uno dopo l&#x27;altro</a></li><li><a href="#c2">La confessione di Nuran e Ozan</a></li><li><a href="#c3">Chi è Çınar, e perché la sua versione arriva così tardi</a></li><li><a href="#c4">L&#x27;orsetto, il GPS e la denuncia di Ilgaz</a></li><li><a href="#c5">La bugia di Ceylin e le lacrime finali</a></li><li><a href="#c6">Perché conta: il racconto sposta l&#x27;orologio, non il colpevole</a></li><li><a href="#c7">Come Metin ha incastrato Zafer per la moglie</a></li><li><a href="#c8">Perché Osman nascondeva la sua relazione in albergo</a></li><li><a href="#c9">Cosa nascondeva Ilgaz nell&#x27;orsetto di peluche di Defne</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>Segreti di Famiglia</strong> — Rete 4 · in streaming su Mediaset Infinity</span></div>
   
-  <p class="occhiello">La puntata del 7 luglio scioglie il nodo centrale della serie. Per far parlare Çınar, Ceylin ricorre a una bugia coperta da Eren: gli fa credere di aver convinto Ilgaz a non denunciarlo per la droga. E allora il ragazzo racconta tutto — la chiamata di İnci in fuga dopo l&#x27;aggressione, i vestiti sporchi di sangue, i soldi presi al padre, il recupero della droga a casa di Ozan mentre lei rientrava in taxi da sola. Poi scoppia in lacrime: se l&#x27;avesse accompagnata, forse sarebbe ancora viva.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: Segreti di Famiglia, Çınar racconta la notte dell&#x27;omicidio: la telefonata di İnci, i vestiti sporchi di sangue e il taxi preso da sola" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/xOKHNr-0Lfs/maxresdefault.jpg" alt="Segreti di Famiglia, Çınar racconta la notte dell&#x27;omicidio: la telefonata di İnci, i vestiti sporchi di sangue e il taxi preso da sola" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/xOKHNr-0Lfs/hqdefault.jpg 480w, https://i.ytimg.com/vi/xOKHNr-0Lfs/sddefault.jpg 640w, https://i.ytimg.com/vi/xOKHNr-0Lfs/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/xOKHNr-0Lfs/hqdefault.jpg&quot;, &quot;/fallback/segreti-di-famiglia.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,46 +409,68 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>Il colpo di scena parallelo: Metin confessa al figlio perché anni fa incastrò Zafer — un debito contratto per pagare le cure alla moglie malata.</strong></p>
-  <h2>Gli alibi che crollano uno dopo l&#x27;altro</h2>
+  <h2 id="c1">Gli alibi che crollano uno dopo l&#x27;altro</h2>
 <p>La giornata comincia con l&#x27;alibi del padre di Ceylin, confermato da tre testimoni che dicono di averlo visto bere in un bar: peccato che lei sappia benissimo che Zafer non beve, e quando lo affronta lui si rifiuta di spiegare. Poi tocca a Osman, che dichiara di essere stato in albergo per lavoro — finché Eren non tira fuori i messaggi scambiati con İnci, da cui emerge che la ragazza aveva scoperto un segreto pericoloso ed era stata minacciata di morte. Messo alle strette, Osman nega l&#x27;omicidio ma confessa il vero motivo del falso alibi: era in albergo con la sua amante, un&#x27;amica di famiglia.</p>
-<h2>La confessione di Nuran e Ozan</h2>
+<h2 id="c2">La confessione di Nuran e Ozan</h2>
 <p>In commissariato arriva anche il tassello decisivo: Ozan e la moglie Nuran raccontano cos&#x27;è successo quella sera. İnci era a casa di Ozan, con cui aveva una relazione clandestina; Nuran è rientrata senza preavviso, li ha sorpresi e ha aggredito la ragazza con una violenza incontrollabile, finché il marito non è riuscito a separarle permettendole di fuggire. Poi ha gettato nella spazzatura tutto ciò che İnci aveva lasciato — vestiti, scarpe, denaro — ed è uscita in taxi. Ore dopo, due uomini si sono introdotti in casa e hanno ferito Ozan durante una colluttazione.</p>
-<h2>Chi è Çınar, e perché la sua versione arriva così tardi</h2>
+<h2 id="c3">Chi è Çınar, e perché la sua versione arriva così tardi</h2>
 <p>Il ragazzo che regge l&#x27;intera puntata è il fratello di Ilgaz, e questo spiega buona parte del suo silenzio. Çınar è cresciuto con la sensazione di non essere mai stato all&#x27;altezza del fratello davanti al padre, e quando l&#x27;ago della bilancia è la parola di un procuratore contro quella di un giovane con addosso un&#x27;accusa di droga, tacere sembra l&#x27;unica mossa disponibile. Con Ceylin, del resto, aveva già fatto un passo: chiusa la conversazione in cella, le aveva lasciato l&#x27;unica indicazione utile di quelle settimane, un palazzo di quattro piani e un uomo al terzo che quella notte era presente. Il resto se l&#x27;era tenuto. Anche l&#x27;orsetto di peluche non è un dettaglio da cronaca: era il regalo per la piccola Defne, l&#x27;unica cosa in quella casa che nessuno si sarebbe permesso di aprire.</p>
-<h2>L&#x27;orsetto, il GPS e la denuncia di Ilgaz</h2>
+<h2 id="c4">L&#x27;orsetto, il GPS e la denuncia di Ilgaz</h2>
 <p>Sul fronte famiglia, Ilgaz intuisce dove il fratello nasconde la droga: nell&#x27;orsetto di peluche che Çınar aveva regalato alla piccola Defne e che nessun altro può toccare. Lo apre con Ceylin e trova la conferma dei suoi timori. Va in carcere, affronta il fratello — che si difende dicendo di non aver mai retto il confronto con lui agli occhi del padre — e gli annuncia che lo denuncerà. Poi tende una trappola: compra un orsetto identico, ci nasconde dentro un GPS e attende Serdar, che si introduce in casa per recuperarlo e viene neutralizzato e consegnato alla polizia.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>La bugia di Ceylin e le lacrime finali</h2>
+<h2 id="c5">La bugia di Ceylin e le lacrime finali</h2>
 <p>Non riuscendo a fermare la denuncia, Ceylin sceglie la menzogna: si presenta in carcere con Eren, che avvalora ogni sua parola, e dice a Çınar di aver convinto Ilgaz a lasciar perdere. Il ragazzo cede e ricostruisce tutto — İnci lo aveva chiamato dopo l&#x27;aggressione chiedendogli soldi e vestiti puliti, lui aveva preso anche la carta di credito del padre e si era offerto di accompagnarla, ma lei aveva preferito il taxi e lo aveva mandato con Serdar a recuperare la droga rimasta a casa di Ozan. Alla fine del racconto Çınar crolla: se avesse insistito per riportarla a casa, forse İnci sarebbe ancora viva. E Ceylin piange con lui.</p>
-<h2>Perché conta: il racconto sposta l&#x27;orologio, non il colpevole</h2>
+<h2 id="c6">Perché conta: il racconto sposta l&#x27;orologio, non il colpevole</h2>
 <p>Quello che Çınar consegna non è una confessione, è una mappa temporale — e da qui in avanti diventa lo strumento con cui si misura ogni alibi. Adesso si sa dove İnci è stata e a che ora, si sa che è salita da sola su un taxi con vestiti presi in prestito, e soprattutto si sa che l&#x27;ultima porta a cui ha bussato non è ancora comparsa nel racconto. La domanda si sposta lì. C&#x27;è poi il modo in cui quelle parole sono state ottenute: Ceylin le ha comprate con una bugia, e le bugie in questa serie tornano sempre al mittente, di solito nel momento peggiore. E sullo sfondo si muove il colpo di scena parallelo, quello che lega le due famiglie molto prima dell&#x27;omicidio: se il padre di Ilgaz ha incastrato il padre di Ceylin per pagare le cure alla moglie, allora il debito tra questi due cognomi non nasce con İnci. Viene da molto più lontano.</p>
-<h2>Come Metin ha incastrato Zafer per la moglie</h2>
+<h2 id="c7">Come Metin ha incastrato Zafer per la moglie</h2>
 <p>Il passato oscuro tra le due famiglie emerge con la drammatica confessione di Metin al figlio, un segreto mantenuto per anni che stravolge la comprensione dei rapporti personali. Il padre di Ilgaz ammette infatti di aver deliberatamente incastrato Zafer in seguito a un pesante debito finanziario, contratto unicamente per riuscire a saldare le costosissime cure mediche destinate alla moglie gravemente malata. Questa rivelazione inaspettata dimostra come il legame morboso e conflittuale che unisce i due cognomi non sia affatto nato con l&#x27;omicidio di İnci, ma affondi le sue radici in una drammatica scelta compiuta molto tempo prima. La disperazione personale di Metin ha fin dall&#x27;inizio segnato il destino di Zafer, trascinandolo in una trappola ingiusta.</p>
 <p>Sul fronte del presente, l&#x27;alibi fornito da Zafer crolla miseramente sotto le verifiche di Ceylin. La giornata comincia con tre presunti testimoni pronti ad affermare di aver visto l&#x27;uomo bere all&#x27;interno di un bar nella notte del delitto. La figlia, tuttavia, sa benissimo che il padre non consuma mai bevande alcoliche e comprende subito che si tratta di una totale finzione. Quando Ceylin decide di affrontarlo apertamente per chiedergli conto di una bugia così evidente, Zafer rifiuta ostinatamente di dare qualunque spiegazione logica. Il suo ostinato silenzio, sommato al torto subito in passato da parte di Metin, addensa ulteriori ombre attorno alla sua figura e ai suoi reali movimenti in quella tragica serata.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Perché Osman nascondeva la sua relazione in albergo</h2>
+<h2 id="c8">Perché Osman nascondeva la sua relazione in albergo</h2>
 <p>Un altro alibi destinato a sbriciolarsi velocemente è quello di Osman, il quale aveva inizialmente dichiarato agli inquirenti di essersi trovato in una stanza d&#x27;albergo per motivi strettamente legati al suo lavoro. La svolta arriva grazie al decisivo intervento di Eren, che riesce a recuperare la sequenza di messaggi scambiati tra l&#x27;uomo e İnci. Da quel materiale emerge chiaramente che la giovane vittima era venuta a conoscenza di un segreto estremamente pericoloso ed era stata persino minacciata di morte. Messo con le spalle al muro dalle prove, Osman nega con fermezza qualsiasi coinvolgimento diretto nel delitto, ma è costretto a confessare la vera ragione del suo falso alibi: si trovava in albergo con la sua amante, che è un&#x27;amica di famiglia.</p>
 <p>Le testimonianze raccolte in commissariato completano il quadro delle ore precedenti alla scomparsa della ragazza, partendo dal violento scontro avvenuto a casa di Ozan. İnci manteneva una relazione clandestina con Ozan e si trovava all&#x27;interno della sua abitazione quando Nuran è rientrata all&#x27;improvviso e senza alcun preavviso. Vedendoli insieme, la donna ha reagito con una violenza incontrollabile aggredendo la giovane, finché il marito non è riuscito a separarle permettendo a İnci di scappare. Subito dopo, Nuran ha gettato nella spazzatura tutti gli oggetti personali lasciati dalla ragazza, compresi vestiti, scarpe e denaro, prima che la giovane si allontanasse definitivamente a bordo di un taxi da sola.</p>
-<h2>Cosa nascondeva Ilgaz nell&#x27;orsetto di peluche di Defne</h2>
+<h2 id="c9">Cosa nascondeva Ilgaz nell&#x27;orsetto di peluche di Defne</h2>
 <p>La svolta investigativa sulla presenza di sostanze illecite avviene quando Ilgaz intuisce il luogo in cui il fratello aveva nascosto la droga. Il giovane Çınar aveva infatti nascosto il carico all&#x27;interno dell&#x27;orsetto di peluche regalato alla piccola Defne, un oggetto considerato intoccabile da chiunque all&#x27;interno della casa. Aprire quel giocattolo insieme a Ceylin trasforma i sospetti in una dolorosa certezza. Successivamente, Ilgaz affronta il fratello direttamente in carcere; di fronte alle accuse, Çınar ammette di essersi sempre sentito inferiore e mai all&#x27;altezza del confronto con lui agli occhi del padre. Nonostante questo momento di sconforto, Ilgaz annuncia la volontà fermissima di denunciarlo alle autorità competenti.</p>
 <p>Determinatamente intenzionato a incastrare i complici, Ilgaz organizza una trappola posizionando un orsetto del tutto identico al precedente, nel quale inserisce nascostamente un dispositivo GPS. Quando Serdar si introduce nell&#x27;abitazione per recuperare la sostanza stupefacente, viene prontamente localizzato, neutralizzato e consegnato alla polizia. In precedenza, Çınar aveva fornito a Ceylin una pista fondamentale dalla sua cella, menzionando un palazzo di quattro piani e un uomo presente al terzo piano la notte dell&#x27;omicidio. Questo dettaglio, unito al viaggio fatto con Serdar a casa di Ozan su richiesta di İnci per recuperare la droga rimasta, fornisce un quadro temporale preciso per ricostruire gli ultimi spostamenti della ragazza prima del tragico epilogo.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   </div>
   
   <div class="riquadro"><h3>E secondo voi?</h3><p>Ceylin ha fatto bene a mentire pur di far parlare Çınar? E secondo voi chi ha davvero ucciso İnci, dopo che è scesa da quel taxi?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=xOKHNr-0Lfs">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di Segreti di Famiglia</h2><div class="griglia"><article class="scheda">
+  <a href="/segreti-di-famiglia/chi-ha-ucciso-engin-in-segreti-di-famiglia/"><div class="foto"><img src="/img/chi-ha-ucciso-engin-in-segreti-di-famiglia.jpg" alt="Segreti di Famiglia" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/segreti-di-famiglia.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Segreti di Famiglia</span>
+    <h3><a href="/segreti-di-famiglia/chi-ha-ucciso-engin-in-segreti-di-famiglia/">Chi ha ucciso Engin in Segreti di Famiglia: la verità sulla morte di Engin Tilmen e il piano che nessuno aveva previsto</a></h3>
+    <div class="quando">29 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/segreti-di-famiglia/segreti-di-famiglia-ceylin-recupera-dalla-spazzatura-lo-spazzolino-che-ilgaz-ave/"><div class="foto"><img src="https://i.ytimg.com/vi/BRxPNp4LTrw/hqdefault.jpg" alt="Segreti di Famiglia" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/segreti-di-famiglia.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Segreti di Famiglia</span>
+    <h3><a href="/segreti-di-famiglia/segreti-di-famiglia-ceylin-recupera-dalla-spazzatura-lo-spazzolino-che-ilgaz-ave/">Segreti di Famiglia, Ceylin recupera dalla spazzatura lo spazzolino che Ilgaz aveva buttato — e il DNA sotto le unghie di İnci ha un nome</a></h3>
+    <div class="quando">14 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/segreti-di-famiglia/segreti-di-famiglia-ceylin-scopre-chi-ha-ucciso-sua-sorella-il-posacenere-insang/"><div class="foto"><img src="https://i.ytimg.com/vi/NAKa2vFcVZQ/hqdefault.jpg" alt="Segreti di Famiglia" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/segreti-di-famiglia.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Segreti di Famiglia</span>
+    <h3><a href="/segreti-di-famiglia/segreti-di-famiglia-ceylin-scopre-chi-ha-ucciso-sua-sorella-il-posacenere-insang/">Segreti di Famiglia, Ceylin scopre chi ha ucciso sua sorella: il posacenere insanguinato, la barchetta di carta e la trappola sul terrazzo che smaschera Engin</a></h3>
+    <div class="quando">14 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=Segreti di Famiglia, Çınar racconta la notte dell&#x27;omicidio: la telefonata di İnci, i vestiti sporchi di sangue e il taxi preso da sola — https://serietvfans.com/segreti-di-famiglia/segreti-di-famiglia-cnar-racconta-la-notte-dellomicidio-la-telefonata-di-inci-i/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/segreti-di-famiglia/segreti-di-famiglia-cnar-racconta-la-notte-dellomicidio-la-telefonata-di-inci-i/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/segreti-di-famiglia/segreti-di-famiglia-cnar-racconta-la-notte-dellomicidio-la-telefonata-di-inci-i/&text=Segreti di Famiglia, Çınar racconta la notte dell&#x27;omicidio: la telefonata di İnci, i vestiti sporchi di sangue e il taxi preso da sola" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">CINAR RACCONTA TUTTO: ECCO COSA SUCCESSE QUELLA NOTTE...</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=xOKHNr-0Lfs">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di Segreti di Famiglia</h3><ol class="numerata"><li><a href="/segreti-di-famiglia/chi-ha-ucciso-engin-in-segreti-di-famiglia/">Chi ha ucciso Engin in Segreti di Famiglia: la verità sulla morte di Engin Tilmen e il piano che nessuno aveva previsto</a></li><li><a href="/segreti-di-famiglia/segreti-di-famiglia-ceylin-recupera-dalla-spazzatura-lo-spazzolino-che-ilgaz-ave/">Segreti di Famiglia, Ceylin recupera dalla spazzatura lo spazzolino che Ilgaz aveva buttato — e il DNA sotto le unghie di İnci ha un nome</a></li><li><a href="/segreti-di-famiglia/segreti-di-famiglia-ceylin-scopre-chi-ha-ucciso-sua-sorella-il-posacenere-insang/">Segreti di Famiglia, Ceylin scopre chi ha ucciso sua sorella: il posacenere insanguinato, la barchetta di carta e la trappola sul terrazzo che smaschera Engin</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>CINAR RACCONTA TUTTO: ECCO COSA SUCCESSE QUELLA NOTTE...</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su Segreti di Famiglia</h3><ul><li><a href="/segreti-di-famiglia/chi-ha-ucciso-engin-in-segreti-di-famiglia/">Chi ha ucciso Engin in Segreti di Famiglia: la verità sulla morte di Engin Tilmen e il piano che nessuno aveva previsto</a></li><li><a href="/segreti-di-famiglia/segreti-di-famiglia-ceylin-recupera-dalla-spazzatura-lo-spazzolino-che-ilgaz-ave/">Segreti di Famiglia, Ceylin recupera dalla spazzatura lo spazzolino che Ilgaz aveva buttato — e il DNA sotto le unghie di İnci ha un nome</a></li><li><a href="/segreti-di-famiglia/segreti-di-famiglia-ceylin-scopre-chi-ha-ucciso-sua-sorella-il-posacenere-insang/">Segreti di Famiglia, Ceylin scopre chi ha ucciso sua sorella: il posacenere insanguinato, la barchetta di carta e la trappola sul terrazzo che smaschera Engin</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/terra-amara/">Terra Amara</a> › Terra Amara, Fikret chiede a Fekeli di adottare Kerem Ali: vuole che il figlio di Yılmaz erediti tutto — ma la famiglia di Müjgan lo trascina in tribunale</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/terra-amara/">Terra Amara</a>
   <h1>Terra Amara, Fikret chiede a Fekeli di adottare Kerem Ali: vuole che il figlio di Yılmaz erediti tutto — ma la famiglia di Müjgan lo trascina in tribunale</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">L&#x27;uomo arrivato a Çukurova per distruggere il fratellastro finisce per fare la cosa più generosa dell&#x27;intera stagione. Dopo la morte di Müjgan nello schianto dell&#x27;aereo, Fikret chiede allo zio di poter crescere Kerem Ali — e aggiunge una richiesta che spiazza Fekeli: che sia lui ad adottarlo legalmente, così il bambino diventi erede della sua fortuna. Esattamente ciò che a Fikret non fu mai concesso.</p><ol><li><a href="#c1">La proposta di matrimonio che non fa in tempo</a></li><li><a href="#c2">L&#x27;ultimo confronto e la radio</a></li><li><a href="#c3">Chi è Fekeli, e perché quella richiesta lo colpisce nel punto esatto</a></li><li><a href="#c4">«Adottalo tu»</a></li><li><a href="#c5">Gli avvocati alla porta del ranch</a></li><li><a href="#c6">Perché conta: non è una formalità affettiva, è una questione di eredità</a></li><li><a href="#c7">Come Lütfiye e Fekeli cercano di fermare Fikret</a></li><li><a href="#c8">Cosa spinge il fratello di Müjgan a fare ricorso</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>Terra Amara</strong> — Serie conclusa in Italia · tutte le puntate su Mediaset Infinity</span></div>
   
-  <p class="occhiello">L&#x27;uomo arrivato a Çukurova per distruggere il fratellastro finisce per fare la cosa più generosa dell&#x27;intera stagione. Dopo la morte di Müjgan nello schianto dell&#x27;aereo, Fikret chiede allo zio di poter crescere Kerem Ali — e aggiunge una richiesta che spiazza Fekeli: che sia lui ad adottarlo legalmente, così il bambino diventi erede della sua fortuna. Esattamente ciò che a Fikret non fu mai concesso.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: Terra Amara, Fikret chiede a Fekeli di adottare Kerem Ali: vuole che il figlio di Yılmaz erediti tutto — ma la famiglia di Müjgan lo trascina in tribunale" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/-iqesX1dF8Q/maxresdefault.jpg" alt="Terra Amara, Fikret chiede a Fekeli di adottare Kerem Ali: vuole che il figlio di Yılmaz erediti tutto — ma la famiglia di Müjgan lo trascina in tribunale" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/-iqesX1dF8Q/hqdefault.jpg 480w, https://i.ytimg.com/vi/-iqesX1dF8Q/sddefault.jpg 640w, https://i.ytimg.com/vi/-iqesX1dF8Q/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/-iqesX1dF8Q/hqdefault.jpg&quot;, &quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,25 +409,25 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>Dagli Stati Uniti il fratello di Müjgan chiede al tribunale la custodia del piccolo.</strong></p>
-  <h2>La proposta di matrimonio che non fa in tempo</h2>
+  <h2 id="c1">La proposta di matrimonio che non fa in tempo</h2>
 <p>Arrivato a Çukurova con un unico obiettivo — mandare in pezzi la vita di Demir — Fikret non riesce a nascondere a lungo quello che prova per Müjgan. All&#x27;inizio mette da parte tutto per dedicarsi alla vendetta, poi il cambiamento diventa evidente: è pronto a ricominciare, e le chiede di sposarlo. Ma la dottoressa aveva già deciso di voltare pagina altrove: dopo la morte di Yılmaz ha accettato un incarico da primario a Istanbul, e ha chiesto a Fekeli di tenerle il bambino qualche giorno per sbrigare le pratiche.</p>
-<h2>L&#x27;ultimo confronto e la radio</h2>
+<h2 id="c2">L&#x27;ultimo confronto e la radio</h2>
 <p>Prima di partire Müjgan ha un ultimo faccia a faccia con Züleyha: si rinfacciano tutto il male che si sono fatte, promettendosi di non dimenticarlo mai. Poi sale sull&#x27;aereo, mentre Züleyha tira un sospiro di sollievo all&#x27;idea di non avere più la rivale accanto. Poco dopo il decollo il velivolo precipita in mare, e non c&#x27;è un solo sopravvissuto. La notizia arriva dalla radio. Per Fikret è un crollo verticale; per Fekeli, che aveva già dovuto seppellire il figlioccio, è un secondo lutto — e per Kerem Ali significa restare orfano di entrambi i genitori.</p>
-<h2>Chi è Fekeli, e perché quella richiesta lo colpisce nel punto esatto</h2>
+<h2 id="c3">Chi è Fekeli, e perché quella richiesta lo colpisce nel punto esatto</h2>
 <p>Ali Rahmet Fekeli non è soltanto lo zio a cui si chiede un favore: è l&#x27;uomo che a Çukurova ha passato la vita a fare da padre ai figli degli altri. Yılmaz era il suo figlioccio, ed è toccato a lui seppellirlo. È stato lui a far arrivare in paese Lütfiye, sperando che una zia riuscisse a fermare la vendetta di un nipote che stava bruciando tutto; ed è stato lui, quando Fikret ha finalmente ammesso quello che aveva fatto, a scegliere l&#x27;abbraccio invece della porta. In quella casa tutti sanno anche un&#x27;altra cosa, che nessuno dice ad alta voce: il suo cuore è fragile, e i lutti che ha già incassato sono più di quelli che un uomo dovrebbe reggere. Sentirsi chiedere di adottare il figlio del figlioccio morto è, per lui, l&#x27;unica proposta che non poteva rifiutare.</p>
-<h2>«Adottalo tu»</h2>
+<h2 id="c4">«Adottalo tu»</h2>
 <p>È qui che Fikret sorprende tutti. Chiede allo zio di poter crescere il bambino, e poi gli domanda di adottarlo legalmente lui stesso, in modo che Kerem Ali diventi erede della fortuna costruita in una vita di lavoro. Non è un calcolo: è il gesto di un uomo che sta dando al figlio di un altro esattamente ciò che a lui, da bambino, fu negato. Fekeli accetta senza alcuna obiezione.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Gli avvocati alla porta del ranch</h2>
+<h2 id="c5">Gli avvocati alla porta del ranch</h2>
 <p>La strada, però, si rivela più tortuosa del previsto. I parenti di Müjgan che vivono negli Stati Uniti bloccano la procedura: il fratello, con cui lei non aveva rapporti, chiede in tribunale la custodia del piccolo, e manda un avvocato al ranch per portarlo via. Fikret, Fekeli e Lütfiye glielo impediscono; l&#x27;uomo se ne va a mani vuote, ma promette che si vedranno davanti al giudice. E come se non bastasse, la donna che si occupa del bambino avverte che ha la febbre alta e continua a vomitare: corsa al pronto soccorso. In quelle ore Fikret dimostra fino in fondo quanto sia cambiato rispetto all&#x27;uomo arrivato in paese per vendicarsi.</p>
-<h2>Perché conta: non è una formalità affettiva, è una questione di eredità</h2>
+<h2 id="c6">Perché conta: non è una formalità affettiva, è una questione di eredità</h2>
 <p>Fikret avrebbe potuto limitarsi a crescere il bambino, e nessuno avrebbe avuto niente da obiettare. Ha chiesto un&#x27;altra cosa — l&#x27;adozione legale — e la differenza sta tutta in una parola: erede. È esattamente il punto in cui la vicenda smette di essere privata: quel bambino diventa il destinatario di una fortuna costruita in una vita, ed è per questo che dagli Stati Uniti si muove un fratello che con Müjgan non aveva rapporti. Chi segue la serie da tempo ci vede una ripetizione sinistra: non è la prima volta che il nome di Kerem Ali compare in una discussione sui soldi invece che sul suo bene — era già successo con il fondo che gli era stato messo da parte, diventato l&#x27;ossessione di chi in famiglia aspettava la propria parte. La causa in tribunale, insomma, non decide dove dormirà il bambino: decide chi metterà le mani su ciò che gli è stato destinato.</p>
-<h2>Come Lütfiye e Fekeli cercano di fermare Fikret</h2>
+<h2 id="c7">Come Lütfiye e Fekeli cercano di fermare Fikret</h2>
 <p>Quando Fikret è arrivato a Çukurova, il suo unico scopo era distruggere la vita del fratellastro Demir, alimentato da un rancore profondo che rischiava di travolgere chiunque. Di fronte a questa minaccia, Ali Rahmet Fekeli ha capito di non poter gestire la situazione da solo e ha fatto arrivare in paese la zia Lütfiye. La speranza era che la presenza della donna riuscisse ad arginare la sete di vendetta del nipote prima del punto di non ritorno. Questo intervento ha mostrato la grande umanità di Fekeli, pronto a proteggere la propria famiglia.</p>
 <p>Nel momento in cui Fikret ha finalmente confessato le sue azioni, Fekeli ha sorpreso tutti reagendo in modo inaspettato. Invece di cacciarlo via, ha scelto il perdono e l&#x27;affetto, accogliendolo con un abbraccio sincero che ha segnato un importante punto di svolta. Fekeli ha vissuto anni segnati da un dolore indicibile, primo fra tutti quello per la perdita del figlioccio Yılmaz, che ha dovuto seppellire di persona. Con un cuore fragile e provato da troppi lutti, l&#x27;uomo ha dimostrato ancora una volta la sua capacità eccezionale di fare da padre ai figli degli altri.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>Il cambiamento di Fikret si è consolidato quando i sentimenti per Müjgan sono diventati evidenti, spingendolo a mettere da parte la vendetta contro Demir. Convinto di poter ricominciare, le ha proposto di sposarlo, ignaro che la dottoressa avesse già scelto di trasferirsi per un lavoro da primario a Istanbul dopo la morte di Yılmaz. Müjgan ha affidato temporaneamente Kerem Ali a Fekeli per sbrigare le ultime pratiche, ma il tragico incidente aereo ha spezzato ogni piano. La drammatica notizia appresa dalla radio ha lasciato il bambino orfano e la famiglia nello sconforto.</p>
-<h2>Cosa spinge il fratello di Müjgan a fare ricorso</h2>
+<h2 id="c8">Cosa spinge il fratello di Müjgan a fare ricorso</h2>
 <p>La decisione di Fikret di chiedere a Fekeli di adottare legalmente il piccolo Kerem Ali nasce dal desiderio di garantire al bambino un futuro sicuro. Chiedere che il figlio di Yılmaz diventi l&#x27;erede della fortuna di Fekeli significa concedergli ciò che a Fikret, da bambino, era stato negato. Fekeli ha accolto la richiesta senza alcuna obiezione, consapevole del valore di questo gesto generoso. Tuttavia, l&#x27;intento di proteggere il piccolo si è scontrato con la famiglia della dottoressa rimasta all&#x27;estero, dando inizio a una complessa controversia legale davanti ai giudici.</p>
 <p>Negli Stati Uniti, il fratello di Müjgan, con cui la donna non aveva rapporti, ha deciso di opporsi all&#x27;adozione chiedendo la custodia del piccolo. L&#x27;uomo ha inviato un avvocato al ranch per portare via Kerem Ali, trovando la ferma opposizione di Fikret, Fekeli e Lütfiye, che gli hanno impedito di prendere il bambino. L&#x27;avvocato è andato via a mani vuote, promettendo battaglia in tribunale. Questa vicenda richiama quanto già accaduto con il fondo destinato a Kerem Ali, diventato in passato l&#x27;ossessione dei parenti più interessati al denaro che al suo bene.</p>
 <p>A complicare la situazione si è aggiunto l&#x27;improvviso malessere del piccolo Kerem Ali, segnalato dalla donna che si occupa di lui. Il bambino ha manifestato la febbre alta accompagnata da vomito continuo, costringendo tutti a una corsa d&#x27;urgenza al pronto soccorso. In queste ore cariche di ansia, Fikret ha dimostrato quanto sia cambiato rispetto all&#x27;uomo arrivato in paese per distruggere il fratellastro. Il suo comportamento al pronto soccorso conferma che la priorità assoluta è ormai la salute del bambino, difeso con tutto l&#x27;affetto possibile contro ogni minaccia esterna.</p>
@@ -385,19 +435,41 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=Or_MqpS-eWU" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/Or_MqpS-eWU/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TERRA AMARA Anticipazioni Turche: Fikret è stato scoperto! Ecco chi è veramente e cosa vuole!</span></a></li><li><a href="https://www.youtube.com/watch?v=YcJPyurbed4" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/YcJPyurbed4/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TERRA AMARA Anticipazioni: Fikret e Betul questo Matrimonio non s&#x27;ha da fare! Perchè?</span></a></li><li><a href="https://www.youtube.com/watch?v=dT_xrBcfh9M" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/dT_xrBcfh9M/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TERRA AMARA Anticipazioni: Hakan salva Kerem Alì dai rapitori e lo riporta ad un disperato Fikr</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Fikret meritava di crescere Kerem Ali dopo tutto quello che aveva fatto?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=-iqesX1dF8Q">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di Terra Amara</h2><div class="griglia"><article class="scheda">
+  <a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/"><div class="foto"><img src="/img/terra-amara-la-trama-completa-e-come-finisce.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></h3>
+    <div class="quando">30 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/"><div class="foto"><img src="https://i.ytimg.com/vi/_ypSJU-x7LY/hqdefault.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/"><div class="foto"><img src="https://i.ytimg.com/vi/B_MLx-0yh6M/hqdefault.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=Terra Amara, Fikret chiede a Fekeli di adottare Kerem Ali: vuole che il figlio di Yılmaz erediti tutto — ma la famiglia di Müjgan lo trascina in tribunale — https://serietvfans.com/terra-amara/terra-amara-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/terra-amara/terra-amara-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/terra-amara/terra-amara-la-trama-completa-e-come-finisce/&text=Terra Amara, Fikret chiede a Fekeli di adottare Kerem Ali: vuole che il figlio di Yılmaz erediti tutto — ma la famiglia di Müjgan lo trascina in tribunale" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">TERRA AMARA Anticipazioni Turche: Fikret adotterà.....chi?</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=-iqesX1dF8Q">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di Terra Amara</h3><ol class="numerata"><li><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></li><li><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></li><li><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></li><li><a href="/terra-amara/terra-amara-come-finisce-davvero-zuleyha-vince-tutto-e-resta-sola/">Terra Amara: come finisce davvero, Züleyha vince tutto e resta sola</a></li><li><a href="/terra-amara/terra-amara-come-muore-demir-yaman-chi-ha-dato-lordine-e-perche-doveva-essere-un-rapimento/">Terra Amara, come muore Demir Yaman: chi ha dato l&#x27;ordine e perché doveva essere un rapimento</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>TERRA AMARA Anticipazioni Turche: Fikret adotterà.....chi?</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su Terra Amara</h3><ul><li><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></li><li><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></li><li><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></li><li><a href="/terra-amara/terra-amara-come-finisce-davvero-zuleyha-vince-tutto-e-resta-sola/">Terra Amara: come finisce davvero, Züleyha vince tutto e resta sola</a></li><li><a href="/terra-amara/terra-amara-come-muore-demir-yaman-chi-ha-dato-lordine-e-perche-doveva-essere-un-rapimento/">Terra Amara, come muore Demir Yaman: chi ha dato l&#x27;ordine e perché doveva essere un rapimento</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

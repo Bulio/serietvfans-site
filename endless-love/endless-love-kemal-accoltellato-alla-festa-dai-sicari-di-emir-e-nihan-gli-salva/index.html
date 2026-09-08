@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/endless-love/">Endless Love</a> › Endless Love, Kemal accoltellato alla festa dai sicari di Emir — e Nihan gli salva la vita dopo il ricatto delle chiavette USB</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/endless-love/">Endless Love</a>
   <h1>Endless Love, Kemal accoltellato alla festa dai sicari di Emir — e Nihan gli salva la vita dopo il ricatto delle chiavette USB</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Nel giorno della festa a casa di Galip, due scagnozzi di Emir isolano Kemal e lo accoltellano al basso ventre: la vendetta per aver rivelato al padre il contratto falsificato. Ma il vero campo di battaglia sono le chiavette USB sottratte dalla cassaforte con i filmati dell&#x27;omicidio della prostituta — quelle che scagionerebbero Ozan. E Nihan, in lacrime, ne pretende la restituzione: «Se mi ami ancora, ridammele entro un&#x27;ora».</p><ol><li><a href="#c1">La casa dei segreti: il computer, le telecamere, la madre creduta morta</a></li><li><a href="#c2">L&#x27;agguato alla festa: due coltelli per una vendetta</a></li><li><a href="#c3">La cassaforte di Galip: le prove che scagionano Ozan</a></li><li><a href="#c4">Il ricatto d&#x27;amore di Nihan e il malore che li riunisce</a></li><li><a href="#c5">Come Nihan decide di affrontare la minaccia di Emir</a></li><li><a href="#c6">Perche Emir decide di far aggredire Kemal alla festa</a></li><li><a href="#c7">Cosa spinge Nihan a salvare la vita a Kemal</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>Endless Love</strong> — Serie conclusa in Italia · le puntate su Mediaset Infinity</span></div>
   
-  <p class="occhiello">Nel giorno della festa a casa di Galip, due scagnozzi di Emir isolano Kemal e lo accoltellano al basso ventre: la vendetta per aver rivelato al padre il contratto falsificato. Ma il vero campo di battaglia sono le chiavette USB sottratte dalla cassaforte con i filmati dell&#x27;omicidio della prostituta — quelle che scagionerebbero Ozan. E Nihan, in lacrime, ne pretende la restituzione: «Se mi ami ancora, ridammele entro un&#x27;ora».</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: Endless Love, Kemal accoltellato alla festa dai sicari di Emir — e Nihan gli salva la vita dopo il ricatto delle chiavette USB" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/NemztRxrfus/maxresdefault.jpg" alt="Endless Love, Kemal accoltellato alla festa dai sicari di Emir — e Nihan gli salva la vita dopo il ricatto delle chiavette USB" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/NemztRxrfus/hqdefault.jpg 480w, https://i.ytimg.com/vi/NemztRxrfus/sddefault.jpg 640w, https://i.ytimg.com/vi/NemztRxrfus/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/NemztRxrfus/hqdefault.jpg&quot;, &quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,25 +409,25 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>Ferito, Kemal si mette comunque al volante per portarle le chiavette. Poi crolla — e sarà proprio Nihan, tornata indietro per un presentimento, a trovarlo a terra e salvargli la vita.</strong></p>
-  <h2>La casa dei segreti: il computer, le telecamere, la madre creduta morta</h2>
+  <h2 id="c1">La casa dei segreti: il computer, le telecamere, la madre creduta morta</h2>
 <p>Tutto parte dalla casa che cinque anni prima fece da teatro alla trappola contro Ozan — il finto omicidio della prostituta con cui Emir costrinse Nihan al matrimonio. Tornandoci da solo, Kemal trova un computer ancora attivo, collegato alle telecamere di sicurezza di un&#x27;altra abitazione: seguendo il filo, arriva alla scoperta che ribalta tutto — in quella dimora è nascosta la madre di Emir, moglie di Galip, creduta morta da oltre 25 anni. Nihan e Zehir decidono di usare il segreto per destabilizzare Emir al momento giusto.</p>
-<h2>L&#x27;agguato alla festa: due coltelli per una vendetta</h2>
+<h2 id="c2">L&#x27;agguato alla festa: due coltelli per una vendetta</h2>
 <p>Emir però ha un conto aperto: Kemal ha rivelato a Galip l&#x27;esistenza del contratto falsificato con cui il figlio voleva incastrarlo, ferendo il suo orgoglio davanti alla famiglia. La risposta arriva durante una festa nella residenza di Galip: nel caos dei festeggiamenti, due scagnozzi isolano Kemal e lo accoltellano al basso ventre. L&#x27;agguato ferisce gravemente ma non uccide: e un Kemal sopravvissuto, ora pienamente consapevole del livello di pericolo, è una minaccia peggiore di prima.</p>
-<h2>La cassaforte di Galip: le prove che scagionano Ozan</h2>
+<h2 id="c3">La cassaforte di Galip: le prove che scagionano Ozan</h2>
 <p>Poco prima dell&#x27;aggressione, un alleato fidato di Kemal si era infiltrato nella residenza aprendo la cassaforte di Galip: dentro, le chiavette USB su cui Emir ha archiviato le registrazioni dell&#x27;omicidio della prostituta — le prove che scagionerebbero Ozan ed esporrebbero al mondo i crimini di Emir. Quando Emir scopre il furto, esplode: accusa perfino il padre, ignaro che dietro ci siano Kemal e i suoi. Il vantaggio strategico è totale — finché non squilla il telefono.</p>
-<h2>Il ricatto d&#x27;amore di Nihan e il malore che li riunisce</h2>
+<h2 id="c4">Il ricatto d&#x27;amore di Nihan e il malore che li riunisce</h2>
 <p>All&#x27;altro capo c&#x27;è Nihan, in lacrime: lo supplica di non guardare il contenuto e di riconsegnarle le chiavette entro un&#x27;ora, in un luogo segreto — «se provi ancora un briciolo d&#x27;amore per me». Il dilemma è lancinante: la giustizia per Ozan contro la protezione di lei. Vince l&#x27;amore: ferito e convalescente, Kemal guida fino all&#x27;appuntamento e restituisce tutto. Poi, rimasto solo, crolla privo di sensi — e Nihan, tornata indietro per un presentimento, lo trova a terra e lo porta d&#x27;urgenza in ospedale, salvandogli la vita. Ora però le chiavette sono in mano sua: e per Emir, Nihan è appena diventata la minaccia numero uno.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Come Nihan decide di affrontare la minaccia di Emir</h2>
+<h2 id="c5">Come Nihan decide di affrontare la minaccia di Emir</h2>
 <p>La complessa vicenda che unisce le vite di Nihan e Kemal affonda le sue radici in un inganno orchestrato esattamente cinque anni prima. In quell&#x27;occasione, una vera e propria trappola fu tesa ai danni di Ozan, attraverso la messa in scena del finto omicidio di una prostituta. Fu proprio usando quell&#x27;evento che Emir impose a Nihan un matrimonio forzato, tenendola legata a sé con il ricatto. Per lunghi anni la verità è rimasta sepolta, ma la determinazione di Kemal ha gradualmente riaperto ogni ferita. Quando la giovane donna si è ritrovata di fronte alla possibilità che le prove decisive venissero alla luce, ha dovuto affrontare la sofferenza di una scelta disperata per proteggere la propria famiglia e la persona che ama.</p>
 <p>La svolta decisiva nelle indagini personali condotte da Kemal è arrivata quando l&#x27;uomo ha scelto di perquisire da solo l&#x27;abitazione usata cinque anni prima per incastrare Ozan. All&#x27;interno di quel luogo carico di segreti, Kemal ha rinvenuto un computer ancora perfettamente funzionante e collegato con i sistemi di videosorveglianza di una seconda casa. Seguendo quelle immagini in tempo reale, Kemal ha scoperto che la madre di Emir, moglie di Galip, era ancora in vita e nascosta lì, nonostante tutti la credessero morta da più di venticinque anni. Condividendo questa sconvolgente verità con Nihan e con il fidato Zehir, il gruppo ha deciso di conservare il segreto per destabilizzare l&#x27;impero di Emir al momento opportuno.</p>
 <p>Nel momento in cui Kemal è riuscito ad impossessarsi dei filmati custoditi nella cassaforte, la reazione di Nihan è stata immediata e dettata dalla disperazione. Attraverso una telefonata drammatica e ricca di lacrime, la donna lo ha supplicato di non guardare assolutamente il contenuto di quelle memorie digitali e di restituirgliele entro un&#x27;ora soltanto. Per convincere l&#x27;uomo della sua vita, Nihan ha fatto leva sui suoi sentimenti più profondi, chiedendogli questo enorme sacrificio come prova dell&#x27;amore che li legava ancora. Messo di fronte ad un bivio straziante tra la giustizia per Ozan e la salvaguardia di Nihan, Kemal ha scelto di ascoltare unicamente il suo cuore.</p>
-<h2>Perche Emir decide di far aggredire Kemal alla festa</h2>
+<h2 id="c6">Perche Emir decide di far aggredire Kemal alla festa</h2>
 <p>L&#x27;ostilità spietata tra Emir e Kemal ha raggiunto un punto di non ritorno a causa di una rivelazione devastante. Kemal era infatti riuscito a portare alla luce il contratto falsificato con cui Emir intendeva incastrare suo padre Galip, mostrando ogni dettaglio direttamente al capo famiglia. Questo gesto audace ha colpito duramente l&#x27;orgoglio di Emir di fronte ai suoi cari, trasformando il risentimento personale in una furiosa sete di vendetta. Per punire l&#x27;avversario e riaffermare il proprio potere, Emir ha pianificato un attacco a tradimento sfruttando un momento d&#x27;apparente distrazione, organizzato proprio durante un importante evento celebrativo tenutosi nella grande residenza di Galip.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>Durante lo svolgimento dei festeggiamenti nella dimora patrizia, due scagnozzi inviati da Emir sono riusciti ad isolare Kemal lontano dagli occhi degli altri invitati. Nel caos generale della festa, i malviventi hanno sferrato un brutale e fulmineo attacco, accoltellando Kemal direttamente al basso ventre con l&#x27;intento di neutralizzarlo per sempre. Nonostante la gravità dell&#x27;aggressione subita e le profonde ferite riportate, l&#x27;agguato non si è rivelato fatale per la vittima. Kemal è infatti sopravvissuto alla violenza, emergendo da quell&#x27;esperienza dolorosa con la piena consapevolezza dei rischi e trasformandosi in una minaccia ancora più determinata e pericolosa per i piani di Emir.</p>
 <p>Parallelamente al vile agguato subito da Kemal, un piano abilmente orchestrato dal suo più stretto alleato aveva già colpito al cuore il nemico. Un infiltrato fidato era infatti riuscito ad introdursi nella residenza di Galip e ad aprire la cassaforte padronale, asportando le fondamentali chiavette USB contenenti le registrazioni dell&#x27;omicidio della prostituta. Quando Emir ha scoperto la scomparsa delle prove che inguaiavano suo cognato Ozan, è letteralmente esploso di rabbia. Ignorando l&#x27;azione di Kemal e dei suoi uomini, Emir è arrivato persino ad accusare il proprio padre Galip per la sparizione del prezioso materiale, vedendo improvvisamente crollare il suo totale vantaggio strategico.</p>
-<h2>Cosa spinge Nihan a salvare la vita a Kemal</h2>
+<h2 id="c7">Cosa spinge Nihan a salvare la vita a Kemal</h2>
 <p>Senza esitare un solo istante di fronte al dissidio interiore e malgrado le gravissime condizioni fisiche causate dall&#x27;accoltellamento, Kemal si è messo coraggiosamente al volante della propria automobile. Lottando contro il dolore lancinante della ferita al basso ventre, l&#x27;uomo ha guidato con il solo scopo di raggiungere il luogo segreto stabilito per l&#x27;appuntamento con Nihan. Una volta giunto sul posto e aver consegnato le preziose chiavette USB contenenti i video della prostituta, Kemal ha mantenuto la parola data alla donna amata. Tuttavia, non appena è rimasto solo e senza più le forze necessarie per resistere, l&#x27;uomo è crollato a terra privo di sensi.</p>
 <p>A cambiare il destino di quello che sembrava un tragico epilogo è stato un profondo e provvidenziale presentimento di Nihan. Dopo essersi allontanata con il materiale appena recuperato, la giovane donna ha sentito dentro di sé un forte disagio che l&#x27;ha spinta a tornare subito indietro sui propri passi. Giunta nuovamente nel luogo dell&#x27;incontro, Nihan ha visto il corpo svenuto di Kemal adagiato al suolo e ha compreso la gravità della situazione. Agendo tempestivamente e superando il panico, la donna ha soccorso l&#x27;uomo trasportandolo d&#x27;urgenza verso la struttura ospedaliera più vicina, riuscendo a salvargli la vita grazie al suo immediato intervento.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
@@ -385,19 +435,41 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=GTWyYbZfkKs" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/GTWyYbZfkKs/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>ENDLESS LOVE Anticipazioni 11-12 Marzo: Kemal salva la vita a Nihan | Emir ossessionato di gelo</span></a></li><li><a href="https://www.youtube.com/watch?v=5cLt8bxlfEk" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/5cLt8bxlfEk/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TREMENDA SOFFERENZA PER NIHAN,SALVA LA VITA A KEMAL MA LUI LA CACCIA VIA! Endless Love Anticipa</span></a></li><li><a href="https://www.youtube.com/watch?v=_yEhLfDuwew" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/_yEhLfDuwew/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>ENDLESS LOVE Anticipazioni: Ozan muore lasciando una Nihan disperata, Emir un pazzo stratega</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Kemal ha fatto bene a restituire le prove per amore, sacrificando la giustizia per Ozan? E ora che Nihan ha le chiavette, cosa ne farà — e a quale prezzo?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=NemztRxrfus">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di Endless Love</h2><div class="griglia"><article class="scheda">
+  <a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/"><div class="foto"><img src="https://i.ytimg.com/vi/DSiProJJ1ls/hqdefault.jpg" alt="Endless Love" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/"><div class="foto"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/"><div class="foto"><img src="https://i.ytimg.com/vi/uu2oAzTOWQU/hqdefault.jpg" alt="Endless Love" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></h3>
+    <div class="quando">25 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=Endless Love, Kemal accoltellato alla festa dai sicari di Emir — e Nihan gli salva la vita dopo il ricatto delle chiavette USB — https://soapoperaitalia.com/endless-love/endless-love-la-trama-completa-perche-nihan-sposa-emir-e-come-finisce/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://soapoperaitalia.com/endless-love/endless-love-la-trama-completa-perche-nihan-sposa-emir-e-come-finisce/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://soapoperaitalia.com/endless-love/endless-love-la-trama-completa-perche-nihan-sposa-emir-e-come-finisce/&text=Endless Love, Kemal accoltellato alla festa dai sicari di Emir — e Nihan gli salva la vita dopo il ricatto delle chiavette USB" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">KEMAL ACCOLTELLATO DA DUE UOMINI DI EMIR, NIHAN DISPERATA! - Endless Love</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=NemztRxrfus">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di Endless Love</h3><ol class="numerata"><li><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></li><li><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></li><li><a href="/endless-love/endless-love-chi-e-galip-kozcuoglu-le-due-volte-in-cui-nihan-e-stata-venduta/">Endless Love, chi è Galip Kozcuoğlu: le due volte in cui Nihan è stata venduta</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-zeynep-soydere-perche-emir-lha-scelta-e-cosa-ha-distrutto/">Endless Love, chi è davvero Zeynep Soydere: perché Emir l&#x27;ha scelta e cosa ha distrutto</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>KEMAL ACCOLTELLATO DA DUE UOMINI DI EMIR, NIHAN DISPERATA! - Endless Love</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su Endless Love</h3><ul><li><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></li><li><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></li><li><a href="/endless-love/endless-love-chi-e-galip-kozcuoglu-le-due-volte-in-cui-nihan-e-stata-venduta/">Endless Love, chi è Galip Kozcuoğlu: le due volte in cui Nihan è stata venduta</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-zeynep-soydere-perche-emir-lha-scelta-e-cosa-ha-distrutto/">Endless Love, chi è davvero Zeynep Soydere: perché Emir l&#x27;ha scelta e cosa ha distrutto</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

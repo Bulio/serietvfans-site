@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/terra-amara/">Terra Amara</a> › Terra Amara, Yılmaz sparisce con Adnan sotto gli occhi di Saniye — che lo lascia fuggire e condanna Gülten al sospetto</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/terra-amara/">Terra Amara</a>
   <h1>Terra Amara, Yılmaz sparisce con Adnan sotto gli occhi di Saniye — che lo lascia fuggire e condanna Gülten al sospetto</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Dopo la conferenza stampa in cui Demir ammette pubblicamente che Yılmaz è il padre biologico di Adnan — «ma il vero padre mi sento io» — la guerra riparte più feroce: Yılmaz si intrufola alla villa e porta via il bambino. L&#x27;unica testimone è Saniye, che sorprendentemente lo lascia scappare senza dare l&#x27;allarme: e mentre Demir accusa l&#x27;innocente Gülten, Gaffur impone alla moglie il silenzio che le divora la coscienza. Intanto Behice scava tra le cose di Fikret e trova un passaporto con un altro nome.</p><ol><li><a href="#c1">La conferenza stampa e la dichiarazione di guerra</a></li><li><a href="#c2">Il rapimento e la complice silenziosa</a></li><li><a href="#c3">La parata di Yılmaz e le nuove regole del padrone</a></li><li><a href="#c4">Fikret eroe e smascherato insieme: il passaporto di Behice</a></li><li><a href="#c5">Come Yılmaz sfida Demir davanti a tutta Çukurova</a></li><li><a href="#c6">Perché Saniye tace e trascina Gaffur nella paura</a></li><li><a href="#c7">Cosa nasconde Fikret dietro l&#x27;impresa da eroe</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>Terra Amara</strong> — Serie conclusa in Italia · tutte le puntate su Mediaset Infinity</span></div>
   
-  <p class="occhiello">Dopo la conferenza stampa in cui Demir ammette pubblicamente che Yılmaz è il padre biologico di Adnan — «ma il vero padre mi sento io» — la guerra riparte più feroce: Yılmaz si intrufola alla villa e porta via il bambino. L&#x27;unica testimone è Saniye, che sorprendentemente lo lascia scappare senza dare l&#x27;allarme: e mentre Demir accusa l&#x27;innocente Gülten, Gaffur impone alla moglie il silenzio che le divora la coscienza. Intanto Behice scava tra le cose di Fikret e trova un passaporto con un altro nome.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: Terra Amara, Yılmaz sparisce con Adnan sotto gli occhi di Saniye — che lo lascia fuggire e condanna Gülten al sospetto" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/uSpTB7Ae2_w/maxresdefault.jpg" alt="Terra Amara, Yılmaz sparisce con Adnan sotto gli occhi di Saniye — che lo lascia fuggire e condanna Gülten al sospetto" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/uSpTB7Ae2_w/hqdefault.jpg 480w, https://i.ytimg.com/vi/uSpTB7Ae2_w/sddefault.jpg 640w, https://i.ytimg.com/vi/uSpTB7Ae2_w/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/uSpTB7Ae2_w/hqdefault.jpg&quot;, &quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,25 +409,25 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>La scena più dura è la punizione collettiva di Demir: Gaffur bandito dal lavoro, Züleyha che può uscire solo da sola, i bambini chiusi in casa. La colpa di uno diventa la prigione di tutti.</strong></p>
-  <h2>La conferenza stampa e la dichiarazione di guerra</h2>
+  <h2 id="c1">La conferenza stampa e la dichiarazione di guerra</h2>
 <p>Davanti a giornalisti e fotografi, con Züleyha e Hünkar incredule, Demir compie il gesto più inaspettato: ammette che Yılmaz è il padre biologico di Adnan, pur rivendicando di sentirsene il vero padre per averlo cresciuto. L&#x27;offerta di pace che segue viene respinta in diretta: Yılmaz, arrivato durante il discorso, dichiara per l&#x27;ennesima volta guerra aperta — «Adnan è mio figlio, lo voglio e me lo prenderò». Detto, fatto.</p>
-<h2>Il rapimento e la complice silenziosa</h2>
+<h2 id="c2">Il rapimento e la complice silenziosa</h2>
 <p>Yılmaz si introduce di nascosto nella villa, entra nella camera del bambino e lo porta via. C&#x27;è una sola testimone: Saniye — che, con una scelta che spiazza tutti, lo lascia scappare senza fermarlo né avvertire nessuno. Quando Gülten scopre la scomparsa e scatta l&#x27;allarme, la furia di Demir si abbatte sull&#x27;innocente: accusa Gülten di complicità, non crede ai suoi giuramenti, e Hünkar deve portarla via prima che accada l&#x27;irreparabile. Saniye, divorata dai sensi di colpa, confessa tutto a Gaffur — che le proibisce di parlare: «Se Demir lo scopre, pagheremo tutti, anche Üzüm».</p>
-<h2>La parata di Yılmaz e le nuove regole del padrone</h2>
+<h2 id="c3">La parata di Yılmaz e le nuove regole del padrone</h2>
 <p>Yılmaz intanto si gode il trofeo: porta Adnan tra gli operai e poi in paese, facendosi vedere da tutti col bambino — la conferma pubblica della paternità. A tarda sera lo riporta alla villa, «solo perché c&#x27;è sua madre». La risposta di Demir è un giro di vite collettivo: Gaffur bandito dal lavoro alla tenuta, Züleyha autorizzata a uscire solo da sola, i bambini confinati in casa. E Sevda, che riceve da Demir denaro tramite un fattorino, lo respinge capendo di aver perso il figlio di Adnan: lui ha scelto la memoria di Hünkar.</p>
-<h2>Fikret eroe e smascherato insieme: il passaporto di Behice</h2>
+<h2 id="c4">Fikret eroe e smascherato insieme: il passaporto di Behice</h2>
 <p>Sul fronte Fekeli, l&#x27;imboscata per uccidere Ali Rahmet fallisce e Fikret cattura uno degli aggressori, Erol: appeso in un capannone e torturato senza pietà, l&#x27;uomo confessa chi trama per impossessarsi del paese — registrazione compresa. Fikret lo consegna in caserma e viene celebrato come un eroe da tutta Çukurova. Ma proprio nel giorno del trionfo, Behice cala il suo asso: frugando tra le sue cose ha trovato un passaporto con un altro nome — «è un impostore», dice a Fekeli. Il patriarca resta calmo, ma la domanda ormai è sul tavolo: chi è davvero il giovane che tutti applaudono? E Şermin, informata dallo straparlare di Behice, è la garanzia che il segreto non resterà tale a lungo.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Come Yılmaz sfida Demir davanti a tutta Çukurova</h2>
+<h2 id="c5">Come Yılmaz sfida Demir davanti a tutta Çukurova</h2>
 <p>La tensione tra le famiglie giunge al punto di rottura quando la verità sulla vera paternità di Adnan viene pronunciata pubblicamente davanti ai giornalisti e ai fotografi convocati da Demir. L&#x27;ammissione aperta del padrone della tenuta stupisce sia Züleyha sia Hünkar, convinte che l&#x27;uomo non avrebbe mai rivelato un simile segreto a tutti. Tuttavia, la risposta di Yılmaz trasforma immediatamente quell&#x27;occasione ufficiale in una vera e propria dichiarazione di guerra aperta. L&#x27;arrivo improvviso del rivale durante il discorso stravolge ogni piano di pacificazione, portandolo a rifiutare con fermezza l&#x27;offerta ricevuta e a rivendicare chiaramente il diritto di riprendersi il piccolo Adnan a tutti i costi.</p>
 <p>L&#x27;azione concreta segue rapidamente le parole quando Yılmaz riesce a introdursi di nascosto nella villa di famiglia, arrivando fino alla camera del bambino per portarlo via. In quel momento decisivo l&#x27;unica persona presente è Saniye, la quale sceglie inaspettatamente di rimanere in silenzio e di lasciarlo fuggire senza dare alcun allarme ai presenti. La successiva scoperta della sparizione da parte di Gülten scatena una reazione durissima da parte di Demir, sconvolto dalla rabbia e del tutto convinto della complicità della giovane innocente. Per evitare che la situazione precipiti ulteriormente e che avvenga l&#x27;irreparabile, Hünkar si vede costretta a intervenire portando via la ragazza spaventata.</p>
 <p>Dopo essere riuscito ad allontanarsi con il piccolo, Yılmaz decide di mostrare a tutti il bambino portandolo prima tra gli operai e successivamente in paese. Questa parata pubblica rappresenta per lui la prova tangibile della propria paternità davanti all&#x27;intera comunità, un gesto plateale pensato per riaffermare il proprio ruolo. Soltanto a tarda sera il giovane decide di riportare Adnan alla villa, precisando di farlo esclusivamente per la presenza di sua madre Züleyha. La reazione del padrone non si fa attendere e si traduce in una punizione rigorosa che colpisce l&#x27;intera tenuta, isolando i bambini in casa e limitando drasticamente la libertà di movimento di Züleyha.</p>
-<h2>Perché Saniye tace e trascina Gaffur nella paura</h2>
+<h2 id="c6">Perché Saniye tace e trascina Gaffur nella paura</h2>
 <p>Il peso della scelta compiuta di fronte a Yılmaz schiaccia Saniye, che si ritrova tormentata da profondi sensi di colpa per aver permesso il rapimento del bambino senza opporre alcuna resistenza. Sopraffatta dall&#x27;ansia e dalla consapevolezza delle conseguenze che il suo comportamento ha scatenato sulla povera Gülten, la donna decide infine di confidare l&#x27;intera verità a suo marito Gaffur. Tuttavia, la reazione dell&#x27;uomo è guidata dal puro terrore di subirne le ripercussioni dirette. Capendo perfettamente quanto la furia del padrone possa rivelarsi distruttiva per tutta la famiglia, Gaffur impone alla moglie un silenzio assoluto per proteggere se stessi e la piccola Üzüm dal pericolo imminente.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>Le severe disposizioni attuate da Demir modificano profondamente l&#x27;equilibrio all&#x27;interno della tenuta, segnando in modo pesante il destino di chi ci lavora. L&#x27;esclusione di Gaffur dalle sue mansioni lavorative rappresenta una punizione diretta che condanna l&#x27;uomo a un isolamento forzato, mentre attorno a lui il clima si fa sempre più teso e sospettoso. Parallelamente, anche i rapporti affettivi esterni del padrone subiscono una spaccatura definitiva. Quando Sevda riceve una somma di denaro recapitata da un fattorino per conto di Demir, comprende immediatamente di aver perso il giovane, il quale ha ormai scelto di restare fedele alla memoria di Hünkar respingendo ogni tentativo di riavvicinamento.</p>
 <p>Le ripercussioni della condotta di Yılmaz finiscono per trasformare la vita quotidiana della villa in una vera prigione per tutti i suoi abitanti. Züleyha si ritrova sottoposta a un controllo soffocante che le consente di varcare i cancelli della tenuta soltanto se totalmente sola, privandola di ogni serenità materna. Al tempo stesso, la decisione di rinchiudere i bambini tra le mura domestiche rappresenta l&#x27;atto finale di un padrone determinato a esercitare un dominio totale per impedire nuovi colpi di mano. La rabbia di Demir cancella ogni logica, trasformando gli errori o le scelte dei singoli in una condanna che pesa sull&#x27;intera comunità.</p>
-<h2>Cosa nasconde Fikret dietro l&#x27;impresa da eroe</h2>
+<h2 id="c7">Cosa nasconde Fikret dietro l&#x27;impresa da eroe</h2>
 <p>Sul versante opposto della storia, la figura di Fikret acquista un rilievo straordinario in seguito al fallimento dell&#x27;attentato organizzato per eliminare Ali Rahmet Fekeli. Dimostrando grande determinazione, il giovane riesce a catturare uno dei responsabili dell&#x27;imboscata, un uomo di nome Erol, conducendolo all&#x27;interno di un capannone isolato. Lì, sottoponendolo a una durissima tortura senza mostrare alcuna pietà, Fikret ottiene una confessione completa su chi sta tramando per conquistare il controllo del paese, registrando accuratamente ogni parola pronunciata dal prigioniero. La successiva consegna del colpevole alle autorità della caserma consacra il ragazzo come un vero eroe agli occhi dell&#x27;intera popolazione di Çukurova.</p>
 <p>Proprio mentre la fama di Fikret raggiunge il punto più alto, un&#x27;inaspettata minaccia rischia di distruggere per sempre la sua reputazione. Frugando di nascosto tra le sue cose personali, Behice riesce a scovare un passaporto intestato a un altro nome, un indizio schiacciante che la spinge a denunciare immediatamente la scoperta a Fekeli facendolo passare per un abile impostore. Nonostante il patriarca mantenga un atteggiamento calmo di fronte alla notizia, l&#x27;ombra del dubbio si allunga inevitabilmente sul giovane. A peggiorare la situazione interviene lo straparlare della stessa Behice con Şermin, una circostanza che garantisce che il pericoloso segreto non rimarrà nascosto ancora a lungo.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
@@ -385,19 +435,41 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=0s9IDhC-fME" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/0s9IDhC-fME/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TERRA AMARA Anticipazioni. Demir trova Hunkar Morta - Gaffur ricercato dalla polizia</span></a></li><li><a href="https://www.youtube.com/watch?v=0x0IBnChDJ4" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/0x0IBnChDJ4/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TERRA AMARA Anticipazioni 15-16 Settembre: Zuleyha scappa con Yilmaz e porta via i figli a Demi</span></a></li><li><a href="https://www.youtube.com/watch?v=LSTNQo8ZXdk" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/LSTNQo8ZXdk/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>FIKRET TROVA IL VERO AMORE e si scopre che Zuleyha.....Terra Amara Anticipazioni Turchia</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Saniye ha tradito i Yaman o ha solo riconosciuto il diritto di un padre? E il passaporto trovato da Behice: quanto manca prima che la vera identità di Fikret esploda?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=uSpTB7Ae2_w">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di Terra Amara</h2><div class="griglia"><article class="scheda">
+  <a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/"><div class="foto"><img src="/img/terra-amara-la-trama-completa-e-come-finisce.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></h3>
+    <div class="quando">30 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/"><div class="foto"><img src="https://i.ytimg.com/vi/_ypSJU-x7LY/hqdefault.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/"><div class="foto"><img src="https://i.ytimg.com/vi/B_MLx-0yh6M/hqdefault.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=Terra Amara, Yılmaz sparisce con Adnan sotto gli occhi di Saniye — che lo lascia fuggire e condanna Gülten al sospetto — https://serietvfans.com/terra-amara/terra-amara-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/terra-amara/terra-amara-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/terra-amara/terra-amara-la-trama-completa-e-come-finisce/&text=Terra Amara, Yılmaz sparisce con Adnan sotto gli occhi di Saniye — che lo lascia fuggire e condanna Gülten al sospetto" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">TERRA AMARA ANTICIPAZIONI: YILMAZ SPARISCE CON ADNAN E GAFFUR SCOPRE IL PESANTE SEGRETO</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=uSpTB7Ae2_w">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di Terra Amara</h3><ol class="numerata"><li><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></li><li><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></li><li><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></li><li><a href="/terra-amara/terra-amara-come-finisce-davvero-zuleyha-vince-tutto-e-resta-sola/">Terra Amara: come finisce davvero, Züleyha vince tutto e resta sola</a></li><li><a href="/terra-amara/terra-amara-come-muore-demir-yaman-chi-ha-dato-lordine-e-perche-doveva-essere-un-rapimento/">Terra Amara, come muore Demir Yaman: chi ha dato l&#x27;ordine e perché doveva essere un rapimento</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>TERRA AMARA ANTICIPAZIONI: YILMAZ SPARISCE CON ADNAN E GAFFUR SCOPRE IL PESANTE SEGRETO</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su Terra Amara</h3><ul><li><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></li><li><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></li><li><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></li><li><a href="/terra-amara/terra-amara-come-finisce-davvero-zuleyha-vince-tutto-e-resta-sola/">Terra Amara: come finisce davvero, Züleyha vince tutto e resta sola</a></li><li><a href="/terra-amara/terra-amara-come-muore-demir-yaman-chi-ha-dato-lordine-e-perche-doveva-essere-un-rapimento/">Terra Amara, come muore Demir Yaman: chi ha dato l&#x27;ordine e perché doveva essere un rapimento</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

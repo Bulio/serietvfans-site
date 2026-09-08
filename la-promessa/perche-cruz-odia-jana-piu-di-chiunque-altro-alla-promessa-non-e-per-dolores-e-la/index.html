@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/la-promessa/">La Promessa</a> › Perché Cruz odia Jana più di chiunque altro alla Promessa: non è per Dolores, e la spiegazione è molto più semplice</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/la-promessa/">La Promessa</a>
   <h1>Perché Cruz odia Jana più di chiunque altro alla Promessa: non è per Dolores, e la spiegazione è molto più semplice</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">La marchesa non è affezionata a nessuno della servitù, nemmeno a Petra. Ma con Jana c&#x27;è qualcosa di diverso: un accanimento personale che dura da quando si sono incontrate la prima volta.</p><ol><li><a href="#c1">Il primo affronto: una serva che risponde</a></li><li><a href="#c2">Il tentativo di incastrarla per l&#x27;omicidio di Tomás</a></li><li><a href="#c3">Chi era Tomás, e perché quell&#x27;accusa non era una mossa qualunque</a></li><li><a href="#c4">Due licenziamenti e due ritorni</a></li><li><a href="#c5">E se sapesse chi è davvero?</a></li><li><a href="#c6">Il fattore Manuel</a></li><li><a href="#c7">Perché conta: l&#x27;orgoglio ferito è ancora il male minore</a></li><li><a href="#c8">Come Curro e Alonso fanno vacillare l&#x27;autorità di Cruz</a></li><li><a href="#c9">Perché Manuel difende Jana sfidando la madre Cruz</a></li><li><a href="#c10">Quale minaccia rappresenta il passato di Dolores per Cruz</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>La Promessa</strong> — Rete 4 · in streaming su Mediaset Infinity</span></div>
   
-  <p class="occhiello">La marchesa non è affezionata a nessuno della servitù, nemmeno a Petra. Ma con Jana c&#x27;è qualcosa di diverso: un accanimento personale che dura da quando si sono incontrate la prima volta.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: Perché Cruz odia Jana più di chiunque altro alla Promessa: non è per Dolores, e la spiegazione è molto più semplice" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/jfAmLZg2g74/maxresdefault.jpg" alt="Perché Cruz odia Jana più di chiunque altro alla Promessa: non è per Dolores, e la spiegazione è molto più semplice" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/jfAmLZg2g74/hqdefault.jpg 480w, https://i.ytimg.com/vi/jfAmLZg2g74/sddefault.jpg 640w, https://i.ytimg.com/vi/jfAmLZg2g74/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/jfAmLZg2g74/hqdefault.jpg&quot;, &quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,48 +409,70 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>La teoria che Cruz l&#x27;abbia riconosciuta come figlia di Dolores non regge: ecco perché.</strong></p>
-  <h2>Il primo affronto: una serva che risponde</h2>
+  <h2 id="c1">Il primo affronto: una serva che risponde</h2>
 <p>Tutto comincia dal primo incontro. Jana è una cameriera assunta a tempo, l&#x27;ultima arrivata, e contraddice la marchesa in pubblico. In quella casa e in quell&#x27;epoca è un gesto quasi inconcepibile, e Cruz non lo dimentica più. Non è la singola frase a bruciare: è il precedente. Una domestica che si permette di rispondere davanti agli altri incrina l&#x27;ordine su cui poggia tutto il potere della marchesa, e da lì in avanti Jana diventa ai suoi occhi il simbolo di quello che minaccia la sua posizione.</p>
-<h2>Il tentativo di incastrarla per l&#x27;omicidio di Tomás</h2>
+<h2 id="c2">Il tentativo di incastrarla per l&#x27;omicidio di Tomás</h2>
 <p>Il momento più buio arriva quando Cruz prova ad addossare a Jana la morte di Tomás, cercando attivamente prove che possano incriminarla. È il punto in cui la rivalità smette di essere una questione di gerarchia e diventa qualcos&#x27;altro: la marchesa è disposta a usare il proprio potere per distruggere una persona che sa innocente. Non le basta metterla al suo posto — vuole toglierla di mezzo.</p>
-<h2>Chi era Tomás, e perché quell&#x27;accusa non era una mossa qualunque</h2>
+<h2 id="c3">Chi era Tomás, e perché quell&#x27;accusa non era una mossa qualunque</h2>
 <p>Nell&#x27;elenco degli affronti c&#x27;è un episodio che pesa più di tutti, e si capisce soltanto sapendo chi fosse il morto. Tomás era il primogenito dei marchesi, l&#x27;erede vero: Manuel non è nato per prendere quel posto, ci è finito. E Jimena, la moglie che oggi divide la casa, prima di sposare lui era la vedova di Tomás, il che rende quel matrimonio una conseguenza del lutto più che una scelta. Per Cruz, insomma, quella morte non è un fatto di cronaca familiare: è la ferita da cui discende tutto l&#x27;assetto attuale della Promessa. Provare a intestarla a una cameriera arrivata da poco significa scegliere l&#x27;accusa più infamante che quella casa possa formulare, e anche la più comoda, perché nessuno avrebbe avuto voglia di verificarla.</p>
-<h2>Due licenziamenti e due ritorni</h2>
+<h2 id="c4">Due licenziamenti e due ritorni</h2>
 <p>Ogni volta che Cruz riesce a cacciarla, Jana torna. La cosa che le rode di più è il modo in cui torna: salvando Jimena, cioè rendendosi indispensabile proprio alla famiglia che vorrebbe liberarsene. Nella tenuta la ragazza viene trattata da eroina, e per la marchesa quella è una sconfitta pubblica — la prova che sotto il suo tetto ci sono cose che lei non controlla più. C&#x27;è anche un dettaglio rivelatore: quando Curro alza le mani su una cameriera, Cruz all&#x27;inizio dà ragione ad Alonso sul fatto che la servitù vada trattata bene; poi scopre che la cameriera era Jana e lascia cadere la questione.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>E se sapesse chi è davvero?</h2>
+<h2 id="c5">E se sapesse chi è davvero?</h2>
 <p>Molti spettatori pensano che Cruz odi Jana perché ha capito che è la figlia di Dolores. È la spiegazione più suggestiva, ma anche la meno probabile: se avesse fatto quel collegamento, mettendolo insieme alla presenza di Eugenia alla tenuta, non si sarebbe limitata a rendere la vita difficile a una domestica. Avrebbe agito in modo ben più drastico, e molto prima. Molto più plausibile che non abbia il minimo sospetto — e che l&#x27;accanimento nasca tutto lì, dall&#x27;orgoglio ferito.</p>
-<h2>Il fattore Manuel</h2>
+<h2 id="c6">Il fattore Manuel</h2>
 <p>A saldare tutto ci pensa il figlio. Manuel è attratto da Jana e prende le sue parti ogni volta che può, e per Cruz questo è il colpo peggiore: la cameriera non le ha solo sfidato l&#x27;autorità, le sta portando via anche il figlio. Da lì in poi ogni gentilezza di Manuel verso Jana diventa benzina. Non è mai esistito, tra le due, un momento in cui si siano parlate davvero: l&#x27;orgoglio dell&#x27;una e la rabbia dell&#x27;altra hanno reso impossibile qualsiasi chiarimento, e quel silenzio è la ragione per cui la rivalità non si è mai spenta.</p>
-<h2>Perché conta: l&#x27;orgoglio ferito è ancora il male minore</h2>
+<h2 id="c7">Perché conta: l&#x27;orgoglio ferito è ancora il male minore</h2>
 <p>C&#x27;è un paradosso che questa spiegazione lascia in eredità. Finché la marchesa vede in Jana soltanto una serva che le ha risposto male e che gira intorno a suo figlio, la reazione resta dentro un perimetro conosciuto: licenziamenti, umiliazioni, porte chiuse. Il giorno in cui dovesse fare il collegamento, cioè capire che quella ragazza è la figlia di Dolores e non è arrivata lì per caso, cambierebbe la natura del problema, non solo la sua intensità. Cruz è implicata nella morte di quella donna e nella sparizione del bambino: davanti a una testimone non ci si difende con un licenziamento. Ed è per questo che ogni gentilezza pubblica di Manuel, che alla madre sembra soltanto un&#x27;offesa, accorcia il tempo che separa Jana da quella scoperta.</p>
-<h2>Come Curro e Alonso fanno vacillare l&#x27;autorità di Cruz</h2>
+<h2 id="c8">Come Curro e Alonso fanno vacillare l&#x27;autorità di Cruz</h2>
 <p>La gestione dei domestici all&#x27;interno della tenuta mette in luce il profondo contrasto tra Alonso e Cruz. Quando Curro arriva ad alzare le mani sulla giovane cameriera, il marchese sostiene chiaramente che il personale del palazzo debba essere trattato con rispetto. Inizialmente la padrona concorda con il marito, accettando la regola di condotta nei confronti dei servitori. Tuttavia, la sua posizione cambia radicalmente appena scopre che la vittima dell&#x27;aggressione è proprio Jana. Da quel momento Cruz dimentica la giustizia e decide di lasciar cadere l&#x27;intera questione senza punire il ragazzo.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>Questo specifico episodio dimostra quanto l&#x27;astio personale verso la ragazza riesca a superare persino i principi condivisi con Alonso. L&#x27;atteggiamento di Cruz verso l&#x27;azione di Curro chiarisce che per la nobile non esistono regole uguali per tutti, ma soltanto una profonda avversione verso una domestica specifica. Trattare bene la servitù cessa di essere un dovere nel momento in cui viene colpita l&#x27;ultima arrivata, che ha osato sfidare la padrona in pubblico. Abbandonando la vicenda, Cruz conferma che nei confronti della giovane non si applica alcuna tutela o rispetto della gerarchia.</p>
-<h2>Perché Manuel difende Jana sfidando la madre Cruz</h2>
+<h2 id="c9">Perché Manuel difende Jana sfidando la madre Cruz</h2>
 <p>L&#x27;attrazione che Manuel prova verso la cameriera crea una spaccatura insanabile con sua madre. Il giovane non si limita a un semplice interesse, ma prende attivamente le parti della ragazza in ogni scontro. Per Cruz questo atteggiamento rappresenta un insulto quotidiano, poiché vede il figlio schierarsi con una serva anziché difendere il prestigio familiare. Ogni gesto affettuoso del ragazzo verso Jana alimenta la rabbia della padrona, bruciando qualunque possibilità di dialogo. Il ruolo dell&#x27;erede, ottenuto dopo la tragica morte di Tomás e il matrimonio con Jimena, non impedisce al giovane di sfidare l&#x27;autorità materna.</p>
 <p>Nonostante il peso delle sue responsabilità dinastiche, il giovane rifiuta di accettare la condotta spietata di Cruz. Ogni sua dimostrazione di protezione verso la ragazza viene vissuta dalla padrona come una gravissima offesa personale. La totale assenza di un confronto aperto tra le due donne, unita al continuo sostegno del ragazzo, trasforma questa simpatia in una costante minaccia per gli equilibri della tenuta. Per la nobile, vedere il proprio figlio schierato al fianco della rivale è la ferita più dolorosa, capace di alimentare un rancore insaziabile che non accenna mai a spegnersi.</p>
-<h2>Quale minaccia rappresenta il passato di Dolores per Cruz</h2>
+<h2 id="c10">Quale minaccia rappresenta il passato di Dolores per Cruz</h2>
 <p>La presenza di Eugenia e le tragiche vicende legate a Dolores costituiscono un passato drammatico che la padrona cerca di tenere nascosto. Cruz è infatti direttamente implicata nella morte di quella donna e nella sparizione del bambino, colpe gravissime che la distruggerebbero se scoperte. Tuttavia, finché la nobile considera Jana soltanto una serva arrogante che ha salvato Jimena, non intuisce la verità. Se la marchesa collegasse la ragazza alla defunta, la sua reazione non si limiterebbe a punizioni e licenziamenti, ma diventerebbe un tentativo disperato di eliminare una testimone estremamente pericolosa.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>Nonostante sia stata cacciata due volte, Jana è sempre tornata al palazzo da eroina, conquistando la devozione della servitù e rendendosi indispensabile. Questo prestigio ferisce l&#x27;orgoglio della padrona, che continua però a rimanere cieca di fronte alla reale identità della cameriera. Senza capire che la ragazza è la figlia di Dolores, Cruz concentra il suo odio solo sulle sfacciataggini e sull&#x27;influenza che la giovane esercita su Manuel. In questo clima teso, ogni difesa pubblica del ragazzo accorcia inevitabilmente il tempo che separa la tenuta da una sconvolgente e definitiva rivelazione.</p>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=GvtHf89mCOQ" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/GvtHf89mCOQ/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA: Petra racconta perché è così legata alla Marchesa Cruz!</span></a></li><li><a href="https://www.youtube.com/watch?v=JY3mexNp4Us" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/JY3mexNp4Us/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>JANA SALVA IL FIGLIO DI PIA! CRUZ E PETRA LO AVEVANO RAPITO - Anticipazioni La Promessa</span></a></li><li><a href="https://www.youtube.com/watch?v=JhXaXTlSiTM" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/JhXaXTlSiTM/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni 27 Dicembre: Cruz, terribile ultimatum a Jana, altrimenti la licenzia</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Secondo voi Cruz sospetta chi sia davvero Jana?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=jfAmLZg2g74">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di La Promessa</h2><div class="griglia"><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/"><div class="foto"><img src="https://i.ytimg.com/vi/Rp8VhxDiDSk/hqdefault.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></h3>
+    <div class="quando">7 settembre 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/"><div class="foto"><img src="https://i.ytimg.com/vi/8JHt6ogwxQw/hqdefault.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Ángela beve tutto, Curro sfonda la porta</a></h3>
+    <div class="quando">6 settembre 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/"><div class="foto"><img src="/img/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Curro nasconde Ángela, Lorenzo furioso</a></h3>
+    <div class="quando">6 settembre 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=Perché Cruz odia Jana più di chiunque altro alla Promessa: non è per Dolores, e la spiegazione è molto più semplice — https://serietvfans.com/la-promessa/perche-cruz-odia-jana-piu-di-chiunque-altro-alla-promessa-non-e-per-dolores-e-la/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/la-promessa/perche-cruz-odia-jana-piu-di-chiunque-altro-alla-promessa-non-e-per-dolores-e-la/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/la-promessa/perche-cruz-odia-jana-piu-di-chiunque-altro-alla-promessa-non-e-per-dolores-e-la/&text=Perché Cruz odia Jana più di chiunque altro alla Promessa: non è per Dolores, e la spiegazione è molto più semplice" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">La Promessa, l&#x27;odio di Cruz verso Jana e le ragioni di una rivalità</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=jfAmLZg2g74">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di La Promessa</h3><ol class="numerata"><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Ángela beve tutto, Curro sfonda la porta</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Curro nasconde Ángela, Lorenzo furioso</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>La Promessa, l&#x27;odio di Cruz verso Jana e le ragioni di una rivalità</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su La Promessa</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-3-6-settembre-maria-affronta-la-gravidanza-da-sola/">La Promessa anticipazioni 3-6 settembre: Maria affronta la gravidanza da sola</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-carlo-arriva-maria-trema/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Carlo arriva, Maria trema</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/far-away/far-away-anticipazioni-dal-31-agosto-al-4-settembre-chi-ha-donato-il-fegato-a-nare/">Far Away, anticipazioni dal 31 agosto al 4 settembre: chi ha donato il fegato a Nare, e perché adesso sta male lui</a></li><li><a href="/far-away/far-away-dal-31-agosto-la-madre-di-alya-sapeva-tutto-non-ricordo/">Far Away Dal 31 Agosto: la madre di Alya sapeva tutto — «non ricordo»</a></li><li><a href="/forbidden-fruit/forbidden-fruit-dal-31-agosto-il-conto-a-nome-di-halit-che-e-morto/">Forbidden Fruit Dal 31 Agosto: il conto a nome di Halit, che è morto</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

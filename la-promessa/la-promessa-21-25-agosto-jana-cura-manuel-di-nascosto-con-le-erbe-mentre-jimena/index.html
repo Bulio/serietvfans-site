@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/la-promessa/">La Promessa</a> › La Promessa 21-25 agosto, Jana cura Manuel di nascosto con le erbe mentre Jimena confessa di non voler fare l&#x27;infermiera del suo promesso sposo</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/la-promessa/">La Promessa</a>
   <h1>La Promessa 21-25 agosto, Jana cura Manuel di nascosto con le erbe mentre Jimena confessa di non voler fare l&#x27;infermiera del suo promesso sposo</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Ritrovato dopo l&#x27;incidente aereo, Manuel torna alla tenuta in condizioni gravissime. A occuparsi di lui, prima da sola e poi di nascosto anche dopo il divieto di Alonso, è Jana. Jimena ci prova per un giorno, poi ammette di non saper fare — e di non volerlo fare. Intanto padre padre Camilo comincia a sospettare, e sorprende Jana mentre rimette a posto la pistola del Barone.</p><ol><li><a href="#c1">Il ritorno di Manuel</a></li><li><a href="#c2">Da dove viene il sapere di Jana sulle erbe</a></li><li><a href="#c3">«Non voglio farlo, non mi appartiene»</a></li><li><a href="#c4">La scomparsa del Barone e i sospetti del prete</a></li><li><a href="#c5">La guerra sotto le scale</a></li><li><a href="#c6">Cosa lascia aperto il silenzio di padre padre Camilo</a></li><li><a href="#c7">Come Jana tenta di salvare Manuel alla tenuta</a></li><li><a href="#c8">Perche&#x27; Jimena rifiuta di assistere Manuel dopo le convulsioni</a></li><li><a href="#c9">Cosa nascondono le quattro donne sulla scomparsa del Barone</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>La Promessa</strong> — Rete 4 · in streaming su Mediaset Infinity</span></div>
   
-  <p class="occhiello">Ritrovato dopo l&#x27;incidente aereo, Manuel torna alla tenuta in condizioni gravissime. A occuparsi di lui, prima da sola e poi di nascosto anche dopo il divieto di Alonso, è Jana. Jimena ci prova per un giorno, poi ammette di non saper fare — e di non volerlo fare. Intanto padre padre Camilo comincia a sospettare, e sorprende Jana mentre rimette a posto la pistola del Barone.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: La Promessa 21-25 agosto, Jana cura Manuel di nascosto con le erbe mentre Jimena confessa di non voler fare l&#x27;infermiera del suo promesso sposo" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/ZaPXZY3Aq-s/maxresdefault.jpg" alt="La Promessa 21-25 agosto, Jana cura Manuel di nascosto con le erbe mentre Jimena confessa di non voler fare l&#x27;infermiera del suo promesso sposo" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/ZaPXZY3Aq-s/hqdefault.jpg 480w, https://i.ytimg.com/vi/ZaPXZY3Aq-s/sddefault.jpg 640w, https://i.ytimg.com/vi/ZaPXZY3Aq-s/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/ZaPXZY3Aq-s/hqdefault.jpg&quot;, &quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,46 +409,68 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>Alla fine della settimana arriva il primo segnale: Manuel le stringe la mano.</strong></p>
-  <h2>Il ritorno di Manuel</h2>
+  <h2 id="c1">Il ritorno di Manuel</h2>
 <p>Dopo giorni in cui le autorità lo avevano dato per morto tra le vittime dell&#x27;incidente aereo, è Jana a ritrovarlo. Se ne prende cura da sola e poi lo riporta alla tenuta, dove Alonso viene avvisato del suo rientro. Le condizioni sono pessime, e il medico chiamato su suggerimento di Jana conferma il quadro: le lesioni interne riportate nello schianto possono ucciderlo. Lei, però, resta convinta che ce la farà, e continua ad assisterlo somministrandogli anche delle erbe che ritiene possano aiutarlo — finché Alonso non la sorprende e le proibisce di entrare in quella stanza.</p>
-<h2>Da dove viene il sapere di Jana sulle erbe</h2>
+<h2 id="c2">Da dove viene il sapere di Jana sulle erbe</h2>
 <p>Chi arriva adesso rischia di leggere quel decotto come un gesto disperato, e non lo è. Jana è entrata alla Promessa sotto un nome che non è il suo, ma il mestiere che si porta dietro è vero: sa medicare, sa riconoscere i sintomi, e in più di un&#x27;occasione ha capito prima del medico cosa stesse succedendo a una persona — succederà anche con Pía, quando sarà lei ad ascoltare il battito del bambino e a prescriverle un rimedio a base di erbe. È un sapere imparato fuori dalle case dei signori, e questo è precisamente ciò che lo rende sospetto agli occhi di Alonso: non ha un titolo che lo certifichi, quindi non vale nulla.</p>
-<h2>«Non voglio farlo, non mi appartiene»</h2>
+<h2 id="c3">«Non voglio farlo, non mi appartiene»</h2>
 <p>Anche Jimena prova a occuparsi del promesso sposo, ma quando Manuel ha delle convulsioni davanti a lei resta paralizzata, incapace di reagire. Poi confessa a Jana la verità: non sa come prendersi cura di lui e, soprattutto, non ha alcuna intenzione di farlo, perché non ritiene che sia compito suo. È una frase che Jana non dimenticherà, e che le fa nascere il primo dubbio serio sulla sincerità dei sentimenti di Jimena.</p>
-<h2>La scomparsa del Barone e i sospetti del prete</h2>
+<h2 id="c4">La scomparsa del Barone e i sospetti del prete</h2>
 <p>Cruz è sempre più angosciata dall&#x27;assenza di notizie del padre e ordina che si organizzino ricerche; Rómulo e Curro battono ogni pista senza trovare nulla, e il ragazzo si sente ancora una volta inadeguato agli occhi della zia. Le quattro donne che conoscono la verità continuano a coprirsi a vicenda, e Jana cerca perfino di orientare le indagini rimettendo al suo posto la pistola del Barone in biblioteca. È proprio in quel momento che padre padre Camilo la sorprende: non dice nulla, ma da lì in poi i suoi sospetti crescono. Intanto tra Cruz e Alonso la frattura si allarga, al punto che lei confida al marito di voler chiudere ogni rapporto.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>La guerra sotto le scale</h2>
+<h2 id="c5">La guerra sotto le scale</h2>
 <p>Cruz scopre che Lope ha lavorato nelle cucine e va su tutte le furie, promettendo vendetta; Alonso rimprovera Pía e Rómulo avvertendoli che l&#x27;insubordinazione avrà conseguenze. Candela e Simona capiscono in fretta chi ha soffiato la notizia e affrontano Petra a viso aperto — con l&#x27;effetto, però, di rafforzare in lei la convinzione di essere la vittima di tutti. Lope si scusa con l&#x27;intera servitù per aver messo a rischio il loro posto, e il gruppo si ricompatta. Alla fine della settimana Jana, ignorando il divieto, torna nella stanza di Manuel e gli prende la mano: lui gliela stringe.</p>
-<h2>Cosa lascia aperto il silenzio di padre padre Camilo</h2>
+<h2 id="c6">Cosa lascia aperto il silenzio di padre padre Camilo</h2>
 <p>Il divieto di Alonso non è una punizione, è una linea: da quel momento tutto ciò che Jana fa per Manuel lo fa contro l&#x27;ordine del marchese, e ogni volta che quella porta si apre lei rischia il posto. Il gesto con cui chiude la settimana — entrare comunque, prendergli la mano — non è romantico, è una disobbedienza vista da chiunque passi in corridoio. Sull&#x27;altro fronte c&#x27;è un debito ancora più scomodo: padre padre Camilo l&#x27;ha sorpresa mentre rimetteva a posto la pistola del Barone e ha scelto di non dire niente. Un silenzio non è un&#x27;assoluzione. Significa che qualcuno, fuori dalle quattro donne che sanno, tiene in mano un pezzo di quella notte e può giocarlo quando gli conviene.</p>
-<h2>Come Jana tenta di salvare Manuel alla tenuta</h2>
+<h2 id="c7">Come Jana tenta di salvare Manuel alla tenuta</h2>
 <p>Dopo che le autorità lo avevano ormai considerato una tra le tante vittime del terribile incidente aereo, il ritrovamento di Manuel per mano di Jana cambia completamente lo scenario. Il giovane proprietario viene riportato alla tenuta in condizioni di salute estremamente gravissime, con lesioni interne molto serie rimediate durante lo schianto che rischiano concrete di condurlo alla morte. Nonostante il parere sconfortante del medico fatto chiamare proprio su indicazione della serva, la giovane donna dimostra un&#x27;incrollabile convinzione nelle possibilità di ripresa del ragazzo. Per questa ragione, decide di applicare tutte le sue preziose conoscenze pratiche somministrandogli rimedi naturali e decotti a base di erbe medicinali per cercare di stabilizzarlo.</p>
 <p>Il sapere pratico accumulato dalla ragazza fuori dalle ricche dimore nobiliari le ha già permesso in passato di intervenire con successo in situazioni critiche, come quando ha ascoltato con cura il battito del bambino di Pía prescrivendole utili cure naturali. Tuttavia, l&#x27;intromissione di Alonso interrompe bruscamente queste cure mediche improvvisate. Il marchese, infatti, la sorprende nell&#x27;atto di somministrare i preparati e, non riconoscendo alcun valore ufficiale o titolo di studio nelle sue capacità, le proibisce categoricamente di mettere nuovamente piede nella stanza del malato. Nonostante un divieto tanto rigido e i rischi enormi per la sua posizione lavorativa, Jana sceglie di disobbedire e torna da Manuel, ottenendo finalmente un piccolo primo segnale di speranza quando il giovane le stringe la mano.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Perche&#x27; Jimena rifiuta di assistere Manuel dopo le convulsioni</h2>
+<h2 id="c8">Perche&#x27; Jimena rifiuta di assistere Manuel dopo le convulsioni</h2>
 <p>Il tentativo di Jimena di mostrare dedizione verso il suo promesso sposo dura soltanto lo spazio di una singola giornata, rivelando drammaticamente tutta la sua inadeguatezza di fronte alle gravi sofferenze del giovane. Quando Manuel viene improvvisamente colto da violentissime convulsioni sotto i suoi occhi, la nobildonna rimane del tutto paralizzata, dimostrandosi incapace di reagire o di prestargli un qualsiasi soccorso tempestivo. Quest&#x27;episodio sconvolgente spinge la ragazza a confessare apertamente a Jana la propria totale incapacità nel gestire una situazione clinica così complessa, ma soprattutto fa emergere la sua chiara mancanza di volontà nel ricoprire il ruolo di infermiera per l&#x27;uomo che dovrebbe presto sposare.</p>
 <p>Nel dialogo intimo tra le due donne, la promessa sposa dichiara senza mezzi termini di non ritenere affatto che l&#x27;assistenza ad un malato così grave rientri tra i propri compiti o mansioni sociali. Questa presa di posizione così netta ed egoistica insinua immediati e profondi dubbi nella mente di Jana, la quale comincia a mettere seriamente in discussione la sincerità dei sentimenti nutriti da Jimena nei confronti di Manuel. Mentre la serva rischia quotidianamente il licenziamento per prestare cure clandestine al ferito, la nobildonna preferisce tirarsi indietro ed evitare ogni responsabilità diretta, lasciando la gestione del promesso sposo a chi possiede le competenze o il coraggio necessario per affrontarla.</p>
-<h2>Cosa nascondono le quattro donne sulla scomparsa del Barone</h2>
+<h2 id="c9">Cosa nascondono le quattro donne sulla scomparsa del Barone</h2>
 <p>La prolungata e misteriosa assenza di notizie sul Barone precipita la marchesa Cruz in uno stato di profonda ed incessante angoscia, spingendola ad ordinare l&#x27;immediata organizzazione di estese battute di ricerca per tutta la zona. Rómulo e il giovane Curro si mettono subito all&#x27;opera per battere ogni possibile pista, ma i continui fallimenti finiscono soltanto per accrescere il senso di profonda inadeguatezza del ragazzo di fronte alle pesanti aspettative della zia. In realtà, la verità su quanto accaduto quella notte è custodita gelosamente da un piccolo gruppo formato da quattro donne, le quali hanno stretto un patto per proteggersi e coprirsi a vicenda di fronte a qualsiasi indagine o sospetto.</p>
 <p>Nel tentativo di depistare le ricerche ufficiali e mettere al sicuro il gruppo, Jana decide di agire in prima persona riposizionando la pistola del Barone all&#x27;interno della biblioteca della tenuta. Proprio durante questa rischiosa manovra, la giovane viene colta di sorpresa da padre Camilo, il quale osserva la scena senza intervenire né muovere accuse immediate. Il silenzio del religioso non rappresenta tuttavia una rassicurante assoluzione, ma segna l&#x27;inizio di sospetti sempre più pressanti. Questa complessa situazione di tensione finisce per ripercuotersi anche sul matrimonio dei marchesi, spingendo una Cruz esausta a confidare ad Alonso l&#x27;intentione di voler troncare definitivamente ogni tipo di rapporto con lui.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=3qam7VZZ_2Q" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/3qam7VZZ_2Q/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni: 2-6 Ottobre: Jimena tenta di uccidere Jana! Manuel in aereo con il p</span></a></li><li><a href="https://www.youtube.com/watch?v=O5_m8FZfQas" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/O5_m8FZfQas/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni 21-25 Agosto: Jana con una pistola? Cosa vuole fare?</span></a></li><li><a href="https://www.youtube.com/watch?v=Z_clSuRKrPY" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/Z_clSuRKrPY/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni 28 Dicembre:Jimena insulta Jana dandole soldi, Manuel nascosto vede t</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Jimena si è tradita da sola con quella frase?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=ZaPXZY3Aq-s">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di La Promessa</h2><div class="griglia"><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/"><div class="foto"><img src="https://i.ytimg.com/vi/Rp8VhxDiDSk/hqdefault.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></h3>
+    <div class="quando">7 settembre 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/"><div class="foto"><img src="https://i.ytimg.com/vi/8JHt6ogwxQw/hqdefault.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Ángela beve tutto, Curro sfonda la porta</a></h3>
+    <div class="quando">6 settembre 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/"><div class="foto"><img src="/img/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Curro nasconde Ángela, Lorenzo furioso</a></h3>
+    <div class="quando">6 settembre 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=La Promessa 21-25 agosto, Jana cura Manuel di nascosto con le erbe mentre Jimena confessa di non voler fare l&#x27;infermiera del suo promesso sposo — https://serietvfans.com/la-promessa/la-promessa-21-25-agosto-jana-cura-manuel-di-nascosto-con-le-erbe-mentre-jimena/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/la-promessa/la-promessa-21-25-agosto-jana-cura-manuel-di-nascosto-con-le-erbe-mentre-jimena/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/la-promessa/la-promessa-21-25-agosto-jana-cura-manuel-di-nascosto-con-le-erbe-mentre-jimena/&text=La Promessa 21-25 agosto, Jana cura Manuel di nascosto con le erbe mentre Jimena confessa di non voler fare l&#x27;infermiera del suo promesso sposo" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">LA PROMESSA Anticipazioni 21-25 Agosto 2023: Jana scoperta da Don padre Camilo!</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=ZaPXZY3Aq-s">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di La Promessa</h3><ol class="numerata"><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Ángela beve tutto, Curro sfonda la porta</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Curro nasconde Ángela, Lorenzo furioso</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>LA PROMESSA Anticipazioni 21-25 Agosto 2023: Jana scoperta da Don padre Camilo!</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su La Promessa</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-3-6-settembre-maria-affronta-la-gravidanza-da-sola/">La Promessa anticipazioni 3-6 settembre: Maria affronta la gravidanza da sola</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-carlo-arriva-maria-trema/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Carlo arriva, Maria trema</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/far-away/far-away-anticipazioni-dal-31-agosto-al-4-settembre-chi-ha-donato-il-fegato-a-nare/">Far Away, anticipazioni dal 31 agosto al 4 settembre: chi ha donato il fegato a Nare, e perché adesso sta male lui</a></li><li><a href="/far-away/far-away-dal-31-agosto-la-madre-di-alya-sapeva-tutto-non-ricordo/">Far Away Dal 31 Agosto: la madre di Alya sapeva tutto — «non ricordo»</a></li><li><a href="/forbidden-fruit/forbidden-fruit-dal-31-agosto-il-conto-a-nome-di-halit-che-e-morto/">Forbidden Fruit Dal 31 Agosto: il conto a nome di Halit, che è morto</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

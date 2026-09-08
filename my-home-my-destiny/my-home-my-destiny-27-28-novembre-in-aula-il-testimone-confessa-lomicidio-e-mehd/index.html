@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/my-home-my-destiny/">My Home My Destiny</a> › My Home My Destiny 27-28 novembre, in aula il testimone confessa l&#x27;omicidio e Mehdi viene assolto: a pagare la donna era stato il vecchio detenuto</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/my-home-my-destiny/">My Home My Destiny</a>
   <h1>My Home My Destiny 27-28 novembre, in aula il testimone confessa l&#x27;omicidio e Mehdi viene assolto: a pagare la donna era stato il vecchio detenuto</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">La cifra chiesta per far ritrattare il testimone è impossibile da racimolare in un giorno, e la famiglia si arrende all&#x27;idea che Mehdi resti dentro. Poi, in aula, quell&#x27;uomo confessa tutto e il giudice lo assolve. Nessuno capisce come sia successo — finché Mehdi, tornato in cella a prendere le sue cose, non scopre chi ha pagato al posto loro.</p><ol><li><a href="#c1">Il prezzo della verità</a></li><li><a href="#c2">Chi è Mehdi, e cosa aveva già perso prima di entrare in aula</a></li><li><a href="#c3">La confessione in aula</a></li><li><a href="#c4">Chi ha pagato davvero</a></li><li><a href="#c5">Gli uomini in giacca davanti al cancello</a></li><li><a href="#c6">Perché conta: esce libero e mette un piede in un&#x27;altra prigione</a></li><li><a href="#c7">Come Zeynep affronta la richiesta della donna</a></li><li><a href="#c8">Perché l&#x27;anziano compagno di cella protegge Mehdi</a></li><li><a href="#c9">Cosa succede a Nermin e Barış durante l&#x27;attesa</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>My Home My Destiny</strong> — Serie conclusa in Italia · le puntate su Mediaset Infinity</span></div>
   
-  <p class="occhiello">La cifra chiesta per far ritrattare il testimone è impossibile da racimolare in un giorno, e la famiglia si arrende all&#x27;idea che Mehdi resti dentro. Poi, in aula, quell&#x27;uomo confessa tutto e il giudice lo assolve. Nessuno capisce come sia successo — finché Mehdi, tornato in cella a prendere le sue cose, non scopre chi ha pagato al posto loro.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: My Home My Destiny 27-28 novembre, in aula il testimone confessa l&#x27;omicidio e Mehdi viene assolto: a pagare la donna era stato il vecchio detenuto" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/lLZPCqaJ_c0/maxresdefault.jpg" alt="My Home My Destiny 27-28 novembre, in aula il testimone confessa l&#x27;omicidio e Mehdi viene assolto: a pagare la donna era stato il vecchio detenuto" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/lLZPCqaJ_c0/hqdefault.jpg 480w, https://i.ytimg.com/vi/lLZPCqaJ_c0/sddefault.jpg 640w, https://i.ytimg.com/vi/lLZPCqaJ_c0/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/lLZPCqaJ_c0/hqdefault.jpg&quot;, &quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,46 +409,68 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>Fuori dal carcere lo aspettano auto e uomini in giacca e cravatta: Nuh capisce subito che non è un buon segno.</strong></p>
-  <h2>Il prezzo della verità</h2>
+  <h2 id="c1">Il prezzo della verità</h2>
 <p>L&#x27;amante del testimone contatta Zeynep e le propone un accordo: può convincerlo a scagionare Mehdi, ma vuole essere pagata — cinquecentomila lire, da consegnare prima dell&#x27;udienza del giorno dopo. Zeynep gira la richiesta alla famiglia e la reazione è la disperazione: quella somma, in quelle ore, non esiste. Nello stesso colloquio Mehdi le chiede da dove fossero arrivati i soldi che gli aveva portato in precedenza, dichiarando che preferirebbe restare dentro piuttosto che accettarli da Barış; erano invece il ricavato della vendita del furgone di Nuh.</p>
-<h2>Chi è Mehdi, e cosa aveva già perso prima di entrare in aula</h2>
+<h2 id="c2">Chi è Mehdi, e cosa aveva già perso prima di entrare in aula</h2>
 <p>Mehdi è il meccanico del quartiere, l&#x27;uomo che tutto quello che aveva se l&#x27;era costruito con le mani, a partire dal negozio di pneumatici — che durante la detenzione ha dovuto chiudere. Il processo lo trova già svuotato: il matrimonio con Zeynep è arrivato al capolinea, e con Kibrit, la bambina cresciuta insieme a lei, il legame è rimasto in piedi soltanto perché nessuno dei due ha voluto reciderlo. Ecco perché la sua frase più dura in colloquio non riguarda la libertà ma il denaro: dice che preferirebbe restare dentro piuttosto che uscire grazie ai soldi di Barış.</p>
-<h2>La confessione in aula</h2>
+<h2 id="c3">La confessione in aula</h2>
 <p>In tribunale ci sono tutti, tesissimi. Entra Savaş, poi la donna, poi il testimone chiamato a deporre. E succede l&#x27;imprevisto: l&#x27;uomo ammette ogni cosa, dichiarando di essere stato lui a uccidere Bekir e di aver accusato Mehdi per salvarsi. Il giudice lo assolve seduta stante. Zeynep e gli altri si guardano increduli — nessuno di loro ha pagato quella cifra — ma in quel momento conta solo il verdetto.</p>
-<h2>Chi ha pagato davvero</h2>
+<h2 id="c4">Chi ha pagato davvero</h2>
 <p>Rientrato in cella per raccogliere le sue cose, Mehdi racconta tutto all&#x27;anziano compagno di prigionia, e scopre che è stato lui a pagare perché la verità venisse fuori. L&#x27;uomo non chiede indietro nulla: gli propone invece di gestire una delle sue attività all&#x27;esterno, e gli spiega che dei soldi per la famiglia non dovrà più preoccuparsi, perché ha già sistemato tutto — casa compresa. Al suo posto, fuori, ci saranno i suoi uomini a proteggerlo. Il ruolo, però, non è solo amministrativo: Mehdi dovrà diventare i suoi occhi e le sue orecchie fuori dal carcere.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Gli uomini in giacca davanti al cancello</h2>
+<h2 id="c5">Gli uomini in giacca davanti al cancello</h2>
 <p>Mentre Cemile, Benal, Nuh e Kibrit aspettano fuori, arrivano diverse auto da cui scendono uomini elegantissimi: Nuh li guarda e capisce subito di che ambiente si tratti. Quando Mehdi esce, prima ancora di poter abbracciare i suoi viene avvicinato dal capo della scorta, che gli comunica il programma della giornata e la nuova casa. Solo dopo arrivano gli abbracci e le lacrime. Alla domanda di Nuh su chi siano quegli uomini, Mehdi risponde che glielo spiegherà a tempo debito. Nel frattempo Barış porta a Nermin la notizia migliore — entro una settimana riavrà i soldi e le proprietà sottratti dal marito — mentre Sultan ed Emine annunciano di non voler più accettare uno stipendio dalla famiglia di Barış, perché ormai si considerano legate a loro da altro.</p>
-<h2>Perché conta: esce libero e mette un piede in un&#x27;altra prigione</h2>
+<h2 id="c6">Perché conta: esce libero e mette un piede in un&#x27;altra prigione</h2>
 <p>L&#x27;anziano detenuto non ha comprato una testimonianza: ha comprato un uomo. Casa sistemata, famiglia senza pensieri, un&#x27;attività da gestire fuori e una scorta ad aspettarlo davanti al cancello — ogni singola voce di quel pacchetto è un debito, e l&#x27;ultima condizione lo dice apertamente, perché Mehdi dovrà essere i suoi occhi e le sue orecchie all&#x27;esterno. È il rovesciamento perfetto della sua ossessione di quelle stesse ore: rifiuta i soldi di Barış perché lo umiliano, e accetta senza discutere quelli di chi non gli lascerà mai più la possibilità di dire no. Nuh, che quegli uomini li riconosce al primo sguardo, lo ha capito prima di lui — e nel quartiere si saprà molto prima che Mehdi trovi il modo di spiegarlo a Zeynep.</p>
-<h2>Come Zeynep affronta la richiesta della donna</h2>
+<h2 id="c7">Come Zeynep affronta la richiesta della donna</h2>
 <p>La richiesta giunta a Zeynep da parte dell&#x27;amante del testimone ha gettato l&#x27;intera famiglia nel panico più totale a poche ore dall&#x27;udienza decisiva. La donna voleva ben cinquecentomila lire per spingere l&#x27;uomo a scagionare Mehdi, una cifra enorme da consegnare prima dell&#x27;ingresso in aula. Zeynep ha subito condiviso la notizia con gli altri parenti, ma la disperazione è stata immediata, poiché racimolare quella somma in così poco tempo era del tutto impossibile. Già in precedenza la famiglia si era sacrificata per raccogliere fondi, arrivando fino alla vendita del furgone di Nuh per portare del denaro a Mehdi durante la sua permanenza dietro le sbarre.</p>
 <p>Proprio durante il colloquio in carcere con Zeynep, Mehdi aveva voluto chiarire da dove arrivassero i soldi ricevuti in precedenza, dimostrando quanto gli stesse a cuore mantenere la propria dignità. Il meccanico ha dichiarato apertamente che avrebbe preferito rimanere in cella piuttosto che accettare un aiuto finanziario proveniente da Barış, rifiutando con decisione l&#x27;idea di essere salvato da lui. Questa forte presa di posizione ha mostrato il profondo orgoglio di un uomo che ha visto fallire il suo matrimonio con Zeynep e che ha perso il suo negozio di pneumatici, rimanendo legato alla piccola Kibrit soltanto attraverso un profondo affetto reciproco.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Perché l&#x27;anziano compagno di cella protegge Mehdi</h2>
+<h2 id="c8">Perché l&#x27;anziano compagno di cella protegge Mehdi</h2>
 <p>Il colpo di scena in tribunale, dove il testimone ha confessato l&#x27;omicidio di Bekir scagionando Mehdi, ha trovato spiegazione solo quando l&#x27;imputato è rientrato in cella per raccogliere le proprie cose. In quel momento, l&#x27;anziano compagno di prigionia ha rivelato di essere stato lui a pagare l&#x27;ingente somma richiesta per far venire a galla la verità. Senza pretendere la restituzione del denaro, il vecchio detenuto ha proposto a Mehdi di gestire una delle sue attività commerciali all&#x27;esterno, garantendo inoltre di aver già risolto ogni problema economico della famiglia dell&#x27;ex meccanico, compresa la sistemazione della loro abitazione.</p>
 <p>Questa generosità apparente nasconde però un vincolo ben preciso, dato che il vecchio detenuto ha stabilito chiaramente quali saranno i compiti di Mehdi una volta ritornato in libertà. Oltre a essere protetto dai suoi uomini posizionati all&#x27;esterno, il protagonista dovrà diventare le sue orecchie e i suoi occhi fuori dalle mura del carcere. Accettando questo accordo, Mehdi evita i soldi di Barış ma si lega a un nuovo impegno, ponendosi al servizio dell&#x27;anziano compagno proprio nel momento in cui ritrova la libertà formale davanti ai giudici.</p>
-<h2>Cosa succede a Nermin e Barış durante l&#x27;attesa</h2>
+<h2 id="c9">Cosa succede a Nermin e Barış durante l&#x27;attesa</h2>
 <p>Mentre la vicenda giudiziaria di Mehdi giungeva a una svolta inaspettata, all&#x27;esterno del tribunale si sono intrecciate altre importanti novità per i protagonisti della storia. Barış ha raggiunto Nermin per comunicarle una notizia molto attesa, rassicurandola sul fatto che entro una settimana riavrà indietro tutte le proprietà e il denaro che le erano stati sottratti dal marito. Questo sviluppo porta un raggio di speranza nella vita della donna, segnando un passaggio fondamentale per la risoluzione delle sue difficoltà economiche e personali nate nelle puntate precedenti.</p>
 <p>Contemporaneamente, le dinamiche tra le famiglie continuano a evolversi con le decisioni di Sultan ed Emine, che hanno annunciato di non voler più percepire uno stipendio dalla famiglia di Barış, considerandosi ormai legate a loro da un rapporto profondo e differente dal semplice lavoro. Fuori dal cancello del carcere, intanto, l&#x27;arrivo delle auto scure con gli uomini in giacca e cravatta insospettisce immediatamente Nuh, che riconosce subito la natura pericolosa di quell&#x27;ambiente. Quando Mehdi esce e viene guidato dal capo della scorta verso la nuova casa, rinvia le spiegazioni a Nuh, abbracciando infine Cemile, Benal e Kibrit.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=aOns-0Xc6TQ" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/aOns-0Xc6TQ/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>MY HOME MY DESTINY Anticipazioni 29 e 30 Novembre: Mehdi, nuovo look, villa lussuosa e scorta a</span></a></li><li><a href="https://www.youtube.com/watch?v=wV69tHu2IjM" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/wV69tHu2IjM/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>MY HOME MY DESTINY Anticipazioni 10 Novembre: Mehdi sta finalmente uscendo di galera; succede p</span></a></li><li><a href="https://www.youtube.com/watch?v=1l3YC-mTbbU" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/1l3YC-mTbbU/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>MY HOME MY DESTINY Anticipazioni: Zeynep e Mehdi dopo il rapimento, vecchio e nuovo amore?</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Mehdi è uscito di prigione per entrare in una gabbia più grande?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=lLZPCqaJ_c0">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di My Home My Destiny</h2><div class="griglia"><article class="scheda">
+  <a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/"><div class="foto"><img src="/img/my-home-my-destiny-la-trama-completa-e-come-finisce.jpg" alt="My Home My Destiny" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">My Home My Destiny</span>
+    <h3><a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/">My Home My Destiny: la trama completa e come finisce</a></h3>
+    <div class="quando">30 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/"><div class="foto"><img src="https://i.ytimg.com/vi/-djleIeCLQs/hqdefault.jpg" alt="My Home My Destiny" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">My Home My Destiny</span>
+    <h3><a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/">My Home My Destiny, Zeynep ferma l&#x27;aborto di Benal in sala operatoria senza sapere che il padre è Mehdi</a></h3>
+    <div class="quando">17 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/"><div class="foto"><img src="https://i.ytimg.com/vi/gxL0o63Nhqw/hqdefault.jpg" alt="My Home My Destiny" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">My Home My Destiny</span>
+    <h3><a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/">My Home My Destiny, anticipazioni del 17 novembre: Özlem indaga su Zeynep e scopre tutto, Nuh diventa autista di Barış e qualcuno manomette i macchinari di Bekir</a></h3>
+    <div class="quando">16 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=My Home My Destiny 27-28 novembre, in aula il testimone confessa l&#x27;omicidio e Mehdi viene assolto: a pagare la donna era stato il vecchio detenuto — https://serietvfans.com/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/&text=My Home My Destiny 27-28 novembre, in aula il testimone confessa l&#x27;omicidio e Mehdi viene assolto: a pagare la donna era stato il vecchio detenuto" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">MY HOME MY DESTINY Anticipazioni 27-28 novembre: Mehdi libero ma... prigioniero</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=lLZPCqaJ_c0">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di My Home My Destiny</h3><ol class="numerata"><li><a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/">My Home My Destiny: la trama completa e come finisce</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/">My Home My Destiny, Zeynep ferma l&#x27;aborto di Benal in sala operatoria senza sapere che il padre è Mehdi</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/">My Home My Destiny, anticipazioni del 17 novembre: Özlem indaga su Zeynep e scopre tutto, Nuh diventa autista di Barış e qualcuno manomette i macchinari di Bekir</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-guida-alla-serie-chi-sono-demet-ozdemir-e-ibrahim-celikkol-qu/">My Home My Destiny: guida alla serie, il cast, i personaggi e quante puntate sono</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-1-dicembre-gli-spari-davanti-alla-vecchia-casa-zeynep-tra-le/">My Home My Destiny 1° dicembre, gli spari davanti alla vecchia casa: Zeynep tra le due madri quando l&#x27;uomo in moto estrae la pistola</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>MY HOME MY DESTINY Anticipazioni 27-28 novembre: Mehdi libero ma... prigioniero</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su My Home My Destiny</h3><ul><li><a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/">My Home My Destiny: la trama completa e come finisce</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/">My Home My Destiny, Zeynep ferma l&#x27;aborto di Benal in sala operatoria senza sapere che il padre è Mehdi</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/">My Home My Destiny, anticipazioni del 17 novembre: Özlem indaga su Zeynep e scopre tutto, Nuh diventa autista di Barış e qualcuno manomette i macchinari di Bekir</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-guida-alla-serie-chi-sono-demet-ozdemir-e-ibrahim-celikkol-qu/">My Home My Destiny: guida alla serie, il cast, i personaggi e quante puntate sono</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-1-dicembre-gli-spari-davanti-alla-vecchia-casa-zeynep-tra-le/">My Home My Destiny 1° dicembre, gli spari davanti alla vecchia casa: Zeynep tra le due madri quando l&#x27;uomo in moto estrae la pistola</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

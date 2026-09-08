@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/terra-amara/">Terra Amara</a> › Terra Amara, il matrimonio di Fadik e Raşit: i bracciali d&#x27;oro di Demir e Fikret che chiede il permesso a Fekeli</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/terra-amara/">Terra Amara</a>
   <h1>Terra Amara, il matrimonio di Fadik e Raşit: i bracciali d&#x27;oro di Demir e Fikret che chiede il permesso a Fekeli</h1>
-  <div class="firma">Redazione Serie TV Fans · sabato 15 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-15">sabato 15 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Fadik e Raşit escono dalla villa vestiti da sposi tra gli applausi. Demir dona bracciali d&#x27;oro alla sposa, il giardino si riempie di danze. Ma al tavolo di Fekeli arriva Fikret, e chiede il permesso di sedersi.</p><ol><li><a href="#c1">Chi sono Fadik e Raşit</a></li><li><a href="#c2">I bracciali d&#x27;oro di Demir</a></li><li><a href="#c3">Fikret chiede a Fekeli il permesso di sedersi</a></li><li><a href="#c4">Perché guardare le scene di festa in Terra Amara</a></li><li><a href="#c5">Chi sono Fekeli, Fikret e Lütfiye</a></li><li><a href="#c6">Cosa bolle sotto la festa</a></li><li><a href="#c7">Dove vedere Terra Amara</a></li><li><a href="#c8">Come Fikret cerca un punto d&#x27;incontro con Fekeli</a></li><li><a href="#c9">Cosa nasconde il gesto generoso di Demir Yaman</a></li><li><a href="#c10">Perché la cena preparata da Lütfiye e Nazire unisce</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>Terra Amara</strong> — Serie conclusa in Italia · tutte le puntate su Mediaset Infinity</span></div>
   
-  <p class="occhiello">Fadik e Raşit escono dalla villa vestiti da sposi tra gli applausi. Demir dona bracciali d&#x27;oro alla sposa, il giardino si riempie di danze. Ma al tavolo di Fekeli arriva Fikret, e chiede il permesso di sedersi.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: Terra Amara, il matrimonio di Fadik e Raşit: i bracciali d&#x27;oro di Demir e Fikret che chiede il permesso a Fekeli" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/0t80Dw_h2H4/maxresdefault.jpg" alt="Terra Amara, il matrimonio di Fadik e Raşit: i bracciali d&#x27;oro di Demir e Fikret che chiede il permesso a Fekeli" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/0t80Dw_h2H4/hqdefault.jpg 480w, https://i.ytimg.com/vi/0t80Dw_h2H4/sddefault.jpg 640w, https://i.ytimg.com/vi/0t80Dw_h2H4/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/0t80Dw_h2H4/hqdefault.jpg&quot;, &quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -360,51 +410,73 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
   <div class="corpo">
   <p><strong>Una festa in giardino, e tutte le tensioni di Çukurova sedute allo stesso tavolo a fingere che vada tutto bene.</strong></p>
   <p>Le puntate migliori di Terra Amara non sono quelle con lo sparo: sono quelle in cui tutti sorridono e nessuno può dire quello che pensa. Il matrimonio di Fadik e Raşit è esattamente questo — una festa vera, con gioia vera, dentro la quale ogni personaggio sta portando un peso che non può posare.</p>
-<h2>Chi sono Fadik e Raşit</h2>
+<h2 id="c1">Chi sono Fadik e Raşit</h2>
 <p>Per chi arriva adesso: Fadik e Raşit non sono padroni, sono servitù. Lavorano alla villa Yaman e il loro matrimonio è uno dei pochi momenti in cui la serie concede una gioia senza contropartite a chi sta in fondo alla scala sociale di Çukurova. È anche il motivo per cui questa puntata è amata da chi segue Terra Amara da anni: per una sera, la villa smette di essere un campo di battaglia.</p>
-<h2>I bracciali d&#x27;oro di Demir</h2>
+<h2 id="c2">I bracciali d&#x27;oro di Demir</h2>
 <p>Gli sposi escono dal portone della villa sotto gli applausi, e Demir augura loro una vita felice adornando il polso di Fadik con bracciali d&#x27;oro. Gli altri invitati si uniscono con i propri doni, e il giardino si riempie di danze tradizionali.</p>
 <p>Il gesto di Demir merita una nota. In Turchia il dono dell&#x27;oro alla sposa è tradizione, ma il fatto che sia il padrone a farlo davanti a tutti dice qualcosa di preciso su come Demir vuole essere visto: non come proprietario, ma come capofamiglia allargata. È un&#x27;immagine di sé che la serie gli lascia costruire proprio mentre altrove la sta smontando.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Fikret chiede a Fekeli il permesso di sedersi</h2>
+<h2 id="c3">Fikret chiede a Fekeli il permesso di sedersi</h2>
 <p>Mentre Lütfiye e Nazire preparano la cena, Fekeli siede accanto a loro con l&#x27;aria di chi è altrove. Lütfiye prova a scuoterlo, a contagiarlo con il proprio buon umore. Poi succede la cosa che rende questa scena importante: arriva Fikret, e chiede a Fekeli il permesso di unirsi a loro.</p>
 <p>Fekeli acconsente e lo fa sedere di fronte a sé. È un gesto minimo e formale, ma in una famiglia dove le distanze si misurano in chi può sedersi a quale tavolo, chiedere permesso significa riconoscere un&#x27;autorità — e concederlo significa aprire uno spiraglio. Chi conosce come finisce il rapporto fra questi due sa quanto peserà, a posteriori, questa sera in giardino.</p>
-<h2>Perché guardare le scene di festa in Terra Amara</h2>
-<h2>Chi sono Fekeli, Fikret e Lütfiye</h2>
+<h2 id="c4">Perché guardare le scene di festa in Terra Amara</h2>
+<h2 id="c5">Chi sono Fekeli, Fikret e Lütfiye</h2>
 <p>Ali Rahmet Fekeli è l&#x27;uomo che a Çukurova rappresenta il contrappeso ai Yaman: tornato dal carcere dopo decenni, si è ricostruito una posizione senza mai adottare i metodi di Demir. Lütfiye è la cognata tornata dall&#x27;estero, l&#x27;unica che gli parli senza soggezione. Fikret è il nipote arrivato da poco, con un passato che nessuno conosce del tutto e un rapporto con Fekeli fatto di avvicinamenti e passi indietro.</p>
 <p>È questo che rende il momento del permesso più significativo di quanto sembri. Fra i due c&#x27;è una distanza che nessuno dei due sa colmare con le parole, e una sedia offerta al tavolo dice quello che nessuna conversazione è ancora riuscita a dire.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Cosa bolle sotto la festa</h2>
+<h2 id="c6">Cosa bolle sotto la festa</h2>
 <p>Mentre in giardino si balla, la trama principale non si è fermata. Demir e Züleyha stanno attraversando l&#x27;ennesimo periodo difficile, e la serenità con cui il padrone di casa distribuisce doni agli sposi è tanto sincera quanto provvisoria. È il contrasto che Terra Amara cerca: la gioia degli altri come misura di quello che ai protagonisti manca.</p>
 <p>C&#x27;è una regola non scritta in questa serie: le celebrazioni servono a mettere tutti nello stesso posto per farci vedere chi non si parla, chi si evita, chi si siede lontano. Se in una puntata c&#x27;è un matrimonio, conviene guardare i margini dell&#x27;inquadratura più del centro. È lì che Terra Amara semina quello che raccoglierà venti puntate dopo.</p>
-<h2>Dove vedere Terra Amara</h2>
+<h2 id="c7">Dove vedere Terra Amara</h2>
 <p>Terra Amara si è conclusa in Italia e tutte le puntate sono disponibili in streaming su Mediaset Infinity, dove si possono recuperare dall&#x27;inizio.</p>
-<h2>Come Fikret cerca un punto d&#x27;incontro con Fekeli</h2>
+<h2 id="c8">Come Fikret cerca un punto d&#x27;incontro con Fekeli</h2>
 <p>La presenza di Fikret alla festa del matrimonio rappresenta uno degli snodi più delicati dell&#x27;intera serata nel giardino della villa Yaman. Il nipote giunto da poco a Çukurova porta con sé un passato ancora sconosciuto e un legame complesso con lo zio, fatto di continui avvicinamenti e improvvisi passi indietro. Quando sceglie di avvicinarsi al tavolo dove siede Ali Rahmet Fekeli, l&#x27;uomo che dopo aver trascorso decenni in carcere si è ricostruito una posizione senza mai piegarsi ai metodi aggressivi di Demir, Fikret sa che chiedere il semplice permesso di sedersi significa fare un passo formale ma importantissimo verso il riconoscimento della sua figura di riferimento.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>Il consenso accordato da Fekeli, che invita il giovane nipote a prendere posto proprio di fronte a lui, si trasforma così in una piccola crepa nel muro di freddezza che li ha separati fino a questo momento. In un ambiente sociale rigido come quello rappresentato dalla soap opera, dove persino l&#x27;assegnazione di una sedia attorno a un tavolo da pranzo definisce con precisione i ruoli e la gerarchia familiare, questo invito sommesso acquisisce un valore profondamente simbolico. Mentre le celebrazioni per la servitù proseguono e gli altri convitati si dividono tra chiacchiere e sguardi d&#x27;intesa, lo scambio discreto fra i due uomini getta le basi per i futuri sviluppi della loro complessa dinamica.</p>
-<h2>Cosa nasconde il gesto generoso di Demir Yaman</h2>
+<h2 id="c9">Cosa nasconde il gesto generoso di Demir Yaman</h2>
 <p>Nel mezzo delle danze tradizionali che animano il giardino della tenuta, l&#x27;omaggio offerto a Fadik da Demir Yaman assume un significato che va ben oltre la pura celebrazione delle nozze della coppia di servitori. Inserendosi nella consuetudine turca di adornare i polsi della sposa con preziosi bracciali d&#x27;oro e augurare una vita coniugale felice, il padrone di casa sceglie deliberatamente di agire di fronte a tutti gli invitati presenti. Questo gesto pubblico gli consente di proiettare all&#x27;esterno un&#x27;immagine studiata di sé, quella di un capofamiglia premuroso e protettivo verso la propria servitù, proprio mentre la serie mostra quanto questa visione idealizzata stia crollando sotto il peso delle insoddisfazioni personali.</p>
 <p>Questa facciata di generosità serena contrasta apertamente con le pesanti tensioni private che Demir sta vivendo all&#x27;interno delle mura domestiche al fianco di Züleyha. Il matrimonio fra Fadik e Raşit offre infatti ai padroni della villa l&#x27;occasione perfetta per mettere temporaneamente da parte i risentimenti e fingere che tutto prosegua nel migliore dei modi. Mentre la coppia di sposi vive un raro momento di felicità privo di contropartite e festeggia la propria unione insieme ai lavoratori e agli amici di Çukurova, le crepe nelle vite dei protagonisti rimangono evidenti per chi osserva i margini dell&#x27;inquadratura, ricordando a tutti che ogni festa nasconde verità non dette.</p>
-<h2>Perché la cena preparata da Lütfiye e Nazire unisce</h2>
+<h2 id="c10">Perché la cena preparata da Lütfiye e Nazire unisce</h2>
 <p>Dietro l&#x27;allestimento del banchetto di nozze c&#x27;è il lavoro costante di Lütfiye e Nazire, che si occupano con dedizione di preparare la cena per tutti gli invitati riuniti per l&#x27;occasione. Lütfiye, la cognata rientrata dall&#x27;estero che vanta il raro privilegio di potersi rivolgere ad Ali Rahmet Fekeli senza manifestare alcuna soggezione o timore reverenziale, si accorge immediatamente dell&#x27;atteggiamento assente dell&#x27;uomo. Seduto da solo al tavolo mentre la festa entra nel vivo, Fekeli appare visibilmente distante e assorto nei suoi pensieri, spingendo Lütfiye a intervenire energicamente per cercare di scuoterlo e trasmettergli la propria contagiosa vivacità durante una serata che dovrebbe essere dedicata soltanto al festeggiamento.</p>
 <p>La spinta di Lütfiye verso un clima di maggiore distensione crea le condizioni ideali affinché la cena al banchetto diventi un punto di incontro tra le anime più tormentate di Çukurova. Riunire personaggi segnati da rivalità storiche o da trascorsi complessi allo stesso tavolo rappresenta la cifra stilistica della serie, dimostrando come gli eventi celebrativi servano a svelare le dinamiche nascoste tra i presenti. La possibilità di recuperare tutti questi episodi salienti su Mediaset Infinity permette agli appassionati di rivedere ogni singolo dettaglio di questa serata, osservando come la festa per Raşit e Fadik costituisca in realtà la cornice perfetta in cui collocare piccoli ma decisivi passaggi narrativi.</p>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=WglHA_nQqkM" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/WglHA_nQqkM/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TERRA AMARA Anticipazioni 12 Gennaio:Fikret devastato dalla morte di Fekeli.Sdraiato sulla sua </span></a></li><li><a href="https://www.youtube.com/watch?v=h89zSaILrkg" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/h89zSaILrkg/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TERRA AMARA Anticipazioni: Assalto alla villa, Demir scompare! Hakan entra in scena!</span></a></li><li><a href="https://www.youtube.com/watch?v=2R_Gt_ODgTg" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/2R_Gt_ODgTg/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TERRA AMARA Anticipazioni 25-27 Ottobre: Demir legge la lettera di Fikret! Sevda stana Umit e D</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Qual è stata la festa più bella di Terra Amara secondo voi?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=0t80Dw_h2H4">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di Terra Amara</h2><div class="griglia"><article class="scheda">
+  <a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/"><div class="foto"><img src="/img/terra-amara-la-trama-completa-e-come-finisce.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></h3>
+    <div class="quando">30 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/"><div class="foto"><img src="https://i.ytimg.com/vi/_ypSJU-x7LY/hqdefault.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/"><div class="foto"><img src="https://i.ytimg.com/vi/B_MLx-0yh6M/hqdefault.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=Terra Amara, il matrimonio di Fadik e Raşit: i bracciali d&#x27;oro di Demir e Fikret che chiede il permesso a Fekeli — https://serietvfans.com/terra-amara/terra-amara-il-matrimonio-di-fadik-e-rasit-i-bracciali-d-oro-di-demir/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/terra-amara/terra-amara-il-matrimonio-di-fadik-e-rasit-i-bracciali-d-oro-di-demir/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/terra-amara/terra-amara-il-matrimonio-di-fadik-e-rasit-i-bracciali-d-oro-di-demir/&text=Terra Amara, il matrimonio di Fadik e Raşit: i bracciali d&#x27;oro di Demir e Fikret che chiede il permesso a Fekeli" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">TERRA AMARA Anticipazioni: Per Demir e Züleyha di nuovo sofferenza</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=0t80Dw_h2H4">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di Terra Amara</h3><ol class="numerata"><li><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></li><li><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></li><li><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></li><li><a href="/terra-amara/terra-amara-come-finisce-davvero-zuleyha-vince-tutto-e-resta-sola/">Terra Amara: come finisce davvero, Züleyha vince tutto e resta sola</a></li><li><a href="/terra-amara/terra-amara-come-muore-demir-yaman-chi-ha-dato-lordine-e-perche-doveva-essere-un-rapimento/">Terra Amara, come muore Demir Yaman: chi ha dato l&#x27;ordine e perché doveva essere un rapimento</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>TERRA AMARA Anticipazioni: Per Demir e Züleyha di nuovo sofferenza</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su Terra Amara</h3><ul><li><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></li><li><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></li><li><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></li><li><a href="/terra-amara/terra-amara-come-finisce-davvero-zuleyha-vince-tutto-e-resta-sola/">Terra Amara: come finisce davvero, Züleyha vince tutto e resta sola</a></li><li><a href="/terra-amara/terra-amara-come-muore-demir-yaman-chi-ha-dato-lordine-e-perche-doveva-essere-un-rapimento/">Terra Amara, come muore Demir Yaman: chi ha dato l&#x27;ordine e perché doveva essere un rapimento</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/la-promessa/">La Promessa</a> › La Promessa, chi è Abel Bueno: il medico &quot;pazzo nel sidecar&quot; che entra nella vita di Jana — e nel triangolo con Manuel</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/la-promessa/">La Promessa</a>
   <h1>La Promessa, chi è Abel Bueno: il medico &quot;pazzo nel sidecar&quot; che entra nella vita di Jana — e nel triangolo con Manuel</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">La scheda del nuovo arrivato interpretato da Alejandro Vergara: chiamato da Manuel per seguire la gravidanza di Jimena, Abel Bueno si presenta investendo (quasi) Jana, rifiuta la zona nobile per dormire con la servitù e promette di diventare il terzo vertice del triangolo amoroso più delicato della serie.</p><ol><li><a href="#c1">Perché arriva: la gravidanza &quot;delicata&quot; di Jimena</a></li><li><a href="#c2">L&#x27;incontro-scontro con Jana e il soprannome</a></li><li><a href="#c3">Chi è la «guaritrice»: perché Jana non è una cameriera qualsiasi</a></li><li><a href="#c4">Chi è Abel: libri, provette e zero lusso</a></li><li><a href="#c5">Cosa può scoprire Abel sulla gravidanza di Jimena</a></li><li><a href="#c6">Il patto con Jimena e il triangolo con Jana</a></li><li><a href="#c7">Perché conta: dormire con la servitù non è un vezzo</a></li><li><a href="#c8">Come Manuel convince Cruz sul medico Abel</a></li><li><a href="#c9">Perché Jana collabora con Abel per Ramona</a></li><li><a href="#c10">Quale patto rischia di stringere Abel con Jimena</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>La Promessa</strong> — Rete 4 · in streaming su Mediaset Infinity</span></div>
   
-  <p class="occhiello">La scheda del nuovo arrivato interpretato da Alejandro Vergara: chiamato da Manuel per seguire la gravidanza di Jimena, Abel Bueno si presenta investendo (quasi) Jana, rifiuta la zona nobile per dormire con la servitù e promette di diventare il terzo vertice del triangolo amoroso più delicato della serie.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: La Promessa, chi è Abel Bueno: il medico &quot;pazzo nel sidecar&quot; che entra nella vita di Jana — e nel triangolo con Manuel" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/5WNtKGFgagA/maxresdefault.jpg" alt="La Promessa, chi è Abel Bueno: il medico &quot;pazzo nel sidecar&quot; che entra nella vita di Jana — e nel triangolo con Manuel" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/5WNtKGFgagA/hqdefault.jpg 480w, https://i.ytimg.com/vi/5WNtKGFgagA/sddefault.jpg 640w, https://i.ytimg.com/vi/5WNtKGFgagA/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/5WNtKGFgagA/hqdefault.jpg&quot;, &quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,48 +409,70 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>Un dottore eccentrico che ama i libri più del lusso, un sidecar che fa voltare tutto il paese e un incontro-scontro in mezzo alla strada: l&#x27;ingresso di Abel alla Promessa è già leggenda.</strong></p>
-  <h2>Perché arriva: la gravidanza &quot;delicata&quot; di Jimena</h2>
+  <h2 id="c1">Perché arriva: la gravidanza &quot;delicata&quot; di Jimena</h2>
 <p>Le complicazioni della prima fase della gravidanza di Jimena preoccupano tutti, e al ritorno dalla casa di cura è proprio Cruz — resa più sensibile dalla propria esperienza — a convincere Manuel e la nuora che serva una figura medica stabile a palazzo. Manuel ha già il nome: Abel Bueno, amico di lunga data e medico dalla reputazione eccellente, che risponde alla chiamata senza esitazioni. Quello che nessuno immagina è quanto quella presenza cambierà gli equilibri della tenuta.</p>
-<h2>L&#x27;incontro-scontro con Jana e il soprannome</h2>
+<h2 id="c2">L&#x27;incontro-scontro con Jana e il soprannome</h2>
 <p>Il debutto non è dei più eleganti: durante il viaggio, Abel si ritrova faccia a faccia — anzi, paraurti a gonnella — con Jana, che attraversa la strada senza accorgersi del suo veicolo. Nessun danno, tanto imbarazzo, e la nascita di due soprannomi destinati a restare: lei è &quot;la guaritrice&quot;, lui &quot;il pazzo nel sidecar&quot;, per via dell&#x27;eccentrico mezzo che incuriosisce l&#x27;intero palazzo. Da lì in avanti, i due scoprono di avere in comune molto più di un incidente sfiorato.</p>
-<h2>Chi è la «guaritrice»: perché Jana non è una cameriera qualsiasi</h2>
+<h2 id="c3">Chi è la «guaritrice»: perché Jana non è una cameriera qualsiasi</h2>
 <p>Il soprannome che Abel le affibbia sulla strada non nasce dal nulla. Jana porta la divisa delle domestiche, ma il cognome con cui si è presentata a palazzo non le appartiene, e il servizio non è mai stato il motivo per cui è entrata lì: vuole sapere chi ha fatto morire sua madre Dolores. Nel frattempo si è costruita in casa una reputazione a parte, perché è la persona a cui ci si rivolge quando qualcuno sta male — ha medicato ferite che nessuno doveva vedere e assistito Manuel durante la convalescenza senza averne il permesso. È per questo che l&#x27;incontro con un medico non resta un aneddoto: è il primo uomo che entra a palazzo capace di riconoscere che quella ragazza sa quello che fa.</p>
-<h2>Chi è Abel: libri, provette e zero lusso</h2>
+<h2 id="c4">Chi è Abel: libri, provette e zero lusso</h2>
 <p>Interpretato da Alejandro Vergara, Abel è un giovane colto e brillante, cresciuto tra le pagine dei libri al punto da sembrare a volte distante dal mondo reale. Il lusso non lo seduce: quando Manuel gli offre un alloggio nella zona nobile, sceglie di stabilirsi nella zona di servizio, per restare concentrato sul lavoro. La sua felicità sta nei testi, nelle pipette e nelle boccette delle sue miscele — e la sua natura premurosa lo rende in fretta il punto di riferimento sanitario di tutta la servitù, non solo di Jimena.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Cosa può scoprire Abel sulla gravidanza di Jimena</h2>
+<h2 id="c5">Cosa può scoprire Abel sulla gravidanza di Jimena</h2>
 <p>Tutto, ed è il punto delicato del suo incarico. La storia che Jimena racconta non regge a un esame fatto con metodo, e chi la segue giorno per giorno se ne accorge prima di chiunque altro in quella casa. Da lì in poi il medico ha davanti due strade e nessuna comoda: dire quello che vede, e far crollare un matrimonio davanti ai duchi, oppure tacere e ritrovarsi legato a una menzogna che non è sua. La linea che tiene è la prudenza, mentre la sua paziente è ormai al limite — e la prudenza, con una bugia che ha una scadenza biologica, è solo un modo di rimandare.</p>
-<h2>Il patto con Jimena e il triangolo con Jana</h2>
+<h2 id="c6">Il patto con Jimena e il triangolo con Jana</h2>
 <p>Due sono le traiettorie che lo aspettano. La prima è scivolosa: seguendo la gravidanza, Abel non potrà non notare le incongruenze nella storia di Jimena — ma più che smascherarla, tutto lascia presagire una sorta di patto segreto per mantenere l&#x27;illusione. La seconda è romantica: il lavoro fianco a fianco con Jana — a partire dalle cure per Ramona — li avvicinerà sempre di più, fino a fargli spazio in un cuore che appartiene ancora a Manuel. Il triangolo è servito: e le foto dal set, con un anello di pregio al dito di Jana, alimentano già le teorie dei fan su come andrà a finire.</p>
-<h2>Perché conta: dormire con la servitù non è un vezzo</h2>
+<h2 id="c7">Perché conta: dormire con la servitù non è un vezzo</h2>
 <p>La scelta di rifiutare la zona nobile viene raccontata come eccentricità, ed è invece la cosa che sposta di più gli equilibri. In quella tenuta i segreti sono quasi tutti fatti di corpi: un veleno somministrato di nascosto, un parto che finisce in emorragia, una gravidanza che deve esistere per forza, lividi che nessuno spiega. Finché il medico arrivava da fuori a ore, quei corpi restavano un affare privato dei padroni. Ora c&#x27;è un uomo che vive sotto le scale, cura chiunque bussi e non deve niente a nessuno dei marchesi: la prima conseguenza è che a palazzo, per la prima volta, esiste un testimone competente che non è al servizio di chi comanda.</p>
-<h2>Come Manuel convince Cruz sul medico Abel</h2>
+<h2 id="c8">Come Manuel convince Cruz sul medico Abel</h2>
 <p>Le complicazioni emerse durante la primissima fase della gravidanza di Jimena mettono subito in allarme tutti gli abitanti della tenuta. Quando la giovane donna fa finalmente ritorno dalla casa di cura, la preoccupazione generale spinge Cruz a intervenire in prima persona. Rendendosi conto di quanto la situazione sia delicata anche a causa delle proprie personali esperienze passate, la marchesa concorda con il figlio e con la nuora sulla necessità assoluta di avere una figura medica presente in modo stabile a palazzo. Manuel propone immediatamente il nome di Abel Bueno, un suo stimato amico di vecchia data dotato di una reputazione professionale eccellente, convinto che la sua straordinaria preparazione sia esattamente ciò di cui la famiglia ha bisogno in un momento così critico.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>La chiamata di Manuel trova la risposta immediata e senza esitazioni del giovane dottore, il cui arrivo stravolge immediatamente la solita routine quotidiana della residenza. Abel si presenta infatti a bordo di uno stravagante sidecar che attira la curiosità dell&#x27;intero paese e dei domestici. Nonostante Manuel gli metta subito a disposizione un alloggio di prestigio situato nella zona nobile della tenuta, il nuovo arrivato sorprende tutti rifiutando la sistemazione di lusso. Preoccupato soltanto di rimanere ben concentrato sul proprio lavoro, Abel sceglie di stabilirsi nei locali destinati alla servitù, pronto a dedicarsi pienamente alla salute delle persone che popolano l&#x27;edificio.</p>
-<h2>Perché Jana collabora con Abel per Ramona</h2>
+<h2 id="c9">Perché Jana collabora con Abel per Ramona</h2>
 <p>L&#x27;arrivo di Abel a palazzo incrocia da subito la strada di Jana, la quale nasconde la propria reale identità dietro un cognome che non le appartiene affatto. Presentatasi come semplice cameriera per indagare sulla misteriosa scomparsa di sua madre Dolores, la ragazza ha conquistato nel tempo una fama di guaritrice curando di nascosto i domestici e assistendo Manuel durante la sua complessa convalescenza. L&#x27;incontro tra il medico e la finta inserviente non si limita però al buffo incidente stradale iniziale. I due si ritrovano infatti a lavorare a stretto contatto per prestare le necessarie cure a Ramona, scoprendo un&#x27;intesa professionale profonda e inaspettata.</p>
 <p>Abel si dimostra subito il primo uomo a palazzo capace di apprezzare il grande talento pratico di Jana, riconoscendo le sue capacità mediche sul campo. La costante vicinanza lavorativa creata dall&#x27;assistenza a Ramona trasforma a poco a poco il loro rapporto, permettendo al dottore di farsi strada nel cuore della giovane, il quale continua tuttavia ad appartenere a Manuel. Questa dinamica professionale e sentimentale va così ad alimentare un complicatissimo triangolo amoroso. Le voci sui futuri sviluppi si fanno sempre più intense, alimentate anche dalle immagini provenienti dal set che mostrano un prezioso anello luccicare al dito della protagonista.</p>
-<h2>Quale patto rischia di stringere Abel con Jimena</h2>
+<h2 id="c10">Quale patto rischia di stringere Abel con Jimena</h2>
 <p>L&#x27;incarico professionale di Abel a palazzo nasconde enormi insidie legate allo stato di salute di Jimena. Essendo un medico metodico e rigoroso, abituato a lavorare con provette e testi scientifici, il nuovo arrivato non impiega molto tempo a notare le evidenti incongruenze che circondano la presunta gravidanza della donna. Davanti a una verità che non regge a un esame clinico accurato, Abel si ritrova improvvisamente bloccato di fronte a una scelta drammatica. Rivelare immediatamente quanto scoperto significherebbe provocare il definitivo crollo del matrimonio di Manuel davanti ai duchi, mentre mantenere il silenzio lo legherebbe a una grave menzogna non sua.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>Inizialmente il medico sceglie la strada della prudenza, cercando di prendere tempo mentre la sua paziente si trova ormai visibilmente al limite. Tuttavia, poiché ogni bugia legata a una gravidanza possiede una inevitabile scadenza biologica, la situazione rischia di precipitare da un momento all&#x27;altro. Le circostanze sembrano spingere Abel verso un accordo segreto e scivoloso con Jimena, mirato a preservare l&#x27;illusione nei confronti del palazzo e dei marchesi. Nel frattempo, la scelta di vivere sotto le scale rende il dottore un testimone fondamentale e indipendente dei tanti oscuri segreti conservati tra le mura della tenuta.</p>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=UZOBGUNFnkU" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/UZOBGUNFnkU/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>CLAMOROSO TRIANGOLO AMOROSO, JANA NEL CUORE DI ABEL E MANUEL Anticipazioni La Promessa 24-28 Gi</span></a></li><li><a href="https://www.youtube.com/watch?v=99ZiXrHgW2o" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/99ZiXrHgW2o/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni Spagnole: Manuel e Jana fuggono insieme! Lope lascia La promessa</span></a></li><li><a href="https://www.youtube.com/watch?v=TZ4n9kQp4A4" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/TZ4n9kQp4A4/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni Spagnole: Manuel e Jana, notte da sogno finalmente insieme!</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Squadra Abel o squadra Manuel per il cuore di Jana? E il &quot;patto&quot; con Jimena farà di Abel un complice o una vittima?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=5WNtKGFgagA">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di La Promessa</h2><div class="griglia"><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/"><div class="foto"><img src="https://i.ytimg.com/vi/Rp8VhxDiDSk/hqdefault.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></h3>
+    <div class="quando">7 settembre 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/"><div class="foto"><img src="https://i.ytimg.com/vi/8JHt6ogwxQw/hqdefault.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Ángela beve tutto, Curro sfonda la porta</a></h3>
+    <div class="quando">6 settembre 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/"><div class="foto"><img src="/img/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Curro nasconde Ángela, Lorenzo furioso</a></h3>
+    <div class="quando">6 settembre 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=La Promessa, chi è Abel Bueno: il medico &quot;pazzo nel sidecar&quot; che entra nella vita di Jana — e nel triangolo con Manuel — https://serietvfans.com/la-promessa/la-promessa-chi-e-abel-bueno-il-medico-pazzo-nel-sidecar-che-entra-nella-vita-di/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/la-promessa/la-promessa-chi-e-abel-bueno-il-medico-pazzo-nel-sidecar-che-entra-nella-vita-di/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/la-promessa/la-promessa-chi-e-abel-bueno-il-medico-pazzo-nel-sidecar-che-entra-nella-vita-di/&text=La Promessa, chi è Abel Bueno: il medico &quot;pazzo nel sidecar&quot; che entra nella vita di Jana — e nel triangolo con Manuel" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">LA PROMESSA Anticipazioni Spagnole: Un altro Uomo nella Vita di Jana</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=5WNtKGFgagA">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di La Promessa</h3><ol class="numerata"><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Ángela beve tutto, Curro sfonda la porta</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Curro nasconde Ángela, Lorenzo furioso</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>LA PROMESSA Anticipazioni Spagnole: Un altro Uomo nella Vita di Jana</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su La Promessa</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-3-6-settembre-maria-affronta-la-gravidanza-da-sola/">La Promessa anticipazioni 3-6 settembre: Maria affronta la gravidanza da sola</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-carlo-arriva-maria-trema/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Carlo arriva, Maria trema</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/far-away/far-away-anticipazioni-dal-31-agosto-al-4-settembre-chi-ha-donato-il-fegato-a-nare/">Far Away, anticipazioni dal 31 agosto al 4 settembre: chi ha donato il fegato a Nare, e perché adesso sta male lui</a></li><li><a href="/far-away/far-away-dal-31-agosto-la-madre-di-alya-sapeva-tutto-non-ricordo/">Far Away Dal 31 Agosto: la madre di Alya sapeva tutto — «non ricordo»</a></li><li><a href="/forbidden-fruit/forbidden-fruit-dal-31-agosto-il-conto-a-nome-di-halit-che-e-morto/">Forbidden Fruit Dal 31 Agosto: il conto a nome di Halit, che è morto</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

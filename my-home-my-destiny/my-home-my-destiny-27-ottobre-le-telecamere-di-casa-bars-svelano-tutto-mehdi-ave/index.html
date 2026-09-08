@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/my-home-my-destiny/">My Home My Destiny</a> › My Home My Destiny 27 ottobre, le telecamere di casa Barış svelano tutto: Mehdi aveva passato la serata a spiarli prima di portare via Zeynep</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/my-home-my-destiny/">My Home My Destiny</a>
   <h1>My Home My Destiny 27 ottobre, le telecamere di casa Barış svelano tutto: Mehdi aveva passato la serata a spiarli prima di portare via Zeynep</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Barış rientra dal lavoro e non trova Zeynep. Una porta aperta, un giro veloce per la casa, e il sospetto diventa certezza nel giro di pochi minuti.</p><ol><li><a href="#c1">La porta aperta</a></li><li><a href="#c2">Chi è Mehdi, e perché in quella casa lo temevano già</a></li><li><a href="#c3">I filmati della videosorveglianza</a></li><li><a href="#c4">Il crollo di Sakine</a></li><li><a href="#c5">A casa Karaca</a></li><li><a href="#c6">Perché conta: da questa notte Mehdi non ha più una casa dove tornare</a></li><li><a href="#c7">Come Sakine e Nermin hanno segnato il destino</a></li><li><a href="#c8">Perche&#x27; Savas decide di lanciare un appello</a></li><li><a href="#c9">Cosa spinge la polizia verso la casa Karaca</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>My Home My Destiny</strong> — Serie conclusa in Italia · le puntate su Mediaset Infinity</span></div>
   
-  <p class="occhiello">Barış rientra dal lavoro e non trova Zeynep. Una porta aperta, un giro veloce per la casa, e il sospetto diventa certezza nel giro di pochi minuti.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: My Home My Destiny 27 ottobre, le telecamere di casa Barış svelano tutto: Mehdi aveva passato la serata a spiarli prima di portare via Zeynep" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/SwwMsSS7OjQ/sddefault.jpg" alt="My Home My Destiny 27 ottobre, le telecamere di casa Barış svelano tutto: Mehdi aveva passato la serata a spiarli prima di portare via Zeynep" width="640" height="480"
         srcset="https://i.ytimg.com/vi/SwwMsSS7OjQ/hqdefault.jpg 480w, https://i.ytimg.com/vi/SwwMsSS7OjQ/sddefault.jpg 640w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/SwwMsSS7OjQ/hqdefault.jpg&quot;, &quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,46 +409,68 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>A far partire la mobilitazione online è Savaş, con un appello sui social.</strong></p>
-  <h2>La porta aperta</h2>
+  <h2 id="c1">La porta aperta</h2>
 <p>Basta quel dettaglio perché Barış capisca. Chiama subito il suo addetto alla sicurezza, poi la polizia, che arriva a casa sua e apre le indagini. Nel frattempo Zeynep è ancora priva di sensi nell&#x27;auto di Mehdi, che guida verso una destinazione che nessuno conosce.</p>
-<h2>Chi è Mehdi, e perché in quella casa lo temevano già</h2>
+<h2 id="c2">Chi è Mehdi, e perché in quella casa lo temevano già</h2>
 <p>Mehdi non è un estraneo entrato a caso da una porta aperta: è l&#x27;uomo che Zeynep aveva sposato. Quel matrimonio era nato storto fin dal principio — non da un innamoramento, ma da un senso di colpa: ad averlo scelto era stata Sakine, la madre che anni prima l&#x27;aveva lasciata a Nermin e con cui Zeynep aveva un conto affettivo mai chiuso. Lui, ragazzo di Balat conosciuto e stimato nel quartiere, ci aveva creduto sul serio. Quando quella storia si è chiusa e Zeynep ha ricominciato altrove, Mehdi non se ne è fatto una ragione e ha preso a seguirla ovunque. Nermin lo aveva detto ad alta voce prima di chiunque altro, arrivando a proporre di portare via la figlia: quell&#x27;attenzione ossessiva, sosteneva, prima o poi sarebbe diventata violenza. La notte del rapimento le dà ragione con dodici ore di ritardo.</p>
-<h2>I filmati della videosorveglianza</h2>
+<h2 id="c3">I filmati della videosorveglianza</h2>
 <p>La mattina dopo la polizia setaccia la casa cercando segni di effrazione, e la svolta arriva dalle telecamere: le immagini mostrano che Mehdi aveva passato buona parte della serata a osservare la coppia, studiandone i movimenti, prima di entrare a tarda notte approfittando del momento in cui Zeynep era rimasta sola. Poi l&#x27;ha resa incosciente e l&#x27;ha portata via. Da lì parte l&#x27;avviso di sparizione e una ricerca su larga scala, con interrogatori e raccolta di prove.</p>
-<h2>Il crollo di Sakine</h2>
+<h2 id="c4">Il crollo di Sakine</h2>
 <p>È Barış a telefonare a Nermin per dirle cosa è successo, e la notizia travolge tutta la casa. Sakine sviene tra le braccia di Sultan ed Emine, che insieme a Nermin provano a farla riprendere senza riuscirci davvero. Savaş, spaventato dall&#x27;idea che Mehdi possa farle del male, spinge il fratello a non fermarsi — e poi fa una cosa che nessuno aveva pensato: scrive un appello sui social chiedendo di condividerlo. La mobilitazione è enorme e coinvolge un numero di persone che nessuna centrale operativa avrebbe potuto raggiungere in quelle ore.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>A casa Karaca</h2>
+<h2 id="c5">A casa Karaca</h2>
 <p>La polizia e Barış seguono ogni pista, e arrivano anche a casa di Mehdi, sperando che i familiari sappiano dove si trovi. Lì scoprono che era passato la sera prima — e che se n&#x27;è andato subito dopo. È il punto in cui la caccia smette di essere un&#x27;indagine e diventa una corsa contro il tempo lungo una strada di cui nessuno conosce ancora la direzione.</p>
-<h2>Perché conta: da questa notte Mehdi non ha più una casa dove tornare</h2>
+<h2 id="c6">Perché conta: da questa notte Mehdi non ha più una casa dove tornare</h2>
 <p>Le immagini della videosorveglianza non servono soltanto a ricostruire l&#x27;ora dell&#x27;ingresso: cancellano ogni possibile versione difensiva. Un uomo che entra in un momento di disperazione può essere raccontato come uno che ha perso la testa; un uomo che passa la serata fermo a guardare due persone attraverso una finestra, sceglie il minuto e poi agisce, è qualcuno che ha pianificato. Da lì cambia tutto anche per i suoi: la casa dei Karaca smette di essere un rifugio e diventa il primo posto dove la polizia va a bussare, e i familiari si ritrovano a dover scegliere tra lui e la verità. E l&#x27;appello pubblico di Savaş chiude l&#x27;ultima uscita: con la faccia di Mehdi che gira di telefono in telefono, riportare indietro Zeynep non basterà più a far finire la storia — qualunque cosa accada adesso, la strada per tornare a prima non c&#x27;è più.</p>
-<h2>Come Sakine e Nermin hanno segnato il destino</h2>
+<h2 id="c7">Come Sakine e Nermin hanno segnato il destino</h2>
 <p>Il percorso emotivo che ha condotto Zeynep a questa drammatica situazione affonda le sue radici in un passato complesso e segnato dal dolore. Sakine, la madre biologica che anni prima l&#x27;aveva abbandonata affidandola a Nermin, ha condizionato pesantemente la vita della figlia sfruttando un legame affettivo segnato dal senso di colpa. Quando si è trattato di scegliere un compagno per la ragazza, Sakine ha spinto Zeynep verso Mehdi, un giovane uomo molto conosciuto e stimato all&#x27;interno del quartiere di Balat. Zeynep ha accettato quell&#x27;unione non perché fosse innamorata, ma unicamente per rispondere al desiderio della madre e saldare un debito emotivo mai chiuso. Quel matrimonio nato da presupposti sbagliati si è trasformato in una trappola.</p>
 <p>La profonda distanza tra le due madri si è manifestata in tutta la sua evidenza quando il matrimonio è giunto al capolinea. Mentre Mehdi non riusciva a farsi una ragione della separazione e iniziava a inseguire Zeynep ovunque, Nermin ha compreso subito la pericolosità di quel comportamento ossessivo. È stata proprio Nermin a denunciare l&#x27;atteggiamento dell&#x27;uomo e a proporre di portare via la figlia per proteggerla, intuendo che l&#x27;attenzione morbosa sarebbe presto sfociata in una grave forma di violenza. La drammatica realtà di questa notte le dà purtroppo ragione, mentre Sakine crolla improvvisamente svenuta tra le braccia di Sultan ed Emine senza riuscire a riprendersi di fronte al tragico compimento di quei timori.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Perche&#x27; Savas decide di lanciare un appello</h2>
+<h2 id="c8">Perche&#x27; Savas decide di lanciare un appello</h2>
 <p>La scoperta della scomparsa di Zeynep e il ritrovamento della porta di casa aperta hanno gettato nell&#x27;angoscia l&#x27;intera abitazione. Savaş, profondamente spaventato dalla possibilità che la follia di Mehdi possa spingerlo a fare del male alla ragazza, comprende immediatamente che ogni minuto perso potrebbe rivelarsi fatale. Per questa ragione, il giovane sprona costantemente il fratello Barış a non concedersi pause e a battere qualsiasi strada pur di rintracciarla. La consapevolezza che Zeynep si trova ancora priva di sensi all&#x27;interno della vettura guidata da Mehdi verso un luogo sconosciuto spinge Savaş a cercare una soluzione rapida e concreta, capace di superare i normali tempi di reazione delle indagini di polizia.</p>
 <p>Ricorrendo a un&#x27;iniziativa inaspettata, Savaş decide di lanciare un accorato appello attraverso i propri canali social, chiedendo agli utenti della rete di condividere il messaggio il più possibile. La risposta del pubblico si rivela immediata e imponente, scatenando una mobilitazione online di proporzioni straordinarie che supera di gran lunga la capacità di copertura di qualsiasi forza dell&#x27;ordine. La fotografia dell&#x27;ex marito inizia così a rimbalzare da uno schermo all&#x27;altro, trasformando l&#x27;immagine dell&#x27;uomo in un volto ricercato ovunque. Questa massiccia diffusione rende impossibile per Mehdi muoversi liberamente senza rischiare di essere riconosciuto da qualcuno lungo il percorso, chiudendo definitivamente ogni sua possibilità di fuga nell&#x27;ombra.</p>
-<h2>Cosa spinge la polizia verso la casa Karaca</h2>
+<h2 id="c9">Cosa spinge la polizia verso la casa Karaca</h2>
 <p>Le indagini condotte congiuntamente da Barış e dalla polizia trovano un punto di svolta decisivo nell&#x27;attenta analisi delle telecamere di videosorveglianza poste a protezione della casa. I filmati mostrano con agghiacciante chiarezza che Mehdi non ha agito colto da un raptus momentaneo, ma ha trascorso un&#x27;intera serata ad appostarsi all&#x27;esterno, studiando con attenzione i movimenti della coppia dalla finestra. L&#x27;uomo ha atteso con pazienza il momento esatto in cui Zeynep si è trovata da sola per fare irruzione, stordirla fino a renderla incosciente e caricarla in macchina. Questa chiara evidenza di premeditazione cancella ogni ipotesi difensiva e spinge gli inquirenti a far partire una ricerca su vasta scala con interrogatori serrati.</p>
 <p>Nel tentativo di ricostruire la rotta del rapitore, gli investigatori e Barış si recano direttamente presso la casa Karaca, sperando che i familiari dell&#x27;uomo possano fornire dettagli utili alla sua localizzazione. Durante il sopralluogo emerge che Mehdi si era effettivamente presentato dalla famiglia la sera precedente, ma si era poi allontanato subito dopo senza lasciare alcuna traccia dei suoi progetti. La scoperta mette i parenti dell&#x27;uomo di fronte a una dura realtà, costringendoli a scegliere se proteggere il congiunto o collaborare con la giustizia. In questo modo, l&#x27;indagine ufficiale si trasforma in una vera e propria corsa contro il tempo lungo strade che nessuno conosce ancora con certezza.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=vBP9WY27mag" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/vBP9WY27mag/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>MY HOME MY DESTINY Anticipazioni Turche: Zeynep Segregata in casa da Mehdi!</span></a></li><li><a href="https://www.youtube.com/watch?v=vT454NXmnL0" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/vT454NXmnL0/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>MY HOME MY DESTINY Anticipazioni: Mehdi geloso alla follia, rinchiude Zeynep in casa!</span></a></li><li><a href="https://www.youtube.com/watch?v=G6Ej5LRKIFI" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/G6Ej5LRKIFI/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>MY HOME MY DESTINY Anticipazioni Turchia: Zeynep e Mehdi Protagonisti di un Quadrilatero Perico</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Savaş ha fatto bene a rendere pubblica la ricerca?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=SwwMsSS7OjQ">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di My Home My Destiny</h2><div class="griglia"><article class="scheda">
+  <a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/"><div class="foto"><img src="/img/my-home-my-destiny-la-trama-completa-e-come-finisce.jpg" alt="My Home My Destiny" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">My Home My Destiny</span>
+    <h3><a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/">My Home My Destiny: la trama completa e come finisce</a></h3>
+    <div class="quando">30 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/"><div class="foto"><img src="https://i.ytimg.com/vi/-djleIeCLQs/hqdefault.jpg" alt="My Home My Destiny" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">My Home My Destiny</span>
+    <h3><a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/">My Home My Destiny, Zeynep ferma l&#x27;aborto di Benal in sala operatoria senza sapere che il padre è Mehdi</a></h3>
+    <div class="quando">17 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/"><div class="foto"><img src="https://i.ytimg.com/vi/gxL0o63Nhqw/hqdefault.jpg" alt="My Home My Destiny" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">My Home My Destiny</span>
+    <h3><a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/">My Home My Destiny, anticipazioni del 17 novembre: Özlem indaga su Zeynep e scopre tutto, Nuh diventa autista di Barış e qualcuno manomette i macchinari di Bekir</a></h3>
+    <div class="quando">16 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=My Home My Destiny 27 ottobre, le telecamere di casa Barış svelano tutto: Mehdi aveva passato la serata a spiarli prima di portare via Zeynep — https://serietvfans.com/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/&text=My Home My Destiny 27 ottobre, le telecamere di casa Barış svelano tutto: Mehdi aveva passato la serata a spiarli prima di portare via Zeynep" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">My Home My Destiny anticipazioni 27 ottobre: Barış scatena la caccia all&#x27;uomo</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=SwwMsSS7OjQ">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di My Home My Destiny</h3><ol class="numerata"><li><a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/">My Home My Destiny: la trama completa e come finisce</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/">My Home My Destiny, Zeynep ferma l&#x27;aborto di Benal in sala operatoria senza sapere che il padre è Mehdi</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/">My Home My Destiny, anticipazioni del 17 novembre: Özlem indaga su Zeynep e scopre tutto, Nuh diventa autista di Barış e qualcuno manomette i macchinari di Bekir</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-guida-alla-serie-chi-sono-demet-ozdemir-e-ibrahim-celikkol-qu/">My Home My Destiny: guida alla serie, il cast, i personaggi e quante puntate sono</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-1-dicembre-gli-spari-davanti-alla-vecchia-casa-zeynep-tra-le/">My Home My Destiny 1° dicembre, gli spari davanti alla vecchia casa: Zeynep tra le due madri quando l&#x27;uomo in moto estrae la pistola</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>My Home My Destiny anticipazioni 27 ottobre: Barış scatena la caccia all&#x27;uomo</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su My Home My Destiny</h3><ul><li><a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/">My Home My Destiny: la trama completa e come finisce</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/">My Home My Destiny, Zeynep ferma l&#x27;aborto di Benal in sala operatoria senza sapere che il padre è Mehdi</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/">My Home My Destiny, anticipazioni del 17 novembre: Özlem indaga su Zeynep e scopre tutto, Nuh diventa autista di Barış e qualcuno manomette i macchinari di Bekir</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-guida-alla-serie-chi-sono-demet-ozdemir-e-ibrahim-celikkol-qu/">My Home My Destiny: guida alla serie, il cast, i personaggi e quante puntate sono</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-1-dicembre-gli-spari-davanti-alla-vecchia-casa-zeynep-tra-le/">My Home My Destiny 1° dicembre, gli spari davanti alla vecchia casa: Zeynep tra le due madri quando l&#x27;uomo in moto estrae la pistola</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

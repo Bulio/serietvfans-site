@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/terra-amara/">Terra Amara</a> › Terra Amara, il matrimonio di Fikret finisce con un uomo-bomba: Vahap irrompe con l&#x27;esplosivo addosso per farsi liberare il fratello</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/terra-amara/">Terra Amara</a>
   <h1>Terra Amara, il matrimonio di Fikret finisce con un uomo-bomba: Vahap irrompe con l&#x27;esplosivo addosso per farsi liberare il fratello</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>8 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Il finale regala a Fikret il lieto fine che aveva inseguito per quattro stagioni — le nozze con Zeynep, con Züleyha testimone — ma prima gli fa attraversare l&#x27;inferno: Vahap irrompe alla cerimonia con una pistola, apre la giacca mostrando un esplosivo legato al corpo e mette sindaco, procuratore e governatore davanti a un aut aut, liberare Abdülkadir o morire tutti. A disinnescare la situazione è Adnan, veterano dell&#x27;esercito esperto in esplosivi. E la rivelazione finale: l&#x27;ordigno era finto.</p><ol><li><a href="#c1">Il prezzo pagato prima del lieto fine</a></li><li><a href="#c2">Vahap e Zeynep: chi porta l&#x27;esplosivo e chi aveva ridato a Fikret un futuro</a></li><li><a href="#c3">«Hai fatto giustiziare mio fratello, giustizierò te»</a></li><li><a href="#c4">Adnan, il veterano che disinnesca tutto</a></li><li><a href="#c5">Il salto temporale: la piccola Müjgan e la solitudine di Züleyha</a></li><li><a href="#c6">Perché conta: per la prima volta un conto di Çukurova si chiude in un&#x27;aula</a></li><li><a href="#c7">Come Vahap ha seminato il terrore a Çukurova</a></li><li><a href="#c8">Perche&#x27; Zeynep rappresenta una svolta per Fikret</a></li><li><a href="#c9">Cosa spinge Adnan a sventare il bluff dell&#x27;attentato</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>Terra Amara</strong> — Serie conclusa in Italia · tutte le puntate su Mediaset Infinity</span></div>
   
-  <p class="occhiello">Il finale regala a Fikret il lieto fine che aveva inseguito per quattro stagioni — le nozze con Zeynep, con Züleyha testimone — ma prima gli fa attraversare l&#x27;inferno: Vahap irrompe alla cerimonia con una pistola, apre la giacca mostrando un esplosivo legato al corpo e mette sindaco, procuratore e governatore davanti a un aut aut, liberare Abdülkadir o morire tutti. A disinnescare la situazione è Adnan, veterano dell&#x27;esercito esperto in esplosivi. E la rivelazione finale: l&#x27;ordigno era finto.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: Terra Amara, il matrimonio di Fikret finisce con un uomo-bomba: Vahap irrompe con l&#x27;esplosivo addosso per farsi liberare il fratello" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/6Rz5D9HzJF8/maxresdefault.jpg" alt="Terra Amara, il matrimonio di Fikret finisce con un uomo-bomba: Vahap irrompe con l&#x27;esplosivo addosso per farsi liberare il fratello" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/6Rz5D9HzJF8/hqdefault.jpg 480w, https://i.ytimg.com/vi/6Rz5D9HzJF8/sddefault.jpg 640w, https://i.ytimg.com/vi/6Rz5D9HzJF8/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/6Rz5D9HzJF8/hqdefault.jpg&quot;, &quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,46 +409,68 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>Il dettaglio che commuove nel salto temporale: la figlia di Fikret e Zeynep si chiamerà Müjgan, in onore della dottoressa morta nell&#x27;incidente aereo.</strong></p>
-  <h2>Il prezzo pagato prima del lieto fine</h2>
+  <h2 id="c1">Il prezzo pagato prima del lieto fine</h2>
 <p>Il matrimonio arriva al termine di una lunga scia di dolore. Züleyha ha appena perso il suo terzo grande amore: Hakan, ucciso da Betül che voleva colpire lei e si è trovato davanti al proiettile facendole da scudo. La vendetta della Altun è stata implacabile — Betül e il complice Abdülkadir finiscono in manette e rischiano condanne pesantissime. Solo dopo aver ottenuto giustizia Çukurova torna a respirare, e Fikret — il personaggio più segnato dalle perdite — può finalmente celebrare le sue nozze con Zeynep, la donna dal cuore gentile che gli ha ridato un futuro.</p>
-<h2>Vahap e Zeynep: chi porta l&#x27;esplosivo e chi aveva ridato a Fikret un futuro</h2>
+<h2 id="c2">Vahap e Zeynep: chi porta l&#x27;esplosivo e chi aveva ridato a Fikret un futuro</h2>
 <p>Vahap Keskin è il fratello di Abdülkadir ed entra in scena quando la storia è già nella fase più cupa. Dove il fratello calcola, lui va di furia pura: si era intrufolato di notte nella camera di Züleyha, e in casa sua Fikret e Çetin avevano trovato una scatola di oggetti personali di lei; aveva sequestrato per strada Betül e Lütfiye. Il motivo per cui odia Züleyha, per una volta, è vero: è grazie a lei che Abdülkadir è finito sotto processo per gli omicidi di Demir e di Fekeli. Zeynep è l&#x27;esatto contrario: vecchia amica di Çetin, arrivata a Çukurova per insegnare chimica nella scuola del paese, l&#x27;unica persona che entra in questa storia senza un conto da riscuotere.</p>
-<h2>«Hai fatto giustiziare mio fratello, giustizierò te»</h2>
+<h2 id="c3">«Hai fatto giustiziare mio fratello, giustizierò te»</h2>
 <p>La cerimonia si trasforma in incubo quando Vahap entra armato: con lo sguardo glaciale rivendica la vendetta per il fratello arrestato, poi apre la giacca e mostra l&#x27;esplosivo legato al corpo. La scelta che impone agli invitati è crudele — sindaco, procuratore e governatore presenti devono decidere se liberare Abdülkadir o morire tutti insieme agli sposi. Il panico si diffonde tra gli ospiti, con Fikret che tenta disperatamente di proteggere Zeynep e la cerimonia trasformata in un ostaggio collettivo.</p>
-<h2>Adnan, il veterano che disinnesca tutto</h2>
+<h2 id="c4">Adnan, il veterano che disinnesca tutto</h2>
 <p>Quando la tragedia sembra inevitabile, interviene Adnan: veterano dell&#x27;esercito con esperienza in sparatorie ed esplosivi, si avvicina con calma e neutralizza Vahap prima che possa fare danni. È lui a costringerlo alla rivelazione che scioglie la tensione: l&#x27;ordigno era falso, un bluff disperato. Vahap viene portato via e ricoverato in un ospedale psichiatrico; Fikret, profondamente grato, ringrazia l&#x27;uomo che gli ha salvato il giorno più importante — e finalmente pronuncia il suo «sì» accanto a Zeynep, con Züleyha che accoglie con serenità la felicità dell&#x27;uomo che un tempo aveva amato lei.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Il salto temporale: la piccola Müjgan e la solitudine di Züleyha</h2>
+<h2 id="c5">Il salto temporale: la piccola Müjgan e la solitudine di Züleyha</h2>
 <p>L&#x27;epilogo mostra i protagonisti a distanza di tempo. Fikret e Zeynep costruiscono una famiglia e danno alla figlia il nome di Müjgan, omaggio commovente alla dottoressa morta nell&#x27;incidente aereo: un ponte tra passato e presente che dice tutto sul percorso del personaggio. La morte di Vahap in ospedale psichiatrico libera definitivamente la famiglia da un&#x27;ombra costante. Ma il finale conserva la sua malinconia: Züleyha resta la signora di Çukurova, sola, a portare il peso di tutte le sue scelte mentre gli altri ricominciano. È la dualità che ha diviso il pubblico — felicità per Fikret, stretta al cuore per lei.</p>
-<h2>Perché conta: per la prima volta un conto di Çukurova si chiude in un&#x27;aula</h2>
+<h2 id="c6">Perché conta: per la prima volta un conto di Çukurova si chiude in un&#x27;aula</h2>
 <p>Nella piana le vertenze si erano sempre risolte con una pistola o con un testimone comprato. Betül e Abdülkadir invece non finiscono in un dirupo né in un campo: finiscono davanti a un giudice, ergastolo per lei e pena capitale per lui, e a consegnarli sono Züleyha e Fikret. L&#x27;esplosivo di Vahap è l&#x27;ultimo tentativo di rimettere al centro la vecchia regola, e fallisce nel modo più significativo: a disinnescarlo è un uomo che non spara, lo zio Adnan, e la bomba si rivela finta. Il resto è il prezzo pagato da Fikret per arrivare fin lì: era entrato a Çukurova per distruggere un fratello di cui non aveva mai portato il cognome, ed esce dalla serie sposato e con una figlia. La malinconia del finale sta tutta nell&#x27;asimmetria: chi era arrivato per vendicarsi si ferma e ricomincia, e chi non aveva chiesto niente resta sola dentro la villa più grande della valle.</p>
-<h2>Come Vahap ha seminato il terrore a Çukurova</h2>
+<h2 id="c7">Come Vahap ha seminato il terrore a Çukurova</h2>
 <p>Prima di presentarsi al matrimonio con l&#x27;esplosivo legato al corpo, Vahap Keskin aveva già dimostrato tutta la sua imprevedibile pericolosità con azioni sconsiderate. Diversamente da suo fratello Abdülkadir, che preferiva calcolare ogni mossa con freddezza, Vahap agiva spinto da una furia pura e incontrollabile. Tra i suoi gesti più inquietanti c&#x27;era stata l&#x27;intrusione notturna nella camera da letto di Züleyha, un fatto che aveva gettato una cupa ombra sulla villa. In seguito, Fikret e Çetin avevano persino scoperto a casa dell&#x27;uomo una scatola contenente vari oggetti personali appartenenti proprio a Züleyha, confermando la sua ossessione. Oltre a questo, Vahap non si era fatto problemi a sequestrare per strada sia Betül sia Lütfiye, portando la tensione in paese ai livelli più alti.</p>
 <p>L&#x27;odio profondo che Vahap nutriva verso Züleyha affondava le radici in una motivazione del tutto reale, legata alla sorte di suo fratello. È stata infatti la determinazione della signora Altun a fare in modo che Abdülkadir finisse finalmente sotto processo per i gravissimi omicidi di Demir e di Fekeli. Questo passaggio fondamentale ha condotto il malvivente alla sbarra, facendogli rischiare la pena capitale dopo anni di inganni. Per Vahap, vedere il parente intrappolato nella rete della giustizia ha rappresentato un colpo insopportabile, scatenando la sete di vendetta che lo ha spinto a fare irruzione durante la festa di nozze e a minacciare le autorità presenti con un ordigno che si sarebbe poi rivelato fortunatamente finto.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Perche&#x27; Zeynep rappresenta una svolta per Fikret</h2>
+<h2 id="c8">Perche&#x27; Zeynep rappresenta una svolta per Fikret</h2>
 <p>L&#x27;arrivo di Zeynep nella vita di Fikret segna un punto di svolta profondo dopo quattro stagioni segnate da indicibili sofferenze e tragici lutti. A differenza degli altri abitanti della zona, coinvolti in faide incessanti e vendette incrociate, questa donna giunge a Çukurova con l&#x27;unico scopo di insegnare chimica nella scuola locale. Vecchia amica di Çetin, Zeynep si distingue subito per essere l&#x27;unica persona che fa il suo ingresso in paese senza avere alcun conto aperto da saldare o torto da riscattare. Il suo cuore gentile restituisce speranza a un uomo che era arrivato in quella terra con l&#x27;unico obiettivo di distruggere un fratello di cui non portava nemmeno il cognome, permettendogli infine di guardare al futuro con ritrovata serenità.</p>
 <p>Il coronamento del loro amore con le nozze, celebrate alla presenza di Züleyha come testimone, trova il suo momento più toccante nell&#x27;omaggio finale del salto temporale. La decisione di chiamare la loro bambina Müjgan rappresenta un commovente tributo alla dottoressa tragicamente scomparsa in un incidente aereo, chiudendo un cerchio di dolore e rinascita. Questo lieto fine contrasta con il destino malinconico di Züleyha, rimasta sola nella villa più grande della piana dopo aver perso Hakan, ucciso da Betül per farle da scudo. Mentre Betül affronta l&#x27;ergastolo e Abdülkadir la massima pena, Fikret può finalmente godersi la famiglia costruita accanto a Zeynep, libero dall&#x27;ombra di Vahap morto nel frattempo in ospedale psichiatrico.</p>
-<h2>Cosa spinge Adnan a sventare il bluff dell&#x27;attentato</h2>
+<h2 id="c9">Cosa spinge Adnan a sventare il bluff dell&#x27;attentato</h2>
 <p>Durante i momenti di cieco terrore vissuti dagli ospiti del matrimonio, la presenza di Adnan si rivela decisiva per evitare che la festa si trasformi in una tragedia irreparabile. Quando Vahap fa irruzione armato di pistola e mostra l&#x27;esplosivo legato al corpo, imponendo al sindaco, al procuratore e al governatore di liberare Abdülkadir, il panico generale rischia di paralizzare tutti. Adnan mette però in campo la propria straordinaria esperienza di veterano dell&#x27;esercito, maturata sul campo tra sparatorie e situazioni ad alto rischio legate agli ordigni. Mantenendo una calma olimpica e procedendo senza usare le armi, si avvicina all&#x27;aggressore per affrontare la minaccia con la massima lucidità e freddezza.</p>
 <p>Avvicinandosi con fermezza a Vahap, il veterano riesce a disattivare la minaccia e a mettere alle strette l&#x27;attentatore, costringendolo alla resa davanti agli sposi e alle autorità terrorizzate. È proprio il suo intervento a fare emergere una verità risolutiva che cancella di colpo l&#x27;incubo: l&#x27;esplosivo esibito dall&#x27;aggressore non era altro che un clamoroso bluff, un ordigno del tutto finto preparato per disperazione. Questo gesto coraggioso permette a Fikret di pronunciare il fatidico sì accanto a Zeynep in totale sicurezza. Una volta neutralizzato, Vahap viene preso in custodia per essere successivamente ricoverato nell&#x27;ospedale psichiatrico dove in seguito troverà la morte, mettendo la parola fine alle minacce contro la famiglia.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=17NcAhfdHc0" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/17NcAhfdHc0/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TERRA AMARA Anticipazioni: Sermin e Betul Rovinate | Vahap Spara a Suo Fratello Abdulkadir</span></a></li><li><a href="https://www.youtube.com/watch?v=hscCiPj5fbE" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/hscCiPj5fbE/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TERRA AMARA Anticipazioni 23-28 Ottobre: Zuleyha e Sevda scoprono una testimone! Fikret ha ragi</span></a></li><li><a href="https://www.youtube.com/watch?v=7hAvu8sjsyU" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/7hAvu8sjsyU/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TERRA AMARA : Ripercorriamo insieme il difficile viaggio di Fikret, da ribelle a uomo buono.</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Züleyha meritava un finale meno solitario o la solitudine era l&#x27;unico epilogo possibile per lei? E il gesto di Vahap con l&#x27;ordigno finto vi ha sorpreso?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=6Rz5D9HzJF8">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di Terra Amara</h2><div class="griglia"><article class="scheda">
+  <a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/"><div class="foto"><img src="/img/terra-amara-la-trama-completa-e-come-finisce.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></h3>
+    <div class="quando">30 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/"><div class="foto"><img src="https://i.ytimg.com/vi/_ypSJU-x7LY/hqdefault.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/"><div class="foto"><img src="https://i.ytimg.com/vi/B_MLx-0yh6M/hqdefault.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=Terra Amara, il matrimonio di Fikret finisce con un uomo-bomba: Vahap irrompe con l&#x27;esplosivo addosso per farsi liberare il fratello — https://serietvfans.com/terra-amara/terra-amara-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/terra-amara/terra-amara-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/terra-amara/terra-amara-la-trama-completa-e-come-finisce/&text=Terra Amara, il matrimonio di Fikret finisce con un uomo-bomba: Vahap irrompe con l&#x27;esplosivo addosso per farsi liberare il fratello" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">TERRA AMARA Anticipazioni: Fikret, un matrimonio con il botto!</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=6Rz5D9HzJF8">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di Terra Amara</h3><ol class="numerata"><li><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></li><li><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></li><li><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></li><li><a href="/terra-amara/terra-amara-come-finisce-davvero-zuleyha-vince-tutto-e-resta-sola/">Terra Amara: come finisce davvero, Züleyha vince tutto e resta sola</a></li><li><a href="/terra-amara/terra-amara-come-muore-demir-yaman-chi-ha-dato-lordine-e-perche-doveva-essere-un-rapimento/">Terra Amara, come muore Demir Yaman: chi ha dato l&#x27;ordine e perché doveva essere un rapimento</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>TERRA AMARA Anticipazioni: Fikret, un matrimonio con il botto!</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su Terra Amara</h3><ul><li><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></li><li><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></li><li><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></li><li><a href="/terra-amara/terra-amara-come-finisce-davvero-zuleyha-vince-tutto-e-resta-sola/">Terra Amara: come finisce davvero, Züleyha vince tutto e resta sola</a></li><li><a href="/terra-amara/terra-amara-come-muore-demir-yaman-chi-ha-dato-lordine-e-perche-doveva-essere-un-rapimento/">Terra Amara, come muore Demir Yaman: chi ha dato l&#x27;ordine e perché doveva essere un rapimento</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

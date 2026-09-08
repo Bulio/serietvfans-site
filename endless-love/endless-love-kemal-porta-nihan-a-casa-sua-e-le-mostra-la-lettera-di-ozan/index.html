@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/endless-love/">Endless Love</a> › Endless Love, Kemal porta Nihan a casa sua e le mostra la lettera di Ozan: «Mi dispiace tanto»</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/endless-love/">Endless Love</a>
   <h1>Endless Love, Kemal porta Nihan a casa sua e le mostra la lettera di Ozan: «Mi dispiace tanto»</h1>
-  <div class="firma">Redazione Serie TV Fans · sabato 15 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-15">sabato 15 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Kemal porta Nihan a casa propria e le consegna una lettera scritta da suo fratello Ozan. Quelle pagine contengono verità che rimettono in discussione tutto ciò che Nihan credeva sul sacrificio fatto per la sua famiglia.</p><ol><li><a href="#c1">Perché è Kemal a doverle dare quella lettera</a></li><li><a href="#c2">Chi è Ozan e perché la sua lettera pesa tanto</a></li><li><a href="#c3">«Mi dispiace tanto»: cosa cambia quella frase</a></li><li><a href="#c4">Cosa comporta per il rapporto tra Nihan e Kemal</a></li><li><a href="#c5">Il muro di silenzi attorno a Nihan</a></li><li><a href="#c6">Cosa aspettarsi dopo</a></li><li><a href="#c7">Dove vedere Endless Love</a></li><li><a href="#c8">Come Kemal affronta le manipolazioni ordite da Emir</a></li><li><a href="#c9">Perché Nihan comprende il peso del sacrificio di Ozan</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>Endless Love</strong> — Serie conclusa in Italia · le puntate su Mediaset Infinity</span></div>
   
-  <p class="occhiello">Kemal porta Nihan a casa propria e le consegna una lettera scritta da suo fratello Ozan. Quelle pagine contengono verità che rimettono in discussione tutto ciò che Nihan credeva sul sacrificio fatto per la sua famiglia.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: Endless Love, Kemal porta Nihan a casa sua e le mostra la lettera di Ozan: «Mi dispiace tanto»" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/ePwg2QvbREk/sddefault.jpg" alt="Endless Love, Kemal porta Nihan a casa sua e le mostra la lettera di Ozan: «Mi dispiace tanto»" width="640" height="480"
         srcset="https://i.ytimg.com/vi/ePwg2QvbREk/hqdefault.jpg 480w, https://i.ytimg.com/vi/ePwg2QvbREk/sddefault.jpg 640w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/ePwg2QvbREk/hqdefault.jpg&quot;, &quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -360,50 +410,72 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
   <div class="corpo">
   <p><strong>Una lettera scritta dal fratello che credeva di conoscere. E Kemal che gliela mette in mano sapendo che, dopo averla letta, niente potrà tornare come prima.</strong></p>
   <p>Endless Love ha costruito il proprio dramma su una menzogna che tutti conoscono a metà. In questa puntata la metà mancante arriva sotto forma di lettera: Kemal porta Nihan a casa propria e le mette in mano pagine scritte da suo fratello Ozan. Non gliele legge, non gliele riassume: gliele consegna, e aspetta.</p>
-<h2>Perché è Kemal a doverle dare quella lettera</h2>
+<h2 id="c1">Perché è Kemal a doverle dare quella lettera</h2>
 <p>Il gesto è più complicato di quanto sembri. Kemal ha passato la serie a cercare prove contro Emir, e ogni volta che ne ha trovata una si è scontrato con lo stesso problema: usarla significa ferire Nihan. Una lettera del fratello di lei è esattamente questo tipo di arma — dice la verità, e la verità le farà male.</p>
 <p>Scegliere di dargliela comunque è il modo in cui la serie segna un cambiamento nel personaggio. Fino a qui Kemal aveva deciso al posto di Nihan cosa fosse meglio che lei sapesse, esattamente come faceva Emir, solo con intenzioni diverse. Consegnarle le pagine e lasciarla leggere significa restituirle il diritto di decidere da sola.</p>
-<h2>Chi è Ozan e perché la sua lettera pesa tanto</h2>
+<h2 id="c2">Chi è Ozan e perché la sua lettera pesa tanto</h2>
 <p>Ozan è il fratello per cui Nihan ha rinunciato alla propria vita. Il matrimonio con Emir nasce come prezzo per coprire uno scandalo che lo riguardava, e tutto quello che è venuto dopo — il silenzio, la prigionia dorata, il sacrificio ripetuto ogni giorno — poggia su quella decisione presa da ragazza per proteggerlo.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>È un ragazzo fragile, manipolabile, che nel corso della serie viene usato ripetutamente come leva contro la sorella. Emir gli ha insinuato che Kemal fosse tornato a Istanbul per vendicarsi, mettendolo contro di lei; ha finanziato le persone intorno a lui per tenerlo legato. Una lettera scritta da Ozan, quindi, non è mai soltanto una lettera: è la voce dell&#x27;unica persona per cui Nihan ha accettato tutto.</p>
-<h2>«Mi dispiace tanto»: cosa cambia quella frase</h2>
+<h2 id="c3">«Mi dispiace tanto»: cosa cambia quella frase</h2>
 <p>Le scuse del fratello ribaltano la posizione di Nihan senza risolverle nulla. Se Ozan sapeva, e se se ne è pentito, allora il sacrificio di lei non è stato l&#x27;atto d&#x27;amore silenzioso che credeva: è stato qualcosa che qualcun altro ha lasciato accadere. Non c&#x27;è consolazione in una lettera del genere — c&#x27;è la scoperta che il dolore poteva finire prima.</p>
 <p>Ed è qui che Endless Love è più cattiva del solito. Nihan non ottiene una via d&#x27;uscita dal matrimonio: ottiene la certezza che ci sarebbe potuta essere. La differenza fra le due cose è tutta la puntata.</p>
-<h2>Cosa comporta per il rapporto tra Nihan e Kemal</h2>
+<h2 id="c4">Cosa comporta per il rapporto tra Nihan e Kemal</h2>
 <p>Portarla a casa propria e affrontare insieme quelle pagine è il momento più intimo che i due si concedono da molto tempo, e non è un momento romantico. È la prima volta che condividono un&#x27;informazione invece di proteggersi l&#x27;un l&#x27;altro nascondendosela — che in questa serie, dove ogni personaggio mente per amore, è un passo più grande di una dichiarazione.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Il muro di silenzi attorno a Nihan</h2>
+<h2 id="c5">Il muro di silenzi attorno a Nihan</h2>
 <p>Per misurare cosa significhi ricevere finalmente un&#x27;informazione vera, basta guardare chi le sta intorno. Leyla, la sorella di Kemal, sa cosa sta facendo davvero suo fratello e conosce le sue ragioni, ma non può dirle nulla e la vede spegnersi giorno dopo giorno. Emir controlla ogni notizia che le arriva. La sua stessa famiglia le ha chiesto il silenzio per prima. Nihan vive dentro una stanza in cui tutti sanno qualcosa e nessuno parla: la lettera di Ozan è la prima crepa in quel muro, e arriva da dentro la famiglia che l&#x27;ha costruito.</p>
-<h2>Cosa aspettarsi dopo</h2>
+<h2 id="c6">Cosa aspettarsi dopo</h2>
 <p>Nelle serie turche una rivelazione del genere non produce quasi mai una reazione immediata: produce un cambio di postura. Nihan non lascia Emir il giorno dopo, ma smette di credere che restare sia un dovere — ed è questo lo spostamento che rende possibile tutto quello che succede nel resto della stagione. Chi guarda farà bene a tenere d&#x27;occhio non cosa dice, ma quanto smette di giustificarsi.</p>
-<h2>Dove vedere Endless Love</h2>
+<h2 id="c7">Dove vedere Endless Love</h2>
 <p>Endless Love va in onda in Italia su Canale 5 e le puntate sono disponibili in streaming su Mediaset Infinity. La programmazione cambia spesso: conviene controllare la guida TV del giorno.</p>
-<h2>Come Kemal affronta le manipolazioni ordite da Emir</h2>
+<h2 id="c8">Come Kemal affronta le manipolazioni ordite da Emir</h2>
 <p>Kemal ha trascorso un lunghissimo periodo della propria vita a indagare senza sosta per raccogliere ogni minima prova utile a smascherare Emir. Tutte le volte in cui l&#x27;uomo si è trovato vicinissimo a smontare la ragnatela di menzogne intessuta dal suo nemico, ha dovuto fare i conti con un ostacolo davvero doloroso: ogni rivelazione rischiava di distruggere emotivamente Nihan. Emir ha sempre mosso le sue pedine nell&#x27;ombra, arrivando a manipolare il fragile Ozan e a raccontargli che il ritorno di Kemal a Istanbul serviva soltanto a consumare una terribile vendetta contro tutta la loro famiglia.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>Per assicurarsi il controllo totale sulla vita della giovane donna, Emir non si è limitato a mettere Ozan contro la sorella, ma ha persino finanziato le persone che circondavano il ragazzo per mantenerlo legato a sé e ricattabile. Kemal ha compreso che agire nell&#x27;ombra per conto di Nihan non faceva altro che perpetuare lo stesso meccanismo di controllo esercitato dal suo rivale. Portare la ragazza a casa propria e consegnarle direttamente quel messaggio scritto rappresenta un vero punto di svolta. Kemal sceglie finalmente di non decidere più per lei, lasciando che la verità segni il loro cammino.</p>
 <p>In questo clima soffocante fatto di continui silenzi, persino Leyla, la sorella di Kemal, si è trovata costretta a mantenere il segreto. Pur sapendo esattamente cosa stia tentando di fare suo fratello e comprendendo fino in fondo le motivazioni profonde che lo spingono ad agire, Leyla assiste impotente al progressivo spegnersi di Nihan giorno dopo giorno. La decisione di Kemal di consegnare la lettera spezza questo circolo vizioso. Consegnando quel foglio di carta senza aggiungere riassunti o spiegazioni, il ragazzo permette a Nihan di conoscere la verità e di riprendere in mano il proprio destino.</p>
-<h2>Perché Nihan comprende il peso del sacrificio di Ozan</h2>
+<h2 id="c9">Perché Nihan comprende il peso del sacrificio di Ozan</h2>
 <p>Il matrimonio tra Nihan ed Emir è stato edificato sulla base di un patto doloroso, accettato dalla protagonista quando era solo una ragazza per coprire lo scandalo che vedeva coinvolto suo fratello Ozan. Tutta la vita di Nihan si è trasformata da quel momento in una vera e propria prigionia dorata, dove ogni singolo giorno richiedeva un nuovo sacrificio personale per proteggere un familiare fragile e facilmente manovrabile. La stessa famiglia della giovane le ha imposto fin dall&#x27;inizio un muro di assoluto silenzio, pretendendo che sopportasse questo incubo nell&#x27;ombra senza mai rivelare la verità a nessuno per proteggere Ozan.</p>
 <p>Le parole scritte da Ozan dentro quella lettera racchiudono la frase chiave «Mi dispiace tanto», una dichiarazione spontanea che stravolge del tutto la prospettiva della protagonista. Scoprire che il fratello sapeva perfettamente cosa stia accadendo e che provava un profondo pentimento dimostra a Nihan che la sua sofferenza non è stata l&#x27;atto d&#x27;amore puro che credeva di compiere. Sapere che Ozan si scusa e riconosce la gravità della situazione trasforma la percezione del suo stesso martirio quotidiano, facendo crollare le giustificazioni che per anni l&#x27;avevano spinta a rimanere sottomessa dentro questa gabbia.</p>
 <p>L&#x27;incontro a casa di Kemal non rappresenta soltanto un momento di grande vicinanza reciproca, ma segna il primo vero passo verso una profonda consapevolezza. Nihan non ottiene una liberazione immediata dalle sue nozze con Emir, ma capisce con amara certezza che la sua sofferenza avrebbe potuto terminare molto prima se la verità fosse emersa. Leggere le scuse scritte di pugno dal fratello incrina definitivamente quel muro di reticenze eretto dalla sua famiglia. Da questo istante la ragazza smette di considerare la propria permanenza al fianco di Emir come un dovere inevitabile, cambiando per sempre la sua posizione.</p>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=jdlaTetf8-c" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/jdlaTetf8-c/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>KEMAL URLA LA SUA DISPERAZIONE NEL POZZO: &quot;NIHAN, TI AMO TANTO!&quot; - Anticipazioni Endless Love</span></a></li><li><a href="https://www.youtube.com/watch?v=lXX1rbgOjeQ" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/lXX1rbgOjeQ/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>NIHAN FINALMENTE CONFESSA: &quot;KEMAL, OZAN E&#x27; UN ASSASSINO&quot;! Anticipazioni Endless Love 9-10 Maggi</span></a></li><li><a href="https://www.youtube.com/watch?v=pRJvW4mBQo4" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/pRJvW4mBQo4/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>KEMAL UMILIA NIHAN DAVANTI AD ASU: &quot; QUELLA E&#x27; LA PORTA, VATTENE&quot; Anticipazioni Endless Love</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Kemal ha fatto bene a darle quella lettera?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=ePwg2QvbREk">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di Endless Love</h2><div class="griglia"><article class="scheda">
+  <a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/"><div class="foto"><img src="https://i.ytimg.com/vi/DSiProJJ1ls/hqdefault.jpg" alt="Endless Love" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/"><div class="foto"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/"><div class="foto"><img src="https://i.ytimg.com/vi/uu2oAzTOWQU/hqdefault.jpg" alt="Endless Love" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></h3>
+    <div class="quando">25 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=Endless Love, Kemal porta Nihan a casa sua e le mostra la lettera di Ozan: «Mi dispiace tanto» — https://soapoperaitalia.com/endless-love/endless-love-la-trama-completa-perche-nihan-sposa-emir-e-come-finisce/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://soapoperaitalia.com/endless-love/endless-love-la-trama-completa-perche-nihan-sposa-emir-e-come-finisce/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://soapoperaitalia.com/endless-love/endless-love-la-trama-completa-perche-nihan-sposa-emir-e-come-finisce/&text=Endless Love, Kemal porta Nihan a casa sua e le mostra la lettera di Ozan: «Mi dispiace tanto»" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">KEMAL CONSEGNA A NIHAN LA LETTERA DI OZAN: MI DISPIACE TANTO - Endless Love</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=ePwg2QvbREk">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di Endless Love</h3><ol class="numerata"><li><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></li><li><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></li><li><a href="/endless-love/endless-love-chi-e-galip-kozcuoglu-le-due-volte-in-cui-nihan-e-stata-venduta/">Endless Love, chi è Galip Kozcuoğlu: le due volte in cui Nihan è stata venduta</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-zeynep-soydere-perche-emir-lha-scelta-e-cosa-ha-distrutto/">Endless Love, chi è davvero Zeynep Soydere: perché Emir l&#x27;ha scelta e cosa ha distrutto</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>KEMAL CONSEGNA A NIHAN LA LETTERA DI OZAN: MI DISPIACE TANTO - Endless Love</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su Endless Love</h3><ul><li><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></li><li><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></li><li><a href="/endless-love/endless-love-chi-e-galip-kozcuoglu-le-due-volte-in-cui-nihan-e-stata-venduta/">Endless Love, chi è Galip Kozcuoğlu: le due volte in cui Nihan è stata venduta</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-zeynep-soydere-perche-emir-lha-scelta-e-cosa-ha-distrutto/">Endless Love, chi è davvero Zeynep Soydere: perché Emir l&#x27;ha scelta e cosa ha distrutto</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/my-home-my-destiny/">My Home My Destiny</a> › My Home My Destiny sparisce dal primo pomeriggio di Canale 5: il caso della soap da 1,6 milioni di spettatori sospesa nonostante il 20% di share</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/my-home-my-destiny/">My Home My Destiny</a>
   <h1>My Home My Destiny sparisce dal primo pomeriggio di Canale 5: il caso della soap da 1,6 milioni di spettatori sospesa nonostante il 20% di share</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Uno dei misteri più discussi dai fan della soap turca: alla presentazione dei palinsesti autunnali Mediaset, My Home My Destiny — debuttata in estate con ascolti straordinari, circa 1,6 milioni di spettatori al giorno e una quota costante intorno al 20% — è finita sospesa nell&#x27;incertezza. Il ritorno di Caduta Libera con Gerry Scotti ha rivoluzionato il pomeriggio, con due scenari sul tavolo: lo spostamento al sabato pomeriggio prima di Verissimo, o uno stop per l&#x27;intera stagione autunnale e invernale.</p><ol><li><a href="#c1">Un successo estivo che non bastò a blindare la fascia</a></li><li><a href="#c2">Il ritorno di Caduta Libera e l&#x27;effetto domino sul pomeriggio</a></li><li><a href="#c3">I due scenari: il sabato prima di Verissimo o lo stop totale</a></li><li><a href="#c4">Una lezione che i fan delle soap turche conoscono bene</a></li><li><a href="#c5">Come Zeynep e Mehdi hanno conquistato Canale 5</a></li><li><a href="#c6">Perché Gerry Scotti ha cambiato il palinsesto pomeridiano</a></li><li><a href="#c7">Cosa rischiano Zeynep e Mehdi durante l&#x27;autunno</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>My Home My Destiny</strong> — Serie conclusa in Italia · le puntate su Mediaset Infinity</span></div>
   
-  <p class="occhiello">Uno dei misteri più discussi dai fan della soap turca: alla presentazione dei palinsesti autunnali Mediaset, My Home My Destiny — debuttata in estate con ascolti straordinari, circa 1,6 milioni di spettatori al giorno e una quota costante intorno al 20% — è finita sospesa nell&#x27;incertezza. Il ritorno di Caduta Libera con Gerry Scotti ha rivoluzionato il pomeriggio, con due scenari sul tavolo: lo spostamento al sabato pomeriggio prima di Verissimo, o uno stop per l&#x27;intera stagione autunnale e invernale.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: My Home My Destiny sparisce dal primo pomeriggio di Canale 5: il caso della soap da 1,6 milioni di spettatori sospesa nonostante il 20% di share" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/uLAtYYqNL5s/maxresdefault.jpg" alt="My Home My Destiny sparisce dal primo pomeriggio di Canale 5: il caso della soap da 1,6 milioni di spettatori sospesa nonostante il 20% di share" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/uLAtYYqNL5s/hqdefault.jpg 480w, https://i.ytimg.com/vi/uLAtYYqNL5s/sddefault.jpg 640w, https://i.ytimg.com/vi/uLAtYYqNL5s/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/uLAtYYqNL5s/hqdefault.jpg&quot;, &quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,25 +409,25 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>Il paradosso che fece infuriare i fan: a fermarsi non fu una soap in crisi di ascolti, ma una delle sorprese dell&#x27;estate televisiva.</strong></p>
-  <h2>Un successo estivo che non bastò a blindare la fascia</h2>
+  <h2 id="c1">Un successo estivo che non bastò a blindare la fascia</h2>
 <p>La storia d&#x27;amore tormentata di Zeynep e Mehdi aveva conquistato il primo pomeriggio di Canale 5 fin dal debutto estivo: trame avvincenti, colpi di scena a ogni puntata e numeri da veterana — una media di circa 1,6 milioni di spettatori al giorno con una quota di mercato stabilmente intorno al 20%. Risultati ancora più notevoli se si considera che la soap era una novità assoluta per il pubblico italiano. Eppure, proprio al momento della presentazione dei palinsesti autunnali, arrivò la doccia fredda: la programmazione sarebbe cambiata, e non a favore della soap.</p>
-<h2>Il ritorno di Caduta Libera e l&#x27;effetto domino sul pomeriggio</h2>
+<h2 id="c2">Il ritorno di Caduta Libera e l&#x27;effetto domino sul pomeriggio</h2>
 <p>Il cambio di rotta aveva un nome preciso: il rientro anticipato di Caduta Libera, il quiz di Gerry Scotti, una piacevole sorpresa per il pubblico del preserale ma un problema per l&#x27;equilibrio del daytime. Il riassetto del palinsesto creava ostacoli significativi alla trasmissione regolare della soap turca, che rischiava di perdere la fascia oraria in cui aveva costruito il suo pubblico. È il classico effetto domino delle stagioni televisive: quando rientrano i titoli forti dell&#x27;autunno, le novità estive — anche quelle vincenti — devono farsi da parte.</p>
-<h2>I due scenari: il sabato prima di Verissimo o lo stop totale</h2>
+<h2 id="c3">I due scenari: il sabato prima di Verissimo o lo stop totale</h2>
 <p>Sul tavolo c&#x27;erano due ipotesi. La prima: spostare My Home My Destiny dalla fascia feriale del primo pomeriggio al sabato pomeriggio, posizionandola come traino di Verissimo, il talk show di Silvia Toffanin — una collocazione di prestigio, ma con ritmi settimanali molto diversi dall&#x27;appuntamento quotidiano a cui i fan erano abituati. La seconda, ben più dolorosa: un&#x27;interruzione per l&#x27;intera stagione autunnale e invernale, in attesa di una riprogrammazione del daytime di Canale 5 — un lungo periodo di privazione per chi seguiva ogni giorno le vicende dei due protagonisti.</p>
-<h2>Una lezione che i fan delle soap turche conoscono bene</h2>
+<h2 id="c4">Una lezione che i fan delle soap turche conoscono bene</h2>
 <p>Il caso My Home My Destiny è diventato l&#x27;esempio perfetto di una dinamica ricorrente: le dizi turche vengono usate da Mediaset come jolly del palinsesto — lanciate d&#x27;estate quando i big sono in vacanza, poi spostate, sospese o spezzettate al rientro dei titoli di punta, indipendentemente dagli ascolti. Per il pubblico è una montagna russa di appuntamenti che cambiano; per le soap, paradossalmente, è anche la prova della loro forza: pochi prodotti reggono simili traslochi di fascia senza perdere lo zoccolo duro dei fan. E la storia di Zeynep e Mehdi, come sappiamo, avrebbe comunque trovato il modo di arrivare fino in fondo.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Come Zeynep e Mehdi hanno conquistato Canale 5</h2>
+<h2 id="c5">Come Zeynep e Mehdi hanno conquistato Canale 5</h2>
 <p>La storia d&#x27;amore tormentata vissuta tra Zeynep e Mehdi ha saputo trasformarsi rapidamente in un fenomeno televisivo capace di incollare alla televisione tantissimi telespettatori. Fin dal suo debutto estivo sulla rete ammiraglia di Mediaset, questa novità assoluta per la programmazione italiana si è distinta per una risposta del pubblico davvero eccezionale. Ogni giorno la serie turca registrava una media vicina ai circa 1,6 milioni di spettatori quotidiani, mantenendo una quota di mercato e uno share costante intorno al 20%. Si tratta di un risultato imponente per un titolo appena arrivato su Canale 5, capace di competere con produzioni ben più collaudate presenti nei palinsesti di rete.</p>
 <p>L&#x27;impatto di Zeynep e Mehdi nel primo pomeriggio feriale ha dimostrato quanto la vicenda dei due protagonisti sapesse catturare l&#x27;attenzione degli appassionati del genere. Colpi di scena continui e trame avvincenti hanno garantito alla produzione numeri da vera veterana della televisione, confermando l&#x27;ottima intuizione nell&#x27;inserire la soap turca nella griglia estiva. Nonostante la serie rappresentasse un prodotto del tutto inedito per l&#x27;Italia, il legame instaurato con chi seguiva l&#x27;appuntamento pomeridiano si è rivelato subito profondo. Questa risposta calorosa del pubblico ha reso l&#x27;opera una delle novità estive di maggiore impatto e un punto fermo della programmazione quotidiana estiva di Canale 5.</p>
 <p>Il successo travolgente ottenuto da Zeynep e Mehdi sembrava poter garantire una totale schermatura e blindatura per la collocazione nel palinsesto della rete. Tuttavia, la presentazione dei palinsesti per la stagione autunnale ha riservato un&#x27;amara sorpresa per tutti i sostenitori del titolo turco. Proprio mentre gli indici d&#x27;ascolto toccavano vertici straordinari sfiorando una quota costante del 20%, Mediaset ha deciso di ridisegnare la propria offerta. Tale scelta ha catapultato la trasmissione della storia d&#x27;amore in uno stato di incertezza e sospensione, lasciando stupiti i moltissimi fan che non si aspettavano una simile battuta d&#x27;arresto per una serie capace di grandi numeri.</p>
-<h2>Perché Gerry Scotti ha cambiato il palinsesto pomeridiano</h2>
+<h2 id="c6">Perché Gerry Scotti ha cambiato il palinsesto pomeridiano</h2>
 <p>La necessità di riorganizzare la griglia quotidiana di Canale 5 è nata con il rientro anticipato di Caduta Libera, lo storico quiz condotto con successo da Gerry Scotti. Se per il pubblico appassionato dei giochi a premi del preserale si è trattato di un gradito ritorno, per il palinsesto del pomeriggio della rete ammiraglia l&#x27;evento ha generato un vero e proprio effetto domino. L&#x27;inserimento del programma condotto da Gerry Scotti ha obbligato i responsabili della programmazione a rivedere gli equilibri faticosamente costruiti nel periodo estivo, finendo per impattare in modo significativo sulla permanenza in onda di altre trasmissioni presenti in quella fascia oraria.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>Il riassetto del daytime ha evidenziato una dinamica tipica della televisione commerciale quando si passa dalla stagione estiva a quella autunnale. Il rientro dei titoli forti della rete costringe spesso le produzioni lanciate durante i mesi caldi a farsi da parte o a cercare nuove collocazioni. Anche se la soap turca con Zeynep e Mehdi aveva dimostrato una solidità straordinaria raccogliendo circa 1,6 milioni di telespettatori, la priorità concessa al quiz di Gerry Scotti ha creato ostacoli insormontabili per il prosieguo regolare nella tradizionale collocazione feriale. Tale incastro di orari ha mostrato la fragilità delle novità estive al rientro dei colossi.</p>
 <p>L&#x27;arrivo di Gerry Scotti con Caduta Libera ha scatenato la delusione di chi seguiva quotidianamente le vicende di Zeynep e Mehdi fin dal debutto. Il pubblico si è trovato improvvisamente di fronte alla possibilità di perdere un punto di riferimento pomeridiano che garantiva un&#x27;ottima continuità d&#x27;ascolto. La scelta aziendale di privilegiare il gioco del preserale ha rimesso in discussione i risultati raggiunti dalla soap turca, dimostrando come gli equilibri del daytime televisivo possano cambiare rapidamente. Questo cambio di rotta ha trasformato una delle stagioni estive più felici di Canale 5 in un caso aperto sulla gestione delle nuove proposte di palinsesto.</p>
-<h2>Cosa rischiano Zeynep e Mehdi durante l&#x27;autunno</h2>
+<h2 id="c7">Cosa rischiano Zeynep e Mehdi durante l&#x27;autunno</h2>
 <p>Tra le varie opzioni valutate da Mediaset per la collocazione della soap con Zeynep e Mehdi si è fatta strada l&#x27;ipotesi di uno spostamento al sabato pomeriggio. Posizionare la serie turca come traino per Verissimo, il noto contenitore di informazione e spettacolo guidato da Silvia Toffanin, rappresentava una scelta di indubbio prestigio. Tuttavia, questo passaggio dalla frequenza quotidiana della settimana feriale a una sola puntata settimanale avrebbe modificato radicalmente le abitudini della platea televisiva. Passare da un appuntamento giornaliero a un ritmo così dilatato rischiava di alterare la fruizione di una trama complessa e ricca di colpi di scena continui.</p>
 <p>La seconda ipotesi emersa durante la presentazione dei palinsesti è apparsa ancora più drastica per il pubblico: una completa interruzione delle trasmissioni per l&#x27;intero periodo autunnale e invernale. Uno stop prolungato avrebbe privato i telespettatori degli sviluppi sul legame tra Zeynep e Mehdi per molti mesi, congelando la serie in attesa di un futuro riassetto del daytime di Canale 5. Questa prospettiva di lunga attesa ha scatenato la protesta degli appassionati, abituati a seguire i circa 1,6 milioni di spettatori quotidiani che si sintonizzavano su una storia capace di toccare regolarmente il 20% di share.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
@@ -385,19 +435,41 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=CEWBqoYrOCE" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/CEWBqoYrOCE/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>MY HOME MY DESTINY Spoiler: Ritorno Clamoroso dopo 20 anni! Chi sarà?</span></a></li><li><a href="https://www.youtube.com/watch?v=Bgwa2XXcjkc" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/Bgwa2XXcjkc/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>MY HOME MY DESTINY Anticipazioni: Incredibile ritorno nella vita di Zeynep dopo 20 anni! Chi sa</span></a></li><li><a href="https://www.youtube.com/watch?v=BtzNdHFcSsU" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/BtzNdHFcSsU/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>MY HOME MY DESTINY Anticipazioni 16-17 Ottobre: Ritorno shock nella vita di Zeynep! Come finirà</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Vi ricordate dove eravate rimasti quando la soap sparì dalla programmazione? E secondo voi le dizi meritano una collocazione stabile nel palinsesto invece di fare da tappabuchi estivi?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=uLAtYYqNL5s">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di My Home My Destiny</h2><div class="griglia"><article class="scheda">
+  <a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/"><div class="foto"><img src="/img/my-home-my-destiny-la-trama-completa-e-come-finisce.jpg" alt="My Home My Destiny" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">My Home My Destiny</span>
+    <h3><a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/">My Home My Destiny: la trama completa e come finisce</a></h3>
+    <div class="quando">30 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/"><div class="foto"><img src="https://i.ytimg.com/vi/-djleIeCLQs/hqdefault.jpg" alt="My Home My Destiny" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">My Home My Destiny</span>
+    <h3><a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/">My Home My Destiny, Zeynep ferma l&#x27;aborto di Benal in sala operatoria senza sapere che il padre è Mehdi</a></h3>
+    <div class="quando">17 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/"><div class="foto"><img src="https://i.ytimg.com/vi/gxL0o63Nhqw/hqdefault.jpg" alt="My Home My Destiny" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">My Home My Destiny</span>
+    <h3><a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/">My Home My Destiny, anticipazioni del 17 novembre: Özlem indaga su Zeynep e scopre tutto, Nuh diventa autista di Barış e qualcuno manomette i macchinari di Bekir</a></h3>
+    <div class="quando">16 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=My Home My Destiny sparisce dal primo pomeriggio di Canale 5: il caso della soap da 1,6 milioni di spettatori sospesa nonostante il 20% di share — https://serietvfans.com/my-home-my-destiny/my-home-my-destiny-guida-alla-serie-chi-sono-demet-ozdemir-e-ibrahim-celikkol-qu/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/my-home-my-destiny/my-home-my-destiny-guida-alla-serie-chi-sono-demet-ozdemir-e-ibrahim-celikkol-qu/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/my-home-my-destiny/my-home-my-destiny-guida-alla-serie-chi-sono-demet-ozdemir-e-ibrahim-celikkol-qu/&text=My Home My Destiny sparisce dal primo pomeriggio di Canale 5: il caso della soap da 1,6 milioni di spettatori sospesa nonostante il 20% di share" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">MY HOME MY DESTINY Ultime Notizie! La Soap cancellata dalla Programmazione di Canale 5</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=uLAtYYqNL5s">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di My Home My Destiny</h3><ol class="numerata"><li><a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/">My Home My Destiny: la trama completa e come finisce</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/">My Home My Destiny, Zeynep ferma l&#x27;aborto di Benal in sala operatoria senza sapere che il padre è Mehdi</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/">My Home My Destiny, anticipazioni del 17 novembre: Özlem indaga su Zeynep e scopre tutto, Nuh diventa autista di Barış e qualcuno manomette i macchinari di Bekir</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-guida-alla-serie-chi-sono-demet-ozdemir-e-ibrahim-celikkol-qu/">My Home My Destiny: guida alla serie, il cast, i personaggi e quante puntate sono</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-1-dicembre-gli-spari-davanti-alla-vecchia-casa-zeynep-tra-le/">My Home My Destiny 1° dicembre, gli spari davanti alla vecchia casa: Zeynep tra le due madri quando l&#x27;uomo in moto estrae la pistola</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>MY HOME MY DESTINY Ultime Notizie! La Soap cancellata dalla Programmazione di Canale 5</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su My Home My Destiny</h3><ul><li><a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/">My Home My Destiny: la trama completa e come finisce</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/">My Home My Destiny, Zeynep ferma l&#x27;aborto di Benal in sala operatoria senza sapere che il padre è Mehdi</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/">My Home My Destiny, anticipazioni del 17 novembre: Özlem indaga su Zeynep e scopre tutto, Nuh diventa autista di Barış e qualcuno manomette i macchinari di Bekir</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-guida-alla-serie-chi-sono-demet-ozdemir-e-ibrahim-celikkol-qu/">My Home My Destiny: guida alla serie, il cast, i personaggi e quante puntate sono</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-1-dicembre-gli-spari-davanti-alla-vecchia-casa-zeynep-tra-le/">My Home My Destiny 1° dicembre, gli spari davanti alla vecchia casa: Zeynep tra le due madri quando l&#x27;uomo in moto estrae la pistola</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/my-home-my-destiny/">My Home My Destiny</a> › My Home My Destiny, la notte di Mehdi con Nazlı smascherata dal rosario dimenticato — e Nuh la rivela davanti a tutta la famiglia</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/my-home-my-destiny/">My Home My Destiny</a>
   <h1>My Home My Destiny, la notte di Mehdi con Nazlı smascherata dal rosario dimenticato — e Nuh la rivela davanti a tutta la famiglia</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Dopo il divorzio da Zeynep, Mehdi pensa di farla franca: la notte a casa di Nazlı — la titolare del franchising di pneumatici che lo corteggia apertamente — doveva restare un segreto. Ma lui dimentica lì la misbaha, il rosario musulmano, e la telefonata di Nazlı a Nuh trasforma il segreto in uno scandalo domestico: rivelato davanti a Müjgan, Cemile, Benal e Kibrit nel bel mezzo della lite sulle nozze di Cemile.</p><ol><li><a href="#c1">Nazlı, il nuovo ingresso che scombina tutto</a></li><li><a href="#c2">Chi è Benal, e perché è lei a fare la telefonata giusta</a></li><li><a href="#c3">La lite sulle nozze di Cemile — e la vendetta di Nuh</a></li><li><a href="#c4">«Hai dormito da Nazlı»: la misbaha che inchioda</a></li><li><a href="#c5">Kibrit fa la spia e Zeynep esplode</a></li><li><a href="#c6">Perché conta: il moralizzatore ha perso il posto da cui parlava</a></li><li><a href="#c7">Come Benal usa la verita per distruggere Mehdi</a></li><li><a href="#c8">Perche Kibrit si ritrova al centro del conflitto</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>My Home My Destiny</strong> — Serie conclusa in Italia · le puntate su Mediaset Infinity</span></div>
   
-  <p class="occhiello">Dopo il divorzio da Zeynep, Mehdi pensa di farla franca: la notte a casa di Nazlı — la titolare del franchising di pneumatici che lo corteggia apertamente — doveva restare un segreto. Ma lui dimentica lì la misbaha, il rosario musulmano, e la telefonata di Nazlı a Nuh trasforma il segreto in uno scandalo domestico: rivelato davanti a Müjgan, Cemile, Benal e Kibrit nel bel mezzo della lite sulle nozze di Cemile.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: My Home My Destiny, la notte di Mehdi con Nazlı smascherata dal rosario dimenticato — e Nuh la rivela davanti a tutta la famiglia" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/A_21cg0B0Sg/maxresdefault.jpg" alt="My Home My Destiny, la notte di Mehdi con Nazlı smascherata dal rosario dimenticato — e Nuh la rivela davanti a tutta la famiglia" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/A_21cg0B0Sg/hqdefault.jpg 480w, https://i.ytimg.com/vi/A_21cg0B0Sg/sddefault.jpg 640w, https://i.ytimg.com/vi/A_21cg0B0Sg/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/A_21cg0B0Sg/hqdefault.jpg&quot;, &quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,25 +409,25 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>Il tempismo perfetto della soap: Mehdi rimprovera la sorella per il matrimonio «indelicato» con Nuh — e Nuh gli risponde sganciando la bomba della sua notte brava.</strong></p>
-  <h2>Nazlı, il nuovo ingresso che scombina tutto</h2>
+  <h2 id="c1">Nazlı, il nuovo ingresso che scombina tutto</h2>
 <p>Venduta l&#x27;officina, Mehdi gestisce con Nuh un negozio di pneumatici in franchising — affiliato all&#x27;azienda della signora Nazlı, che per lui prende una cotta evidente. Quando scopre che Mehdi ha divorziato da Zeynep, la donna passa all&#x27;azione: con la scusa di «documenti da consegnare» lo invita a casa una sera, e le intenzioni non hanno nulla di professionale. I dettagli restano avvolti nel mistero, ma il mattino dopo Mehdi rientra a casa convinto di averla fatta franca.</p>
-<h2>Chi è Benal, e perché è lei a fare la telefonata giusta</h2>
+<h2 id="c2">Chi è Benal, e perché è lei a fare la telefonata giusta</h2>
 <p>Benal non compare in questa vicenda per caso e non avvisa Nuh per spirito di giustizia. È l&#x27;ex di Mehdi, la donna che da lui ha avuto una figlia e che la verità l&#x27;ha già usata una volta come arma: si era presentata da Nermin a raccontarle, una per una, tutte le bugie che lui aveva tenuto in piedi perfino a data delle nozze fissata. Da allora ha continuato a orbitare intorno a quella casa aspettando che il matrimonio con Zeynep si sfaldasse, e il divorzio le sembrava finalmente il momento buono. La notte con Nazlı le toglie l&#x27;unica cosa su cui contava: non stupisce che l&#x27;informazione finisca subito nelle mani di chi poteva farne l&#x27;uso più doloroso.</p>
-<h2>La lite sulle nozze di Cemile — e la vendetta di Nuh</h2>
+<h2 id="c3">La lite sulle nozze di Cemile — e la vendetta di Nuh</h2>
 <p>A casa, intanto, è esploso il caos: Müjgan ha trovato i documenti del matrimonio tra Cemile e Nuh e l&#x27;ha aggredita («tu ti sposi e io non ho mai potuto»), al punto che Kibrit ha dormito da Zeynep. Mehdi, rientrato, rimprovera la sorella: decidere le nozze «senza aspettare che le tensioni si placassero» è un tradimento. Ma Nuh, avvertito da Benal e accusato a sua volta, ha in mano l&#x27;arma perfetta — e la usa.</p>
-<h2>«Hai dormito da Nazlı»: la misbaha che inchioda</h2>
+<h2 id="c4">«Hai dormito da Nazlı»: la misbaha che inchioda</h2>
 <p>Davanti a Müjgan, Cemile, Benal e Kibrit, Nuh sgancia la rivelazione: Mehdi ha trascorso la notte con Nazlı — ed è stata lei stessa a telefonargli, perché Mehdi ha dimenticato a casa sua diverse cose, tra cui la misbaha, il rosario musulmano. Il silenzio che cala è di quelli che pesano: Kibrit fatica a credere che Mehdi abbia dimenticato Zeynep così in fretta, e Benal — che sperava in un ritorno tra le sue braccia dopo il divorzio — si dispera. Il moralizzatore di casa è appena diventato l&#x27;imputato.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Kibrit fa la spia e Zeynep esplode</h2>
+<h2 id="c5">Kibrit fa la spia e Zeynep esplode</h2>
 <p>L&#x27;ultima onda arriva a casa di Zeynep: Mehdi usa l&#x27;ingenua Kibrit come informatrice sul rapporto tra l&#x27;ex moglie e Barış — ma la ragazza, candida com&#x27;è, telefona a Zeynep e le racconta tutto, ultima notizia compresa: la notte con la signora Nazlı. Zeynep, furiosa, vieta a Kibrit di riferirle mai più nulla sulla vita privata di Mehdi. Peccato che il divieto non funzioni con la propria testa: l&#x27;immagine di Mehdi con Nazlı continua a tormentarla — segno che la separazione, sulla carta definitiva, nel cuore non lo è affatto.</p>
-<h2>Perché conta: il moralizzatore ha perso il posto da cui parlava</h2>
+<h2 id="c6">Perché conta: il moralizzatore ha perso il posto da cui parlava</h2>
 <p>Mehdi non perde una relazione, perde la posizione. Un minuto prima stava rimproverando la sorella per aver deciso di sposarsi nel momento sbagliato; un rosario dimenticato a casa di un&#x27;altra donna gli toglie il diritto di tenere quel tono dentro quella casa. Le conseguenze pratiche arrivano subito e sono peggiori dell&#x27;imbarazzo: Kibrit, la bambina che lo difendeva davanti a tutti, è la prima a non riconoscerlo più, e diventa un canale che funziona nei due sensi — lui la usa per sapere di Zeynep, lei racconta a Zeynep di lui. Il divieto imposto all&#x27;ultima riga non serve a niente, perché il problema non sono le notizie che arrivano: è che a Zeynep continuino a interessare.</p>
-<h2>Come Benal usa la verita per distruggere Mehdi</h2>
+<h2 id="c7">Come Benal usa la verita per distruggere Mehdi</h2>
 <p>Benal ha un passato segnato da segreti e risentimenti legati al suo rapporto con Mehdi, da cui ha avuto una figlia. In passato non aveva esitato a presentarsi direttamente da Nermin per denunciare tutte le menzogne che l&#x27;uomo aveva raccontato, persino quando le nozze erano ormai fissate. Dopo quella svolta, la donna ha continuato a rimanere vicina a quella casa, attendendo con pazienza il momento in cui il matrimonio tra Mehdi e Zeynep sarebbe giunto al termine. Con il divorzio finalmente ufficializzato, Benal credeva che fosse arrivata la sua occasione per riavvicinarsi all&#x27;ex compagno e ricostruire un legame interrotto da tempo.</p>
 <p>La notizia della notte trascorsa con la signora Nazlı manda tuttavia in frantumi ogni sua speranza. Quando Nazlı telefona per avvisare del rosario dimenticato nel suo appartamento dopo la serata organizzata con la scusa di consegnare documenti aziendali, l&#x27;informazione diventa un&#x27;arma letale. Benal capisce subito come sfruttare questa clamorosa rivelazione per colpire Mehdi proprio nel momento in cui lui cerca di fare il moralista. La scoperta genera infatti un dolore profondo nell&#x27;ex compagna, che sperava ancora in un ripensamento dell&#x27;uomo dopo la recente separazione da Zeynep, facendola disperare apertamente di fronte all&#x27;intera famiglia riunita.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>La tensione all&#x27;interno della casa era già altissima a causa della drammatica scoperta fatta da Müjgan, che aveva trovato i documenti del matrimonio segreto tra Cemile e Nuh. L&#x27;aggressione verbale di Müjgan verso la sorella nasceva da un profondo senso di solitudine e frustrazione personale, legato al fatto di non aver mai potuto sposarsi a sua volta. In questo clima incandescente, Mehdi era rientrato accusando Cemile e Nuh di indelicattezza per aver deciso le nozze senza attendere la fine dei conflitti. Tuttavia, la risposta di Nuh, alimentata dalle informazioni ricevute, finisce per spiazzare tutti e ribaltare completamente la situazione domestica.</p>
-<h2>Perche Kibrit si ritrova al centro del conflitto</h2>
+<h2 id="c8">Perche Kibrit si ritrova al centro del conflitto</h2>
 <p>Kibrit si ritrova involontariamente coinvolta negli scontri familiari e finisce per fare da ponte tra le due case. Spaventata dal caos scoppiato per le nozze di Cemile e dall&#x27;incredibile scontro tra le sorelle, la giovane decide di cercare rifugio e dormire presso l&#x27;abitazione di Zeynep. Contemporaneamente, Mehdi cerca di approfittare dell&#x27;ingenuità della ragazza per trasformarla in una spia personale, chiedendole continuamente informazioni riservate sui movimenti dell&#x27;ex moglie e sui suoi rapporti con Barış. La giovane si trova così al centro di una rete di pressioni e confessioni che non riesce a gestire fino in fondo.</p>
 <p>La spontaneità di Kibrit esplode nel momento in cui apprende della notte brava trascorsa da Mehdi insieme a Nazlı. La ragazza fatica ad accettare la realtà e non riesce a credere che l&#x27;uomo abbia potuto dimenticare Zeynep in così poco tempo, superando subito il divorzio appena conquistato. Spinta dalla sua indole candida e trasparente, la giovane telefona immediatamente a Zeynep per riferirle ogni dettaglio della vicenda, compreso il fondamentale particolare della misbaha dimenticata nell&#x27;appartamento della titolare del franchising di pneumatici. Questa telefonata inaspettata finisce per trasferire lo scandalo dal nucleo familiare originario fino alla casa dell&#x27;ex moglie.</p>
 <p>La reazione di Zeynep di fronte all&#x27;ennesima notizia sul conto dell&#x27;ex marito è immediata e furiosa. La donna impone un severo divieto a Kibrit, ordinandole di non riferirle mai più alcun dettaglio relativo alla vita privata di Mehdi o alle sue frequentazioni. Nonostante l&#x27;ordine perentorio, l&#x27;impatto emotivo della rivelazione è devastante e dimostra come il legame con l&#x27;ex marito non sia affatto risolto. L&#x27;immagine di Mehdi insieme a Nazlı continua infatti a tormentare la mente di Zeynep durante la giornata, confermando che la separazione legale non ha ancora cancellato i sentimenti e il coinvolgimento profondo che legano la coppia.</p>
@@ -385,19 +435,41 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=Nu_twsmCVIc" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/Nu_twsmCVIc/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>MY HOME MY DESTINY Anticipazioni 09-10 Ottobre: Mehdi ha passato la notte con Nazli si o no?</span></a></li><li><a href="https://www.youtube.com/watch?v=StzMYANbRB0" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/StzMYANbRB0/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>MY HOME MY DESTINY - Anticipazioni 24-26 Luglio: Mehdi e Zeynep firmano i documenti di divorzio</span></a></li><li><a href="https://www.youtube.com/watch?v=a-_RJzLurv8" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/a-_RJzLurv8/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>MY HOME MY DESTINY Anticipazioni 2-3 Ottobre: Zeynep e Mehdi divorzio ufficiale! E&#x27; finita!</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>La gelosia di Zeynep è nostalgia o amore mai spento? E Nazlı è una distrazione passeggera o la donna che cambierà davvero Mehdi?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=A_21cg0B0Sg">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di My Home My Destiny</h2><div class="griglia"><article class="scheda">
+  <a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/"><div class="foto"><img src="/img/my-home-my-destiny-la-trama-completa-e-come-finisce.jpg" alt="My Home My Destiny" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">My Home My Destiny</span>
+    <h3><a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/">My Home My Destiny: la trama completa e come finisce</a></h3>
+    <div class="quando">30 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/"><div class="foto"><img src="https://i.ytimg.com/vi/-djleIeCLQs/hqdefault.jpg" alt="My Home My Destiny" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">My Home My Destiny</span>
+    <h3><a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/">My Home My Destiny, Zeynep ferma l&#x27;aborto di Benal in sala operatoria senza sapere che il padre è Mehdi</a></h3>
+    <div class="quando">17 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/"><div class="foto"><img src="https://i.ytimg.com/vi/gxL0o63Nhqw/hqdefault.jpg" alt="My Home My Destiny" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">My Home My Destiny</span>
+    <h3><a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/">My Home My Destiny, anticipazioni del 17 novembre: Özlem indaga su Zeynep e scopre tutto, Nuh diventa autista di Barış e qualcuno manomette i macchinari di Bekir</a></h3>
+    <div class="quando">16 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=My Home My Destiny, la notte di Mehdi con Nazlı smascherata dal rosario dimenticato — e Nuh la rivela davanti a tutta la famiglia — https://serietvfans.com/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/&text=My Home My Destiny, la notte di Mehdi con Nazlı smascherata dal rosario dimenticato — e Nuh la rivela davanti a tutta la famiglia" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">MY HOME MY DESTINY ANTICIPAZIONI: MEHDI PASSA LA NOTTE CON NAZLI! BENAL INFURIATA</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=A_21cg0B0Sg">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di My Home My Destiny</h3><ol class="numerata"><li><a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/">My Home My Destiny: la trama completa e come finisce</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/">My Home My Destiny, Zeynep ferma l&#x27;aborto di Benal in sala operatoria senza sapere che il padre è Mehdi</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/">My Home My Destiny, anticipazioni del 17 novembre: Özlem indaga su Zeynep e scopre tutto, Nuh diventa autista di Barış e qualcuno manomette i macchinari di Bekir</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-guida-alla-serie-chi-sono-demet-ozdemir-e-ibrahim-celikkol-qu/">My Home My Destiny: guida alla serie, il cast, i personaggi e quante puntate sono</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-1-dicembre-gli-spari-davanti-alla-vecchia-casa-zeynep-tra-le/">My Home My Destiny 1° dicembre, gli spari davanti alla vecchia casa: Zeynep tra le due madri quando l&#x27;uomo in moto estrae la pistola</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>MY HOME MY DESTINY ANTICIPAZIONI: MEHDI PASSA LA NOTTE CON NAZLI! BENAL INFURIATA</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su My Home My Destiny</h3><ul><li><a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/">My Home My Destiny: la trama completa e come finisce</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/">My Home My Destiny, Zeynep ferma l&#x27;aborto di Benal in sala operatoria senza sapere che il padre è Mehdi</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/">My Home My Destiny, anticipazioni del 17 novembre: Özlem indaga su Zeynep e scopre tutto, Nuh diventa autista di Barış e qualcuno manomette i macchinari di Bekir</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-guida-alla-serie-chi-sono-demet-ozdemir-e-ibrahim-celikkol-qu/">My Home My Destiny: guida alla serie, il cast, i personaggi e quante puntate sono</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-1-dicembre-gli-spari-davanti-alla-vecchia-casa-zeynep-tra-le/">My Home My Destiny 1° dicembre, gli spari davanti alla vecchia casa: Zeynep tra le due madri quando l&#x27;uomo in moto estrae la pistola</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

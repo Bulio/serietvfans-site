@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/forbidden-fruit/">Forbidden Fruit</a> › Forbidden Fruit, Şahika si toglie i gioielli e recita la nuora perfetta davanti a Feride: Çağatay la smaschera e rompe con la madre</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/forbidden-fruit/">Forbidden Fruit</a>
   <h1>Forbidden Fruit, Şahika si toglie i gioielli e recita la nuora perfetta davanti a Feride: Çağatay la smaschera e rompe con la madre</h1>
-  <div class="firma">Redazione Serie TV Fans · lunedì 17 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-17">lunedì 17 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Estromessa dal consiglio dell&#x27;azienda da Hasan Ali con una decisione secca e senza appello, Şahika rinuncia al potere economico e punta su quello familiare. Si presenta da Feride trasformata in una donna modesta e per bene, e la recita funziona al punto che Feride comincia a preferirla a Yıldız. A smontare tutto è Çağatay, che nota le incongruenze, ricostruisce il piano e taglia i rapporti con la madre — poi decide di sposare Yıldız il giorno dopo.</p><ol><li><a href="#c1">Chi sono Şahika, Feride e Çağatay, per chi arriva adesso</a></li><li><a href="#c2">L&#x27;antefatto: Şahika cacciata dal consiglio davanti a tutti</a></li><li><a href="#c3">La trasformazione: via i gioielli, dentro la donna «per bene»</a></li><li><a href="#c4">Le tende rovinate: il sabotaggio che Feride aveva già ordinato</a></li><li><a href="#c5">Çağatay nota le incongruenze e ricostruisce tutto</a></li><li><a href="#c6">La rottura con la madre: «non resto complice nemmeno col silenzio»</a></li><li><a href="#c7">La risposta di Yıldız e Çağatay: sposarsi il giorno dopo</a></li><li><a href="#c8">Perché conta: due sconfitte di fila non fermano Şahika</a></li><li><a href="#c9">Dove vedere Forbidden Fruit</a></li><li><a href="#c10">Come Hasan Ali stravolge i piani di Şahika</a></li><li><a href="#c11">Perche&#x27; Çağatay sceglie di sposare subito Yıldız</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>Forbidden Fruit</strong> — Canale 5 · in streaming su Mediaset Infinity</span></div>
   
-  <p class="occhiello">Estromessa dal consiglio dell&#x27;azienda da Hasan Ali con una decisione secca e senza appello, Şahika rinuncia al potere economico e punta su quello familiare. Si presenta da Feride trasformata in una donna modesta e per bene, e la recita funziona al punto che Feride comincia a preferirla a Yıldız. A smontare tutto è Çağatay, che nota le incongruenze, ricostruisce il piano e taglia i rapporti con la madre — poi decide di sposare Yıldız il giorno dopo.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: Forbidden Fruit, Şahika si toglie i gioielli e recita la nuora perfetta davanti a Feride: Çağatay la smaschera e rompe con la madre" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/L5wO2pWClog/maxresdefault.jpg" alt="Forbidden Fruit, Şahika si toglie i gioielli e recita la nuora perfetta davanti a Feride: Çağatay la smaschera e rompe con la madre" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/L5wO2pWClog/hqdefault.jpg 480w, https://i.ytimg.com/vi/L5wO2pWClog/sddefault.jpg 640w, https://i.ytimg.com/vi/L5wO2pWClog/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/L5wO2pWClog/hqdefault.jpg&quot;, &quot;/fallback/forbidden-fruit.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,49 +409,71 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>Cacciata dal consiglio davanti a tutti, Şahika non si arrende: cambia terreno di battaglia. Via i gioielli, un vestito sobrio, e la donna che tramava nell&#x27;ombra diventa agli occhi di Feride la candidata ideale per suo figlio.</strong></p>
-  <h2>Chi sono Şahika, Feride e Çağatay, per chi arriva adesso</h2>
+  <h2 id="c1">Chi sono Şahika, Feride e Çağatay, per chi arriva adesso</h2>
 <p>Şahika è la stratega di Forbidden Fruit: la donna che per anni ha costruito il proprio potere dentro l&#x27;Argun Holding con pazienza, cambiando alleanza ogni volta che conveniva e trattando ogni patto come temporaneo. Feride è la madre di Çağatay, il personaggio che combatte la relazione del figlio con Yıldız partendo da un sospetto che si è costruita da sola. Çağatay è l&#x27;uomo che Yıldız avrebbe dovuto conquistare per calcolo e di cui si è innamorata davvero: abituato a essere corteggiato per il patrimonio, ha sviluppato un occhio infallibile per chi recita.</p>
-<h2>L&#x27;antefatto: Şahika cacciata dal consiglio davanti a tutti</h2>
+<h2 id="c2">L&#x27;antefatto: Şahika cacciata dal consiglio davanti a tutti</h2>
 <p>Il punto di partenza è l&#x27;umiliazione peggiore della carriera di Şahika. Hasan Ali la estromette dal consiglio dell&#x27;azienda con una decisione secca e senza appello, spazzando via in pochi minuti anni di potere accumulato con pazienza. Per chiunque altro sarebbe la fine della partita. Per lei è soltanto un cambio di terreno: se non può più contare sul potere economico, punterà su quello familiare. E il bersaglio che sceglie è il più fragile di tutti, perché è già predisposto a crederle — Feride, ancora scossa dal sospetto tossico che si è costruita contro Yıldız.</p>
-<h2>La trasformazione: via i gioielli, dentro la donna «per bene»</h2>
+<h2 id="c3">La trasformazione: via i gioielli, dentro la donna «per bene»</h2>
 <p>Şahika si presenta da Feride completamente trasformata. Niente più gioielli scintillanti, niente più abiti sfarzosi: solo un vestito sobrio e un atteggiamento studiato nei minimi dettagli per sembrare la donna modesta e irreprensibile che ogni madre sognerebbe per il proprio figlio. La messa in scena è talmente ben costruita che Feride ci casca in pieno, arrivando a considerarla molto più adatta di Yıldız a entrare in famiglia. È un capovolgimento clamoroso: la donna che fino a poco prima tramava nell&#x27;ombra contro gli Argun diventa, agli occhi di Feride, la candidata ideale.</p>
-<h2>Le tende rovinate: il sabotaggio che Feride aveva già ordinato</h2>
+<h2 id="c4">Le tende rovinate: il sabotaggio che Feride aveva già ordinato</h2>
 <p>La recita funziona così bene anche perché arriva su un terreno già preparato. Prima ancora della messa in scena di Şahika, Feride aveva mostrato fino a che punto fosse disposta a spingersi per allontanare Yıldız: aveva mandato la propria domestica a incastrarla con delle tende rovinate, un piccolo sabotaggio pensato per screditarla agli occhi di tutti. È un tassello che completa il quadro di una madre disposta a tutto pur di controllare la vita sentimentale del figlio, e che rende la manipolazione di Şahika ancora più efficace: colpisce una donna già pronta a credere al peggio.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Çağatay nota le incongruenze e ricostruisce tutto</h2>
+<h2 id="c5">Çağatay nota le incongruenze e ricostruisce tutto</h2>
 <p>A far crollare il castello è proprio Çağatay. Con la stessa attenzione con cui ha sempre osservato ogni movimento sospetto attorno alla propria famiglia, comincia a notare le incongruenze nel comportamento improvvisamente virtuoso di Şahika, e mettendo insieme i pezzi arriva a ricostruire l&#x27;intero piano orchestrato ai danni di Yıldız. È la dimostrazione di una regola che in questa serie vale sempre: in una casa dove tutti giocano le proprie carte nell&#x27;ombra, la lucidità di chi guarda senza lasciarsi accecare dalle apparenze resta l&#x27;arma più pericolosa.</p>
-<h2>La rottura con la madre: «non resto complice nemmeno col silenzio»</h2>
+<h2 id="c6">La rottura con la madre: «non resto complice nemmeno col silenzio»</h2>
 <p>La reazione di Çağatay è immediata e senza appello: taglia i rapporti con Feride, rifiutandosi di restare complice — anche solo per silenzio — di una manipolazione tanto spietata contro la donna che ama davvero. Ma il danno ormai è fatto, e quel gesto non fa che confermare a tutti, lui compreso, fino a che punto sua madre fosse disposta a spingersi pur di imporre le proprie scelte. La domestica che aveva materialmente eseguito il sabotaggio delle tende si ritrova a sua volta in una posizione scomodissima, consapevole di essere stata solo uno strumento.</p>
-<h2>La risposta di Yıldız e Çağatay: sposarsi il giorno dopo</h2>
+<h2 id="c7">La risposta di Yıldız e Çağatay: sposarsi il giorno dopo</h2>
 <p>La reazione della coppia a tutto questo caos è tanto improvvisa quanto definitiva: dopo settimane di equivoci, accuse e manipolazioni, decidono di sposarsi il giorno seguente. Non è una fuga romantica priva di calcolo — è un gesto che chiude ogni discussione possibile, togliendo a Feride, a Şahika e a chiunque altro qualsiasi margine per continuare a interferire. Dopo mesi passati a subire i piani degli altri, è la prima volta che scelgono di scrivere da soli il proprio destino, e lo fanno nel modo più irreversibile a disposizione.</p>
-<h2>Perché conta: due sconfitte di fila non fermano Şahika</h2>
+<h2 id="c8">Perché conta: due sconfitte di fila non fermano Şahika</h2>
 <p>Perdere il consiglio era già stato un colpo durissimo; vedere fallire anche il piano costruito con tanta cura rischia di spingere Şahika verso mosse molto più disperate, e chi la conosce sa che una donna abituata a manovrare nell&#x27;ombra raramente si arrende dopo due sconfitte consecutive. Se ne accorge anche Hasan Ali che, pur estraneo alle vicende sentimentali della famiglia, osserva con crescente diffidenza il modo in cui continua a muoversi dopo l&#x27;estromissione, e comincia a chiedersi se non convenga intervenire prima che torni a minacciare gli equilibri dell&#x27;azienda.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Dove vedere Forbidden Fruit</h2>
+<h2 id="c9">Dove vedere Forbidden Fruit</h2>
 <p>Forbidden Fruit è andata in onda in Italia su Canale 5: le puntate si possono recuperare in streaming su Mediaset Infinity.</p>
-<h2>Come Hasan Ali stravolge i piani di Şahika</h2>
+<h2 id="c10">Come Hasan Ali stravolge i piani di Şahika</h2>
 <p>La decisione presa da Hasan Ali dentro il consiglio dell&#x27;azienda segna una svolta totale nella storia, privando improvvisamente Şahika di tutto il potere economico accumulato con pazienza nel corso degli anni. Senza più margini di manovra nelle dinamiche societarie della Argun Holding, la donna capisce di dover modificare immediatamente la propria strategia per non rimanere tagliata fuori dai giochi importanti. Rinunciando al controllo delle quote e degli equilibri aziendali, sceglie quindi di spostare la sua attenzione sulle vicende personali della famiglia, identificando in Feride l&#x27;anello debole da manipolare per ritrovare rapidamente la sua influenza perduta.</p>
 <p>Per portare a termine questo inganno, Şahika studia un cambio d&#x27;immagine radicale, abbandonando gli abiti sfarzosi e i gioielli luccicanti per presentarsi come una persona modesta e del tutto irreprensibile. Feride, già accecata dalla diffidenza verso Yıldız e dal desiderio di ostacolarla, si lascia convincere facilmente da questa messa in scena, arrivando a considerare la nuova arrivata come la nuora perfetta. Nel frattempo Hasan Ali, pur rimanendo del tutto estraneo agli intrighi sentimentali che coinvolgono i ragazzi, continua a osservare ogni movimento con profondo sospetto, valutando l&#x27;ipotesi di intervenire prima che queste manovre nell&#x27;ombra possano danneggiare nuovamente la stabilità della società.</p>
-<h2>Perche&#x27; Çağatay sceglie di sposare subito Yıldız</h2>
+<h2 id="c11">Perche&#x27; Çağatay sceglie di sposare subito Yıldız</h2>
 <p>A spezzare la fitta rete di inganni costruita da Şahika è la prontezza di Çağatay, abituato da sempre a difendersi da chi cerca di avvicinarlo solo per interesse economico. Analizzando con attenzione i comportamenti troppo perfetti e le palesi incongruenze nell&#x27;atteggiamento della donna, il ragazzo riesce a unire tutti i tasselli della vicenda, smascherando non soltanto la finta modestia della sua nuova ospite, ma anche i precedenti tentativi della madre di screditare Yıldız attraverso il sabotaggio delle tende affidato alla domestica. Questa scoperta spinge Çağatay a prendere una decisione drastica e senza ritorno, rifiutandosi categoricamente di rimanere in silenzio o di diventare complice di simili scorrettezze.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>Il totale taglio dei rapporti tra Çağatay e Feride trasforma definitivamente lo scontro in una frattura insanabile, lasciando la domestica in una posizione estremamente difficile e compromessa. Per chiudere ogni possibile interferenza esterna e proteggere il sentimento sincero nato tra loro, Çağatay e Yıldız scelgono di accelerare improvvisamente i tempi e di sposarsi già il giorno seguente. Con questa unione improvvisa e definitiva, la coppia toglie qualsiasi margine di manovra sia a Feride sia a Şahika, prendendo per la prima volta in mano il proprio destino e dimostrando che le manipolazioni e le recite non possono fermare una scelta d&#x27;amore autentica.</p>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=4dfY6Ntt54Y" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/4dfY6Ntt54Y/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>FORBIDDEN FRUIT: Feride accusa Yıldız davanti a Çağatay, il sospetto che distrugge tutto 😨</span></a></li><li><a href="https://www.youtube.com/watch?v=5V94fIjVobY" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/5V94fIjVobY/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>FORBIDDEN FRUIT: Yıldız senza un soldo punta a Çağatay come marito ricco 😱</span></a></li><li><a href="https://www.youtube.com/watch?v=cT279Hy4stY" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/cT279Hy4stY/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>FORBIDDEN FRUIT: YILDIZ senza un soldo — il consiglio spietato di sua madre 😨</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Vi ha colpito di più la spregiudicatezza con cui Şahika ha costruito la sua recita, o la rapidità con cui Çağatay l&#x27;ha smascherata? E secondo voi quel matrimonio improvviso fermerà davvero Feride e Şahika?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=L5wO2pWClog">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di Forbidden Fruit</h2><div class="griglia"><article class="scheda">
+  <a href="/forbidden-fruit/forbidden-fruit-dal-31-agosto-il-conto-a-nome-di-halit-che-e-morto/"><div class="foto"><img src="/img/forbidden-fruit-dal-31-agosto-il-conto-a-nome-di-halit-che-e-morto.jpg" alt="Forbidden Fruit" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/forbidden-fruit.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Forbidden Fruit</span>
+    <h3><a href="/forbidden-fruit/forbidden-fruit-dal-31-agosto-il-conto-a-nome-di-halit-che-e-morto/">Forbidden Fruit Dal 31 Agosto: il conto a nome di Halit, che è morto</a></h3>
+    <div class="quando">31 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/forbidden-fruit/forbidden-fruit-che-fine-fa-zehra-perche-resta-lunica-libera/"><div class="foto"><img src="/img/forbidden-fruit-che-fine-fa-zehra-perche-resta-lunica-libera.jpg" alt="Forbidden Fruit" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/forbidden-fruit.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Forbidden Fruit</span>
+    <h3><a href="/forbidden-fruit/forbidden-fruit-che-fine-fa-zehra-perche-resta-lunica-libera/">Forbidden Fruit, che fine fa Zehra: perché resta l&#x27;unica libera mentre le altre finiscono in cella</a></h3>
+    <div class="quando">29 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/forbidden-fruit/forbidden-fruit-halit-e-vivo-o-e-morto-perche-al-funerale-si-sente-sono-vivo/"><div class="foto"><img src="/img/forbidden-fruit-halit-e-vivo-o-e-morto-perche-al-funerale-si-sente-sono-vivo.jpg" alt="Forbidden Fruit" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/forbidden-fruit.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Forbidden Fruit</span>
+    <h3><a href="/forbidden-fruit/forbidden-fruit-halit-e-vivo-o-e-morto-perche-al-funerale-si-sente-sono-vivo/">Forbidden Fruit, Halit è vivo o è morto: perché al funerale qualcuno sente «sono vivo»</a></h3>
+    <div class="quando">29 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=Forbidden Fruit, Şahika si toglie i gioielli e recita la nuora perfetta davanti a Feride: Çağatay la smaschera e rompe con la madre — https://serietvfans.com/forbidden-fruit/forbidden-fruit-sahika-si-toglie-i-gioielli-e-recita-la-nuora-perfetta-davanti-a/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/forbidden-fruit/forbidden-fruit-sahika-si-toglie-i-gioielli-e-recita-la-nuora-perfetta-davanti-a/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/forbidden-fruit/forbidden-fruit-sahika-si-toglie-i-gioielli-e-recita-la-nuora-perfetta-davanti-a/&text=Forbidden Fruit, Şahika si toglie i gioielli e recita la nuora perfetta davanti a Feride: Çağatay la smaschera e rompe con la madre" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">Forbidden Fruit, Şahika si toglie i gioielli e recita la nuora perfetta davanti a Feride: Çağatay la smaschera e rompe con la madre</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=L5wO2pWClog">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di Forbidden Fruit</h3><ol class="numerata"><li><a href="/forbidden-fruit/forbidden-fruit-dal-31-agosto-il-conto-a-nome-di-halit-che-e-morto/">Forbidden Fruit Dal 31 Agosto: il conto a nome di Halit, che è morto</a></li><li><a href="/forbidden-fruit/forbidden-fruit-che-fine-fa-zehra-perche-resta-lunica-libera/">Forbidden Fruit, che fine fa Zehra: perché resta l&#x27;unica libera mentre le altre finiscono in cella</a></li><li><a href="/forbidden-fruit/forbidden-fruit-halit-e-vivo-o-e-morto-perche-al-funerale-si-sente-sono-vivo/">Forbidden Fruit, Halit è vivo o è morto: perché al funerale qualcuno sente «sono vivo»</a></li><li><a href="/forbidden-fruit/forbidden-fruit-chi-e-davvero-zeynep-la-sorella-per-bene-che-ha-finito-peggio-di-yildiz/">Forbidden Fruit: chi è davvero Zeynep, la sorella «per bene» che ha finito peggio di Yıldız</a></li><li><a href="/forbidden-fruit/forbidden-fruit-cosa-dice-il-testamento-di-halit-la-quota-del-bambino-va-a-una-f/">Forbidden Fruit, cosa dice il testamento di Halit: la quota del bambino va a una fondazione, e Mert tradisce Kerim</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>Ogni anticipazione, prima in video sul canale Serie TV Fans</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su Forbidden Fruit</h3><ul><li><a href="/forbidden-fruit/forbidden-fruit-dal-31-agosto-il-conto-a-nome-di-halit-che-e-morto/">Forbidden Fruit Dal 31 Agosto: il conto a nome di Halit, che è morto</a></li><li><a href="/forbidden-fruit/forbidden-fruit-che-fine-fa-zehra-perche-resta-lunica-libera/">Forbidden Fruit, che fine fa Zehra: perché resta l&#x27;unica libera mentre le altre finiscono in cella</a></li><li><a href="/forbidden-fruit/forbidden-fruit-halit-e-vivo-o-e-morto-perche-al-funerale-si-sente-sono-vivo/">Forbidden Fruit, Halit è vivo o è morto: perché al funerale qualcuno sente «sono vivo»</a></li><li><a href="/forbidden-fruit/forbidden-fruit-chi-e-davvero-zeynep-la-sorella-per-bene-che-ha-finito-peggio-di-yildiz/">Forbidden Fruit: chi è davvero Zeynep, la sorella «per bene» che ha finito peggio di Yıldız</a></li><li><a href="/forbidden-fruit/forbidden-fruit-cosa-dice-il-testamento-di-halit-la-quota-del-bambino-va-a-una-f/">Forbidden Fruit, cosa dice il testamento di Halit: la quota del bambino va a una fondazione, e Mert tradisce Kerim</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

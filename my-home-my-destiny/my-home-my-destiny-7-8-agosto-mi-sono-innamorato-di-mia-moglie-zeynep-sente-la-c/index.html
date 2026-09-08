@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/my-home-my-destiny/">My Home My Destiny</a> › My Home My Destiny 7-8 agosto, «mi sono innamorato di mia moglie»: Zeynep sente la confessione di Mehdi proprio mentre Cemile sta per dirgli di Benal</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/my-home-my-destiny/">My Home My Destiny</a>
   <h1>My Home My Destiny 7-8 agosto, «mi sono innamorato di mia moglie»: Zeynep sente la confessione di Mehdi proprio mentre Cemile sta per dirgli di Benal</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Due giornate che cambiano tutto: Mehdi accompagna Zeynep all&#x27;università e convince un professore a farle recuperare gli esami arretrati, difendendola poi dal classismo di una collega. Nello stesso momento Benal rivela a Cemile di essere incinta di lui e chiede che sia la sorella a dirglielo. Ma quando Cemile trova il coraggio di parlare, Mehdi la anticipa con una frase che Zeynep — appena rientrata con Kibrit — sente per caso: si è innamorato di sua moglie.</p><ol><li><a href="#c1">Bayram cacciato di casa e i conti con Sakine</a></li><li><a href="#c2">L&#x27;università e la collega classista</a></li><li><a href="#c3">Benal decide di tenere il bambino</a></li><li><a href="#c4">La frase sentita per caso</a></li><li><a href="#c5">Come Mehdi difende Zeynep all&#x27;università</a></li><li><a href="#c6">Perche&#x27; Benal affronta Cemile e Sultan</a></li><li><a href="#c7">Cosa prova Zeynep dopo la confessione</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>My Home My Destiny</strong> — Serie conclusa in Italia · le puntate su Mediaset Infinity</span></div>
   
-  <p class="occhiello">Due giornate che cambiano tutto: Mehdi accompagna Zeynep all&#x27;università e convince un professore a farle recuperare gli esami arretrati, difendendola poi dal classismo di una collega. Nello stesso momento Benal rivela a Cemile di essere incinta di lui e chiede che sia la sorella a dirglielo. Ma quando Cemile trova il coraggio di parlare, Mehdi la anticipa con una frase che Zeynep — appena rientrata con Kibrit — sente per caso: si è innamorato di sua moglie.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: My Home My Destiny 7-8 agosto, «mi sono innamorato di mia moglie»: Zeynep sente la confessione di Mehdi proprio mentre Cemile sta per dirgli di Benal" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/6q1V6hIoohM/maxresdefault.jpg" alt="My Home My Destiny 7-8 agosto, «mi sono innamorato di mia moglie»: Zeynep sente la confessione di Mehdi proprio mentre Cemile sta per dirgli di Benal" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/6q1V6hIoohM/hqdefault.jpg 480w, https://i.ytimg.com/vi/6q1V6hIoohM/sddefault.jpg 640w, https://i.ytimg.com/vi/6q1V6hIoohM/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/6q1V6hIoohM/hqdefault.jpg&quot;, &quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,42 +409,64 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>La gioia più grande arriva dalla supervisora: la domanda di adozione è stata accettata, Kibrit può tornare a casa con Zeynep.</strong></p>
-  <h2>Bayram cacciato di casa e i conti con Sakine</h2>
+  <h2 id="c1">Bayram cacciato di casa e i conti con Sakine</h2>
 <p>La settimana si apre con Bayram allontanato da casa: Zeliha non gli perdona di aver turbato la famiglia e ostacolato l&#x27;adozione di Kibrit, e Sakine si dichiara d&#x27;accordo. Zeynep però non ci crede fino in fondo e affronta la madre con durezza — dov&#x27;era quel coraggio quando lei e i fratelli erano bambini e subivano la violenza di quell&#x27;uomo? È Mehdi a consolarla, promettendole che la proteggerà dal dolore che la sua famiglia le ha causato. Intanto Bayram, salvato per caso da un vigile notturno delle ferrovie, dice di non avere nessuno al mondo — e finisce umiliato da un negoziante mentre tenta di rubare dell&#x27;alcol.</p>
-<h2>L&#x27;università e la collega classista</h2>
+<h2 id="c2">L&#x27;università e la collega classista</h2>
 <p>Il gesto più bello di Mehdi arriva quando accompagna Zeynep all&#x27;università per aiutarla con i due esami mai superati: parla con un professore, spiega le sue difficoltà e ottiene che possa recuperarli. Una compagna di corso ascolta la conversazione e scopre che Zeynep ha sposato un meccanico di quartiere invece del ricco Faruk, e gliene fa una colpa; la risposta di lei è durissima — accusa la collega di classismo e ignoranza, sotto lo sguardo sempre più fiero del marito. Poco dopo arriva anche Faruk in persona, e Mehdi gli intima di stare lontano; a chiudere la questione è Zeynep, che prende la mano del marito e si allontana con lui.</p>
-<h2>Benal decide di tenere il bambino</h2>
+<h2 id="c3">Benal decide di tenere il bambino</h2>
 <p>Sull&#x27;altro fronte, Benal comincia un diario in cui conserva la prima ecografia e confida a Zeynep di aver deciso di portare avanti la gravidanza — grazie proprio alle sue parole. Poi convoca Cemile al giardino del tè e le rivela la verità: il padre è Mehdi, e vuole che sia la sorella a informarlo, per evitare scandali. Cemile, sconvolta dalle prove mediche, corre da Sultan; le due affrontano Benal insieme spiegandole che se Mehdi l&#x27;avesse amata l&#x27;avrebbe sposata, e che da lui non otterrà nulla. Ma Benal non arretra: quel bambino nascerà, e tutti sapranno.</p>
-<h2>La frase sentita per caso</h2>
+<h2 id="c4">La frase sentita per caso</h2>
 <p>Approfittando dell&#x27;assenza di Zeynep, Cemile decide finalmente di parlare al fratello. Ma appena sente il nome di Benal, Mehdi taglia corto — con lei è tutto chiarito e finito — e poi pronuncia la frase che spiazza la sorella: si è innamorato di sua moglie. In quel preciso momento Zeynep rientra con Kibrit, appena affidata a lei dalla supervisora, e sente tutto. La sua reazione, racconterà poi, non fu gioia ma paura: dell&#x27;amore non sapeva nulla, non lo aveva mai conosciuto davvero. Sullo sfondo, altri fili si tendono — Ekrem prova a comprare il silenzio di Mehdi sull&#x27;amante e viene respinto, e Faruk viene visto uscire dall&#x27;officina del figlio dell&#x27;uomo che uccise il padre di lui.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Come Mehdi difende Zeynep all&#x27;università</h2>
+<h2 id="c5">Come Mehdi difende Zeynep all&#x27;università</h2>
 <p>Mehdi dimostra un sostegno profondo nei confronti della consorte accompagnandola direttamente presso la struttura universitaria per affrontare una questione delicata. Zeynep deve infatti recuperare due importanti esami arretrati e il marito sceglie di parlare personalmente con un docente per illustrare le reali difficoltà vissute dalla donna, riuscendo ad ottenere una preziosa possibilità di recupero. Purtroppo la situazione si complica quando una compagna di corso ascolta l&#x27;intera conversazione e scopre il matrimonio tra la ragazza e un semplice meccanico di quartiere. La collega attacca subito Zeynep con toni giudicanti, criticando la scelta di non aver sposato il ricco Faruk, ma la protagonista risponde con fermezza accusandola apertamente di ignoranza e classismo di fronte ad un Mehdi sempre più fiero.</p>
 <p>La tensione aumenta ulteriormente quando nell&#x27;ateneo fa la sua comparsa Faruk in persona, intenzionato a inserirsi nuovamente nella vita della donna. In questa circostanza Mehdi interviene prontamente senza alcuna esitazione, intimando al rivale di restare a debita distanza e di non infastidire mai più la moglie. La decisione finale spetta tuttavia a Zeynep, la quale sceglie di chiudere definitivamente ogni discussione prendendo con decisione la mano del marito e allontanandosi insieme a lui di fronte a tutti. Nel frattempo Ekrem tenta invano di comprare il silenzio del meccanico sulla propria amante, mentre Faruk viene visto uscire dall&#x27;officina del figlio dell&#x27;uomo che ha ucciso il padre di Mehdi.</p>
-<h2>Perche&#x27; Benal affronta Cemile e Sultan</h2>
+<h2 id="c6">Perche&#x27; Benal affronta Cemile e Sultan</h2>
 <p>Benal prende una decisione destinata a sconvolgere gli equilibri di tutti gli abitanti del quartiere iniziando a scrivere un diario personale. Tra quelle pagine la donna conserva gelosamente la primissima ecografia del nascituro e confida apertamente a Zeynep la volontà di portare avanti la gravidanza, spiegando che la spinta decisiva è arrivata proprio grazie alle parole incoraggianti ricevute dalla ragazza. Benal non intende nascondersi e organizza un incontro urgente con Cemile presso il giardino del tè per rivelarle la scomoda verità. Con estrema franchezza la donna dichiara che il padre della creatura è proprio Mehdi e chiede espressamente a Cemile di farsi carico di informare il fratello, così da evitare pubblici scandali ed esplosioni di rabbia.</p>
 <p>Di fronte alle inconfutabili prove mediche mostrate da Benal, Cemile si ritrova completamente sconvolta e incapace di gestire da sola un fardello di tale portata. La donna decide di correre immediatamente da Sultan per cercare un consiglio fidato e riflettere sulle possibili contromisure da adottare. Le due donne scelgono di affrontare nuovamente Benal con estrema durezza, cercando di farla ragionare e mettendola di fronte a una cruda realtà. Sultan e Cemile le spiegano chiaramente che se Mehdi l&#x27;avesse amata davvero l&#x27;avrebbe certamente sposata in passato e che adesso non otterrà nulla da lui. Nonostante la forte pressione psicologica subita, Benal rimane fermamente convinta della propria scelta e ribadisce che il bambino nascerà e tutti lo sapranno.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Cosa prova Zeynep dopo la confessione</h2>
+<h2 id="c7">Cosa prova Zeynep dopo la confessione</h2>
 <p>Mentre si consumano questi drammatici scontri, sul fronte familiare si registra una bellissima novità grazie alla decisione positiva comunicata dalla supervisora. La domanda di adozione presentata per la piccola Kibrit viene finalmente accettata in via ufficiale, permettendo alla bambina di fare ritorno a casa insieme a Zeynep. La ragazza è felicissima per l&#x27;esito delle pratiche burocratiche e rientra nell&#x27;abitazione portando con sé la bambina per condividere la gioia con il resto della famiglia. Proprio mentre varca la soglia di casa con Kibrit, Zeynep si ritrova ad ascoltare involontariamente una conversazione privata tra il marito e Cemile, arrivando nel momento esatto in cui vengono pronunciate parole capaci di cambiare per sempre il loro futuro.</p>
 <p>Cemile si era infatti avvicinata al fratello per rivelargli il segreto di Benal, ma non appena viene menzionato quel nome Mehdi interrompe la sorella spiegando che con la donna la storia è del tutto chiusa. Subito dopo il meccanico pronuncia la spiazzante confessione di essersi innamorato di sua moglie, ignaro della presenza della giovane appena rientrata. La reazione di Zeynep di fronte a questa rivelazione inaspettata non è però contrassegnata dalla gioia bensì da un profondo senso di paura. La ragazza racconterà successivamente di non aver mai conosciuto veramente l&#x27;amore nel corso della sua vita, provando un forte smarrimento emotivo davanti a un sentimento così grande e sconosciuto.</p>
 <p>I timori di Zeynep affondano le radici in un passato doloroso segnato dalle sofferenze vissute durante l&#x27;infanzia a causa del comportamento violento del padre Bayram. La giovane affronta Sakine con durezza, rinfacciandole la mancanza di coraggio dimostrata nei tempi passati quando lei e i suoi fratelli subivano la brutalità dell&#x27;uomo. È proprio Mehdi a consolare Zeynep dal dolore familiare, promettendole protezione sincera. Intanto Bayram viene allontanato da casa dopo che Zeliha e Sakine decidono di non perdonargli di aver ostacolato l&#x27;adozione di Kibrit. L&#x27;uomo viene salvato casualmente da un vigile notturno delle ferrovie ma finisce per essere umiliato dal proprietario di un negozio mentre cerca disperatamente di rubare dell&#x27;alcol.</p>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=uyUZo6ENPj8" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/uyUZo6ENPj8/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>MY HOME MY DESTINY Anticipazioni: Baris innamorato ma si sente tradito da Zeynep</span></a></li><li><a href="https://www.youtube.com/watch?v=3XnL70CkHt0" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/3XnL70CkHt0/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>MY HOME MY DESTINY Anticipazioni e Trame Turche: Mehdi Lascia Zeynep per l&#x27;Amante Incinta?</span></a></li><li><a href="https://www.youtube.com/watch?v=A_21cg0B0Sg" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/A_21cg0B0Sg/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>MY HOME MY DESTINY Anticipazioni: Mehdi passa la notte con Nazli! Benal infuriata! Zeynep gelos</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Cemile avrebbe dovuto dirgli comunque di Benal in quel momento? E Zeynep ricambia già senza saperlo?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=6q1V6hIoohM">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di My Home My Destiny</h2><div class="griglia"><article class="scheda">
+  <a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/"><div class="foto"><img src="/img/my-home-my-destiny-la-trama-completa-e-come-finisce.jpg" alt="My Home My Destiny" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">My Home My Destiny</span>
+    <h3><a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/">My Home My Destiny: la trama completa e come finisce</a></h3>
+    <div class="quando">30 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/"><div class="foto"><img src="https://i.ytimg.com/vi/-djleIeCLQs/hqdefault.jpg" alt="My Home My Destiny" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">My Home My Destiny</span>
+    <h3><a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/">My Home My Destiny, Zeynep ferma l&#x27;aborto di Benal in sala operatoria senza sapere che il padre è Mehdi</a></h3>
+    <div class="quando">17 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/"><div class="foto"><img src="https://i.ytimg.com/vi/gxL0o63Nhqw/hqdefault.jpg" alt="My Home My Destiny" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">My Home My Destiny</span>
+    <h3><a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/">My Home My Destiny, anticipazioni del 17 novembre: Özlem indaga su Zeynep e scopre tutto, Nuh diventa autista di Barış e qualcuno manomette i macchinari di Bekir</a></h3>
+    <div class="quando">16 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=My Home My Destiny 7-8 agosto, «mi sono innamorato di mia moglie»: Zeynep sente la confessione di Mehdi proprio mentre Cemile sta per dirgli di Benal — https://serietvfans.com/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/&text=My Home My Destiny 7-8 agosto, «mi sono innamorato di mia moglie»: Zeynep sente la confessione di Mehdi proprio mentre Cemile sta per dirgli di Benal" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">MY HOME, MY DESTINY Anticipazioni 7-8 Agosto: Zeynep, ti amo!</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=6q1V6hIoohM">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di My Home My Destiny</h3><ol class="numerata"><li><a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/">My Home My Destiny: la trama completa e come finisce</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/">My Home My Destiny, Zeynep ferma l&#x27;aborto di Benal in sala operatoria senza sapere che il padre è Mehdi</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/">My Home My Destiny, anticipazioni del 17 novembre: Özlem indaga su Zeynep e scopre tutto, Nuh diventa autista di Barış e qualcuno manomette i macchinari di Bekir</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-guida-alla-serie-chi-sono-demet-ozdemir-e-ibrahim-celikkol-qu/">My Home My Destiny: guida alla serie, il cast, i personaggi e quante puntate sono</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-1-dicembre-gli-spari-davanti-alla-vecchia-casa-zeynep-tra-le/">My Home My Destiny 1° dicembre, gli spari davanti alla vecchia casa: Zeynep tra le due madri quando l&#x27;uomo in moto estrae la pistola</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>MY HOME, MY DESTINY Anticipazioni 7-8 Agosto: Zeynep, ti amo!</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su My Home My Destiny</h3><ul><li><a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/">My Home My Destiny: la trama completa e come finisce</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/">My Home My Destiny, Zeynep ferma l&#x27;aborto di Benal in sala operatoria senza sapere che il padre è Mehdi</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/">My Home My Destiny, anticipazioni del 17 novembre: Özlem indaga su Zeynep e scopre tutto, Nuh diventa autista di Barış e qualcuno manomette i macchinari di Bekir</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-guida-alla-serie-chi-sono-demet-ozdemir-e-ibrahim-celikkol-qu/">My Home My Destiny: guida alla serie, il cast, i personaggi e quante puntate sono</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-1-dicembre-gli-spari-davanti-alla-vecchia-casa-zeynep-tra-le/">My Home My Destiny 1° dicembre, gli spari davanti alla vecchia casa: Zeynep tra le due madri quando l&#x27;uomo in moto estrae la pistola</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/la-promessa/">La Promessa</a> › La Promessa, chi darà il colpo di grazia a Cruz? I quattro nomi più probabili — e nessuno è tra i suoi nemici dichiarati</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/la-promessa/">La Promessa</a>
   <h1>La Promessa, chi darà il colpo di grazia a Cruz? I quattro nomi più probabili — e nessuno è tra i suoi nemici dichiarati</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">È la domanda che divide il pubblico più di ogni altra: come finirà la Marchesa? Le teorie che circolano puntano quasi tutte nella stessa direzione — a farla cadere non sarà una delle donne che la odiano apertamente, ma qualcuno che vive sotto il suo stesso tetto. Passiamo in rassegna i candidati, e perché ciascuno di loro potrebbe essere quello giusto.</p><ol><li><a href="#c1">Il personaggio che tiene in piedi il palazzo</a></li><li><a href="#c2">Chi è Cruz, e perché i nomi da temere sono in famiglia</a></li><li><a href="#c3">Le tre nemiche dichiarate</a></li><li><a href="#c4">I quattro nomi dentro casa</a></li><li><a href="#c5">Perché una fine tragica è quasi certa</a></li><li><a href="#c6">Perché conta: la caduta è già cominciata, e se l&#x27;è procurata da sola</a></li><li><a href="#c7">Come Manuel potrebbe scoprire il segreto di Cruz</a></li><li><a href="#c8">Perché Alonso e Catalina rischiano di travolgere Cruz</a></li><li><a href="#c9">Cosa rende Petra la figura più pericolosa per Cruz</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>La Promessa</strong> — Rete 4 · in streaming su Mediaset Infinity</span></div>
   
-  <p class="occhiello">È la domanda che divide il pubblico più di ogni altra: come finirà la Marchesa? Le teorie che circolano puntano quasi tutte nella stessa direzione — a farla cadere non sarà una delle donne che la odiano apertamente, ma qualcuno che vive sotto il suo stesso tetto. Passiamo in rassegna i candidati, e perché ciascuno di loro potrebbe essere quello giusto.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: La Promessa, chi darà il colpo di grazia a Cruz? I quattro nomi più probabili — e nessuno è tra i suoi nemici dichiarati" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/RS7LHd0I6W4/maxresdefault.jpg" alt="La Promessa, chi darà il colpo di grazia a Cruz? I quattro nomi più probabili — e nessuno è tra i suoi nemici dichiarati" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/RS7LHd0I6W4/hqdefault.jpg 480w, https://i.ytimg.com/vi/RS7LHd0I6W4/sddefault.jpg 640w, https://i.ytimg.com/vi/RS7LHd0I6W4/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/RS7LHd0I6W4/hqdefault.jpg&quot;, &quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,46 +409,68 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>L&#x27;attrice che la interpreta ha contratti firmati per restare nella serie a lungo: la resa dei conti non è imminente.</strong></p>
-  <h2>Il personaggio che tiene in piedi il palazzo</h2>
+  <h2 id="c1">Il personaggio che tiene in piedi il palazzo</h2>
 <p>Cruz è insieme il personaggio più amato e più odiato della serie, e gran parte del merito va a Eva Martín, che riesce a renderla insopportabile e magnetica nello stesso momento. È anche il motivo per cui la sua uscita di scena non può essere un dettaglio: senza di lei il palazzo perde il proprio motore, e molti pensano che la serie stessa dovrebbe chiudersi con il suo destino. Chi si aspetta la resa dei conti a breve, però, resterà deluso — i contratti dell&#x27;attrice la tengono nella storia ancora a lungo.</p>
-<h2>Chi è Cruz, e perché i nomi da temere sono in famiglia</h2>
+<h2 id="c2">Chi è Cruz, e perché i nomi da temere sono in famiglia</h2>
 <p>Cruz è figlia di un barone, cresciuta con un&#x27;educazione severissima in cui il nome e la reputazione vengono prima delle persone: ogni sua crudeltà nasce da lì, dall&#x27;idea che la famiglia sia una posizione da difendere e non un affetto da coltivare. Il paradosso è che proprio quel nome lo ha tradito lei per prima: la relazione tenuta segreta per anni con il capitano Lorenzo de la Mata, e un figlio fatto passare per figlio del marchese. Manuel è quel figlio. È il motivo per cui l&#x27;elenco dei possibili giustizieri non è un gioco da forum: chiunque, dentro quelle mura, arrivi alla verità sulla nascita di Manuel ha in mano più di quanto le tre nemiche dichiarate abbiano messo insieme in anni di guerra aperta.</p>
-<h2>Le tre nemiche dichiarate</h2>
+<h2 id="c3">Le tre nemiche dichiarate</h2>
 <p>La prima ipotesi che circola è quella di un complotto a tre: sua suocera Mercedes, sua cognata Margarita ed Elisa, la nemica giurata. Hanno in comune il desiderio di vederla sconfitta e le risorse per provarci. Ma proprio perché sono avversarie dichiarate, una loro vittoria sarebbe la conclusione più prevedibile — e nelle telenovele il colpo che conta arriva quasi sempre da chi non ti aspetti.</p>
-<h2>I quattro nomi dentro casa</h2>
+<h2 id="c4">I quattro nomi dentro casa</h2>
 <p>Il primo è Alonso: cosa farebbe il marchese se avesse la certezza che è stata sua moglie a uccidere Tomás? Il secondo è Catalina, che di cattiverie da parte di Cruz ne ha subite per anni e che potrebbe esplodere nel momento in cui scoprisse l&#x27;accordo tra la Marchesa e Pelayo. Il terzo è Petra, fedelissima fino all&#x27;inverosimile — ma la fedeltà non è eterna, e una donna che sa tutto è per definizione la persona più pericolosa in casa. Il quarto è Manuel, manipolato come un burattino da sua madre al punto da vedersi rovinare la vita.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Perché una fine tragica è quasi certa</h2>
+<h2 id="c5">Perché una fine tragica è quasi certa</h2>
 <p>Il punto è che Cruz ottiene sempre quello che vuole, e nessuna serie può reggere all&#x27;infinito un personaggio che non paga mai. Il finale che tutti immaginano non è un&#x27;uscita di scena qualsiasi ma una caduta: la Marchesa smascherata davanti alla famiglia, spogliata del titolo e del ruolo che ha difeso con ogni mezzo. Quando accadrà, non sarà per mano di chi la combatte da fuori, ma di qualcuno che l&#x27;ha servita, amata o sopportata per anni.</p>
-<h2>Perché conta: la caduta è già cominciata, e se l&#x27;è procurata da sola</h2>
+<h2 id="c6">Perché conta: la caduta è già cominciata, e se l&#x27;è procurata da sola</h2>
 <p>C&#x27;è un dettaglio che ridimensiona tutte le teorie, ed è già scritto nelle puntate spagnole: la prima crepa seria nel potere della marchesa non gliel&#x27;ha aperta un nemico, se l&#x27;è aperta lei. L&#x27;aggressione con cui ha provato a togliere di mezzo la baronessa Elisa le è costata una denuncia per tentato omicidio, e la via d&#x27;uscita per evitare il carcere è stata il sanatorio — lo stesso strumento con cui aveva tolto di mezzo altri prima di lei. Ma il colpo più duro non è giuridico: è che la voce dell&#x27;aggressione ha fatto il giro della servitù, e il rispetto che teneva in piedi la sua autorità nel piano di sotto si è azzerato in poche ore. Se davvero arriverà una resa dei conti definitiva, arriverà su un terreno già franato — e a quel punto ad Alonso, a Catalina, a Petra o a Manuel non servirà colpire: basterà non tenderle la mano.</p>
-<h2>Come Manuel potrebbe scoprire il segreto di Cruz</h2>
+<h2 id="c7">Come Manuel potrebbe scoprire il segreto di Cruz</h2>
 <p>Manuel rappresenta una delle figure più tragiche all&#x27;interno del palazzo, essendo stato manipolato a lungo come un vero e proprio burattino da sua madre. La Marchesa ha indirizzato la sua esistenza senza alcuno scrupolo, arrivando a rovinargli la vita pur di difendere la posizione della famiglia e le sue personali ambizioni. Quello che il giovane ignora riguarda però le sue vere origini biologiche, dato che la donna ha custodito per moltissimi anni una relazione del tutto segreta con il capitano Lorenzo de la Mata. Manuel è infatti il frutto di questo legame nascosto, ma è stato fatto passare per il figlio legittimo del marchese fin dalla sua nascita.</p>
 <p>La verità sulla nascita di Manuel costituisce la minaccia più grande per il futuro della nobile, molto più dell&#x27;alleanza stretta dalle sue tre avversarie dichiarate. Chiunque tra le mura della tenuta riesca a mettere le mani su questo sconvolgente segreto otterrebbe un potere smisurato, capace di distruggere per sempre la reputazione della Marchesa. Se il ragazzo dovesse finalmente aprire gli occhi sulla reale natura di chi lo ha cresciuto e sulle menzogne che hanno segnato la sua crescita, la reazione verso la madre potrebbe rivelarsi devastante, privando la padrona di casa dell&#x27;ultimo sostegno affettivo rimasto in famiglia.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Perché Alonso e Catalina rischiano di travolgere Cruz</h2>
+<h2 id="c8">Perché Alonso e Catalina rischiano di travolgere Cruz</h2>
 <p>Il marchese Alonso vive nell&#x27;oscurità riguardo ai crimini più gravi commessi all&#x27;interno del proprio palazzo, ma la sua posizione potrebbe cambiare radicalmente di fronte alle prove della verità. Qualora l&#x27;uomo ottenesse la certezza matematica che sia stata proprio sua moglie a togliere la vita a Tomás, il legame matrimoniale si spezzerebbe inevitabilmente in modo definitivo. Un&#x27;eventuale presa di coscienza da parte del nobile trasformerebbe il marito in un nemico implacabile, pronto a togliere alla consorte ogni forma di protezione sociale e materiale, lasciandola completamente isolata di fronte alle sue gravissime responsabilità dinanzi a tutti i familiari presenti nel palazzo.</p>
 <p>Dall&#x27;altro lato troviamo Catalina, una figura che per moltissimo tempo ha dovuto sopportare le continue cattiverie e i soprusi perpetrati nei suoi confronti dalla matrigna. La ragazza ha accumulato anni di rancore sofferto in silenzio, ma la situazione potrebbe esplodere definitivamente se venisse a conoscenza dell&#x27;accordo segreto stretto tra la Marchesa e Pelayo. Scoprire quest&#x27;ennesimo inganno ai suoi danni rappresenterebbe la goccia in grado di far traboccare il vaso, spingendo la giovane a cercare una resa dei conti senza esclusione di colpi per smascherare una volta per tutte la perfidia della donna.</p>
-<h2>Cosa rende Petra la figura più pericolosa per Cruz</h2>
+<h2 id="c9">Cosa rende Petra la figura più pericolosa per Cruz</h2>
 <p>Tra i servitori che popolano i piani inferiori della tenuta, la figura di Petra si è sempre distinta per una dedizione viscerale e quasi cieca nei confronti della padrona. La donna conosce ogni singolo scheletro nell&#x27;armadio custodito nel palazzo ed è a conoscenza di tutti i segreti più inconfessabili della nobile. Tuttavia, la fedeltà totale non dura necessariamente per sempre, e una persona che possiede un patrimonio di informazioni così vasto diventa automaticamente il soggetto più pericoloso dell&#x27;intera residenza. Un suo eventuale cambio di rotta segnerebbe la fine immediata per la reputazione della Marchesa.</p>
 <p>L&#x27;autorità della padrona di casa ha già subito un duro colpo a causa delle sue stesse azioni sconsiderate. L&#x27;aggressione perpetrata ai danni della baronessa Elisa ha infatti portato a una grave denuncia per tentato omicidio, costringendo la nobile a farsi ricoverare in un sanatorio per scampare alla prigione. Questa vicenda ha fatto rapidamente il giro della servitù, distruggendo in poche ore quel rispetto e quel timore che tenevano in piedi il suo potere. In un contesto ormai compromesso, ad alleati traditi o familiari feriti basterà semplicemente non tendere la mano per vederla cadere definitivamente.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=oV1KN0X5-MY" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/oV1KN0X5-MY/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni e Teorie: Sarà Jana la prossima Marchesa de Lujan?</span></a></li><li><a href="https://www.youtube.com/watch?v=C9xS6GLCKhE" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/C9xS6GLCKhE/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Spoiler &amp; Teorie: Pagherà mai Cruz per la Morte di Thomas?</span></a></li><li><a href="https://www.youtube.com/watch?v=hFLCfGmLCv0" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/hFLCfGmLCv0/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni e Teorie: Può Essere Lui il Padre di Curro?</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Secondo voi chi darà il colpo di grazia a Cruz: Alonso, Catalina, Petra o Manuel?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=RS7LHd0I6W4">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di La Promessa</h2><div class="griglia"><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/"><div class="foto"><img src="https://i.ytimg.com/vi/Rp8VhxDiDSk/hqdefault.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></h3>
+    <div class="quando">7 settembre 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/"><div class="foto"><img src="https://i.ytimg.com/vi/8JHt6ogwxQw/hqdefault.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Ángela beve tutto, Curro sfonda la porta</a></h3>
+    <div class="quando">6 settembre 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/"><div class="foto"><img src="/img/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Curro nasconde Ángela, Lorenzo furioso</a></h3>
+    <div class="quando">6 settembre 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=La Promessa, chi darà il colpo di grazia a Cruz? I quattro nomi più probabili — e nessuno è tra i suoi nemici dichiarati — https://serietvfans.com/la-promessa/la-promessa-chi-dara-il-colpo-di-grazia-a-cruz-i-quattro-nomi-piu-probabili-e-ne/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/la-promessa/la-promessa-chi-dara-il-colpo-di-grazia-a-cruz-i-quattro-nomi-piu-probabili-e-ne/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/la-promessa/la-promessa-chi-dara-il-colpo-di-grazia-a-cruz-i-quattro-nomi-piu-probabili-e-ne/&text=La Promessa, chi darà il colpo di grazia a Cruz? I quattro nomi più probabili — e nessuno è tra i suoi nemici dichiarati" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">LA PROMESSA Anticipazioni: Un tragico finale per Cruz, la Marchesa de Luján</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=RS7LHd0I6W4">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di La Promessa</h3><ol class="numerata"><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Ángela beve tutto, Curro sfonda la porta</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Curro nasconde Ángela, Lorenzo furioso</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>LA PROMESSA Anticipazioni: Un tragico finale per Cruz, la Marchesa de Luján</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su La Promessa</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-3-6-settembre-maria-affronta-la-gravidanza-da-sola/">La Promessa anticipazioni 3-6 settembre: Maria affronta la gravidanza da sola</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-carlo-arriva-maria-trema/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Carlo arriva, Maria trema</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/far-away/far-away-anticipazioni-dal-31-agosto-al-4-settembre-chi-ha-donato-il-fegato-a-nare/">Far Away, anticipazioni dal 31 agosto al 4 settembre: chi ha donato il fegato a Nare, e perché adesso sta male lui</a></li><li><a href="/far-away/far-away-dal-31-agosto-la-madre-di-alya-sapeva-tutto-non-ricordo/">Far Away Dal 31 Agosto: la madre di Alya sapeva tutto — «non ricordo»</a></li><li><a href="/forbidden-fruit/forbidden-fruit-dal-31-agosto-il-conto-a-nome-di-halit-che-e-morto/">Forbidden Fruit Dal 31 Agosto: il conto a nome di Halit, che è morto</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

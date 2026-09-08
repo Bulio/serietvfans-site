@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/la-promessa/">La Promessa</a> › La Promessa, Curro non assomiglia a Lorenzo e comincia a sospettare: la verità sulla sua nascita passa da Cruz</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/la-promessa/">La Promessa</a>
   <h1>La Promessa, Curro non assomiglia a Lorenzo e comincia a sospettare: la verità sulla sua nascita passa da Cruz</h1>
-  <div class="firma">Redazione Serie TV Fans · sabato 15 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-15">sabato 15 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Mentre Jana gli cura le ferite, Curro inizia a chiedersi perché non assomigli per nulla a Lorenzo. Il sospetto lo porterà dritto da Cruz, l&#x27;unica che sa. E intanto Rómulo scopre da chi meno se lo aspetta il motivo dell&#x27;astio di Gregorio.</p><ol><li><a href="#c1">Chi sono Curro, Lorenzo e Cruz, per chi arriva adesso</a></li><li><a href="#c2">Perché il sospetto di Curro cambia tutto</a></li><li><a href="#c3">Rómulo, Gregorio e l&#x27;ostilità che nessuno spiegava</a></li><li><a href="#c4">La spilla venduta e lo scontro tra Catalina e Cruz</a></li><li><a href="#c5">E Manuel? Cosa succede con Jana</a></li><li><a href="#c6">Dove vedere La Promessa</a></li><li><a href="#c7">Come Jana cerca di aiutare Manuel con l&#x27;aeroplano</a></li><li><a href="#c8">Perché la decisione di Cruz umilia la marchesa</a></li><li><a href="#c9">Cosa rivela Gregorio al maggiordomo Rómulo a sorpresa</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>La Promessa</strong> — Rete 4 · in streaming su Mediaset Infinity</span></div>
   
-  <p class="occhiello">Mentre Jana gli cura le ferite, Curro inizia a chiedersi perché non assomigli per nulla a Lorenzo. Il sospetto lo porterà dritto da Cruz, l&#x27;unica che sa. E intanto Rómulo scopre da chi meno se lo aspetta il motivo dell&#x27;astio di Gregorio.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: La Promessa, Curro non assomiglia a Lorenzo e comincia a sospettare: la verità sulla sua nascita passa da Cruz" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/8eAoXYVLnbk/maxresdefault.jpg" alt="La Promessa, Curro non assomiglia a Lorenzo e comincia a sospettare: la verità sulla sua nascita passa da Cruz" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/8eAoXYVLnbk/hqdefault.jpg 480w, https://i.ytimg.com/vi/8eAoXYVLnbk/sddefault.jpg 640w, https://i.ytimg.com/vi/8eAoXYVLnbk/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/8eAoXYVLnbk/hqdefault.jpg&quot;, &quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -360,49 +410,71 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
   <div class="corpo">
   <p><strong>Un dubbio che nasce guardandosi allo specchio: Curro non somiglia a suo padre. E chi conosce la risposta è l&#x27;ultima persona che gliela direbbe.</strong></p>
   <p>C&#x27;è un momento, nelle prossime puntate de La Promessa, in cui Curro smette di guardare la propria convalescenza e comincia a guardare se stesso. Jana gli sta medicando le ferite, il pericolo è passato, e proprio in quella quiete gli si affaccia un pensiero che non riesce più a scacciare: perché non assomiglia a suo padre? Non nei lineamenti, non nei modi, non in niente. È un dubbio piccolo, quasi indelicato. Ed è quello che farà saltare il banco.</p>
-<h2>Chi sono Curro, Lorenzo e Cruz, per chi arriva adesso</h2>
+<h2 id="c1">Chi sono Curro, Lorenzo e Cruz, per chi arriva adesso</h2>
 <p>Curro de la Mata cresce alla tenuta come figlio di Lorenzo de la Mata, il capitano cinico e opportunista che si muove nella villa con la disinvoltura di chi sa di poter contare su qualcuno più in alto di lui. Quel qualcuno è Cruz, la marchesa: donna che ha costruito la propria posizione difendendola a ogni costo, e che con Lorenzo condivide molto più di una parentela acquisita. Jana, invece, alla tenuta è arrivata come domestica, ma non per servire: cerca la verità sulla morte di sua madre e sul fratellino che le è stato portato via da bambino. Sono tre figure che si incrociano da mesi senza sapere quanto siano legate.</p>
-<h2>Perché il sospetto di Curro cambia tutto</h2>
+<h2 id="c2">Perché il sospetto di Curro cambia tutto</h2>
 <p>Finché il dubbio resta un pensiero privato, non fa danno. Il punto di rottura è che Curro decide di verificarlo, e sceglie di rivolgersi proprio a Cruz. È la mossa più logica dal suo punto di vista — la marchesa è la memoria della casa, sa tutto di tutti — ed è la più pericolosa dal nostro, perché costringe l&#x27;unica persona che conosce la risposta a decidere se mentire ancora.</p>
 <p>Chi segue la serie sa che il vero peso di questa domanda non è nell&#x27;identità del padre, ma in quella della sorella. Il legame che sta nascendo tra Jana e Curro, che entrambi leggono come un&#x27;amicizia inspiegabilmente profonda, ha una spiegazione che nessuno dei due ha ancora messo a fuoco. Le anticipazioni indicano che il momento in cui Curro lo scoprirà è vicino.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Rómulo, Gregorio e l&#x27;ostilità che nessuno spiegava</h2>
+<h2 id="c3">Rómulo, Gregorio e l&#x27;ostilità che nessuno spiegava</h2>
 <p>Sull&#x27;altro fronte della tenuta va avanti un mistero più sottile. Rómulo, il maggiordomo, e Pía si sono alleati per capire da dove venga l&#x27;astio con cui Gregorio lo tratta: un&#x27;ostilità che dura da troppo per essere caratteriale. Nonostante le loro indagini, per settimane non cavano un ragno dal buco.</p>
 <p>Il colpo di scena è che la risposta non arriva da un&#x27;indagine: arriva da Gregorio stesso, che a un certo punto decide di dirgliela in faccia. È un retroscena che Rómulo non si aspetta, e che ribalta il modo in cui lo spettatore ha letto quel personaggio finora. Nel frattempo il rapporto tra Pía e Gregorio si fa più stretto, in una direzione che complica ulteriormente le cose.</p>
-<h2>La spilla venduta e lo scontro tra Catalina e Cruz</h2>
+<h2 id="c4">La spilla venduta e lo scontro tra Catalina e Cruz</h2>
 <p>Cruz ha bisogno di denaro per la propria festa di compleanno e vende una spilla di famiglia, quella delle marchese di Luján. Per lei è un oggetto; per Catalina è la spilla di sua madre, donna Carmen. Il confronto che ne nasce è uno dei più diretti che le due si siano mai concesse, senza le solite mediazioni di facciata.</p>
 <p>Sempre a proposito di apparenze: il marchese costringerà Cruz a scendere in cucina per congratularsi con Candela, Simona e Lope. Un gesto minimo, che per la marchesa è una piccola umiliazione quotidiana — deve mostrarsi cordiale con persone che vorrebbe licenziare, e che sotto sotto sta cercando il modo di allontanare davvero.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>E Manuel? Cosa succede con Jana</h2>
+<h2 id="c5">E Manuel? Cosa succede con Jana</h2>
 <p>Chi aspetta passi avanti tra Jana e Manuel farà bene ad armarsi di pazienza. In queste puntate Jana ha altre due priorità: aiutare Manuel a recuperare la memoria attraverso la dimostrazione del suo aeroplano, e costruire un rapporto più stretto con Curro. La storia d&#x27;amore resta sullo sfondo, mentre la trama spinge su ciò che conta di più adesso — chi è davvero figlio di chi.</p>
-<h2>Dove vedere La Promessa</h2>
+<h2 id="c6">Dove vedere La Promessa</h2>
 <p>La Promessa va in onda su Rete 4 e le puntate sono disponibili in streaming su Mediaset Infinity. Gli orari cambiano spesso a seconda del palinsesto, quindi conviene sempre controllare la guida TV del giorno.</p>
-<h2>Come Jana cerca di aiutare Manuel con l&#x27;aeroplano</h2>
+<h2 id="c7">Come Jana cerca di aiutare Manuel con l&#x27;aeroplano</h2>
 <p>In questo periodo la figura di Jana si trova a un bivio fondamentale all&#x27;interno della villa, dovendo gestire legami profondi e situazioni ad alta tensione. Da un lato la giovane domestica continua la sua personale ricerca sulla tragica fine della madre e sulle sorti del fratellino strappatole anni prima, un percorso che la porta a stringere un rapporto sempre più confidenziale e intenso con Curro durante la sua convalescenza. Dall&#x27;altro lato, però, non trascura affatto Manuel, che si trova ancora in una condizione delicata e necessita di ritrovare i ricordi del passato. Per permettere al giovane di recuperare la memoria perduta, Jana sceglie di dedicare grande sforzo all&#x27;organizzazione della dimostrazione del suo amato aeroplano.</p>
 <p>Il tentativo di fare riaffiorare i ricordi di Manuel attraverso il volo rappresenta una vera e propria priorità per la ragazza, che mette temporaneamente da parte i propri sentimenti romantici per concentrarsi sul benessere del giovane pilota. La complessa storia d&#x27;amore tra i due finisce così per passare in secondo piano rispetto alle urgenze del momento, lasciando spazio alla determinazione della serva nell&#x27;utilizzare il velivolo come chiave per sbloccare la mente del nobile. Mentre si occupa di medicare i segni fisici rimasti sul corpo di Curro, la giovane domestica dimostra una costante presenza, guidata dal desiderio di fare chiarezza nel passato e proteggere chi le sta intorno.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Perché la decisione di Cruz umilia la marchesa</h2>
+<h2 id="c8">Perché la decisione di Cruz umilia la marchesa</h2>
 <p>I problemi economici o il semplice desiderio di organizzare un ricevimento di compleanno all&#x27;altezza del suo rango spingono la marchesa Cruz a compiere un gesto estremo che incrina ulteriormente gli equilibri familiari. Pur di recuperare il denaro necessario per i festeggiamenti, la nobile decide di privarsi di un gioiello prezioso appartenente alla famiglia, la spilla ufficiale delle marchese di Luján. Questo atto scatena l&#x27;immediata e dura reazione di Catalina, profondamente legata a quell&#x27;oggetto per ragioni affettive, dato che la spilla era appartenuta a sua madre, la scomparsa donna Carmen. Lo scontro tra le due donne esplode senza che vi sia alcuna mediazione pacifica a smorzare i toni.</p>
 <p>Oltre al tesissimo confronto con la figliastra, la marchesa si trova a dover ingoiare un altro rospo amaro per volontà diretta di suo marito. Il marchese la obbliga infatti a scendere personalmente nei locali della cucina per esprimere le proprie congratulazioni a Candela, Simona e Lope. Per una figura aristocratica ed egoista come la sua, mostrarsi gentile e affabile verso il personale di servizio rappresenta una vera e propria umiliazione quotidiana. Nonostante l&#x27;atteggiamento cordiale di facciata che si vede costretta ad assumere davanti ai tre lavoratori, la donna nutre in realtà l&#x27;intenzione sotterranea di trovare quanto prima un pretesto per licenziarli e allontanarli.</p>
-<h2>Cosa rivela Gregorio al maggiordomo Rómulo a sorpresa</h2>
+<h2 id="c9">Cosa rivela Gregorio al maggiordomo Rómulo a sorpresa</h2>
 <p>Tra le pareti della villa serpeggia da tempo un forte attrito tra il personale di servizio, in particolare quello rivolto contro il maggiordomo. Per comprendere le ragioni profonde che alimentano il costante ostacolo posto da Gregorio, Rómulo decide di unire le proprie forze a quelle di Pía, avviando un&#x27;indagine riservata per scoprire la verità. Nonostante i tentativi compiuti nei giorni precedenti per raccogliere informazioni utili, le ricerche della coppia non producono alcun risultato concreto. La svolta improvvisa arriva quando è lo stesso Gregorio a rompere il silenzio, affrontando direttamente il capo della servitù per rivelargli a quattr&#x27;occhi i veri motivi di un livore così radicato.</p>
 <p>La confessione faccia a faccia giunge del tutto inaspettata per il maggiordomo, stravolgendo completamente la visione e l&#x27;interpretazione che si era fatto fino a quel momento dell&#x27;intera vicenda. Nel frattempo, gli equilibri tra le stanze della servitù cambiano ulteriormente a causa dell&#x27;avvicinamento in corso tra Pía e Gregorio. Il loro rapporto personale tende infatti a farsi sempre più stretto e confidenziale, gettando nuove ombre e creando complicazioni imprevedibili nella gestione della vita quotidiana del palazzo. Questo intreccio di rivelazioni e alleanze inaspettate promette di modificare per sempre le dinamiche tra chi lavora alle dipendenze dei marchesi all&#x27;interno della tenuta.</p>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=KlLvKUIyf7I" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/KlLvKUIyf7I/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni 2-6 Ottobre: Jana scopre le ferite di Curro! Romulo indaga su Gregori</span></a></li><li><a href="https://www.youtube.com/watch?v=H1wJymmacmM" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/H1wJymmacmM/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni: Manuel  riconosce Jana mentre girano in aeroplano! Intanto si è spos</span></a></li><li><a href="https://www.youtube.com/watch?v=885tEh8gQNk" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/885tEh8gQNk/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni: Lorenzo chiede la restituzione del prestito | Jana intanto indaga</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Secondo voi Cruz dirà la verità a Curro, o inventerà l&#x27;ennesima bugia?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=8eAoXYVLnbk">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di La Promessa</h2><div class="griglia"><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/"><div class="foto"><img src="https://i.ytimg.com/vi/Rp8VhxDiDSk/hqdefault.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></h3>
+    <div class="quando">7 settembre 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/"><div class="foto"><img src="https://i.ytimg.com/vi/8JHt6ogwxQw/hqdefault.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Ángela beve tutto, Curro sfonda la porta</a></h3>
+    <div class="quando">6 settembre 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/"><div class="foto"><img src="/img/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Curro nasconde Ángela, Lorenzo furioso</a></h3>
+    <div class="quando">6 settembre 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=La Promessa, Curro non assomiglia a Lorenzo e comincia a sospettare: la verità sulla sua nascita passa da Cruz — https://serietvfans.com/la-promessa/la-promessa-curro-non-assomiglia-a-lorenzo-la-verita-sulla-sua-nascita-passa-da-cruz/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/la-promessa/la-promessa-curro-non-assomiglia-a-lorenzo-la-verita-sulla-sua-nascita-passa-da-cruz/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/la-promessa/la-promessa-curro-non-assomiglia-a-lorenzo-la-verita-sulla-sua-nascita-passa-da-cruz/&text=La Promessa, Curro non assomiglia a Lorenzo e comincia a sospettare: la verità sulla sua nascita passa da Cruz" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">LA PROMESSA Anticipazioni: Cosa nasconde Rómulo? Curro riconosce Jana?</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=8eAoXYVLnbk">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di La Promessa</h3><ol class="numerata"><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Ángela beve tutto, Curro sfonda la porta</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Curro nasconde Ángela, Lorenzo furioso</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>LA PROMESSA Anticipazioni: Cosa nasconde Rómulo? Curro riconosce Jana?</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su La Promessa</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-3-6-settembre-maria-affronta-la-gravidanza-da-sola/">La Promessa anticipazioni 3-6 settembre: Maria affronta la gravidanza da sola</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-carlo-arriva-maria-trema/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Carlo arriva, Maria trema</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/far-away/far-away-anticipazioni-dal-31-agosto-al-4-settembre-chi-ha-donato-il-fegato-a-nare/">Far Away, anticipazioni dal 31 agosto al 4 settembre: chi ha donato il fegato a Nare, e perché adesso sta male lui</a></li><li><a href="/far-away/far-away-dal-31-agosto-la-madre-di-alya-sapeva-tutto-non-ricordo/">Far Away Dal 31 Agosto: la madre di Alya sapeva tutto — «non ricordo»</a></li><li><a href="/forbidden-fruit/forbidden-fruit-dal-31-agosto-il-conto-a-nome-di-halit-che-e-morto/">Forbidden Fruit Dal 31 Agosto: il conto a nome di Halit, che è morto</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/la-rosa-della-vendetta/">La Rosa della Vendetta</a> › La Rosa della Vendetta, Mert origlia dietro un albero e scopre il segreto più grande: Gara è la madre di Deva</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/la-rosa-della-vendetta/">La Rosa della Vendetta</a>
   <h1>La Rosa della Vendetta, Mert origlia dietro un albero e scopre il segreto più grande: Gara è la madre di Deva</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Deva è cresciuta credendo che sua madre fosse annegata in un lago vicino a Bursa, e ogni festa della mamma va lì per sentirsi vicina a lei. La donna che le è stata accanto in questi mesi, però, è viva — ed è proprio lei.</p><ol><li><a href="#c1">La conversazione ascoltata per caso</a></li><li><a href="#c2">Chi è Mert, e perché è l&#x27;ultimo che doveva sentire quella frase</a></li><li><a href="#c3">Perché Gara non le ha mai detto niente</a></li><li><a href="#c4">Il ricatto di İbrahim</a></li><li><a href="#c5">La pausa estiva su Canale 5</a></li><li><a href="#c6">Perché conta: se parla Mert, İbrahim resta senza ricatto</a></li><li><a href="#c7">Come İbrahim cerca di fermare le nozze di Deva</a></li><li><a href="#c8">Cosa rischia Mert nascondendosi dietro quello stesso albero</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>La Rosa della Vendetta</strong> — Serie conclusa in Italia · le puntate su Mediaset Infinity</span></div>
   
-  <p class="occhiello">Deva è cresciuta credendo che sua madre fosse annegata in un lago vicino a Bursa, e ogni festa della mamma va lì per sentirsi vicina a lei. La donna che le è stata accanto in questi mesi, però, è viva — ed è proprio lei.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: La Rosa della Vendetta, Mert origlia dietro un albero e scopre il segreto più grande: Gara è la madre di Deva" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/BaXgK6pvYPg/maxresdefault.jpg" alt="La Rosa della Vendetta, Mert origlia dietro un albero e scopre il segreto più grande: Gara è la madre di Deva" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/BaXgK6pvYPg/hqdefault.jpg 480w, https://i.ytimg.com/vi/BaXgK6pvYPg/sddefault.jpg 640w, https://i.ytimg.com/vi/BaXgK6pvYPg/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/BaXgK6pvYPg/hqdefault.jpg&quot;, &quot;/fallback/la-rosa-della-vendetta.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,25 +409,25 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>A saperlo, adesso, è l&#x27;ultima persona che avrebbe dovuto.</strong></p>
-  <h2>La conversazione ascoltata per caso</h2>
+  <h2 id="c1">La conversazione ascoltata per caso</h2>
 <p>Mert si trova nel posto sbagliato al momento giusto: nascosto dietro un albero, sente İbrahim e Gara discutere e capisce tutto. Lui conosce bene il passato di Deva — sono stati insieme — e sa quanto quella storia del lago abbia pesato su di lei per una vita intera. Adesso ha in mano un&#x27;informazione capace di ribaltarle l&#x27;esistenza, e la decisione su cosa farne è solo sua.</p>
-<h2>Chi è Mert, e perché è l&#x27;ultimo che doveva sentire quella frase</h2>
+<h2 id="c2">Chi è Mert, e perché è l&#x27;ultimo che doveva sentire quella frase</h2>
 <p>L&#x27;occhiello non è un modo di dire. Mert non è soltanto un ex fidanzato di Deva: è l&#x27;uomo che ha pagato più caro di chiunque altro per esserlo stato. Quando Gülcemal ha scoperto quel legame è andato fuori di sé al punto da volerlo morto, e si è fermato solo davanti al gesto disperato della sorella; poi ha scelto una punizione peggiore, costringendo Deva a sposarlo in segreto e obbligando proprio Mert a fare da testimone, con una mutilazione a fargli da marchio. Da allora la sua vita si è incastrata in quella famiglia: Gülendam aspettava un figlio da lui, ed è finito a sposarla e a vivere sotto lo stesso tetto dei suoi carnefici. È lui, adesso, l&#x27;unico a sapere chi sia davvero Gara.</p>
-<h2>Perché Gara non le ha mai detto niente</h2>
+<h2 id="c3">Perché Gara non le ha mai detto niente</h2>
 <p>La verità è che Gara ha avuto Deva da Mustafa, e che l&#x27;ha lasciata per occuparsi di Gülcemal quando era bambino. Tornata a Bursa insieme a lui, si è ritrovata nella posizione di poter stare accanto alla figlia senza mai rivelarle chi fosse — una vicinanza costruita sul silenzio, portata avanti giorno dopo giorno.</p>
-<h2>Il ricatto di İbrahim</h2>
+<h2 id="c4">Il ricatto di İbrahim</h2>
 <p>Deva, innamorata di Gülcemal, decide di sposarlo contro la volontà del padre, e la cosa spezza İbrahim. Al telefono con Gara, lui alza la posta: le chiede se voglia davvero che sua figlia sposi l&#x27;uomo che ha ucciso suo padre. Gara non arretra — le ricorda che Deva quel padre non l&#x27;ha mai conosciuto e che è stato lui ad abbandonarle entrambe. A quel punto İbrahim tira fuori l&#x27;unica arma che gli resta: se il matrimonio non viene annullato, dirà lui stesso a Deva chi è davvero Gara. Ed è esattamente questa la conversazione che Mert sta ascoltando.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>La pausa estiva su Canale 5</h2>
+<h2 id="c5">La pausa estiva su Canale 5</h2>
 <p>Sul fronte della programmazione, la serie viene divisa in due capitoli: il primo si chiude a metà luglio, poi la messa in onda si ferma per tutto agosto e riprende a metà settembre con le puntate della seconda stagione. Nelle serate lasciate libere Canale 5 propone film turchi in prima visione con volti già noti al pubblico italiano. Nel frattempo, dentro la storia, restano aperti due fronti: il rapporto tra Gülcemal e Deva, che regge nonostante l&#x27;ostilità di İbrahim e la diffidenza di Gülendam, e quello con Zafer — dove Gülcemal, invece della vendetta che tutti si aspettavano, sta scegliendo la strada del perdono, con Armağan che prova a fare da mediatore.</p>
-<h2>Perché conta: se parla Mert, İbrahim resta senza ricatto</h2>
+<h2 id="c6">Perché conta: se parla Mert, İbrahim resta senza ricatto</h2>
 <p>La minaccia di İbrahim funziona a una sola condizione: che quella verità sia sua. Nel momento in cui una seconda persona la conosce — e per giunta una che non gli deve niente — il coltello dalla parte del manico cambia mano. Se a parlare è Mert, İbrahim perde l&#x27;unica leva che aveva per far annullare il matrimonio, e la perde davanti alla donna che voleva piegare. C&#x27;è poi un secondo effetto, che riguarda una casa intera: Gara non è una governante qualunque, è la donna che ha cresciuto Gülcemal e Gülendam. Dirlo a Deva significa dire anche a loro che la persona che li ha allevati è la madre naturale della ragazza che Gülcemal ha portato all&#x27;altare. Non è una rivelazione che si può fare a una sola persona alla volta: quando esce, esce per tutti.</p>
-<h2>Come İbrahim cerca di fermare le nozze di Deva</h2>
+<h2 id="c7">Come İbrahim cerca di fermare le nozze di Deva</h2>
 <p>Il rifiuto di İbrahim verso l&#x27;unione tra Deva e Gülcemal nasce da una profonda ostilità che lo spinge fino al limite del ricatto. Quando comprende che la ragazza è decisa a sposare l&#x27;uomo che ama sfidando la sua volontà, il padre tenta l&#x27;ultima mossa telefonando a Gara. Nel corso della chiamata, İbrahim alza la posta in gioco rinfacciandole la tragica verità sul passato e chiedendole se sia davvero disposta a permettere che sua figlia si leghi all&#x27;assassino di suo padre. Vedendo che la donna non cede, l&#x27;uomo gioca la sua carta disperata e minaccia di rivelare direttamente a Deva l&#x27;identità della sua vera madre se le nozze non verranno immediatamente annullate.</p>
 <p>Per tutta la vita Deva è cresciuta nel culto doloroso di una madre che credeva morta annegata in un lago nei pressi di Bursa, un luogo dove la ragazza si reca regolarmente ad ogni festa della mamma per cercare un contatto con lei. La realtà vissuta nell&#x27;ombra è però completamente diversa, dato che Gara è viva ed è rimasta al suo fianco in tutti questi mesi senza mai rivelarle nulla. La scelta di tacere si è basata su un lungo silenzio iniziato quando la donna decise di lasciare la figlia per occuparsi di Gülcemal da bambino, tornando poi a Bursa insieme a lui e costruendo giorno dopo giorno una vicinanza fatta di sguardi e segreti mai svelati.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>La storia personale di Gara si intreccia in modo indissolubile con quella di Mustafa, l&#x27;uomo da cui ha avuto Deva e che alla fine ha abbandonato entrambe. Quando İbrahim tenta di usare la figura di quel padre per fermare i sentimenti della giovane, Gara gli ricorda con fermezza che Deva non ha mai conosciuto quell&#x27;uomo e che fu proprio lui ad andarsene. Nonostante le tragiche conseguenze che hanno portato alla morte di Mustafa per mano dello stesso Gülcemal, la madre preferisce difendere il legame dei due giovani, costringendo İbrahim ad usare la minaccia di rivelare la sua vera identità pur di spezzare un matrimonio che non riesce ad accettare.</p>
-<h2>Cosa rischia Mert nascondendosi dietro quello stesso albero</h2>
+<h2 id="c8">Cosa rischia Mert nascondendosi dietro quello stesso albero</h2>
 <p>Nascosto dietro un albero nel posto sbagliato al momento giusto, Mert si ritrova ad ascoltare per caso l&#x27;intensa telefonata tra İbrahim e Gara, scoprendo un segreto che nessuno avrebbe mai dovuto affidargli. La sua presenza in quella famiglia è frutto di un passato drammatico segnato dall&#x27;amore per Deva e dalla furia spietata di Gülcemal. Quando quest&#x27;ultimo scoprì la loro relazione passata, fu fermato dal gesto disperato di sua sorella Gülendam, la quale intervenne per evitare un omicidio. Gülcemal scelse comunque una punizione atroce, marchiando Mert con una mutilazione e costringendo Deva a un matrimonio segreto in cui l&#x27;ex fidanzato dovette fare da testimone.</p>
 <p>La vita di Mert è rimasta drammaticamente incastrata nella dimora dei suoi carnefici a causa di Gülendam, rimasta incinta di lui prima che i due arrivassero alle nozze e alla convivenza forzata. Trovarsi a vivere sotto lo stesso tetto con chi gli ha inflitto sofferenze e segni indelebili rende Mert la persona più pericolosa a cui potesse giungere la verità su Gara. Sapere che la governante della casa è in realtà la madre biologica di Deva ribalta completamente i rapporti di forza. Ora che ha in mano un&#x27;informazione capace di sconvolgere l&#x27;intera esistenza della sua ex compagna, la decisione sul da farsi spetta esclusivamente a lui.</p>
 <p>Se Mert decidesse di parlare prima di İbrahim, l&#x27;arma del ricatto nelle mani del padre cadrebbe all&#x27;istante, privandolo dell&#x27;unica leva rimasta per impedire il matrimonio tra Deva e Gülcemal. Le conseguenze di questo svelamento non colpirebbero tuttavia soltanto la sposa, ma sconvolgerebbero l&#x27;intero equilibrio dell&#x27;abitazione in cui vivono tutti quanti. Gara infatti non è soltanto una presenza fissa, ma è la donna che ha allevato sia Gülcemal che Gülendam fin da piccoli. Qualora la verità uscisse allo scoperto, i due fratelli dovrebbero affrontare la realtà che la loro figura di riferimento è la madre naturale della ragazza che si sta avvicinando all&#x27;altare.</p>
@@ -385,19 +435,41 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
   </div>
   
   <div class="riquadro"><h3>E secondo voi?</h3><p>Mert dirà a Deva la verità?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=BaXgK6pvYPg">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di La Rosa della Vendetta</h2><div class="griglia"><article class="scheda">
+  <a href="/la-rosa-della-vendetta/la-rosa-della-vendetta-la-trama-completa-e-come-finisce/"><div class="foto"><img src="/img/la-rosa-della-vendetta-la-trama-completa-e-come-finisce.jpg" alt="La Rosa della Vendetta" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-rosa-della-vendetta.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Rosa della Vendetta</span>
+    <h3><a href="/la-rosa-della-vendetta/la-rosa-della-vendetta-la-trama-completa-e-come-finisce/">La Rosa della Vendetta: la trama completa e come finisce</a></h3>
+    <div class="quando">30 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/la-rosa-della-vendetta/la-rosa-della-vendetta-2-ibrahim-sgancia-la-bomba-su-gulcemal-deva-e-la-figlia-d/"><div class="foto"><img src="https://i.ytimg.com/vi/ImfmMm09KBE/hqdefault.jpg" alt="La Rosa della Vendetta" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-rosa-della-vendetta.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Rosa della Vendetta</span>
+    <h3><a href="/la-rosa-della-vendetta/la-rosa-della-vendetta-2-ibrahim-sgancia-la-bomba-su-gulcemal-deva-e-la-figlia-d/">La Rosa della Vendetta 2, İbrahim sgancia la bomba su Gülcemal: «Deva è la figlia di Mustafa Pehlivan» — il suo peggior nemico</a></h3>
+    <div class="quando">14 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/la-rosa-della-vendetta/la-rosa-della-vendetta-deva-sceglie-di-restare-con-gulcemal-davanti-a-tutti-il-c/"><div class="foto"><img src="https://i.ytimg.com/vi/KtmC90jZt8A/hqdefault.jpg" alt="La Rosa della Vendetta" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-rosa-della-vendetta.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Rosa della Vendetta</span>
+    <h3><a href="/la-rosa-della-vendetta/la-rosa-della-vendetta-deva-sceglie-di-restare-con-gulcemal-davanti-a-tutti-il-c/">La Rosa della Vendetta, Deva sceglie di restare con Gülcemal davanti a tutti — il consiglio del padre e il ritorno di Mert che la fa svenire</a></h3>
+    <div class="quando">14 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=La Rosa della Vendetta, Mert origlia dietro un albero e scopre il segreto più grande: Gara è la madre di Deva — https://serietvfans.com/la-rosa-della-vendetta/la-rosa-della-vendetta-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/la-rosa-della-vendetta/la-rosa-della-vendetta-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/la-rosa-della-vendetta/la-rosa-della-vendetta-la-trama-completa-e-come-finisce/&text=La Rosa della Vendetta, Mert origlia dietro un albero e scopre il segreto più grande: Gara è la madre di Deva" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">La Rosa della Vendetta, 2ª serie: la verità nascosta di Mert — Gara è la madre della sua ex</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=BaXgK6pvYPg">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di La Rosa della Vendetta</h3><ol class="numerata"><li><a href="/la-rosa-della-vendetta/la-rosa-della-vendetta-la-trama-completa-e-come-finisce/">La Rosa della Vendetta: la trama completa e come finisce</a></li><li><a href="/la-rosa-della-vendetta/la-rosa-della-vendetta-2-ibrahim-sgancia-la-bomba-su-gulcemal-deva-e-la-figlia-d/">La Rosa della Vendetta 2, İbrahim sgancia la bomba su Gülcemal: «Deva è la figlia di Mustafa Pehlivan» — il suo peggior nemico</a></li><li><a href="/la-rosa-della-vendetta/la-rosa-della-vendetta-deva-sceglie-di-restare-con-gulcemal-davanti-a-tutti-il-c/">La Rosa della Vendetta, Deva sceglie di restare con Gülcemal davanti a tutti — il consiglio del padre e il ritorno di Mert che la fa svenire</a></li><li><a href="/la-rosa-della-vendetta/la-rosa-della-vendetta-deva-scopre-la-verita-sulle-origini-di-gulcemal-non-e-fig/">La Rosa della Vendetta, Deva scopre la verità sulle origini di Gülcemal: non è figlio di Mustafa — e il segreto di Zafer spiega tutta la sua freddezza</a></li><li><a href="/la-rosa-della-vendetta/la-rosa-della-vendetta-deva-spara-a-gulcemal-e-poi-gli-salva-la-vita-e-davanti-a/">La Rosa della Vendetta, Deva spara a Gülcemal e poi gli salva la vita — e davanti agli italiani sceglie lui: «Sono qui per mia scelta»</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>La Rosa della Vendetta, 2ª serie: la verità nascosta di Mert — Gara è la madre della sua ex</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su La Rosa della Vendetta</h3><ul><li><a href="/la-rosa-della-vendetta/la-rosa-della-vendetta-la-trama-completa-e-come-finisce/">La Rosa della Vendetta: la trama completa e come finisce</a></li><li><a href="/la-rosa-della-vendetta/la-rosa-della-vendetta-2-ibrahim-sgancia-la-bomba-su-gulcemal-deva-e-la-figlia-d/">La Rosa della Vendetta 2, İbrahim sgancia la bomba su Gülcemal: «Deva è la figlia di Mustafa Pehlivan» — il suo peggior nemico</a></li><li><a href="/la-rosa-della-vendetta/la-rosa-della-vendetta-deva-sceglie-di-restare-con-gulcemal-davanti-a-tutti-il-c/">La Rosa della Vendetta, Deva sceglie di restare con Gülcemal davanti a tutti — il consiglio del padre e il ritorno di Mert che la fa svenire</a></li><li><a href="/la-rosa-della-vendetta/la-rosa-della-vendetta-deva-scopre-la-verita-sulle-origini-di-gulcemal-non-e-fig/">La Rosa della Vendetta, Deva scopre la verità sulle origini di Gülcemal: non è figlio di Mustafa — e il segreto di Zafer spiega tutta la sua freddezza</a></li><li><a href="/la-rosa-della-vendetta/la-rosa-della-vendetta-deva-spara-a-gulcemal-e-poi-gli-salva-la-vita-e-davanti-a/">La Rosa della Vendetta, Deva spara a Gülcemal e poi gli salva la vita — e davanti agli italiani sceglie lui: «Sono qui per mia scelta»</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

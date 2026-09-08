@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/forbidden-fruit/">Forbidden Fruit</a> › Forbidden Fruit, cosa dice il testamento di Halit: la quota del bambino va a una fondazione, e Mert tradisce Kerim</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/forbidden-fruit/">Forbidden Fruit</a>
   <h1>Forbidden Fruit, cosa dice il testamento di Halit: la quota del bambino va a una fondazione, e Mert tradisce Kerim</h1>
-  <div class="firma">Redazione Serie TV Fans · mercoledì 26 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-26">mercoledì 26 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">La lettura del testamento non premia nessuna delle regine di casa Argun: la quota destinata al bambino finisce in una fondazione fino alla maggiore età, e Yıldız resta senza l&#x27;appoggio economico su cui aveva contato. Nello stesso momento Mert consegna il proprio complice alla polizia, prende la holding e sposa Zehra — mentre un ricattatore anonimo dimostra di sapere cosa è successo la notte in cui Halit è morto.</p><ol><li><a href="#c1">Chi è chi, per chi arriva adesso</a></li><li><a href="#c2">Il testamento: la quota del bambino finisce in una fondazione</a></li><li><a href="#c3">Il tradimento che nessuno vede arrivare: Mert consegna Kerim</a></li><li><a href="#c4">Con Kerim fuori gioco, la holding passa di mano</a></li><li><a href="#c5">Il patto di silenzio fra Ender, Şahika e Yıldız — e chi lo sa già</a></li><li><a href="#c6">La trappola mediatica di Feride</a></li><li><a href="#c7">Kaya, il ragazzo che nessuno considerava</a></li><li><a href="#c8">Come Mert consolida il potere nella holding Argun</a></li><li><a href="#c9">Cosa spaventa Şahika dopo la morte di Halit</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>Forbidden Fruit</strong> — Canale 5 · in streaming su Mediaset Infinity</span></div>
   
-  <p class="occhiello">La lettura del testamento non premia nessuna delle regine di casa Argun: la quota destinata al bambino finisce in una fondazione fino alla maggiore età, e Yıldız resta senza l&#x27;appoggio economico su cui aveva contato. Nello stesso momento Mert consegna il proprio complice alla polizia, prende la holding e sposa Zehra — mentre un ricattatore anonimo dimostra di sapere cosa è successo la notte in cui Halit è morto.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: Forbidden Fruit, cosa dice il testamento di Halit: la quota del bambino va a una fondazione, e Mert tradisce Kerim" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/-GLAbshKy3I/maxresdefault.jpg" alt="Forbidden Fruit, cosa dice il testamento di Halit: la quota del bambino va a una fondazione, e Mert tradisce Kerim" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/-GLAbshKy3I/hqdefault.jpg 480w, https://i.ytimg.com/vi/-GLAbshKy3I/sddefault.jpg 640w, https://i.ytimg.com/vi/-GLAbshKy3I/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/-GLAbshKy3I/hqdefault.jpg&quot;, &quot;/fallback/forbidden-fruit.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,50 +409,72 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>Yıldız aveva costruito ogni cosa sulla certezza di quell&#x27;eredità. Il notaio legge, e la quota che doveva mettere al sicuro suo figlio va dove lei non può toccarla.</strong></p>
-  <h2>Chi è chi, per chi arriva adesso</h2>
+  <h2 id="c1">Chi è chi, per chi arriva adesso</h2>
 <p>Yıldız è la vedova di Halit Argun e la madre del suo bambino. Ender è l&#x27;ex moglie di Halit, Şahika la donna che punta da sempre al controllo dell&#x27;azienda: le tre si sono combattute per anni e ora si ritrovano dalla stessa parte. Mert e Kerim sono due uomini della cerchia della holding. Zehra è la moglie tradita diventata una delle figure più pericolose della serie. Feride è la madre di Çağatay. Kaya è il ragazzo che nessuno aveva mai preso sul serio.</p>
-<h2>Il testamento: la quota del bambino finisce in una fondazione</h2>
+<h2 id="c2">Il testamento: la quota del bambino finisce in una fondazione</h2>
 <p>La lettura del testamento è il momento che tutta la famiglia Argun aspettava, consapevole che da quelle poche righe dipende il futuro di ognuno. La sorpresa non è a favore di nessuna delle donne che si erano preparate: la quota che sarebbe dovuta andare al figlio piccolo di Yıldız viene affidata a una fondazione fino alla sua maggiore età.</p>
 <p>È il colpo peggiore possibile, e arriva nel momento sbagliato. Yıldız aveva costruito su quell&#x27;eredità ogni alleanza cercata nelle ultime settimane, convinta di aver finalmente messo al sicuro il futuro del bambino. Davanti al notaio fatica a nascondere lo sconforto, e chi le sta vicino nota il passaggio immediato da una sicurezza quasi ostentata a una fragilità che prova, senza riuscirci, a tenere per sé davanti agli altri.</p>
-<h2>Il tradimento che nessuno vede arrivare: Mert consegna Kerim</h2>
+<h2 id="c3">Il tradimento che nessuno vede arrivare: Mert consegna Kerim</h2>
 <p>Mentre in salotto si legge il testamento, lontano dai riflettori si consuma la cosa che conta davvero. Mert e Kerim avevano organizzato insieme un piano per sottrarre denaro alla famiglia Argun, convinti che il momento fosse maturo per agire senza essere scoperti. Ma Mert sceglie il momento giusto per voltare le spalle a chi si fida di lui: fa in modo che a finire arrestato sia Kerim, e soltanto lui.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>Kerim si ritrova dietro le sbarre senza aspettarselo. E qui la vicenda diventa peggiore di un semplice tradimento: le lettere con cui prova disperatamente a far arrivare a Yıldız la sua versione dei fatti vengono bloccate prima ancora di uscire dal carcere. Qualcuno si sta assicurando che quella verità non arrivi a destinazione, e lo lascia isolato proprio quando avrebbe più bisogno di essere ascoltato.</p>
-<h2>Con Kerim fuori gioco, la holding passa di mano</h2>
+<h2 id="c4">Con Kerim fuori gioco, la holding passa di mano</h2>
 <p>La strada per Mert si apre quasi da sola. Halit lo aveva già indicato come sostituto temporaneo alla guida della holding, e ora che non c&#x27;è più nessuno in grado di smentire la sua versione dei fatti può consolidare quella posizione senza incontrare ostacoli.</p>
 <p>Poco dopo Mert sposa Zehra. È un&#x27;unione che arriva fin troppo comoda, nel momento esatto in cui a lui serve mostrarsi stabile e affidabile davanti al consiglio di famiglia. Ma non tutti credono che Zehra si sia lasciata trascinare: la freddezza con cui accetta ogni condizione imposta da Mert fa pensare che stia giocando una partita sua, convinta di poter controllare un uomo che fino a poco tempo fa nessuno considerava pericoloso.</p>
-<h2>Il patto di silenzio fra Ender, Şahika e Yıldız — e chi lo sa già</h2>
+<h2 id="c5">Il patto di silenzio fra Ender, Şahika e Yıldız — e chi lo sa già</h2>
 <p>Sul fronte opposto succede quello che nessuna delle tre avrebbe mai immaginato di dover accettare: Ender, Şahika e Yıldız stringono un accordo silenzioso per proteggersi a vicenda su quello che è realmente accaduto la notte in cui Halit ha perso la vita.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>Il problema è che quel patto non resta al sicuro. Un ricattatore rimasto fino a ora nell&#x27;ombra dimostra di sapere molto più di quanto dovrebbe, e comincia a usare quell&#x27;informazione come una leva su tutte e tre. Şahika è quella che regge peggio la pressione: sa di avere alle spalle più di un segreto scomodo e teme che l&#x27;anonimo non stia colpendo solo per quella notte, ma stia accumulando ogni sua mossa sbagliata degli ultimi mesi per usarle tutte insieme al momento più conveniente.</p>
-<h2>La trappola mediatica di Feride</h2>
+<h2 id="c6">La trappola mediatica di Feride</h2>
 <p>Feride, che ha già dimostrato fin dove è disposta a spingersi per riprendere il controllo, non resta a guardare. Prepara una trappola mediatica pensata apposta per colpire Yıldız nel momento più vulnerabile: adesso che è senza l&#x27;appoggio economico su cui contava e con un segreto pericoloso sospeso sulla testa, condiviso con Ender e Şahika. È un piano costruito con pazienza, per esplodere quando farà più male.</p>
-<h2>Kaya, il ragazzo che nessuno considerava</h2>
+<h2 id="c7">Kaya, il ragazzo che nessuno considerava</h2>
 <p>In mezzo a tutto questo c&#x27;è Kaya, cresciuto sempre un passo indietro rispetto agli altri, che si ritrova al centro degli equilibri familiari quasi senza cercarlo, guardato con un rispetto nuovo da chi fino a ieri non gli avrebbe dedicato un pensiero. Fra i dipendenti storici della holding c&#x27;è già chi si chiede se, alla lunga, non sia proprio lui l&#x27;erede su cui puntare.</p>
 <p>È il segnale di come funziona adesso questa casa: il potere dentro la holding non si misura più dal cognome o dalla quota che si ha sulla carta, ma da quanto in fretta ci si muove mentre gli altri sono ancora fermi al lutto. Mert, il ricattatore e Feride stanno sfruttando quel terreno instabile ciascuno a modo proprio — e Kerim resta chiuso in una cella a pagare per un furto che non ha organizzato da solo.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Come Mert consolida il potere nella holding Argun</h2>
+<h2 id="c8">Come Mert consolida il potere nella holding Argun</h2>
 <p>Mert ha calcolato ogni singolo passaggio con un cinismo impressionante, sfruttando il vuoto di potere lasciato dalla scomparsa di Halit per posizionarsi ai vertici dell&#x27;azienda. Dopo aver ideato insieme a Kerim un piano dettagliato per sottrarre un&#x27;ingente somma di denaro dalle casse della holding Argun, ha deciso di tradire il suo complice nel momento più opportuno. Consegnando Kerim alle forze dell&#x27;ordine e facendolo arrestare, Mert si è liberato dell&#x27;unico ostacolo immediato sulla sua strada. Oltre a far cadere tutta la colpa sul compagno di sventure, ha iniziato a intercettare e bloccare la corrispondenza che il prigioniero cercava di far recapitare a Yıldız, impedendo così che la verità sul colpo e sul tradimento potesse emergere o compromettere i suoi ambiziosi progetti dentro la società.</p>
 <p>Per consolidare definitivamente la leadership ottenuta grazie all&#x27;indicazione temporanea lasciata da Halit, Mert ha scelto di compiere un passo formale decisivo sposando Zehra. Questa unione gli garantisce la stabilità necessaria agli occhi del consiglio di famiglia, proiettando un&#x27;immagine di rispetto e continuità gestionale. Tuttavia, la complessa figura di Zehra non va affatto sottovalutata dentro le mura di casa Argun. La donna mostra una freddezza del tutto inaspettata di fronte alle condizioni imposte dal nuovo marito, suggerendo che dietro il suo apparente assenso si nasconda la ferma intenzione di condurre una battaglia personale. Zehra potrebbe infatti sfruttare il matrimonio per controllare e manipolare Mert, trasformandolo in una pedina inconsapevole dei propri oscuri piani di potere aziendale.</p>
-<h2>Cosa spaventa Şahika dopo la morte di Halit</h2>
+<h2 id="c9">Cosa spaventa Şahika dopo la morte di Halit</h2>
 <p>La misteriosa scomparsa di Halit ha costretto tre storiche rivali come Ender, Şahika e Yıldız a mettere temporaneamente da parte i loro vecchi rancori per stringere un rischioso patto di silenzio. Tutte e tre nascondono ciò che è realmente accaduto durante la notte tragica in cui l&#x27;uomo ha perso la vita, ben consapevoli delle devastanti conseguenze che una fuga di notizie potrebbe scatenare. L&#x27;accordo tra le donne viene però improvvisamente minacciato dalla comparsa di un ricattatore anonimo, una figura oscura che ha dimostrato di conoscere esattamente ogni dettaglio di quelle ore drammatiche. L&#x27;ombra del ricatto stravolge la fragile tregua, mettendo a dura prova la tenuta dell&#x27;alleanza e alimentando un clima di costante e reciproca diffidenza.</p>
 <p>Tra le tre alleate, Şahika appare indiscutibilmente la più provata e terrorizzata dalla pressione esercitata dall&#x27;anonimo minacciatore. La donna sa benissimo di aver accumulato nel corso dei mesi una serie di azioni e segreti estremamente compromettenti, e teme che l&#x27;estorsore non si limiti a sfruttare la verità sulla notte fatale in cui Halit è morto. Il timore costante è che il ricattatore stia pazientemente raccogliendo ogni singola mossa falsa del suo passato per sferrare un attacco definitivo e distruggerla. Nel frattempo, la situazione per Yıldız peggiora ulteriormente a causa delle manovre di Feride, la madre di Çağatay, la quale sta organizzando una subdola trappola mediatica per colpirla proprio mentre è priva di tutele economiche.</p>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=kpRsXx8lZjk" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/kpRsXx8lZjk/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>Forbidden Fruit: Halit torna e si porta via il bambino davanti a tutti</span></a></li><li><a href="https://www.youtube.com/watch?v=pC9iUim1Hs4" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/pC9iUim1Hs4/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>Forbidden Fruit: Halit torna e si porta via il bambino davanti a tutti</span></a></li><li><a href="https://www.youtube.com/watch?v=2gHOtfw_n0A" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/2gHOtfw_n0A/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>FORBIDDEN FRUIT: HALIT MUORE Cadendo dalle Scale! Il Testamento Lascia Yildiz Senza Nulla 😱</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Kerim riuscirà a dimostrare che non ha agito da solo, o resterà l&#x27;unico colpevole mentre Mert continua a salire?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=-GLAbshKy3I">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di Forbidden Fruit</h2><div class="griglia"><article class="scheda">
+  <a href="/forbidden-fruit/forbidden-fruit-dal-31-agosto-il-conto-a-nome-di-halit-che-e-morto/"><div class="foto"><img src="/img/forbidden-fruit-dal-31-agosto-il-conto-a-nome-di-halit-che-e-morto.jpg" alt="Forbidden Fruit" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/forbidden-fruit.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Forbidden Fruit</span>
+    <h3><a href="/forbidden-fruit/forbidden-fruit-dal-31-agosto-il-conto-a-nome-di-halit-che-e-morto/">Forbidden Fruit Dal 31 Agosto: il conto a nome di Halit, che è morto</a></h3>
+    <div class="quando">31 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/forbidden-fruit/forbidden-fruit-che-fine-fa-zehra-perche-resta-lunica-libera/"><div class="foto"><img src="/img/forbidden-fruit-che-fine-fa-zehra-perche-resta-lunica-libera.jpg" alt="Forbidden Fruit" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/forbidden-fruit.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Forbidden Fruit</span>
+    <h3><a href="/forbidden-fruit/forbidden-fruit-che-fine-fa-zehra-perche-resta-lunica-libera/">Forbidden Fruit, che fine fa Zehra: perché resta l&#x27;unica libera mentre le altre finiscono in cella</a></h3>
+    <div class="quando">29 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/forbidden-fruit/forbidden-fruit-halit-e-vivo-o-e-morto-perche-al-funerale-si-sente-sono-vivo/"><div class="foto"><img src="/img/forbidden-fruit-halit-e-vivo-o-e-morto-perche-al-funerale-si-sente-sono-vivo.jpg" alt="Forbidden Fruit" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/forbidden-fruit.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Forbidden Fruit</span>
+    <h3><a href="/forbidden-fruit/forbidden-fruit-halit-e-vivo-o-e-morto-perche-al-funerale-si-sente-sono-vivo/">Forbidden Fruit, Halit è vivo o è morto: perché al funerale qualcuno sente «sono vivo»</a></h3>
+    <div class="quando">29 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=Forbidden Fruit, cosa dice il testamento di Halit: la quota del bambino va a una fondazione, e Mert tradisce Kerim — https://serietvfans.com/forbidden-fruit/forbidden-fruit-cosa-dice-il-testamento-di-halit-la-quota-del-bambino-va-a-una-f/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/forbidden-fruit/forbidden-fruit-cosa-dice-il-testamento-di-halit-la-quota-del-bambino-va-a-una-f/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/forbidden-fruit/forbidden-fruit-cosa-dice-il-testamento-di-halit-la-quota-del-bambino-va-a-una-f/&text=Forbidden Fruit, cosa dice il testamento di Halit: la quota del bambino va a una fondazione, e Mert tradisce Kerim" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">FORBIDDEN FRUIT: il testamento di HALIT ribalta tutto — Mert tradisce Kerim</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=-GLAbshKy3I">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di Forbidden Fruit</h3><ol class="numerata"><li><a href="/forbidden-fruit/forbidden-fruit-dal-31-agosto-il-conto-a-nome-di-halit-che-e-morto/">Forbidden Fruit Dal 31 Agosto: il conto a nome di Halit, che è morto</a></li><li><a href="/forbidden-fruit/forbidden-fruit-che-fine-fa-zehra-perche-resta-lunica-libera/">Forbidden Fruit, che fine fa Zehra: perché resta l&#x27;unica libera mentre le altre finiscono in cella</a></li><li><a href="/forbidden-fruit/forbidden-fruit-halit-e-vivo-o-e-morto-perche-al-funerale-si-sente-sono-vivo/">Forbidden Fruit, Halit è vivo o è morto: perché al funerale qualcuno sente «sono vivo»</a></li><li><a href="/forbidden-fruit/forbidden-fruit-chi-e-davvero-zeynep-la-sorella-per-bene-che-ha-finito-peggio-di-yildiz/">Forbidden Fruit: chi è davvero Zeynep, la sorella «per bene» che ha finito peggio di Yıldız</a></li><li><a href="/forbidden-fruit/forbidden-fruit-ender-ha-mandato-lei-yildiz-da-suo-marito-e-ha-perso-tutto/">Forbidden Fruit: Ender ha mandato lei Yıldız da suo marito, e ha perso tutto</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>FORBIDDEN FRUIT: il testamento di HALIT ribalta tutto — Mert tradisce Kerim</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su Forbidden Fruit</h3><ul><li><a href="/forbidden-fruit/forbidden-fruit-dal-31-agosto-il-conto-a-nome-di-halit-che-e-morto/">Forbidden Fruit Dal 31 Agosto: il conto a nome di Halit, che è morto</a></li><li><a href="/forbidden-fruit/forbidden-fruit-che-fine-fa-zehra-perche-resta-lunica-libera/">Forbidden Fruit, che fine fa Zehra: perché resta l&#x27;unica libera mentre le altre finiscono in cella</a></li><li><a href="/forbidden-fruit/forbidden-fruit-halit-e-vivo-o-e-morto-perche-al-funerale-si-sente-sono-vivo/">Forbidden Fruit, Halit è vivo o è morto: perché al funerale qualcuno sente «sono vivo»</a></li><li><a href="/forbidden-fruit/forbidden-fruit-chi-e-davvero-zeynep-la-sorella-per-bene-che-ha-finito-peggio-di-yildiz/">Forbidden Fruit: chi è davvero Zeynep, la sorella «per bene» che ha finito peggio di Yıldız</a></li><li><a href="/forbidden-fruit/forbidden-fruit-ender-ha-mandato-lei-yildiz-da-suo-marito-e-ha-perso-tutto/">Forbidden Fruit: Ender ha mandato lei Yıldız da suo marito, e ha perso tutto</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

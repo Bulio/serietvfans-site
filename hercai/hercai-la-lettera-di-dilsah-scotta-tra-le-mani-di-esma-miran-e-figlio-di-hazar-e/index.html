@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/hercai/">Hercai</a> › Hercai, la lettera di Dilşah scotta tra le mani di Esma: Miran è figlio di Hazar — e Azize, pistola in pugno, comincia a perdere il controllo</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/hercai/">Hercai</a>
   <h1>Hercai, la lettera di Dilşah scotta tra le mani di Esma: Miran è figlio di Hazar — e Azize, pistola in pugno, comincia a perdere il controllo</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">La verità più esplosiva della serie è chiusa in una lettera: Dilşah vi rivela che Miran è figlio di Hazar, e la fedele Esma non sa se e quando farla esplodere. Intanto Azize minaccia Azat con una pistola che porta le sue impronte per costringerlo a lasciare la città con Reyyan, Fırat semina veleno sulla coppia — ma stavolta Miran smaschera il complotto della nonna.</p><ol><li><a href="#c1">Il ricatto di Azize: una pistola con le impronte di Azat</a></li><li><a href="#c2">Fırat semina dubbi, ma Miran smaschera la nonna</a></li><li><a href="#c3">Il confronto con Hazar: «Hai distrutto tutto ciò che avevo»</a></li><li><a href="#c4">La lettera di Dilşah: la bomba nelle mani di Esma</a></li><li><a href="#c5">Come Azize usa la pistola contro Azat</a></li><li><a href="#c6">Perché Esma teme la lettera di Dilşah</a></li><li><a href="#c7">Quale destino attende Hazar di fronte alle accuse</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>Hercai</strong> — Serie conclusa in Italia · andata in onda su Real Time, in streaming su discovery+</span></div>
   
-  <p class="occhiello">La verità più esplosiva della serie è chiusa in una lettera: Dilşah vi rivela che Miran è figlio di Hazar, e la fedele Esma non sa se e quando farla esplodere. Intanto Azize minaccia Azat con una pistola che porta le sue impronte per costringerlo a lasciare la città con Reyyan, Fırat semina veleno sulla coppia — ma stavolta Miran smaschera il complotto della nonna.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: Hercai, la lettera di Dilşah scotta tra le mani di Esma: Miran è figlio di Hazar — e Azize, pistola in pugno, comincia a perdere il controllo" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/WdTs4QHva1w/maxresdefault.jpg" alt="Hercai, la lettera di Dilşah scotta tra le mani di Esma: Miran è figlio di Hazar — e Azize, pistola in pugno, comincia a perdere il controllo" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/WdTs4QHva1w/hqdefault.jpg 480w, https://i.ytimg.com/vi/WdTs4QHva1w/sddefault.jpg 640w, https://i.ytimg.com/vi/WdTs4QHva1w/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/WdTs4QHva1w/hqdefault.jpg&quot;, &quot;/fallback/hercai.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,25 +409,25 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>«Sono tua moglie, Miran, non una prigioniera: vedrò mio padre ogni volta che lo desidero» — la fermezza di Reyyan è l&#x27;unica luce in un mosaico di manipolazioni.</strong></p>
-  <h2>Il ricatto di Azize: una pistola con le impronte di Azat</h2>
+  <h2 id="c1">Il ricatto di Azize: una pistola con le impronte di Azat</h2>
 <p>Azize gioca la carta più audace del suo repertorio: minaccia Azat con una pistola che porta le sue impronte digitali, insinuando lo spettro di un crimine passionale, per costringerlo a lasciare la città portando con sé Reyyan. Un piano freddo e calcolato — separare Miran da Reyyan usando Azat come leva — che però mostra le prime crepe: la donna che ha sempre manipolato tutto e tutti sta per scoprire che anche i migliori strateghi possono restare vittime delle proprie macchinazioni.</p>
-<h2>Fırat semina dubbi, ma Miran smaschera la nonna</h2>
+<h2 id="c2">Fırat semina dubbi, ma Miran smaschera la nonna</h2>
 <p>Il veleno arriva anche da dentro: Fırat, il confidente di Miran, insinua che Reyyan non sia degna della sua fiducia, e le accuse di Azize soffiano sul fuoco. Miran esplode di rabbia — ma stavolta non abbocca: la sua determinazione nel difendere la moglie lo porta a smascherare il complotto della nonna, dimostrando per la prima volta di essere più forte delle sue manipolazioni. Reyyan, dal canto suo, non arretra di un passo nemmeno con lui: «Sono tua moglie, non una prigioniera». Un amore che non può reggersi su imposizioni.</p>
-<h2>Il confronto con Hazar: «Hai distrutto tutto ciò che avevo»</h2>
+<h2 id="c3">Il confronto con Hazar: «Hai distrutto tutto ciò che avevo»</h2>
 <p>L&#x27;obiettivo di Reyyan è uno: convincere Hazar a raccontare a Miran tutta la verità su Dilşah. Ne nasce un confronto devastante — Miran, convinto che Hazar sia il responsabile della morte della madre, lo accusa senza mezzi termini, il dolore trasformato in odio. Ma Hazar non cede: «Un giorno guarderai in faccia la verità e capirai il dolore che hai inflitto a chi ti ama». Parole che scuotono Miran senza fermarne la vendetta, mentre Nasuh decide di allontanare temporaneamente la famiglia dal palazzo Şadoğlu e Cihan e Handan tramano il matrimonio strategico tra Azat ed Elif per mantenere il controllo sugli Aslanbey.</p>
-<h2>La lettera di Dilşah: la bomba nelle mani di Esma</h2>
+<h2 id="c4">La lettera di Dilşah: la bomba nelle mani di Esma</h2>
 <p>Il vero detonatore però ce l&#x27;ha Esma, la fedele serva degli Aslanbey: una lettera di Dilşah in cui si rivela che Miran è figlio di Hazar. Quando Miran si presenta da lei in cerca di risposte, la verità è a un passo — eppure fuori portata: Esma, rimasta sola con la lettera tra le mani, si chiede se sia giunto il momento, ma la paura la trattiene, perché quella verità può distruggere Miran. E mentre Azize appare per la prima volta vulnerabile, isolata perfino dai suoi alleati, la puntata si chiude su un Miran diviso tra vendetta e amore: la rivelazione è alle porte, e le sue conseguenze saranno devastanti per entrambe le famiglie.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Come Azize usa la pistola contro Azat</h2>
+<h2 id="c5">Come Azize usa la pistola contro Azat</h2>
 <p>La matriarca degli Aslanbey dimostra ancora una volta di non avere alcuno scrupolo pur di ottenere ciò che desidera. Per spezzare definitivamente il legame tra suo nipote e la giovane Şadoğlu, Azize decide di ricorrere a un&#x27;azione estrema e priva di scrupoli. La donna impugna una pistola sulla quale sono state impresse ad arte le impronte digitali di Azat, creando la prova schiacciante di un potenziale delitto. Attraverso questa gravissima minaccia, la donna cerca di incastrare il ragazzo e di costringerlo ad abbandonare per sempre la città portando via con sé Reyyan, così da dividere la coppia in modo irreversibile.</p>
 <p>Nonostante la precisione del piano e la freddezza dimostrata nell&#x27;organizzazione dell&#x27;inganno, la leadership di Azize inizia a mostrare i primi evidenti segni di cedimento. In passato la matriarca riusciva a manovrare ogni pedina a proprio piacimento senza trovare ostacoli, ma questa volta la situazione le sta sfuggendo di mano. Anche Fırat tenta di dare il suo contributo instillando continui dubbi nella mente di Miran e accusando la giovane sposa di non essere degna della sua fiducia. Le manovre cospirative orchestrate nell&#x27;ombra non producono tuttavia il risultato sperato, lasciando la potente donna sempre più sola e vulnerabile all&#x27;interno della sua stessa dimora.</p>
 <p>Il vero punto di svolta si verifica quando Miran rifiuta di cadere nella trappola tesa dalla nonna e sceglie di verificare la realtà dei fatti. Di fronte alle pesanti insinuazioni e ai sospetti alimentati da Fırat, l&#x27;uomo decide di indagare a fondo fino a smascherare l&#x27;intero complotto cospirativo. Questa inaspettata presa di posizione dimostra come Miran stia finalmente sviluppando una propria forza interiore, capace di opporsi alle storiche manipolazioni familiari. Nel frattempo Reyyan conferma la propria totale indipendenza, ribadendo con estrema fermezza al marito di non voler essere trattata come una prigioniera e pretendendo di poter incontrare il proprio padre in assoluta libertà.</p>
-<h2>Perché Esma teme la lettera di Dilşah</h2>
+<h2 id="c6">Perché Esma teme la lettera di Dilşah</h2>
 <p>All&#x27;interno della residenza Aslanbey, la fedele serva Esma si trova a custodire il segreto più devastante e pericoloso dell&#x27;intera vicenda. Tra le sue mani si trova infatti una lettera autografa scritta in passato da Dilşah, la cui lettura rivelerebbe una verità capace di scompaginare tutti gli equilibri: Miran è in realtà il figlio biologico di Hazar. Questo documento rappresenta una vera e propria bomba ad orologeria che la donna continua a tenere nascosta, dilaniata dai dubbi su quale sia il momento opportuno per farla venire alla luce o se sia preferibile tacerla per sempre per evitare conseguenze irreparabili.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>La tensione raggiunge livelli critici quando Miran si presenta personalmente da Esma pretendendo chiarezza e risposte definitive sul passato della sua famiglia. Pur trovandosi a un passo dal rivelare tutto, la serva viene bloccata da un profondo e paralizzante sentimento di paura. Esma sa bene che consegnare quella lettera nelle mani del giovane significherebbe infrangere irrimediabilmente il suo equilibrio emotivo e distruggere la sua vita. Rimanendo da sola con il prezioso foglio tra le dita, la donna continua a interrogarsi sul da farsi, consapevole che il peso di questo segreto sta diventando ormai insostenibile per chiunque.</p>
 <p>La possibile diffusione del contenuto della lettera rappresenta la minaccia più grande per Azize, il cui potere si fonda proprio sulle bugie raccontate per anni a Miran. Qualora la verità sulla paternità di Hazar dovesse emergere pubblicamente, l&#x27;intera struttura di vendetta edificata dalla matriarca crollerebbe all&#x27;istante. Miran si ritroverebbe improvvisamente diviso tra l&#x27;odio coltivato per tutta la vita e l&#x27;amore imprevedibile che ora nutre per la sua famiglia biologica. Esma rimane così l&#x27;unico arbitro di un destino che potrebbe spazzare via il passato degli Aslanbey e ridefinire completamente il futuro di entrambe le casate coinvolte.</p>
-<h2>Quale destino attende Hazar di fronte alle accuse</h2>
+<h2 id="c7">Quale destino attende Hazar di fronte alle accuse</h2>
 <p>Spinta dalla volontà di fare chiarezza, Reyyan cerca in ogni modo di spingere il padre Hazar a raccontare la verità a Miran riguardo al passato di Dilşah. Il conseguente incontro tra i due uomini si trasforma in un drammatico scontro verbale pieno di sofferenza. Miran, ancora fermamente convinto che Hazar sia il diretto responsabile della tragica scomparsa di sua madre, riversa sul potenziale genitore tutto l&#x27;odio e il rancore accumulati negli anni. L&#x27;uomo affronta l&#x27;avversario con estrema durezza, accusandolo senza mezzi termini di aver distrutto ogni cosa e rifiutando di ascoltare le ragioni della parte avversa.</p>
 <p>Di fronte alla violenza delle accuse ricevute, Hazar decide di non piegarsi e risponde con parole cariche di grande dignità e ammonimento. L&#x27;uomo avverte Miran che un giorno sarà costretto a guardare in faccia la realtà e comprenderà finalmente l&#x27;immenso dolore inflitto a chi gli ha sempre voluto bene. Nel frattempo la crisi familiare spinge Nasuh a prendere una decisione drastica per proteggere la casata: il capo famiglia ordina l&#x27;allontanamento temporaneo di tutti i parenti dal palazzo Şadoğlu, sperando di mettere la propria gente al riparo dalle continue trame oscure e dai pericoli incombenti.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
@@ -385,19 +435,41 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=Oo97R8tr84k" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/Oo97R8tr84k/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>Hercai Anticipazioni: Ultima vendetta di Azize ,Sultana ritrova suo Figlio,Reyyan incredibilmen</span></a></li><li><a href="https://www.youtube.com/watch?v=kOMsTy2iV34" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/kOMsTy2iV34/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>Hercai: Incredibile Zehra spinge Reyyan al divorzio, Azize minaccia la Sultana - 23 Dicembre</span></a></li><li><a href="https://www.youtube.com/watch?v=lTNul5nYHN4" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/lTNul5nYHN4/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>Hercai Amore e Vendetta: Esma consegna la lettera a Zehra! Scoperta shock su Miran</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Esma troverà il coraggio di consegnare la lettera di Dilşah? E quando Miran saprà di essere figlio di Hazar, sceglierà il perdono o una vendetta ancora più cieca?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=WdTs4QHva1w">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di Hercai</h2><div class="griglia"><article class="scheda">
+  <a href="/hercai/hercai-23-dicembre-elif-accusa-azize-davanti-a-tutti-ha-fatto-bendare-la-sultana/"><div class="foto"><img src="https://i.ytimg.com/vi/nKoyRzZ5Zzs/hqdefault.jpg" alt="Hercai" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/hercai.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Hercai</span>
+    <h3><a href="/hercai/hercai-23-dicembre-elif-accusa-azize-davanti-a-tutti-ha-fatto-bendare-la-sultana/">Hercai 23 dicembre, Elif accusa Azize davanti a tutti: «Ha fatto bendare Sultan e l&#x27;ha minacciata di morte» — e Zehra chiede a Reyyan di firmare il divorzio</a></h3>
+    <div class="quando">14 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/hercai/hercai-esma-consegna-la-lettera-di-dilsah-a-zehra-miran-e-figlio-di-hazar-e-aziz/"><div class="foto"><img src="/img/hercai-esma-consegna-la-lettera-di-dilsah-a-zehra-miran-e-figlio-di-hazar-e-aziz.jpg" alt="Hercai" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/hercai.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Hercai</span>
+    <h3><a href="/hercai/hercai-esma-consegna-la-lettera-di-dilsah-a-zehra-miran-e-figlio-di-hazar-e-aziz/">Hercai, Esma consegna la lettera di Dilşah a Zehra: «Miran è figlio di Hazar, e Azize lo ha sempre saputo» — ma lei sceglie il silenzio</a></h3>
+    <div class="quando">14 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/hercai/hercai-il-biglietto-anonimo-porta-miran-al-villaggio-di-dilsah-lanziana-lo-ricon/"><div class="foto"><img src="/img/hercai-il-biglietto-anonimo-porta-miran-al-villaggio-di-dilsah-lanziana-lo-ricon.jpg" alt="Hercai" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/hercai.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Hercai</span>
+    <h3><a href="/hercai/hercai-il-biglietto-anonimo-porta-miran-al-villaggio-di-dilsah-lanziana-lo-ricon/">Hercai, il biglietto anonimo porta Miran al villaggio di Dilşah: l&#x27;anziana lo riconosce sulla soglia — «Sapevo che saresti venuto, somigli a tuo nonno»</a></h3>
+    <div class="quando">14 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=Hercai, la lettera di Dilşah scotta tra le mani di Esma: Miran è figlio di Hazar — e Azize, pistola in pugno, comincia a perdere il controllo — https://soapoperaitalia.com/hercai/hercai-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://soapoperaitalia.com/hercai/hercai-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://soapoperaitalia.com/hercai/hercai-la-trama-completa-e-come-finisce/&text=Hercai, la lettera di Dilşah scotta tra le mani di Esma: Miran è figlio di Hazar — e Azize, pistola in pugno, comincia a perdere il controllo" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">HERCAI: LA SCIOCCANTE VERITÀ SU MIRAN E HAZAR! AZIZE CROLLA, TRADIMENTI E RIVELAZIONI</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=WdTs4QHva1w">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di Hercai</h3><ol class="numerata"><li><a href="/hercai/hercai-23-dicembre-elif-accusa-azize-davanti-a-tutti-ha-fatto-bendare-la-sultana/">Hercai 23 dicembre, Elif accusa Azize davanti a tutti: «Ha fatto bendare Sultan e l&#x27;ha minacciata di morte» — e Zehra chiede a Reyyan di firmare il divorzio</a></li><li><a href="/hercai/hercai-esma-consegna-la-lettera-di-dilsah-a-zehra-miran-e-figlio-di-hazar-e-aziz/">Hercai, Esma consegna la lettera di Dilşah a Zehra: «Miran è figlio di Hazar, e Azize lo ha sempre saputo» — ma lei sceglie il silenzio</a></li><li><a href="/hercai/hercai-il-biglietto-anonimo-porta-miran-al-villaggio-di-dilsah-lanziana-lo-ricon/">Hercai, il biglietto anonimo porta Miran al villaggio di Dilşah: l&#x27;anziana lo riconosce sulla soglia — «Sapevo che saresti venuto, somigli a tuo nonno»</a></li><li><a href="/hercai/hercai-il-gran-finale-yaren-armata-alla-festa-il-perdono-di-nasuh-e-i-gemelli-in/">Hercai, il gran finale: Yaren armata alla festa, il perdono di Nasuh e i gemelli in arrivo per Reyyan e Miran</a></li><li><a href="/hercai/hercai-il-segreto-dellanello-di-fidanzamento-era-stato-commissionato-per-la-madr/">Hercai, il segreto dell&#x27;anello di fidanzamento: era stato commissionato per la madre di Miran — e Gül rivela che suo fratello è vivo</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>HERCAI: LA SCIOCCANTE VERITÀ SU MIRAN E HAZAR! AZIZE CROLLA, TRADIMENTI E RIVELAZIONI</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su Hercai</h3><ul><li><a href="/hercai/hercai-23-dicembre-elif-accusa-azize-davanti-a-tutti-ha-fatto-bendare-la-sultana/">Hercai 23 dicembre, Elif accusa Azize davanti a tutti: «Ha fatto bendare Sultan e l&#x27;ha minacciata di morte» — e Zehra chiede a Reyyan di firmare il divorzio</a></li><li><a href="/hercai/hercai-esma-consegna-la-lettera-di-dilsah-a-zehra-miran-e-figlio-di-hazar-e-aziz/">Hercai, Esma consegna la lettera di Dilşah a Zehra: «Miran è figlio di Hazar, e Azize lo ha sempre saputo» — ma lei sceglie il silenzio</a></li><li><a href="/hercai/hercai-il-biglietto-anonimo-porta-miran-al-villaggio-di-dilsah-lanziana-lo-ricon/">Hercai, il biglietto anonimo porta Miran al villaggio di Dilşah: l&#x27;anziana lo riconosce sulla soglia — «Sapevo che saresti venuto, somigli a tuo nonno»</a></li><li><a href="/hercai/hercai-il-gran-finale-yaren-armata-alla-festa-il-perdono-di-nasuh-e-i-gemelli-in/">Hercai, il gran finale: Yaren armata alla festa, il perdono di Nasuh e i gemelli in arrivo per Reyyan e Miran</a></li><li><a href="/hercai/hercai-il-segreto-dellanello-di-fidanzamento-era-stato-commissionato-per-la-madr/">Hercai, il segreto dell&#x27;anello di fidanzamento: era stato commissionato per la madre di Miran — e Gül rivela che suo fratello è vivo</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

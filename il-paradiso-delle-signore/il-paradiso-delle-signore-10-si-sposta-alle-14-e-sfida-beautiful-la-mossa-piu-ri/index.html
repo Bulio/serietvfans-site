@@ -12,7 +12,7 @@
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Serie TV Fans">
 <meta property="og:url" content="https://serietvfans.com/il-paradiso-delle-signore/il-paradiso-delle-signore-10-si-sposta-alle-14-e-sfida-beautiful-la-mossa-piu-ri/">
-<meta property="og:image" content="https://i.ytimg.com/vi/DJOJrFArCcs/maxresdefault.jpg">
+<meta property="og:image" content="https://serietvfans.com/img/il-paradiso-delle-signore-10-si-sposta-alle-14-e-sfida-beautiful-la-mossa-piu-ri.jpg">
 <meta property="og:locale" content="it_IT">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#7b1e2b">
@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -318,12 +367,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7778653397776213" crossorigin="anonymous"></script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "96259d7e67ce47fba4573364859712a6"}'></script>
 <script>(function(){var f=0;function go(){if(f)return;f=1;(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","y3rpoig6jk");}["pointerdown","keydown","touchstart","scroll"].forEach(function(v){addEventListener(v,go,{once:1,passive:1})});setTimeout(go,2500)})();</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Il Paradiso delle Signore 10 si sposta alle 14 e sfida Beautiful: la mossa più rischiosa del palinsesto Rai dell'autunno", "datePublished": "2026-08-14", "dateModified": "2026-09-04", "description": "Dal 2016 la soap ha presidiato la fascia delle 16 diventando un appuntamento fisso per milioni di spettatrici. Le indiscrezioni sul nuovo palinsesto parlano di uno spostamento che cambia completamente la natura della partita.", "inLanguage": "it-IT", "mainEntityOfPage": "https://serietvfans.com/il-paradiso-delle-signore/il-paradiso-delle-signore-10-si-sposta-alle-14-e-sfida-beautiful-la-mossa-piu-ri/", "image": ["https://i.ytimg.com/vi/DJOJrFArCcs/maxresdefault.jpg"], "author": {"@type": "Organization", "name": "Serie TV Fans", "url": "https://serietvfans.com/chi-siamo/"}, "publisher": {"@type": "Organization", "name": "Serie TV Fans", "logo": {"@type": "ImageObject", "url": "https://serietvfans.com/favicon.svg"}}, "video": {"@type": "VideoObject", "name": "Il Paradiso delle Signore 10 cambia volto: la Rai rivoluziona il palinsesto", "description": "Dal 2016 la soap ha presidiato la fascia delle 16 diventando un appuntamento fisso per milioni di spettatrici. Le indiscrezioni sul nuovo palinsesto parlano di uno spostamento che cambia completamente la natura della partita.", "thumbnailUrl": "https://i.ytimg.com/vi/DJOJrFArCcs/maxresdefault.jpg", "uploadDate": "2026-08-14T12:00:00Z", "embedUrl": "https://www.youtube.com/embed/DJOJrFArCcs"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Il Paradiso delle Signore 10 si sposta alle 14 e sfida Beautiful: la mossa più rischiosa del palinsesto Rai dell'autunno", "datePublished": "2026-08-14", "dateModified": "2026-09-08", "description": "Dal 2016 la soap ha presidiato la fascia delle 16 diventando un appuntamento fisso per milioni di spettatrici. Le indiscrezioni sul nuovo palinsesto parlano di uno spostamento che cambia completamente la natura della partita.", "inLanguage": "it-IT", "mainEntityOfPage": "https://serietvfans.com/il-paradiso-delle-signore/il-paradiso-delle-signore-10-si-sposta-alle-14-e-sfida-beautiful-la-mossa-piu-ri/", "image": ["https://serietvfans.com/img/il-paradiso-delle-signore-10-si-sposta-alle-14-e-sfida-beautiful-la-mossa-piu-ri.jpg"], "author": {"@type": "Organization", "name": "Serie TV Fans", "url": "https://serietvfans.com/chi-siamo/"}, "publisher": {"@type": "Organization", "name": "Serie TV Fans", "logo": {"@type": "ImageObject", "url": "https://serietvfans.com/favicon.svg"}}, "video": {"@type": "VideoObject", "name": "Il Paradiso delle Signore 10 cambia volto: la Rai rivoluziona il palinsesto", "description": "Dal 2016 la soap ha presidiato la fascia delle 16 diventando un appuntamento fisso per milioni di spettatrici. Le indiscrezioni sul nuovo palinsesto parlano di uno spostamento che cambia completamente la natura della partita.", "thumbnailUrl": "https://serietvfans.com/img/il-paradiso-delle-signore-10-si-sposta-alle-14-e-sfida-beautiful-la-mossa-piu-ri.jpg", "uploadDate": "2026-08-14T12:00:00Z", "embedUrl": "https://www.youtube.com/embed/DJOJrFArCcs"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://serietvfans.com/"}, {"@type": "ListItem", "position": 2, "name": "Il Paradiso delle Signore", "item": "https://serietvfans.com/serie/il-paradiso-delle-signore/"}, {"@type": "ListItem", "position": 3, "name": "Il Paradiso delle Signore 10 si sposta alle 14 e sfida Beautiful: la mossa più rischiosa del palinsesto Rai dell'autunno"}]}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,19 +385,18 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/il-paradiso-delle-signore/">Il Paradiso delle Signore</a> › Il Paradiso delle Signore 10 si sposta alle 14 e sfida Beautiful: la mossa più rischiosa del palinsesto Rai dell&#x27;autunno</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/il-paradiso-delle-signore/">Il Paradiso delle Signore</a>
   <h1>Il Paradiso delle Signore 10 si sposta alle 14 e sfida Beautiful: la mossa più rischiosa del palinsesto Rai dell&#x27;autunno</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 8 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Dal 2016 la soap ha presidiato la fascia delle 16 diventando un appuntamento fisso per milioni di spettatrici. Le indiscrezioni sul nuovo palinsesto parlano di uno spostamento che cambia completamente la natura della partita.</p><ol><li><a href="#c1">Dalle 16 alle 14: perché è una scommessa</a></li><li><a href="#c2">Chi è Adelaide di Sant&#x27;Erasmo, la donna che la Rai manda in prima linea</a></li><li><a href="#c3">Cosa mette in campo la soap</a></li><li><a href="#c4">Gli altri movimenti del palinsesto</a></li><li><a href="#c5">La parola all&#x27;Auditel</a></li><li><a href="#c6">Alle 14 cambia chi guarda, non solo quando</a></li><li><a href="#c7">Come Adelaide affronta il sabotaggio compiuto da Tancredi</a></li><li><a href="#c8">Cosa cambia per Delia Brunello nella nuova stagione</a></li><li><a href="#c9">Perche Umberto Guarnieri sfida la tradizione di Brooke</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>Il Paradiso delle Signore</strong> — Rai 1, dal lunedì al venerdì · in streaming su RaiPlay</span></div>
-  
-  <p class="occhiello">Dal 2016 la soap ha presidiato la fascia delle 16 diventando un appuntamento fisso per milioni di spettatrici. Le indiscrezioni sul nuovo palinsesto parlano di uno spostamento che cambia completamente la natura della partita.</p>
+  <figure class="copertina"><img src="/img/il-paradiso-delle-signore-10-si-sposta-alle-14-e-sfida-beautiful-la-mossa-piu-ri.jpg" alt="Il Paradiso delle Signore"><figcaption>Immagine d&#x27;ambiente — Il Paradiso delle Signore</figcaption></figure>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
     <button type="button" class="avvia" data-yt="DJOJrFArCcs"
       aria-label="Riproduci il video: Il Paradiso delle Signore 10 si sposta alle 14 e sfida Beautiful: la mossa più rischiosa del palinsesto Rai dell&#x27;autunno" onclick="ytGo(this)">
-      <img src="https://i.ytimg.com/vi/DJOJrFArCcs/maxresdefault.jpg" alt="Il Paradiso delle Signore 10 si sposta alle 14 e sfida Beautiful: la mossa più rischiosa del palinsesto Rai dell&#x27;autunno" width="1280" height="720"
-        srcset="https://i.ytimg.com/vi/DJOJrFArCcs/hqdefault.jpg 480w, https://i.ytimg.com/vi/DJOJrFArCcs/sddefault.jpg 640w, https://i.ytimg.com/vi/DJOJrFArCcs/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+      <img src="/img/il-paradiso-delle-signore-10-si-sposta-alle-14-e-sfida-beautiful-la-mossa-piu-ri.jpg" alt="Il Paradiso delle Signore 10 si sposta alle 14 e sfida Beautiful: la mossa più rischiosa del palinsesto Rai dell&#x27;autunno" width="1280" height="720"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/DJOJrFArCcs/hqdefault.jpg&quot;, &quot;/fallback/il-paradiso-delle-signore.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,46 +407,68 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>Con la decima stagione e 160 episodi già in lavorazione, la Rai passa all&#x27;attacco.</strong></p>
-  <h2>Dalle 16 alle 14: perché è una scommessa</h2>
+  <h2 id="c1">Dalle 16 alle 14: perché è una scommessa</h2>
 <p>Finora Il Paradiso delle Signore ha difeso un territorio che era già suo. Spostandosi alle 14 finirebbe invece testa a testa con Beautiful, cioè con la soap più longeva del pomeriggio italiano, quella le cui trame il pubblico conosce a memoria. È un cambio di postura: non si difende più una fascia, se ne attacca un&#x27;altra. Se il sorpasso riuscisse, si parlerebbe di un ribaltamento storico degli equilibri del pomeriggio, con conseguenze anche sugli investimenti pubblicitari e sulle scelte delle altre reti. Se fallisse, si ritroverebbero con un titolo di punta esposto e un pomeriggio più debole di prima.</p>
-<h2>Chi è Adelaide di Sant&#x27;Erasmo, la donna che la Rai manda in prima linea</h2>
+<h2 id="c2">Chi è Adelaide di Sant&#x27;Erasmo, la donna che la Rai manda in prima linea</h2>
 <p>Mettere una soap contro Beautiful significa scommettere su chi la tiene in piedi, e al Paradiso quel ruolo è di Adelaide. Non è la protagonista buona di turno: è una contessa che comanda per abitudine, che ha attraversato un intervento al cuore e che negli ultimi cicli ha incassato il colpo più duro proprio dalla propria famiglia, quando ha scoperto che a sabotare il grande magazzino era stato il nipote Tancredi per farsi strada. La sua forza in video è quel misto di controllo e di ferita: legge le persone prima che parlino, tace, e presenta il conto dopo. Accanto a lei Umberto Guarnieri, l&#x27;altra colonna della serie, è il socio con cui ogni alleanza dura esattamente finché conviene a entrambi.</p>
-<h2>Cosa mette in campo la soap</h2>
+<h2 id="c3">Cosa mette in campo la soap</h2>
 <p>Dalla parte del Paradiso ci sono l&#x27;ambientazione in costume, l&#x27;atmosfera curata e personaggi diventati bandiere — a partire da Adelaide di Sant&#x27;Erasmo, interpretata da Vanessa Gravina, e da Umberto Guarnieri, interpretato da Roberto Farnesi. La scommessa dichiarata è dimostrare che una soap italiana di qualità, ambientata nel boom economico tra moda, emancipazione femminile e intrighi sentimentali, può reggere il confronto con una tradizione americana consolidata da decenni.</p>
-<h2>Gli altri movimenti del palinsesto</h2>
+<h2 id="c4">Gli altri movimenti del palinsesto</h2>
 <p>Lo spostamento si inserisce in un riassetto più ampio. In prima serata torna Cuori con la terza stagione, con Pilar Fogliati di nuovo nei panni della dottoressa Delia Brunello — ma senza Daniele Pecci, che delle prime due stagioni era stato uno dei pilastri, un&#x27;assenza su cui le community si dividono tra chi teme un calo e chi pensa che possa perfino giovare. L&#x27;access resta ad Affari Tuoi, sull&#x27;onda dei numeri costruiti da Stefano De Martino, per il quale si parla di un progetto tutto suo in seconda serata: un late night all&#x27;italiana tra talk, comicità e musica. Restano al loro posto Reazione a Catena con Pino Insegno, L&#x27;Eredità in inverno con Marco Liorni e Ballando con le Stelle con Milly Carlucci.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>La parola all&#x27;Auditel</h2>
+<h2 id="c5">La parola all&#x27;Auditel</h2>
 <p>Il senso dell&#x27;operazione è tutto lì: una rete che smette di limitarsi a conservare i propri spazi e prova a prendersi quelli degli altri, mescolando programmi consolidati e carte nuove — format internazionali da adattare, quiz brevi per il preserale, docuserie. Come sempre, però, la decisione finale non è di chi costruisce il palinsesto ma di chi guarda: sarà l&#x27;Auditel a dire se la contessa Adelaide riuscirà a farsi preferire a Ridge e Brooke nel primo pomeriggio.</p>
-<h2>Alle 14 cambia chi guarda, non solo quando</h2>
+<h2 id="c6">Alle 14 cambia chi guarda, non solo quando</h2>
 <p>Uno spostamento di due ore non è un dettaglio di palinsesto: è un pubblico diverso. Alle 16 la soap parlava a chi la segue da anni e riconosce i personaggi dalla camminata; alle 14 si rivolge in buona parte a chi accende la televisione mentre sparecchia e non ha idea di chi sia la contessa. Da lì discende tutto il resto: le prime settimane dovranno spiegare senza sembrare didascaliche, i personaggi bandiera dovranno reggere scene di presentazione, e ogni storyline lunga rischia di perdere pezzi per strada. C&#x27;è anche un rischio meno raccontato — se il confronto diretto non paga, la rete non si limita a riportare la soap dov&#x27;era: rimette in discussione l&#x27;intero blocco pomeridiano che le sta intorno.</p>
-<h2>Come Adelaide affronta il sabotaggio compiuto da Tancredi</h2>
+<h2 id="c7">Come Adelaide affronta il sabotaggio compiuto da Tancredi</h2>
 <p>La figura di Adelaide di Sant Erasmo incarna perfettamente lo spirito battagliero che la rete intende schierare nel primo pomeriggio. La contessa ha dimostrato una resistenza fuori dal comune, superando un delicato intervento al cuore e rimanendo sempre al centro dei giochi di potere che animano la trama. Il momento di svolta più amaro della sua vita recente è arrivato direttamente tra le mura domestiche, quando è emersa la sconvolgente verità sul sabotaggio ai danni del grande magazzino. Scoprire che la responsabilità di quell atto devastante fosse proprio del nipote Tancredi, pronto a tutto pur di farsi strada a discapito della famiglia, ha rappresentato la ferita più profonda e complessa da rimarginare per la nobile donna.</p>
 <p>Di fronte a un tradimento così grave, la reazione della contessa rivela appieno il suo carattere calcolatore e inflessibile. Adelaide non cede all impulsività, ma sceglie la strada dell osservazione attenta e del silenzio tattico, dimostrando una capacità straordinaria di decifrare le intenzioni altrui prima ancora che vengano pronunciate. In questo scenario si inserisce il suo rapporto con Umberto Guarnieri, considerato a sua volta una colonna portante della storia. La loro intesa professionale e sentimentale si regge su un equilibrio precario in cui ogni patto vale solo finché garantisce vantaggi reciproci. Questa coppia di potere rappresenta il perno narrativo attorno a cui ruotano le dinamiche più avvincenti e drammatiche della soap.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Cosa cambia per Delia Brunello nella nuova stagione</h2>
+<h2 id="c8">Cosa cambia per Delia Brunello nella nuova stagione</h2>
 <p>Il palinsesto autunnale non punta solo sul pomeriggio ma schiera grandi titoli anche in prima serata, dove spicca il ritorno della fiction medica Cuori giunta alla terza stagione. La narrazione ritrova al centro la dottoressa Delia Brunello, interpretata da Pilar Fogliati, ma deve fare i conti con un cambiamento sostanziale che ha già acceso discussioni appassionate tra tutti gli appassionati. L assenza di Daniele Pecci, la cui presenza aveva rappresentato un punto fermo irrinunciabile durante le prime due stagioni, sposta inevitabilmente il peso drammatico sulle spalle della protagonista. Questa mancanza fondamentale divide il pubblico: da una parte c è chi teme un calo di tensione narrativa, dall altra chi intravede un opportunità di crescita per la dottoressa.</p>
 <p>Questa importante scommessa serale fa parte di un riassetto generale della programmazione che coinvolge diverse fasce orarie e personaggi simbolo della televisione pubblica. Accanto al ritorno in prima serata di Delia Brunello e del suo staff medico, la rete conferma altri pilastri consolidati come Reazione a Catena affidato alla conduzione di Pino Insegno, L Eredità guidata nei mesi invernali da Marco Liorni e l immancabile appuntamento con Ballando con le Stelle condotto da Milly Carlucci. In questo contesto variegato si inseriscono anche le novità legate ad Affari Tuoi con Stefano De Martino, per il quale si profila persino uno spazio in seconda serata tra musica, comicità e interviste con ospiti.</p>
-<h2>Perche Umberto Guarnieri sfida la tradizione di Brooke</h2>
+<h2 id="c9">Perche Umberto Guarnieri sfida la tradizione di Brooke</h2>
 <p>La decisione di spostare la programmazione alle ore quattordici mette direttamente a confronto la soap italiana con un gigante della televisione americana come Beautiful. Per reggere l urto contro personaggi storici e amatissimi dal pubblico del primo pomeriggio come Ridge e Brooke, la produzione schiera l eleganza delle ambientazioni d epoca e l attrazione dei propri volti simbolo. Umberto Guarnieri, interpretato da Roberto Farnesi, rappresenta insieme alla contessa Adelaide l incarnazione di un modello narrativo radicato nella storia nazionale. Lo scontro non riguarda unicamente due prodotti televisivi differenti, ma mette di fronte una tradizione d oltreoceano e un racconto ambientato nell Italia del boom economico, fatto di moda, eleganza e importanti conquiste di emancipazione femminile.</p>
 <p>Questo cambio di collocazione oraria implica un profondo adattamento alle abitudini del pubblico, poiché la fascia delle quattordici raccoglie spettatori differenti rispetto a quelli del tardo pomeriggio. Chi accende il televisore al termine del pranzo ha spesso un attenzione più frammentata e potrebbe non conoscere le complesse vicende personali che legano Umberto Guarnieri agli altri protagonisti del grande magazzino. Per questa ragione le prime puntate della stagione dovranno ripresentare la complessità dei personaggi senza scadere in spiegazioni troppo lente o didascaliche. La vera sfida per la rete consiste nel dimostrare che gli intrighi sentimentali e le manovre economiche dei protagonisti italiani sono capaci di catturare l attenzione dei telespettatori e conquistarne la fedeltà.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   </div>
   
   <div class="riquadro"><h3>E secondo voi?</h3><p>Guarderete Il Paradiso alle 14?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=DJOJrFArCcs">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di Il Paradiso delle Signore</h2><div class="griglia"><article class="scheda">
+  <a href="/il-paradiso-delle-signore/il-paradiso-delle-signore-14-18-aprile-rosa-consegna-le-dimissioni-a-roberto-e-f/"><div class="foto"><img src="/img/il-paradiso-delle-signore-14-18-aprile-rosa-consegna-le-dimissioni-a-roberto-e-f.jpg" alt="Il Paradiso delle Signore" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/il-paradiso-delle-signore.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Il Paradiso delle Signore</span>
+    <h3><a href="/il-paradiso-delle-signore/il-paradiso-delle-signore-14-18-aprile-rosa-consegna-le-dimissioni-a-roberto-e-f/">Il Paradiso delle Signore 14-18 aprile, Rosa consegna le dimissioni a Roberto e firma con Tancredi — mentre un uomo sconosciuto fa domande su Enrico in magazzino</a></h3>
+    <div class="quando">14 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/il-paradiso-delle-signore/il-paradiso-delle-signore-16-20-dicembre-adelaide-invita-umberto-alla-cena-di-na/"><div class="foto"><img src="/img/il-paradiso-delle-signore-16-20-dicembre-adelaide-invita-umberto-alla-cena-di-na.jpg" alt="Il Paradiso delle Signore" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/il-paradiso-delle-signore.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Il Paradiso delle Signore</span>
+    <h3><a href="/il-paradiso-delle-signore/il-paradiso-delle-signore-16-20-dicembre-adelaide-invita-umberto-alla-cena-di-na/">Il Paradiso delle Signore 16-20 dicembre, Adelaide invita Umberto alla cena di Natale ma lascia fuori Marcello — e Clara confessa a Jerome il bacio con Alfredo</a></h3>
+    <div class="quando">14 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/il-paradiso-delle-signore/il-paradiso-delle-signore-9-finale-da-terremoto-il-plagio-di-tancredi-smascherat/"><div class="foto"><img src="https://i.ytimg.com/vi/V5DHB2zqtII/hqdefault.jpg" alt="Il Paradiso delle Signore" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/il-paradiso-delle-signore.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Il Paradiso delle Signore</span>
+    <h3><a href="/il-paradiso-delle-signore/il-paradiso-delle-signore-9-finale-da-terremoto-il-plagio-di-tancredi-smascherat/">Il Paradiso delle Signore 9, finale da terremoto: il plagio di Tancredi smascherato da Rita Marengo, Adelaide lo mette all&#x27;angolo — e Salvatore diventa papà</a></h3>
+    <div class="quando">14 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=Il Paradiso delle Signore 10 si sposta alle 14 e sfida Beautiful: la mossa più rischiosa del palinsesto Rai dell&#x27;autunno — https://serietvfans.com/il-paradiso-delle-signore/il-paradiso-delle-signore-10-si-sposta-alle-14-e-sfida-beautiful-la-mossa-piu-ri/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/il-paradiso-delle-signore/il-paradiso-delle-signore-10-si-sposta-alle-14-e-sfida-beautiful-la-mossa-piu-ri/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/il-paradiso-delle-signore/il-paradiso-delle-signore-10-si-sposta-alle-14-e-sfida-beautiful-la-mossa-piu-ri/&text=Il Paradiso delle Signore 10 si sposta alle 14 e sfida Beautiful: la mossa più rischiosa del palinsesto Rai dell&#x27;autunno" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">Il Paradiso delle Signore 10 cambia volto: la Rai rivoluziona il palinsesto</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=DJOJrFArCcs">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di Il Paradiso delle Signore</h3><ol class="numerata"><li><a href="/il-paradiso-delle-signore/il-paradiso-delle-signore-14-18-aprile-rosa-consegna-le-dimissioni-a-roberto-e-f/">Il Paradiso delle Signore 14-18 aprile, Rosa consegna le dimissioni a Roberto e firma con Tancredi — mentre un uomo sconosciuto fa domande su Enrico in magazzino</a></li><li><a href="/il-paradiso-delle-signore/il-paradiso-delle-signore-16-20-dicembre-adelaide-invita-umberto-alla-cena-di-na/">Il Paradiso delle Signore 16-20 dicembre, Adelaide invita Umberto alla cena di Natale ma lascia fuori Marcello — e Clara confessa a Jerome il bacio con Alfredo</a></li><li><a href="/il-paradiso-delle-signore/il-paradiso-delle-signore-9-finale-da-terremoto-il-plagio-di-tancredi-smascherat/">Il Paradiso delle Signore 9, finale da terremoto: il plagio di Tancredi smascherato da Rita Marengo, Adelaide lo mette all&#x27;angolo — e Salvatore diventa papà</a></li><li><a href="/il-paradiso-delle-signore/il-paradiso-delle-signore-il-destino-di-mimmo-burgio-dal-ragazzo-timido-di-parta/">Il Paradiso delle Signore, il destino di Mimmo Burgio: dal ragazzo timido di Partanna all&#x27;eroe che disarma il sicario tra le camicie di seta</a></li><li><a href="/il-paradiso-delle-signore/il-paradiso-delle-signore-il-finale-e-di-adelaide-hai-ferito-me-marcello-e-lidea/">Il Paradiso delle Signore, il finale è di Adelaide: «Hai ferito me, Marcello e l&#x27;idea stessa di bellezza» — la contessa decide il destino di Tancredi</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>Il Paradiso delle Signore 10 cambia volto: la Rai rivoluziona il palinsesto</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su Il Paradiso delle Signore</h3><ul><li><a href="/il-paradiso-delle-signore/il-paradiso-delle-signore-14-18-aprile-rosa-consegna-le-dimissioni-a-roberto-e-f/">Il Paradiso delle Signore 14-18 aprile, Rosa consegna le dimissioni a Roberto e firma con Tancredi — mentre un uomo sconosciuto fa domande su Enrico in magazzino</a></li><li><a href="/il-paradiso-delle-signore/il-paradiso-delle-signore-16-20-dicembre-adelaide-invita-umberto-alla-cena-di-na/">Il Paradiso delle Signore 16-20 dicembre, Adelaide invita Umberto alla cena di Natale ma lascia fuori Marcello — e Clara confessa a Jerome il bacio con Alfredo</a></li><li><a href="/il-paradiso-delle-signore/il-paradiso-delle-signore-9-finale-da-terremoto-il-plagio-di-tancredi-smascherat/">Il Paradiso delle Signore 9, finale da terremoto: il plagio di Tancredi smascherato da Rita Marengo, Adelaide lo mette all&#x27;angolo — e Salvatore diventa papà</a></li><li><a href="/il-paradiso-delle-signore/il-paradiso-delle-signore-il-destino-di-mimmo-burgio-dal-ragazzo-timido-di-parta/">Il Paradiso delle Signore, il destino di Mimmo Burgio: dal ragazzo timido di Partanna all&#x27;eroe che disarma il sicario tra le camicie di seta</a></li><li><a href="/il-paradiso-delle-signore/il-paradiso-delle-signore-il-finale-e-di-adelaide-hai-ferito-me-marcello-e-lidea/">Il Paradiso delle Signore, il finale è di Adelaide: «Hai ferito me, Marcello e l&#x27;idea stessa di bellezza» — la contessa decide il destino di Tancredi</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/my-home-my-destiny/">My Home My Destiny</a> › My Home My Destiny 8-9 novembre, il bacio di Barış nel dormiveglia — e il foglio con cui Zeynep ritira la denuncia davanti a tutti</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/my-home-my-destiny/">My Home My Destiny</a>
   <h1>My Home My Destiny 8-9 novembre, il bacio di Barış nel dormiveglia — e il foglio con cui Zeynep ritira la denuncia davanti a tutti</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Due puntate che spostano tutti gli equilibri: mentre lo assiste con la febbre altissima, Zeynep viene baciata da un Barış in stato semincosciente — e il giorno dopo lui non ricorda nulla. Poi la notizia dell&#x27;aggressione a Mehdi in carcere: in ospedale, davanti al cuore che si ferma e riparte, Zeynep prende carta e penna e scrive il ritiro della denuncia. Nermin le dice di vergognarsi di lei, Barış la accusa di debolezza dettata dall&#x27;amore — e i giornali intanto l&#x27;avevano trasformata in un simbolo.</p><ol><li><a href="#c1">La febbre, la doccia e il bacio</a></li><li><a href="#c2">L&#x27;agguato nei bagni del carcere</a></li><li><a href="#c3">Il cuore che si ferma e il foglio scritto in fretta</a></li><li><a href="#c4">«Non è misericordia, è debolezza»</a></li><li><a href="#c5">Come Sultan sostiene Zeynep in un momento difficile</a></li><li><a href="#c6">Cosa spinge Zeynep a ritirare la denuncia in ospedale</a></li><li><a href="#c7">Perché Barış e Savaş reagiscono in modo tanto diverso</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>My Home My Destiny</strong> — Serie conclusa in Italia · le puntate su Mediaset Infinity</span></div>
   
-  <p class="occhiello">Due puntate che spostano tutti gli equilibri: mentre lo assiste con la febbre altissima, Zeynep viene baciata da un Barış in stato semincosciente — e il giorno dopo lui non ricorda nulla. Poi la notizia dell&#x27;aggressione a Mehdi in carcere: in ospedale, davanti al cuore che si ferma e riparte, Zeynep prende carta e penna e scrive il ritiro della denuncia. Nermin le dice di vergognarsi di lei, Barış la accusa di debolezza dettata dall&#x27;amore — e i giornali intanto l&#x27;avevano trasformata in un simbolo.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: My Home My Destiny 8-9 novembre, il bacio di Barış nel dormiveglia — e il foglio con cui Zeynep ritira la denuncia davanti a tutti" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/C_UTRZWkxKo/maxresdefault.jpg" alt="My Home My Destiny 8-9 novembre, il bacio di Barış nel dormiveglia — e il foglio con cui Zeynep ritira la denuncia davanti a tutti" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/C_UTRZWkxKo/hqdefault.jpg 480w, https://i.ytimg.com/vi/C_UTRZWkxKo/sddefault.jpg 640w, https://i.ytimg.com/vi/C_UTRZWkxKo/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/C_UTRZWkxKo/hqdefault.jpg&quot;, &quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,25 +409,25 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>Il gesto silenzioso di Sultan: strappa gli articoli di giornale su Zeynep e li usa per pulire i vetri, poi le mette due fette di patate sulle occhiaie prima dell&#x27;ufficio.</strong></p>
-  <h2>La febbre, la doccia e il bacio</h2>
+  <h2 id="c1">La febbre, la doccia e il bacio</h2>
 <p>Barış lavora nonostante una febbre altissima, e Zeynep si prende cura di lui fino a portarlo sotto la doccia per far scendere la temperatura. Nel dormiveglia lui le appoggia la testa sulle gambe — scena osservata da un Savaş sempre più contrariato — e poi, semincosciente, si gira e la bacia. Lei resta senza parole ed esce dalla stanza. Il giorno dopo si presenta con una zuppa e lo trova in giacca e cravatta, pronto per l&#x27;ufficio: le chiede se durante quel momento di confusione abbia fatto qualcosa di sconveniente. Zeynep risponde di no.</p>
-<h2>L&#x27;agguato nei bagni del carcere</h2>
+<h2 id="c2">L&#x27;agguato nei bagni del carcere</h2>
 <p>Nella stessa notte, in prigione, Mehdi viene aggredito alle spalle mentre si lava: l&#x27;uomo lo ferisce con un coltello dicendo di agire per conto del boss e lo lascia sanguinante sul pavimento. Viene trovato la mattina dai compagni di cella. In ospedale, Cemile scarica la disperazione su Zeynep accusandola di aver rovinato il fratello e giurando vendetta se dovesse morire; Kibrit, ormai quasi maggiorenne, le annuncia che si occuperà del padre da sola e che non ha più bisogno di lei. L&#x27;operazione riesce ma gli organi sono compromessi.</p>
-<h2>Il cuore che si ferma e il foglio scritto in fretta</h2>
+<h2 id="c3">Il cuore che si ferma e il foglio scritto in fretta</h2>
 <p>Dietro il vetro della terapia intensiva l&#x27;infermiera annuncia che il cuore di Mehdi si è fermato: seguono minuti interminabili di rianimazione, il pianto collettivo, poi il medico che esce e dice che il battito è tornato. È in quel momento che Zeynep si apparta, prende carta e penna, scrive poche righe e le porge a Cemile: è il ritiro della denuncia, a una condizione — che lui lasci la città. Barış e Nermin, appena arrivati, la guardano impietriti.</p>
-<h2>«Non è misericordia, è debolezza»</h2>
+<h2 id="c4">«Non è misericordia, è debolezza»</h2>
 <p>In auto, Barış non le risparmia nulla: quel gesto non è pietà ma debolezza dettata dall&#x27;innamoramento, e mette in pericolo lei e la sua famiglia. Nermin le dice apertamente di vergognarsi e le mostra i giornali che le avevano tenuto nascosti — la sua storia era diventata il simbolo della violenza contro le donne. Zeynep piange sola, e il mattino dopo trova conforto solo nel gesto silenzioso di Sultan, che strappa quegli articoli per pulirci i vetri e le ricorda che pensare a se stessi non è egoismo. In ufficio, dopo un ultimo confronto in cui Barış le impone di parlare solo di lavoro, il ghiaccio comincia lentamente a sciogliersi: una nuova tazza di caffè, un dossier da esaminare insieme, e la notizia che Sultan ed Emine lavoreranno per lui.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Come Sultan sostiene Zeynep in un momento difficile</h2>
+<h2 id="c5">Come Sultan sostiene Zeynep in un momento difficile</h2>
 <p>Sultan compie un gesto concreto e simbolico per proteggere Zeynep dalla pressione mediatica che la circonda. Quando i giornali trasformano la storia della giovane donna in un simbolo nazionale della lotta contro la violenza sulle donne, l&#x27;impatto emotivo rischia di schiacciarla. Sultan sceglie di intervenire a modo suo: prende quegli stessi articoli di giornale, li strappa senza alcuna esitazione e li riutilizza in modo del tutto pratico per pulire i vetri di casa. Questo atto di apparente disinteresse verso il clamore pubblico serve a ridimensionare la portata delle notizie e a dimostrare a Zeynep che la sua vita reale non deve rimanere prigioniera dei giudizi altrui o della cronaca.</p>
 <p>Oltre al gesto liberatorio con i quotidiani, Sultan si prende cura dello stato fisico ed emotivo della ragazza prima che si rechi al lavoro. Notando le evidenti occhiaie sul volto di Zeynep, provato da notti insonni e tensioni accumulate, Sultan le applica due fette di patate sugli occhi per donarle sollievo prima dell&#x27;uscita verso l&#x27;ufficio. Durante questo momento d&#x27;intimità domestica, Sultan le offre una lezione fondamentale, ricordandole con fermezza che mettere se stessi al primo posto non equivale affatto a comportarsi in modo egoista. Questa affermazione diventa un punto d&#x27;appoggio cruciale per la protagonista, smarrita tra i continui sensi di colpa e le pressioni delle figure che la circondano.</p>
 <p>Il supporto pratico e le parole di Sultan si collocano in un contesto lavorativo e familiare in evoluzione. Sultan ed Emine stanno infatti per iniziare a lavorare direttamente per Barış, creando un nuovo legame professionale che si intreccia con le vicende della casa. Questo rifugio affettivo offerto da Sultan diventa ancora più vitale quando si confronta con l&#x27;atteggiamento rigido di Nermin. Quest&#x27;ultima, al contrario, affronta Zeynep mostrandole i giornali tenuti nascosti fino a quel momento e dichiarando apertamente di vergognarsi delle sue scelte, lasciando la ragazza sola nel suo dolore finché l&#x27;intervento di Sultan non le permette di ritrovare un minimo di serenità.</p>
-<h2>Cosa spinge Zeynep a ritirare la denuncia in ospedale</h2>
+<h2 id="c6">Cosa spinge Zeynep a ritirare la denuncia in ospedale</h2>
 <p>La drammatica decisione di Zeynep matura in seguito al gravissimo episodio avvenuto all&#x27;interno della prigione in cui si trova detenuto Mehdi. Durante la notte, mentre si sta lavando nei bagni del carcere, Mehdi viene sorpreso da un aggressione alle spalle. Un uomo armato di coltello lo ferisce gravemente, dichiarando esplicitamente di agire per conto del boss della struttura. Il corpo di Mehdi viene lasciato sanguinante sul pavimento del bagno, dove verrà scoperto soltanto la mattina seguente dai compagni di cella. Nonostante l&#x27;intervento chirurgico d&#x27;urgenza in ospedale riesca ad salvarlo, i medici evidenziano subito che la funzionalità degli organi interni risulta fortemente compromessa dal fendente.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>La situazione precipita ulteriormente nei corridoi del reparto di terapia intensiva, dove la tensione tra i presenti raggiunge il punto di rottura. Osservando la scena da dietro il vetro protettivo, i familiari assistono al momento in cui l&#x27;infermiera annuncia improvvisamente il fermo del cuore di Mehdi. Seguono minuti d&#x27;angoscia e disperata rianimazione accompagnati dal pianto collettivo dei presenti, finché il medico esce per informare tutti che il battito cardiaco è miracolosamente ripartito. Travolta dall&#x27;emozione di quell&#x27;evento limite, Zeynep prende una decisione immediata: si apparta, recupera carta e penna e scrive di getto poche righe per ritirare ufficialmente la denuncia.</p>
 <p>Zeynep consegna il foglio appena scritto direttamente a Cemile, ponendo un&#x27;unica e imprescindibile condizione: Mehdi dovrà abbandonare definitivamente la città una volta uscito dall&#x27;ospedale. Il gesto della ragazza giunge dopo che la stessa Cemile l&#x27;aveva investita con parole d&#x27;odio, accusandola di aver rovinato il fratello e giurando una spietata vendetta nel caso in cui fosse morto. A complicare la posizione di Zeynep c&#x27;è anche il distacco di Kibrit, la quale, ormai vicina alla maggiore età, le dichiara di voler badare al padre da sola senza più fare affidamento su di lei. Il ritiro della denuncia spiazza del tutto i presenti.</p>
-<h2>Perché Barış e Savaş reagiscono in modo tanto diverso</h2>
+<h2 id="c7">Perché Barış e Savaş reagiscono in modo tanto diverso</h2>
 <p>Il momento d&#x27;intimità tra Barış e Zeynep nasce all&#x27;interno dell&#x27;abitazione dell&#x27;avvocato, costretto a letto da uno stato d&#x27;alterazione e da una febbre altissima. Nonostante le sue precarie condizioni fisiche, Barış insiste nel voler continuare a lavorare, costringendo Zeynep a prendersi cura di lui in modo costante, fino a doverlo accompagnare personalmente sotto la doccia per permettere alla temperatura corporea di scendere. Successivamente, in uno stato di dormiveglia e totale confusione, Barış appoggia la testa sulle gambe della ragazza. Tutta la scena viene osservata in silenzio da Savaş, il quale manifesta un atteggiamento sempre più contrariato di fronte al palese avvicinamento tra i due protagonisti.</p>
 <p>Mentre si trova ancora in questo stato semincosciente, Barış si gira improvvisamente verso Zeynep e la bacia sulla bocca. La ragazza rimane del tutto spiazzata e senza parole di fronte a quel gesto imprevisto, optando per abbandonare immediatamente la stanza. Il mattino seguente Zeynep si ripresenta a casa di Barış portando con sé una zuppa calda, ma trova l&#x27;uomo già perfettamente vestito in giacca e cravatta, pronto per recarsi nel suo studio legale. Ancora confuso sulla sera precedente, Barış le domanda in modo diretto se durante il delirio febbrile abbia commesso un&#x27;azione sconveniente nei suoi confronti, ricevendo tuttavia una risposta negativa da parte della ragazza.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
@@ -385,19 +435,41 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=pQJR-JaCpIQ" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/pQJR-JaCpIQ/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>MY HOME MY DESTINY Anticipazioni 24 Novembre: Zeynep e Baris si chiariscono | Mehdi in difficol</span></a></li><li><a href="https://www.youtube.com/watch?v=ELR_b-TZI6s" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/ELR_b-TZI6s/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>MY HOME MY DESTINY Anticipazioni 15-16 Novembre: Zeynep tesa per il peso delle bugie a Baris e </span></a></li><li><a href="https://www.youtube.com/watch?v=Yhy9J2buqjk" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/Yhy9J2buqjk/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>MY HOME MY DESTINY Anticipazioni: Mehdi in carcere riflette mentre Zeynep soffre di crisi di pa</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Zeynep ha ceduto per pietà o Barış ha ragione? E Nermin è stata troppo dura con la figlia?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=C_UTRZWkxKo">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di My Home My Destiny</h2><div class="griglia"><article class="scheda">
+  <a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/"><div class="foto"><img src="/img/my-home-my-destiny-la-trama-completa-e-come-finisce.jpg" alt="My Home My Destiny" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">My Home My Destiny</span>
+    <h3><a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/">My Home My Destiny: la trama completa e come finisce</a></h3>
+    <div class="quando">30 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/"><div class="foto"><img src="https://i.ytimg.com/vi/-djleIeCLQs/hqdefault.jpg" alt="My Home My Destiny" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">My Home My Destiny</span>
+    <h3><a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/">My Home My Destiny, Zeynep ferma l&#x27;aborto di Benal in sala operatoria senza sapere che il padre è Mehdi</a></h3>
+    <div class="quando">17 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/"><div class="foto"><img src="https://i.ytimg.com/vi/gxL0o63Nhqw/hqdefault.jpg" alt="My Home My Destiny" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">My Home My Destiny</span>
+    <h3><a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/">My Home My Destiny, anticipazioni del 17 novembre: Özlem indaga su Zeynep e scopre tutto, Nuh diventa autista di Barış e qualcuno manomette i macchinari di Bekir</a></h3>
+    <div class="quando">16 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=My Home My Destiny 8-9 novembre, il bacio di Barış nel dormiveglia — e il foglio con cui Zeynep ritira la denuncia davanti a tutti — https://serietvfans.com/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/&text=My Home My Destiny 8-9 novembre, il bacio di Barış nel dormiveglia — e il foglio con cui Zeynep ritira la denuncia davanti a tutti" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">MY HOME MY DESTINY Anticipazioni 8-9 Novembre: Primo bacio tra Baris e Zeynep</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=C_UTRZWkxKo">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di My Home My Destiny</h3><ol class="numerata"><li><a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/">My Home My Destiny: la trama completa e come finisce</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/">My Home My Destiny, Zeynep ferma l&#x27;aborto di Benal in sala operatoria senza sapere che il padre è Mehdi</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/">My Home My Destiny, anticipazioni del 17 novembre: Özlem indaga su Zeynep e scopre tutto, Nuh diventa autista di Barış e qualcuno manomette i macchinari di Bekir</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-guida-alla-serie-chi-sono-demet-ozdemir-e-ibrahim-celikkol-qu/">My Home My Destiny: guida alla serie, il cast, i personaggi e quante puntate sono</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-1-dicembre-gli-spari-davanti-alla-vecchia-casa-zeynep-tra-le/">My Home My Destiny 1° dicembre, gli spari davanti alla vecchia casa: Zeynep tra le due madri quando l&#x27;uomo in moto estrae la pistola</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>MY HOME MY DESTINY Anticipazioni 8-9 Novembre: Primo bacio tra Baris e Zeynep</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su My Home My Destiny</h3><ul><li><a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/">My Home My Destiny: la trama completa e come finisce</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/">My Home My Destiny, Zeynep ferma l&#x27;aborto di Benal in sala operatoria senza sapere che il padre è Mehdi</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/">My Home My Destiny, anticipazioni del 17 novembre: Özlem indaga su Zeynep e scopre tutto, Nuh diventa autista di Barış e qualcuno manomette i macchinari di Bekir</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-guida-alla-serie-chi-sono-demet-ozdemir-e-ibrahim-celikkol-qu/">My Home My Destiny: guida alla serie, il cast, i personaggi e quante puntate sono</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-1-dicembre-gli-spari-davanti-alla-vecchia-casa-zeynep-tra-le/">My Home My Destiny 1° dicembre, gli spari davanti alla vecchia casa: Zeynep tra le due madri quando l&#x27;uomo in moto estrae la pistola</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Tutto per la mia Famiglia: anticipazioni e trame</title>
-<meta name="description" content="Tutto per la mia Famiglia anticipazioni: la colpa è di Akif. Trame aggiornate al 5 settembre 2026.">
+<meta name="description" content="Tutto per la mia Famiglia anticipazioni: Kaan si taglia per Süsen. Trame aggiornate al 7 settembre 2026.">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://serietvfans.com/serie/tutto-per-la-mia-famiglia/">
 <meta property="og:title" content="Tutto per la mia Famiglia: anticipazioni e trame">
-<meta property="og:description" content="Tutto per la mia Famiglia anticipazioni: la colpa è di Akif. Trame aggiornate al 5 settembre 2026.">
+<meta property="og:description" content="Tutto per la mia Famiglia anticipazioni: Kaan si taglia per Süsen. Trame aggiornate al 7 settembre 2026.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Serie TV Fans">
 <meta property="og:url" content="https://serietvfans.com/serie/tutto-per-la-mia-famiglia/">
@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -318,7 +367,7 @@ if(l.length){el.src=l.shift();el.dataset.fb=JSON.stringify(l)}else{el.onerror=nu
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -333,11 +382,32 @@ if(l.length){el.src=l.shift();el.dataset.fb=JSON.stringify(l)}else{el.onerror=nu
 <div class="intro-serie"><p>Qui trovi tutto quello che pubblichiamo su Tutto per la mia Famiglia: riassunti delle puntate, trame settimanali e schede sui personaggi, dalla più recente alla più vecchia. È la serie turca che in originale si chiama <em>Kardeşlerim</em>, cioè «i miei fratelli», ed è arrivata in Italia su Canale 5 il 15 giugno 2026. Chi cerca Tutto per la mia Famiglia anticipazioni di solito si è sintonizzato a storia già iniziata e ha bisogno di due cose: capire da dove nasce lo scontro tra gli Eren e gli Atakul, e sapere cosa succede nelle puntate che deve ancora vedere. Sotto rispondiamo alle domande più frequenti, poi comincia l'elenco completo degli articoli.</p></div>
 <div class="onda"><span class="tv">📺</span><span><strong>Tutto per la mia Famiglia</strong> — Canale 5 · in streaming su Mediaset Infinity</span></div>
 
-
+<nav class="migliori" aria-label="Le anticipazioni più approfondite"><h2>Da leggere prima</h2><ul><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-chi-e-kadir-eren-e-cosa-gli-succede-il-fratello-maggio/">Tutto per la mia famiglia, chi è Kadir Eren e cosa gli succede: il fratello maggiore muore davvero?</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-il-cast-completo-chi-sono-gli-attori-e-dove-li-abbiamo/">Tutto per la mia famiglia, il cast completo: chi sono gli attori e dove li abbiamo già visti</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-la-trama-dallinizio-chi-sono-gli-eren-e-perche-finisco/">Tutto per la mia famiglia, la trama dall&#x27;inizio: chi sono gli Eren e perché finiscono all&#x27;Ataman College</a></li></ul></nav>
 <section class="pillar"><h2>Di cosa parla Tutto per la mia Famiglia</h2><p>Al centro ci sono quattro fratelli: <strong>Kadir</strong>, <strong>Asiye</strong>, <strong>Ömer</strong> ed <strong>Emel Eren</strong>. Vivono in una famiglia povera ma unita finché una serie di eventi drammatici li lascia senza entrambi i genitori. Da quel momento non hanno più nessuna protezione: l'unica cosa che gli resta è il legame tra loro.</p><p>Le loro vite cambiano quando entrano all'<strong>Ataman College</strong>, un istituto prestigioso frequentato dai figli delle famiglie più ricche della città. Sulla carta è l'occasione della vita. Nella pratica è una trappola, perché la scuola appartiene ad <strong>Akif Atakul</strong>, l'imprenditore ritenuto responsabile della morte dei loro genitori. I quattro passano ogni giorno dentro un posto controllato da chi ha distrutto la loro famiglia: da lì parte tutto il resto.</p></section><section class="pillar"><h2>I personaggi principali di Tutto per la mia Famiglia</h2><p><strong>Kadir</strong> è il maggiore. Con i genitori morti smette di essere un ragazzo: decide, si prende le conseguenze al posto degli altri e tiene insieme la famiglia. È il personaggio attorno a cui girano gran parte degli snodi della prima parte.</p><p><strong>Asiye</strong> è la sorella che regge il lato emotivo del gruppo, ed è anche il tramite attraverso cui gli Eren finiscono intrecciati agli Atakul. <strong>Ömer</strong> è figlio adottivo della famiglia e gemello adottivo di Asiye: appartiene agli Eren a tutti gli effetti, ma il fatto di essere arrivato da fuori torna più volte nella storia. <strong>Emel</strong> è la più piccola. Dall'altra parte c'è <strong>Akif Atakul</strong>, l'antagonista da cui dipende ogni equilibrio.</p></section><section class="pillar"><h2>Il cast di Tutto per la mia Famiglia</h2><p>Questi sono gli attori dei ruoli principali nella versione originale turca.</p><ul><li><strong>Halit Özgür Sarı</strong> è Kadir Eren</li><li><strong>Su Burcu Yazgı Coşkun</strong> è Asiye Eren</li><li><strong>Yiğit Koçak</strong> è Ömer Eren</li><li><strong>Aylin Akpınar</strong> è Emel Eren</li><li><strong>Celil Nalçakan</strong> è Akif Atakul</li><li><strong>Simge Selçuk</strong> è Nebahat Atakul</li></ul><p>Su Burcu Yazgı Coşkun, che qui interpreta Asiye, in Italia si è già vista in «Racconto di una notte», su Canale 5, e ne «La forza di una donna».</p></section><section class="pillar"><h2>Quante puntate ha Tutto per la mia Famiglia</h2><p>La versione originale è composta da <strong>quattro stagioni per 132 episodi</strong>, andati in onda sulla rete turca ATV dal 2021 al 2024, quando la serie si è chiusa. La storia quindi ha già una fine scritta: in Italia arriva solo più tardi.</p><p>Il numero italiano non coincide con quello turco e non serve confrontarli: un episodio originale dura più di due ore, mentre la puntata italiana ne dura poco più di venti minuti, quindi ogni episodio è stato diviso in più parti. È il motivo per cui in rete si trovano conteggi diversi a seconda della versione a cui si riferiscono.</p></section><section class="pillar"><h2>Come finisce Tutto per la mia Famiglia</h2><p>Una fine esiste, ma è quella turca: <em>Kardeşlerim</em> si è chiusa l'8 giugno 2024 con il centotrentaduesimo e ultimo episodio. La storia degli Eren ha quindi già il suo epilogo, scritto e girato.</p><p>In Italia no. La messa in onda italiana è partita il 15 giugno 2026, quasi due anni dopo il finale turco, e le puntate trasmesse su Canale 5 devono ancora arrivare a quel punto: <strong>il finale in italiano non si è ancora visto</strong>.</p><p>Sui dettagli ci fermiamo qui. I riassunti dell'ultima stagione che circolano in rete si contraddicono su chi muore e su come finiscono le coppie, e la Wikipedia turca registra la data del finale e il numero di episodi, non la trama. L'unica descrizione ufficiale è quella di ATV sull'ultimo episodio, e dice che la famiglia Eren arriva ai suoi sogni. Il resto lo raccontiamo qui quando le puntate italiane ci arrivano.</p></section><section class="pillar"><h2>Dove vedere Tutto per la mia Famiglia in TV e in streaming</h2><p>In Italia la serie è arrivata su <strong>Canale 5</strong>, nel pomeriggio, a partire dal 15 giugno 2026, ed è disponibile anche in streaming su <strong>Mediaset Infinity</strong>. Gli orari del pomeriggio di Canale 5 cambiano spesso e non li riportiamo qui: per quelli conviene sempre guardare il palinsesto del giorno.</p><p>Se ti sei perso una puntata o sei entrato nella storia a metà, gli articoli qui sotto la ricostruiscono passaggio per passaggio, dal più recente al più vecchio: riassunti, trame settimanali e schede sui personaggi.</p></section>
 <h2 class="titolo-elenco">Tutte le anticipazioni di Tutto per la mia Famiglia</h2>
 <div class="griglia"><article class="scheda">
-  <a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/"><div class="foto"></div></a>
+  <a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/"><div class="foto"><img src="https://i.ytimg.com/vi/8gYT8MYRopw/hqdefault.jpg" alt="Tutto per la mia famiglia" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/tutto-per-la-mia-famiglia.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Tutto per la mia famiglia</span>
+    <h3><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></h3>
+    <div class="quando">7 settembre 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/"><div class="foto"></div></a>
+  <div class="corpo">
+    <span class="serie">Tutto per la mia famiglia</span>
+    <h3><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></h3>
+    <div class="quando">7 settembre 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/"><div class="foto"><img src="/img/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra.jpg" alt="Tutto per la mia famiglia" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/tutto-per-la-mia-famiglia.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Tutto per la mia famiglia</span>
+    <h3><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></h3>
+    <div class="quando">7 settembre 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/"><div class="foto"><img src="/img/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif.jpg" alt="Tutto per la mia famiglia" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/tutto-per-la-mia-famiglia.svg&quot;]' onerror="imgFb(this)"></div></a>
   <div class="corpo">
     <span class="serie">Tutto per la mia famiglia</span>
     <h3><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></h3>
@@ -351,14 +421,14 @@ if(l.length){el.src=l.shift();el.dataset.fb=JSON.stringify(l)}else{el.onerror=nu
     <div class="quando">30 agosto 2026</div>
   </div>
 </article><article class="scheda">
-  <a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-chi-e-kadir-eren-e-cosa-gli-succede-il-fratello-maggio/"><div class="foto"></div></a>
+  <a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-chi-e-kadir-eren-e-cosa-gli-succede-il-fratello-maggio/"><div class="foto"><img src="/img/tutto-per-la-mia-famiglia-chi-e-kadir-eren-e-cosa-gli-succede-il-fratello-maggio.jpg" alt="Tutto per la mia Famiglia" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/tutto-per-la-mia-famiglia.svg&quot;]' onerror="imgFb(this)"></div></a>
   <div class="corpo">
     <span class="serie">Tutto per la mia Famiglia</span>
     <h3><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-chi-e-kadir-eren-e-cosa-gli-succede-il-fratello-maggio/">Tutto per la mia famiglia, chi è Kadir Eren e cosa gli succede: il fratello maggiore muore davvero?</a></h3>
     <div class="quando">22 agosto 2026</div>
   </div>
 </article><article class="scheda">
-  <a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-il-cast-completo-chi-sono-gli-attori-e-dove-li-abbiamo/"><div class="foto"></div></a>
+  <a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-il-cast-completo-chi-sono-gli-attori-e-dove-li-abbiamo/"><div class="foto"><img src="/img/tutto-per-la-mia-famiglia-il-cast-completo-chi-sono-gli-attori-e-dove-li-abbiamo.jpg" alt="Tutto per la mia Famiglia" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/tutto-per-la-mia-famiglia.svg&quot;]' onerror="imgFb(this)"></div></a>
   <div class="corpo">
     <span class="serie">Tutto per la mia Famiglia</span>
     <h3><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-il-cast-completo-chi-sono-gli-attori-e-dove-li-abbiamo/">Tutto per la mia famiglia, il cast completo: chi sono gli attori e dove li abbiamo già visti</a></h3>

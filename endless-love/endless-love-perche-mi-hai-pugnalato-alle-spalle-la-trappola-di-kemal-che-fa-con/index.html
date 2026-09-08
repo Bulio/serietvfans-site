@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/endless-love/">Endless Love</a> › Endless Love, «Perché mi hai pugnalato alle spalle?»: la trappola di Kemal che fa confessare Zeynep</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/endless-love/">Endless Love</a>
   <h1>Endless Love, «Perché mi hai pugnalato alle spalle?»: la trappola di Kemal che fa confessare Zeynep</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Il telefono rubato, i messaggi cancellati recuperati da un hacker, il contatto salvato come &quot;Emal&quot; e il falso test di paternità: ricostruiamo passo passo come Kemal scopre la relazione segreta tra la sorella Zeynep ed Emir — e il confronto che lascia entrambi in lacrime.</p><ol><li><a href="#c1">Il sospetto e il telefono violato</a></li><li><a href="#c2">Chi è Emir, e perché aveva bisogno proprio di Zeynep</a></li><li><a href="#c3">La trappola del falso test di paternità</a></li><li><a href="#c4">Il vero test: il padre è Ozan</a></li><li><a href="#c5">Nihan sapeva: il segreto custodito nell&#x27;ombra</a></li><li><a href="#c6">Quanto costa a Kemal una trappola riuscita</a></li><li><a href="#c7">Come Emir manipola Zeynep per distruggere Kemal</a></li><li><a href="#c8">Perché la verità sul figlio di Ozan cambia tutto</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>Endless Love</strong> — Serie conclusa in Italia · le puntate su Mediaset Infinity</span></div>
   
-  <p class="occhiello">Il telefono rubato, i messaggi cancellati recuperati da un hacker, il contatto salvato come &quot;Emal&quot; e il falso test di paternità: ricostruiamo passo passo come Kemal scopre la relazione segreta tra la sorella Zeynep ed Emir — e il confronto che lascia entrambi in lacrime.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: Endless Love, «Perché mi hai pugnalato alle spalle?»: la trappola di Kemal che fa confessare Zeynep" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/zX7QE5dlPv0/maxresdefault.jpg" alt="Endless Love, «Perché mi hai pugnalato alle spalle?»: la trappola di Kemal che fa confessare Zeynep" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/zX7QE5dlPv0/hqdefault.jpg 480w, https://i.ytimg.com/vi/zX7QE5dlPv0/sddefault.jpg 640w, https://i.ytimg.com/vi/zX7QE5dlPv0/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/zX7QE5dlPv0/hqdefault.jpg&quot;, &quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,25 +409,25 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>Non è un&#x27;esplosione improvvisa ma un&#x27;indagine fredda e metodica: quando Kemal decide di scoprire la verità su sua sorella, costruisce una trappola perfetta. E il risultato spezza il cuore a tutti e due.</strong></p>
-  <h2>Il sospetto e il telefono violato</h2>
+  <h2 id="c1">Il sospetto e il telefono violato</h2>
 <p>Tutto comincia da un sospetto: Zeynep ha una relazione segreta. Turbato ma determinato, Kemal chiede al suo collaboratore di mettere le mani sul telefono della sorella: il dispositivo viene sottratto con astuzia e affidato a un hacker esperto, incaricato di recuperare i messaggi cancellati. Quello che emerge è sconvolgente — una lunga serie di conversazioni con un contatto salvato in rubrica come &quot;Emal&quot;. A Kemal basta poco per capire: dietro quel nome di copertura si nasconde Emir.</p>
-<h2>Chi è Emir, e perché aveva bisogno proprio di Zeynep</h2>
+<h2 id="c2">Chi è Emir, e perché aveva bisogno proprio di Zeynep</h2>
 <p>Emir non è il classico rivale in amore: è un uomo che tiene le persone attraverso quello che sanno l&#x27;una dell&#x27;altra. Su Kemal ha in mano da tempo un video sul presunto omicidio di Ozan, ed è con quel ricatto che si è comprato il matrimonio con Nihan — il silenzio in cambio di una mano. Il suo metodo è sempre lo stesso: non attacca chi vuole colpire, si prende la persona che quel qualcuno non sospetterebbe mai. Zeynep era la scelta perfetta perché è la sorella, cioè l&#x27;unico legame che Kemal non avrebbe mai messo in discussione. Non gli serviva una complice: gli serviva qualcuno di credibile.</p>
-<h2>La trappola del falso test di paternità</h2>
+<h2 id="c3">La trappola del falso test di paternità</h2>
 <p>Kemal convoca la sorella in un luogo appartato e mette in scena il capolavoro: le ricorda quanto ha sempre creduto in lei, poi estrae un documento — un test di paternità dal risultato devastante: compatibilità con Ozan pari a zero. Davanti a quel foglio Zeynep crolla: tra le lacrime confessa la relazione con Emir. «Pensavo fosse innamorato di me», ammette, raccontando di come lui l&#x27;abbia usata per colpire Kemal — «l&#x27;ho capito troppo tardi, perché lo amavo». Le sue suppliche di perdono commuovono perfino il fratello fino alle lacrime. Ma la ferita è troppo profonda: Kemal non riesce a perdonare. E le rivela l&#x27;ultima beffa: il test era falso — una trappola per farla parlare.</p>
-<h2>Il vero test: il padre è Ozan</h2>
+<h2 id="c4">Il vero test: il padre è Ozan</h2>
 <p>L&#x27;ironia del destino arriva altrove: Emir riceve i risultati del vero test di paternità, e la sorpresa è totale — il padre del bambino che Zeynep aspetta è Ozan. Un colpo di scena che ribalta gli equilibri: la gravidanza che doveva essere l&#x27;arma di Emir contro Kemal diventa il legame che riporta tutto dentro la famiglia Sezin, promettendo nuovi sconvolgimenti.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Nihan sapeva: il segreto custodito nell&#x27;ombra</h2>
+<h2 id="c5">Nihan sapeva: il segreto custodito nell&#x27;ombra</h2>
 <p>C&#x27;è un ultimo tassello che rende tutto più amaro: Nihan aveva già intuito. Nascosta, aveva visto Emir portare la mano al grembo di Zeynep in un gesto intimo e protettivo — e aveva capito all&#x27;istante che tra il marito e la cognata c&#x27;era molto più di una conoscenza. Ma con Kemal lontano, fisicamente ed emotivamente, aveva scelto di portare da sola il peso di quella scoperta, aspettando il momento giusto per giocare la propria carta. In Endless Love ogni segreto ha un testimone silenzioso — e prima o poi, tutti i conti arrivano a scadenza.</p>
-<h2>Quanto costa a Kemal una trappola riuscita</h2>
+<h2 id="c6">Quanto costa a Kemal una trappola riuscita</h2>
 <p>Il test falso è un capolavoro tattico e un disastro personale, e vale la pena separare le due cose. Kemal ottiene la confessione, ma la ottiene fabbricando una prova contro la propria famiglia — e questo, in una storia dove il ricatto per mezzo di documenti è esattamente il mestiere di Emir, lo avvicina all&#x27;uomo che combatte più di quanto sia disposto ad ammettere. Poi arriva il risultato del test vero, ed è il rovesciamento completo: il figlio è di Ozan, quindi la gravidanza che doveva essere l&#x27;arma di Emir diventa un nipote dei Sezin. Emir perde la leva, ma Kemal non recupera la sorella: la frattura tra i due resta lì, e sarà quella, non il ricatto, a decidere da che parte starà Zeynep la prossima volta.</p>
-<h2>Come Emir manipola Zeynep per distruggere Kemal</h2>
+<h2 id="c7">Come Emir manipola Zeynep per distruggere Kemal</h2>
 <p>Emir ha sempre basato la sua forza sul controllo psicologico e sul possesso di segreti compromettenti. La sua influenza nella vita di Nihan ne è la prova principale, dato che è riuscito a costringerla al matrimonio facendo leva sul video relativo al presunto omicidio compiuto da Ozan. Tuttavia, non contento di questo dominio, la sua strategia si è spinta ancora oltre puntando al cuore della famiglia di Kemal. Scegliere Zeynep non è stato un caso ma un piano preciso, basato sulla certezza che Kemal mai avrebbe sospettato della propria sorella. Manipolando i sentimenti della giovane, Emir ha trasformato un legame di sangue in un punto debole devastante.</p>
 <p>Zeynep è caduta nella rete dell&#x27;uomo credendo sinceramente che tra loro ci fosse un sentimento autentico e ricambiato. Per proteggere questa relazione proibita ha cercato di nascondere ogni traccia, persino memorizzando il contatto di Emir con il nome di copertura Emal sul proprio telefono. Le conversazioni cancellate sembravano un rifugio sicuro, ma la determinazione di Kemal nel voler scoprire cosa nascondesse la sorella ha spinto il giovane a ricorrere a un collaboratore fidato e a un esperto hacker. Quando i messaggi rimossi sono riemersi dall&#x27;ombra, per la ragazza l&#x27;illusione d&#x27;amore si è trasformata nell&#x27;inizio di un incubo dal quale non sarebbe più potuta sfuggire.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>Il confronto finale ha mostrato quanto il metodo di Kemal fosse diventato freddo e calcolato di fronte al tradimento subito. Convocando Zeynep in un luogo appartato, le ha mostrato un test di paternità palesemente falso con una compatibilità azzerata rispetto a Ozan, spingendola al crollo emotivo totale. La giovane ha pianto e supplicato il perdono, ammettendo di aver capito troppo tardi di essere stata usata solo per colpire il fratello. Nonostante le lacrime condivise, Kemal ha rivelato l&#x27;inganno del documento, dimostrando di aver appreso fin troppo bene le tecniche di manipolazione del suo nemico pur di ottenere la verità confessionale.</p>
-<h2>Perché la verità sul figlio di Ozan cambia tutto</h2>
+<h2 id="c8">Perché la verità sul figlio di Ozan cambia tutto</h2>
 <p>Nel frattempo, l&#x27;ombra del sospetto si era allungata anche su Nihan, la quale aveva già colto indizi inequivocabili sulla vicinanza tra il marito e Zeynep. Assistendo in silenzio a un gesto inusuale di profonda intimità, con Emir che posava la mano sul grembo della ragazza con premura e protezione, Nihan ha compreso immediatamente che la situazione andava ben oltre una semplice conoscenza. Tuttavia, data la lontananza fisica ed emotiva da Kemal in quel periodo, ha preferito tenere la scoperta per sé, sopportando da sola il peso di una verità sconvolgente e aspettando il momento più opportuno per rivelare o utilizzare la sua carta nel gioco.</p>
 <p>Il momento di svolta assoluto si verifica quando Emir entra in possesso dei risultati dell&#x27;esame genetico reale, rimanendo completamente spiazzato dal verdetto. La compatibilità biologica conferma che il padre del bambino che Zeynep porta in grembo è in realtà Ozan, un colpo di scena che ribalta completamente gli equilibri di potere. Quella gravidanza, pensata o sperata da Emir come uno strumento di pressione invincibile nei confronti di Kemal, si trasforma improvvisamente in un legame diretto con la famiglia Sezin. In questo modo Emir perde la sua principale leva di ricatto, vedendo sfumare il vantaggio tattico che credeva di aver conquistato.</p>
 <p>Nonostante la verità sulla paternità di Ozan restituisca il nascituro al perimetro familiare dei Sezin, le conseguenze emotive all&#x27;interno della famiglia di Kemal restano catastrofiche e insanabili. Il successo della trappola orchestrata con il documento falso lascia una ferita profonda tra i due fratelli, dimostrando che la vittoria tattica di Kemal è stata pagata a un prezzo personale altissimo. Zeynep si ritrova respinta e non perdonata, mentre Kemal deve convivere con la consapevolezza di aver agito come il suo rivale. Questa spaccatura dolorosa segnerà irrimediabilmente i rapporti futuri, condizionando le scelte che la ragazza compirà nelle vicende successive della storia.</p>
@@ -385,19 +435,41 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=zz2mRkQNwLc" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/zz2mRkQNwLc/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>EMIR SCONVOLTO! HA SCOPERTO CHE ASU E&#x27; LA SORELLA SEGRETA! E ORA? Anticipazioni Endless Love Tu</span></a></li><li><a href="https://www.youtube.com/watch?v=kmgtihHXJ9Y" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/kmgtihHXJ9Y/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>DRAMMATICO CONFRONTO TRA EMIR E KEMAL, EMIR MUORE? Endless Love Anticipazioni Finale 1^ Stagion</span></a></li><li><a href="https://www.youtube.com/watch?v=CwCXl3ZuRHk" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/CwCXl3ZuRHk/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>EMIR UNA FURIA CONTRO KEMAL!INSOPPORTABILE CHE KEMAL ABBIA SALVATO NIHAN! Anticipazioni Endless</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Kemal avrebbe dovuto perdonare la sorella dopo la confessione? E il silenzio di Nihan è prudenza o complicità?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=zX7QE5dlPv0">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di Endless Love</h2><div class="griglia"><article class="scheda">
+  <a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/"><div class="foto"><img src="https://i.ytimg.com/vi/DSiProJJ1ls/hqdefault.jpg" alt="Endless Love" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/"><div class="foto"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/"><div class="foto"><img src="https://i.ytimg.com/vi/uu2oAzTOWQU/hqdefault.jpg" alt="Endless Love" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></h3>
+    <div class="quando">25 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=Endless Love, «Perché mi hai pugnalato alle spalle?»: la trappola di Kemal che fa confessare Zeynep — https://soapoperaitalia.com/endless-love/endless-love-la-trama-completa-perche-nihan-sposa-emir-e-come-finisce/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://soapoperaitalia.com/endless-love/endless-love-la-trama-completa-perche-nihan-sposa-emir-e-come-finisce/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://soapoperaitalia.com/endless-love/endless-love-la-trama-completa-perche-nihan-sposa-emir-e-come-finisce/&text=Endless Love, «Perché mi hai pugnalato alle spalle?»: la trappola di Kemal che fa confessare Zeynep" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">KEMAL SCOPRE TUTTO! &quot;ZEYNEP, PERCHE&#x27; MI HAI PUGNALATO ALLE SPALLE?&quot;</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=zX7QE5dlPv0">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di Endless Love</h3><ol class="numerata"><li><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></li><li><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></li><li><a href="/endless-love/endless-love-chi-e-galip-kozcuoglu-le-due-volte-in-cui-nihan-e-stata-venduta/">Endless Love, chi è Galip Kozcuoğlu: le due volte in cui Nihan è stata venduta</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-zeynep-soydere-perche-emir-lha-scelta-e-cosa-ha-distrutto/">Endless Love, chi è davvero Zeynep Soydere: perché Emir l&#x27;ha scelta e cosa ha distrutto</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>KEMAL SCOPRE TUTTO! &quot;ZEYNEP, PERCHE&#x27; MI HAI PUGNALATO ALLE SPALLE?&quot;</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su Endless Love</h3><ul><li><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></li><li><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></li><li><a href="/endless-love/endless-love-chi-e-galip-kozcuoglu-le-due-volte-in-cui-nihan-e-stata-venduta/">Endless Love, chi è Galip Kozcuoğlu: le due volte in cui Nihan è stata venduta</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-zeynep-soydere-perche-emir-lha-scelta-e-cosa-ha-distrutto/">Endless Love, chi è davvero Zeynep Soydere: perché Emir l&#x27;ha scelta e cosa ha distrutto</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/my-home-my-destiny/">My Home My Destiny</a> › My Home My Destiny, Sultan pedina la figlia e la schiaffeggia in strada: Emine è fidanzata con Faruk, l&#x27;ex di Zeynep</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/my-home-my-destiny/">My Home My Destiny</a>
   <h1>My Home My Destiny, Sultan pedina la figlia e la schiaffeggia in strada: Emine è fidanzata con Faruk, l&#x27;ex di Zeynep</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">A tradire Emine sono un paio di scarpe e una borsa firmata trovate nel suo armadio. Sultan chiede spiegazioni, non le ottiene, e decide di seguirla: quando la vede tra le braccia di Faruk, la schiaffeggia in mezzo alla strada e intima a lui di non farsi più vedere. Poi le impone di andare a stare dagli zii — ma Emine risponde che di quell&#x27;uomo si è innamorata davvero.</p><ol><li><a href="#c1">Come è cominciata</a></li><li><a href="#c2">Chi è Emine, e perché quelle scarpe dicono più di una relazione</a></li><li><a href="#c3">Le scarpe nell&#x27;armadio</a></li><li><a href="#c4">Chi è Faruk, e da dove arriva quando incontra Emine</a></li><li><a href="#c5">Lo schiaffo in pubblico</a></li><li><a href="#c6">Una relazione a distanza</a></li><li><a href="#c7">Perché conta: Sultan sta difendendo la figlia dal pericolo sbagliato</a></li><li><a href="#c8">Perche Sultan spedisce Emine a stare dagli zii</a></li><li><a href="#c9">Cosa nasconde il padre di Faruk a Emine</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>My Home My Destiny</strong> — Serie conclusa in Italia · le puntate su Mediaset Infinity</span></div>
   
-  <p class="occhiello">A tradire Emine sono un paio di scarpe e una borsa firmata trovate nel suo armadio. Sultan chiede spiegazioni, non le ottiene, e decide di seguirla: quando la vede tra le braccia di Faruk, la schiaffeggia in mezzo alla strada e intima a lui di non farsi più vedere. Poi le impone di andare a stare dagli zii — ma Emine risponde che di quell&#x27;uomo si è innamorata davvero.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: My Home My Destiny, Sultan pedina la figlia e la schiaffeggia in strada: Emine è fidanzata con Faruk, l&#x27;ex di Zeynep" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/U6QsAYC7Yv4/maxresdefault.jpg" alt="My Home My Destiny, Sultan pedina la figlia e la schiaffeggia in strada: Emine è fidanzata con Faruk, l&#x27;ex di Zeynep" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/U6QsAYC7Yv4/hqdefault.jpg 480w, https://i.ytimg.com/vi/U6QsAYC7Yv4/sddefault.jpg 640w, https://i.ytimg.com/vi/U6QsAYC7Yv4/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/U6QsAYC7Yv4/hqdefault.jpg&quot;, &quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,27 +409,27 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>L&#x27;equivoco iniziale: i soldi lasciati sul comodino erano per il taxi.</strong></p>
-  <h2>Come è cominciata</h2>
+  <h2 id="c1">Come è cominciata</h2>
 <p>Dopo aver perso ogni speranza di riavere Zeynep, ormai sposata con Mehdi, Faruk sposta le sue attenzioni su Emine, e lei finisce per cedere al corteggiamento. La mattina dopo, però, resta sconvolta trovando dei soldi sul comodino: crede che siano un modo per ringraziarla di essersi concessa, mentre in realtà servivano solo a farla tornare a casa in taxi. Chiarito l&#x27;equivoco, Emine si accorge di provare qualcosa di serio per lui — mentre resta il dubbio che lui l&#x27;abbia avvicinata soprattutto per far reagire la sua ex.</p>
-<h2>Chi è Emine, e perché quelle scarpe dicono più di una relazione</h2>
+<h2 id="c2">Chi è Emine, e perché quelle scarpe dicono più di una relazione</h2>
 <p>Emine non è una ragazza che si perde per un corteggiamento qualsiasi. Da quando era adolescente ha guardato fuori dal quartiere, verso una vita di agi che lì dentro nessuno poteva offrirle: è il motivo per cui il ragazzo che la ama da sempre, Nuh, non è mai riuscito a farsi prendere sul serio. Vista così, la borsa firmata nell&#x27;armadio non è un indizio qualunque, è la porta d&#x27;ingresso della sua debolezza — e l&#x27;equivoco dei soldi sul comodino fa male proprio perché la mette davanti al sospetto che quel mondo abbia un prezzo scritto da qualche parte.</p>
-<h2>Le scarpe nell&#x27;armadio</h2>
+<h2 id="c3">Le scarpe nell&#x27;armadio</h2>
 <p>È il comportamento strano della figlia a insospettire Sultan, che comincia a indagare e trova in camera sua un paio di scarpe e una borsa decisamente fuori portata. Chiede conferma a Zeynep, che le dice che sono originali, e a quel punto pretende una risposta: Emine ammette di avere una relazione ma non fa il nome dell&#x27;uomo. Così Sultan sceglie la via diretta e la segue.</p>
-<h2>Chi è Faruk, e da dove arriva quando incontra Emine</h2>
+<h2 id="c4">Chi è Faruk, e da dove arriva quando incontra Emine</h2>
 <p>Per Sultan è soltanto «l&#x27;ex di Zeynep», e la definizione è vera ma corta. Faruk aveva inseguito Zeynep fino in fondo: due biglietti per Londra, l&#x27;appuntamento in aeroporto, e l&#x27;attesa davanti a un gate per una donna che non è mai arrivata perché aveva scelto Mehdi. Quel giorno le disse che non avrebbe più provato a riconquistarla, e non era una posa. Il punto che nessuno in casa considera è cosa Faruk si sia portato via da lì: non un rancore da vendicare su un&#x27;altra ragazza, ma l&#x27;abitudine a volere qualcuno che ha già scelto altro.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Lo schiaffo in pubblico</h2>
+<h2 id="c5">Lo schiaffo in pubblico</h2>
 <p>Quando la vede tra le braccia di Faruk, tutto le è chiaro in un istante. Non si trattiene: schiaffeggia la figlia davanti a tutti e ordina all&#x27;ex fidanzato di Zeynep di non farsi mai più vedere. Poi impone a Emine di trasferirsi per un periodo dagli zii, sperando che la lontananza spenga tutto. Ma la ragazza tiene il punto: si è innamorata di quell&#x27;uomo, e la storia con Zeynep appartiene a un passato che non la riguarda.</p>
-<h2>Una relazione a distanza</h2>
+<h2 id="c6">Una relazione a distanza</h2>
 <p>Da quel momento Emine e Faruk sono costretti a vedersi di nascosto, mentre Sultan fa di tutto per impedire che si incontrino. È una situazione destinata a non reggere a lungo, soprattutto perché nessuna delle persone coinvolte — né Zeynep, né Mehdi, né la stessa Sultan — riesce a considerare quel legame per quello che è diventato davvero: non una vendetta per interposta persona, ma un sentimento.</p>
-<h2>Perché conta: Sultan sta difendendo la figlia dal pericolo sbagliato</h2>
+<h2 id="c7">Perché conta: Sultan sta difendendo la figlia dal pericolo sbagliato</h2>
 <p>Lo schiaffo in strada colpisce la storia con Zeynep, cioè l&#x27;unica parte di questa vicenda che è davvero finita. Il pericolo vero è a casa di Faruk, dove il padre ha già pronto un matrimonio combinato con una famiglia ricca, pensato per saldare due patrimoni — e di quel progetto Emine non sa assolutamente nulla. Vietando gli incontri, Sultan ottiene l&#x27;esatto contrario di quello che vuole: spinge la figlia in una relazione clandestina, e la clandestinità è la condizione in cui una ragazza non conosce la famiglia dell&#x27;uomo, non entra in quella casa e non si accorge di quello che vi si sta decidendo. Emine tiene il punto sul passato che non la riguarda, e intanto nessuno le parla del futuro che qualcun altro le ha già scritto contro.</p>
-<h2>Perche Sultan spedisce Emine a stare dagli zii</h2>
+<h2 id="c8">Perche Sultan spedisce Emine a stare dagli zii</h2>
 <p>La reazione furibonda di Sultan dopo aver visto la figlia tra le braccia dell&#x27;ex fidanzato di Zeynep non si limita al gesto d&#x27;impulso dello schiaffo dato in pubblica piazza. La donna comprende immediatamente che l&#x27;ambiente del quartiere rischia di alimentarne la frequentazione clandestina, spingendola a prendere una decisione drastica per la gestione familiare. Imporre alla ragazza di trasferirsi per un periodo indeterminato presso la casa degli zii rappresenta un tentativo disperato di spezzare ogni contatto con quell&#x27;uomo. Per la madre, allontanare la giovane significa spegnere una fiamma pericolosa e riportarla a una dimensione domestica protetta, lontano dagli sguardi dei vicini e dal ricordo dell&#x27;umiliazione subita in strada.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>A questo tentativo di controllo materno la ragazza contrappone una resistenza inaspettata e determinata, rifiutando di farsi piegare dalla punizione stabilita. Emine dichiara apertamente di essersi innamorata in modo sincero dell&#x27;uomo che le sta accanto, difendendo la legittimità dei propri sentimenti di fronte alle accuse della madre. Per lei, la storia d&#x27;amore trascorsa tra Zeynep e Faruk fa parte di un capitolo ormai definitivamente chiuso, che non deve assolutamente condizionare le sue scelte presenti. Sentendosi trattata ingiustamente, la giovane rivendica l&#x27;autonomia della propria vita affettiva, rifiutando l&#x27;idea che la sua relazione debba essere considerata soltanto il riflesso di vecchi rancori o ripicche mai risolte all&#x27;interno del quartiere.</p>
 <p>L&#x27;ordine impartito da Sultan finisce tuttavia per produrre l&#x27;effetto opposto a quello sperato, trasformando la frequentazione in un legame del tutto clandestino e difficile da monitorare. Costretti a vedersi di nascosto per evitare di incrociare lo sguardo dei familiari, i due giovani continuano ad alimentare la propria intesa lontani dagli occhi di chi li ostacola. La madre rimane convinta di difendere la figlia da un uomo sbagliato e legato a ricordi dolorosi per l&#x27;intero gruppo, ma in realtà la spinge ancor più verso l&#x27;isolamento. Questa segretezza forzata rende impossibile qualsiasi forma di dialogo aperto all&#x27;interno della casa, lasciando la ragazza completamente sola nel gestire un rapporto complicato.</p>
-<h2>Cosa nasconde il padre di Faruk a Emine</h2>
+<h2 id="c9">Cosa nasconde il padre di Faruk a Emine</h2>
 <p>L&#x27;attenzione dell&#x27;intera famiglia rimane concentrata sul passato dell&#x27;uomo e sul dolore provocato dal suo fallito inseguimento a Zeynep fino alla porta dell&#x27;aeroporto per il viaggio a Londra. Quando la donna scelse di rimanere accanto a Mehdi, Faruk assicurò che non avrebbe più tentato di riconquistarla, mantenendo quella promessa e spostando l&#x27;attenzione verso la ragazza del quartiere. Tuttavia, lo sguardo diffidente di Sultan e degli altri vicini continua a percepire quella storia come un semplice pretesto di rivalsa. Questa lettura parziale impedisce a tutti di cogliere la realtà di un sentimento cresciuto gradualmente tra i due, al di là dell&#x27;equivoco iniziale legato al denaro dimenticato sopra il comodino dopo il loro primo incontro ravvicinato.</p>
 <p>Mentre la madre si affanna a bloccare gli incontri, nel mondo benestante dell&#x27;uomo si sta concretizzando una minaccia molto più concreta per il futuro della giovane. Il padre del ragazzo ha infatti già pianificato un matrimonio d&#x27;interesse con una ricca famiglia, studiato nei minimi dettagli per unire ed espandere i rispettivi patrimoni economici. Di questo progetto matrimoniale la ragazza è completamente all&#x27;oscuro, proprio perché esclusa dalle dinamiche della casa di lui e ignara di quanto viene stabilito sopra la sua testa. Il giovane non ha ancora affrontato l&#x27;argomento con la nuova compagna, lasciandola credere che gli unici ostacoli da superare siano le resistenze opposte dal proprio quartiere d&#x27;origine.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
@@ -387,19 +437,41 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=TM3H-GcxZYk" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/TM3H-GcxZYk/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>MY HOME MY DESTINY Anticipazioni Turche: Zeynep Scopre Emine e Faruk Insieme!</span></a></li><li><a href="https://www.youtube.com/watch?v=DLMIsqJcJI0" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/DLMIsqJcJI0/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>MY HOME MY DESTINY Anticipazioni 30 Agosto: Zeynep rinuncia a Mehdi? Sultan scopre Emine con Fa</span></a></li><li><a href="https://www.youtube.com/watch?v=B-R7sbHJkkM" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/B-R7sbHJkkM/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>MY HOME MY DESTINY Anticipazioni: Baris chiede a Zeynep di sposarlo!</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Faruk si è innamorato davvero di Emine o la sta usando?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=U6QsAYC7Yv4">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di My Home My Destiny</h2><div class="griglia"><article class="scheda">
+  <a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/"><div class="foto"><img src="/img/my-home-my-destiny-la-trama-completa-e-come-finisce.jpg" alt="My Home My Destiny" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">My Home My Destiny</span>
+    <h3><a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/">My Home My Destiny: la trama completa e come finisce</a></h3>
+    <div class="quando">30 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/"><div class="foto"><img src="https://i.ytimg.com/vi/-djleIeCLQs/hqdefault.jpg" alt="My Home My Destiny" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">My Home My Destiny</span>
+    <h3><a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/">My Home My Destiny, Zeynep ferma l&#x27;aborto di Benal in sala operatoria senza sapere che il padre è Mehdi</a></h3>
+    <div class="quando">17 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/"><div class="foto"><img src="https://i.ytimg.com/vi/gxL0o63Nhqw/hqdefault.jpg" alt="My Home My Destiny" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">My Home My Destiny</span>
+    <h3><a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/">My Home My Destiny, anticipazioni del 17 novembre: Özlem indaga su Zeynep e scopre tutto, Nuh diventa autista di Barış e qualcuno manomette i macchinari di Bekir</a></h3>
+    <div class="quando">16 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=My Home My Destiny, Sultan pedina la figlia e la schiaffeggia in strada: Emine è fidanzata con Faruk, l&#x27;ex di Zeynep — https://serietvfans.com/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/&text=My Home My Destiny, Sultan pedina la figlia e la schiaffeggia in strada: Emine è fidanzata con Faruk, l&#x27;ex di Zeynep" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">MY HOME MY DESTINY Anticipazioni: Emine scoperta e schiaffeggiata in pubblico!</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=U6QsAYC7Yv4">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di My Home My Destiny</h3><ol class="numerata"><li><a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/">My Home My Destiny: la trama completa e come finisce</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/">My Home My Destiny, Zeynep ferma l&#x27;aborto di Benal in sala operatoria senza sapere che il padre è Mehdi</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/">My Home My Destiny, anticipazioni del 17 novembre: Özlem indaga su Zeynep e scopre tutto, Nuh diventa autista di Barış e qualcuno manomette i macchinari di Bekir</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-guida-alla-serie-chi-sono-demet-ozdemir-e-ibrahim-celikkol-qu/">My Home My Destiny: guida alla serie, il cast, i personaggi e quante puntate sono</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-1-dicembre-gli-spari-davanti-alla-vecchia-casa-zeynep-tra-le/">My Home My Destiny 1° dicembre, gli spari davanti alla vecchia casa: Zeynep tra le due madri quando l&#x27;uomo in moto estrae la pistola</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>MY HOME MY DESTINY Anticipazioni: Emine scoperta e schiaffeggiata in pubblico!</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su My Home My Destiny</h3><ul><li><a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/">My Home My Destiny: la trama completa e come finisce</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/">My Home My Destiny, Zeynep ferma l&#x27;aborto di Benal in sala operatoria senza sapere che il padre è Mehdi</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/">My Home My Destiny, anticipazioni del 17 novembre: Özlem indaga su Zeynep e scopre tutto, Nuh diventa autista di Barış e qualcuno manomette i macchinari di Bekir</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-guida-alla-serie-chi-sono-demet-ozdemir-e-ibrahim-celikkol-qu/">My Home My Destiny: guida alla serie, il cast, i personaggi e quante puntate sono</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-1-dicembre-gli-spari-davanti-alla-vecchia-casa-zeynep-tra-le/">My Home My Destiny 1° dicembre, gli spari davanti alla vecchia casa: Zeynep tra le due madri quando l&#x27;uomo in moto estrae la pistola</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

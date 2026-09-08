@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/la-promessa/">La Promessa</a> › La Promessa, la lettera anonima che minaccia Candela: «so del tuo passato» — e Pía sviene rivelando il suo segreto a Gregorio</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/la-promessa/">La Promessa</a>
   <h1>La Promessa, la lettera anonima che minaccia Candela: «so del tuo passato» — e Pía sviene rivelando il suo segreto a Gregorio</h1>
-  <div class="firma">Redazione Serie TV Fans · lunedì 17 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-17">lunedì 17 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Candela riceve una lettera anonima in cui qualcuno afferma di conoscere un segreto oscuro del suo passato e avverte che verrà a galla. Lei minimizza e nega di avere nemici, ma Teresa nota il dettaglio che rende tutto più inquietante: il mittente non chiede denaro. Nello stesso giorno Pía sviene nell&#x27;ufficio di Gregorio e, al risveglio, gli confessa di essere malata chiedendogli di mantenere il segreto.</p><ol><li><a href="#c1">Chi sono Candela, Teresa e Pía, per chi arriva adesso</a></li><li><a href="#c2">L&#x27;antefatto: Petra rende la vita impossibile a Pía</a></li><li><a href="#c3">Il malore nell&#x27;ufficio e la confessione: «sono malata»</a></li><li><a href="#c4">La lettera che Candela non riesce a leggere</a></li><li><a href="#c5">«Non ho nemici»: la reazione che non convince Teresa</a></li><li><a href="#c6">Il dettaglio che insospettisce: nessuno chiede soldi</a></li><li><a href="#c7">Lope racconta a Maria la verità su Salvador</a></li><li><a href="#c8">«Lo stai inventando per prendere il suo posto»</a></li><li><a href="#c9">Perché conta: la speranza come unico modo di reggere</a></li><li><a href="#c10">Dove vedere La Promessa</a></li><li><a href="#c11">Come Gregorio affronta Pía nell&#x27;ufficio</a></li><li><a href="#c12">Perché Maria si scaglia contro Lope</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>La Promessa</strong> — Rete 4 · in streaming su Mediaset Infinity</span></div>
   
-  <p class="occhiello">Candela riceve una lettera anonima in cui qualcuno afferma di conoscere un segreto oscuro del suo passato e avverte che verrà a galla. Lei minimizza e nega di avere nemici, ma Teresa nota il dettaglio che rende tutto più inquietante: il mittente non chiede denaro. Nello stesso giorno Pía sviene nell&#x27;ufficio di Gregorio e, al risveglio, gli confessa di essere malata chiedendogli di mantenere il segreto.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: La Promessa, la lettera anonima che minaccia Candela: «so del tuo passato» — e Pía sviene rivelando il suo segreto a Gregorio" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/QQzhiZftiwc/maxresdefault.jpg" alt="La Promessa, la lettera anonima che minaccia Candela: «so del tuo passato» — e Pía sviene rivelando il suo segreto a Gregorio" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/QQzhiZftiwc/hqdefault.jpg 480w, https://i.ytimg.com/vi/QQzhiZftiwc/sddefault.jpg 640w, https://i.ytimg.com/vi/QQzhiZftiwc/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/QQzhiZftiwc/hqdefault.jpg&quot;, &quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,51 +409,73 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>Una lettera senza mittente arriva in cucina, e Candela non sa leggerla da sola. Teresa la legge ad alta voce per lei: qualcuno dice di conoscere un segreto del suo passato, e non chiede soldi per tacere.</strong></p>
-  <h2>Chi sono Candela, Teresa e Pía, per chi arriva adesso</h2>
+  <h2 id="c1">Chi sono Candela, Teresa e Pía, per chi arriva adesso</h2>
 <p>Candela è una delle cuoche della tenuta, una donna povera e senza istruzione formale — non sa leggere bene, e questo dettaglio in questa puntata pesa più di quanto sembri. Teresa è la compagna di lavoro che le sta accanto e che le legge la lettera ad alta voce. Pía è la governante, la figura che regge l&#x27;equilibrio della servitù e che in questo periodo porta addosso più segreti di chiunque altro. Gregorio è l&#x27;uomo con cui ha un rapporto complicato, fatto di sostegno e di sospetti reciproci.</p>
-<h2>L&#x27;antefatto: Petra rende la vita impossibile a Pía</h2>
+<h2 id="c2">L&#x27;antefatto: Petra rende la vita impossibile a Pía</h2>
 <p>La giornata comincia con Pía che si confida con Gregorio su una situazione che considera ormai grave: Petra sta diventando sempre più sgradevole con tutti in casa, ma soprattutto con lei, e sta diffondendo accuse false sul suo conto senza ritirare gli insulti nonostante le richieste. Gregorio ascolta, ma è a sua volta arrabbiato con lei per un altro motivo: le contesta di aver cercato informazioni sul suo passato con l&#x27;intenzione di passarle a Rómulo. Pía resta interdetta e prova a spiegare che non c&#x27;era cattiva intenzione.</p>
-<h2>Il malore nell&#x27;ufficio e la confessione: «sono malata»</h2>
+<h2 id="c3">Il malore nell&#x27;ufficio e la confessione: «sono malata»</h2>
 <p>Mentre sta ancora cercando di chiarire, Pía si sente male all&#x27;improvviso. Gregorio si preoccupa, la fa sedere nel proprio ufficio e chiama aiuto. Quando lei riprende conoscenza le passa un bicchiere d&#x27;acqua, e la prima cosa che Pía chiede è da quanto tempo sia rimasta priva di sensi. Lui allora le domanda apertamente se sia da molto che si sente così, e poi la domanda diretta: se sia malata. Pía conferma di esserlo, ma gli chiede una cosa sola — che mantenga il segreto e non lo condivida con nessuno. Gregorio glielo assicura.</p>
-<h2>La lettera che Candela non riesce a leggere</h2>
+<h2 id="c4">La lettera che Candela non riesce a leggere</h2>
 <p>In cucina, intanto, arriva una lettera indirizzata a Candela. Teresa gliela consegna e si accorge che la cuoca ha difficoltà a leggerla da sola: è Candela stessa a chiederle di leggerla per lei ad alta voce. Il mittente non c&#x27;è, il nome non è specificato, e mentre Teresa comincia a leggere si capisce perché. Chi ha scritto quella lettera afferma di conoscere un segreto oscuro del passato di Candela, e avverte che quel segreto verrà alla luce. Candela ascolta e resta visibilmente scossa.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>«Non ho nemici»: la reazione che non convince Teresa</h2>
+<h2 id="c5">«Non ho nemici»: la reazione che non convince Teresa</h2>
 <p>Teresa le chiede subito cosa intenda fare, se abbia qualche nemico o se le venga in mente qualcosa del passato che possa essere considerato un segreto. Candela minimizza: dice di non avere nemici e di non ricordare nulla del genere. Alla domanda diretta se sia turbata, risponde che più che turbata è incuriosita, e continua a negare l&#x27;esistenza di qualsiasi segreto. Ma la lettera ha ormai gettato un&#x27;ombra che non se ne va, e la sicurezza con cui nega è esattamente ciò che rende Teresa più attenta, non meno.</p>
-<h2>Il dettaglio che insospettisce: nessuno chiede soldi</h2>
+<h2 id="c6">Il dettaglio che insospettisce: nessuno chiede soldi</h2>
 <p>Teresa dice di crederle, ma le fa notare la cosa che non torna: il mittente non chiede denaro in cambio del silenzio. È un&#x27;anomalia, perché un ricatto che non domanda nulla non è un ricatto — è un avvertimento. Candela liquida la questione sostenendo che probabilmente chi scrive sa benissimo che lei è una donna molto povera e non avrebbe niente da dare. Teresa si limita a sperare che non arrivino altri messaggi e che si possa dimenticare l&#x27;accaduto, e con quello chiude il discorso.</p>
-<h2>Lope racconta a Maria la verità su Salvador</h2>
+<h2 id="c7">Lope racconta a Maria la verità su Salvador</h2>
 <p>Sull&#x27;altro fronte della servitù, Lope raggiunge Maria mentre stende i panni con l&#x27;aria di chi ha deciso qualcosa. Lei prova a ignorarlo, ma lui insiste finché non si ferma ad ascoltarlo, e allora le racconta tutto quello che sa su Salvador: nessuna notizia, e le informazioni raccolte non sono affatto rassicuranti. Maria capisce la gravità mentre le parole arrivano, e quando gli chiede se ci sia anche una minima speranza, Lope le risponde che non sembra essercene — forse Salvador non è più in vita, o comunque non sta bene.</p>
-<h2>«Lo stai inventando per prendere il suo posto»</h2>
+<h2 id="c8">«Lo stai inventando per prendere il suo posto»</h2>
 <p>La reazione di Maria non è quella che Lope si aspettava. Dopo le lacrime arriva la rabbia: mette in dubbio tutto quello che le ha detto e lo accusa di essersi inventato ogni cosa solo per prendere il posto di Salvador nella sua vita. Lo manda al diavolo e gli annuncia che quando Salvador tornerà gli racconterà tutto. Lope, che non aveva previsto una reazione così violenta, resta distrutto e si rende conto di aver aperto una frattura difficile da ricucire — proprio mentre cercava di essere onesto con lei.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Perché conta: la speranza come unico modo di reggere</h2>
+<h2 id="c9">Perché conta: la speranza come unico modo di reggere</h2>
 <p>C&#x27;è una frase di Maria che spiega tutta la sua reazione: sente che il legame con Salvador è così forte che, se lui fosse morto, lei lo avrebbe percepito — e finora non ha sentito nulla del genere. È una convinzione che non regge a nessuna verifica, ma è l&#x27;unica cosa che le permette di sopravvivere all&#x27;angoscia, e per questo la difende con la rabbia. Intanto Petra porta la cena a Cruz, che non ha fame: quando le chiede se sia preoccupata per Curro e Lorenzo, Cruz risponde che ora che sanno la verità Curro sembra più tranquillo — ma Petra intuisce che c&#x27;è dell&#x27;altro.</p>
-<h2>Dove vedere La Promessa</h2>
+<h2 id="c10">Dove vedere La Promessa</h2>
 <p>La Promessa va in onda in Italia su Rete 4: le puntate si possono recuperare in streaming su Mediaset Infinity.</p>
-<h2>Come Gregorio affronta Pía nell&#x27;ufficio</h2>
+<h2 id="c11">Come Gregorio affronta Pía nell&#x27;ufficio</h2>
 <p>La tensione tra i domestici raggiunge un livello critico a causa dell&#x27;incessante ostilità di Petra verso Pía, caratterizzata da accuse del tutto prive di fondamento e insulti mai ritirati. A questo clima insostenibile si aggiunge il risentimento di Gregorio, amareggiato perché la governante ha cercato dettagli sul suo passato per informare Rómulo, pur senza alcuna intenzione malvagia. Quando Pía perde improvvisamente i sensi nel suo ufficio, la gravità del momento interrompe ogni discussione, spingendo l&#x27;uomo a prestarle soccorso immediato con un bicchiere d&#x27;acqua. Questo improvviso malore fisico rivela la fragile condizione della donna, costretta a gestire contemporaneamente gli attacchi sul lavoro e una sofferenza personale che fino a quel momento aveva tenuto nascosta.</p>
 <p>Al suo risveglio, la preoccupazione di Pía per la durata del svenimento spinge Gregorio a chiederle direttamente se sia malata da tempo, ricevendo una conferma sincera ma disperata. La governante gli implora infatti di custodire il segreto e di non rivelare a nessuno le sue reali condizioni di salute, ottenendo la promessa solenne di Gregorio. Questa confidenza inaspettata trasforma la rivalità e i sospetti reciproci in un&#x27;alleanza guidata dalla riservatezza, ponendo l&#x27;uomo nella posizione di unico depositario di una verità scottante. Il patto tra i due diventa fondamentale per proteggere la stabilità della servitù, specialmente in un periodo in cui le continue manovre di Petra minacciano di compromettere la reputazione e il ruolo guida della governante.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Perché Maria si scaglia contro Lope</h2>
+<h2 id="c12">Perché Maria si scaglia contro Lope</h2>
 <p>La drammatica reazione di Maria di fronte alle notizie portate da Lope mostra quanto la speranza sia l&#x27;unico strumento a sua disposizione per sopportare l&#x27;angoscia. Mentre stende i panni, la ragazza viene raggiunta dal compagno di lavoro che decide di rivelarle i tristi risvolti su Salvador, ossia che non ci sono notizie positive ed è probabile che il giovane non stia bene o non sia più in vita. Devastata dalle parole di Lope, Maria rifiuta con forza l&#x27;idea che il fidanzato sia morto, sostenendo con decisione che se ciò fosse accaduto lo avrebbe avvertito dentro di sé. La sua difesa emotiva si trasforma rapidamente in una cieca rabbia rivolta proprio contro l&#x27;amico giunto per informarla.</p>
 <p>Incapace di accettare una simile sofferenza, Maria accusa Lope di essersi inventato ogni dettaglio al solo scopo di prendere il posto di Salvador nel suo cuore, mandandolo al diavolo e promettendo di raccontare tutto al fidanzato al suo ritorno. Lope resta completamente distrutto da questa incomprensione, vedendo fallire il suo tentativo di fare chiarezza e trovandosi di fronte a una spaccatura quasi impossibile da risanare. Contemporaneamente, le tensioni non riguardano solo i domestici, dato che Petra serve la cena a una Cruz priva di appetito e nota che, nonostante il clima apparente con Curro e Lorenzo dopo la verità, la marchesa nasconde ulteriori preoccupazioni legate alle vicende della tenuta.</p>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=rbr1HWvI7i8" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/rbr1HWvI7i8/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni e Spoiler: Jana spiata! Qualcuno la minaccia?</span></a></li><li><a href="https://www.youtube.com/watch?v=-RsXdnwBywA" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/-RsXdnwBywA/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazione 29 Dicembre: Nuovo arrivo a La Promessa! Altra minaccia per Jimena?</span></a></li><li><a href="https://www.youtube.com/watch?v=-dqQIfFveuo" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/-dqQIfFveuo/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni: Jimena dice di essere incinta, ma sarà vero? Manuel indaga....</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Chi può aver scritto quella lettera a Candela, se non vuole soldi? E Maria secondo voi ha reagito così perché non crede a Lope, o perché credergli significherebbe smettere di sperare?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=QQzhiZftiwc">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di La Promessa</h2><div class="griglia"><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/"><div class="foto"><img src="https://i.ytimg.com/vi/Rp8VhxDiDSk/hqdefault.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></h3>
+    <div class="quando">7 settembre 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/"><div class="foto"><img src="https://i.ytimg.com/vi/8JHt6ogwxQw/hqdefault.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Ángela beve tutto, Curro sfonda la porta</a></h3>
+    <div class="quando">6 settembre 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/"><div class="foto"><img src="/img/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Curro nasconde Ángela, Lorenzo furioso</a></h3>
+    <div class="quando">6 settembre 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=La Promessa, la lettera anonima che minaccia Candela: «so del tuo passato» — e Pía sviene rivelando il suo segreto a Gregorio — https://serietvfans.com/la-promessa/la-promessa-la-lettera-anonima-che-minaccia-candela-so-del-tuo-passato-e-pia-svi/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/la-promessa/la-promessa-la-lettera-anonima-che-minaccia-candela-so-del-tuo-passato-e-pia-svi/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/la-promessa/la-promessa-la-lettera-anonima-che-minaccia-candela-so-del-tuo-passato-e-pia-svi/&text=La Promessa, la lettera anonima che minaccia Candela: «so del tuo passato» — e Pía sviene rivelando il suo segreto a Gregorio" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">La Promessa, la lettera anonima che minaccia Candela: «so del tuo passato» — e Pía sviene rivelando il suo segreto a Gregorio</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=QQzhiZftiwc">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di La Promessa</h3><ol class="numerata"><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Ángela beve tutto, Curro sfonda la porta</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Curro nasconde Ángela, Lorenzo furioso</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>Ogni anticipazione, prima in video sul canale Serie TV Fans</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su La Promessa</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-3-6-settembre-maria-affronta-la-gravidanza-da-sola/">La Promessa anticipazioni 3-6 settembre: Maria affronta la gravidanza da sola</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-carlo-arriva-maria-trema/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Carlo arriva, Maria trema</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/far-away/far-away-anticipazioni-dal-31-agosto-al-4-settembre-chi-ha-donato-il-fegato-a-nare/">Far Away, anticipazioni dal 31 agosto al 4 settembre: chi ha donato il fegato a Nare, e perché adesso sta male lui</a></li><li><a href="/far-away/far-away-dal-31-agosto-la-madre-di-alya-sapeva-tutto-non-ricordo/">Far Away Dal 31 Agosto: la madre di Alya sapeva tutto — «non ricordo»</a></li><li><a href="/forbidden-fruit/forbidden-fruit-dal-31-agosto-il-conto-a-nome-di-halit-che-e-morto/">Forbidden Fruit Dal 31 Agosto: il conto a nome di Halit, che è morto</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

@@ -4,15 +4,15 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Tutto per la mia famiglia, il cast completo | Serie TV Fans</title>
-<meta name="description" content="«Tutto per la mia famiglia» è il titolo italiano di «Kardeşlerim», in onda su ATV dal 2021 al 2024 per quattro stagioni e 132 episodi. In Italia è…">
+<meta name="description" content="Tutto per la mia famiglia: la guida al cast con Kadir Eren e i suoi fratelli. Ecco chi interpreta i personaggi e in quali altre soap avete già visto gli…">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://serietvfans.com/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-il-cast-completo-chi-sono-gli-attori-e-dove-li-abbiamo/">
 <meta property="og:title" content="Tutto per la mia famiglia, il cast completo | Serie TV Fans">
-<meta property="og:description" content="«Tutto per la mia famiglia» è il titolo italiano di «Kardeşlerim», in onda su ATV dal 2021 al 2024 per quattro stagioni e 132 episodi. In Italia è…">
+<meta property="og:description" content="Tutto per la mia famiglia: la guida al cast con Kadir Eren e i suoi fratelli. Ecco chi interpreta i personaggi e in quali altre soap avete già visto gli…">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Serie TV Fans">
 <meta property="og:url" content="https://serietvfans.com/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-il-cast-completo-chi-sono-gli-attori-e-dove-li-abbiamo/">
-<meta property="og:image" content="https://serietvfans.com/social.svg">
+<meta property="og:image" content="https://serietvfans.com/img/tutto-per-la-mia-famiglia-il-cast-completo-chi-sono-gli-attori-e-dove-li-abbiamo.jpg">
 <meta property="og:locale" content="it_IT">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#7b1e2b">
@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -314,12 +363,12 @@ if(l.length){el.src=l.shift();el.dataset.fb=JSON.stringify(l)}else{el.onerror=nu
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7778653397776213" crossorigin="anonymous"></script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "96259d7e67ce47fba4573364859712a6"}'></script>
 <script>(function(){var f=0;function go(){if(f)return;f=1;(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","y3rpoig6jk");}["pointerdown","keydown","touchstart","scroll"].forEach(function(v){addEventListener(v,go,{once:1,passive:1})});setTimeout(go,2500)})();</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Tutto per la mia famiglia, il cast completo: chi sono gli attori e dove li abbiamo già visti", "datePublished": "2026-08-22", "dateModified": "2026-09-04", "description": "«Tutto per la mia famiglia» è il titolo italiano di «Kardeşlerim», in onda su ATV dal 2021 al 2024 per quattro stagioni e 132 episodi. In Italia è arrivata il 15 giugno 2026 su Canale 5. Ecco chi interpreta gli Eren, chi è l'antagonista, e in quali altre serie turche avete già visto questi volti.", "inLanguage": "it-IT", "mainEntityOfPage": "https://serietvfans.com/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-il-cast-completo-chi-sono-gli-attori-e-dove-li-abbiamo/", "image": [], "author": {"@type": "Organization", "name": "Serie TV Fans", "url": "https://serietvfans.com/chi-siamo/"}, "publisher": {"@type": "Organization", "name": "Serie TV Fans", "logo": {"@type": "ImageObject", "url": "https://serietvfans.com/favicon.svg"}}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Tutto per la mia famiglia, il cast completo: chi sono gli attori e dove li abbiamo già visti", "datePublished": "2026-08-22", "dateModified": "2026-09-07", "description": "Tutto per la mia famiglia: la guida al cast con Kadir Eren e i suoi fratelli. Ecco chi interpreta i personaggi e in quali altre soap avete già visto gli attori.", "inLanguage": "it-IT", "mainEntityOfPage": "https://serietvfans.com/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-il-cast-completo-chi-sono-gli-attori-e-dove-li-abbiamo/", "image": ["https://serietvfans.com/img/tutto-per-la-mia-famiglia-il-cast-completo-chi-sono-gli-attori-e-dove-li-abbiamo.jpg"], "author": {"@type": "Organization", "name": "Serie TV Fans", "url": "https://serietvfans.com/chi-siamo/"}, "publisher": {"@type": "Organization", "name": "Serie TV Fans", "logo": {"@type": "ImageObject", "url": "https://serietvfans.com/favicon.svg"}}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://serietvfans.com/"}, {"@type": "ListItem", "position": 2, "name": "Tutto per la mia Famiglia", "item": "https://serietvfans.com/serie/tutto-per-la-mia-famiglia/"}, {"@type": "ListItem", "position": 3, "name": "Tutto per la mia famiglia, il cast completo: chi sono gli attori e dove li abbiamo già visti"}]}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -332,58 +381,84 @@ if(l.length){el.src=l.shift();el.dataset.fb=JSON.stringify(l)}else{el.onerror=nu
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/tutto-per-la-mia-famiglia/">Tutto per la mia Famiglia</a> › Tutto per la mia famiglia, il cast completo: chi sono gli attori e dove li abbiamo già visti</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/tutto-per-la-mia-famiglia/">Tutto per la mia Famiglia</a>
   <h1>Tutto per la mia famiglia, il cast completo: chi sono gli attori e dove li abbiamo già visti</h1>
-  <div class="firma">Redazione Serie TV Fans · sabato 22 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-22">sabato 22 agosto 2026</time></span><span>aggiornato il 7 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Tutto per la mia famiglia: la guida al cast con Kadir Eren e i suoi fratelli. Ecco chi interpreta i personaggi e in quali altre soap avete già visto gli attori.</p><ol><li><a href="#c1">Halit Özgür Sarı è Kadir Eren</a></li><li><a href="#c2">Su Burcu Yazgı Coşkun è Asiye Eren</a></li><li><a href="#c3">Yiğit Koçak è Ömer Eren</a></li><li><a href="#c4">Aylin Akpınar è Emel Eren</a></li><li><a href="#c5">Celil Nalçakan è Akif Atakul</a></li><li><a href="#c6">Dove e quando vederla</a></li><li><a href="#c7">Come Kadir Eren guida i suoi tre fratelli</a></li><li><a href="#c8">Perché Akif Atakul condiziona la vita degli Eren</a></li><li><a href="#c9">Cosa affrontano Asiye Eren ed Ömer tra i banchi</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>Tutto per la mia Famiglia</strong> — Canale 5 · in streaming su Mediaset Infinity</span></div>
-  <figure class="copertina"><img src="/fallback/tutto-per-la-mia-famiglia.svg" alt="Tutto per la mia Famiglia" width="1280" height="720"><figcaption>Tutto per la mia Famiglia</figcaption></figure>
-  <p class="occhiello">«Tutto per la mia famiglia» è il titolo italiano di «Kardeşlerim», in onda su ATV dal 2021 al 2024 per quattro stagioni e 132 episodi. In Italia è arrivata il 15 giugno 2026 su Canale 5. Ecco chi interpreta gli Eren, chi è l&#x27;antagonista, e in quali altre serie turche avete già visto questi volti.</p>
+  <figure class="copertina"><img src="/img/tutto-per-la-mia-famiglia-il-cast-completo-chi-sono-gli-attori-e-dove-li-abbiamo.jpg" alt="Tutto per la mia Famiglia"><figcaption>Immagine d&#x27;ambiente — Tutto per la mia Famiglia</figcaption></figure>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   
   <div class="corpo">
   <p><strong>Quattro fratelli rimasti soli, un collegio per ricchi e un imprenditore con un segreto: chi c&#x27;è dietro i personaggi della serie turca del pomeriggio di Canale 5.</strong></p>
   <p>Prima di parlare degli attori conviene sapere da dove parte la storia, perché è quella a spiegare i ruoli. I quattro fratelli Eren perdono i genitori dopo una serie di eventi drammatici e restano completamente soli: non hanno più nessuno su cui contare se non loro stessi. Il loro destino cambia quando entrano all&#x27;Ataman College, un istituto prestigioso frequentato dai figli delle famiglie più ricche e influenti della città — un mondo che non è il loro.</p>
 <p>L&#x27;equilibrio, già fragile, si rompe del tutto quando emerge una scoperta che riguarda il facoltoso uomo d&#x27;affari Akif Atakul, ritenuto responsabile della morte dei genitori. Da lì parte la catena di eventi che segna tutta la serie.</p>
-<h2>Halit Özgür Sarı è Kadir Eren</h2>
+<h2 id="c1">Halit Özgür Sarı è Kadir Eren</h2>
 <p>È il maggiore dei fratelli, quello costretto a diventare adulto troppo presto. Con i genitori morti, Kadir si prende sulle spalle il ruolo che nessun altro può ricoprire: mantenere unita la famiglia, decidere, e incassare le conseguenze al posto degli altri. È il personaggio attorno a cui ruotano gran parte degli snodi della prima parte della storia.</p>
-<h2>Su Burcu Yazgı Coşkun è Asiye Eren</h2>
+<h2 id="c2">Su Burcu Yazgı Coşkun è Asiye Eren</h2>
 <p>Asiye è la sorella sensibile, quella che tiene insieme il lato emotivo del gruppo. È probabilmente il volto più familiare al pubblico italiano di serie turche: Su Burcu Yazgı Coşkun si è già fatta conoscere con «Racconto di una notte» e con «La forza di una donna», due titoli che hanno costruito una fetta importante dell&#x27;affezione italiana per questo tipo di racconti.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>Il suo percorso nella serie è anche quello che intreccia la famiglia Eren con gli Atakul, ed è attraverso di lei che diverse verità arrivano a galla.</p>
-<h2>Yiğit Koçak è Ömer Eren</h2>
+<h2 id="c3">Yiğit Koçak è Ömer Eren</h2>
 <p>Ömer è il figlio adottivo della famiglia e gemello adottivo di Asiye. È una posizione narrativa particolare: fa parte degli Eren a tutti gli effetti, ma il suo essere arrivato da fuori resta un elemento che la storia usa più volte. Insieme ad Asiye rappresenta la generazione che deve crescere in mezzo a una perdita che non ha scelto.</p>
-<h2>Aylin Akpınar è Emel Eren</h2>
+<h2 id="c4">Aylin Akpınar è Emel Eren</h2>
 <p>Emel è la più piccola dei quattro. Nelle storie familiari turche il personaggio del bambino ha spesso una funzione precisa — è il metro con cui si misura quanto sta reggendo la famiglia — e qui non fa eccezione: quando le cose precipitano, è su di lei che ricadono per prime le conseguenze concrete, dall&#x27;orfanotrofio in giù.</p>
-<h2>Celil Nalçakan è Akif Atakul</h2>
+<h2 id="c5">Celil Nalçakan è Akif Atakul</h2>
 <p>È l&#x27;antagonista, ed è il motivo per cui la serie non è soltanto un racconto scolastico. Akif è un imprenditore potente ed è il proprietario dell&#x27;istituto in cui i fratelli finiscono a studiare: significa che il mondo che dovrebbe dare loro un&#x27;occasione è lo stesso che appartiene all&#x27;uomo ritenuto responsabile della morte dei loro genitori.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>È un incastro che tiene in tensione tutta la storia, perché costringe i quattro a muoversi ogni giorno dentro un ambiente controllato da chi ha distrutto la loro famiglia.</p>
-<h2>Dove e quando vederla</h2>
+<h2 id="c6">Dove e quando vederla</h2>
 <p>«Tutto per la mia famiglia» va in onda su Canale 5, dal lunedì al venerdì, in prima visione assoluta dal 15 giugno 2026. Tutte le puntate sono disponibili anche in streaming su Mediaset Infinity, dove si possono recuperare gli episodi già trasmessi.</p>
 <p>Il titolo originale è «Kardeşlerim», che in turco significa «i miei fratelli». È stata trasmessa da ATV a partire dal 20 febbraio 2021 e si è conclusa nel giugno 2024 dopo quattro stagioni e 132 episodi: significa che, al ritmo del pomeriggio italiano, c&#x27;è materiale per un bel pezzo di stagione.</p>
 <p>Un&#x27;avvertenza per chi cerca informazioni in rete: gli episodi turchi durano molto più di uno slot pomeridiano italiano e vengono divisi in più puntate. Per questo la numerazione italiana non corrisponde a quella originale, e confrontare i due conteggi porta quasi sempre a conclusioni sbagliate su cosa è già successo e cosa no.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Come Kadir Eren guida i suoi tre fratelli</h2>
+<h2 id="c7">Come Kadir Eren guida i suoi tre fratelli</h2>
 <p>L&#x27;improvvisa scomparsa dei genitori catapulta il giovane Kadir Eren in una realtà completamente diversa e drammatica rispetto a quella vissuta in precedenza. Senza più alcuna figura adulta di riferimento su cui fare affidamento nei momenti di incertezza, il ragazzo si ritrova costretto a maturare rapidamente ed ad assumersi responsabilità enormi per tutelare i suoi cari. Mantenere unita la propria famiglia diventa la sua priorità assoluta, facendosi carico di ogni decisione complessa e di ogni sforzo economico o emotivo necessari alla sopravvivenza del gruppo. In questo contesto ostile, Kadir accetta di incassare di persona le conseguenze di qualsiasi ostacolo pur di difendere l&#x27;incolumità e la serenità dei suoi tre fratelli minori.</p>
 <p>L&#x27;ingresso dei quattro ragazzi nell&#x27;Ataman College segna un punto di svolta decisivo nell&#x27;esistenza di Kadir Eren e dell&#x27;intero nucleo familiare. Questo prestigioso istituto scolastico è frequentato prevalentemente dai figli delle famiglie più ricche e influenti della città, creando fin dal primo giorno un profondo divario sociale ed economico con la dolorosa condizione degli Eren. Kadir deve quindi far fronte non soltanto alle gravi difficoltà quotidiane legate alla gestione del focolare domestico, ma anche alla costante pressione derivante dal dover vivere in un ambiente estraneo ed elitario. Per il fratello maggiore si tratta di un&#x27;ulteriore prova quotidiana, in cui far prevalere il senso di protezione verso Asiye, Ömer e la piccola Emel.</p>
-<h2>Perché Akif Atakul condiziona la vita degli Eren</h2>
+<h2 id="c8">Perché Akif Atakul condiziona la vita degli Eren</h2>
 <p>La figura di Akif Atakul domina l&#x27;intera narrazione a causa del suo immenso potere economico e del ruolo di proprietario dell&#x27;Ataman College. Questo facoltoso uomo d&#x27;affari rappresenta l&#x27;ostacolo principale che impedisce ai quattro fratelli Eren di ricostruire una vita serena dopo i drammatici lutti subiti. La sua presenza condiziona ogni momento trascorso all&#x27;interno dell&#x27;istituto scolastico, trasformando proprio il luogo che dovrebbe garantire loro un&#x27;opportunità di riscatto nell&#x27;ambiente controllato dall&#x27;uomo ritenuto responsabile della tragica fine dei loro genitori. Si genera così una tensione costante ed inevitabile, che costringe i giovani Eren a muoversi quotidianamente sotto l&#x27;ombra di chi ha distrutto le fondamenta della loro unione.</p>
 <p>L&#x27;emergere di progressive ed inquietanti verità legate alla condotta di Akif Atakul stravolge irrimediabilmente il precario equilibrio dei protagonisti. È principalmente attraverso la figura di Asiye Eren che queste drammatiche scoperte vengono a galla, intrecciando irrimediabilmente i destini della povera famiglia Eren con quelli del potente clan degli Atakul. La ragazza, nota per la grande sensibilità ed il profondo legame emotivo con il gruppo, diventa il punto centrale attraverso cui emergono le colpe del passato. Questa serie di scoperte innesca una catena di eventi imprevisti, destinata a segnare irrimediabilmente il percorso di crescita dei fratelli all&#x27;interno della scuola.</p>
-<h2>Cosa affrontano Asiye Eren ed Ömer tra i banchi</h2>
+<h2 id="c9">Cosa affrontano Asiye Eren ed Ömer tra i banchi</h2>
 <p>Tra le mura dell&#x27;Ataman College, la posizione del giovane Ömer Eren e della sua sorella gemella adottiva Asiye risulta particolarmente complessa. Ömer si trova a dover affrontare le sfide della giovinezza gestendo al contempo la consapevolezza di essere arrivato dall&#x27;esterno come figlio adottivo, un elemento narrativo che torna più volte nel corso della storia. Insieme ad Asiye, il ragazzo rappresenta la generazione costretta a crescere in fretta per superare una grave ed ingiusta perdita. I due giovani devono dunque sostenersi a vicenda per difendere la propria dignità di fronte alla fredda accoglienza dei compagni benestanti e per tutelare l&#x27;integrità del loro nucleo familiare.</p>
 <p>L&#x27;impatto dei drammi familiari si fa sentire in maniera ancora più evidente e dolorosa sulla piccola Emel Eren, la componente più giovane della famiglia. La presenza della bambina offre un chiaro parametro per valutare la tenuta emotiva ed economica del gruppo di fronte all&#x27;avversità. Quando le cose precipitano definitivamente, è proprio la piccolissima Emel a fare le spese della drammatica situazione di precarietà, trovandosi concretamente esposta al rischio di finire in orfanotrofio. Questa minaccia costante diventa il campanello d&#x27;allarme per i fratelli maggiori, spingendoli a fare qualunque sacrificio per evitare la separazione definitiva e per preservare il calore della loro unione domestica.</p>
   </div>
   
   <div class="riquadro"><h3>E secondo voi?</h3><p>Avevate già visto Su Burcu Yazgı Coşkun in «Racconto di una notte» o ne «La forza di una donna»? Quale dei quattro fratelli Eren vi ha convinto di più?</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di Tutto per la mia Famiglia</h2><div class="griglia"><article class="scheda">
+  <a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/"><div class="foto"><img src="https://i.ytimg.com/vi/8gYT8MYRopw/hqdefault.jpg" alt="Tutto per la mia famiglia" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/tutto-per-la-mia-famiglia.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Tutto per la mia famiglia</span>
+    <h3><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></h3>
+    <div class="quando">7 settembre 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/"><div class="foto"></div></a>
+  <div class="corpo">
+    <span class="serie">Tutto per la mia famiglia</span>
+    <h3><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></h3>
+    <div class="quando">7 settembre 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/"><div class="foto"><img src="/img/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra.jpg" alt="Tutto per la mia famiglia" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/tutto-per-la-mia-famiglia.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Tutto per la mia famiglia</span>
+    <h3><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></h3>
+    <div class="quando">7 settembre 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=Tutto per la mia famiglia, il cast completo: chi sono gli attori e dove li abbiamo già visti — https://serietvfans.com/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-il-cast-completo-chi-sono-gli-attori-e-dove-li-abbiamo/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-il-cast-completo-chi-sono-gli-attori-e-dove-li-abbiamo/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-il-cast-completo-chi-sono-gli-attori-e-dove-li-abbiamo/&text=Tutto per la mia famiglia, il cast completo: chi sono gli attori e dove li abbiamo già visti" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  
-  <div class="box"><h3>Ancora su Tutto per la mia Famiglia</h3><ul><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-dal-31-agosto-al-4-settembre-2026/">Tutto per la mia famiglia, anticipazioni dal 31 agosto al 4 settembre 2026</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-chi-e-kadir-eren-e-cosa-gli-succede-il-fratello-maggio/">Tutto per la mia famiglia, chi è Kadir Eren e cosa gli succede: il fratello maggiore muore davvero?</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-la-trama-dallinizio-chi-sono-gli-eren-e-perche-finisco/">Tutto per la mia famiglia, la trama dall&#x27;inizio: chi sono gli Eren e perché finiscono all&#x27;Ataman College</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li><li><a href="/far-away/far-away-anticipazioni-dal-31-agosto-al-4-settembre-chi-ha-donato-il-fegato-a-nare/">Far Away, anticipazioni dal 31 agosto al 4 settembre: chi ha donato il fegato a Nare, e perché adesso sta male lui</a></li></ul></div>
+  <div class="box"><h3>Ultime di Tutto per la mia Famiglia</h3><ol class="numerata"><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-dal-31-agosto-al-4-settembre-2026/">Tutto per la mia famiglia, anticipazioni dal 31 agosto al 4 settembre 2026</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Ángela beve tutto, Curro sfonda la porta</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Curro nasconde Ángela, Lorenzo furioso</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>Ogni anticipazione, prima in video sul canale Serie TV Fans</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
+  </div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

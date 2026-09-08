@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/endless-love/">Endless Love</a> › Endless Love, la chiavetta di Sirkeci incastra Emir: la morte di Linda era una messinscena — e Nihan se ne va di casa</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/endless-love/">Endless Love</a>
   <h1>Endless Love, la chiavetta di Sirkeci incastra Emir: la morte di Linda era una messinscena — e Nihan se ne va di casa</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Settimana dal 2 all&#x27;8 giugno da cerchiare in rosso: nella vecchia cassetta di sicurezza della stazione di Sirkeci, Kemal e Nihan trovano la chiavetta USB con la registrazione della notte dell&#x27;«omicidio» — Linda indossava un giubbotto antiproiettile e sangue finto, tutto orchestrato da Emir per incatenare Ozan e Nihan. Lei gli sbatte il video in faccia e lascia la casa. Intanto Nursen confessa: Müjgan non tentò il suicidio, fu spinta da Galip.</p><ol><li><a href="#c1">Tarık si costituisce, la famiglia si spacca</a></li><li><a href="#c2">Nursen e la verità su Müjgan: spinta, non suicida</a></li><li><a href="#c3">Sirkeci: la chiave antica e il video che cambia tutto</a></li><li><a href="#c4">Quote ribaltate e giochi sporchi: Hakkı sceglie Kemal</a></li><li><a href="#c5">Come Kemal scopre la verità sul finto delitto</a></li><li><a href="#c6">Perché Galip ha tentato di uccidere sua moglie Müjgan</a></li><li><a href="#c7">Cosa provoca la confessione di Tarık nella famiglia Soydere</a></li><li><a href="#c8">Quale ruolo giocano Zeynep e Vildan nelle complesse trame</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>Endless Love</strong> — Serie conclusa in Italia · le puntate su Mediaset Infinity</span></div>
   
-  <p class="occhiello">Settimana dal 2 all&#x27;8 giugno da cerchiare in rosso: nella vecchia cassetta di sicurezza della stazione di Sirkeci, Kemal e Nihan trovano la chiavetta USB con la registrazione della notte dell&#x27;«omicidio» — Linda indossava un giubbotto antiproiettile e sangue finto, tutto orchestrato da Emir per incatenare Ozan e Nihan. Lei gli sbatte il video in faccia e lascia la casa. Intanto Nursen confessa: Müjgan non tentò il suicidio, fu spinta da Galip.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: Endless Love, la chiavetta di Sirkeci incastra Emir: la morte di Linda era una messinscena — e Nihan se ne va di casa" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/spDma0vnVCE/maxresdefault.jpg" alt="Endless Love, la chiavetta di Sirkeci incastra Emir: la morte di Linda era una messinscena — e Nihan se ne va di casa" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/spDma0vnVCE/hqdefault.jpg 480w, https://i.ytimg.com/vi/spDma0vnVCE/sddefault.jpg 640w, https://i.ytimg.com/vi/spDma0vnVCE/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/spDma0vnVCE/hqdefault.jpg&quot;, &quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,45 +409,67 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>«Non morì nell&#x27;incidente: rimase paralizzata. E tutto perché aveva avuto un altro figlio»: Kemal consegna a Emir la verità sul padre — e il sospetto che Tufan sia suo fratello segreto.</strong></p>
-  <h2>Tarık si costituisce, la famiglia si spacca</h2>
+  <h2 id="c1">Tarık si costituisce, la famiglia si spacca</h2>
 <p>La settimana si apre con la confessione di Tarık a Kemal: fu lui il responsabile involontario della morte di Karen. Kemal, dilaniato ma fedele al suo senso di giustizia, lo denuncia e accompagna gli agenti a casa dei genitori — con Fehime e Hüseyin che rifiutano di credergli e Zeynep che accorre in commissariato, accolta dall&#x27;abbraccio della madre e dal gelo del padre. Solo Asu appoggia Kemal senza riserve. Il colpo di scena arriva dalla scientifica: il rapporto scagiona Tarık, liberato anche grazie all&#x27;avvocato procurato da Emir.</p>
-<h2>Nursen e la verità su Müjgan: spinta, non suicida</h2>
+<h2 id="c2">Nursen e la verità su Müjgan: spinta, non suicida</h2>
 <p>Deciso a colpire Emir nel passato della sua famiglia, Kemal — con Zehir e una Nihan che pretende di essere coinvolta — rintraccia Nursen Aran, la donna presente 25 anni prima al «tentato suicidio» di Müjgan. Messa alle strette, Nursen cede: Müjgan non si gettò dal balcone, fu spinta da Galip, convinto che il secondo figlio che aveva avuto fosse frutto di una relazione extraconiugale. Emir scopre così di non essere figlio unico — e nella scena più disturbante della settimana irrompe dalla madre strappandole la maschera d&#x27;ossigeno per avere risposte che lei non può dare. Il sospettato numero uno come fratello segreto e ricattatore? Tufan: Kemal commissiona un test del DNA, Emir lo rapisce e lo picchia — ma Tufan nega e pretende la ripetizione del test.</p>
-<h2>Sirkeci: la chiave antica e il video che cambia tutto</h2>
+<h2 id="c3">Sirkeci: la chiave antica e il video che cambia tutto</h2>
 <p>Il capolavoro investigativo arriva quando Kemal capisce che la chiave in suo possesso apre le vecchie cassette di sicurezza della stazione di Sirkeci: dentro, una chiavetta USB con la registrazione della famigerata notte. Le immagini parlano da sole — Emir mise in scena la morte di Linda con giubbotto antiproiettile e sangue finto, costruendo la colpa che ha tenuto in ostaggio Ozan e, con lui, Nihan. Lei mostra il video al marito, annuncia il divorzio alle persone care e se ne va di casa, mentre segnala la scomparsa di Linda. La reazione di Emir è da manuale: segnalazione anonima per incastrare Ozan, che finisce in ospedale dopo l&#x27;interrogatorio — e rifiuta, per paura, il video che potrebbe scagionarlo.</p>
-<h2>Quote ribaltate e giochi sporchi: Hakkı sceglie Kemal</h2>
+<h2 id="c4">Quote ribaltate e giochi sporchi: Hakkı sceglie Kemal</h2>
 <p>Sul fronte del potere, Galip ordina a Hakkı di licenziare Kemal e ottiene l&#x27;effetto contrario: Hakkı convoca il consiglio e trasferisce le proprie quote ad Asu e Kemal. Intorno, la solita ragnatela: Zeynep — che minaccia Emir di svelare il matrimonio di facciata e intanto lo incontra in segreto sfiorando il flagrante coi rispettivi coniugi — viene arruolata da Asu per impedire la fuga di Kemal e Nihan; Vildan caccia di casa Önder dopo l&#x27;incontro spiato con Leyla; ed Efsane passa informazioni su Zeynep. La corsa verso la libertà di Nihan è cominciata: ma in questa serie, ogni porta aperta nasconde un&#x27;altra trappola.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Come Kemal scopre la verità sul finto delitto</h2>
+<h2 id="c5">Come Kemal scopre la verità sul finto delitto</h2>
 <p>La svolta decisiva nelle indagini nasce dall&#x27;intuizione di Kemal riguardo la chiave antica rimasta per lungo tempo senza una spiegazione chiara. Comprendendo che quell&#x27;oggetto apre le vecchie cassette di sicurezza custodite presso la stazione di Sirkeci, l&#x27;uomo si reca sul posto insieme a Nihan per verificare cosa vi sia nascosto all&#x27;interno. La scoperta di una chiavetta USB permette finalmente di fare luce sugli eventi che avevano sconvolto la vita di Ozan. Le immagini mostrano chiaramente come la presunta morte di Linda fosse soltanto una complessa e crudele messinscena orchestrata da Emir nei minimi dettagli. La ragazza indossava infatti un giubbotto antiproiettile ed era stata ricoperta di sangue finto per far credere a tutti che si fosse consumato un tragico omicidio.</p>
 <p>Messa di fronte all&#x27;evidenza di quella registrazione registrata la notte del presunto reato, Nihan decide di affrontare direttamente il marito mostrandogli il filmato e ponendo fine al loro legame. La donna comunica alle persone a lei care la volontà di chiedere il divorzio e abbandona immediatamente la casa coniugale, oltre a segnalare ufficialmente alle autorità la scomparsa di Linda. La reazione di Emir non si fa attendere e prende la forma di una segnalazione anonima volta a incastrare definitivamente Ozan. Il giovane finisce così in ospedale in seguito al duro interrogatorio subito e rifiuta terrorizzato di accettare il video che potrebbe scagionarlo, sopraffatto dalla paura delle conseguenze.</p>
-<h2>Perché Galip ha tentato di uccidere sua moglie Müjgan</h2>
+<h2 id="c6">Perché Galip ha tentato di uccidere sua moglie Müjgan</h2>
 <p>L&#x27;indagine intrapresa da Kemal per fare luce sul passato della famiglia di Emir lo porta a rintracciare Nursen Aran con l&#x27;aiuto di Zehir e la ferma partecipazione di Nihan. La donna era presente venticinque anni prima quando si verificò il drammatico evento legato a Müjgan. Messa con le spalle al muro, Nursen rivela che la madre di Emir non ha mai tentato il suicidio gettandosi dal balcone, ma è stata spinta giù da Galip. Il marito era infatti convinto che il secondo figlio avuto dalla donna fosse il frutto di una relazione extraconiugale. In seguito a quella terribile caduta, Müjgan non morì ma rimase completamente paralizzata per tutti gli anni successivi.</p>
 <p>Questa sconvolgente confessione stravolge completamente le certezze di Emir, il quale scopre improvvisamente di non essere figlio unico e si scaglia contro la madre strappandole la maschera d&#x27;ossigeno per ottenere risposte che lei non può fornirgli. I sospetti per identificare il fratello segreto si concentrano subito sulla figura di Tufan, considerato anche il possibile responsabile dei ricatti. Kemal decide quindi di commissionare un test del DNA per accertare la parentela, scatenando la violentissima reazione di Emir che rapisce e picchia Tufan. Quest&#x27;ultimo respinge con forza ogni accusa, negando le voci e pretendendo con fermezza la ripetizione del test per dimostrare la sua totale estraneità.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Cosa provoca la confessione di Tarık nella famiglia Soydere</h2>
+<h2 id="c7">Cosa provoca la confessione di Tarık nella famiglia Soydere</h2>
 <p>La tensione nella famiglia Soydere raggiunge vertici drammatici quando Tarık confessa a Kemal la propria responsabilità involontaria nella morte di Karen. Guidato da un profondo senso di giustizia, Kemal decide di denunciare il fratello accompagnando gli agenti di polizia direttamente a casa dei genitori. L&#x27;iniziativa di Kemal spacca irrimediabilmente i rapporti familiari: Fehime e Hüseyin rifiutano categoricamente di credere alla colpevolezza del figlio maggiore e accusano Kemal. Zeynep corre subito in commissariato per mostrare vicinanza al fratello arrestato, ricevendo l&#x27;affetto sconvolto della madre ma scontrandosi al contempo con la reazione fredda e distaccata del padre di fronte al caos generatosi.</p>
 <p>In un clima di grande spaccatura familiare dove soltanto Asu sostiene fermamente le decisioni di Kemal, gli sviluppi giudiziari prendono una piega del tutto inaspettata. Il rapporto della scientifica scagiona infatti Tarık, il quale riesce a tornare in libertà grazie anche al tempestivo intervento dell&#x27;avvocato fornito da Emir. Parallelamente, sul piano degli affari e del potere, Galip tenta di eliminare Kemal pretendendo da Hakkı il suo immediato licenziamento. La risposta di Hakkı stravolge i piani convocando il consiglio societario e trasferendo le sue quote aziendali proprio a Kemal e Asu, rafforzando la posizione del giovane ingegnere.</p>
-<h2>Quale ruolo giocano Zeynep e Vildan nelle complesse trame</h2>
+<h2 id="c8">Quale ruolo giocano Zeynep e Vildan nelle complesse trame</h2>
 <p>Attorno alle vicende principali si sviluppa un intricato intreccio di ricatti e segreti che vede Zeynep protagonista attiva. La ragazza minaccia Emir di svelare a tutti la verità sul suo matrimonio di facciata, continuando tuttavia a incontrarlo clandestinamente e rischiando più volte di essere scoperta dai rispettivi coniugi. La sua posizione diventa ancora più ambigua quando viene ingaggiata da Asu con lo scopo preciso di impedire la fuga programmata tra Kemal e Nihan. A complicare ulteriormente questo quadro di spionaggio domestico interviene la figura di Efsane, la quale si occupa di raccogliere e passare informazioni riservate relative alle mosse di Zeynep.</p>
 <p>Sul fronte della famiglia Sezin la situazione precipita definitivamente dopo che Vildan scopre un incontro segreto spiato tra il marito Önder e Leyla. La reazione della donna è immediata e drastica: Vildan caccia di casa Önder chiudendo ogni canale di dialogo. Nel frattempo Nihan prosegue determinata la sua difficile corsa verso la riconquista della libertà personale lontano dal giogo di Emir, pur consapevole che ogni ostacolo superato sembra nascondere una nuova e pericolosa insidia. In questo clima di incessante tensione, ogni passo compiuto dai protagonisti rischia di trasformarsi in una trappola tesa dai loro avversari per impedirne il riscatto.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=UDApQbbnHwg" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/UDApQbbnHwg/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>KEMAL DISPERATO, NIHAN TENTA SUICIDIO PER SFUGGIRE AD EMIR! Anticipazioni Endless Love 10-16 Gi</span></a></li><li><a href="https://www.youtube.com/watch?v=u5pYw2e1Z-s" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/u5pYw2e1Z-s/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>Endless Love Anticipazioni Turchia: Kemal e Nihan, finalmente soli ....anche di notte</span></a></li><li><a href="https://www.youtube.com/watch?v=cHoERKxcReU" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/cHoERKxcReU/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>DRAMMATICO FACCIA A FACCIA KEMAL-EMIR:&quot;EMIR, HAI UN FRATELLO!&quot; Anticipazioni Endless Love 3-9 G</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Ozan troverà il coraggio di usare il video che lo scagiona? E il fratello segreto di Emir è davvero Tufan o la serie ci sta portando fuori strada?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=spDma0vnVCE">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di Endless Love</h2><div class="griglia"><article class="scheda">
+  <a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/"><div class="foto"><img src="https://i.ytimg.com/vi/DSiProJJ1ls/hqdefault.jpg" alt="Endless Love" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/"><div class="foto"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/"><div class="foto"><img src="https://i.ytimg.com/vi/uu2oAzTOWQU/hqdefault.jpg" alt="Endless Love" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></h3>
+    <div class="quando">25 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=Endless Love, la chiavetta di Sirkeci incastra Emir: la morte di Linda era una messinscena — e Nihan se ne va di casa — https://soapoperaitalia.com/endless-love/endless-love-la-trama-completa-perche-nihan-sposa-emir-e-come-finisce/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://soapoperaitalia.com/endless-love/endless-love-la-trama-completa-perche-nihan-sposa-emir-e-come-finisce/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://soapoperaitalia.com/endless-love/endless-love-la-trama-completa-perche-nihan-sposa-emir-e-come-finisce/&text=Endless Love, la chiavetta di Sirkeci incastra Emir: la morte di Linda era una messinscena — e Nihan se ne va di casa" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">NIHAN LASCIA EMIR E VA DA KEMAL! FINALMENTE! ESCE LA VERITA&#x27;! - Endless Love</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=spDma0vnVCE">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di Endless Love</h3><ol class="numerata"><li><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></li><li><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></li><li><a href="/endless-love/endless-love-chi-e-galip-kozcuoglu-le-due-volte-in-cui-nihan-e-stata-venduta/">Endless Love, chi è Galip Kozcuoğlu: le due volte in cui Nihan è stata venduta</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-zeynep-soydere-perche-emir-lha-scelta-e-cosa-ha-distrutto/">Endless Love, chi è davvero Zeynep Soydere: perché Emir l&#x27;ha scelta e cosa ha distrutto</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>NIHAN LASCIA EMIR E VA DA KEMAL! FINALMENTE! ESCE LA VERITA&#x27;! - Endless Love</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su Endless Love</h3><ul><li><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></li><li><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></li><li><a href="/endless-love/endless-love-chi-e-galip-kozcuoglu-le-due-volte-in-cui-nihan-e-stata-venduta/">Endless Love, chi è Galip Kozcuoğlu: le due volte in cui Nihan è stata venduta</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-zeynep-soydere-perche-emir-lha-scelta-e-cosa-ha-distrutto/">Endless Love, chi è davvero Zeynep Soydere: perché Emir l&#x27;ha scelta e cosa ha distrutto</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/endless-love/">Endless Love</a> › Endless Love, la proposta più dolce della serie: i bambini con le magliette-lettera e Ayhan in ginocchio davanti a Leyla</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/endless-love/">Endless Love</a>
   <h1>Endless Love, la proposta più dolce della serie: i bambini con le magliette-lettera e Ayhan in ginocchio davanti a Leyla</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>8 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Dopo una vita di delusioni — abbandonata all&#x27;altare da Önder per la sorella Vildan, e con quasi trent&#x27;anni di silenzio in famiglia — Leyla trova finalmente la sua rivincita sentimentale. Ayhan, conosciuto per caso durante le visite a Kemal in carcere, la porta nel suo garage dove l&#x27;aspetta un gruppo di bambini: al segnale, aprono le giacche mostrando magliette-lettera che compongono «vuoi sposarmi?». Poi si inginocchia con l&#x27;anello e sdrammatizza: «Sarebbe bello avere una risposta prima che mi si buchino i pantaloni sul ginocchio».</p><ol><li><a href="#c1">Un amore nato in sala d&#x27;attesa</a></li><li><a href="#c2">Il garage, i bambini e le magliette-lettera</a></li><li><a href="#c3">La ferita che quel «sì» chiude</a></li><li><a href="#c4">La riconciliazione con Vildan, prima del lieto fine</a></li><li><a href="#c5">Come Ayhan e Leyla superano le ombre del passato</a></li><li><a href="#c6">Perché il gruppo Cleopatra trasforma il garage di Ayhan</a></li><li><a href="#c7">Cosa spinge Leyla a perdonare Vildan dopo il lutto</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>Endless Love</strong> — Serie conclusa in Italia · le puntate su Mediaset Infinity</span></div>
   
-  <p class="occhiello">Dopo una vita di delusioni — abbandonata all&#x27;altare da Önder per la sorella Vildan, e con quasi trent&#x27;anni di silenzio in famiglia — Leyla trova finalmente la sua rivincita sentimentale. Ayhan, conosciuto per caso durante le visite a Kemal in carcere, la porta nel suo garage dove l&#x27;aspetta un gruppo di bambini: al segnale, aprono le giacche mostrando magliette-lettera che compongono «vuoi sposarmi?». Poi si inginocchia con l&#x27;anello e sdrammatizza: «Sarebbe bello avere una risposta prima che mi si buchino i pantaloni sul ginocchio».</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: Endless Love, la proposta più dolce della serie: i bambini con le magliette-lettera e Ayhan in ginocchio davanti a Leyla" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/iGP9Xrc7Vfk/maxresdefault.jpg" alt="Endless Love, la proposta più dolce della serie: i bambini con le magliette-lettera e Ayhan in ginocchio davanti a Leyla" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/iGP9Xrc7Vfk/hqdefault.jpg 480w, https://i.ytimg.com/vi/iGP9Xrc7Vfk/sddefault.jpg 640w, https://i.ytimg.com/vi/iGP9Xrc7Vfk/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/iGP9Xrc7Vfk/hqdefault.jpg&quot;, &quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,25 +409,25 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>Il dettaglio che rivela quanto lui la conosca: il gruppo di bambini si chiama «Cleopatra» — il soprannome che Ayhan aveva scelto per Leyla fin dal loro primo incontro.</strong></p>
-  <h2>Un amore nato in sala d&#x27;attesa</h2>
+  <h2 id="c1">Un amore nato in sala d&#x27;attesa</h2>
 <p>La storia di Leyla e Ayhan comincia nel posto meno romantico che esista: le visite in carcere a Kemal, dove i due si incrociano più volte per caso. Da quegli incontri nasce un&#x27;amicizia che cresce lentamente, fatta di sostegno reciproco nei momenti peggiori, finché Ayhan non trova il coraggio di confessare i suoi sentimenti — senza ricevere subito una risposta, e restando in bilico nell&#x27;incertezza. Ma il legame continua a maturare, e per Leyla, ferita da un passato che le ha insegnato a diffidare dell&#x27;amore, diventa qualcosa di più: la possibilità concreta di riscrivere il proprio futuro.</p>
-<h2>Il garage, i bambini e le magliette-lettera</h2>
+<h2 id="c2">Il garage, i bambini e le magliette-lettera</h2>
 <p>Un giorno Ayhan la invita nel suo garage, e lì Leyla trova un gruppo di bambini vivaci — il gruppo «Cleopatra», chiamato così in suo onore. Non è una scelta casuale: Ayhan sa che Leyla, da volontaria, dedicava il suo tempo libero a insegnare matematica ai bambini meno fortunati del quartiere. Al segnale, i piccoli si allineano e aprono le giacche: le lettere sulle magliette compongono la domanda. Poi Ayhan si inginocchia con l&#x27;anello e stempera l&#x27;emozione con una battuta — «per me sarebbe bello ricevere una risposta prima che i pantaloni si buchino nel ginocchio». Leyla, commossa, dice sì.</p>
-<h2>La ferita che quel «sì» chiude</h2>
+<h2 id="c3">La ferita che quel «sì» chiude</h2>
 <p>Per capire il peso di quel momento bisogna tornare indietro di quasi trent&#x27;anni: il giorno delle sue nozze con Önder, mentre si preparava a raggiungere l&#x27;altare, lui le confessò la relazione segreta con Vildan — e la gravidanza che ne era nata, da cui erano venuti al mondo Nihan e Ozan. Da allora, tra le due sorelle, solo silenzio e rancore. Il «sì» ad Ayhan non è quindi soltanto l&#x27;accettazione di un matrimonio: è la fine di un lutto sentimentale lungo una vita, e la prova che l&#x27;amore, quando arriva davvero, non chiede di scegliere tra la dignità e la felicità.</p>
-<h2>La riconciliazione con Vildan, prima del lieto fine</h2>
+<h2 id="c4">La riconciliazione con Vildan, prima del lieto fine</h2>
 <p>C&#x27;era stato un altro passaggio necessario: dopo le morti improvvise di Önder e Ozan, davanti alla fragilità della vita Leyla scelse il perdono. Accolse Vildan in casa propria nel momento più buio, e la convivenza durò quasi un anno — abbastanza per affrontare insieme il dolore e ricucire una comprensione che sembrava impossibile, finché Vildan non si sentì pronta a tornare a vivere con Nihan. È questa Leyla — capace di perdonare chi le aveva tolto tutto — che merita la proposta nel garage: una donna che ha guarito le sue ferite prima di lasciarsi amare di nuovo.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Come Ayhan e Leyla superano le ombre del passato</h2>
+<h2 id="c5">Come Ayhan e Leyla superano le ombre del passato</h2>
 <p>L&#x27;incontro tra Ayhan e Leyla avviene nel luogo più impensabile per una storia d&#x27;amore, ovvero la sala d&#x27;attesa del carcere durante le visite a Kemal. In quel contesto difficile e carico di tensione, i due si incrociano più volte per puro caso, iniziando a scambiarsi parole di conforto e sostegno reciproco nei momenti di maggiore sconforto. Un&#x27;amicizia sincera comincia così a muovere i primi passi, trasformandosi pian piano in un pilastro fondamentale per entrambi. Ayhan comprende ben presto di provare qualcosa di più profondo e trova il coraggio di confessare apertamente i suoi sentimenti a Leyla, senza pretendere una risposta immediata e accettando con molta pazienza di rimanere per un periodo in uno stato d&#x27;incertezza totale.</p>
 <p>La prudenza di Leyla nasce dalle ferite profonde del suo passato sentimentale, che l&#x27;hanno portata a costruire un muro di diffidenza verso ogni forma di coinvolgimento emotivo. L&#x27;abbandono subito il giorno del matrimonio ha segnato per sempre la sua vita, facendole temere che fidarsi nuovamente possa condurla soltanto a soffrire ancora. Tuttavia, la presenza costante di Ayhan e la sua straordinaria capacità di offrirle appoggio senza mai soffocarla permettono a quel legame di maturare gradualmente. Leyla comprende che questo uomo rappresenta la concreta possibilità di lasciarsi alle spalle anni di solitudine, permettendole di riscrivere finalmente un futuro diverso in cui possa sentirsi desiderata e al sicuro da ulteriori delusioni.</p>
 <p>Un elemento determinante in questo percorso di riavvicinamento è la passione di Leyla per il sociale, in particolare il suo impegno come volontaria nel quartiere. Dedicare il proprio tempo libero all&#x27;insegnamento della matematica ai bambini meno fortunati rappresenta per lei una fonte inestimabile di serenità e una missione personale di grande valore. Ayhan osserva con ammirazione questa dedizione e ne comprende il significato profondo, memorizzando ogni singolo dettaglio delle sue abitudini. Proprio la profonda sensibilità dimostrata da Leyla verso i più piccoli diventa il punto di partenza scelto da Ayhan per organizzare un gesto indimenticabile, capace di toccare le corde giuste del cuore della donna e farle superare le ultime riserve.</p>
-<h2>Perché il gruppo Cleopatra trasforma il garage di Ayhan</h2>
+<h2 id="c6">Perché il gruppo Cleopatra trasforma il garage di Ayhan</h2>
 <p>Per fare la sua proposta di matrimonio, Ayhan sceglie un ambiente a lui familiare e organizza un invito speciale invitando Leyla nel suo garage. Non si tratta di una location qualsiasi, ma del luogo che diventa lo scenario per una sorpresa studiata nei minimi dettagli. Ad attendere la donna c&#x27;è un gruppo di bambini vivaci che Ayhan ha battezzato con il nome Cleopatra. Questo dettaglio specifico non è una scelta casuale, bensì un richiamo diretto al soprannome che l&#x27;uomo aveva deciso di attribuire a Leyla fin dal giorno del loro primissimo incontro. Con questo gesto, Ayhan dimostra a Leyla quanto la conosca a fondo e quanto abbia custodito con cura ogni ricordo della loro storia.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>Al segnale concordato con Ayhan, i piccoli si allineano perfettamente davanti a Leyla e aprono le loro giacche con fare entusiasta. Sotto le giacche, i bambini indossano delle speciali magliette-lettera che, lette una di seguito all&#x27;altra, compongono la domanda cruciale vuoi sposarmi. Leyla assiste alla scena visibilmente commossa di fronte a una messinscena così originale e tenera, pensata appositamente per toccare i suoi affetti più cari. I bambini che lei stessa aiuta e istruisce diventano così i veri protagonisti della proposta, trasformando un momento privato in una festa piena di colore e gioia contagiosa, capace di spazzare via in un istante tutti i timori accumulati negli anni trascorsi.</p>
 <p>Subito dopo che i bambini hanno mostrato la scritta, Ayhan si inginocchia davanti a Leyla stringendo tra le mani l&#x27;anello di fidanzamento. Per smorzare la fortissima tensione emotiva dell&#x27;istante e strappare un sorriso alla donna, l&#x27;uomo decide di sdrammatizzare la situazione pronunciando una battuta ironica. Dice infatti che per lui sarebbe davvero bello ricevere una risposta prima che gli si buchino i pantaloni all&#x27;altezza del ginocchio. Leyla, profondamente toccata dalla dolcezza e dalla simpatia di quel momento irripetibile, accetta con gioia dicendo il suo sì ad Ayhan, suggellando una promessa d&#x27;amore genuina che chiude per sempre le porte alle brutte sofferenze vissute in passato.</p>
-<h2>Cosa spinge Leyla a perdonare Vildan dopo il lutto</h2>
+<h2 id="c7">Cosa spinge Leyla a perdonare Vildan dopo il lutto</h2>
 <p>Il percorso che conduce Leyla ad accettare la proposta di matrimonio di Ayhan ha radici molto antiche e tormentate, nate da un tradimento che ha distrutto la sua giovinezza. Quasi trent&#x27;anni prima, mentre si stava preparando ad attraversare la navata per raggiungere l&#x27;altare, Önder le rivelò la verità shock sulla sua relazione segreta con Vildan. La confessione dell&#x27;uomo con cui avrebbe dovuto sposarsi rivelò anche la gravidanza nata da quel legame clandestino, che avrebbe portato alla nascita dei due gemelli Nihan e Ozan. L&#x27;evento traumatico interruppe bruscamente le nozze e segnò l&#x27;inizio di un lunghissimo periodo di gelido silenzio e profondo rancore tra le due sorelle, durato per circa tre decenni.</p>
 <p>I tragici avvenimenti successivi portano però a una svolta dolorosa ma decisiva nella vita di tutta la famiglia, causata dalle mortali e improvvise sparizioni di Önder e del giovane Ozan. Messa di fronte alla palese fragilità dell&#x27;esistenza umana e all&#x27;immensità del dolore, Leyla prende la decisione maturata di imboccare la strada del perdono nei confronti della sorella. Invece di cedere alla rabbia per il passato, la donna sceglie di accogliere Vildan all&#x27;interno della propria casa durante la fase più buia della sua vita, mostrando una forza d&#x27;animo straordinaria e un&#x27;incredibile capacità di compassione verso chi le aveva tolto la felicità e rovinato il giorno più bello.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
@@ -385,19 +435,41 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=Pw8vBn-Pblo" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/Pw8vBn-Pblo/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>NIHAN FINALMENTE FELICE: &quot;KEMAL, SONO IL TUO DOLCE &quot;MAL DI TESTA&quot;,  Anticipazioni Endless Love</span></a></li><li><a href="https://www.youtube.com/watch?v=sySBzzYRrbo" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/sySBzzYRrbo/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>FINALMENTE KEMAL CHIEDE LA MANO DI NIHAN: &quot;VUOI SPOSARMI?&quot; - Anticipazioni Endless Love 2^ Stag</span></a></li><li><a href="https://www.youtube.com/watch?v=JY6JdF1IhFQ" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/JY6JdF1IhFQ/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LEYLA, KEMAL SCOPRE IL SEGRETO NASCOSTO PER 30 ANNI - Endless Love Anticipazioni 6 Aprile</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>La proposta di Ayhan è la scena più bella della seconda stagione? E secondo voi Leyla meritava questo lieto fine più di chiunque altro nella serie?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=iGP9Xrc7Vfk">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di Endless Love</h2><div class="griglia"><article class="scheda">
+  <a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/"><div class="foto"><img src="https://i.ytimg.com/vi/DSiProJJ1ls/hqdefault.jpg" alt="Endless Love" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/"><div class="foto"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/"><div class="foto"><img src="https://i.ytimg.com/vi/uu2oAzTOWQU/hqdefault.jpg" alt="Endless Love" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></h3>
+    <div class="quando">25 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=Endless Love, la proposta più dolce della serie: i bambini con le magliette-lettera e Ayhan in ginocchio davanti a Leyla — https://soapoperaitalia.com/endless-love/endless-love-la-trama-completa-perche-nihan-sposa-emir-e-come-finisce/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://soapoperaitalia.com/endless-love/endless-love-la-trama-completa-perche-nihan-sposa-emir-e-come-finisce/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://soapoperaitalia.com/endless-love/endless-love-la-trama-completa-perche-nihan-sposa-emir-e-come-finisce/&text=Endless Love, la proposta più dolce della serie: i bambini con le magliette-lettera e Ayhan in ginocchio davanti a Leyla" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">AYHAN A LEYLA: &quot;VUOI SPOSARMI?&quot;; LEI ACCETTA, FINALMENTE FELICE - Anticipazioni Endless Love</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=iGP9Xrc7Vfk">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di Endless Love</h3><ol class="numerata"><li><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></li><li><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></li><li><a href="/endless-love/endless-love-chi-e-galip-kozcuoglu-le-due-volte-in-cui-nihan-e-stata-venduta/">Endless Love, chi è Galip Kozcuoğlu: le due volte in cui Nihan è stata venduta</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-zeynep-soydere-perche-emir-lha-scelta-e-cosa-ha-distrutto/">Endless Love, chi è davvero Zeynep Soydere: perché Emir l&#x27;ha scelta e cosa ha distrutto</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>AYHAN A LEYLA: &quot;VUOI SPOSARMI?&quot;; LEI ACCETTA, FINALMENTE FELICE - Anticipazioni Endless Love</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su Endless Love</h3><ul><li><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></li><li><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></li><li><a href="/endless-love/endless-love-chi-e-galip-kozcuoglu-le-due-volte-in-cui-nihan-e-stata-venduta/">Endless Love, chi è Galip Kozcuoğlu: le due volte in cui Nihan è stata venduta</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-zeynep-soydere-perche-emir-lha-scelta-e-cosa-ha-distrutto/">Endless Love, chi è davvero Zeynep Soydere: perché Emir l&#x27;ha scelta e cosa ha distrutto</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

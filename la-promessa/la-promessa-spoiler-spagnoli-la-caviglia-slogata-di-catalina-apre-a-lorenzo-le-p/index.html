@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/la-promessa/">La Promessa</a> › La Promessa, spoiler spagnoli: la caviglia slogata di Catalina apre a Lorenzo le porte della banca — e al ritorno di Cruz la Baronessa minaccia, ma stavolta trova pane per i suoi denti</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/la-promessa/">La Promessa</a>
   <h1>La Promessa, spoiler spagnoli: la caviglia slogata di Catalina apre a Lorenzo le porte della banca — e al ritorno di Cruz la Baronessa minaccia, ma stavolta trova pane per i suoi denti</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Cinque puntate spagnole in cui ogni incidente sembra troppo comodo per essere davvero un incidente. Catalina cade e si sloga una caviglia, e proprio grazie a quello accetta che sia Lorenzo ad andare in banca al posto suo — esattamente il risultato che il piano della Baronessa puntava a ottenere. Poi Cruz rientra alla tenuta, e le due donne si affrontano a colpi di minacce.</p><ol><li><a href="#c1">Manuel rinuncia al viaggio</a></li><li><a href="#c2">La caduta che serviva a qualcuno</a></li><li><a href="#c3">Chi è la Baronessa, e perché ha bisogno di Lorenzo per entrare in banca</a></li><li><a href="#c4">La casa dell&#x27;infanzia</a></li><li><a href="#c5">Le lettere scritte da Carlos e l&#x27;ultimatum di Rómulo</a></li><li><a href="#c6">Perché conta: chi va in banca decide, e Catalina è l&#x27;unica che sa leggere i numeri</a></li><li><a href="#c7">Come Lorenzo e la Baronessa conquistano la banca</a></li><li><a href="#c8">Perche&#x27; Jana spinge Curro verso la verità</a></li><li><a href="#c9">Cosa provoca la frattura tra Lope e Salvador</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>La Promessa</strong> — Rete 4 · in streaming su Mediaset Infinity</span></div>
   
-  <p class="occhiello">Cinque puntate spagnole in cui ogni incidente sembra troppo comodo per essere davvero un incidente. Catalina cade e si sloga una caviglia, e proprio grazie a quello accetta che sia Lorenzo ad andare in banca al posto suo — esattamente il risultato che il piano della Baronessa puntava a ottenere. Poi Cruz rientra alla tenuta, e le due donne si affrontano a colpi di minacce.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: La Promessa, spoiler spagnoli: la caviglia slogata di Catalina apre a Lorenzo le porte della banca — e al ritorno di Cruz la Baronessa minaccia, ma stavolta trova pane per i suoi denti" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/hIAq680StTk/maxresdefault.jpg" alt="La Promessa, spoiler spagnoli: la caviglia slogata di Catalina apre a Lorenzo le porte della banca — e al ritorno di Cruz la Baronessa minaccia, ma stavolta trova pane per i suoi denti" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/hIAq680StTk/hqdefault.jpg 480w, https://i.ytimg.com/vi/hIAq680StTk/sddefault.jpg 640w, https://i.ytimg.com/vi/hIAq680StTk/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/hIAq680StTk/hqdefault.jpg&quot;, &quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,46 +409,68 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>Jana trova finalmente la casa in cui ha vissuto da bambina e si convince a dire tutta la verità a Curro.</strong></p>
-  <h2>Manuel rinuncia al viaggio</h2>
+  <h2 id="c1">Manuel rinuncia al viaggio</h2>
 <p>Il figlio di Cruz rinuncia a partire per l&#x27;Italia e decide di restare a occuparsi di Jimena, che dice di stare male in questa prima fase della gravidanza. Che stia ingigantendo i sintomi lo sappiamo — l&#x27;ha ammesso lei stessa parlando con la madre — e Jana lo dice apertamente a Manuel. Poi lui riceve un&#x27;offerta per partecipare a una competizione aeronautica, ci pensa, e quando lei scopre che sta ancora valutando se andare o meno lo accusa senza mezzi termini di essere un codardo.</p>
-<h2>La caduta che serviva a qualcuno</h2>
+<h2 id="c2">La caduta che serviva a qualcuno</h2>
 <p>Lorenzo conquista la fiducia di Catalina grazie a un piano orchestrato dalla Baronessa: recuperare la spilla della madre che Cruz aveva venduto. Poi la figlia del marchese cade e si sloga una caviglia, e accetta che sia lui a occuparsi della banca al posto suo. Un incidente fortuito, oppure il tassello previsto da chi punta a prendere il controllo della tenuta. Intanto la Baronessa insiste per andarsene, con grande disappunto di Lorenzo.</p>
-<h2>Chi è la Baronessa, e perché ha bisogno di Lorenzo per entrare in banca</h2>
+<h2 id="c3">Chi è la Baronessa, e perché ha bisogno di Lorenzo per entrare in banca</h2>
 <p>La Baronessa è Elisa de Grazalema, vedova del Barone: alla morte del marito i palazzi sono andati alle figlie, ma l&#x27;intera fortuna in denaro è finita a lei, riconosciuta dal testamento come la sola che gli avesse dato qualcosa di simile alla felicità negli ultimi anni. È il motivo per cui alla Promessa non è un&#x27;ospite ma un problema aperto: quando Alonso ha incaricato Rómulo di scoprire chi fosse davvero, le notizie arrivate non erano rassicuranti, e sul tavolo è finito il sospetto che quella morte non sia stata naturale. Lorenzo è la sua leva dentro casa. Da sola non potrebbe avvicinarsi ai conti della tenuta; con un uomo di famiglia che siede al suo posto in banca, sì.</p>
-<h2>La casa dell&#x27;infanzia</h2>
+<h2 id="c4">La casa dell&#x27;infanzia</h2>
 <p>Jana ritrova la casa in cui viveva da bambina, e da quel momento non ha più dubbi: vuole raccontare a Curro tutta la verità sulle proprie origini e sul legame che li unisce. María Fernández la pensa diversamente e prova a frenarla. Curro, dal canto suo, cresce dopo il confronto con il padre e va a ringraziare Jana per i consigli ricevuti; poco dopo Martina gli confessa di essersi innamorata di lui, e lui reagisce con una freddezza che non si aspettava.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Le lettere scritte da Carlos e l&#x27;ultimatum di Rómulo</h2>
+<h2 id="c5">Le lettere scritte da Carlos e l&#x27;ultimatum di Rómulo</h2>
 <p>Nel piano di sotto due storie corrono parallele. Simona fatica sempre di più a nascondere a Candela il proprio segreto: è stato Carlos, l&#x27;insegnante, a scrivere le lettere dei suoi figli. Prova a costringerlo a dimettersi, ma Rómulo insiste per aumentargli lo stipendio e tenerlo alla tenuta, e Candela comincia a notare che tra i due c&#x27;è qualcosa di strano. L&#x27;amicizia tra Lope e Salvador, invece, si spezza dopo una confessione che non ammette ritorno: da lì in poi i due si evitano al punto da scambiarsi i turni di nascosto, finché Rómulo non è costretto a dare loro un ultimatum. E quando Cruz rientra alla tenuta, la Baronessa — convinta di essere stata tradita — la minaccia apertamente: stavolta però si sente rispondere con un&#x27;altra minaccia.</p>
-<h2>Perché conta: chi va in banca decide, e Catalina è l&#x27;unica che sa leggere i numeri</h2>
+<h2 id="c6">Perché conta: chi va in banca decide, e Catalina è l&#x27;unica che sa leggere i numeri</h2>
 <p>Una caviglia si rimette in poche settimane, una delega no. Tra i figli di Alonso, Catalina è la sola che sappia far quadrare un bilancio — è lei che tiene in piedi la parte produttiva della tenuta, dalla confettura ai conti — e sostituirla allo sportello non è un favore fatto a una convalescente: è un cambio di firma. Da quel momento chi parla con la banca a nome della Promessa è Lorenzo, cioè l&#x27;uomo che alla Baronessa risponde prima che alla famiglia. E la sequenza dice tutto: prima la spilla della madre recuperata per comprarsi la fiducia di Catalina, poi la caduta, poi la delega. Quando Cruz rientra alla tenuta e le due donne si minacciano a vicenda, la partita che conta è già stata giocata altrove, su un pezzo di carta che nessuno ha visto firmare.</p>
-<h2>Come Lorenzo e la Baronessa conquistano la banca</h2>
+<h2 id="c7">Come Lorenzo e la Baronessa conquistano la banca</h2>
 <p>Lorenzo sfrutta ogni occasione per inserirsi nei meccanismi finanziari della tenuta, trovando nella Baronessa Elisa de Grazalema un&#x27;alleata determinante. Per conquistare l&#x27;incondizionata fiducia di Catalina, l&#x27;uomo recupera la spilla della madre che Cruz aveva precedentemente venduto, mettendo in atto una mossa strategica ben calcolata. Quando poi la figlia del marchese cade e si provoca una dolorosa distorsione alla caviglia, si crea il pretesto perfetto per cedere il passo. Catalina, che fino a quel momento gestiva in prima persona i conti e la produzione, accetta che sia proprio Lorenzo ad andare in banca al suo posto, ignorando che questo cambio di delega risponda precisamente ai piani della Baronessa per controllare i capitali.</p>
 <p>Il ritorno di Cruz alla Promessa accende immediatamente una tensione altissima con la Baronessa, dando vita a uno scontro verbale durissimo basato su reciproche minacce. Elisa de Grazalema si sente tradita ed è persino pronta ad andarsene dalla tenuta, provocando un forte disappunto in Lorenzo che vede a rischio i propri interessi. La vedova del Barone, ereditiera dell&#x27;intera fortuna in denaro a scapito delle figlie del defunto marito, sa di essere considerata un pericolo da Alonso, il quale aveva persino incaricato Rómulo di indagare sui suoi trascorsi. Nonostante la risposta decisa di Cruz, la posizione della Baronessa resta forte grazie all&#x27;accesso ai conti ottenuto tramite Lorenzo.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Perche&#x27; Jana spinge Curro verso la verità</h2>
+<h2 id="c8">Perche&#x27; Jana spinge Curro verso la verità</h2>
 <p>La scoperta della casa d&#x27;infanzia rappresenta un momento di svolta fondamentale per Jana, che trova finalmente la certezza necessaria per affrontare Curro e svelargli tutta la verità sulle loro origini. Nonostante María Fernández cerchi in ogni modo di frenare il suo entusiasmo invitandola alla prudenza, la giovane serva appare irremovibile nella sua decisione. Nel frattempo Curro attraversa una fase di profonda trasformazione personale dopo il confronto avuto con il padre. Riconoscente per i preziosi consigli ricevuti da Jana, il ragazzo si dimostra cambiato, ma reagisce con una sorprendente freddezza quando Martina gli confessa apertamente di essersi innamorata di lui, mostrando quanto la sua situazione emotiva sia complessa.</p>
 <p>Parallelamente alle questioni di cuore, Jana si trova a dover gestire la complicata vicinanza con Manuel, rimasto alla tenuta per assistere Jimena in gravidanza. La ragazza comprende subito che Jimena sta ingigantendo i propri malesseri per trattenere il marito, un sospetto confermato dalla stessa futura madre durante una conversazione con la propria genitrice. Quando Manuel riceve un&#x27;invitante proposta per partecipare a una gara aeronautica ma continua a esitare, Jana non esita ad accusarlo apertamente di codardia per non aver rinunciato al viaggio in Italia con convinzione. Il legame tra i due si incrina così ulteriormente, mentre la servitù affronta allo stesso tempo le tensioni tra Lope e Salvador e il segreto di Simona.</p>
-<h2>Cosa provoca la frattura tra Lope e Salvador</h2>
+<h2 id="c9">Cosa provoca la frattura tra Lope e Salvador</h2>
 <p>Nel piano inferiore della tenuta le tensioni raggiungono livelli critici a causa dei segreti mantenuti tra i domestici. Simona si ritrova in grande difficoltà nel nascondere a Candela che l&#x27;insegnante Carlos ha scritto le lettere attribuite ai suoi figli. Nonostante i tentativi della cuoca di spingere il maestro a dimettersi, Rómulo interviene offrendo a Carlos un aumento di stipendio per farlo restare, insospettendo sempre di più Candela. Questa catena di omissioni e bugie appesantisce l&#x27;atmosfera delle cucine, rendendo la convivenza tra le due donne sempre più fragile di fronte all&#x27;evidenza di qualcosa di insolito che coinvolge l&#x27;insegnante.</p>
 <p>Allo stesso tempo, il legame storico tra Lope e Salvador crolla definitivamente in seguito a una rivelazione che non lascia spazio al perdono. Incapaci di chiarirsi, i due maggiordomi e aiutanti arrivano a scambiarsi i turni di lavoro all&#x27;insaputa degli altri pur di non incrociarsi nelle stanze della tenuta. La situazione degenera al punto che Rómulo si vede costretto a intervenire con un severo ultimatum per ristabilire l&#x27;ordine ed evitare che i problemi personali compromettano il servizio. Questo clima di sfiducia diffusa rispecchia le medesime spaccature che stanno lacerando i piani alti della tenuta dopo il ritorno improvviso della marchesa Cruz.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   </div>
-  <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=L5mm8zEozlY" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/L5mm8zEozlY/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni 18-22 Dicembre Spagnole: Cruz prova ad uccidere Catalina! Jimena va v</span></a></li><li><a href="https://www.youtube.com/watch?v=QoXo1p1SMPk" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/QoXo1p1SMPk/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA: il Barone minaccia CATALINA — «resterai sola nella tenuta» 😭</span></a></li><li><a href="https://www.youtube.com/watch?v=J25erAN4nC8" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/J25erAN4nC8/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>Anticipazioni La Promessa 18 Luglio: Cruz Spinge Lorenzo a Ingannare Margarita con Clausole Sub</span></a></li></ul></div>
+  <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=L5mm8zEozlY" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/L5mm8zEozlY/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni 18-22 Dicembre Spagnole: Cruz prova ad uccidere Catalina! Jimena va v</span></a></li><li><a href="https://www.youtube.com/watch?v=QoXo1p1SMPk" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/QoXo1p1SMPk/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA: il Barone minaccia CATALINA — «resterai sola nella tenuta» 😭</span></a></li><li><a href="https://www.youtube.com/watch?v=C2SAgH0hbqA" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/C2SAgH0hbqA/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni: Cruz Scioccata Quando Scopre Il segreto dei Due Uomini della sua Vit</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>La caduta di Catalina è stata davvero un incidente?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=hIAq680StTk">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di La Promessa</h2><div class="griglia"><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/"><div class="foto"><img src="https://i.ytimg.com/vi/Rp8VhxDiDSk/hqdefault.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></h3>
+    <div class="quando">7 settembre 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/"><div class="foto"><img src="https://i.ytimg.com/vi/8JHt6ogwxQw/hqdefault.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Ángela beve tutto, Curro sfonda la porta</a></h3>
+    <div class="quando">6 settembre 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/"><div class="foto"><img src="/img/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Curro nasconde Ángela, Lorenzo furioso</a></h3>
+    <div class="quando">6 settembre 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=La Promessa, spoiler spagnoli: la caviglia slogata di Catalina apre a Lorenzo le porte della banca — e al ritorno di Cruz la Baronessa minaccia, ma stavolta trova pane per i suoi denti — https://serietvfans.com/la-promessa/la-promessa-spoiler-spagnoli-la-caviglia-slogata-di-catalina-apre-a-lorenzo-le-p/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/la-promessa/la-promessa-spoiler-spagnoli-la-caviglia-slogata-di-catalina-apre-a-lorenzo-le-p/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/la-promessa/la-promessa-spoiler-spagnoli-la-caviglia-slogata-di-catalina-apre-a-lorenzo-le-p/&text=La Promessa, spoiler spagnoli: la caviglia slogata di Catalina apre a Lorenzo le porte della banca — e al ritorno di Cruz la Baronessa minaccia, ma stavolta trova pane per i suoi denti" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">LA PROMESSA SPOILER SPAGNOLI: Cruz torna a La Promessa!</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=hIAq680StTk">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di La Promessa</h3><ol class="numerata"><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Ángela beve tutto, Curro sfonda la porta</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Curro nasconde Ángela, Lorenzo furioso</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>LA PROMESSA SPOILER SPAGNOLI: Cruz torna a La Promessa!</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su La Promessa</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-3-6-settembre-maria-affronta-la-gravidanza-da-sola/">La Promessa anticipazioni 3-6 settembre: Maria affronta la gravidanza da sola</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-carlo-arriva-maria-trema/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Carlo arriva, Maria trema</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/far-away/far-away-anticipazioni-dal-31-agosto-al-4-settembre-chi-ha-donato-il-fegato-a-nare/">Far Away, anticipazioni dal 31 agosto al 4 settembre: chi ha donato il fegato a Nare, e perché adesso sta male lui</a></li><li><a href="/far-away/far-away-dal-31-agosto-la-madre-di-alya-sapeva-tutto-non-ricordo/">Far Away Dal 31 Agosto: la madre di Alya sapeva tutto — «non ricordo»</a></li><li><a href="/forbidden-fruit/forbidden-fruit-dal-31-agosto-il-conto-a-nome-di-halit-che-e-morto/">Forbidden Fruit Dal 31 Agosto: il conto a nome di Halit, che è morto</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

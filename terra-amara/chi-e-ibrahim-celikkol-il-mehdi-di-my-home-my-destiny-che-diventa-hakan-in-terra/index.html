@@ -12,7 +12,7 @@
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Serie TV Fans">
 <meta property="og:url" content="https://serietvfans.com/terra-amara/chi-e-ibrahim-celikkol-il-mehdi-di-my-home-my-destiny-che-diventa-hakan-in-terra/">
-<meta property="og:image" content="https://i.ytimg.com/vi/PMb4du37A5g/maxresdefault.jpg">
+<meta property="og:image" content="https://serietvfans.com/img/chi-e-ibrahim-celikkol-il-mehdi-di-my-home-my-destiny-che-diventa-hakan-in-terra.jpg">
 <meta property="og:locale" content="it_IT">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#7b1e2b">
@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -318,12 +367,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7778653397776213" crossorigin="anonymous"></script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "96259d7e67ce47fba4573364859712a6"}'></script>
 <script>(function(){var f=0;function go(){if(f)return;f=1;(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","y3rpoig6jk");}["pointerdown","keydown","touchstart","scroll"].forEach(function(v){addEventListener(v,go,{once:1,passive:1})});setTimeout(go,2500)})();</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Chi è İbrahim Çelikkol, il Mehdi di My Home My Destiny che diventa Hakan in Terra Amara: dal basket ai due ruoli più amati della TV turca", "datePublished": "2026-08-14", "dateModified": "2026-09-04", "description": "Chi si è affezionato al meccanico di My Home My Destiny lo ritroverà a Çukurova, ma in tutt'altri panni. L'attore che presta il volto a Mehdi è İbrahim Çelikkol, e in Terra Amara interpreta il ricco imprenditore che entra nella vita di Züleyha dopo il doppio lutto che la travolge. Due personaggi opposti, accomunati da un destino tutt'altro che sereno.", "inLanguage": "it-IT", "mainEntityOfPage": "https://serietvfans.com/terra-amara/chi-e-ibrahim-celikkol-il-mehdi-di-my-home-my-destiny-che-diventa-hakan-in-terra/", "image": ["https://i.ytimg.com/vi/PMb4du37A5g/maxresdefault.jpg"], "author": {"@type": "Organization", "name": "Serie TV Fans", "url": "https://serietvfans.com/chi-siamo/"}, "publisher": {"@type": "Organization", "name": "Serie TV Fans", "logo": {"@type": "ImageObject", "url": "https://serietvfans.com/favicon.svg"}}, "video": {"@type": "VideoObject", "name": "DA MY HOME MY DESTINY A TERRA AMARA: Ibrahim Çelikkol sarà Hakan in Terra Amara", "description": "Chi si è affezionato al meccanico di My Home My Destiny lo ritroverà a Çukurova, ma in tutt'altri panni. L'attore che presta il volto a Mehdi è İbrahim Çelikkol, e in Terra Amara interpreta il ricco imprenditore che entra nella vita di Züleyha dopo il doppio lutto che la travolge. Due personaggi opposti, accomunati da un destino tutt'altro che sereno.", "thumbnailUrl": "https://i.ytimg.com/vi/PMb4du37A5g/maxresdefault.jpg", "uploadDate": "2026-08-14T12:00:00Z", "embedUrl": "https://www.youtube.com/embed/PMb4du37A5g"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Chi è İbrahim Çelikkol, il Mehdi di My Home My Destiny che diventa Hakan in Terra Amara: dal basket ai due ruoli più amati della TV turca", "datePublished": "2026-08-14", "dateModified": "2026-09-08", "description": "Chi si è affezionato al meccanico di My Home My Destiny lo ritroverà a Çukurova, ma in tutt'altri panni. L'attore che presta il volto a Mehdi è İbrahim Çelikkol, e in Terra Amara interpreta il ricco imprenditore che entra nella vita di Züleyha dopo il doppio lutto che la travolge. Due personaggi opposti, accomunati da un destino tutt'altro che sereno.", "inLanguage": "it-IT", "mainEntityOfPage": "https://serietvfans.com/terra-amara/chi-e-ibrahim-celikkol-il-mehdi-di-my-home-my-destiny-che-diventa-hakan-in-terra/", "image": ["https://serietvfans.com/img/chi-e-ibrahim-celikkol-il-mehdi-di-my-home-my-destiny-che-diventa-hakan-in-terra.jpg"], "author": {"@type": "Organization", "name": "Serie TV Fans", "url": "https://serietvfans.com/chi-siamo/"}, "publisher": {"@type": "Organization", "name": "Serie TV Fans", "logo": {"@type": "ImageObject", "url": "https://serietvfans.com/favicon.svg"}}, "video": {"@type": "VideoObject", "name": "DA MY HOME MY DESTINY A TERRA AMARA: Ibrahim Çelikkol sarà Hakan in Terra Amara", "description": "Chi si è affezionato al meccanico di My Home My Destiny lo ritroverà a Çukurova, ma in tutt'altri panni. L'attore che presta il volto a Mehdi è İbrahim Çelikkol, e in Terra Amara interpreta il ricco imprenditore che entra nella vita di Züleyha dopo il doppio lutto che la travolge. Due personaggi opposti, accomunati da un destino tutt'altro che sereno.", "thumbnailUrl": "https://serietvfans.com/img/chi-e-ibrahim-celikkol-il-mehdi-di-my-home-my-destiny-che-diventa-hakan-in-terra.jpg", "uploadDate": "2026-08-14T12:00:00Z", "embedUrl": "https://www.youtube.com/embed/PMb4du37A5g"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://serietvfans.com/"}, {"@type": "ListItem", "position": 2, "name": "Terra Amara", "item": "https://serietvfans.com/serie/terra-amara/"}, {"@type": "ListItem", "position": 3, "name": "Chi è İbrahim Çelikkol, il Mehdi di My Home My Destiny che diventa Hakan in Terra Amara: dal basket ai due ruoli più amati della TV turca"}]}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,19 +385,18 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/terra-amara/">Terra Amara</a> › Chi è İbrahim Çelikkol, il Mehdi di My Home My Destiny che diventa Hakan in Terra Amara: dal basket ai due ruoli più amati della TV turca</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/terra-amara/">Terra Amara</a>
   <h1>Chi è İbrahim Çelikkol, il Mehdi di My Home My Destiny che diventa Hakan in Terra Amara: dal basket ai due ruoli più amati della TV turca</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 8 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Chi si è affezionato al meccanico di My Home My Destiny lo ritroverà a Çukurova, ma in tutt&#x27;altri panni. L&#x27;attore che presta il volto a Mehdi è İbrahim Çelikkol, e in Terra Amara interpreta il ricco imprenditore che entra nella vita di Züleyha dopo il doppio lutto che la travolge. Due personaggi opposti, accomunati da un destino tutt&#x27;altro che sereno.</p><ol><li><a href="#c1">L&#x27;uomo che arriva dopo Yılmaz e Demir</a></li><li><a href="#c2">Chi è Mehdi, il ruolo per cui in Italia lo riconoscono per strada</a></li><li><a href="#c3">Che tipo di personaggio è Hakan a Çukurova</a></li><li><a href="#c4">Dal parquet al set</a></li><li><a href="#c5">Due ruoli, un destino simile</a></li><li><a href="#c6">Quanto ci mette Çukurova a capire che Mehmet Kara non esiste?</a></li><li><a href="#c7">Perché conta: entra quando la serie ha appena perso due protagonisti</a></li><li><a href="#c8">Come Hakan Gümüşoğlu cela la sua vera identità</a></li><li><a href="#c9">Perché la storia di Mehdi stravolge le vicende familiari</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>Terra Amara</strong> — Serie conclusa in Italia · tutte le puntate su Mediaset Infinity</span></div>
-  
-  <p class="occhiello">Chi si è affezionato al meccanico di My Home My Destiny lo ritroverà a Çukurova, ma in tutt&#x27;altri panni. L&#x27;attore che presta il volto a Mehdi è İbrahim Çelikkol, e in Terra Amara interpreta il ricco imprenditore che entra nella vita di Züleyha dopo il doppio lutto che la travolge. Due personaggi opposti, accomunati da un destino tutt&#x27;altro che sereno.</p>
+  <figure class="copertina"><img src="/img/chi-e-ibrahim-celikkol-il-mehdi-di-my-home-my-destiny-che-diventa-hakan-in-terra.jpg" alt="Terra Amara"><figcaption>Immagine d&#x27;ambiente — Terra Amara</figcaption></figure>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
     <button type="button" class="avvia" data-yt="PMb4du37A5g"
       aria-label="Riproduci il video: Chi è İbrahim Çelikkol, il Mehdi di My Home My Destiny che diventa Hakan in Terra Amara: dal basket ai due ruoli più amati della TV turca" onclick="ytGo(this)">
-      <img src="https://i.ytimg.com/vi/PMb4du37A5g/maxresdefault.jpg" alt="Chi è İbrahim Çelikkol, il Mehdi di My Home My Destiny che diventa Hakan in Terra Amara: dal basket ai due ruoli più amati della TV turca" width="1280" height="720"
-        srcset="https://i.ytimg.com/vi/PMb4du37A5g/hqdefault.jpg 480w, https://i.ytimg.com/vi/PMb4du37A5g/sddefault.jpg 640w, https://i.ytimg.com/vi/PMb4du37A5g/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+      <img src="/img/chi-e-ibrahim-celikkol-il-mehdi-di-my-home-my-destiny-che-diventa-hakan-in-terra.jpg" alt="Chi è İbrahim Çelikkol, il Mehdi di My Home My Destiny che diventa Hakan in Terra Amara: dal basket ai due ruoli più amati della TV turca" width="1280" height="720"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/PMb4du37A5g/hqdefault.jpg&quot;, &quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,44 +407,66 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>Ex modello ed ex giocatore di basket, ha debuttato in televisione nel 2008.</strong></p>
-  <h2>L&#x27;uomo che arriva dopo Yılmaz e Demir</h2>
+  <h2 id="c1">L&#x27;uomo che arriva dopo Yılmaz e Demir</h2>
 <p>La domanda che i telespettatori di Terra Amara si sono fatti per mesi — chi la spunterà tra Yılmaz e Demir per il cuore di Züleyha — ha una risposta amara: nessuno dei due. Entrambi escono di scena tragicamente, prima Yılmaz in un incidente e poi il suo storico rivale, assassinato. È in quel vuoto che entra un nuovo personaggio, un ricco imprenditore destinato a seminare il caos a Çukurova e a farsi amare dalla protagonista. A interpretarlo è lo stesso attore che il pubblico italiano stava imparando ad amare nei panni di un meccanico di quartiere.</p>
-<h2>Chi è Mehdi, il ruolo per cui in Italia lo riconoscono per strada</h2>
+<h2 id="c2">Chi è Mehdi, il ruolo per cui in Italia lo riconoscono per strada</h2>
 <p>Prima di Çukurova, il pubblico italiano ha imparato questo volto in un&#x27;officina. Mehdi è un meccanico di quartiere, e la sua storia con Zeynep non comincia come una storia d&#x27;amore: comincia con lei chiusa in un&#x27;automobile e portata via, un gesto che gli costerà un&#x27;accusa di stalking e sequestro e che lui difenderà sempre allo stesso modo, sostenendo di averla voluta soltanto portare da sua madre. Intorno a lui ruota una famiglia intera — la sorella Cemile, il fratello Nuh, una madre che regge poco e male — e una donna, Benal, che aspetta un figlio suo quando lui è già sposato. Il motore di quella serie è proprio il ribaltamento del personaggio: l&#x27;uomo che nella prima parte fa paura diventa quello per cui, nella seconda, il pubblico trattiene il fiato.</p>
-<h2>Che tipo di personaggio è Hakan a Çukurova</h2>
+<h2 id="c3">Che tipo di personaggio è Hakan a Çukurova</h2>
 <p>A Çukurova l&#x27;uomo d&#x27;affari non arriva col proprio nome. Si presenta come Mehmet Kara, imprenditore ricco e cortese, e per parecchie puntate è così che lo conoscono tutti — Züleyha compresa, che finisce per legarsi a lui senza sapere chi ha davanti. Il nome vero è Hakan Gümüşoğlu, e a Çukurova non è arrivato per affari ma per un conto in sospeso con la famiglia Yaman. È il tipo di personaggio opposto a Mehdi in ogni dettaglio: Mehdi non sa nascondere nulla e paga per quello che dice, Hakan sopravvive per quello che tace. Lo stesso attore, in una sola stagione di distanza, passa dall&#x27;uomo che non riesce a difendersi a quello che si difende costruendosi un&#x27;identità intera.</p>
-<h2>Dal parquet al set</h2>
+<h2 id="c4">Dal parquet al set</h2>
 <p>İbrahim Çelikkol è nato nel 1982 a İzmit, in provincia di Kocaeli. Prima della recitazione ha fatto il modello e ha giocato a basket a livello agonistico; il debutto televisivo arriva nel 2008, seguito nel 2012 dai primi passi sul grande schermo. Il successo internazionale, però, è legato a due ruoli: quello di Mehdi in My Home My Destiny, accanto a Demet Özdemir, tra il 2019 e il 2021, e quello dell&#x27;imprenditore di Terra Amara, in cui compare in una quarantina di episodi.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Due ruoli, un destino simile</h2>
+<h2 id="c5">Due ruoli, un destino simile</h2>
 <p>Sono personaggi lontanissimi tra loro — un meccanico di quartiere con un carattere impossibile da una parte, un uomo d&#x27;affari elegante e pieno di segreti dall&#x27;altra — eppure li accomuna una cosa: in nessuna delle due storie la vita concede loro un finale sereno. Seguitissimo sui social, con milioni di follower, l&#x27;attore è padre di un bambino nato nel 2019 da un matrimonio durato cinque anni e concluso nel 2022.</p>
-<h2>Quanto ci mette Çukurova a capire che Mehmet Kara non esiste?</h2>
+<h2 id="c6">Quanto ci mette Çukurova a capire che Mehmet Kara non esiste?</h2>
 <p>La parte interessante del personaggio sta nella lentezza con cui la sua copertura si sgretola, e nel fatto che non basta un sospetto per bucarla. L&#x27;uomo entra in paese comprando quote della holding intestata ad Adnan Yaman: ha soldi veri, modi cortesi e una posizione societaria legittima, quindi contestarlo significa contestare un socio. Fikret è convinto fin dal principio di avere davanti un impostore, e per anni non riesce a dimostrare niente. La prima crepa non arriva da un&#x27;indagine ma da una fotografia ritrovata per caso, con un nome scritto sul retro; e per trasformare quel nome in una prova qualcuno dovrà arrivare fino a un&#x27;emeroteca di Beirut. Nel frattempo esiste anche un Mehmet Kara in carne e ossa, e il direttore di una sua azienda a Isparta è il primo a mettere agli atti che l&#x27;uomo ripreso in quella foto con Züleyha non ha niente a che vedere con il proprio datore di lavoro.</p>
-<h2>Perché conta: entra quando la serie ha appena perso due protagonisti</h2>
+<h2 id="c7">Perché conta: entra quando la serie ha appena perso due protagonisti</h2>
 <p>Il peso del ruolo non si spiega guardando solo il personaggio, si spiega guardando il momento in cui viene chiamato. Terra Amara arriva a quel punto avendo bruciato in sequenza i due uomini attorno a cui ruotava tutto: prima Yılmaz nell&#x27;incidente, poi Demir. Una soap che perde entrambi i poli maschili in poco tempo ha un problema strutturale, non narrativo — e chi entra dopo non deve solo piacere, deve reggere da solo il vuoto lasciato da due. È il motivo per cui un personaggio presente in una quarantina di episodi finisce per pesare quanto chi ne aveva centinaia, e perché in Italia il volto di İbrahim Çelikkol è arrivato al pubblico due volte in ruoli così diversi nel giro di pochissimo tempo.</p>
-<h2>Come Hakan Gümüşoğlu cela la sua vera identità</h2>
+<h2 id="c8">Come Hakan Gümüşoğlu cela la sua vera identità</h2>
 <p>L&#x27;ingresso dell&#x27;imprenditore a Çukurova avviene sotto le mendaci spoglie di Mehmet Kara, un uomo facoltoso che riesce a inserirsi nelle dinamiche societarie locali acquisendo direttamente le quote della holding di Adnan Yaman. La sua strategia iniziale si basa su una copertura impeccabile, costruita attraverso disponibilità finanziarie reali e un comportamento sempre misurato e formale. Questo gli garantisce una legittimità formale inscalfibile, rendendo difficilissima qualsiasi opposizione. Fikret avverte fin da subito la presenza di un inganno e matura la certezza che l&#x27;uomo stia mentendo sulla propria identità, ma per un lungo periodo non riesce a raccogliere alcun elemento concreto capace di smentire le apparizioni pubbliche e la posizione ufficiale del presunto socio commerciale.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>Il castello di finzioni inizia a crollare soltanto quando emerge casualmente una vecchia fotografia che reca una trascrizione sul retro. Quel dettaglio spinge la ricerca fino a una lontana emeroteca di Beirut, luogo fondamentale per reperire i documenti storici in grado di fare chiarezza sulla questione. A complicare ulteriormente il quadro c&#x27;è la presenza simultanea di un vero Mehmet Kara, la cui esistenza reale viene confermata dalle testimonianze ufficiali. Sarà infatti il direttore di un&#x27;azienda di Isparta a dichiarare formalmente che l&#x27;individuo ritratto insieme a Züleyha non corrisponde affatto al titolare legittimo della società, lasciando infine emergere la figura di Hakan Gümüşoğlu e il suo reale motivo di riscatto verso i Yaman.</p>
-<h2>Perché la storia di Mehdi stravolge le vicende familiari</h2>
+<h2 id="c9">Perché la storia di Mehdi stravolge le vicende familiari</h2>
 <p>La vita del meccanico è costantemente segnata da tensioni familiari e scelte personali estreme che condizionano chi gli sta accanto. Nell&#x27;officina di quartiere si incrociano le vicende di una famiglia complessa, formata dalla sorella Cemile, dal fratello Nuh e da una madre in evidente difficoltà nel gestire le tensioni quotidiane. L&#x27;equilibrio domestico viene ulteriormente compromesso quando Benal rimane incinta, un evento che si verifica mentre l&#x27;uomo risulta già legato da un matrimonio ufficiale. Le azioni impulsive del protagonista culminano nella drammatica vicenda della vettura, dove Zeynep viene privata della libertà e trasportata altrove. Questo atto drastico scatena inevitabili conseguenze giudiziarie, traducendosi in pesanti accuse formali per sequestro e atti persecutori.</p>
 <p>Di fronte alle imputazioni di stalking e privazione della libertà, l&#x27;uomo mantiene una linea difensiva incrollabile, giustificando la condotta con l&#x27;intento di condurre la donna al cospetto della madre. Questa condotta ambigua traccia una netta linea di demarcazione nell&#x27;evoluzione del personaggio all&#x27;interno della narrazione televisiva. Se nelle battute iniziali la sua figura incute timore e profonda diffidenza nel pubblico, con il passare del tempo la prospettiva degli spettatori si ribalta completamente, trasformando la paura in una trepidante attesa per la sua sorte. Nonostante l&#x27;affetto e l&#x27;empatia progressivamente conquistati presso i telespettatori, la complessa parabola del meccanico non troverà mai uno sbocco sereno, confermando la natura tormentata del suo percorso narrativo.</p>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=DQAKvIiYzSk" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/DQAKvIiYzSk/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TERRA AMARA Anticipazioni: Hakan, il nuovo e ultimo amore di Züleyha?</span></a></li><li><a href="https://www.youtube.com/watch?v=INAfe-jkIUc" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/INAfe-jkIUc/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>PERICOLOSO DOPPIO GIOCO DI HAKAN CON ZULEYHA, RISCHIA DI PERDERLA PER SEMPRE .Terra Amara 5 Mag</span></a></li><li><a href="https://www.youtube.com/watch?v=YzKyFVRzk4w" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/YzKyFVRzk4w/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TERRA AMARA Anticipazioni Turche: Demir e ZUleyha disperati, altro gravissimo lutto!</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Vi è piaciuto di più come Mehdi o nei panni di Hakan?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=PMb4du37A5g">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di Terra Amara</h2><div class="griglia"><article class="scheda">
+  <a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/"><div class="foto"><img src="/img/terra-amara-la-trama-completa-e-come-finisce.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></h3>
+    <div class="quando">30 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/"><div class="foto"><img src="https://i.ytimg.com/vi/_ypSJU-x7LY/hqdefault.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/"><div class="foto"><img src="https://i.ytimg.com/vi/B_MLx-0yh6M/hqdefault.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=Chi è İbrahim Çelikkol, il Mehdi di My Home My Destiny che diventa Hakan in Terra Amara: dal basket ai due ruoli più amati della TV turca — https://serietvfans.com/terra-amara/chi-e-ibrahim-celikkol-il-mehdi-di-my-home-my-destiny-che-diventa-hakan-in-terra/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/terra-amara/chi-e-ibrahim-celikkol-il-mehdi-di-my-home-my-destiny-che-diventa-hakan-in-terra/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/terra-amara/chi-e-ibrahim-celikkol-il-mehdi-di-my-home-my-destiny-che-diventa-hakan-in-terra/&text=Chi è İbrahim Çelikkol, il Mehdi di My Home My Destiny che diventa Hakan in Terra Amara: dal basket ai due ruoli più amati della TV turca" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">DA MY HOME MY DESTINY A TERRA AMARA: Ibrahim Çelikkol sarà Hakan in Terra Amara</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=PMb4du37A5g">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di Terra Amara</h3><ol class="numerata"><li><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></li><li><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></li><li><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></li><li><a href="/terra-amara/terra-amara-come-finisce-davvero-zuleyha-vince-tutto-e-resta-sola/">Terra Amara: come finisce davvero, Züleyha vince tutto e resta sola</a></li><li><a href="/terra-amara/terra-amara-come-muore-demir-yaman-chi-ha-dato-lordine-e-perche-doveva-essere-un-rapimento/">Terra Amara, come muore Demir Yaman: chi ha dato l&#x27;ordine e perché doveva essere un rapimento</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>DA MY HOME MY DESTINY A TERRA AMARA: Ibrahim Çelikkol sarà Hakan in Terra Amara</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su Terra Amara</h3><ul><li><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></li><li><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></li><li><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></li><li><a href="/terra-amara/terra-amara-come-finisce-davvero-zuleyha-vince-tutto-e-resta-sola/">Terra Amara: come finisce davvero, Züleyha vince tutto e resta sola</a></li><li><a href="/terra-amara/terra-amara-come-muore-demir-yaman-chi-ha-dato-lordine-e-perche-doveva-essere-un-rapimento/">Terra Amara, come muore Demir Yaman: chi ha dato l&#x27;ordine e perché doveva essere un rapimento</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

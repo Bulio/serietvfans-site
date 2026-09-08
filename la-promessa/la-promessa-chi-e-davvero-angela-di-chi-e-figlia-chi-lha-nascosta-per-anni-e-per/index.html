@@ -12,7 +12,7 @@
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Serie TV Fans">
 <meta property="og:url" content="https://serietvfans.com/la-promessa/la-promessa-chi-e-davvero-angela-di-chi-e-figlia-chi-lha-nascosta-per-anni-e-per/">
-<meta property="og:image" content="https://serietvfans.com/social.svg">
+<meta property="og:image" content="https://serietvfans.com/img/la-promessa-chi-e-davvero-angela-di-chi-e-figlia-chi-lha-nascosta-per-anni-e-per.jpg">
 <meta property="og:locale" content="it_IT">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#7b1e2b">
@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -314,12 +363,12 @@ if(l.length){el.src=l.shift();el.dataset.fb=JSON.stringify(l)}else{el.onerror=nu
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7778653397776213" crossorigin="anonymous"></script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "96259d7e67ce47fba4573364859712a6"}'></script>
 <script>(function(){var f=0;function go(){if(f)return;f=1;(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","y3rpoig6jk");}["pointerdown","keydown","touchstart","scroll"].forEach(function(v){addEventListener(v,go,{once:1,passive:1})});setTimeout(go,2500)})();</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "La Promessa, chi è davvero Ángela: di chi è figlia, chi l'ha nascosta per anni e perché suo padre non vuole riconoscerla", "datePublished": "2026-08-24", "dateModified": "2026-09-04", "description": "Per moltissimo tempo la risposta più ovvia su Ángela è stata anche quella sbagliata. Rimettiamo in fila chi l'ha messa al mondo, chi l'ha nascosta e per quanti anni. Il pezzo più duro, però, non è il nome del padre: è il motivo per cui quell'uomo torna.", "inLanguage": "it-IT", "mainEntityOfPage": "https://serietvfans.com/la-promessa/la-promessa-chi-e-davvero-angela-di-chi-e-figlia-chi-lha-nascosta-per-anni-e-per/", "image": [], "author": {"@type": "Organization", "name": "Serie TV Fans", "url": "https://serietvfans.com/chi-siamo/"}, "publisher": {"@type": "Organization", "name": "Serie TV Fans", "logo": {"@type": "ImageObject", "url": "https://serietvfans.com/favicon.svg"}}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "La Promessa, chi è davvero Ángela: di chi è figlia, chi l'ha nascosta per anni e perché suo padre non vuole riconoscerla", "datePublished": "2026-08-24", "dateModified": "2026-09-08", "description": "Per moltissimo tempo la risposta più ovvia su Ángela è stata anche quella sbagliata. Rimettiamo in fila chi l'ha messa al mondo, chi l'ha nascosta e per quanti anni. Il pezzo più duro, però, non è il nome del padre: è il motivo per cui quell'uomo torna.", "inLanguage": "it-IT", "mainEntityOfPage": "https://serietvfans.com/la-promessa/la-promessa-chi-e-davvero-angela-di-chi-e-figlia-chi-lha-nascosta-per-anni-e-per/", "image": ["https://serietvfans.com/img/la-promessa-chi-e-davvero-angela-di-chi-e-figlia-chi-lha-nascosta-per-anni-e-per.jpg"], "author": {"@type": "Organization", "name": "Serie TV Fans", "url": "https://serietvfans.com/chi-siamo/"}, "publisher": {"@type": "Organization", "name": "Serie TV Fans", "logo": {"@type": "ImageObject", "url": "https://serietvfans.com/favicon.svg"}}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://serietvfans.com/"}, {"@type": "ListItem", "position": 2, "name": "La Promessa", "item": "https://serietvfans.com/serie/la-promessa/"}, {"@type": "ListItem", "position": 3, "name": "La Promessa, chi è davvero Ángela: di chi è figlia, chi l'ha nascosta per anni e perché suo padre non vuole riconoscerla"}]}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -332,63 +381,89 @@ if(l.length){el.src=l.shift();el.dataset.fb=JSON.stringify(l)}else{el.onerror=nu
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/la-promessa/">La Promessa</a> › La Promessa, chi è davvero Ángela: di chi è figlia, chi l&#x27;ha nascosta per anni e perché suo padre non vuole riconoscerla</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/la-promessa/">La Promessa</a>
   <h1>La Promessa, chi è davvero Ángela: di chi è figlia, chi l&#x27;ha nascosta per anni e perché suo padre non vuole riconoscerla</h1>
-  <div class="firma">Redazione Serie TV Fans · lunedì 24 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-24">lunedì 24 agosto 2026</time></span><span>aggiornato il 8 settembre 2026</span><span>8 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Per moltissimo tempo la risposta più ovvia su Ángela è stata anche quella sbagliata. Rimettiamo in fila chi l&#x27;ha messa al mondo, chi l&#x27;ha nascosta e per quanti anni. Il pezzo più duro, però, non è il nome del padre: è il motivo per cui quell&#x27;uomo torna.</p><ol><li><a href="#c1">Come entra in scena, e cosa non torna</a></li><li><a href="#c2">Il giorno in cui nasce la Leocadia che conosciamo</a></li><li><a href="#c3">Máximo, il padre che arriva per non riconoscerla</a></li><li><a href="#c4">Come lo scopre: da dietro una porta</a></li><li><a href="#c5">Le conseguenze dentro il palazzo</a></li><li><a href="#c6">Perché Curro rincorre la giovane ragazza in fuga</a></li><li><a href="#c7">Come Tomasa e Petra affrontano i loro conti in sospeso</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>La Promessa</strong> — Rete 4 · in streaming su Mediaset Infinity</span></div>
-  <figure class="copertina"><img src="/fallback/la-promessa.svg" alt="La Promessa" width="1280" height="720"><figcaption>La Promessa</figcaption></figure>
-  <p class="occhiello">Per moltissimo tempo la risposta più ovvia su Ángela è stata anche quella sbagliata. Rimettiamo in fila chi l&#x27;ha messa al mondo, chi l&#x27;ha nascosta e per quanti anni. Il pezzo più duro, però, non è il nome del padre: è il motivo per cui quell&#x27;uomo torna.</p>
+  <figure class="copertina"><img src="/img/la-promessa-chi-e-davvero-angela-di-chi-e-figlia-chi-lha-nascosta-per-anni-e-per.jpg" alt="La Promessa"><figcaption>Immagine d&#x27;ambiente — La Promessa</figcaption></figure>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   
   <div class="corpo">
   <p><strong>Non è una nipote, non è una protetta, non è una ragazza di buona famiglia messa lì per fare compagnia. Ángela è una figlia — e la donna che le sistemava la vita accanto le era madre.</strong></p>
   <p>Chi è davvero Ángela? Alla Promessa se lo sono chiesti in tanti, e per moltissimo tempo la risposta più ovvia è stata anche quella sbagliata. La ragazza arrivata dalla Svizzera non è una nipote, non è una protetta, non è una ragazza di buona famiglia messa lì per fare compagnia a qualcuno.</p>
 <p>Ángela è una figlia. E il giorno in cui suo padre metterà piede nel palazzo, la prima cosa che dirà su di lei sarà che non ha nessuna intenzione di riconoscerla.</p>
-<h2>Come entra in scena, e cosa non torna</h2>
+<h2 id="c1">Come entra in scena, e cosa non torna</h2>
 <p>Arriva alla tenuta come arrivano tante ragazze in questa serie: presentata, sistemata, accolta. È giovane, ha studiato fuori, ha i modi di chi è cresciuta lontano da lì. E accanto a lei, fin dal primo momento, c&#x27;è Leocadia.</p>
 <p>Leocadia la protegge, la consiglia, decide per lei. All&#x27;inizio tutto questo passa per quello che sembra — una donna di mondo che si prende cura di una ragazza più giovane — e nessuno, guardando quelle scene, pensa a un legame di sangue. Ed è esattamente l&#x27;effetto che Leocadia voleva.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>Perché Ángela è sua figlia. Leocadia è sua madre, e lo è dal principio: mentre stava lì a dare consigli, a organizzarle la vita, a scegliere per lei chi frequentare e chi sposare.</p>
 <p>Vale la pena fermarsi, perché è il punto in cui la storia smette di essere un segreto qualunque. Leocadia non ha nascosto una figlia a qualche conoscente: l&#x27;ha nascosta per anni. Ha portato avanti una gravidanza tenendola coperta per mesi, e poi ha costruito tutto il resto sopra quella bugia.</p>
-<h2>Il giorno in cui nasce la Leocadia che conosciamo</h2>
+<h2 id="c2">Il giorno in cui nasce la Leocadia che conosciamo</h2>
 <p>Quando Leocadia rimane incinta non è sola: ha un&#x27;amica potente, una donna che in quella casa contava più di chiunque altro — Cruz. E fino all&#x27;ultimo momento è convinta che sarà proprio Cruz a coprirle le spalle. Ci conta, ci scommette sopra la propria vita.</p>
 <p>Non va così. Leocadia scopre che l&#x27;amica di cui si fidava vuole toglierla di mezzo. Non allontanarla: eliminarla.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>Ed è quello, verosimilmente, il giorno in cui nasce la Leocadia vista in questi anni. Una donna che ha chiesto aiuto e si è sentita rispondere in quel modo non chiede aiuto mai più: da lì in avanti si muove sempre allo stesso modo — prima si sistema la protezione, poi si parla; prima si prende il controllo, poi si vede.</p>
 <p>E la figlia? La figlia diventa la cosa da mettere al sicuro, sì. Ma diventa anche la cosa da tenere sotto controllo.</p>
-<h2>Máximo, il padre che arriva per non riconoscerla</h2>
+<h2 id="c3">Máximo, il padre che arriva per non riconoscerla</h2>
 <p>Al palazzo arriva un uomo: si chiama Máximo. Non è uno qualunque — è un uomo d&#x27;affari ricchissimo, influente, e soprattutto un vecchio amico di Alonso. Arriva con la propria servitù al seguito, come arrivano gli uomini abituati a essere ricevuti. E la ragione della visita la dice subito, senza giri: è lì per vedere Ángela.</p>
 <p>Máximo è il padre biologico della ragazza, l&#x27;uomo con cui Leocadia ha avuto quella figlia tenuta nascosta per anni.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>Solo che, se state aspettando la scena in cui un padre ritrova la figlia perduta, questa storia non ve la dà. Máximo mette in chiaro fin dall&#x27;inizio che non ha nessuna intenzione di riconoscerla: non vuole darle il suo nome, non vuole darle la sua famiglia, non vuole niente di tutto questo. Quello che vuole è portargliela via. Vuole toglierla a Leocadia.</p>
 <p>È un dettaglio che cambia completamente il senso di quello che sta succedendo, perché vuol dire che quella ragazza, per l&#x27;ennesima volta nella sua vita, non è il fine di niente: è lo strumento con cui due adulti stanno regolando un conto vecchio di una vita.</p>
-<h2>Come lo scopre: da dietro una porta</h2>
+<h2 id="c4">Come lo scopre: da dietro una porta</h2>
 <p>E lei come lo scopre? Non glielo dice nessuno. Ángela sente. Sente una conversazione tra Leocadia e Máximo che non era destinata alle sue orecchie, e da quella conversazione capisce tutto in una volta: chi è sua madre, chi è suo padre, e in che considerazione la tengono entrambi.</p>
 <p>Provate a mettervi lì per un attimo. Non stai scoprendo di essere figlia di due persone importanti: stai scoprendo che una ti ha mentito per tutta la vita mentre ti sistemava il futuro, e che l&#x27;altro è arrivato apposta per dire che non ti vuole.</p>
 <p>Da quel momento tutto quello che Ángela ha fatto prima va riletto da capo. Il fidanzamento, il matrimonio che stava per celebrarsi, Curro che le corre dietro quando sparisce: dentro questa storia pesano in modo diverso. Perché una ragazza che scopre di essere stata una pedina, la prima cosa che vuole è smettere di esserlo.</p>
-<h2>Le conseguenze dentro il palazzo</h2>
+<h2 id="c5">Le conseguenze dentro il palazzo</h2>
 <p>Alonso ha vissuto accanto a Leocadia per anni e se l&#x27;è sempre tenuta vicina. Davanti a questa storia arriva finalmente dove doveva arrivare: capisce con chi ha a che fare, capisce che quella donna calcola tutto, e le dice di farsi da parte e di non mettersi tra lui e suo figlio.</p>
 <p>C&#x27;è anche una coda che vale la pena raccontare, perché in questa serie le vecchie ferite non arrivano mai da sole. Insieme a Máximo entra al palazzo la sua servitù, e tra i suoi c&#x27;è Tomasa — la sorella di Petra. Due sorelle che non si vedevano da anni si ritrovano nella stessa casa, e con loro tornano rancori e conti mai chiusi.</p>
 <p>Le anticipazioni lasciano intendere una cosa in più, e la diamo per quello che è — un&#x27;ipotesi, non un fatto accertato. Se Máximo è arrivato con l&#x27;obiettivo dichiarato di togliere Ángela a Leocadia, allora quella ragazza non è la ragione del suo viaggio: è il mezzo. Il conto che quei due hanno aperto riguarda loro, e Ángela è semplicemente la cosa che uno può portare via all&#x27;altro. Se la lettura è questa, il vero pericolo per lei non è restare senza padre: è diventare la posta di una partita che non ha scelto.</p>
 <p>E c&#x27;è un&#x27;ultima cosa che pesa più di tutte. Di tutte le persone che in questa storia hanno parlato di Ángela, deciso per Ángela, litigato su Ángela, nessuna le ha mai chiesto niente. Non sua madre, che ha deciso cosa poteva sapere. Non suo padre, che ha deciso cosa valeva. E la prima informazione vera sulla propria vita, quella ragazza se l&#x27;è dovuta rubare da dietro una porta.</p>
-<h2>Perché Curro rincorre la giovane ragazza in fuga</h2>
+<h2 id="c6">Perché Curro rincorre la giovane ragazza in fuga</h2>
 <p>Prima di scoprire la verità nascosta dietro quella porta, Ángela stava seguendo un percorso tracciato interamente da altri. Leocadia aveva pianificato ogni singolo passo della sua esistenza, compresi i contatti da coltivare e l&#x27;imminente matrimonio destinato a sistemarle la vita. Quando la giovane ha ascoltato di nascosto le parole di Máximo e ha capito di essere soltanto uno strumento di vendetta, tutto il suo mondo è crollato all&#x27;improvviso. La scelta di allontanarsi nasce proprio dalla disperata volontà di riprendere il controllo sul proprio destino e smettere di essere usata come una semplice pedina. Curro, capendo che la ragazza stava scappando per motivi profondi, si è lanciato al suo inseguimento per cercare di raggiungerla prima che fosse troppo tardi.</p>
 <p>La fuga della giovane rappresenta un momento di rottura fondamentale all&#x27;interno della tenuta, poiché costringe tutti i protagonisti a rivedere le azioni compiute fino a quel momento. Curro si ritrova a dover gestire le conseguenze di una sparizione che sconvolge i piani stabiliti da Leocadia per il futuro di sua figlia. L&#x27;inseguimento di Curro dimostra come la decisione della ragazza di scappare abbia incrinato le certezze della madre, che fino a quel momento pensava di poter dominare ogni dettaglio. In questo clima di forte tensione, la corsa di Curro diventa il simbolo di una storia in cui la ricerca della verità spinge le persone a compiere gesti azzardati pur di non soccombere alle bugie altrui.</p>
-<h2>Come Tomasa e Petra affrontano i loro conti in sospeso</h2>
+<h2 id="c7">Come Tomasa e Petra affrontano i loro conti in sospeso</h2>
 <p>L&#x27;arrivo di Máximo al palazzo non ha portato soltanto lo scontro tra i genitori biologici della ragazza, ma ha sconvolto anche l&#x27;equilibrio della servitù. Insieme al ricchissimo uomo d&#x27;affari è giunta infatti la sua personale servitù al seguito, all&#x27;interno della quale figura Tomasa. La donna è la sorella di Petra e il loro inaspettato incontro nella stessa casa ha fatto riaffiorare immediatamente un passato denso di rancori e vecchi conti mai risolti. Le due sorelle non si vedevano ormai da moltissimi anni e la loro improvvisa convivenza forzata sotto lo stesso tetto minaccia di riaprire ferite dolorose che entrambe avevano cercato di sotterrare col passare del tempo.</p>
 <p>Nel frattempo, la presenza invadente di Leocadia spinge Alonso a intervenire con decisione per tutelare gli equilibri familiari della tenuta. Alonso, dopo aver vissuto per anni accanto alla donna senza comprendere fino in fondo la sua reale natura, apre finalmente gli occhi di fronte alle sue continue manipolazioni. Rendendosi conto di quanto Leocadia sia capace di calcolare ogni singola mossa a proprio vantaggio, Alonso decide di affrontarla apertamente per imporle di farsi da parte. Il suo ordine è chiaro e perentorio: Leocadia non deve più permettersi di frapporsi tra lui e suo figlio, segnando così un punto di non ritorno nei rapporti di potere della casa.</p>
   </div>
-  <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=eZfduWKpv3Q" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/eZfduWKpv3Q/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni Spagna: Finalmente svelato il nome del padre di Jana, che è.....</span></a></li><li><a href="https://www.youtube.com/watch?v=LpCKsmgAAXA" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/LpCKsmgAAXA/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni Spagnole: Curro scopre tutto sulla sua nascita! Svelato il nome del p</span></a></li><li><a href="https://www.youtube.com/watch?v=LoWXuQ4rM90" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/LoWXuQ4rM90/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA: Curro FERMA le Nozze e RIVELA &quot;Ángela è tua Figlia!&quot; La rivelazione che cambia tut</span></a></li></ul></div>
+  <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=eZfduWKpv3Q" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/eZfduWKpv3Q/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni Spagna: Finalmente svelato il nome del padre di Jana, che è.....</span></a></li><li><a href="https://www.youtube.com/watch?v=LpCKsmgAAXA" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/LpCKsmgAAXA/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni Spagnole: Curro scopre tutto sulla sua nascita! Svelato il nome del p</span></a></li><li><a href="https://www.youtube.com/watch?v=6dsVGf2JSAU" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/6dsVGf2JSAU/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni puntate dal 24 al 28 Luglio: Petra si innamora di Padre Camillo?</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Leocadia, con Ángela, si è comportata da madre o da padrona? Cosa succederà quando Ángela smetterà di ascoltare e comincerà a parlare?</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di La Promessa</h2><div class="griglia"><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/"><div class="foto"><img src="https://i.ytimg.com/vi/Rp8VhxDiDSk/hqdefault.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></h3>
+    <div class="quando">7 settembre 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/"><div class="foto"><img src="https://i.ytimg.com/vi/8JHt6ogwxQw/hqdefault.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Ángela beve tutto, Curro sfonda la porta</a></h3>
+    <div class="quando">6 settembre 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/"><div class="foto"><img src="/img/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Curro nasconde Ángela, Lorenzo furioso</a></h3>
+    <div class="quando">6 settembre 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=La Promessa, chi è davvero Ángela: di chi è figlia, chi l&#x27;ha nascosta per anni e perché suo padre non vuole riconoscerla — https://serietvfans.com/la-promessa/la-promessa-chi-e-davvero-angela-di-chi-e-figlia-chi-lha-nascosta-per-anni-e-per/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/la-promessa/la-promessa-chi-e-davvero-angela-di-chi-e-figlia-chi-lha-nascosta-per-anni-e-per/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/la-promessa/la-promessa-chi-e-davvero-angela-di-chi-e-figlia-chi-lha-nascosta-per-anni-e-per/&text=La Promessa, chi è davvero Ángela: di chi è figlia, chi l&#x27;ha nascosta per anni e perché suo padre non vuole riconoscerla" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  
-  <div class="box"><h3>Ancora su La Promessa</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-3-6-settembre-maria-affronta-la-gravidanza-da-sola/">La Promessa anticipazioni 3-6 settembre: Maria affronta la gravidanza da sola</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-carlo-arriva-maria-trema/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Carlo arriva, Maria trema</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/far-away/far-away-anticipazioni-dal-31-agosto-al-4-settembre-chi-ha-donato-il-fegato-a-nare/">Far Away, anticipazioni dal 31 agosto al 4 settembre: chi ha donato il fegato a Nare, e perché adesso sta male lui</a></li><li><a href="/far-away/far-away-dal-31-agosto-la-madre-di-alya-sapeva-tutto-non-ricordo/">Far Away Dal 31 Agosto: la madre di Alya sapeva tutto — «non ricordo»</a></li><li><a href="/forbidden-fruit/forbidden-fruit-dal-31-agosto-il-conto-a-nome-di-halit-che-e-morto/">Forbidden Fruit Dal 31 Agosto: il conto a nome di Halit, che è morto</a></li></ul></div>
+  <div class="box"><h3>Ultime di La Promessa</h3><ol class="numerata"><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Ángela beve tutto, Curro sfonda la porta</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Curro nasconde Ángela, Lorenzo furioso</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>Ogni anticipazione, prima in video sul canale Serie TV Fans</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
+  </div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

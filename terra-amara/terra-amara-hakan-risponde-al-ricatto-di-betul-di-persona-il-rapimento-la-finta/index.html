@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/terra-amara/">Terra Amara</a> › Terra Amara, Hakan risponde al ricatto di Betül «di persona»: il rapimento, la finta esecuzione e la foto nella cassetta di sicurezza</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/terra-amara/">Terra Amara</a>
   <h1>Terra Amara, Hakan risponde al ricatto di Betül «di persona»: il rapimento, la finta esecuzione e la foto nella cassetta di sicurezza</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Betül ricatta &quot;Mehmet&quot; con una lettera anonima da 5 milioni dopo che Vahap ne ha urlato la vera identità a mezza Çukurova. La risposta di Hakan è da manuale del terrore: il rapimento orchestrato con Vahap, la finta esecuzione nel magazzino e il prezzo della libertà — la foto che lo ritrae con Demir. Mentre a Züleyha tocca una lettera d&#x27;amore... falsa.</p><ol><li><a href="#c1">Il ricatto: 5 milioni per il silenzio</a></li><li><a href="#c2">La lettera d&#x27;amore falsa per Züleyha</a></li><li><a href="#c3">Il rapimento e la finta esecuzione</a></li><li><a href="#c4">Il prezzo della libertà: la foto di Hakan e Demir</a></li><li><a href="#c5">Perche&#x27; Vahap decide di cedere alla pressione di Fikret</a></li><li><a href="#c6">Come Hakan inganna Züleyha con la falsa lettera d&#x27;amore</a></li><li><a href="#c7">Cosa vive Betül durante il rapimento orchestrato da Hakan</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>Terra Amara</strong> — Serie conclusa in Italia · tutte le puntate su Mediaset Infinity</span></div>
   
-  <p class="occhiello">Betül ricatta &quot;Mehmet&quot; con una lettera anonima da 5 milioni dopo che Vahap ne ha urlato la vera identità a mezza Çukurova. La risposta di Hakan è da manuale del terrore: il rapimento orchestrato con Vahap, la finta esecuzione nel magazzino e il prezzo della libertà — la foto che lo ritrae con Demir. Mentre a Züleyha tocca una lettera d&#x27;amore... falsa.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: Terra Amara, Hakan risponde al ricatto di Betül «di persona»: il rapimento, la finta esecuzione e la foto nella cassetta di sicurezza" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/jaZ3bZ8uFw8/sddefault.jpg" alt="Terra Amara, Hakan risponde al ricatto di Betül «di persona»: il rapimento, la finta esecuzione e la foto nella cassetta di sicurezza" width="640" height="480"
         srcset="https://i.ytimg.com/vi/jaZ3bZ8uFw8/hqdefault.jpg 480w, https://i.ytimg.com/vi/jaZ3bZ8uFw8/sddefault.jpg 640w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/jaZ3bZ8uFw8/hqdefault.jpg&quot;, &quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,44 +409,66 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>«Ho ricevuto la tua lettera e ho deciso di risponderti di persona»: quando Hakan sorride così, a Çukurova conviene tremare.</strong></p>
-  <h2>Il ricatto: 5 milioni per il silenzio</h2>
+  <h2 id="c1">Il ricatto: 5 milioni per il silenzio</h2>
 <p>Tutto nasce dalla rivelazione impulsiva di Vahap, che ha gridato pubblicamente la vera identità di &quot;Mehmet Kara&quot;: Hakan Gümüşoğlu. Betül fiuta l&#x27;affare e, con mani tremanti, scrive una lettera anonima con tanto di foto compromettente: 5 milioni di lire in cambio del silenzio. La busta — profumata — arriva in azienda e finisce prima nelle mani di Züleyha, che nota il profumo femminile e si insospettisce; Hakan gliela strappa via bruscamente, alimentando dubbi che covavano da tempo. Intanto Abdülkadir travolge Vahap di rimproveri — «hai firmato la nostra condanna a morte» — mentre Fikret e Çetin lo braccano fino a fargli ritrattare tutto: «Ho inventato, ho passato anni in manicomio».</p>
-<h2>La lettera d&#x27;amore falsa per Züleyha</h2>
+<h2 id="c2">La lettera d&#x27;amore falsa per Züleyha</h2>
 <p>Per spegnere i sospetti della moglie, Hakan confeziona un capolavoro di depistaggio: le consegna &quot;la&quot; lettera — in realtà un falso scritto ad arte — insieme a una foto con una donna e una chiave misteriosa. La storia: la figlia di un socio, innamorata non corrisposta dai tempi di Beirut. La lettera, letta ad alta voce in arabo, gronda struggimento: «Il mio cuore batte ancora per te… tieni questa chiave, la mia casa per te è aperta». Perfino Azize, che l&#x27;arabo lo conosce, ne conferma il contenuto. Züleyha si tranquillizza a metà — le date e i luoghi non le tornano del tutto — ma si fida. Noi spettatori sappiamo la verità: la vera missiva era quella di Betül.</p>
-<h2>Il rapimento e la finta esecuzione</h2>
+<h2 id="c3">Il rapimento e la finta esecuzione</h2>
 <p>La risposta al ricatto è chirurgica. Hakan offre a Vahap l&#x27;unica via d&#x27;uscita dal pasticcio: un lavoro — rapire Betül. Con la scusa di un pranzo, Vahap la porta in un campo isolato dove Hakan la accoglie con il sorriso più agghiacciante della serie: «Ho ricevuto la tua lettera e ho deciso di risponderti di persona». Legata, imbavagliata, caricata in un portabagagli e consegnata agli uomini di Hakan in un magazzino abbandonato, Betül vive un incubo calibrato al millimetro: il coltello «per non sprecare un proiettile», lo svenimento, il risveglio con l&#x27;offerta beffarda di scegliere l&#x27;arma con cui morire. Terrore puro — e nessuna intenzione reale di ucciderla: solo di piegarla.</p>
-<h2>Il prezzo della libertà: la foto di Hakan e Demir</h2>
+<h2 id="c4">Il prezzo della libertà: la foto di Hakan e Demir</h2>
 <p>Il finale svela il vero obiettivo: Betül viene scortata all&#x27;ufficio postale, dove apre la sua cassetta di sicurezza e consegna la foto che ritrae Hakan e Demir insieme — l&#x27;ultima prova del suo ricatto. «Se ti comporterai bene non ci vedrai mai più; in caso contrario, ti troveremo». Tornata a casa tra le braccia di una Şermin in lacrime, Betül racconta l&#x27;orrore degli uomini incappucciati. Ma chi la conosce sa che la lezione potrebbe non bastare: la tenacia di Betül è fatta per sfidare i mulini a vento — e la prossima mossa, a Çukurova, non si fa mai attendere.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Perche&#x27; Vahap decide di cedere alla pressione di Fikret</h2>
+<h2 id="c5">Perche&#x27; Vahap decide di cedere alla pressione di Fikret</h2>
 <p>La situazione per Vahap diventa insostenibile nel momento in cui la sua rivelazione impulsiva scatena la dura reazione di Abdülkadir. Aver urlato a mezza Çukurova che Mehmet Kara è in realtà Hakan Gümüşoğlu spalanca uno scenario pericolosissimo. Abdülkadir lo travolge con rimproveri pesantissimi, accusandolo di aver firmato la loro condanna a morte. Questo errore imperdonabile attira subito l&#x27;attenzione di Fikret e Çetin, che si mettono sulle sue tracce per fare chiarezza sulla questione. La caccia all&#x27;uomo finisce per braccare Vahap, costringendolo a trovare una via d&#x27;uscita disperata per evitare conseguenze ancora più grave da parte di chi lo sta inseguendo in ogni angolo della città.</p>
 <p>Braccato e messo alle strette, Vahap capisce che l&#x27;unico modo per salvarsi è ritrattare completamente quanto dichiarato in pubblico. Con la pressione di Fikret e Çetin sempre più forte, l&#x27;uomo inventa una giustificazione di comodo per cancellare il peso delle sue parole. Dichiara di essersi inventato tutto di sana pianta e giustifica quel momento di follia sostenendo di aver trascorso molti anni all&#x27;interno di un manicomio. Questa ritrattazione serve a gettare discredito sulle sue stesse affermazioni, convincendo temporaneamente gli inseguitori che si sia trattato soltanto del delirio di una mente instabile e priva di qualunque fondamento di verità.</p>
 <p>Nonostante questa mossa disperata, la posizione di Vahap resta estremamente delicata agli occhi del suo gruppo. Per questo motivo, quando Hakan gli offre l&#x27;unica reale via d&#x27;uscita dal pasticcio creato, l&#x27;uomo non esita ad accettare il compito assegnato. La missione consiste nel rapire Betül, l&#x27;autrice del ricatto da cinque milioni di lire. Organizzando un finto invito a pranzo, Vahap riesce ad attirare la donna in un campo isolato, consegnandola direttamente nelle mani di Hakan. In questo modo Vahap cerca di riparare al gravissimo danno provocato, dimostrando la propria totale obbedienza all&#x27;uomo che aveva rischiato di rovinare per sempre.</p>
-<h2>Come Hakan inganna Züleyha con la falsa lettera d&#x27;amore</h2>
+<h2 id="c6">Come Hakan inganna Züleyha con la falsa lettera d&#x27;amore</h2>
 <p>I dubbi di Züleyha iniziano quando la busta contenente il ricatto di Betül giunge direttamente nella sede dell&#x27;azienda. Notando immediatamente un intenso profumo femminile emanato dalla carta, la donna comincia a nutrire forti sospetti sul contenuto e sul destinatario. Il gesto brusco di Hakan, che le strappa la lettera dalle mani per impedire che scopra la verità, finisce soltanto per alimentare le perplessità che covavano da tempo. Züleyha avverte che gli sta nascondendo qualcosa di importante, costringendo Hakan a ideare una strategia rapida ed efficace per disinnescare la potenziale crisi coniugale e proteggere il suo segreto.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>Per spegnere definitivamente i sospetti della moglie, Hakan costruisce un abile depistaggio fabbricando una lettera del tutto falsa. Insieme a questa missiva, consegna a Züleyha una fotografia che lo ritrae con una donna sconosciuta e una chiave misteriosa. La storia inventata parla della figlia di un suo ex socio, rimasta innamorata di lui dai tempi in cui si trovava a Beirut senza essere mai ricambiata. La lettera viene letta ad alta voce in lingua araba e appare carica di profondo struggimento amoroso, con frasi toccanti che invitano l&#x27;uomo a tenere la chiave e ricordano come la sua casa resti sempre aperta per lui.</p>
 <p>Il piano di depistaggio ottiene la conferma definitiva grazie alla presenza di Azize, la quale conosce la lingua araba e convalida la traduzione del testo. Di fronte a questa testimonianza, Züleyha sceglie di fidarsi del marito, pur conservando qualche perplessità legata a date e luoghi che non sembrano coincidere perfettamente con la realtà. La donna ignora del tutto che la vera lettera giunta in azienda era quella di ricatto scritta da Betül. Attraverso questa farsa orchestrata al millimetro, Hakan riesce a proteggere la propria identità e a mantenere salva la stabilità familiare, continuando a nascondere il tremendo inganno che lo coinvolge.</p>
-<h2>Cosa vive Betül durante il rapimento orchestrato da Hakan</h2>
+<h2 id="c7">Cosa vive Betül durante il rapimento orchestrato da Hakan</h2>
 <p>Dopo essere stata attirata con l&#x27;inganno da Vahap con la scusa di un pranzo, Betül si ritrova in un campo del tutto isolato. Lì ad attenderla c&#x27;è Hakan, pronto a risponderle di persona alla richiesta estorsiva. La donna viene immediatamente legata, imbavagliata e caricata nel portabagagli di un&#x27;automobile per essere trasferita in un magazzino abbandonato. Nel corso di questo incubo meticolosamente calcolato, Hakan spaventa a morte la sua prigioniera minacciandola prima con un coltello per evitare di sprecare un proiettile, provocandole uno svenimento per il terrore. Al suo risveglio, le viene perfino offerta la beffarda scelta dell&#x27;arma con cui essere giustiziata.</p>
 <p>L&#x27;obiettivo reale di questo finto supplizio non è quello di uccidere la donna, ma di spezzarne la resistenza e recuperare l&#x27;elemento di minaccia. Scortata all&#x27;ufficio postale dagli uomini di Hakan, Betül viene costretta ad aprire la propria cassetta di sicurezza e consegnare l&#x27;unica vera prova in suo possesso: la fotografia che ritrae Hakan insieme a Demir. Ricevuta l&#x27;avvertenza che la scoveranno ovunque se non terrà un comportamento corretto, Betül fa finalmente ritorno a casa, gettandosi in lacrime tra le braccia di Şermin e raccontandole la terribile esperienza vissuta con gli uomini incappucciati che l&#x27;avevano sequestrata.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=wJRTuqipm8c" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/wJRTuqipm8c/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TERRA AMARA Anticipazioni: Zuleyha scopre la vera identità di Mehmet e la sua reazione è da man</span></a></li><li><a href="https://www.youtube.com/watch?v=LDU-jz0mKNE" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/LDU-jz0mKNE/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TERRA AMARA Anticipazioni: Betul e Sermin scoprono la vera identità di Mehmet:è Hakan! Cosa far</span></a></li><li><a href="https://www.youtube.com/watch?v=lggVAIPkbGo" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/lggVAIPkbGo/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>AMORE E MORTE A CUKUROVA,SCOCCA LA SCINTILLA MENTRE HAKAN MUORE-Anticipazioni Terra Amara 12 Ma</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>La vendetta &quot;psicologica&quot; di Hakan è più elegante o più crudele di una punizione vera? E Züleyha quanto ci metterà a scoprire che la lettera era falsa?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=jaZ3bZ8uFw8">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di Terra Amara</h2><div class="griglia"><article class="scheda">
+  <a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/"><div class="foto"><img src="/img/terra-amara-la-trama-completa-e-come-finisce.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></h3>
+    <div class="quando">30 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/"><div class="foto"><img src="https://i.ytimg.com/vi/_ypSJU-x7LY/hqdefault.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/"><div class="foto"><img src="https://i.ytimg.com/vi/B_MLx-0yh6M/hqdefault.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=Terra Amara, Hakan risponde al ricatto di Betül «di persona»: il rapimento, la finta esecuzione e la foto nella cassetta di sicurezza — https://serietvfans.com/terra-amara/terra-amara-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/terra-amara/terra-amara-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/terra-amara/terra-amara-la-trama-completa-e-come-finisce/&text=Terra Amara, Hakan risponde al ricatto di Betül «di persona»: il rapimento, la finta esecuzione e la foto nella cassetta di sicurezza" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">TERRA AMARA Anticipazioni: Hakan si vendica di Betül | Züleyha crede alla lettera?</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=jaZ3bZ8uFw8">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di Terra Amara</h3><ol class="numerata"><li><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></li><li><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></li><li><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></li><li><a href="/terra-amara/terra-amara-come-finisce-davvero-zuleyha-vince-tutto-e-resta-sola/">Terra Amara: come finisce davvero, Züleyha vince tutto e resta sola</a></li><li><a href="/terra-amara/terra-amara-come-muore-demir-yaman-chi-ha-dato-lordine-e-perche-doveva-essere-un-rapimento/">Terra Amara, come muore Demir Yaman: chi ha dato l&#x27;ordine e perché doveva essere un rapimento</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>TERRA AMARA Anticipazioni: Hakan si vendica di Betül | Züleyha crede alla lettera?</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su Terra Amara</h3><ul><li><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></li><li><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></li><li><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></li><li><a href="/terra-amara/terra-amara-come-finisce-davvero-zuleyha-vince-tutto-e-resta-sola/">Terra Amara: come finisce davvero, Züleyha vince tutto e resta sola</a></li><li><a href="/terra-amara/terra-amara-come-muore-demir-yaman-chi-ha-dato-lordine-e-perche-doveva-essere-un-rapimento/">Terra Amara, come muore Demir Yaman: chi ha dato l&#x27;ordine e perché doveva essere un rapimento</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/hercai/">Hercai</a> › Hercai, il segreto dell&#x27;anello di fidanzamento: era stato commissionato per la madre di Miran — e Gül rivela che suo fratello è vivo</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/hercai/">Hercai</a>
   <h1>Hercai, il segreto dell&#x27;anello di fidanzamento: era stato commissionato per la madre di Miran — e Gül rivela che suo fratello è vivo</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">L&#x27;anello che Miran aveva regalato a Reyyan il giorno del fidanzamento nasconde una storia: Reyyan lo riconosce come un pezzo su commissione e propone di rintracciare il gioielliere. Il viaggio li porta lontano, tra litigi e riappacificazioni, fino alla conferma — quel gioiello fu ordinato per la futura sposa di un Aslanbey, cioè per la madre di Miran. Intanto Gül, in lacrime, confessa a Fırat il segreto più grosso: suo fratello non è morto, è vivo e nascosto da Azize.</p><ol><li><a href="#c1">L&#x27;avvertimento di Sultan</a></li><li><a href="#c2">«Mio fratello è vivo»</a></li><li><a href="#c3">Chi era Dilşah, la madre di cui Miran sa solo quello che gli hanno raccontato</a></li><li><a href="#c4">Il viaggio dal gioielliere</a></li><li><a href="#c5">Le lettere mai rubate e le ombre che li seguono</a></li><li><a href="#c6">Perché conta: due ricerche diverse portano allo stesso nome</a></li><li><a href="#c7">Come Sultan instilla il dubbio in Miran</a></li><li><a href="#c8">Perche&#x27; Gul rivela a Firat che suo fratello vive</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>Hercai</strong> — Serie conclusa in Italia · andata in onda su Real Time, in streaming su discovery+</span></div>
   
-  <p class="occhiello">L&#x27;anello che Miran aveva regalato a Reyyan il giorno del fidanzamento nasconde una storia: Reyyan lo riconosce come un pezzo su commissione e propone di rintracciare il gioielliere. Il viaggio li porta lontano, tra litigi e riappacificazioni, fino alla conferma — quel gioiello fu ordinato per la futura sposa di un Aslanbey, cioè per la madre di Miran. Intanto Gül, in lacrime, confessa a Fırat il segreto più grosso: suo fratello non è morto, è vivo e nascosto da Azize.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: Hercai, il segreto dell&#x27;anello di fidanzamento: era stato commissionato per la madre di Miran — e Gül rivela che suo fratello è vivo" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/EbV9X-cuyAI/maxresdefault.jpg" alt="Hercai, il segreto dell&#x27;anello di fidanzamento: era stato commissionato per la madre di Miran — e Gül rivela che suo fratello è vivo" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/EbV9X-cuyAI/hqdefault.jpg 480w, https://i.ytimg.com/vi/EbV9X-cuyAI/sddefault.jpg 640w, https://i.ytimg.com/vi/EbV9X-cuyAI/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/EbV9X-cuyAI/hqdefault.jpg&quot;, &quot;/fallback/hercai.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,42 +409,64 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>La domanda che Sultan rivolge a Miran davanti al cancello: «Sai come è morto mio figlio?» — e mostra un segno sul ventre.</strong></p>
-  <h2>L&#x27;avvertimento di Sultan</h2>
+  <h2 id="c1">L&#x27;avvertimento di Sultan</h2>
 <p>Tutto comincia con Azize che interroga Esma su una fotografia della madre di suo nipote; lei nega di sapere qualcosa, ma il sospetto resta. Poco dopo, davanti al cancello, Sultan ferma Miran e con il suo tono enigmatico gli dice che sta cercando risposte nella direzione sbagliata, lasciando intendere che sua madre non fosse affatto felice come gli hanno raccontato. Poi la domanda che lo colpisce al petto — sai come è morto mio figlio? — accompagnata da un segno mostrato sul ventre. Miran corre da Azize in cerca di chiarezza e trova soltanto un silenzio carico di tensione, ma comincia a intuire che dietro quella tragedia c&#x27;è un nome di famiglia.</p>
-<h2>«Mio fratello è vivo»</h2>
+<h2 id="c2">«Mio fratello è vivo»</h2>
 <p>La rivelazione più grossa arriva da Gül, che lascia la villa in lacrime inseguita da Fırat: suo fratello non è morto come tutti credono — è vivo, e Azize lo tiene nascosto. Il quadro che ne esce è quello di una vendetta pianificata nei minimi dettagli: separare Miran da Reyyan e Gül dal fratello, tenendo in pugno tutti attraverso ciò che nessuno sa. La ragazza però non si arrende e confessa di sperare di poterlo riabbracciare presto.</p>
-<h2>Chi era Dilşah, la madre di cui Miran sa solo quello che gli hanno raccontato</h2>
+<h2 id="c3">Chi era Dilşah, la madre di cui Miran sa solo quello che gli hanno raccontato</h2>
 <p>Il motivo per cui un anello smuove tanto sta tutto in questa figura. Dilşah morì che Miran era poco più di un bambino: nella vita del figlio ha occupato pochissimo tempo e un vuoto molto lungo, e ogni cosa che la riguarda gli è arrivata attraverso il racconto di qualcun altro — quasi sempre di Azize. Dove fosse nata, che carattere avesse, se fosse felice: sono tutte informazioni di seconda mano, mai verificate. Ecco perché l&#x27;insinuazione di Sultan davanti al cancello lo colpisce più di una minaccia: non gli dice che la madre è morta in un altro modo, gli dice che la versione che ha in testa gliel&#x27;ha messa qualcuno. E un gioiello ha il pregio di non raccontare bugie: porta il marchio di chi lo ha fatto, e in bottega esiste un registro. È la prima fonte che Miran può interrogare senza passare da casa sua.</p>
-<h2>Il viaggio dal gioielliere</h2>
+<h2 id="c4">Il viaggio dal gioielliere</h2>
 <p>Reyyan mostra a Miran l&#x27;anello del fidanzamento, convinta che nasconda una storia, e propone di rintracciare chi lo ha realizzato; lui si irrita — per lui il padre mente — ma alla fine partono insieme. Arrivano a tarda sera e devono aspettare il mattino, e quella notte diventa l&#x27;ennesimo banco di prova per la loro relazione, tra discussioni e riavvicinamenti. Il giorno dopo il gioielliere riconosce il proprio marchio e conferma: l&#x27;anello fu commissionato da un Aslanbey per la sua futura sposa. Miran esce di scena bruscamente lasciando Reyyan a farsi raccontare il resto, e quando lei lo affronta accusandolo di non voler vedere la verità sulla nonna, lo scontro è durissimo — ma lui torna.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Le lettere mai rubate e le ombre che li seguono</h2>
+<h2 id="c5">Le lettere mai rubate e le ombre che li seguono</h2>
 <p>Attorno alla coppia si muovono altri fili. Nasuh confessa a Yusuf ciò che non aveva mai ammesso — non ha mai guardato Reyyan negli occhi da quando è nata, perché non la considerava figlia biologica di suo figlio — e viene spronato a rimediare. Yaren racconta al padre la solitudine di un&#x27;infanzia in cui le era stato vietato perfino di frequentare la cugina. E soprattutto, Azize ha in mano le lettere che tutti credevano rubate: giura che distruggerà Hazar prima di permettere a Miran di scoprire chi sia davvero suo padre. Intanto il gioielliere chiede al figlio di raccontare tutta la verità ai due ragazzi solo dopo la sua morte — mentre qualcuno, nell&#x27;ombra, osserva ogni loro mossa.</p>
-<h2>Perché conta: due ricerche diverse portano allo stesso nome</h2>
+<h2 id="c6">Perché conta: due ricerche diverse portano allo stesso nome</h2>
 <p>Sembrano tre storie parallele — l&#x27;anello, il fratello di Gül, le lettere che si credevano rubate — e invece convergono su un punto solo. Azize non minaccia di distruggere Hazar per gelosia o per una vecchia ruggine: lo minaccia per impedire che Miran arrivi al nome del proprio padre. Il che significa che la caccia al gioielliere e la caccia alle lettere stanno risalendo la stessa scala da due rampe diverse, e che qualcuno in cima le sta guardando salire entrambe. Il prezzo, se ci arrivano, non lo pagherà solo lui: la donna che gli sta accanto è cresciuta in casa Şadoğlu come figlia di Hazar, e la faida che Miran ha costruito contro quella famiglia rischia di risultare puntata contro il proprio sangue. C&#x27;è poi il dettaglio che nessuno controlla: il gioielliere ha chiesto al figlio di raccontare tutto solo dopo la sua morte. Una verità con quel tipo di scadenza non aspetta il momento comodo di nessuno.</p>
-<h2>Come Sultan instilla il dubbio in Miran</h2>
+<h2 id="c7">Come Sultan instilla il dubbio in Miran</h2>
 <p>La tensione cresce quando Sultan ferma Miran davanti al cancello, insinuando dubbi con tono enigmatico. Mostrando un segno sul ventre e chiedendogli se sappia davvero come sia morto suo figlio, la donna suggerisce che Dilşah non fosse felice come gli è stato raccontato. Sconvolto, Miran corre da Azize cercando chiarezza su quel dramma familiare, ma trova soltanto un silenzio tesissimo. Questo atteggiamento spinge il giovane a ipotizzare che dietro la tragedia ci sia la responsabilità di un parente. Nel frattempo Azize interroga Esma su una fotografia di Dilşah, ma Esma nega ogni conoscenza, alimentando un clima di sospetto generale in cui la matriarca difende ferocemente i propri oscuri segreti.</p>
 <p>L&#x27;anello di fidanzamento regalato a Reyyan diventa la chiave per fare luce sul passato. Riconosciuto dalla ragazza come un pezzo unico su commissione, il gioiello spinge la coppia a intraprendere un lungo viaggio per rintracciare l&#x27;artigiano. Dopo litigi e riavvicinamenti notturni nell&#x27;attesa dell&#x27;apertura della bottega, la conferma arriva dal gioielliere: l&#x27;ordine fu effettuato da un Aslanbey per la sua futura sposa, ovvero la madre di Miran. Nonostante l&#x27;uscita di scena irascibile del ragazzo e lo scontro con Reyyan che lo accusa di non voler vedere la verità su Azize, Miran sceglie di tornare, affrontando l&#x27;evidenza che un registro artigianale non mente a differenza dei racconti manipolati ascoltati nell&#x27;infanzia.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Perche&#x27; Gul rivela a Firat che suo fratello vive</h2>
+<h2 id="c8">Perche&#x27; Gul rivela a Firat che suo fratello vive</h2>
 <p>La clamorosa rivelazione di Gül aggiunge un tassello decisivo alla complessa vicenda. La ragazzina, scappata in lacrime dalla villa e raggiunta da Fırat, confessa che suo fratello non è morto, ma è vivo e viene tenuto nascosto da Azize. Questa macchinazione rientra nel piano di vendetta della donna, determinato a separare Miran da Reyyan e a dividere Gül dal fratello. Nel frattempo, Azize conserva le lettere che tutti credevano rubate, giurando di distruggere Hazar prima che Miran scopra chi sia davvero suo padre. La speranza di Gül di poter riabbracciare presto il fratello spezza la rete di ricatti con cui la matriarca mantiene il controllo su tutti.</p>
 <p>Parallelamente alla caccia alla verità si consumano drammi familiari taciuti per anni. Nasuh ammette a Yusuf di non aver mai guardato Reyyan negli occhi fin da quando è nata, non avendola mai ritenuta la figlia biologica di Hazar, ed è spronato dal saggio amico a porre rimedio. Allo stesso tempo Yaren rivela al padre l&#x27;intensa solitudine di un&#x27;infanzia in cui le era stato proibito perfino di frequentare la cugina. Intanto il gioielliere affida al figlio il compito di svelare la verità ai due ragazzi soltanto dopo la propria scomparsa, mentre figure oscure osservano la coppia nell&#x27;ombra, rendendo la resa dei conti inevitabile per tutti i protagonisti.</p>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=3-auSgenpzE" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/3-auSgenpzE/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>Hercai Amore e Vendetta: Nuova Scoperta di Miran e Reyan – Svelato Cosa Nasconde Elif!</span></a></li><li><a href="https://www.youtube.com/watch?v=MxlWVZBlYVk" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/MxlWVZBlYVk/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>Hercai Amore e Vendetta: Miran scopre il segreto di Azize: la nonna materna entra in scena</span></a></li><li><a href="https://www.youtube.com/watch?v=nKoyRzZ5Zzs" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/nKoyRzZ5Zzs/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>Hercai Amore e Vendetta - Anticipazioni 23 dicembre: Miran incontra la nonna  e scopre che Aziz</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Chi è la figura che segue Miran e Reyyan? E quando le lettere di Azize verranno alla luce, chi ne uscirà distrutto?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=EbV9X-cuyAI">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di Hercai</h2><div class="griglia"><article class="scheda">
+  <a href="/hercai/hercai-23-dicembre-elif-accusa-azize-davanti-a-tutti-ha-fatto-bendare-la-sultana/"><div class="foto"><img src="https://i.ytimg.com/vi/nKoyRzZ5Zzs/hqdefault.jpg" alt="Hercai" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/hercai.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Hercai</span>
+    <h3><a href="/hercai/hercai-23-dicembre-elif-accusa-azize-davanti-a-tutti-ha-fatto-bendare-la-sultana/">Hercai 23 dicembre, Elif accusa Azize davanti a tutti: «Ha fatto bendare Sultan e l&#x27;ha minacciata di morte» — e Zehra chiede a Reyyan di firmare il divorzio</a></h3>
+    <div class="quando">14 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/hercai/hercai-esma-consegna-la-lettera-di-dilsah-a-zehra-miran-e-figlio-di-hazar-e-aziz/"><div class="foto"><img src="/img/hercai-esma-consegna-la-lettera-di-dilsah-a-zehra-miran-e-figlio-di-hazar-e-aziz.jpg" alt="Hercai" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/hercai.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Hercai</span>
+    <h3><a href="/hercai/hercai-esma-consegna-la-lettera-di-dilsah-a-zehra-miran-e-figlio-di-hazar-e-aziz/">Hercai, Esma consegna la lettera di Dilşah a Zehra: «Miran è figlio di Hazar, e Azize lo ha sempre saputo» — ma lei sceglie il silenzio</a></h3>
+    <div class="quando">14 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/hercai/hercai-il-biglietto-anonimo-porta-miran-al-villaggio-di-dilsah-lanziana-lo-ricon/"><div class="foto"><img src="/img/hercai-il-biglietto-anonimo-porta-miran-al-villaggio-di-dilsah-lanziana-lo-ricon.jpg" alt="Hercai" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/hercai.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Hercai</span>
+    <h3><a href="/hercai/hercai-il-biglietto-anonimo-porta-miran-al-villaggio-di-dilsah-lanziana-lo-ricon/">Hercai, il biglietto anonimo porta Miran al villaggio di Dilşah: l&#x27;anziana lo riconosce sulla soglia — «Sapevo che saresti venuto, somigli a tuo nonno»</a></h3>
+    <div class="quando">14 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=Hercai, il segreto dell&#x27;anello di fidanzamento: era stato commissionato per la madre di Miran — e Gül rivela che suo fratello è vivo — https://serietvfans.com/hercai/hercai-il-segreto-dellanello-di-fidanzamento-era-stato-commissionato-per-la-madr/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/hercai/hercai-il-segreto-dellanello-di-fidanzamento-era-stato-commissionato-per-la-madr/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/hercai/hercai-il-segreto-dellanello-di-fidanzamento-era-stato-commissionato-per-la-madr/&text=Hercai, il segreto dell&#x27;anello di fidanzamento: era stato commissionato per la madre di Miran — e Gül rivela che suo fratello è vivo" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">Hercai – Amore e Vendetta: Azize e il Mistero dell&#x27;Anello!</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=EbV9X-cuyAI">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di Hercai</h3><ol class="numerata"><li><a href="/hercai/hercai-23-dicembre-elif-accusa-azize-davanti-a-tutti-ha-fatto-bendare-la-sultana/">Hercai 23 dicembre, Elif accusa Azize davanti a tutti: «Ha fatto bendare Sultan e l&#x27;ha minacciata di morte» — e Zehra chiede a Reyyan di firmare il divorzio</a></li><li><a href="/hercai/hercai-esma-consegna-la-lettera-di-dilsah-a-zehra-miran-e-figlio-di-hazar-e-aziz/">Hercai, Esma consegna la lettera di Dilşah a Zehra: «Miran è figlio di Hazar, e Azize lo ha sempre saputo» — ma lei sceglie il silenzio</a></li><li><a href="/hercai/hercai-il-biglietto-anonimo-porta-miran-al-villaggio-di-dilsah-lanziana-lo-ricon/">Hercai, il biglietto anonimo porta Miran al villaggio di Dilşah: l&#x27;anziana lo riconosce sulla soglia — «Sapevo che saresti venuto, somigli a tuo nonno»</a></li><li><a href="/hercai/hercai-il-gran-finale-yaren-armata-alla-festa-il-perdono-di-nasuh-e-i-gemelli-in/">Hercai, il gran finale: Yaren armata alla festa, il perdono di Nasuh e i gemelli in arrivo per Reyyan e Miran</a></li><li><a href="/hercai/hercai-in-lutto-addio-ad-attila-pekdemir-lattore-che-lascio-giurisprudenza-per-i/">Hercai in lutto: addio ad Attila Pekdemir, l&#x27;attore che lasciò giurisprudenza per il conservatorio</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>Hercai – Amore e Vendetta: Azize e il Mistero dell&#x27;Anello!</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su Hercai</h3><ul><li><a href="/hercai/hercai-23-dicembre-elif-accusa-azize-davanti-a-tutti-ha-fatto-bendare-la-sultana/">Hercai 23 dicembre, Elif accusa Azize davanti a tutti: «Ha fatto bendare Sultan e l&#x27;ha minacciata di morte» — e Zehra chiede a Reyyan di firmare il divorzio</a></li><li><a href="/hercai/hercai-esma-consegna-la-lettera-di-dilsah-a-zehra-miran-e-figlio-di-hazar-e-aziz/">Hercai, Esma consegna la lettera di Dilşah a Zehra: «Miran è figlio di Hazar, e Azize lo ha sempre saputo» — ma lei sceglie il silenzio</a></li><li><a href="/hercai/hercai-il-biglietto-anonimo-porta-miran-al-villaggio-di-dilsah-lanziana-lo-ricon/">Hercai, il biglietto anonimo porta Miran al villaggio di Dilşah: l&#x27;anziana lo riconosce sulla soglia — «Sapevo che saresti venuto, somigli a tuo nonno»</a></li><li><a href="/hercai/hercai-il-gran-finale-yaren-armata-alla-festa-il-perdono-di-nasuh-e-i-gemelli-in/">Hercai, il gran finale: Yaren armata alla festa, il perdono di Nasuh e i gemelli in arrivo per Reyyan e Miran</a></li><li><a href="/hercai/hercai-in-lutto-addio-ad-attila-pekdemir-lattore-che-lascio-giurisprudenza-per-i/">Hercai in lutto: addio ad Attila Pekdemir, l&#x27;attore che lasciò giurisprudenza per il conservatorio</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

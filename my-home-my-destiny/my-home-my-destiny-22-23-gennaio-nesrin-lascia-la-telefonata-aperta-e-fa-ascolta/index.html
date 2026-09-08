@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/my-home-my-destiny/">My Home My Destiny</a> › My Home My Destiny 22-23 gennaio, Nesrin lascia la telefonata aperta e fa ascoltare tutto a Sakine: la trappola scatta il giorno della proposta</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/my-home-my-destiny/">My Home My Destiny</a>
   <h1>My Home My Destiny 22-23 gennaio, Nesrin lascia la telefonata aperta e fa ascoltare tutto a Sakine: la trappola scatta il giorno della proposta</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Mentre Zeynep si allontana dal tavolo del bar, Nesrin prende il suo telefono, chiama Sakine e nasconde l&#x27;apparecchio lasciando la linea aperta. Poi porta la conversazione esattamente dove voleva — sul fatto che Zeynep andrà a vivere da sola con Barış. Sakine ascolta ogni parola, e la sera della proposta di matrimonio si chiude in camera.</p><ol><li><a href="#c1">Il malinteso di Barış</a></li><li><a href="#c2">Due fidanzamenti in una sera</a></li><li><a href="#c3">La chiamata lasciata aperta</a></li><li><a href="#c4">Perché Gülbin era scappata</a></li><li><a href="#c5">Come Nesrin organizza la sua vendetta contro Sakine</a></li><li><a href="#c6">Perche&#x27; Barış supera i suoi dubbi su Zeynep</a></li><li><a href="#c7">Cosa scopre Savaş sul conto di Tarık</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>My Home My Destiny</strong> — Serie conclusa in Italia · le puntate su Mediaset Infinity</span></div>
   
-  <p class="occhiello">Mentre Zeynep si allontana dal tavolo del bar, Nesrin prende il suo telefono, chiama Sakine e nasconde l&#x27;apparecchio lasciando la linea aperta. Poi porta la conversazione esattamente dove voleva — sul fatto che Zeynep andrà a vivere da sola con Barış. Sakine ascolta ogni parola, e la sera della proposta di matrimonio si chiude in camera.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: My Home My Destiny 22-23 gennaio, Nesrin lascia la telefonata aperta e fa ascoltare tutto a Sakine: la trappola scatta il giorno della proposta" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/wrXmsnyJMuo/maxresdefault.jpg" alt="My Home My Destiny 22-23 gennaio, Nesrin lascia la telefonata aperta e fa ascoltare tutto a Sakine: la trappola scatta il giorno della proposta" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/wrXmsnyJMuo/hqdefault.jpg 480w, https://i.ytimg.com/vi/wrXmsnyJMuo/sddefault.jpg 640w, https://i.ytimg.com/vi/wrXmsnyJMuo/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/wrXmsnyJMuo/hqdefault.jpg&quot;, &quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,44 +409,66 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>Il racconto che spiega tutto: perché anni prima Gülbin scappò di casa.</strong></p>
-  <h2>Il malinteso di Barış</h2>
+  <h2 id="c1">Il malinteso di Barış</h2>
 <p>Tutto parte da una conversazione ascoltata a metà. Barış sente Zeynep parlare con Nesrin e ne ricava l&#x27;idea sbagliata: che lei non sia pronta a sposarlo e si senta solo vincolata da una promessa. Sconvolto, si fa accompagnare a casa da Nuh e i due si confidano — l&#x27;amico è convinto che Cemile non tornerà, lui ripensa agli anni passati ad aspettare un affetto dei genitori che non è mai arrivato, e conclude che la vita è troppo breve per restare a guardare. Quando finalmente si confrontano, Zeynep gli spiega che aveva ascoltato solo un pezzo del discorso: non solo è prontissima, ma senza di lui la sua vita non avrebbe senso. Poi lo porta a vedere la casa che ha scelto per loro, con il giardino e il grande balcone.</p>
-<h2>Due fidanzamenti in una sera</h2>
+<h2 id="c2">Due fidanzamenti in una sera</h2>
 <p>L&#x27;annuncio del matrimonio fa esplodere di gioia entrambe le famiglie, e mentre si organizza la serata della proposta ufficiale arriva anche la confessione che Sultan rimandava da settimane: è fidanzata con Ali Rıza. Emine, contro ogni suo timore, reagisce con entusiasmo, e lo stesso fa la famiglia di Barış quando lo zio dà la notizia. Nel frattempo Savaş porta al fratello i primi risultati sulle verifiche riguardanti Tarık: il suo profilo social sembra confermare la sua versione, ma è stato creato da poco — e Barış decide di affidare un&#x27;indagine più approfondita a un conoscente esperto.</p>
-<h2>La chiamata lasciata aperta</h2>
+<h2 id="c3">La chiamata lasciata aperta</h2>
 <p>Il giorno della prova dell&#x27;abito, Zeynep, Nesrin ed Emine si fermano in un bar. Quando Emine va a ordinare e Zeynep si allontana ad accarezzare un cane, Nesrin prende il telefono dell&#x27;amica, chiama Sakine e nasconde l&#x27;apparecchio lasciando la linea aperta. Poi, con tono casuale, chiede a Zeynep se abbia già detto alla madre che andrà a vivere da sola con Barış. Lei risponde con sincerità: vuole vivere il suo matrimonio in serenità, anche pensando a una casa in affitto per Sakine, per non ripetere le tensioni del passato. Dall&#x27;altra parte del telefono, Sakine ascolta tutto e si sente mancare. La sera, mentre in casa si preparano ad accogliere Barış e la sua famiglia per la proposta, si chiude in camera senza dire a nessuno il perché.</p>
-<h2>Perché Gülbin era scappata</h2>
+<h2 id="c4">Perché Gülbin era scappata</h2>
 <p>In un bar lontano da occhi indiscreti, Tarık fa notare a Nesrin che si sta facendo coinvolgere troppo, e le chiede di nuovo il motivo per cui da ragazzina fuggì di casa. Lei — che in realtà si chiama Gülbin — racconta: a quindici anni era andata a lavorare al posto di Sakine in una casa benestante, dove il figlio della padrona l&#x27;aggredì. Nel difendersi rimase ferita a una mano, e da lì viene la cicatrice che porta ancora; quando la donna rientrò, non volle sentire la sua versione e la cacciò. A casa non andò meglio: Sakine non le credette e la rimproverò dicendole che con i ricchi non si può competere, e il padre la chiuse in casa per una settimana proibendole di tornare a scuola. È allora che decise di sparire. Tarık prova a consolarla, ma il rancore è intatto — e lei annuncia che rovinerà la serata del fidanzamento.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Come Nesrin organizza la sua vendetta contro Sakine</h2>
+<h2 id="c5">Come Nesrin organizza la sua vendetta contro Sakine</h2>
 <p>Nesrin agisce con estrema e calcolata freddezza quando decide di mettere in atto il suo piano all&#x27;interno del locale dove si trova insieme alle amiche. La giovane donna approfitta subito del momento in cui Emine si allontana per ordinare e Zeynep si distrae per accarezzare un cane di passaggio. Senza farsi notare, afferra il telefono di Zeynep e avvia una chiamata verso Sakine, lasciando poi la linea aperta e nascondendo l&#x27;apparecchio. In questo modo orienta il discorso sulle scelte abitative future della coppia, spingendo la ragazza a rivelare chiaramente le proprie reali intenzioni.</p>
 <p>L&#x27;intera manovra di Nesrin punta a colpire Sakine proprio nel momento più delicato dei preparativi per le nozze imminenti. Durante la chiamata lasciata aperta, Zeynep dichiara apertamente di voler andare a vivere da sola con Barış per costruire un matrimonio sereno ed evitare così di ripetere le vecchie tensioni passate. Aggiunge anche l&#x27;intenzione di cercare una casa in affitto per Sakine, ma la madre dall&#x27;altro capo dell&#x27;apparecchio percepisce solo l&#x27;amarezza dell&#x27;esclusione. Il contraccolpo emotivo è immediato per la donna, che si sente venire meno e sceglie di barricarsi in camera la sera della proposta.</p>
 <p>Dietro la spietata trappola orchestrata da Nesrin si nasconde una profonda ferita legata alla sua vera identità di Gülbin. A quindici anni la ragazza dovette sostituire Sakine in un lavoro presso una famiglia benestante, dove subì un&#x27;aggressione dal figlio della padrona. Difendendosi riportò una ferita permanente alla mano, ma la padrona la cacciò senza ascoltarla. A casa Sakine non le credette, rimproverandola e dicendo che con i ricchi non si compete, mentre il padre la chiuse a chiave per una settimana vietandole la scuola. Quel rancore riemerge durante l&#x27;incontro al bar con Tarık, spingendola a giurare di rovinare il fidanzamento.</p>
-<h2>Perche&#x27; Barış supera i suoi dubbi su Zeynep</h2>
+<h2 id="c6">Perche&#x27; Barış supera i suoi dubbi su Zeynep</h2>
 <p>Il percorso che conduce Barış alla certezza del matrimonio parte da un doloroso equivoco vissuto al bar. Dopo aver ascoltato soltanto una parte del discorso tra Zeynep e Nesrin, l&#x27;uomo si convince erroneamente che la fidanzata si senta costretta da una promessa e non sia affatto pronta a compiere il grande passo. Profondamente turbato, Barış si fa riaccompagnare a casa dall&#x27;amico Nuh. Durante il tragitto, mentre Nuh condivide le sue amarezze credendo che Cemile non tornerà più indietro, Barış riflette sui lunghi anni trascorsi ad aspettare un affetto genitoriale mai arrivato, giungendo alla conclusione che la vita sia troppo breve per restare a guardare.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>Quando il chiarimento tra i due innamorati finalmente avviene, l&#x27;incubo del malinteso si dissolve rapidamente. Zeynep rassicura Barış spiegando che aveva frainteso le sue parole: non solo desidera sposarlo al più presto, ma gli dichiara aperto il cuore affermando che senza di lui la propria vita non avrebbe alcun senso. Per coronare questa riappacificazione, la ragazza lo porta subito a vedere la casa scelta appositamente per il loro futuro insieme, caratterizzata da un giardino e da un ampio balcone. Questo momento di sincerità segna la svolta decisiva per la coppia, che organizza con entusiasmo i preparativi per il fidanzamento ufficiale.</p>
 <p>In un clima di festa generale arrivano anche altre inaspettate novità per il gruppo familiare. Sultan trova il coraggio di rivelare la confessione rimandata per settimane, annunciando la sua relazione ufficiale con Ali Rıza. Contro ogni timore iniziale, Emine accoglie la notizia con entusiasmo, e la medesima reazione giunge dai parenti di Barış quando lo zio condivide la propria felicità. Tutto appare perfetto all&#x27;esterno per la doppia festa delle famiglie unite, mentre all&#x27;orizzonte rimangono le trame nascoste degli avversari che cercano di rovinare completamente la sincera gioia di quella serata così speciale.</p>
-<h2>Cosa scopre Savaş sul conto di Tarık</h2>
+<h2 id="c7">Cosa scopre Savaş sul conto di Tarık</h2>
 <p>Mentre le famiglie festeggiano i fidanzamenti, l&#x27;attenzione di Savaş rimane concentrata sulle figure ambigue che ruotano attorno alla loro vita. Savaş effettua verifiche sul profilo di Tarık, portando a Barış i primi risultati ottenuti sul conto dell&#x27;uomo. A prima vista la presenza digitale di Tarık sembra confermare la versione dei fatti da lui fornita, mantenendo una facciata apparentemente inappuntabile. Tuttavia emerge un dettaglio fortemente sospetto che non sfugge all&#x27;attenzione dei fratelli: il suo account sui social media è stato creato soltanto di recente. Questo elemento solleva dubbi immediati sulle vere intenzioni dell&#x27;uomo e sul suo reale passato.</p>
 <p>Di fronte alle perplessità emerse dall&#x27;analisi di Savaş, Barış comprende di non potersi fidare delle semplici apparenze e sceglie di passare all&#x27;azione. Per chiarire la situazione, Barış decide di affidare un&#x27;indagine più approfondita a un suo conoscente esperto nel settore. Nel frattempo Tarık si incontra segretamente in un bar con Nesrin, notando come la complice si stia lasciando coinvolgere fin troppo emotivamente dalla situazione. È proprio durante questa conversazione riservata che la donna finisce per confidare le motivazioni storiche del suo odio viscerale verso la famiglia di origine, confermando le sue oscure intenzioni.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=_I5jIkcvjgo" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/_I5jIkcvjgo/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>MY HOME MY DESTINY Anticipazioni 24 25 Gennaio: Sakine racconta finalmente la storia della sua </span></a></li><li><a href="https://www.youtube.com/watch?v=dP4VIk-nl1Q" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/dP4VIk-nl1Q/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>MY HOME MY DESTINY Anticipazioni 19 Gennaio: Baris in crisi nera, Zeynep ha seri dubbi sulle no</span></a></li><li><a href="https://www.youtube.com/watch?v=3dgpoMHeWVs" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/3dgpoMHeWVs/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>MY HOME MY DESTINY Anticipazioni 17 -18 Gennaio: Baris sempre più sospettoso di Tarik e Nesrin</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Sakine ha qualche colpa per quello che è successo a Gülbin?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=wrXmsnyJMuo">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di My Home My Destiny</h2><div class="griglia"><article class="scheda">
+  <a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/"><div class="foto"><img src="/img/my-home-my-destiny-la-trama-completa-e-come-finisce.jpg" alt="My Home My Destiny" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">My Home My Destiny</span>
+    <h3><a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/">My Home My Destiny: la trama completa e come finisce</a></h3>
+    <div class="quando">30 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/"><div class="foto"><img src="https://i.ytimg.com/vi/-djleIeCLQs/hqdefault.jpg" alt="My Home My Destiny" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">My Home My Destiny</span>
+    <h3><a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/">My Home My Destiny, Zeynep ferma l&#x27;aborto di Benal in sala operatoria senza sapere che il padre è Mehdi</a></h3>
+    <div class="quando">17 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/"><div class="foto"><img src="https://i.ytimg.com/vi/gxL0o63Nhqw/hqdefault.jpg" alt="My Home My Destiny" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">My Home My Destiny</span>
+    <h3><a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/">My Home My Destiny, anticipazioni del 17 novembre: Özlem indaga su Zeynep e scopre tutto, Nuh diventa autista di Barış e qualcuno manomette i macchinari di Bekir</a></h3>
+    <div class="quando">16 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=My Home My Destiny 22-23 gennaio, Nesrin lascia la telefonata aperta e fa ascoltare tutto a Sakine: la trappola scatta il giorno della proposta — https://serietvfans.com/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/&text=My Home My Destiny 22-23 gennaio, Nesrin lascia la telefonata aperta e fa ascoltare tutto a Sakine: la trappola scatta il giorno della proposta" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">MY HOME MY DESTINY Anticipazioni 22-23 gennaio: Zeynep e Baris finalmente felici</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=wrXmsnyJMuo">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di My Home My Destiny</h3><ol class="numerata"><li><a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/">My Home My Destiny: la trama completa e come finisce</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/">My Home My Destiny, Zeynep ferma l&#x27;aborto di Benal in sala operatoria senza sapere che il padre è Mehdi</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/">My Home My Destiny, anticipazioni del 17 novembre: Özlem indaga su Zeynep e scopre tutto, Nuh diventa autista di Barış e qualcuno manomette i macchinari di Bekir</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-guida-alla-serie-chi-sono-demet-ozdemir-e-ibrahim-celikkol-qu/">My Home My Destiny: guida alla serie, il cast, i personaggi e quante puntate sono</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-1-dicembre-gli-spari-davanti-alla-vecchia-casa-zeynep-tra-le/">My Home My Destiny 1° dicembre, gli spari davanti alla vecchia casa: Zeynep tra le due madri quando l&#x27;uomo in moto estrae la pistola</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>MY HOME MY DESTINY Anticipazioni 22-23 gennaio: Zeynep e Baris finalmente felici</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su My Home My Destiny</h3><ul><li><a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/">My Home My Destiny: la trama completa e come finisce</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/">My Home My Destiny, Zeynep ferma l&#x27;aborto di Benal in sala operatoria senza sapere che il padre è Mehdi</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/">My Home My Destiny, anticipazioni del 17 novembre: Özlem indaga su Zeynep e scopre tutto, Nuh diventa autista di Barış e qualcuno manomette i macchinari di Bekir</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-guida-alla-serie-chi-sono-demet-ozdemir-e-ibrahim-celikkol-qu/">My Home My Destiny: guida alla serie, il cast, i personaggi e quante puntate sono</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-1-dicembre-gli-spari-davanti-alla-vecchia-casa-zeynep-tra-le/">My Home My Destiny 1° dicembre, gli spari davanti alla vecchia casa: Zeynep tra le due madri quando l&#x27;uomo in moto estrae la pistola</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

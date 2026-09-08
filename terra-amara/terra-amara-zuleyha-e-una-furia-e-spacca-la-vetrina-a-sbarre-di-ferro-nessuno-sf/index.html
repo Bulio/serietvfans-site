@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/terra-amara/">Terra Amara</a> › Terra Amara, Züleyha è una furia e spacca la vetrina a sbarre di ferro: «Nessuno sfida la famiglia Yaman»</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/terra-amara/">Terra Amara</a>
   <h1>Terra Amara, Züleyha è una furia e spacca la vetrina a sbarre di ferro: «Nessuno sfida la famiglia Yaman»</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Le voci maligne del vetraio su una presunta relazione tra Demir e Sevda scatenano la reazione più clamorosa della serie: Züleyha scende dall&#x27;auto con una barra di metallo e demolisce la vetrina del diffamatore, sotto gli occhi increduli di Şermin e Füsun. Intanto Ümit tenta il rientro in scena col trucco dell&#x27;auto in panne.</p><ol><li><a href="#c1">La cena d&#x27;affari rovinata e le mani sporche di sangue</a></li><li><a href="#c2">La vendetta di Züleyha: la barra di metallo</a></li><li><a href="#c3">La polizia in ufficio e la risata di Demir</a></li><li><a href="#c4">Il ritorno strisciante di Ümit: l&#x27;auto che &quot;non parte&quot;</a></li><li><a href="#c5">Perche&#x27; Demir nasconde la verita&#x27; a Sevda</a></li><li><a href="#c6">Come Züleyha dimostra la sua nuova forza</a></li><li><a href="#c7">Cosa nasconde Ümit dietro il falso guasto</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>Terra Amara</strong> — Serie conclusa in Italia · tutte le puntate su Mediaset Infinity</span></div>
   
-  <p class="occhiello">Le voci maligne del vetraio su una presunta relazione tra Demir e Sevda scatenano la reazione più clamorosa della serie: Züleyha scende dall&#x27;auto con una barra di metallo e demolisce la vetrina del diffamatore, sotto gli occhi increduli di Şermin e Füsun. Intanto Ümit tenta il rientro in scena col trucco dell&#x27;auto in panne.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: Terra Amara, Züleyha è una furia e spacca la vetrina a sbarre di ferro: «Nessuno sfida la famiglia Yaman»" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/fNsf6TB0TRQ/maxresdefault.jpg" alt="Terra Amara, Züleyha è una furia e spacca la vetrina a sbarre di ferro: «Nessuno sfida la famiglia Yaman»" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/fNsf6TB0TRQ/hqdefault.jpg 480w, https://i.ytimg.com/vi/fNsf6TB0TRQ/sddefault.jpg 640w, https://i.ytimg.com/vi/fNsf6TB0TRQ/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/fNsf6TB0TRQ/hqdefault.jpg&quot;, &quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,25 +409,25 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>«Non avrei mai immaginato che Züleyha potesse essere così feroce» — «Ormai è una vera Yaman»: il commento di Şermin e Füsun fotografa la trasformazione della protagonista.</strong></p>
-  <h2>La cena d&#x27;affari rovinata e le mani sporche di sangue</h2>
+  <h2 id="c1">La cena d&#x27;affari rovinata e le mani sporche di sangue</h2>
 <p>Tutto comincia al rientro dalla luna di miele, interrotta per il richiamo dei bambini. Erkan trascina Demir a una cena d&#x27;affari per un terreno adiacente all&#x27;azienda — l&#x27;espansione che ha sempre sognato, come gli fa notare Züleyha — ma la serata degenera: tre ubriachi cominciano a provocare, fino all&#x27;accusa scandalosa che Demir avrebbe una relazione con Sevda, &quot;tenuta come un trofeo in memoria del padre&quot;. Demir esplode e la trattativa si trasforma in rissa. A casa, le macchie di sangue sulle sue mani gelano Züleyha e Sevda; solo il mattino dopo, davanti al «sono tua moglie, puoi confidarti», Demir rivela la fonte del veleno: è il vetraio della città a diffondere quelle voci — e la prega di non dire nulla a Sevda per non ferirla.</p>
-<h2>La vendetta di Züleyha: la barra di metallo</h2>
+<h2 id="c2">La vendetta di Züleyha: la barra di metallo</h2>
 <p>La risposta di Züleyha è di quelle che entrano nella storia della serie. L&#x27;auto che inchioda in mezzo alla strada davanti a Şermin e Füsun, il bagagliaio che si apre, la grossa barra di metallo — e la vetrina del negozio del diffamatore che va in frantumi. Alle proteste dell&#x27;uomo, che minaccia di chiamare la polizia, Züleyha risponde demolendo un secondo vetro, poi un terzo, con un avvertimento glaciale: mai più una parola sulla sua famiglia, o le conseguenze saranno peggiori. Şermin e Füsun, sbalordite, riassumono così: «Ormai è una vera Yaman».</p>
-<h2>La polizia in ufficio e la risata di Demir</h2>
+<h2 id="c3">La polizia in ufficio e la risata di Demir</h2>
 <p>Il conto arriva puntuale: due agenti si presentano nell&#x27;ufficio di Demir per l&#x27;incidente, e lui assicura piena collaborazione. Ma la telefonata alla tenuta che segue è tutto fuorché una ramanzina: davanti al tono giocoso della moglie — «nessuno deve osare sfidare la famiglia Yaman» — Demir scoppia a ridere: «Con quella barra potresti demolirci casa». Sotto lo scherzo, ammirazione reciproca: i due riconoscono l&#x27;uno nella forza dell&#x27;altra il proprio specchio.</p>
-<h2>Il ritorno strisciante di Ümit: l&#x27;auto che &quot;non parte&quot;</h2>
+<h2 id="c4">Il ritorno strisciante di Ümit: l&#x27;auto che &quot;non parte&quot;</h2>
 <p>La serenità dura poco: a sera, un&#x27;auto si avvicina silenziosa alla tenuta. È Ümit, regalo in mano e sorriso forzato, nonostante Demir le avesse intimato di sparire. Solo Züleyha, ignara, la accoglie con calore; Demir la gela con lo sguardo, Sevda ribolle. E quando per Ümit arriva il momento di andarsene — sorpresa — l&#x27;auto non parte: &quot;problema di batteria&quot;. Il trucco per restare la notte si infrange sulla prontezza di Züleyha, che la fa accompagnare a casa da un domestico. Ma il campanello d&#x27;allarme lo suona Sevda, in un angolo appartato: «Non tutti sono come te, Züleyha. Alcuni nascondono secondi fini dietro un sorriso o un regalo». Il dubbio, finalmente, comincia a insinuarsi.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Perche&#x27; Demir nasconde la verita&#x27; a Sevda</h2>
+<h2 id="c5">Perche&#x27; Demir nasconde la verita&#x27; a Sevda</h2>
 <p>Il rientro dalla luna di miele si rivela subito turbolento per la coppia, costretta a interrompere il viaggio a causa dei figli. Appena tornato, Demir viene coinvolto da Erkan in una cena d&#x27;affari fondamentale per trattare l&#x27;acquisto di un terreno adiacente all&#x27;azienda. Questa espansione rappresenta da sempre il grande sogno imprenditoriale dell&#x27;uomo, come gli fa notare la stessa Züleyha. Tuttavia, l&#x27;atmosfera si guasta quando tre ubriachi provocano Demir sul piano personale. Le loro parole scatenano una reazione violenta da parte del proprietario della tenuta, trasformando la trattativa commerciale in un acceso scontro.</p>
 <p>Le accuse lanciate dai tre uomini sono pesanti e colpiscono l&#x27;onore della famiglia: sostengono infatti che Demir abbia una relazione con Sevda, tenuta come un trofeo in memoria del padre. Di fronte a tanta insolenza, Demir esplode e nasce una rissa. Rientrato a casa con le mani macchiate di sangue, l&#x27;uomo affronta lo sgomento di Züleyha e Sevda. Solo il mattino dopo, quando la moglie gli offre sostegno ricordandogli il suo ruolo al suo fianco, Demir confessa che è il vetraio della città a diffondere quelle terribili voci diffamatorie in tutto il paese.</p>
 <p>Nella sua confessione a Züleyha, Demir esprime un desiderio preciso: pregare la moglie di non rivelare nulla a Sevda per evitare di ferirla profundamente. Demir vuole proteggere la donna da simili bassezze, preferendo gestire da solo la rabbia. Züleyha accoglie la richiesta con grande comprensione, garantendo al marito assoluta lealtà e la certezza di potersi confidare sempre. Questo momento di grande intimità spinge la donna a voler difendere la reputazione familiare, dimostrando come il legame tra i coniugi sia ormai diventato indistruttibile di fronte alle offese esterne e ai pettegolezzi del paese.</p>
-<h2>Come Züleyha dimostra la sua nuova forza</h2>
+<h2 id="c6">Come Züleyha dimostra la sua nuova forza</h2>
 <p>La decisione di Züleyha di farsi giustizia spiazza chiunque assista alla scena. Mentre guida lungo la strada, la donna nota Şermin e Füsun e inchioda improvvisamente la vettura in mezzo alla carreggiata. Tra gli sguardi sbigottiti delle presenti, Züleyha scende con passo fermo, apre il bagagliaio ed estrae una pesante barra di metallo. Senza alcuna esitazione, la protagonista si dirige verso il negozio del vetraio e demolisce la vetrina del diffamatore. Il gesto clamoroso lascia senza parole il commerciante, incapace di reagire davanti alla violenza con cui la donna difende il nome della propria famiglia.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>Alle lamentele del negoziante, che minaccia di chiamare subito la polizia, Züleyha risponde con ancora più fermezza. Impugnando la barra, distrugge un secondo e poi un terzo vetro, disintegrando l&#x27;attività dell&#x27;uomo. Prima di andarsene, la donna lancia un avvertimento glaciale: nessuno dovrà mai più pronunciare una parola sulla sua famiglia, altrimenti le conseguenze saranno ancora peggiori. Şermin e Füsun assistono alla scena completamente sbalordite e ammutolite, commentando tra loro che la ragazza si è trasformata a tutti gli effetti in una vera Yaman, capace di usare metodi implacabili per proteggere la casata.</p>
 <p>Poco dopo, due agenti di polizia si presentano nell&#x27;ufficio di Demir per chiedere conto dell&#x27;incidente avvenuto in centro. L&#x27;uomo d&#x27;affari assicura la massima collaborazione, ma appena gli ufficiali se ne vanno, telefona alla tenuta. Davanti al tono divertito di Züleyha, che ribadisce come nessuno debba sfidare la famiglia Yaman, Demir scoppia a ridere ironizzando sul fatto che con quella barra la moglie potrebbe persino demolire la loro casa. Tra i due coniugi emerge una profonda ammirazione reciproca, riconoscendo l&#x27;uno nella forza dell&#x27;altra lo specchio ideale del proprio carattere determinato.</p>
-<h2>Cosa nasconde Ümit dietro il falso guasto</h2>
+<h2 id="c7">Cosa nasconde Ümit dietro il falso guasto</h2>
 <p>Nonostante Demir le avesse ordinato di sparire, Ümit si ripresenta alla tenuta a sera inoltrata con atteggiamento ambiguo. La donna arriva in auto mostrando un regalo e un sorriso forzato. Züleyha, completamente ignara del passato tra l&#x27;ospite e il marito, la accoglie con grande calore umano. La reazione di Demir è invece gelida e severa: l&#x27;uomo la fissa con uno sguardo pieno di risentimento, mentre Sevda ascolta e guarda la scena ribollendo di rabbia. La presenza della dottoressa crea un momento di forte tensione all&#x27;interno della residenza, spezzando la tranquillità familiare.</p>
 <p>Quando giunge il momento di congedarsi, Ümit tenta un&#x27;astuta mossa per rimanere a dormire. Dichiara che la sua vettura non parte a causa di un improvviso problema alla batteria, sperando che la famiglia Yaman le offra ospitalità per la notte. Tuttavia, il suo inganno si infrange contro la prontezza di Züleyha. Con totale naturalezza e senza sospettare nulla, la padrona di casa fa accompagnare la dottoressa direttamente a domicilio da un domestico di fiducia. In questo modo, la manovra della rivale fallisce miseramente, costringendola a fare ritorno a casa.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
@@ -385,19 +435,41 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=BMlyvnIsiFg" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/BMlyvnIsiFg/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TERRA AMARA Anticipazioni 10 Settembre: Demir una furia con Zuleyha e Yilmaz!</span></a></li><li><a href="https://www.youtube.com/watch?v=6x91OHpZrco" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/6x91OHpZrco/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TERRA AMARA Anticipazioni 9-10 Novembre: Zuleyha, una furia per difendere la sua famiglia!</span></a></li><li><a href="https://www.youtube.com/watch?v=ZnUJ33bDqto" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/ZnUJ33bDqto/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TERRA AMARA Anticipazioni dal 7 al 11 agosto 2023: Sevda Accusata dell&#x27;omicidio di Hunkar!</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>La furia della vetrina vi ha fatto applaudire o Züleyha ha esagerato? E quanto ci metterà a vedere il vero volto di Ümit?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=fNsf6TB0TRQ">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di Terra Amara</h2><div class="griglia"><article class="scheda">
+  <a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/"><div class="foto"><img src="/img/terra-amara-la-trama-completa-e-come-finisce.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></h3>
+    <div class="quando">30 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/"><div class="foto"><img src="https://i.ytimg.com/vi/_ypSJU-x7LY/hqdefault.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/"><div class="foto"><img src="https://i.ytimg.com/vi/B_MLx-0yh6M/hqdefault.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=Terra Amara, Züleyha è una furia e spacca la vetrina a sbarre di ferro: «Nessuno sfida la famiglia Yaman» — https://serietvfans.com/terra-amara/terra-amara-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/terra-amara/terra-amara-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/terra-amara/terra-amara-la-trama-completa-e-come-finisce/&text=Terra Amara, Züleyha è una furia e spacca la vetrina a sbarre di ferro: «Nessuno sfida la famiglia Yaman»" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">TERRA AMARA Anticipazioni: Züleyha una furia, spacca una vetrina! Cosa è successo</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=fNsf6TB0TRQ">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di Terra Amara</h3><ol class="numerata"><li><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></li><li><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></li><li><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></li><li><a href="/terra-amara/terra-amara-come-finisce-davvero-zuleyha-vince-tutto-e-resta-sola/">Terra Amara: come finisce davvero, Züleyha vince tutto e resta sola</a></li><li><a href="/terra-amara/terra-amara-come-muore-demir-yaman-chi-ha-dato-lordine-e-perche-doveva-essere-un-rapimento/">Terra Amara, come muore Demir Yaman: chi ha dato l&#x27;ordine e perché doveva essere un rapimento</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>TERRA AMARA Anticipazioni: Züleyha una furia, spacca una vetrina! Cosa è successo</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su Terra Amara</h3><ul><li><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></li><li><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></li><li><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></li><li><a href="/terra-amara/terra-amara-come-finisce-davvero-zuleyha-vince-tutto-e-resta-sola/">Terra Amara: come finisce davvero, Züleyha vince tutto e resta sola</a></li><li><a href="/terra-amara/terra-amara-come-muore-demir-yaman-chi-ha-dato-lordine-e-perche-doveva-essere-un-rapimento/">Terra Amara, come muore Demir Yaman: chi ha dato l&#x27;ordine e perché doveva essere un rapimento</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

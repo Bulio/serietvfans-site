@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/terra-amara/">Terra Amara</a> › Terra Amara, Fekeli fa dipingere un ritratto enorme di Hünkar e lo appende in camera sua: «Adesso nessuno può più separarci»</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/terra-amara/">Terra Amara</a>
   <h1>Terra Amara, Fekeli fa dipingere un ritratto enorme di Hünkar e lo appende in camera sua: «Adesso nessuno può più separarci»</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Mentre le voci sul conto di Müjgan e Fikret vengono finalmente smontate risalendo all&#x27;infermiera che le aveva messe in giro, in casa Fekeli va in scena il gesto più struggente della stagione: l&#x27;anziano torna con un grande ritratto di Hünkar, lo appende nella propria camera e le parla come se fosse lì. Nella stessa notte Züleyha dice a Demir la verità che rimandava da mesi.</p><ol><li><a href="#c1">Da dove era partito il pettegolezzo</a></li><li><a href="#c2">«Il mio cuore batte solo per lui»</a></li><li><a href="#c3">Lo scontro tra Fekeli e Yılmaz</a></li><li><a href="#c4">Il ritratto appeso in camera</a></li><li><a href="#c5">Come Fekeli affronta il pettegolezzo sul conto di Fikret</a></li><li><a href="#c6">Perche Yilmaz rifiuta il consiglio di Fekeli sul figlio</a></li><li><a href="#c7">Cosa spinge Zuleyha a confessare la verita a Demir</a></li><li><a href="#c8">Quando Fekeli porta il ritratto di Hunkar in camera</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>Terra Amara</strong> — Serie conclusa in Italia · tutte le puntate su Mediaset Infinity</span></div>
   
-  <p class="occhiello">Mentre le voci sul conto di Müjgan e Fikret vengono finalmente smontate risalendo all&#x27;infermiera che le aveva messe in giro, in casa Fekeli va in scena il gesto più struggente della stagione: l&#x27;anziano torna con un grande ritratto di Hünkar, lo appende nella propria camera e le parla come se fosse lì. Nella stessa notte Züleyha dice a Demir la verità che rimandava da mesi.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: Terra Amara, Fekeli fa dipingere un ritratto enorme di Hünkar e lo appende in camera sua: «Adesso nessuno può più separarci»" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/7UXfHTxSIAw/maxresdefault.jpg" alt="Terra Amara, Fekeli fa dipingere un ritratto enorme di Hünkar e lo appende in camera sua: «Adesso nessuno può più separarci»" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/7UXfHTxSIAw/hqdefault.jpg 480w, https://i.ytimg.com/vi/7UXfHTxSIAw/sddefault.jpg 640w, https://i.ytimg.com/vi/7UXfHTxSIAw/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/7UXfHTxSIAw/hqdefault.jpg&quot;, &quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,45 +409,67 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>«Non smetterò mai di amarti»: la risposta di Demir non è quella che tutti si aspettavano.</strong></p>
-  <h2>Da dove era partito il pettegolezzo</h2>
+  <h2 id="c1">Da dove era partito il pettegolezzo</h2>
 <p>Fikret confida allo zio di essere stanco e di voler andarsene, e insieme ricostruiscono l&#x27;origine delle chiacchiere che lo hanno quasi fatto ammazzare: il giorno in cui Behice era stata operata, lui aveva abbracciato Müjgan che piangeva, e un&#x27;infermiera aveva visto tutto. Vanno in ospedale e la trovano proprio mentre sta spettegolando con una collega; messa alle strette, la donna confessa di essere stata lei a diffondere la voce, chiede scusa e scappa via mortificata. Fekeli ne approfitta per ricordare a Şermin e Füsun quanto male possa fare parlare alle spalle degli altri.</p>
-<h2>«Il mio cuore batte solo per lui»</h2>
+<h2 id="c2">«Il mio cuore batte solo per lui»</h2>
 <p>Alla tenuta, Sevda si accorge che Züleyha esce di nascosto per incontrare Yılmaz e prova a coprirla, ma Demir capisce che non è in casa e la cerca ovunque, arrivando a sfondare con un calcio la porta della vecchia casa di Şermin. I due, intanto, parlano della fuga e del futuro: Yılmaz ha già incaricato l&#x27;avvocato del divorzio e vuole la custodia del figlio, mentre Züleyha — che sa cosa significhi vivere lontana da un bambino — insiste perché Kerem Ali non venga separato dalla madre. Quando rientra, Züleyha smette di mentire e dice al marito dove è stata e chi ama. Demir non esplode: risponde che la cercava solo perché temeva le fosse successo qualcosa, e prima di allontanarsi ferito le dice che lui non smetterà mai di amarla.</p>
-<h2>Lo scontro tra Fekeli e Yılmaz</h2>
+<h2 id="c3">Lo scontro tra Fekeli e Yılmaz</h2>
 <p>Anche tra padrino e figlioccio il confronto è duro. Fekeli gli rivela di non aver permesso a Müjgan e Behice di partire per Istanbul e di averle sistemate in una delle sue case, perché per lui separare una madre da suo figlio in modo così brutale è inaccettabile: Müjgan sarà stata una pessima moglie, ma come madre non ha nulla da rimproverarsi. Yılmaz non arretra — divorzierà e non le permetterà più di vedere il bambino — e l&#x27;anziano capisce che questa volta non riuscirà a portare la pace. Va a piangere sotto il balcone della sua Hünkar, che gli manca da morire.</p>
-<h2>Il ritratto appeso in camera</h2>
+<h2 id="c4">Il ritratto appeso in camera</h2>
 <p>Il giorno dopo Fekeli esce e rientra con un grande quadro. Incuriositi, Fikret e Yılmaz lo seguono in camera e lo vedono appendere alla parete un ritratto enorme di Hünkar, fatto dipingere apposta. Poi parla al quadro: la sua signora è finalmente con lui, e da adesso nessuno potrà più separarli — anzi, non vede l&#x27;ora che la sua vita finisca per ricongiungersi a lei. La scena commuove tutti, e una delle domestiche confida a Nazire il timore che avere quell&#x27;immagine sempre davanti agli occhi lo faccia soffrire di più. Nazire la pensa all&#x27;opposto, e conoscendo il suo signore probabilmente ha ragione.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Come Fekeli affronta il pettegolezzo sul conto di Fikret</h2>
+<h2 id="c5">Come Fekeli affronta il pettegolezzo sul conto di Fikret</h2>
 <p>Fikret si trova in un momento di forte stanchezza psicologica e confida allo zio Fekeli la volontà di andarsene per lasciarsi tutto alle spalle. L&#x27;origine di tante amarezze risale a un malinteso nato il giorno in cui Behice è stata sottoposta a un intervento chirurgico. In quella dolorosa occasione, Fikret aveva semplicemente fatto un gesto di conforto, abbracciando Müjgan mentre la donna piangeva disperata. Purtroppo un&#x27;infermiera aveva assistito alla scena e, travisando completamente quel momento di debolezza ed empatia, aveva iniziato a diffondere malelingue pesanti in giro, creando una situazione insostenibile che ha quasi spinto Fikret a rischiare di farsi ammazzare.</p>
 <p>Determinato a fare chiarezza, Fekeli decide di intervenire di persona e accompagna il nipote direttamente in ospedale per rintracciare la responsabile di tutte quelle voci calunniose. I due scoprono la donna proprio mentre si trova intenta a spettegolare di nuovo insieme a una sua collega. Messa subito alle strette davanti alla gravità delle sue illazioni, l&#x27;infermiera non può fare altro che ammettere la verità. La dipendente confessa di aver inventato e diffuso la storia, chiede sinceramente scusa e scappa via del tutto mortificata. Fekeli ne approfitta subito per redarguire Şermin e Füsun, ricordando loro quanto male e sofferenza possano causare i pettegolezzi fatti alle spalle.</p>
-<h2>Perche Yilmaz rifiuta il consiglio di Fekeli sul figlio</h2>
+<h2 id="c6">Perche Yilmaz rifiuta il consiglio di Fekeli sul figlio</h2>
 <p>Lo scontro tra Fekeli e il suo figlioccio Yılmaz diventa inevitabile quando l&#x27;anziano decide di prendere una posizione netta riguardo al futuro della famiglia. Fekeli rivela al ragazzo di essere intervenuto per impedire a Müjgan e a sua zia Behice di partire definitivamente per Istanbul. L&#x27;uomo ha scelto di sistemare le due donne all&#x27;interno di una delle sue proprietà private, spiegando che per i suoi principi morali è del tutto inaccettabile separare in modo così drastico una madre dal proprio bambino. Nonostante Fekeli riconosca senza esitazioni che Müjgan si sia rivelata una pessima moglie, ritiene comunque incrollabile il suo valore come madre premurosa verso il piccolo.</p>
 <p>Di fronte alle ragioni del padrino, Yılmaz si dimostra del tutto irremovibile e rifiuta qualsiasi tipo di compromesso o riavvicinamento. Il giovane ha già dato disposizioni al proprio avvocato per avviare le pratiche ufficiali del divorzio ed è fermamente intenzionato a ottenere la custodia esclusiva del piccolo Kerem Ali. La sua decisione di non permettere più a Müjgan di vedere il bambino è categorica, spinto dalla convinzione di agire per il meglio. Questa rigidità spaventa Fekeli, il quale comprende amaramente che questa volta ogni suo tentativo di portare la pace e far ragionare il figlioccio è destinato a fallire miseramente.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Cosa spinge Zuleyha a confessare la verita a Demir</h2>
+<h2 id="c7">Cosa spinge Zuleyha a confessare la verita a Demir</h2>
 <p>Alla tenuta la tensione raggiunge livelli altissimi quando Sevda nota che Züleyha sta uscendo di nascosto per incontrare Yılmaz. Nonostante Sevda cerchi in tutti i modi di coprire la sua assenza per proteggerla, Demir si accorge immediatamente che la moglie non è in casa. Preso dal panico e dalla gelosia, l&#x27;uomo comincia a cercarla disperatamente ovunque, spingendosi fino a sfondare con un calcio violento la porta della vecchia abitazione di Şermin. Intanto Züleyha e Yılmaz stanno discutendo i dettagli della loro fuga futura, ma la donna insiste fortemente affinché il piccolo Kerem Ali non venga mai separato da Müjgan, conoscendo la sofferenza di stare lontana da un figlio.</p>
 <p>Al suo rientro alla tenuta, Züleyha sceglie di non usare più bugie o sotterfugi e affronta direttamente il marito, rivelandogli dove è stata e ammettendo apertamente che il suo cuore batte soltanto per Yılmaz. La reazione di Demir sorprende chiunque si aspettasse un&#x27;esplosione di rabbia. L&#x27;uomo spiega con calma di averla cercata unicamente perché temeva che le fosse accaduto qualcosa di grave durante la sua assenza. Prima di allontanarsi visibilmente ferito nell&#x27;orgoglio e nei sentimenti, Demir ribadisce a Züleyha che non smetterà mai di amarla, lasciando la donna sorpresa da una risposta così inaspettata e carica di sofferenza.</p>
-<h2>Quando Fekeli porta il ritratto di Hunkar in camera</h2>
+<h2 id="c8">Quando Fekeli porta il ritratto di Hunkar in camera</h2>
 <p>All&#x27;indomani delle forti tensioni, Fekeli decide di compiere un gesto dal profondo valore emotivo che spiazza l&#x27;intera casa. L&#x27;anziano esce di prima mattina e fa ritorno portando con sé un quadro di enormi dimensioni, fatto dipingere appositamente su sua commissione. Incuriositi da quel misterioso trasporto, Fikret e Yılmaz lo seguono in camera da letto e assistono in silenzio mentre l&#x27;uomo appende alla parete un ritratto maestoso di Hünkar. Appena il dipinto è sistemato, Fekeli inizia a parlare direttamente all&#x27;immagine della sua amata signora, affermando con commozione che finalmente adesso sono di nuovo insieme e che nessuno potrà mai più separarli.</p>
 <p>In quel toccante momento di solitudine, Fekeli confessa al ritratto di non vedere l&#x27;ora che la propria esistenza giunga al termine, così da potersi finalmente ricongiungere a lei per sempre nell&#x27;aldilà. La scena commuove profondamente chiunque assista, ma solleva anche forti preoccupazioni tra il personale di servizio della casa. Una delle domestiche manifesta apertamente a Nazire il timore che osservare costantemente quel quadro possa alimentare il suo dolore interiore anziché recargli sollievo. Nazire però è di parere del tutto contrario e, conoscendo a fondo il carattere e il cuore del suo signore, capisce quanto quel ritratto rappresenti per lui una fonte irrinunciabile di pace.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=wKKs8ZMTcVk" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/wKKs8ZMTcVk/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TERRA AMARA Anticipazioni: Nuovo arrivo a casa Fekeli! Mujgan scopre il Segreto di Fikret</span></a></li><li><a href="https://www.youtube.com/watch?v=2v5B59Jcs9s" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/2v5B59Jcs9s/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TERRA AMARA Anticipaizoni: Mujgan muore | Fikret distrutto dal dolore | Kerem Alì resta orfano!</span></a></li><li><a href="https://www.youtube.com/watch?v=HgBjGh4QR6U" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/HgBjGh4QR6U/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TERRA AMARA 29-30 Settembre: Zuleyha Commossa per un Gesto Incredibile di Demir!</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Il ritratto di Hünkar è il gesto più bello o il più straziante della serie?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=7UXfHTxSIAw">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di Terra Amara</h2><div class="griglia"><article class="scheda">
+  <a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/"><div class="foto"><img src="/img/terra-amara-la-trama-completa-e-come-finisce.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></h3>
+    <div class="quando">30 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/"><div class="foto"><img src="https://i.ytimg.com/vi/_ypSJU-x7LY/hqdefault.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/"><div class="foto"><img src="https://i.ytimg.com/vi/B_MLx-0yh6M/hqdefault.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=Terra Amara, Fekeli fa dipingere un ritratto enorme di Hünkar e lo appende in camera sua: «Adesso nessuno può più separarci» — https://serietvfans.com/terra-amara/terra-amara-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/terra-amara/terra-amara-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/terra-amara/terra-amara-la-trama-completa-e-come-finisce/&text=Terra Amara, Fekeli fa dipingere un ritratto enorme di Hünkar e lo appende in camera sua: «Adesso nessuno può più separarci»" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">TERRA AMARA: Il grande dolore di Demir</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=7UXfHTxSIAw">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di Terra Amara</h3><ol class="numerata"><li><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></li><li><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></li><li><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></li><li><a href="/terra-amara/terra-amara-come-finisce-davvero-zuleyha-vince-tutto-e-resta-sola/">Terra Amara: come finisce davvero, Züleyha vince tutto e resta sola</a></li><li><a href="/terra-amara/terra-amara-come-muore-demir-yaman-chi-ha-dato-lordine-e-perche-doveva-essere-un-rapimento/">Terra Amara, come muore Demir Yaman: chi ha dato l&#x27;ordine e perché doveva essere un rapimento</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>TERRA AMARA: Il grande dolore di Demir</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su Terra Amara</h3><ul><li><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></li><li><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></li><li><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></li><li><a href="/terra-amara/terra-amara-come-finisce-davvero-zuleyha-vince-tutto-e-resta-sola/">Terra Amara: come finisce davvero, Züleyha vince tutto e resta sola</a></li><li><a href="/terra-amara/terra-amara-come-muore-demir-yaman-chi-ha-dato-lordine-e-perche-doveva-essere-un-rapimento/">Terra Amara, come muore Demir Yaman: chi ha dato l&#x27;ordine e perché doveva essere un rapimento</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

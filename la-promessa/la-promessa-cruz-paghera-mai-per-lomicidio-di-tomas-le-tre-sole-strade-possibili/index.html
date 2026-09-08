@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/la-promessa/">La Promessa</a> › La Promessa, Cruz pagherà mai per l&#x27;omicidio di Tomás? Le tre sole strade possibili — e perché Lola è il vero jolly nascosto</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/la-promessa/">La Promessa</a>
   <h1>La Promessa, Cruz pagherà mai per l&#x27;omicidio di Tomás? Le tre sole strade possibili — e perché Lola è il vero jolly nascosto</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">È la domanda che torna sotto ogni video: quando si scoprirà che è stata Cruz a uccidere Tomás? Per i personaggi il caso è chiuso da tempo — delitto passionale, colpevole Lola — e solo tre persone conoscono la verità, una delle quali risulta morta. Analizziamo le vie possibili perché quel segreto esca, e perché nessuna di esse è dietro l&#x27;angolo.</p><ol><li><a href="#c1">Cosa è successo davvero quella notte</a></li><li><a href="#c2">Chi era Tomás, e perché il suo caso si è chiuso così in fretta</a></li><li><a href="#c3">La seconda vittima</a></li><li><a href="#c4">Le tre strade per la verità</a></li><li><a href="#c5">Perché non succederà presto</a></li><li><a href="#c6">C&#x27;è già qualcuno, dentro la tenuta, che sospetta di Cruz</a></li><li><a href="#c7">Come Jimena e Manuel sono rimasti coinvolti nella tragedia</a></li><li><a href="#c8">Perche&#x27; Petra e Funes rappresentano tasselli fondamentali della vicenda</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>La Promessa</strong> — Rete 4 · in streaming su Mediaset Infinity</span></div>
   
-  <p class="occhiello">È la domanda che torna sotto ogni video: quando si scoprirà che è stata Cruz a uccidere Tomás? Per i personaggi il caso è chiuso da tempo — delitto passionale, colpevole Lola — e solo tre persone conoscono la verità, una delle quali risulta morta. Analizziamo le vie possibili perché quel segreto esca, e perché nessuna di esse è dietro l&#x27;angolo.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: La Promessa, Cruz pagherà mai per l&#x27;omicidio di Tomás? Le tre sole strade possibili — e perché Lola è il vero jolly nascosto" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/C9xS6GLCKhE/maxresdefault.jpg" alt="La Promessa, Cruz pagherà mai per l&#x27;omicidio di Tomás? Le tre sole strade possibili — e perché Lola è il vero jolly nascosto" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/C9xS6GLCKhE/hqdefault.jpg 480w, https://i.ytimg.com/vi/C9xS6GLCKhE/sddefault.jpg 640w, https://i.ytimg.com/vi/C9xS6GLCKhE/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/C9xS6GLCKhE/hqdefault.jpg&quot;, &quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,42 +409,64 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>Con la serie firmata per 241 episodi e appena una cinquantina alle spalle, gli sceneggiatori non hanno alcuna fretta.</strong></p>
-  <h2>Cosa è successo davvero quella notte</h2>
+  <h2 id="c1">Cosa è successo davvero quella notte</h2>
 <p>Tutto comincia subito dopo le nozze tra Tomás e Jimena. Jana racconta all&#x27;erede del marchesato cosa accade davvero alla tenuta, e lui collega immediatamente i punti: capisce chi c&#x27;è dietro la morte di Dolores e il furto delle terre. Va da Cruz e la minaccia apertamente, dicendo di essere pronto a coinvolgere persino suo padre pur di ottenere giustizia — parla al plurale, segno che ha intuito anche il ruolo del Barone. Non significa che creda Alonso complice: significa che non gli importa delle conseguenze per il marchesato. Cruz, terrorizzata, lo uccide con un colpo di pugnale, e con l&#x27;aiuto di Petra ripulisce la scena e sposta il corpo in cantina.</p>
-<h2>Chi era Tomás, e perché il suo caso si è chiuso così in fretta</h2>
+<h2 id="c2">Chi era Tomás, e perché il suo caso si è chiuso così in fretta</h2>
 <p>Tomás non era un personaggio di contorno: era il primogenito, l&#x27;erede del marchesato, quello per cui Manuel non era nemmeno nato per comandare. È morto la notte delle proprie nozze con Jimena, che da allora si porta addosso l&#x27;etichetta di vedova del fratello dell&#x27;uomo che ha poi sposato. Ed è morto nel momento peggiore per la famiglia: un erede ammazzato in casa mentre i Luján annegavano nei debiti è uno scandalo che nessuno lì dentro poteva permettersi. È anche il motivo per cui la fretta con cui si è trovato un colpevole non è soltanto un capriccio di Cruz: alla tenuta faceva comodo a tutti che quella morte diventasse un delitto passionale tra domestici, e non un fatto che riguardava i padroni.</p>
-<h2>La seconda vittima</h2>
+<h2 id="c3">La seconda vittima</h2>
 <p>Per chiudere il caso serve un colpevole, e Cruz lo trova in Lola, la cameriera che era stata l&#x27;amante di Tomás. Il sergente Funes però non ci crede: pensa che tutto sia una messinscena dell&#x27;assassino vero. Ed è a quel punto che Lola viene fatta trovare impiccata, con un suicidio che chiude ogni discussione. Un dettaglio non è casuale: a Funes non viene permesso di vedere il cadavere. Serve a due scopi narrativi opposti — rafforzare il sospetto che sia stata uccisa e nascondere i segni di violenza, ma anche lasciare aperta una porta. Senza corpo, non c&#x27;è certezza di reato.</p>
-<h2>Le tre strade per la verità</h2>
+<h2 id="c4">Le tre strade per la verità</h2>
 <p>La prima è proprio il ritorno di Lola: non assassinata ma corrotta perché si prendesse la colpa e ricominciasse altrove. Sarebbe il modo più clamoroso di far crollare l&#x27;inganno di Cruz, ed è una possibilità che la scrittura si è tenuta a disposizione, non una previsione. La seconda è il tradimento di Petra, l&#x27;unica altra persona che sa tutto: plausibile, ma verosimilmente molto in là nel tempo. La terza è la confessione spontanea di Cruz, che conoscendo il personaggio richiederebbe prima un terremoto nella sua vita.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Perché non succederà presto</h2>
+<h2 id="c5">Perché non succederà presto</h2>
 <p>Il motivo è strutturale. Finché la verità resta sepolta, Cruz può restare alla tenuta e continuare a essere la Marchesa; nel momento in cui esce, non è più accettabile in quella casa per nessuno — non per Alonso, non per Manuel, non per gli spettatori. Rivelare l&#x27;omicidio significherebbe chiudere il personaggio, separarla dalla famiglia e chiamarla assassina al posto di Marchesa. Ecco perché la scoperta arriverà solo quando si vorrà davvero archiviare Cruz, o alla fine della serie. Lo scenario più interessante, semmai, sarebbe vederla distruggere con le proprie mani il marchesato che ha passato una vita a proteggere.</p>
-<h2>C&#x27;è già qualcuno, dentro la tenuta, che sospetta di Cruz</h2>
+<h2 id="c6">C&#x27;è già qualcuno, dentro la tenuta, che sospetta di Cruz</h2>
 <p>Le tre strade elencate qui sopra hanno tutte lo stesso difetto: dipendono da qualcuno che non abita più lì o che non ha nessuna intenzione di parlare. Ce n&#x27;è però una quarta che cammina già per i corridoi, e si chiama Curro. Il ragazzo ha smesso da tempo di considerare la zia una parente e la ritiene responsabile di due morti: quella di Dolores, la madre di Jana, e quella di Tomás. Non ha prove, ma ha le due cose che al sergente Funes sono mancate — il tempo e il posto giusto: vive in quella casa, mangia a quel tavolo e ormai ragiona con la propria testa. Il giorno in cui deciderà di verificare invece di limitarsi a sospettare, non gli servirà un tribunale: gli basterà dirlo a voce alta davanti ad Alonso, e nessuno potrà più far finta di non aver sentito.</p>
-<h2>Come Jimena e Manuel sono rimasti coinvolti nella tragedia</h2>
+<h2 id="c7">Come Jimena e Manuel sono rimasti coinvolti nella tragedia</h2>
 <p>Jimena ha vissuto una trasformazione profonda quando le sue nozze con Tomás si sono trasformate in una tragedia nella medesima notte del matrimonio. La prematura scomparsa del primogenito ha sconvolto la stabilità dei Luján, una famiglia travolta dai debiti che non poteva assolutamente permettersi uno scandalo pubblico legato ai propri signori. Per questa ragione, la scelta di attribuire il delitto a una passione finita male tra i domestici della tenuta ha consentito di tutelare la reputazione del marchesato. Successivamente, la giovane si è ritrovata legata a Manuel, il fratello del suo defunto marito. Manuel non era affatto destinato a comandare la casa né ad assumere il ruolo di erede, ma la morte improvvisa del fratello lo ha spinto con forza al centro della scena, cambiando per sempre il suo destino e tutte le complesse dinamiche nobiliari della tenuta.</p>
 <p>Il passaggio di responsabilità tra Tomás e Manuel ha consolidato la posizione della famiglia, consentendo a Cruz di conservare il proprio titolo di Marchesa senza sollevare i dubbi del marito Alonso. La donna ha agito spinta dal terrore di perdere il controllo e la reputazione, ma il suo potere resta fragile di fronte alla verità. Se venisse svelato che è stata lei a impugnare il pugnale quella notte, l&#x27;alleanza con il marito e con lo stesso Manuel crollerebbe in modo irreversibile. La presenza di Jimena, rimasta nella casa prima come vedova e poi come nuova sposa dell&#x27;altro fratello, ricorda la gravità di quella notte in cui la fretta di coprire le colpe dei padroni ha spazzato via la giustizia, costringendo tutti a vivere dentro una calma apparente e del tutto priva di solide fondamenta.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Perche&#x27; Petra e Funes rappresentano tasselli fondamentali della vicenda</h2>
+<h2 id="c8">Perche&#x27; Petra e Funes rappresentano tasselli fondamentali della vicenda</h2>
 <p>Petra rappresenta l&#x27;unica figura ancora residente alla tenuta a conoscere esattamente ogni singolo dettaglio della notte dell&#x27;omicidio di Tomás. È stata infatti lei ad aiutare Cruz a ripulire minuziosamente la scena del crimine e a spostare il corpo senza vita del giovane erede nella cantina della casa. La sua collaborazione diretta costituisce lo scudo primario che permette alla Marchesa di custodire questo terribile segreto, rendendo la domestica un potenziale pericolo qualora decidesse di tradirla in futuro. Parallelamente, la figura del sergente Funes ha mostrato fin da subito una forte e motivata diffidenza verso la spiegazione ufficiale dei fatti. Il poliziotto ha intuito immediatamente che l&#x27;incriminazione di Lola era soltanto una palese messa in scena creata dal vero responsabile per chiudere rapidamente le indagini ed evitare clamorosi imbarazzi alla famiglia nobile.</p>
 <p>Il lavoro del sergente Funes è rimasto del tutto incompleto a causa dei rigidi paletti imposti durante gli accertamenti sul corpo di Lola. Al poliziotto non è stato infatti permesso di esaminare direttamente il cadavere trovato impiccato, lasciando completamente sospesa e irrisolta la questione sulla reale fine della ragazza. Questo elemento ambiguo ha aperto due spiegazioni opposte: l&#x27;eliminazione fisica della cameriera per nascondere eventuali segni di violenza subiti oppure la sua corruzione economica per convincerla ad accettare la colpa e fuggire altrove. L&#x27;assenza di una conferma oggettiva sul reato lascia una profonda e permanente crepa nella copertura costruita con cura da Cruz. La verità negata alle autorità continua così a pesare sulla casa, pronta a riemergere se gli elementi nascosti dovessero trovare una via per uscire allo scoperto.</p>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=POYewFaqras" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/POYewFaqras/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni: E&#x27; stata Cruz a Uccidere Dolores</span></a></li><li><a href="https://www.youtube.com/watch?v=JUH2zxT8wkk" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/JUH2zxT8wkk/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni: Cruz, ennesimo omicidio?</span></a></li><li><a href="https://www.youtube.com/watch?v=iqn3SwaTdSE" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/iqn3SwaTdSE/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni16 20 Ottobre: Nuovo arrivo a La Promessa! Cruz vuole uccidere Elisa!</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Secondo voi Cruz pagherà per i suoi delitti, o la faranno franca fino all&#x27;ultima puntata?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=C9xS6GLCKhE">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di La Promessa</h2><div class="griglia"><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/"><div class="foto"><img src="https://i.ytimg.com/vi/Rp8VhxDiDSk/hqdefault.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></h3>
+    <div class="quando">7 settembre 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/"><div class="foto"><img src="https://i.ytimg.com/vi/8JHt6ogwxQw/hqdefault.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Ángela beve tutto, Curro sfonda la porta</a></h3>
+    <div class="quando">6 settembre 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/"><div class="foto"><img src="/img/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Curro nasconde Ángela, Lorenzo furioso</a></h3>
+    <div class="quando">6 settembre 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=La Promessa, Cruz pagherà mai per l&#x27;omicidio di Tomás? Le tre sole strade possibili — e perché Lola è il vero jolly nascosto — https://serietvfans.com/la-promessa/la-promessa-cruz-paghera-mai-per-lomicidio-di-tomas-le-tre-sole-strade-possibili/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/la-promessa/la-promessa-cruz-paghera-mai-per-lomicidio-di-tomas-le-tre-sole-strade-possibili/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/la-promessa/la-promessa-cruz-paghera-mai-per-lomicidio-di-tomas-le-tre-sole-strade-possibili/&text=La Promessa, Cruz pagherà mai per l&#x27;omicidio di Tomás? Le tre sole strade possibili — e perché Lola è il vero jolly nascosto" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">LA PROMESSA Spoiler &amp; Teorie: Pagherà mai Cruz per la Morte di Thomas?</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=C9xS6GLCKhE">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di La Promessa</h3><ol class="numerata"><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Ángela beve tutto, Curro sfonda la porta</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Curro nasconde Ángela, Lorenzo furioso</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>LA PROMESSA Spoiler &amp; Teorie: Pagherà mai Cruz per la Morte di Thomas?</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su La Promessa</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-3-6-settembre-maria-affronta-la-gravidanza-da-sola/">La Promessa anticipazioni 3-6 settembre: Maria affronta la gravidanza da sola</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-carlo-arriva-maria-trema/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Carlo arriva, Maria trema</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/far-away/far-away-anticipazioni-dal-31-agosto-al-4-settembre-chi-ha-donato-il-fegato-a-nare/">Far Away, anticipazioni dal 31 agosto al 4 settembre: chi ha donato il fegato a Nare, e perché adesso sta male lui</a></li><li><a href="/far-away/far-away-dal-31-agosto-la-madre-di-alya-sapeva-tutto-non-ricordo/">Far Away Dal 31 Agosto: la madre di Alya sapeva tutto — «non ricordo»</a></li><li><a href="/forbidden-fruit/forbidden-fruit-dal-31-agosto-il-conto-a-nome-di-halit-che-e-morto/">Forbidden Fruit Dal 31 Agosto: il conto a nome di Halit, che è morto</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

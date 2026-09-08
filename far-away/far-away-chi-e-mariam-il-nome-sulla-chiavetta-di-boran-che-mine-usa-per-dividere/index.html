@@ -12,7 +12,7 @@
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Serie TV Fans">
 <meta property="og:url" content="https://serietvfans.com/far-away/far-away-chi-e-mariam-il-nome-sulla-chiavetta-di-boran-che-mine-usa-per-dividere/">
-<meta property="og:image" content="https://i.ytimg.com/vi/-1mSuZOzD7Q/maxresdefault.jpg">
+<meta property="og:image" content="https://serietvfans.com/img/far-away-chi-e-mariam-il-nome-sulla-chiavetta-di-boran-che-mine-usa-per-dividere.jpg">
 <meta property="og:locale" content="it_IT">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#7b1e2b">
@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -318,12 +367,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7778653397776213" crossorigin="anonymous"></script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "96259d7e67ce47fba4573364859712a6"}'></script>
 <script>(function(){var f=0;function go(){if(f)return;f=1;(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","y3rpoig6jk");}["pointerdown","keydown","touchstart","scroll"].forEach(function(v){addEventListener(v,go,{once:1,passive:1})});setTimeout(go,2500)})();</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Far Away, chi è Meryem: il nome sulla chiavetta di Boran che Mine usa per dividere Alya e Cihan", "datePublished": "2026-08-26", "dateModified": "2026-09-04", "description": "Una crisi isterica costruita a tavolino, un messaggio mandato al momento giusto e un pestaggio davanti a un commissariato: la notte peggiore degli Albora finisce con una sola parola detta per rabbia — Meryem, la password di una chiavetta che Boran ha lasciato a Cihan nel suo videomessaggio testamentario.", "inLanguage": "it-IT", "mainEntityOfPage": "https://serietvfans.com/far-away/far-away-chi-e-mariam-il-nome-sulla-chiavetta-di-boran-che-mine-usa-per-dividere/", "image": ["https://i.ytimg.com/vi/-1mSuZOzD7Q/maxresdefault.jpg"], "author": {"@type": "Organization", "name": "Serie TV Fans", "url": "https://serietvfans.com/chi-siamo/"}, "publisher": {"@type": "Organization", "name": "Serie TV Fans", "logo": {"@type": "ImageObject", "url": "https://serietvfans.com/favicon.svg"}}, "video": {"@type": "VideoObject", "name": "FAR AWAY: MINE finge un crollo per riprendersi Cihan — e spunta il mistero Meryem 😱", "description": "Una crisi isterica costruita a tavolino, un messaggio mandato al momento giusto e un pestaggio davanti a un commissariato: la notte peggiore degli Albora finisce con una sola parola detta per rabbia — Meryem, la password di una chiavetta che Boran ha lasciato a Cihan nel suo videomessaggio testamentario.", "thumbnailUrl": "https://i.ytimg.com/vi/-1mSuZOzD7Q/maxresdefault.jpg", "uploadDate": "2026-08-26T12:00:00Z", "embedUrl": "https://www.youtube.com/embed/-1mSuZOzD7Q"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Far Away, chi è Meryem: il nome sulla chiavetta di Boran che Mine usa per dividere Alya e Cihan", "datePublished": "2026-08-26", "dateModified": "2026-09-08", "description": "Una crisi isterica costruita a tavolino, un messaggio mandato al momento giusto e un pestaggio davanti a un commissariato: la notte peggiore degli Albora finisce con una sola parola detta per rabbia — Meryem, la password di una chiavetta che Boran ha lasciato a Cihan nel suo videomessaggio testamentario.", "inLanguage": "it-IT", "mainEntityOfPage": "https://serietvfans.com/far-away/far-away-chi-e-mariam-il-nome-sulla-chiavetta-di-boran-che-mine-usa-per-dividere/", "image": ["https://serietvfans.com/img/far-away-chi-e-mariam-il-nome-sulla-chiavetta-di-boran-che-mine-usa-per-dividere.jpg"], "author": {"@type": "Organization", "name": "Serie TV Fans", "url": "https://serietvfans.com/chi-siamo/"}, "publisher": {"@type": "Organization", "name": "Serie TV Fans", "logo": {"@type": "ImageObject", "url": "https://serietvfans.com/favicon.svg"}}, "video": {"@type": "VideoObject", "name": "FAR AWAY: MINE finge un crollo per riprendersi Cihan — e spunta il mistero Meryem 😱", "description": "Una crisi isterica costruita a tavolino, un messaggio mandato al momento giusto e un pestaggio davanti a un commissariato: la notte peggiore degli Albora finisce con una sola parola detta per rabbia — Meryem, la password di una chiavetta che Boran ha lasciato a Cihan nel suo videomessaggio testamentario.", "thumbnailUrl": "https://serietvfans.com/img/far-away-chi-e-mariam-il-nome-sulla-chiavetta-di-boran-che-mine-usa-per-dividere.jpg", "uploadDate": "2026-08-26T12:00:00Z", "embedUrl": "https://www.youtube.com/embed/-1mSuZOzD7Q"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://serietvfans.com/"}, {"@type": "ListItem", "position": 2, "name": "Far Away", "item": "https://serietvfans.com/serie/far-away/"}, {"@type": "ListItem", "position": 3, "name": "Far Away, chi è Meryem: il nome sulla chiavetta di Boran che Mine usa per dividere Alya e Cihan"}]}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,19 +385,18 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/far-away/">Far Away</a> › Far Away, chi è Meryem: il nome sulla chiavetta di Boran che Mine usa per dividere Alya e Cihan</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/far-away/">Far Away</a>
   <h1>Far Away, chi è Meryem: il nome sulla chiavetta di Boran che Mine usa per dividere Alya e Cihan</h1>
-  <div class="firma">Redazione Serie TV Fans · mercoledì 26 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-26">mercoledì 26 agosto 2026</time></span><span>aggiornato il 8 settembre 2026</span><span>8 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Una crisi isterica costruita a tavolino, un messaggio mandato al momento giusto e un pestaggio davanti a un commissariato: la notte peggiore degli Albora finisce con una sola parola detta per rabbia — Meryem, la password di una chiavetta che Boran ha lasciato a Cihan nel suo videomessaggio testamentario.</p><ol><li><a href="#c1">Chi è chi, per chi si è perso qualche puntata</a></li><li><a href="#c2">Il conto lasciato aperto dall&#x27;udienza</a></li><li><a href="#c3">La crisi al caffè: chi la provoca, e chi la costruisce</a></li><li><a href="#c4">Il messaggio che arriva ad Alya nel momento esatto</a></li><li><a href="#c5">Il nome che le sfugge: Meryem</a></li><li><a href="#c6">Il pestaggio, la denuncia, il commissariato</a></li><li><a href="#c7">Quello che Sadakat teme davvero</a></li><li><a href="#c8">Perché Sadakat teme la reazione di Uğur</a></li><li><a href="#c9">Come Alya scopre il segreto di Boran</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>Far Away</strong> — Canale 5 · in streaming su Mediaset Infinity</span></div>
-  
-  <p class="occhiello">Una crisi isterica costruita a tavolino, un messaggio mandato al momento giusto e un pestaggio davanti a un commissariato: la notte peggiore degli Albora finisce con una sola parola detta per rabbia — Meryem, la password di una chiavetta che Boran ha lasciato a Cihan nel suo videomessaggio testamentario.</p>
+  <figure class="copertina"><img src="/img/far-away-chi-e-mariam-il-nome-sulla-chiavetta-di-boran-che-mine-usa-per-dividere.jpg" alt="Far Away"><figcaption>Immagine d&#x27;ambiente — Far Away</figcaption></figure>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
     <button type="button" class="avvia" data-yt="-1mSuZOzD7Q"
       aria-label="Riproduci il video: Far Away, chi è Meryem: il nome sulla chiavetta di Boran che Mine usa per dividere Alya e Cihan" onclick="ytGo(this)">
-      <img src="https://i.ytimg.com/vi/-1mSuZOzD7Q/maxresdefault.jpg" alt="Far Away, chi è Meryem: il nome sulla chiavetta di Boran che Mine usa per dividere Alya e Cihan" width="1280" height="720"
-        srcset="https://i.ytimg.com/vi/-1mSuZOzD7Q/hqdefault.jpg 480w, https://i.ytimg.com/vi/-1mSuZOzD7Q/sddefault.jpg 640w, https://i.ytimg.com/vi/-1mSuZOzD7Q/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+      <img src="/img/far-away-chi-e-mariam-il-nome-sulla-chiavetta-di-boran-che-mine-usa-per-dividere.jpg" alt="Far Away, chi è Meryem: il nome sulla chiavetta di Boran che Mine usa per dividere Alya e Cihan" width="1280" height="720"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/-1mSuZOzD7Q/hqdefault.jpg&quot;, &quot;/fallback/far-away.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,52 +407,74 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>Mine finge un crollo nervoso per riportarsi Cihan in casa. Il piano funziona, ma le sfugge un nome che alla villa non aveva mai pronunciato nessuno.</strong></p>
-  <h2>Chi è chi, per chi si è perso qualche puntata</h2>
+  <h2 id="c1">Chi è chi, per chi si è perso qualche puntata</h2>
 <p>Alya è la moglie di Cihan Albora, medico. Mine è la donna con cui Cihan ha tradito Alya e che non ha mai accettato la fine di quella storia. Uğur è un medico che lavora con Alya e che in tribunale ha testimoniato contro Cihan. Sadakat è la madre di Cihan, Kaya suo fratello, Erol l&#x27;avvocato di famiglia. Boran è il fratello morto, e il suo nome è sotto quasi tutto quello che succede in questa casa.</p>
-<h2>Il conto lasciato aperto dall&#x27;udienza</h2>
+<h2 id="c2">Il conto lasciato aperto dall&#x27;udienza</h2>
 <p>Tutto parte da quello che è successo in tribunale, quando la richiesta di divorzio di Alya è stata respinta. In ospedale Mine affronta Alya e le chiede due cose: perché ha smentito la versione di Uğur, secondo cui Cihan la picchiava, e perché — se davvero voleva il divorzio — non ha chiamato proprio lei a testimoniare. Alya risponde di aver voluto proteggere la reputazione di Mine. Mine ne esce con la convinzione opposta a quella che cercava: che Alya, in fondo, creda davvero all&#x27;amore di Cihan.</p>
 <p>Nel frattempo, in casa, la tensione passa dagli oggetti. Cihan fa comprare un letto nuovo per Alya dicendo di aver assecondato il suo desiderio di non dormire più dove dorme lui; Alya non ha chiesto niente del genere e rivuole la propria poltrona, portata via senza il suo consenso. Alla fine, pur di non vederla dormire su un materasso per terra, Cihan cede e la recupera. Fra i due resta un imbarazzo fatto di cose non dette.</p>
-<h2>La crisi al caffè: chi la provoca, e chi la costruisce</h2>
+<h2 id="c3">La crisi al caffè: chi la provoca, e chi la costruisce</h2>
 <p>Mine e Uğur si trovano in un caffè per parlare del divorzio ormai dato per fatto. Uğur le chiede come mai, se quel matrimonio è solo una farsa, Cihan abbia dichiarato il proprio amore davanti al giudice con tanta sincerità. Mine risponde che era semplicemente ben preparato, e ripete che per lui il matrimonio è sempre stata una questione di eredità.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>Poi Uğur aggiunge il dettaglio che manda tutto all&#x27;aria: dice di aver visto gli occhi di Cihan brillare mentre pronunciava quelle parole. Mine perde il controllo, urla che non deve più ripetere che Cihan e Alya si amano davvero, e rompe le stoviglie. Uğur, spaventato, chiama Cihan e gli dice di correre. Cihan sente le urla al telefono e arriva.</p>
-<h2>Il messaggio che arriva ad Alya nel momento esatto</h2>
+<h2 id="c4">Il messaggio che arriva ad Alya nel momento esatto</h2>
 <p>Cihan porta Mine a casa propria, la fa sdraiare sul divano, la copre, le porta dell&#x27;acqua mentre lei si lamenta per il mal di testa. Nello stesso momento Uğur manda un messaggio ad Alya per informarla che Cihan è di nuovo con Mine. Il campanello suona poco dopo: Alya entra e accusa Cihan di non aver mai chiuso davvero quella storia. Cihan la invita a guardare con i propri occhi, capisce subito chi l&#x27;ha avvisata ed esce di casa per andare a chiarire con Uğur.</p>
 <p>È il momento in cui la messinscena viene allo scoperto: appena Cihan chiude la porta, Mine si alza dal divano. Non era in crisi. Aveva finto la debolezza per tenerlo vicino.</p>
-<h2>Il nome che le sfugge: Meryem</h2>
+<h2 id="c5">Il nome che le sfugge: Meryem</h2>
 <p>Convinta di aver vinto, Mine comincia a dirlo ad alta voce. Alya le chiede di calmarsi; Mine insiste che se fosse davvero tutto finito Cihan non si sarebbe preso cura di lei in quel modo. Alya replica che è stata soltanto gentilezza, e le chiede diretta se creda che lui la ami ancora. Mine non risponde, e le rilancia la stessa domanda al contrario: pensi che si sia innamorato di te?</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>Alya decide di andarsene. È allora che Mine le grida dietro la frase che cambia la puntata: Cihan ama soltanto Meryem. Alya si ferma e chiede chi sia. Mine rivela che Meryem è la password di una chiavetta USB che Boran ha consegnato a Cihan nel proprio videomessaggio testamentario, e che Meryem è il primo grande amore di Cihan: è per questo che Boran aveva scelto proprio quel nome come password. Un nome che alla villa non aveva mai sentito nessuno.</p>
-<h2>Il pestaggio, la denuncia, il commissariato</h2>
+<h2 id="c6">Il pestaggio, la denuncia, il commissariato</h2>
 <p>Cihan intanto raggiunge Uğur e lo picchia, ordinandogli di non farsi più vedere. Alya, tornata a casa senza riuscire a contattarlo, scopre da Ümmü che Cihan è stato portato in commissariato: Uğur ha sporto denuncia. La mattina dopo Cihan viene rilasciato, e sulla porta lo aspettano Sadakat e Kaya. Anche Uğur esce, col volto segnato.</p>
 <p>La notte capita in un momento già pesante per la famiglia: poco prima Cihan aveva chiuso un accordo con Sedat, offrendogli denaro perché rinunciasse alla vendetta di sangue per la morte del padre, mentre Erol avvertiva che per la difesa mancano prove solide e Kaya pretendeva comunque una soluzione. Su quel fondo di casa già divisa esplode la messinscena di Mine.</p>
-<h2>Quello che Sadakat teme davvero</h2>
+<h2 id="c7">Quello che Sadakat teme davvero</h2>
 <p>Sadakat rimprovera duramente il figlio per essersi lasciato andare alla rabbia per una donna, ma il suo timore è un altro: che Uğur, ferito nell&#x27;orgoglio, decida di rivelare il segreto di famiglia su Boran. Cihan le chiede di non intromettersi più nei suoi rapporti. Poco dopo, sulla terrazza, Sadakat accusa apertamente Alya, insinuando sull&#x27;interesse di Uğur nei suoi confronti; Alya risponde che non ha alcun diritto di accusarla e se ne va.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>Più tardi Cihan la raggiunge in camera e le spiega: ha portato via Mine dal caffè solo per assicurarsi che non si facesse del male, perché in passato aveva già minacciato di farlo, e non prova più niente per lei. Di Uğur dice che è un traditore. Alya torna comunque sulla domanda che la tormenta, e Cihan le assicura che Mine per lui è soltanto un ricordo. Poi si ritira dalla sua parte della stanza per dormire.</p>
 <p>Alya invece resta sveglia, e non per Mine. Resta sveglia per quel nome. Perché se Meryem è la password della chiavetta lasciata da Boran, allora dentro quella chiavetta c&#x27;è qualcosa che Boran ha voluto far arrivare a Cihan e a nessun altro — e in questa famiglia i segreti di Boran hanno già cambiato più volte chi comanda e chi eredita.</p>
-<h2>Perché Sadakat teme la reazione di Uğur</h2>
+<h2 id="c8">Perché Sadakat teme la reazione di Uğur</h2>
 <p>La reazione furiosa di Sadakat davanti al rilascio di Cihan non nasce soltanto dal fastidio per la condotta impulsiva del figlio, ma da un timore molto più profondo e radicato. La donna sa bene che Uğur non è semplicemente un medico o un rivale in amore, ma un testimone pericoloso che possiede informazioni riservate sulla dinamica familiare dei fatti legati a Boran. Un uomo ferito nell&#x27;orgoglio e aggredito fisicamente potrebbe decidere di spezzare qualunque silenzio e consegnare alle autorità o ai nemici quel segreto che la madre di Cihan ha cercato di custodire con ogni mezzo per proteggere il nome degli Albora.</p>
 <p>La tensione accumulata esplode poco dopo sulla terrazza della villa, dove Sadakat decide di affrontare direttamente Alya accusandola di essere la vera responsabile di questa catena di eventi. La madre di Cihan insinua apertamente che le attenzioni e le mosse di Uğur siano guidate dall&#x27;interesse personale nei confronti della dottoressa, trasferendo su di lei la colpa dell&#x27;arresto del figlio. Alya non accetta però di trasformarsi nel capro espiatorio di una faida familiare e affronta la suocera a viso aperto, rivendicando la propria estraneità a quei giochi e ribadendo con fermezza che nessuno ha il diritto di muoverle simili accuse prima di voltarsi e andarsene.</p>
-<h2>Come Alya scopre il segreto di Boran</h2>
+<h2 id="c9">Come Alya scopre il segreto di Boran</h2>
 <p>Nonostante le spiegazioni fornite da Cihan nella loro stanza da letto, dove l&#x27;uomo cerca di rassicurarla definendo Mine soltanto un ricordo del passato e giustificando il suo intervento al caffè con la paura che la donna potesse compiere un gesto estremo, l&#x27;attenzione di Alya rimane del tutto spostata altrove. Le rassicurazioni sul fatto che Uğur sia solo un traditore non riescono a restituirle la calma, perché nella mente della donna rimbomba con forza quel nome pronunciato da Mine al culmine della lite. La rivelazione sull&#x27;esistenza di Meryem e sul suo ruolo chiave nella memoria di Boran apre uno squarcio imprevisto nel passato della famiglia.</p>
 <p>La notte trascorre così nell&#x27;inquietudine per Alya, consapevole di come ogni elemento lasciato in eredità da Boran abbia il potere di sovvertire gli equilibri di potere all&#x27;interno della villa. Con le pressioni di Kaya che pretende risposte immediate, l&#x27;avvocato Erol alle prese con una difesa priva di prove solide e l&#x27;accordo economico stretto con Sedat per estinguere la vendetta di sangue, la chiavetta USB diventa il vero centro della vicenda. La password rivelata da Mine rappresenta la chiave per accedere a contenuti riservati che potrebbero riscrivere i rapporti di forza e rivelare cosa avesse davvero intenzione di trasmettere Boran soltanto a Cihan.</p>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=j5bC8ioD4wQ" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/j5bC8ioD4wQ/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>FAR AWAY: ALYA scopre la verità su BORAN — CIHAN non sa cosa fare 😨</span></a></li><li><a href="https://www.youtube.com/watch?v=s3WyLXM5iRs" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/s3WyLXM5iRs/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>FAR AWAY: ALYA non crede a FERIDE — poi scopre la verità sulla sua malattia 😢</span></a></li><li><a href="https://www.youtube.com/watch?v=LgtMj_mgCy8" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/LgtMj_mgCy8/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>FAR AWAY: Cihan rifiuta il divorzio, la dichiarazione che sconvolge Alya 😍</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Il segreto di Mariam riguarda davvero Cihan, o Mine ha detto quel nome soltanto per seminare il dubbio in Alya?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=-1mSuZOzD7Q">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di Far Away</h2><div class="griglia"><article class="scheda">
+  <a href="/far-away/far-away-anticipazioni-dal-31-agosto-al-4-settembre-chi-ha-donato-il-fegato-a-nare/"><div class="foto"><img src="/img/far-away-anticipazioni-dal-31-agosto-al-4-settembre-chi-ha-donato-il-fegato-a-nare.jpg" alt="Far Away" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/far-away.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Far Away</span>
+    <h3><a href="/far-away/far-away-anticipazioni-dal-31-agosto-al-4-settembre-chi-ha-donato-il-fegato-a-nare/">Far Away, anticipazioni dal 31 agosto al 4 settembre: chi ha donato il fegato a Nare, e perché adesso sta male lui</a></h3>
+    <div class="quando">3 settembre 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/far-away/far-away-dal-31-agosto-la-madre-di-alya-sapeva-tutto-non-ricordo/"><div class="foto"><img src="/img/far-away-dal-31-agosto-la-madre-di-alya-sapeva-tutto-non-ricordo.jpg" alt="Far Away" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/far-away.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Far Away</span>
+    <h3><a href="/far-away/far-away-dal-31-agosto-la-madre-di-alya-sapeva-tutto-non-ricordo/">Far Away Dal 31 Agosto: la madre di Alya sapeva tutto — «non ricordo»</a></h3>
+    <div class="quando">31 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/far-away/far-away-chi-e-fikriye-la-madre-di-alya-cosa-ha-fatto-e-perche-conta/"><div class="foto"><img src="/img/far-away-chi-e-fikriye-la-madre-di-alya-cosa-ha-fatto-e-perche-conta.jpg" alt="Far Away" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/far-away.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Far Away</span>
+    <h3><a href="/far-away/far-away-chi-e-fikriye-la-madre-di-alya-cosa-ha-fatto-e-perche-conta/">Far Away, chi è Fikriye: la madre di Alya, cosa ha fatto e perché conta per gli Albora</a></h3>
+    <div class="quando">29 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=Far Away, chi è Meryem: il nome sulla chiavetta di Boran che Mine usa per dividere Alya e Cihan — https://serietvfans.com/far-away/far-away-chi-e-mariam-il-nome-sulla-chiavetta-di-boran-che-mine-usa-per-dividere/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/far-away/far-away-chi-e-mariam-il-nome-sulla-chiavetta-di-boran-che-mine-usa-per-dividere/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/far-away/far-away-chi-e-mariam-il-nome-sulla-chiavetta-di-boran-che-mine-usa-per-dividere/&text=Far Away, chi è Meryem: il nome sulla chiavetta di Boran che Mine usa per dividere Alya e Cihan" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">FAR AWAY: MINE finge un crollo per riprendersi Cihan — e spunta il mistero Meryem 😱</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=-1mSuZOzD7Q">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di Far Away</h3><ol class="numerata"><li><a href="/far-away/far-away-anticipazioni-dal-31-agosto-al-4-settembre-chi-ha-donato-il-fegato-a-nare/">Far Away, anticipazioni dal 31 agosto al 4 settembre: chi ha donato il fegato a Nare, e perché adesso sta male lui</a></li><li><a href="/far-away/far-away-dal-31-agosto-la-madre-di-alya-sapeva-tutto-non-ricordo/">Far Away Dal 31 Agosto: la madre di Alya sapeva tutto — «non ricordo»</a></li><li><a href="/far-away/far-away-chi-e-fikriye-la-madre-di-alya-cosa-ha-fatto-e-perche-conta/">Far Away, chi è Fikriye: la madre di Alya, cosa ha fatto e perché conta per gli Albora</a></li><li><a href="/far-away/far-away-chi-e-nadim-il-capo-dei-baybars-cosa-vuole-e-perche-gli-albora-lo-accusano/">Far Away, chi è Nadim: il capo dei Baybars, cosa vuole e perché gli Albora lo accusano</a></li><li><a href="/far-away/far-away-sadakat-muore-cosa-sappiamo-e-chi-ha-motivo-di-volerla-morta/">Sadakat muore in Far Away? Cosa sappiamo: chi ha motivo di volerla morta e perché la serie non ha ancora risposto</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>FAR AWAY: MINE finge un crollo per riprendersi Cihan — e spunta il mistero Meryem 😱</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su Far Away</h3><ul><li><a href="/far-away/far-away-anticipazioni-dal-31-agosto-al-4-settembre-chi-ha-donato-il-fegato-a-nare/">Far Away, anticipazioni dal 31 agosto al 4 settembre: chi ha donato il fegato a Nare, e perché adesso sta male lui</a></li><li><a href="/far-away/far-away-dal-31-agosto-la-madre-di-alya-sapeva-tutto-non-ricordo/">Far Away Dal 31 Agosto: la madre di Alya sapeva tutto — «non ricordo»</a></li><li><a href="/far-away/far-away-chi-e-fikriye-la-madre-di-alya-cosa-ha-fatto-e-perche-conta/">Far Away, chi è Fikriye: la madre di Alya, cosa ha fatto e perché conta per gli Albora</a></li><li><a href="/far-away/far-away-chi-e-nadim-il-capo-dei-baybars-cosa-vuole-e-perche-gli-albora-lo-accusano/">Far Away, chi è Nadim: il capo dei Baybars, cosa vuole e perché gli Albora lo accusano</a></li><li><a href="/far-away/far-away-sadakat-muore-cosa-sappiamo-e-chi-ha-motivo-di-volerla-morta/">Sadakat muore in Far Away? Cosa sappiamo: chi ha motivo di volerla morta e perché la serie non ha ancora risposto</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

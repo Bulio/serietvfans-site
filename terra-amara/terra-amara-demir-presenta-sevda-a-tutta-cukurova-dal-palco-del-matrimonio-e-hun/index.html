@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/terra-amara/">Terra Amara</a> › Terra Amara, Demir presenta Sevda a tutta Çukurova dal palco del matrimonio — e Hünkar lo rinnega davanti agli invitati: «Da oggi non sei più mio figlio»</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/terra-amara/">Terra Amara</a>
   <h1>Terra Amara, Demir presenta Sevda a tutta Çukurova dal palco del matrimonio — e Hünkar lo rinnega davanti agli invitati: «Da oggi non sei più mio figlio»</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>6 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Il matrimonio tra Sabahattin e la procuratrice Jülide doveva essere la festa di tutta Çukurova. Diventa il palcoscenico del confronto più duro tra Demir e sua madre: lui si presenta al braccio di Sevda, prende la parola davanti alla sala intera e racconta pubblicamente chi è quella donna e cosa ha significato per suo padre. Hünkar entra giusto in tempo per sentirlo, e la sua risposta è definitiva.</p><ol><li><a href="#c1">Il vestito rosso di Müjgan e lo specchio di Şermin</a></li><li><a href="#c2">Chi è Sevda per la famiglia Yaman, e perché Hünkar non poteva accettarla?</a></li><li><a href="#c3">L&#x27;ingresso che scandalizza la sala</a></li><li><a href="#c4">«Non sei più mio figlio»</a></li><li><a href="#c5">Il regalo di Şermin</a></li><li><a href="#c6">Perché conta: Demir sostituisce una madre, e la villa non torna più com&#x27;era</a></li><li><a href="#c7">Come Behice prova a scuotere Müjgan</a></li><li><a href="#c8">Perché Saniye critica il ruolo di Sevda</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>Terra Amara</strong> — Serie conclusa in Italia · tutte le puntate su Mediaset Infinity</span></div>
   
-  <p class="occhiello">Il matrimonio tra Sabahattin e la procuratrice Jülide doveva essere la festa di tutta Çukurova. Diventa il palcoscenico del confronto più duro tra Demir e sua madre: lui si presenta al braccio di Sevda, prende la parola davanti alla sala intera e racconta pubblicamente chi è quella donna e cosa ha significato per suo padre. Hünkar entra giusto in tempo per sentirlo, e la sua risposta è definitiva.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: Terra Amara, Demir presenta Sevda a tutta Çukurova dal palco del matrimonio — e Hünkar lo rinnega davanti agli invitati: «Da oggi non sei più mio figlio»" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/zjLlrUCoVnc/maxresdefault.jpg" alt="Terra Amara, Demir presenta Sevda a tutta Çukurova dal palco del matrimonio — e Hünkar lo rinnega davanti agli invitati: «Da oggi non sei più mio figlio»" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/zjLlrUCoVnc/hqdefault.jpg 480w, https://i.ytimg.com/vi/zjLlrUCoVnc/sddefault.jpg 640w, https://i.ytimg.com/vi/zjLlrUCoVnc/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/zjLlrUCoVnc/hqdefault.jpg&quot;, &quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,42 +409,64 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>Şermin, non invitata dopo ventidue anni e una figlia insieme, si presenta lo stesso — con un barattolo di vernice nella borsa.</strong></p>
-  <h2>Il vestito rosso di Müjgan e lo specchio di Şermin</h2>
+  <h2 id="c1">Il vestito rosso di Müjgan e lo specchio di Şermin</h2>
 <p>La giornata comincia con due donne davanti a uno specchio. Müjgan si prepara per la cerimonia con un abito rosso fuoco, ma nello sguardo si legge un peso che l&#x27;abito non copre; è Behice a raggiungerla e a ripeterle che è una donna straordinaria e che deve trovare la forza di volersi bene. Nella sua casa, invece, Şermin fissa il proprio riflesso con gli occhi lucidi: dopo ventidue anni di vita insieme e una figlia, Sabahattin non l&#x27;ha invitata alle sue nozze. È da quel silenzio che nasce tutto il resto.</p>
-<h2>Chi è Sevda per la famiglia Yaman, e perché Hünkar non poteva accettarla?</h2>
+<h2 id="c2">Chi è Sevda per la famiglia Yaman, e perché Hünkar non poteva accettarla?</h2>
 <p>A Çukurova Sevda Çağlayan era la cantante, e basta: la parte importante della sua vita era rimasta nell&#x27;ombra, perché era stata la donna di Adnan Yaman, il marito di Hünkar e padre di Demir. Hünkar Saraçoğlu non è soltanto la madre del padrone: in una terra dove le proprietà passavano di padre in figlio, il comando lo ha tenuto lei. Sentirsi presentare in pubblico l&#x27;amante del proprio marito non è per lei una questione di gelosia, è la sua autorità messa all&#x27;asta da suo figlio. Nella stessa sala si muove Şermin, la parente povera dei Yaman, quella che nella piana vale soltanto per il cognome: dopo ventidue anni di vita insieme e una figlia, Sabahattin non l&#x27;ha nemmeno messa sulla lista degli invitati.</p>
-<h2>L&#x27;ingresso che scandalizza la sala</h2>
+<h2 id="c3">L&#x27;ingresso che scandalizza la sala</h2>
 <p>Alla sala ricevimenti c&#x27;è mezza Çukurova, ma mancano le due persone che più contano: Hünkar, in rotta aperta con il figlio. Demir arriva accompagnato da una donna che nessuno si aspettava di vedere lì, e la curiosità corre di tavolo in tavolo. Şermin, nascosta dietro le colonne, assiste alla scena e corre a raccontare tutto: Demir è al matrimonio con Sevda. In casa Yaman la notizia cade come una pietra.</p>
-<h2>«Non sei più mio figlio»</h2>
+<h2 id="c4">«Non sei più mio figlio»</h2>
 <p>Demir prende la parola e comincia proprio da lì — da quella domanda che tutti si stanno facendo su chi sia la donna al suo fianco. Racconta che la storia di Sevda, conosciuta da tutti come cantante, è rimasta per anni nascosta nell&#x27;ombra, e la lega apertamente ad Adnan: un amore tenuto segreto per una vita, che lui ha deciso di riportare alla luce. Mentre parla, Hünkar entra nella sala. Gli sguardi si spostano su di lei, il silenzio si fa insostenibile, e la sua risposta arriva in poche parole davanti a tutti: da quel momento Demir ha una madre sola, ed è Sevda — perché suo figlio non lo è più. Una frase che spacca in due la famiglia più potente di Çukurova, in pubblico.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Il regalo di Şermin</h2>
+<h2 id="c5">Il regalo di Şermin</h2>
 <p>A cerimonia conclusa, mentre gli sposi salutano gli invitati, Şermin si fa avanti con la voce che trema: ricorda a Sabahattin i ventidue anni cancellati in un istante, e lui le risponde con la gentilezza di chi ha già voltato pagina, augurandole di trovare la propria felicità. Sembra un addio composto, finché lei non annuncia di aver portato un piccolo dono. Tira fuori dalla borsa un barattolo e ne rovescia tutto il contenuto addosso alla sposa, lasciando Jülide immobile e coperta di vernice davanti agli invitati sbigottiti. «Questo è il mio regalo per voi», grida uscendo. «Vi auguro tanta felicità.»</p>
-<h2>Perché conta: Demir sostituisce una madre, e la villa non torna più com&#x27;era</h2>
+<h2 id="c6">Perché conta: Demir sostituisce una madre, e la villa non torna più com&#x27;era</h2>
 <p>Il rinnegamento non resta una scena di famiglia. Da quel giorno Sevda entra a villa Yaman con un ruolo riconosciuto: Demir arriverà a dire ad Adnan che quella signora è sua nonna, e in cucina Saniye lo commenta con le parole che pesano di più, cioè che Hünkar è stata sostituita come se niente fosse. È quella promozione a rendere possibile, molto più avanti, il gesto che chiude la terza stagione: chi si frappone tra una pistola e Demir lo fa perché ormai è di famiglia. E c&#x27;è un secondo effetto che nessuno vede. Portare alla luce la storia di Sevda significa cominciare a parlare in pubblico di una donna che aveva avuto una figlia e se l&#x27;era vista togliere alla nascita: quel filo lo tirerà Şermin, mettendo in mano a Demir una carta d&#x27;identità dove il nome della madre di Ümit coincide con quello sulla carta di Sevda.</p>
-<h2>Come Behice prova a scuotere Müjgan</h2>
+<h2 id="c7">Come Behice prova a scuotere Müjgan</h2>
 <p>Le preparazioni che precedono la grande festa di nozze tra il dottor Sabahattin e la procuratrice Jülide portano allo scoperto stati d&#x27;animo estremamente complessi e carichi di tensione tra i protagonisti della vicenda. Müjgan decide di indossare un abito rosso fuoco per l&#x27;occasione, una scelta cromatica molto vistosa che vorrebbe trasmettere sicurezza ma che non riesce affatto a nascondere la profonda pesantezza che si legge nel suo sguardo. Behice nota subito questo disagio e la raggiunge mentre si sta osservando allo specchio, cercando di rassicurarla con parole cariche di affetto e spingendola a ritrovare il proprio valore personale. La zia le ripete che è una donna straordinaria e le insegna che deve trovare la forza necessaria per volersi bene.</p>
 <p>Nello stesso momento Şermin affronta attimi di intensa solitudine mentre fissa il proprio riflesso con gli occhi lucidi all&#x27;interno della sua casa. Non essere stata invitata alla cerimonia dopo ventidue anni di vita coniugale insieme e una figlia cresciuta con Sabahattin rappresenta per lei un&#x27;offesa tremenda e inaccettabile. Questa profonda amarezza spinge la donna a presentarsi comunque al ricevimento per agire nell&#x27;ombra, nascondendosi con attenzione dietro le imponenti colonne della sala. Da quella posizione privilegiata assiste allo scandaloso arrivo di Demir con l&#x27;amante del padre e corre immediatamente a raccontare ogni dettaglio alla tenuta dei Yaman, facendo cadere la drammatica notizia come un&#x27;autentica pietra sulla famiglia prima che avvenga lo scontro finale.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Perché Saniye critica il ruolo di Sevda</h2>
+<h2 id="c8">Perché Saniye critica il ruolo di Sevda</h2>
 <p>L&#x27;ingresso ufficiale di Sevda nella tenuta dei Yaman modifica radicalmente equilibri costruiti in anni di storia familiare e suscita reazioni immediate e sdegnate tra la servitù della casa. Demir decide infatti di darle una posizione d&#x27;onore e di riconosciuto rispetto, arrivando a spiegare direttamente al piccolo Adnan che quella donna deve essere considerata e trattata a tutti gli effetti come sua nonna. Questa clamorosa decisione provoca enorme stupore all&#x27;interno dei locali della cucina, dove Saniye esprime senza filtri il proprio pensiero sull&#x27;accaduto. La donna commenta la scelta con parole particolarmente pesanti, facendo notare a tutti come Hünkar sia stata rimpiazzata da un momento all&#x27;altro dal suo stesso figlio, esattamente come se non fosse mai contata nulla.</p>
 <p>Questa incredibile promozione e l&#x27;apertura pubblica sul passato di Sevda finiscono per portare alla luce storie dolorose che per lunghissimo tempo erano rimaste sepolte nell&#x27;ombra della piana. Parlare apertamente di lei significa infatti rievocare la figura di una donna che in passato aveva dato alla luce una bambina, vedendosela poi strappare e togliere alla nascita. A tirare questo filo nascosto è proprio Şermin, che riesce a mettere nelle mani di Demir un documento rivelatore: una carta d&#x27;identità in cui il nome della madre di Ümit corrisponde perfettamente a quello riportato sui documenti ufficiali di Sevda. Questo inaspettato dettaglio chiarisce ogni ombra e pone le basi per sviluppi davvero imprevedibili nelle dinamiche tra i personaggi.</p>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=vkoVZKUB9bc" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/vkoVZKUB9bc/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TERRA AMARA Anticipazioni: Umit informa Demir e Zuleyha di essere incinta | Demir diventa una f</span></a></li><li><a href="https://www.youtube.com/watch?v=BWzT0n0QlXU" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/BWzT0n0QlXU/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TERRA AMARA Anticipazioni 10 Dicembre: Demir una furia,scopre che Umit è incinta e Sevda è sua </span></a></li><li><a href="https://www.youtube.com/watch?v=i7WTqFr1xf8" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/i7WTqFr1xf8/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TERRA AMARA Anticipazioni: Chi è lo Sconosciuto che si presenta a Demir dicendo di sapere la ve</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Il gesto di Şermin è imperdonabile o in qualche modo comprensibile? E Hünkar poteva reagire diversamente?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=zjLlrUCoVnc">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di Terra Amara</h2><div class="griglia"><article class="scheda">
+  <a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/"><div class="foto"><img src="/img/terra-amara-la-trama-completa-e-come-finisce.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></h3>
+    <div class="quando">30 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/"><div class="foto"><img src="https://i.ytimg.com/vi/_ypSJU-x7LY/hqdefault.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/"><div class="foto"><img src="https://i.ytimg.com/vi/B_MLx-0yh6M/hqdefault.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=Terra Amara, Demir presenta Sevda a tutta Çukurova dal palco del matrimonio — e Hünkar lo rinnega davanti agli invitati: «Da oggi non sei più mio figlio» — https://serietvfans.com/terra-amara/terra-amara-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/terra-amara/terra-amara-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/terra-amara/terra-amara-la-trama-completa-e-come-finisce/&text=Terra Amara, Demir presenta Sevda a tutta Çukurova dal palco del matrimonio — e Hünkar lo rinnega davanti agli invitati: «Da oggi non sei più mio figlio»" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">TERRA AMARA Anticipazioni: Şermin uccide Jülide al suo matrimonio?</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=zjLlrUCoVnc">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di Terra Amara</h3><ol class="numerata"><li><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></li><li><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></li><li><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></li><li><a href="/terra-amara/terra-amara-come-finisce-davvero-zuleyha-vince-tutto-e-resta-sola/">Terra Amara: come finisce davvero, Züleyha vince tutto e resta sola</a></li><li><a href="/terra-amara/terra-amara-come-muore-demir-yaman-chi-ha-dato-lordine-e-perche-doveva-essere-un-rapimento/">Terra Amara, come muore Demir Yaman: chi ha dato l&#x27;ordine e perché doveva essere un rapimento</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>TERRA AMARA Anticipazioni: Şermin uccide Jülide al suo matrimonio?</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su Terra Amara</h3><ul><li><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></li><li><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></li><li><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></li><li><a href="/terra-amara/terra-amara-come-finisce-davvero-zuleyha-vince-tutto-e-resta-sola/">Terra Amara: come finisce davvero, Züleyha vince tutto e resta sola</a></li><li><a href="/terra-amara/terra-amara-come-muore-demir-yaman-chi-ha-dato-lordine-e-perche-doveva-essere-un-rapimento/">Terra Amara, come muore Demir Yaman: chi ha dato l&#x27;ordine e perché doveva essere un rapimento</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

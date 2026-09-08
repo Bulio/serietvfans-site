@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/la-promessa/">La Promessa</a> › La Promessa, la settimana delle verità: Cruz confessa a Curro che Lorenzo non è suo padre — e Alonso la umilia davanti alla servitù</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/la-promessa/">La Promessa</a>
   <h1>La Promessa, la settimana delle verità: Cruz confessa a Curro che Lorenzo non è suo padre — e Alonso la umilia davanti alla servitù</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Dal 18 al 22 settembre cadono tre muri: Cruz, pur di fermare le indagini di Curro, gli rivela che Lorenzo non è il suo padre biologico; Alonso scopre la verità sulla spilla e costringe la moglie a ringraziare i cuochi in cucina; e Gregorio getta in faccia a Rómulo la colpa della morte del fratello Mateo.</p><ol><li><a href="#c1">Curro scopre la prima verità sulle sue origini</a></li><li><a href="#c2">La spilla: l&#x27;umiliazione di Cruz in cucina</a></li><li><a href="#c3">Gregorio e Rómulo: la verità sulla morte di Mateo</a></li><li><a href="#c4">Il fronte nozze: l&#x27;accusa del Duca e il piano delle tre</a></li><li><a href="#c5">Come Lorenzo minaccia Curro per fermare la sua ossessione</a></li><li><a href="#c6">Perche&#x27; Alonso punisce Cruz per il caso della spilla</a></li><li><a href="#c7">Cosa rivela Gregorio a Rómulo sulla morte di Mateo</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>La Promessa</strong> — Rete 4 · in streaming su Mediaset Infinity</span></div>
   
-  <p class="occhiello">Dal 18 al 22 settembre cadono tre muri: Cruz, pur di fermare le indagini di Curro, gli rivela che Lorenzo non è il suo padre biologico; Alonso scopre la verità sulla spilla e costringe la moglie a ringraziare i cuochi in cucina; e Gregorio getta in faccia a Rómulo la colpa della morte del fratello Mateo.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: La Promessa, la settimana delle verità: Cruz confessa a Curro che Lorenzo non è suo padre — e Alonso la umilia davanti alla servitù" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/Huo7D4YNQWE/sddefault.jpg" alt="La Promessa, la settimana delle verità: Cruz confessa a Curro che Lorenzo non è suo padre — e Alonso la umilia davanti alla servitù" width="640" height="480"
         srcset="https://i.ytimg.com/vi/Huo7D4YNQWE/hqdefault.jpg 480w, https://i.ytimg.com/vi/Huo7D4YNQWE/sddefault.jpg 640w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/Huo7D4YNQWE/hqdefault.jpg&quot;, &quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,25 +409,25 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>«Non è il tuo vero padre — ma non posso dirti altro»: la mezza verità di Cruz è la scintilla che incendia la settimana più rivelatrice della Promessa.</strong></p>
-  <h2>Curro scopre la prima verità sulle sue origini</h2>
+  <h2 id="c1">Curro scopre la prima verità sulle sue origini</h2>
 <p>I dubbi seminati da Jana mentre gli medicava le ferite — possibile che un padre tratti così un figlio? — hanno scavato in profondità: Curro interroga, indaga, si scontra con un muro. Finché Cruz, pur di fermare la sua ossessione, gli confessa la verità a metà: Lorenzo non è il suo padre biologico — ma sulla vera identità, silenzio. Il capitano, messo alle strette, conferma e minaccia: continuare a scavare significherebbe finire marchiato come bastardo ed emarginato dalla famiglia. Curro però non arretra: corre da Jana, le dà atto di aver visto giusto, e annuncia che andrà fino in fondo. E Jana capisce che il momento di rivelargli chi è sua madre è ormai vicino.</p>
-<h2>La spilla: l&#x27;umiliazione di Cruz in cucina</h2>
+<h2 id="c2">La spilla: l&#x27;umiliazione di Cruz in cucina</h2>
 <p>Il caso della spilla presenta il conto: Catalina confessa a Jana che dietro la vendita c&#x27;è Cruz — per finanziarsi la festa di compleanno — e quando la marchesa si vanta che non ci saranno conseguenze, si sbaglia di grosso. Alonso, furioso, sceglie la punizione più teatrale: ordina alla moglie di scendere personalmente in cucina a ringraziare Simona, Candela e Lope per aver smascherato il falso padre padre Camilo — dopo aver rifiutato ogni licenziamento in segno di gratitudine. La scena, davanti a una Petra verde di gelosia, è storica; e Cruz, che ammette di averlo fatto &quot;solo per ordine del marito&quot;, giura che gliela farà pagare. Intanto Catalina e Martina passano al contrattacco: c&#x27;è perfino un grimaldello pronto per entrare nella stanza della marchesa.</p>
-<h2>Gregorio e Rómulo: la verità sulla morte di Mateo</h2>
+<h2 id="c3">Gregorio e Rómulo: la verità sulla morte di Mateo</h2>
 <p>Si scioglie anche il mistero dell&#x27;astio di Gregorio: dopo settimane di ostilità inspiegabile, è lui stesso a rivelare a Rómulo la terribile accusa — è colpa sua se il fratello Mateo è morto in una caduta da cavallo. E quando la memoria di Rómulo finalmente ricompone l&#x27;accaduto, il senso di colpa lo travolge. Nel frattempo il maggiordomo mostra un volto nuovo con Pía — la soccorre perfino quando sviene, stremata dal corsetto con cui nasconde la gravidanza — mentre Candela rivela a Jana di conoscere anche lei il segreto della governante.</p>
-<h2>Il fronte nozze: l&#x27;accusa del Duca e il piano delle tre</h2>
+<h2 id="c4">Il fronte nozze: l&#x27;accusa del Duca e il piano delle tre</h2>
 <p>Sul matrimonio Manuel-Jimena si consuma l&#x27;ultimo braccio di ferro: il Duca de los Infantes accusa i Luján di essere una famiglia senza scrupoli che nasconde il tracollo finanziario e vuole sua figlia solo per il denaro — ma l&#x27;accordo alla fine si trova, con Jimena raggiante che convince perfino il padre a fermarsi alla tenuta. Peccato che Jana, Martina e Catalina abbiano ormai capito tutto: Jimena e Cruz hanno sfruttato l&#x27;amnesia di Manuel per costruirgli una storia d&#x27;amore mai esistita. La speranza ha le ali: l&#x27;aereo riparato da Jana è pronto, e quando Manuel lo vedrà, i ricordi potrebbero tornare tutti insieme. Sullo sfondo, la confessione di Lope a Maria — Salvador sarebbe prigioniero del suo nemico — accolta con un&#x27;accusa di gelosia: le verità, in questa settimana, escono tutte. Ma non tutte vengono credute.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Come Lorenzo minaccia Curro per fermare la sua ossessione</h2>
+<h2 id="c5">Come Lorenzo minaccia Curro per fermare la sua ossessione</h2>
 <p>I dubbi sulla paternità di Lorenzo non sono nati dal nulla, ma hanno iniziato a farsi strada nel cuore del giovane mentre Jana si prendeva cura delle sue ferite. Durante quelle medicazioni, la ragazza non ha potuto fare a meno di fargli notare quanto fosse strano e innaturale che un padre potesse trattare un figlio con tale durezza e freddezza. Quella semplice domanda ha spinto Curro a mettere in discussione l&#x27;intera sua vita, spingendolo a fare domande, a indagare senza sosta e a scontrarsi ripetutamente contro il muro di silenzio alzato dai suoi familiari. La costante ricerca della verità lo ha portato fino al punto di rottura finale.</p>
 <p>Messa alle strette dall&#x27;ostinazione del nipote, Cruz ha deciso di intervenire personalmente per frenare un&#x27;indagine che rischiava di travolgere la tenuta. La marchesa gli ha rivelato una mezza verità sconvolgente, ossia che Lorenzo non è affatto il suo padre biologico, mantenendo però il più totale riserbo sulla reale identità dell&#x27;uomo. Interpellato sulla questione, il capitano Lorenzo ha confermato la confessione, ma ha subito sferrato una pesante minaccia: se Curro continuerà a scavare nel passato, finirà soltanto per essere marchiato pubblicamente come un bastardo e verrà inevitabilmente emarginato da tutta la famiglia Luján, perdendo ogni suo privilegio.</p>
 <p>Invece di farsi intimidire dalle parole minacciose del capitano, Curro ha scelto di non arretrare di un solo passo. Il ragazzo è corso immediatamente da Jana per ammettere che le sue intuizioni iniziali erano assolutamente corrette e per annunciarle la sua ferma intenzione di andare fino in fondo a questa storia, costi quel che costi. Di fronte a questa nuova determinazione, la ragazza ha compreso che il momento di compiere il passo decisivo è ormai imminente: presto dovrà trovare il coraggio necessario per svelare finalmente al giovane tutta la verità nascosta sul conto della sua vera madre biologica.</p>
-<h2>Perche&#x27; Alonso punisce Cruz per il caso della spilla</h2>
+<h2 id="c6">Perche&#x27; Alonso punisce Cruz per il caso della spilla</h2>
 <p>L&#x27;intricata questione della spilla è giunta ad una svolta decisiva nel momento in cui Catalina ha confessato chiaramente a Jana la verità sui fatti. La nobile ha rivelato che dietro la vendita del prezioso gioiello si nascondeva proprio la marchesa Cruz, determinata a ricavare il denaro necessario per poter finanziare la propria sfarzosa festa di compleanno. Nonostante la gravità dell&#x27;atto compiuto, la marchesa si era vantata apertamente del fatto che non avrebbe mai subito alcuna conseguenza negativa per il suo gesto, convinta di essere del tutto intoccabile. Tuttavia, i suoi calcoli si sono rivelati tragicamente errati di fronte alla reazione del marito.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>Quando Alonso ha scoperto l&#x27;inganno ordito dalla moglie, la sua furia è stata incontenibile e lo ha spinto a ideare una punizione esemplare ed estremamente teatrale. Rifiutando categoricamente qualsiasi ipotesi di licenziamento come segno di gratitudine verso il personale, il marchese ha preteso che Cruz scendesse direttamente in cucina. La donna è stata costretta a ringraziare di persona Simona, Candela e Lope per aver smascherato il falso padre Camilo. L&#x27;intera ed umiliante scena si è svolta proprio davanti agli occhi di una Petra visibilmente verde dalla gelosia, trasformandosi in un evento davvero storico per tutta la servitù.</p>
 <p>Mentre compiva questo gesto umiliante, Cruz ci ha tenuto a precisare con amarezza di stare agendo esclusivamente per eseguire un ordine diretto del marito, giurando al contempo che prima o poi gliela avrebbe fatta pagare cara. Nel frattempo, la tensione alla tenuta continua a salire poiché Catalina e Martina hanno deciso di passare al contrattacco per contrastare la marchesa. Le due ragazze non hanno intenzione di fermarsi e si sono persino procurate un grimaldello già pronto all&#x27;uso, con l&#x27;obiettivo ben preciso di riuscire a penetrare di nascosto all&#x27;interno della stanza riservata alla nobile.</p>
-<h2>Cosa rivela Gregorio a Rómulo sulla morte di Mateo</h2>
+<h2 id="c7">Cosa rivela Gregorio a Rómulo sulla morte di Mateo</h2>
 <p>Il profondo risentimento nutrito da Gregorio nei confronti di Rómulo ha finalmente trovato una spiegazione chiara dopo settimane di inspiegabile ostilità tra i due. È stato lo stesso Gregorio a mettere alle strette il maggiordomo, lanciandogli in faccia una pesantissima accusa che affonda le radici nel passato: Rómulo sarebbe l&#x27;unico responsabile della tragica scomparsa di suo fratello Mateo, deceduto a causa di un terribile incidente durante una caduta da cavallo. Quando la memoria del maggiordomo è riuscita a ricostruire con esattezza le dinamiche di quel tragico evento, il peso del senso di colpa lo ha travolto completamente.</p>
 <p>Nonostante il dolore legato al passato, il maggiordomo ha iniziato a mostrare un atteggiamento completamente nuovo e premuroso nei confronti di Pía. Rómulo è infatti intervenuto per soccorrere prontamente la governante nel momento in cui la donna è svenuta all&#x27;improvviso, rimasta completamente stremata a causa del rigido corsetto che era costretta a indossare per nascondere la sua gravidanza. Nel frattempo, i segreti all&#x27;interno del palazzo aumentano vertiginosamente, dato che anche Candela ha deciso di confidare a Jana di essere perfettamente a conoscenza dello stato di gravidanza tenuto nascosto da Pía.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
@@ -385,19 +435,41 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=FkY-XTPnRpE" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/FkY-XTPnRpE/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni: Cruz nel panico! Curro scopre che Alonso è suo padre! Come reagirà l</span></a></li><li><a href="https://www.youtube.com/watch?v=rlHkbnLcSjs" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/rlHkbnLcSjs/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni 10 Ottobre: Cruz rivela a Curro la &quot;sua&quot; verità! Il ragazzo è sconvol</span></a></li><li><a href="https://www.youtube.com/watch?v=9BFFndCpAoo" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/9BFFndCpAoo/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA ANTICIPAZIONI : Chi è il Padre di Curro e il grande complotto de La Promessa!</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>La mezza confessione di Cruz fermerà Curro o lo spingerà ancora più a fondo? E l&#x27;aereo riparato riporterà davvero la memoria a Manuel?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=Huo7D4YNQWE">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di La Promessa</h2><div class="griglia"><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/"><div class="foto"><img src="https://i.ytimg.com/vi/Rp8VhxDiDSk/hqdefault.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></h3>
+    <div class="quando">7 settembre 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/"><div class="foto"><img src="https://i.ytimg.com/vi/8JHt6ogwxQw/hqdefault.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Ángela beve tutto, Curro sfonda la porta</a></h3>
+    <div class="quando">6 settembre 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/"><div class="foto"><img src="/img/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Curro nasconde Ángela, Lorenzo furioso</a></h3>
+    <div class="quando">6 settembre 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=La Promessa, la settimana delle verità: Cruz confessa a Curro che Lorenzo non è suo padre — e Alonso la umilia davanti alla servitù — https://serietvfans.com/la-promessa/la-promessa-la-settimana-delle-verita-cruz-confessa-a-curro-che-lorenzo-non-e-su/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/la-promessa/la-promessa-la-settimana-delle-verita-cruz-confessa-a-curro-che-lorenzo-non-e-su/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/la-promessa/la-promessa-la-settimana-delle-verita-cruz-confessa-a-curro-che-lorenzo-non-e-su/&text=La Promessa, la settimana delle verità: Cruz confessa a Curro che Lorenzo non è suo padre — e Alonso la umilia davanti alla servitù" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">LA PROMESSA Anticipazioni 18-22 Settembre: La Settimana delle verità</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=Huo7D4YNQWE">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di La Promessa</h3><ol class="numerata"><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Ángela beve tutto, Curro sfonda la porta</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Curro nasconde Ángela, Lorenzo furioso</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>LA PROMESSA Anticipazioni 18-22 Settembre: La Settimana delle verità</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su La Promessa</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-3-6-settembre-maria-affronta-la-gravidanza-da-sola/">La Promessa anticipazioni 3-6 settembre: Maria affronta la gravidanza da sola</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-carlo-arriva-maria-trema/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Carlo arriva, Maria trema</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/far-away/far-away-anticipazioni-dal-31-agosto-al-4-settembre-chi-ha-donato-il-fegato-a-nare/">Far Away, anticipazioni dal 31 agosto al 4 settembre: chi ha donato il fegato a Nare, e perché adesso sta male lui</a></li><li><a href="/far-away/far-away-dal-31-agosto-la-madre-di-alya-sapeva-tutto-non-ricordo/">Far Away Dal 31 Agosto: la madre di Alya sapeva tutto — «non ricordo»</a></li><li><a href="/forbidden-fruit/forbidden-fruit-dal-31-agosto-il-conto-a-nome-di-halit-che-e-morto/">Forbidden Fruit Dal 31 Agosto: il conto a nome di Halit, che è morto</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

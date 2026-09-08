@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/terra-amara/">Terra Amara</a> › Terra Amara, l&#x27;addio a Yılmaz: la promessa di Züleyha all&#x27;obitorio — «Aspettami» — e il gesto di Demir che nessuno si aspettava al funerale</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/terra-amara/">Terra Amara</a>
   <h1>Terra Amara, l&#x27;addio a Yılmaz: la promessa di Züleyha all&#x27;obitorio — «Aspettami» — e il gesto di Demir che nessuno si aspettava al funerale</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">L&#x27;episodio più straziante della saga: dopo il tragico incidente, Çukurova saluta Yılmaz. All&#x27;obitorio sfilano le tre persone che lo hanno amato di più — Züleyha, che gli posa la mano fredda sul proprio cuore e gli chiede di aspettarla «finché anche io lascerò questo mondo»; Müjgan, che gli chiede perdono; Fekeli, che gli confessa di essere stato «un raggio di luce nella mia vita buia». Ma la scena che resta è un&#x27;altra: Demir che porta il piccolo Adnan alle preghiere per il padre, e Fekeli che lo accoglie: «Ora sei tu mio figlio».</p><ol><li><a href="#c1">L&#x27;obitorio: tre addii, tre amori diversi</a></li><li><a href="#c2">Il funerale: Çukurova si ferma</a></li><li><a href="#c3">Il gesto di Demir: il piccolo Adnan alle preghiere per Yılmaz</a></li><li><a href="#c4">«Ora sei tu mio figlio»: l&#x27;abbraccio di Fekeli a Demir</a></li><li><a href="#c5">Come Züleyha affronta la perdita del suo grande amore</a></li><li><a href="#c6">Perché Fekeli accoglie Demir durante le preghiere per Yılmaz</a></li><li><a href="#c7">Cosa fanno Gülten e Çetin mentre Çukurova piange</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>Terra Amara</strong> — Serie conclusa in Italia · tutte le puntate su Mediaset Infinity</span></div>
   
-  <p class="occhiello">L&#x27;episodio più straziante della saga: dopo il tragico incidente, Çukurova saluta Yılmaz. All&#x27;obitorio sfilano le tre persone che lo hanno amato di più — Züleyha, che gli posa la mano fredda sul proprio cuore e gli chiede di aspettarla «finché anche io lascerò questo mondo»; Müjgan, che gli chiede perdono; Fekeli, che gli confessa di essere stato «un raggio di luce nella mia vita buia». Ma la scena che resta è un&#x27;altra: Demir che porta il piccolo Adnan alle preghiere per il padre, e Fekeli che lo accoglie: «Ora sei tu mio figlio».</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: Terra Amara, l&#x27;addio a Yılmaz: la promessa di Züleyha all&#x27;obitorio — «Aspettami» — e il gesto di Demir che nessuno si aspettava al funerale" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/6YJijPVE4Lc/maxresdefault.jpg" alt="Terra Amara, l&#x27;addio a Yılmaz: la promessa di Züleyha all&#x27;obitorio — «Aspettami» — e il gesto di Demir che nessuno si aspettava al funerale" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/6YJijPVE4Lc/hqdefault.jpg 480w, https://i.ytimg.com/vi/6YJijPVE4Lc/sddefault.jpg 640w, https://i.ytimg.com/vi/6YJijPVE4Lc/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/6YJijPVE4Lc/hqdefault.jpg&quot;, &quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,41 +409,63 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>Il dettaglio che spezza: Züleyha confessa al corpo di Yılmaz che il suo respiro si è fermato quando lui le ha mostrato gli anelli comprati per il loro matrimonio mai celebrato.</strong></p>
-  <h2>L&#x27;obitorio: tre addii, tre amori diversi</h2>
+  <h2 id="c1">L&#x27;obitorio: tre addii, tre amori diversi</h2>
 <p>La prima è Züleyha: solleva il lenzuolo, accarezza il viso dell&#x27;uomo della sua vita e gli parla come se potesse sentirla — il desiderio di tornare ai giorni di Istanbul, alle strade percorse da fidanzati, al vestito da sposa cercato insieme. «Lo rifarei mille volte». Poi prende la sua mano fredda, la posa sul proprio cuore e pronuncia la promessa che accompagnerà tutta la saga: «Aspettami, finché anche io lascerò questo mondo: così staremo insieme per sempre». Dopo di lei entra Müjgan, che chiede perdono per non aver saputo accettare il suo amore per un&#x27;altra e giura di tenerne vivo il ricordo attraverso il figlio. Ultimo Fekeli: «Sei stato un raggio di luce nella mia vita buia» — e fuori dall&#x27;obitorio crolla a terra accanto a Züleyha, due dolori che si specchiano.</p>
-<h2>Il funerale: Çukurova si ferma</h2>
+<h2 id="c2">Il funerale: Çukurova si ferma</h2>
 <p>La notizia scuote tutta Çukurova. Al funerale, Fikret e Fekeli accolgono la bara e la sollevano dopo l&#x27;ultimo bacio di Müjgan, mentre Behice — infortunata alla caviglia in un goffo incidente — resta esclusa dalla cerimonia. Züleyha, sostenuta da Gülten e Sevda, trova la forza di chiedere a Demir che anche il piccolo Adnan possa esserci: quel bambino ha perso suo padre. Davanti alla tomba, Züleyha ripete la sua promessa e giura di prendersi cura di Adnan; il piccolo, in lacrime, corre ad abbracciare Fekeli. La sera, mentre Gülten e Çetin preparano la cena per chi partecipa alla preghiera, il dolore travolge anche il più fedele degli amici: Çetin si allontana per piangere, e Gülten gli offre la spalla.</p>
-<h2>Il gesto di Demir: il piccolo Adnan alle preghiere per Yılmaz</h2>
+<h2 id="c3">Il gesto di Demir: il piccolo Adnan alle preghiere per Yılmaz</h2>
 <p>Alla villa, Sevda ha dovuto dare un sonnifero a Züleyha, che non riusciva a smettere di piangere e rifiuta il cibo. Ed è qui che Demir sorprende tutti: trova Adnan sveglio accanto alla madre addormentata, lo prende in braccio, lo veste e lo porta di persona alle preghiere in onore di Yılmaz — l&#x27;uomo che è stato il suo più grande rivale. «Dite a Züleyha di non preoccuparsi per suo figlio». Un gesto impensabile fino a poche settimane prima, che vale più di qualsiasi tregua dichiarata.</p>
-<h2>«Ora sei tu mio figlio»: l&#x27;abbraccio di Fekeli a Demir</h2>
+<h2 id="c4">«Ora sei tu mio figlio»: l&#x27;abbraccio di Fekeli a Demir</h2>
 <p>Quando Demir esita a unirsi alle preghiere — «non è appropriato» — la risposta di Fekeli riscrive gli equilibri di Çukurova: lo invita a restare perché è il figlio della sua amata Hünkar, e perché ha rischiato la propria vita cercando di salvare Yılmaz nell&#x27;incidente. Demir accetta, e nel momento più intenso della veglia è Fikret a sorreggerlo quando il dolore quasi lo fa svenire. L&#x27;ultima immagine è per Fekeli, solo davanti al ritratto di Hünkar: «Non ho perso solo la donna della mia vita, ora ho perso anche mio figlio». E il suo pianto è anche per quell&#x27;amore — quello di Züleyha e Yılmaz — che, come il suo, non ha mai avuto il permesso di essere vissuto.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Come Züleyha affronta la perdita del suo grande amore</h2>
+<h2 id="c5">Come Züleyha affronta la perdita del suo grande amore</h2>
 <p>La sofferenza di Züleyha durante queste ore drammatiche mostra tutta la profonda intensità del legame che la univa al giovane. Ricordare gli anelli che l&#x27;uomo aveva acquistato per un matrimonio che non sono mai riusciti a celebrare diventa un momento di vero e proprio strazio, riportandola con la mente ai giorni spensierati vissuti a Istanbul, quando camminavano insieme per le strade cercandone con speranza il vestito da sposa. Sopraffatta dal dolore per la scomparsa dell&#x27;uomo della sua vita, la donna si ritrova completamente priva di forze all&#x27;interno della villa, incapace persino di toccare cibo. La vicinanza costante di Gülten e le cure attente di Sevda, costretta a somministrarle un sonnifero per placare il pianto ininterrotto, evidenziano quanto la tragedia abbia sconvolto l&#x27;intero equilibrio della tenuta e lasciato un vuoto incolmabile nei loro cuori.</p>
 <p>Nonostante la grande spossatezza e la disperazione più cupa, la giovane trova comunque la forza necessaria per avanzare una richiesta fondamentale a Demir, chiedendogli con insistenza di permettere al piccolo Adnan di presenziare all&#x27;addio del suo vero padre. Quando il bambino rompe in lacrime davanti alla tomba e corre d&#x27;impulso ad abbracciare Fekeli, la tragedia assume una dimensione ancora più toccante e profonda per tutti i presenti. Demir compie allora un gesto del tutto inatteso per la comunità: vedendo il piccolo sveglio accanto alla madre addormentata, lo prende in braccio, lo veste con estrema cura e lo accompagna personalmente alle preghiere commemorative. Questa scelta improvvisa, improntata al massimo rispetto per l&#x27;uomo che aveva cercato di salvare durante il tragico incidente, segna un momento di profonda trasformazione.</p>
-<h2>Perché Fekeli accoglie Demir durante le preghiere per Yılmaz</h2>
+<h2 id="c6">Perché Fekeli accoglie Demir durante le preghiere per Yılmaz</h2>
 <p>Il comportamento di Fekeli nei confronti di Demir rappresenta uno dei passaggi più significativi e toccanti di questa dolorosa vicenda. Dopo essere crollato a terra all&#x27;esterno dell&#x27;obitorio accanto a Züleyha, unito a lei da un dolore disperato che si specchia nell&#x27;altro, l&#x27;uomo trova la forza morale di superare le storiche rivalità cittadine. Riconoscendo il grande coraggio dimostrato da Demir, il quale ha rischiato la propria vita nel tentativo disperato di salvare Yılmaz dalle lamiere dell&#x27;incidente stradale, Fekeli decide di aprirgli le porte di casa. Ricordandogli con profondo rispetto di essere pur sempre il figlio della sua amata Hünkar, lo invita superare le esitazioni e a prendere parte attiva al momento di raccoglimento dell&#x27;intera comunità di Çukurova.</p>
 <p>L&#x27;ingresso di Demir alla veglia e il successivo e inaspettato abbraccio con Fekeli trasformano radicalmente il clima di forte tensione che aveva sempre caratterizzato i loro rapporti personali. Durante la recita delle preghiere, il peso dell&#x27;emozione diventa talmente insostenibile da far quasi svenire Demir, che viene prontamente sostenuto dal tempestivo intervento di Fikret. Più tardi, rimasto finalmente solo al cospetto del ritratto di Hünkar, Fekeli si lascia andare a un pianto dirotto per la duplice perdita subita, piangendo disperato la scomparsa del figlio e il destino infausto di un grande amore, come quello vissuto tra Züleyha e il defunto, al quale non è mai stato concesso il permesso di essere vissuto fino in fondo.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Cosa fanno Gülten e Çetin mentre Çukurova piange</h2>
+<h2 id="c7">Cosa fanno Gülten e Çetin mentre Çukurova piange</h2>
 <p>La drammatica scomparsa dell&#x27;uomo scatena una fortissima reazione emotiva in tutte le persone vicine alla vicenda, a partire da Müjgan. La donna, dopo aver chiesto perdono all&#x27;interno dell&#x27;obitorio per non aver saputo accettare il sentimento del marito verso un&#x27;altra donna, promette solennemente di custodirne intatto il ricordo e di trasmetterlo al loro piccolo figlio. Prima che la bara venga sollevata da Fikret e Fekeli, le appoggia un ultimo bacio colmo di grande rimpianto. Contestualmente, Behice resta del tutto esclusa dalle cerimonie solenni a causa di un improvviso infortunio alla caviglia procuratosi durante un goffo incidente, rimanendo così ai margini di un momento di immensa commozione che riesce a scuotere e unire l&#x27;intero paese.</p>
 <p>Mentre la comunità si riunisce con devozione per le preghiere della sera, la preparazione della cena diventa il momento in cui anche i collaboratori più vicini manifestano tutto il proprio disperato cordoglio. Gülten e Çetin si occupano con instancabile dedizione dell&#x27;accoglienza degli ospiti, ma la sofferenza emotiva diventa improvvisamente insostenibile per il fedele amico, costretto ad allontanarsi momentaneamente per dare uno sfogo privato al proprio pianto. In quel frangente così delicato e doloroso, Gülten dimostra una grande sensibilità offrendogli la propria spalla e condividendo con lui un momento di sofferenza sommesso ma devastante, evidenziando come la tragedia abbia unito tutti gli abitanti della tenuta in un unico e sincero abbraccio di rispetto.</p>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=tsx4B0DW1YY" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/tsx4B0DW1YY/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TERRA AMARA Anticipazioni 20 Settembre: Yilmaz tragico incidente, Zuleyha e Demir vedono tutto!</span></a></li><li><a href="https://www.youtube.com/watch?v=B1n4Z8o5Rrw" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/B1n4Z8o5Rrw/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TERRA AMARA Anticipazioni: Tutta la verità sulla morte del padre di Demir! Così muore Adnan!</span></a></li><li><a href="https://www.youtube.com/watch?v=ka4w9PifWSw" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/ka4w9PifWSw/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TERRA AMARA: che fine hanno fatto ZÜLEYHA e DEMIR oggi? La verità 😱</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Il gesto di Demir verso Adnan è l&#x27;inizio della sua redenzione o il minimo che dovesse a Züleyha? E la promessa «aspettami» all&#x27;obitorio è la frase più bella o più dolorosa dell&#x27;intera saga?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=6YJijPVE4Lc">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di Terra Amara</h2><div class="griglia"><article class="scheda">
+  <a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/"><div class="foto"><img src="/img/terra-amara-la-trama-completa-e-come-finisce.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></h3>
+    <div class="quando">30 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/"><div class="foto"><img src="https://i.ytimg.com/vi/_ypSJU-x7LY/hqdefault.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/"><div class="foto"><img src="https://i.ytimg.com/vi/B_MLx-0yh6M/hqdefault.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=Terra Amara, l&#x27;addio a Yılmaz: la promessa di Züleyha all&#x27;obitorio — «Aspettami» — e il gesto di Demir che nessuno si aspettava al funerale — https://serietvfans.com/terra-amara/terra-amara-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/terra-amara/terra-amara-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/terra-amara/terra-amara-la-trama-completa-e-come-finisce/&text=Terra Amara, l&#x27;addio a Yılmaz: la promessa di Züleyha all&#x27;obitorio — «Aspettami» — e il gesto di Demir che nessuno si aspettava al funerale" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">TERRA AMARA: Il Funerale di Yılmaz - L&#x27;incredibile Gesto di Demir</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=6YJijPVE4Lc">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di Terra Amara</h3><ol class="numerata"><li><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></li><li><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></li><li><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></li><li><a href="/terra-amara/terra-amara-come-finisce-davvero-zuleyha-vince-tutto-e-resta-sola/">Terra Amara: come finisce davvero, Züleyha vince tutto e resta sola</a></li><li><a href="/terra-amara/terra-amara-come-muore-demir-yaman-chi-ha-dato-lordine-e-perche-doveva-essere-un-rapimento/">Terra Amara, come muore Demir Yaman: chi ha dato l&#x27;ordine e perché doveva essere un rapimento</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>TERRA AMARA: Il Funerale di Yılmaz - L&#x27;incredibile Gesto di Demir</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su Terra Amara</h3><ul><li><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></li><li><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></li><li><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></li><li><a href="/terra-amara/terra-amara-come-finisce-davvero-zuleyha-vince-tutto-e-resta-sola/">Terra Amara: come finisce davvero, Züleyha vince tutto e resta sola</a></li><li><a href="/terra-amara/terra-amara-come-muore-demir-yaman-chi-ha-dato-lordine-e-perche-doveva-essere-un-rapimento/">Terra Amara, come muore Demir Yaman: chi ha dato l&#x27;ordine e perché doveva essere un rapimento</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

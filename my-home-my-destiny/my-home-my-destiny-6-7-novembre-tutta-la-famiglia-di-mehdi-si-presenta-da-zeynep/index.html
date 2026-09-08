@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/my-home-my-destiny/">My Home My Destiny</a> › My Home My Destiny 6-7 novembre, tutta la famiglia di Mehdi si presenta da Zeynep per farle ritirare la denuncia — e lei risponde con la frase più dura</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/my-home-my-destiny/">My Home My Destiny</a>
   <h1>My Home My Destiny 6-7 novembre, tutta la famiglia di Mehdi si presenta da Zeynep per farle ritirare la denuncia — e lei risponde con la frase più dura</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">L&#x27;avvocato è chiaro: l&#x27;unica strada perché Mehdi ottenga gli arresti domiciliari è che Zeynep ritiri la denuncia. Da lì parte una campagna di pressione che comincia da Kibrit, fermata alla metropolitana, e finisce con Cemile, Nuh e Benal seduti nel suo salotto. Zeynep li ascolta tutti fino in fondo, in silenzio — e poi dice la cosa che nessuno di loro voleva sentire.</p><ol><li><a href="#c1">Il nemico in cella</a></li><li><a href="#c2">La richiesta fatta alla metropolitana</a></li><li><a href="#c3">«Nessuno di voi può capire cosa ho provato»</a></li><li><a href="#c4">Lo zio Ali Rıza e la febbre di Barış</a></li><li><a href="#c5">Come Mehdi perde il diritto di vedere Müjgan</a></li><li><a href="#c6">Perché Cemile e Nuh cercano l&#x27;aiuto di Kibrit</a></li><li><a href="#c7">Cosa spinge Emine a chiamare Zeynep per Barış</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>My Home My Destiny</strong> — Serie conclusa in Italia · le puntate su Mediaset Infinity</span></div>
   
-  <p class="occhiello">L&#x27;avvocato è chiaro: l&#x27;unica strada perché Mehdi ottenga gli arresti domiciliari è che Zeynep ritiri la denuncia. Da lì parte una campagna di pressione che comincia da Kibrit, fermata alla metropolitana, e finisce con Cemile, Nuh e Benal seduti nel suo salotto. Zeynep li ascolta tutti fino in fondo, in silenzio — e poi dice la cosa che nessuno di loro voleva sentire.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: My Home My Destiny 6-7 novembre, tutta la famiglia di Mehdi si presenta da Zeynep per farle ritirare la denuncia — e lei risponde con la frase più dura" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/XtDHf6nAcDM/maxresdefault.jpg" alt="My Home My Destiny 6-7 novembre, tutta la famiglia di Mehdi si presenta da Zeynep per farle ritirare la denuncia — e lei risponde con la frase più dura" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/XtDHf6nAcDM/hqdefault.jpg 480w, https://i.ytimg.com/vi/XtDHf6nAcDM/sddefault.jpg 640w, https://i.ytimg.com/vi/XtDHf6nAcDM/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/XtDHf6nAcDM/hqdefault.jpg&quot;, &quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,44 +409,66 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>In carcere un nuovo detenuto, Osman, provoca Mehdi fino a fargli perdere il diritto alle visite.</strong></p>
-  <h2>Il nemico in cella</h2>
+  <h2 id="c1">Il nemico in cella</h2>
 <p>Tornato in cella dopo il matrimonio, Mehdi trova un nuovo compagno: Osman, che comincia subito a provocarlo pretendendo il suo posto letto. La prima scintilla viene spenta dagli altri detenuti, che gli consigliano di non cadere nella trappola ora che fuori lo aspetta una figlia. Ma le provocazioni non si fermano — Osman gli dice persino di conoscerlo da prima, cosa di cui Mehdi non ha alcun ricordo — e all&#x27;ora d&#x27;aria finisce in una rissa. La conseguenza è immediata: quando Benal si presenta con la piccola Müjgan per una visita, le viene negato l&#x27;accesso. Quando lo scopre, Mehdi esplode di nuovo, e Osman viene allontanato dalla cella promettendogli che non è finita lì.</p>
-<h2>La richiesta fatta alla metropolitana</h2>
+<h2 id="c2">La richiesta fatta alla metropolitana</h2>
 <p>L&#x27;avvocato spiega alla famiglia che i domiciliari sono possibili solo se Zeynep ritira la denuncia. Cemile allora punta sulla persona che ha più possibilità di essere ascoltata: Kibrit, appena tornata da Erzurum e furiosa con tutti per averle tenuto nascosto quello che era successo. La ragazza raggiunge Zeynep davanti alla metropolitana; l&#x27;abbraccio è sincero, la richiesta che arriva subito dopo molto meno gradita. Zeynep le risponde che farà finta che non gliel&#x27;abbia mai chiesto, e la invita comunque a casa.</p>
-<h2>«Nessuno di voi può capire cosa ho provato»</h2>
+<h2 id="c3">«Nessuno di voi può capire cosa ho provato»</h2>
 <p>La sera, però, se li ritrova tutti in salotto: Cemile, Benal, Nuh e Kibrit. Cemile racconta della rissa e delle visite negate, insiste sulla fragilità psicologica del fratello dopo il lutto e il carcere; Nuh, che pure pensa che Mehdi debba pagare per i suoi errori, fa notare che in prigione ci sono uomini ben più pericolosi di lui e propone uno scambio — se lei ritira la denuncia, loro si trasferiranno altrove così che possa vivere senza paura. Zeynep ascolta tutti senza interrompere, poi risponde con calma: nessuno di loro può capire davvero cosa abbia provato, è stanca di sacrificare il proprio benessere per persone che del suo non si sono mai curate, e non permetterà più che i problemi di Mehdi o di chiunque altro si sovrappongano alla sua vita. E aggiunge una richiesta che vale per tutti: Kibrit non deve portarsi sulle spalle il peso degli errori degli adulti.</p>
-<h2>Lo zio Ali Rıza e la febbre di Barış</h2>
+<h2 id="c4">Lo zio Ali Rıza e la febbre di Barış</h2>
 <p>Nell&#x27;altra casa arriva una ventata d&#x27;aria nuova: lo zio materno di Barış e Savaş si trasferisce da loro dopo che la governante è partita per assistere la madre malata. È un uomo ossessionato dall&#x27;ordine, al punto da misurarsi la pressione se qualcosa è fuori posto, e scambia Emine e Sultan per venditrici porta a porta quando si presentano a restituire un vaso riparato. Sultan non gliela lascia passare, e tra i due comincia un botta e risposta di battute e vecchi proverbi che diverte tutta la casa. La serata però cambia tono quando Barış rientra con la febbre altissima e rifiuta ogni medicina: Emine chiama Zeynep perché venga a convincerlo, ma lei — che dal giorno prima lo trova stranamente distante e non ha ricevuto risposta ai messaggi — esita a presentarsi.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Come Mehdi perde il diritto di vedere Müjgan</h2>
+<h2 id="c5">Come Mehdi perde il diritto di vedere Müjgan</h2>
 <p>La vita in carcere si rivela piena di ostacoli per Mehdi subito dopo il matrimonio. Il ritorno nella propria cella segna l&#x27;inizio di una coabitazione complessa a causa della presenza di Osman, un nuovo detenuto intenzionato a provocare fin dal primo istante pretendendo il suo posto letto. Nonostante le altre persone presenti cerchino di frenare lo scontro ricordando a Mehdi che fuori c&#x27;è la piccola Müjgan ad aspettarlo, l&#x27;atteggiamento aggressivo di Osman non si placa. L&#x27;uomo sostiene perfino di conoscere Mehdi da prima, pur senza che quest&#x27;ultimo conservi alcun ricordo di quel passato. La situazione precipita comunque durante l&#x27;ora d&#x27;aria, quando le tensioni accumulate sfociano in una rissa aperta.</p>
 <p>Le conseguenze di questo scontro fisico si ripercuotono immediatamente sui rapporti con la famiglia. Proprio mentre la rissa porta alla punizione disciplinare, Benal si presenta all&#x27;ingresso della struttura portando con sé la piccola Müjgan per consentirle di incontrare il padre. Il divieto d&#x27;accesso opposto alle due scatena una reazione di enorme rabbia da parte di Mehdi, che esplode nuovamente quando scopre di aver perso il diritto alle visite per colpa di quell&#x27;episodio. La direzione decide quindi di allontanare Osman e di trasferirlo altrove, ma il detenuto abbandona la cella lasciando dietro di sé una velata promessa sul fatto che la questione tra loro non si sia affatto conclusa.</p>
 <p>L&#x27;impossibilità di ricevere la visita di Benal e della bambina rende evidente quanto la posizione penale dell&#x27;uomo stia diventando drammatica. In questo scenario, l&#x27;avvocato chiarisce ai familiari la sola opzione concreta rimasta per consentirgli di ottenere gli arresti domiciliari. L&#x27;unica strada percorribile passa attraverso la revoca della denuncia da parte di Zeynep, un gesto indispensabile per modificare la misura cautelare. Senza il passo indietro della donna, ogni tentativo legale destinato a riportare l&#x27;uomo a casa rischia di fallire, spingendo così la famiglia a organizzare un&#x27;azione coordinata per convincere Zeynep a cedere e concedere questa possibilità.</p>
-<h2>Perché Cemile e Nuh cercano l&#x27;aiuto di Kibrit</h2>
+<h2 id="c6">Perché Cemile e Nuh cercano l&#x27;aiuto di Kibrit</h2>
 <p>Di fronte alla necessità di far ritirare la denuncia a Zeynep, la famiglia individua in Kibrit l&#x27;interlocutrice ideale per provare a scalfire le resistenze della ragazza. Kibrit è appena rientrata da Erzurum ed è estremamente arrabbiata con tutti i parenti per essere stata tenuta all&#x27;oscuro di ciò che era accaduto in sua assenza. Nonostante la tensione interna, Cemile sceglie di fare leva sull&#x27;affetto che lega la giovane a Zeynep, spingendola a intercettarla davanti alla stazione della metropolitana. Quando le due si incontrano, l&#x27;abbraccio tra loro si dimostra del tutto sincero, ma la richiesta successiva porta immediatamente il confronto su un terreno assai scivoloso.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>Zeynep affronta la richiesta con grande fermezza, spiegando a Kibrit che preferisce fare finta che quella proposta non sia mai stata formulata, ma dimostra comunque la volontà di accoglierla invitandola a casa sua. La serata, tuttavia, prende una piega decisamente più complessa quando nell&#x27;abitazione si presentano anche Cemile, Benal e Nuh. Durante la riunione improvvisata nel salotto, Cemile cerca di toccare le corde emotive raccontando la rissa avvenuta in cella e le visite negate, evidenziando la profonda fragilità psicologica che colpisce Mehdi dopo il lutto vissuto e la dura esperienza del carcere.</p>
 <p>A quel punto prende la parola anche Nuh, il quale ammette apertamente che Mehdi debba pagare per gli sbagli commessi, ma sottolinea come in prigione siano presenti individui ben più pericolosi. Per facilitare una soluzione, Nuh propone persino uno scambio concreto, promettendo un immediato trasferimento di tutta la famiglia altrove così da garantire a Zeynep una vita del tutto priva di timori. Zeynep ascolta ogni discorso in silenzio senza mai interrompere, per poi chiarire di non voler più mettere da parte la propria tranquillità per persone disinteressate al suo bene e chiedendo che Kibrit sia lasciata fuori dai problemi degli adulti.</p>
-<h2>Cosa spinge Emine a chiamare Zeynep per Barış</h2>
+<h2 id="c7">Cosa spinge Emine a chiamare Zeynep per Barış</h2>
 <p>Parallelamente alle vicende penali, la routine nell&#x27;altra casa viene completamente rivoluzionata dall&#x27;arrivo dello zio materno di Barış e Savaş, chiamato Ali Rıza. L&#x27;uomo si stabilisce da loro in seguito alla partenza improvvisa della governante, costretta ad allontanarsi per prestare assistenza alla madre malata. Ali Rıza si distingue subito per una maniacale ossessione verso l&#x27;ordine e la pulizia, al punto da misurarsi regolarmente la pressione sanguigna ogni volta che nota qualcosa fuori posto. Questo tratto caratteriale emerge chiaramente quando Sultan ed Emine si presentano alla porta per restituire un vaso precedentemente riparato e lo zio finisce per scambiarle erroneamente per due venditrici porta a porta.</p>
 <p>La reazione di Sultan dà vita a un acceso botta e risposta fatto di battute e proverbi che diverte la casa, ma l&#x27;atmosfera cambia quando Barış rientra colpito da una febbre fortissima. Di fronte al rifiuto dell&#x27;uomo di assumere le medicine, Emine telefona a Zeynep affinché intervenga per convincerlo. Tuttavia, la ragazza esita fortemente a presentarsi, poiché fin dal giorno prima trova Barış stranamente distante ed è rimasta senza risposta ai propri messaggi. Zeynep si interroga così sull&#x27;opportunità di correre da lui in un momento in cui la loro comunicazione sembra essersi improvvisamente bloccata.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=1jsgIYR3vuU" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/1jsgIYR3vuU/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>MY HOME MY DESTINY Anticipazioni 3 Novembre: Mehdi si sposa con Benal, Zeynep può vivere in pac</span></a></li><li><a href="https://www.youtube.com/watch?v=pQJR-JaCpIQ" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/pQJR-JaCpIQ/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>MY HOME MY DESTINY Anticipazioni 24 Novembre: Zeynep e Baris si chiariscono | Mehdi in difficol</span></a></li><li><a href="https://www.youtube.com/watch?v=w9StEkV4Occ" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/w9StEkV4Occ/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>MY HOME MY DESTINY Anticipazioni 27 28 luglio: Kibrit riunirà Mehdi e Zeynep?</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Zeynep ha fatto bene a non cedere?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=XtDHf6nAcDM">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di My Home My Destiny</h2><div class="griglia"><article class="scheda">
+  <a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/"><div class="foto"><img src="/img/my-home-my-destiny-la-trama-completa-e-come-finisce.jpg" alt="My Home My Destiny" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">My Home My Destiny</span>
+    <h3><a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/">My Home My Destiny: la trama completa e come finisce</a></h3>
+    <div class="quando">30 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/"><div class="foto"><img src="https://i.ytimg.com/vi/-djleIeCLQs/hqdefault.jpg" alt="My Home My Destiny" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">My Home My Destiny</span>
+    <h3><a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/">My Home My Destiny, Zeynep ferma l&#x27;aborto di Benal in sala operatoria senza sapere che il padre è Mehdi</a></h3>
+    <div class="quando">17 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/"><div class="foto"><img src="https://i.ytimg.com/vi/gxL0o63Nhqw/hqdefault.jpg" alt="My Home My Destiny" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">My Home My Destiny</span>
+    <h3><a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/">My Home My Destiny, anticipazioni del 17 novembre: Özlem indaga su Zeynep e scopre tutto, Nuh diventa autista di Barış e qualcuno manomette i macchinari di Bekir</a></h3>
+    <div class="quando">16 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=My Home My Destiny 6-7 novembre, tutta la famiglia di Mehdi si presenta da Zeynep per farle ritirare la denuncia — e lei risponde con la frase più dura — https://serietvfans.com/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/&text=My Home My Destiny 6-7 novembre, tutta la famiglia di Mehdi si presenta da Zeynep per farle ritirare la denuncia — e lei risponde con la frase più dura" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">MY HOME MY DESTINY Anticipazioni 6-7 Novembre: Zeynep subisce ricatto morale dalla famiglia</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=XtDHf6nAcDM">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di My Home My Destiny</h3><ol class="numerata"><li><a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/">My Home My Destiny: la trama completa e come finisce</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/">My Home My Destiny, Zeynep ferma l&#x27;aborto di Benal in sala operatoria senza sapere che il padre è Mehdi</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/">My Home My Destiny, anticipazioni del 17 novembre: Özlem indaga su Zeynep e scopre tutto, Nuh diventa autista di Barış e qualcuno manomette i macchinari di Bekir</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-guida-alla-serie-chi-sono-demet-ozdemir-e-ibrahim-celikkol-qu/">My Home My Destiny: guida alla serie, il cast, i personaggi e quante puntate sono</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-1-dicembre-gli-spari-davanti-alla-vecchia-casa-zeynep-tra-le/">My Home My Destiny 1° dicembre, gli spari davanti alla vecchia casa: Zeynep tra le due madri quando l&#x27;uomo in moto estrae la pistola</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>MY HOME MY DESTINY Anticipazioni 6-7 Novembre: Zeynep subisce ricatto morale dalla famiglia</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su My Home My Destiny</h3><ul><li><a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/">My Home My Destiny: la trama completa e come finisce</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/">My Home My Destiny, Zeynep ferma l&#x27;aborto di Benal in sala operatoria senza sapere che il padre è Mehdi</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/">My Home My Destiny, anticipazioni del 17 novembre: Özlem indaga su Zeynep e scopre tutto, Nuh diventa autista di Barış e qualcuno manomette i macchinari di Bekir</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-guida-alla-serie-chi-sono-demet-ozdemir-e-ibrahim-celikkol-qu/">My Home My Destiny: guida alla serie, il cast, i personaggi e quante puntate sono</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-1-dicembre-gli-spari-davanti-alla-vecchia-casa-zeynep-tra-le/">My Home My Destiny 1° dicembre, gli spari davanti alla vecchia casa: Zeynep tra le due madri quando l&#x27;uomo in moto estrae la pistola</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

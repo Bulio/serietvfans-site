@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/forbidden-fruit/">Forbidden Fruit</a> › Forbidden Fruit: Ender ha mandato lei Yıldız da suo marito, e ha perso tutto</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/forbidden-fruit/">Forbidden Fruit</a>
   <h1>Forbidden Fruit: Ender ha mandato lei Yıldız da suo marito, e ha perso tutto</h1>
-  <div class="firma">Redazione Serie TV Fans · mercoledì 26 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-26">mercoledì 26 agosto 2026</time></span><span>aggiornato il 29 agosto 2026</span><span>6 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Chi ha rovinato la vita a Ender Argun? Quasi tutti rispondono Yıldız. È la risposta sbagliata. Nessuno le ha tolto niente: Ender ha chiamato una ragazza, le ha spiegato per filo e per segno che cosa doveva fare a suo marito, e le ha promesso dei soldi per farlo.</p><ol><li><a href="#c1">Chi ha rovinato Ender?</a></li><li><a href="#c2">Due sorelle e la regina di Istanbul</a></li><li><a href="#c3">La fine: Ender fuori di casa</a></li><li><a href="#c4">Il piano, spiegato per intero</a></li><li><a href="#c5">L&#x27;errore: ha scelto una affamata</a></li><li><a href="#c6">Perché lo ha fatto davvero</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>Forbidden Fruit</strong> — Canale 5 · in streaming su Mediaset Infinity</span></div>
   
-  <p class="occhiello">Chi ha rovinato la vita a Ender Argun? Quasi tutti rispondono Yıldız. È la risposta sbagliata. Nessuno le ha tolto niente: Ender ha chiamato una ragazza, le ha spiegato per filo e per segno che cosa doveva fare a suo marito, e le ha promesso dei soldi per farlo.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: Forbidden Fruit: Ender ha mandato lei Yıldız da suo marito, e ha perso tutto" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/bepNyDWQFBI/maxresdefault.jpg" alt="Forbidden Fruit: Ender ha mandato lei Yıldız da suo marito, e ha perso tutto" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/bepNyDWQFBI/hqdefault.jpg 480w, https://i.ytimg.com/vi/bepNyDWQFBI/sddefault.jpg 640w, https://i.ytimg.com/vi/bepNyDWQFBI/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/bepNyDWQFBI/hqdefault.jpg&quot;, &quot;/fallback/forbidden-fruit.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,30 +409,30 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>Vi faccio una domanda, e prima di rispondere pensateci davvero. Chi ha rovinato la vita a Ender Argun in Forbidden Fruit?</strong></p>
-  <h2>Chi ha rovinato Ender?</h2>
+  <h2 id="c1">Chi ha rovinato Ender?</h2>
 <p>Se avete pensato a Yıldız, è la risposta che darebbero quasi tutti, ed è comprensibile. Ma è sbagliata. Nessuno ha tolto niente a Ender. Ender ha chiamato una ragazza, le ha spiegato per filo e per segno che cosa doveva fare a suo marito, e le ha promesso dei soldi per farlo. Tutto quello che è successo dopo, in Forbidden Fruit, nasce da quella conversazione lì.</p>
 <p>Qui prendiamo la storia di Ender e la percorriamo al contrario, dall&#x27;ultimo effetto fino alla prima causa. E vedrete che ogni volta che qualcuno la tradisce, la esclude o la umilia, sotto c&#x27;è sempre la stessa cosa: una porta che aveva aperto lei, con le sue mani, convinta di poterla richiudere quando voleva.</p>
-<h2>Due sorelle e la regina di Istanbul</h2>
+<h2 id="c2">Due sorelle e la regina di Istanbul</h2>
 <p>Mettiamo i nomi al loro posto per chi arriva adesso. Yasak Elma, che è il titolo originale di Forbidden Fruit, comincia con due sorelle che vivono in una casa piccola di Istanbul: Zeynep, che è quella con la testa sulle spalle, e Yıldız, che quella vita lì non la sopporta più. Dall&#x27;altra parte della città c&#x27;è Halit Argun, uno degli uomini più ricchi della città, e accanto a lui c&#x27;è sua moglie: Ender. E Ender non è una signora ricca qualunque. Ender è la donna che decide chi conta e chi non conta nell&#x27;alta società di Istanbul.</p>
-<h2>La fine: Ender fuori di casa</h2>
+<h2 id="c3">La fine: Ender fuori di casa</h2>
 <p>Alla fine Ender è fuori. Fuori dalla casa, fuori dal matrimonio, fuori dal posto che occupava. Halit divorzia da lei e sposa Yıldız, che è la ragazza che Ender aveva mandato lei. Da quel momento in avanti tutto quello che Ender fa nella serie ha un solo scopo, e non è la vendetta: è rientrare. Rientrare in quella casa, rientrare in quel giro, rientrare nella vita in cui era qualcuno.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>Tenete a mente questa parola, rientrare, perché è la parola che spiega Ender molto meglio di cattiveria o gelosia. Una persona che vuole vendetta vuole far male a qualcuno. Una persona che vuole rientrare vuole tornare a essere quella di prima. E sono due motori completamente diversi.</p>
 <p>E adesso torniamo indietro di un passo, alla mossa che l&#x27;ha buttata fuori.</p>
-<h2>Il piano, spiegato per intero</h2>
+<h2 id="c4">Il piano, spiegato per intero</h2>
 <p>Il piano di Ender era questo. Individuare una ragazza bella, giovane, senza soldi e con una gran voglia di averne. Presentarla a Halit. Farla arrivare abbastanza vicino da ottenere la prova di un tradimento. Con quella prova in mano, chiedere il divorzio da una posizione di forza e uscirne con una cifra enorme. Poi rimettere la ragazza da dove era venuta.</p>
 <p>E adesso ditemi voi se, sulla carta, non è un piano intelligente. Perché lo è. Ender non ha bisogno di inventarsi niente di illegale, non deve corrompere nessuno, non deve costruire una prova falsa: le basta mettere suo marito nelle condizioni di fare quello che secondo lei farebbe comunque. Ender non sta ingannando Halit sul suo carattere. Lo conosce, e conta esattamente su quello.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>Il difetto del piano non è in Halit. È nell&#x27;altra persona.</p>
 <p>Vi lascio qui la domanda su cui vi dividerete, e sceglietene una sola. Secondo voi Yıldız ha tradito il patto con Ender, oppure Ender le ha chiesto una cosa che nessuno avrebbe potuto fare senza restarci dentro? Scrivete TRADITO se pensate che Yıldız abbia rotto un accordo, scrivete IMPOSSIBILE se pensate che quel piano fosse condannato dall&#x27;inizio. Rispondete con una parola sola, poi si legge tutto nei commenti.</p>
 <p>Passo indietro numero due: la scelta della persona sbagliata.</p>
-<h2>L&#x27;errore: ha scelto una affamata</h2>
+<h2 id="c5">L&#x27;errore: ha scelto una affamata</h2>
 <p>Ender non sceglie una professionista. Non sceglie una donna del suo mondo, che sa quanto valgono le cose e sa quando fermarsi. Sceglie Yıldız, che è una ragazza affamata. E la fame è la cosa più difficile da controllare che esista, perché non ha un tetto. Una che vuole dei soldi si accontenta di una cifra. Una che vuole una vita non si accontenta di niente.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>Ender commette l&#x27;errore che commettono tutti quelli che comprano l&#x27;ambizione di qualcun altro: crede di stare noleggiando una persona. E invece le sta mostrando la porta di casa sua, le sta insegnando come si entra, e le sta dicendo esattamente che cosa piace all&#x27;uomo che sta dentro.</p>
 <p>C&#x27;è un altro dettaglio che vale la pena di notare. Ender manda Yıldız da Halit dicendole che cosa fare, e in quel momento le trasmette una cosa che i soldi non comprano: la sicurezza. Yıldız non arriva davanti a Halit come una ragazza qualsiasi che ci prova. Arriva sapendo. Sa che cosa lui guarda, sa come si comporta, sa dove colpire. Gliel&#x27;ha spiegato sua moglie.</p>
 <p>E il passo indietro successivo è quello che regge tutta la storia.</p>
-<h2>Perché lo ha fatto davvero</h2>
+<h2 id="c6">Perché lo ha fatto davvero</h2>
 <p>Perché Ender ha avuto bisogno di quel piano? Non era già ricca? Non era già la padrona di casa?</p>
 <p>Sì. Ed è proprio questo il punto, ed è quello che rende Forbidden Fruit una serie più cattiva di come si presenta. Ender non ha fatto quel piano per diventare più ricca. L&#x27;ha fatto perché aveva già capito che quel matrimonio era finito, e in un matrimonio finito, nel suo mondo, la donna che se ne va senza una carta in mano non se ne va con niente. Il piano di Ender è un piano difensivo. È una donna intelligente che si prepara a una caduta che vede arrivare.</p>
 <p>Solo che, per prepararsi alla caduta, l&#x27;ha anticipata di anni.</p>
@@ -394,19 +444,41 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=5V94fIjVobY" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/5V94fIjVobY/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>FORBIDDEN FRUIT: Yıldız senza un soldo punta a Çağatay come marito ricco 😱</span></a></li><li><a href="https://www.youtube.com/watch?v=-iw8jm__Vo0" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/-iw8jm__Vo0/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>FORBIDDEN FRUIT: Hasan Ali entra nella holding — nessuno si fida di nessuno 😨</span></a></li><li><a href="https://www.youtube.com/watch?v=4dfY6Ntt54Y" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/4dfY6Ntt54Y/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>FORBIDDEN FRUIT: Feride accusa Yıldız davanti a Çağatay, il sospetto che distrugge tutto 😨</span></a></li></ul></div>
   
+  <section class="correlati-serie"><h2>Altre anticipazioni di Forbidden Fruit</h2><div class="griglia"><article class="scheda">
+  <a href="/forbidden-fruit/forbidden-fruit-dal-31-agosto-il-conto-a-nome-di-halit-che-e-morto/"><div class="foto"><img src="/img/forbidden-fruit-dal-31-agosto-il-conto-a-nome-di-halit-che-e-morto.jpg" alt="Forbidden Fruit" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/forbidden-fruit.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Forbidden Fruit</span>
+    <h3><a href="/forbidden-fruit/forbidden-fruit-dal-31-agosto-il-conto-a-nome-di-halit-che-e-morto/">Forbidden Fruit Dal 31 Agosto: il conto a nome di Halit, che è morto</a></h3>
+    <div class="quando">31 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/forbidden-fruit/forbidden-fruit-che-fine-fa-zehra-perche-resta-lunica-libera/"><div class="foto"><img src="/img/forbidden-fruit-che-fine-fa-zehra-perche-resta-lunica-libera.jpg" alt="Forbidden Fruit" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/forbidden-fruit.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Forbidden Fruit</span>
+    <h3><a href="/forbidden-fruit/forbidden-fruit-che-fine-fa-zehra-perche-resta-lunica-libera/">Forbidden Fruit, che fine fa Zehra: perché resta l&#x27;unica libera mentre le altre finiscono in cella</a></h3>
+    <div class="quando">29 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/forbidden-fruit/forbidden-fruit-halit-e-vivo-o-e-morto-perche-al-funerale-si-sente-sono-vivo/"><div class="foto"><img src="/img/forbidden-fruit-halit-e-vivo-o-e-morto-perche-al-funerale-si-sente-sono-vivo.jpg" alt="Forbidden Fruit" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/forbidden-fruit.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Forbidden Fruit</span>
+    <h3><a href="/forbidden-fruit/forbidden-fruit-halit-e-vivo-o-e-morto-perche-al-funerale-si-sente-sono-vivo/">Forbidden Fruit, Halit è vivo o è morto: perché al funerale qualcuno sente «sono vivo»</a></h3>
+    <div class="quando">29 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=Forbidden Fruit: Ender ha mandato lei Yıldız da suo marito, e ha perso tutto — https://serietvfans.com/forbidden-fruit/forbidden-fruit-ender-ha-mandato-lei-yildiz-da-suo-marito-e-ha-perso-tutto/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/forbidden-fruit/forbidden-fruit-ender-ha-mandato-lei-yildiz-da-suo-marito-e-ha-perso-tutto/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/forbidden-fruit/forbidden-fruit-ender-ha-mandato-lei-yildiz-da-suo-marito-e-ha-perso-tutto/&text=Forbidden Fruit: Ender ha mandato lei Yıldız da suo marito, e ha perso tutto" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">FORBIDDEN FRUIT: Ender ha mandato lei Yıldız da suo marito, e ha perso tutto 😱</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=bepNyDWQFBI">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di Forbidden Fruit</h3><ol class="numerata"><li><a href="/forbidden-fruit/forbidden-fruit-dal-31-agosto-il-conto-a-nome-di-halit-che-e-morto/">Forbidden Fruit Dal 31 Agosto: il conto a nome di Halit, che è morto</a></li><li><a href="/forbidden-fruit/forbidden-fruit-che-fine-fa-zehra-perche-resta-lunica-libera/">Forbidden Fruit, che fine fa Zehra: perché resta l&#x27;unica libera mentre le altre finiscono in cella</a></li><li><a href="/forbidden-fruit/forbidden-fruit-halit-e-vivo-o-e-morto-perche-al-funerale-si-sente-sono-vivo/">Forbidden Fruit, Halit è vivo o è morto: perché al funerale qualcuno sente «sono vivo»</a></li><li><a href="/forbidden-fruit/forbidden-fruit-chi-e-davvero-zeynep-la-sorella-per-bene-che-ha-finito-peggio-di-yildiz/">Forbidden Fruit: chi è davvero Zeynep, la sorella «per bene» che ha finito peggio di Yıldız</a></li><li><a href="/forbidden-fruit/forbidden-fruit-cosa-dice-il-testamento-di-halit-la-quota-del-bambino-va-a-una-f/">Forbidden Fruit, cosa dice il testamento di Halit: la quota del bambino va a una fondazione, e Mert tradisce Kerim</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>FORBIDDEN FRUIT: Ender ha mandato lei Yıldız da suo marito, e ha perso tutto 😱</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su Forbidden Fruit</h3><ul><li><a href="/forbidden-fruit/forbidden-fruit-dal-31-agosto-il-conto-a-nome-di-halit-che-e-morto/">Forbidden Fruit Dal 31 Agosto: il conto a nome di Halit, che è morto</a></li><li><a href="/forbidden-fruit/forbidden-fruit-che-fine-fa-zehra-perche-resta-lunica-libera/">Forbidden Fruit, che fine fa Zehra: perché resta l&#x27;unica libera mentre le altre finiscono in cella</a></li><li><a href="/forbidden-fruit/forbidden-fruit-halit-e-vivo-o-e-morto-perche-al-funerale-si-sente-sono-vivo/">Forbidden Fruit, Halit è vivo o è morto: perché al funerale qualcuno sente «sono vivo»</a></li><li><a href="/forbidden-fruit/forbidden-fruit-chi-e-davvero-zeynep-la-sorella-per-bene-che-ha-finito-peggio-di-yildiz/">Forbidden Fruit: chi è davvero Zeynep, la sorella «per bene» che ha finito peggio di Yıldız</a></li><li><a href="/forbidden-fruit/forbidden-fruit-cosa-dice-il-testamento-di-halit-la-quota-del-bambino-va-a-una-f/">Forbidden Fruit, cosa dice il testamento di Halit: la quota del bambino va a una fondazione, e Mert tradisce Kerim</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

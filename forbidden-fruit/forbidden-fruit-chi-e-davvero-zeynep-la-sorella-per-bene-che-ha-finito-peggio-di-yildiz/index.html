@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/forbidden-fruit/">Forbidden Fruit</a> › Forbidden Fruit: chi è davvero Zeynep, la sorella «per bene» che ha finito peggio di Yıldız</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/forbidden-fruit/">Forbidden Fruit</a>
   <h1>Forbidden Fruit: chi è davvero Zeynep, la sorella «per bene» che ha finito peggio di Yıldız</h1>
-  <div class="firma">Redazione Serie TV Fans · giovedì 27 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-27">giovedì 27 agosto 2026</time></span><span>aggiornato il 3 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">La storia che ci hanno raccontato è che Yıldız fosse l&#x27;ambiziosa e Zeynep quella per bene. Rimessi i fatti in fila, l&#x27;unica delle due che ha detto la verità sulle proprie intenzioni è stata Yıldız. Zeynep lo capisce in un ufficio che dal giorno prima non è più suo: il lavoro onesto per cui ha studiato non la protegge da niente. E il passaggio più duro non è quando sbaglia, è quando vince.</p><ol><li><a href="#c1">L&#x27;ufficio che dal giorno prima non era più suo</a></li><li><a href="#c2">La sorella brava non era una scelta, era un ruolo</a></li><li><a href="#c3">Alihan compra l&#x27;azienda e il suo equilibrio</a></li><li><a href="#c4">Hira, e la scoperta che cambia tutto</a></li><li><a href="#c5">Il finale che sembra un premio</a></li><li><a href="#c6">Chi resta e chi parte</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>Forbidden Fruit</strong> — Canale 5 · in streaming su Mediaset Infinity</span></div>
   
-  <p class="occhiello">La storia che ci hanno raccontato è che Yıldız fosse l&#x27;ambiziosa e Zeynep quella per bene. Rimessi i fatti in fila, l&#x27;unica delle due che ha detto la verità sulle proprie intenzioni è stata Yıldız. Zeynep lo capisce in un ufficio che dal giorno prima non è più suo: il lavoro onesto per cui ha studiato non la protegge da niente. E il passaggio più duro non è quando sbaglia, è quando vince.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: Forbidden Fruit: chi è davvero Zeynep, la sorella «per bene» che ha finito peggio di Yıldız" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/oZ7UQzlz0uM/maxresdefault.jpg" alt="Forbidden Fruit: chi è davvero Zeynep, la sorella «per bene» che ha finito peggio di Yıldız" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/oZ7UQzlz0uM/hqdefault.jpg 480w, https://i.ytimg.com/vi/oZ7UQzlz0uM/sddefault.jpg 640w, https://i.ytimg.com/vi/oZ7UQzlz0uM/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/oZ7UQzlz0uM/hqdefault.jpg&quot;, &quot;/fallback/forbidden-fruit.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,7 +409,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>Fare la sorella brava non era una scelta: era un ruolo. Due sorelle in una casa piccola di Istanbul, in quella zona di mezzo dove vedi benissimo cosa c&#x27;è sopra di te e sai che non ci arriverai.</strong></p>
-  <h2>L&#x27;ufficio che dal giorno prima non era più suo</h2>
+  <h2 id="c1">L&#x27;ufficio che dal giorno prima non era più suo</h2>
 <p>C&#x27;è una scena di Forbidden Fruit che quasi nessuno ricorda, e che spiega tutto il resto.</p>
 <p>Zeynep è ferma in un ufficio che fino al giorno prima era il suo posto sicuro. Non è cambiato niente nella stanza. È cambiato solo il nome sulla porta. E lei capisce, in quel momento, che il lavoro onesto per cui ha studiato non la protegge da niente.</p>
 <p>Oggi in Forbidden Fruit il centro è Zeynep. E conviene avvertire subito: chi ha seguito questa serie tifando per lei contro sua sorella, qui cambierà idea almeno una volta.</p>
@@ -370,7 +420,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <p>Mettiamo a posto la situazione di partenza. Yıldız e Zeynep sono due sorelle che vivono in una casa piccola a Istanbul. Non sono ricche. Non sono nemmeno povere fino alla disperazione: sono in quella zona di mezzo che è la più scomoda di tutte, perché vedi benissimo cosa c&#x27;è sopra di te e sai altrettanto bene che non ci arriverai mai lavorando.</p>
 <p>Yıldız fa la cameriera in un ristorante dove mangiano persone ricche. Zeynep fa l&#x27;assistente in un&#x27;azienda.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>La sorella brava non era una scelta, era un ruolo</h2>
+<h2 id="c2">La sorella brava non era una scelta, era un ruolo</h2>
 <p>Sono due modi diversi di stare nella stessa stanza. Yıldız serve i ricchi e li guarda in faccia. Zeynep lavora per loro e non li vede mai.</p>
 <p>E qui c&#x27;è la prima cosa che di solito passa inosservata: la differenza tra le due sorelle non è morale, è di distanza. Yıldız ha il lusso davanti agli occhi tutte le sere. Zeynep ce l&#x27;ha dietro una porta chiusa, al piano dirigenza.</p>
 <p>Quando la serie ci presenta Zeynep come quella onesta e indipendente, ci sta dicendo una cosa vera ma parziale. Zeynep è onesta perché non ha ancora avuto l&#x27;occasione di non esserlo.</p>
@@ -380,7 +430,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <p>Secondo passaggio. Alihan compra l&#x27;azienda, e compra anche il suo equilibrio.</p>
 <p>L&#x27;azienda in cui lavora Zeynep viene acquistata da Alihan Alihan. Ricco, arrogante, abituato a decidere. E qui parte il meccanismo classico: scontro, tensione, attrazione.</p>
 <p>Ma guardiamolo da un altro lato. Quando Alihan compra quell&#x27;azienda, Zeynep si ritrova a dipendere da un uomo che non ha scelto, dentro un posto che credeva suo. Il suo capo non è più un capo qualunque: è uno che potrebbe portarla esattamente dove lei ha sempre detto di non voler andare.</p>
-<h2>Alihan compra l&#x27;azienda e il suo equilibrio</h2>
+<h2 id="c3">Alihan compra l&#x27;azienda e il suo equilibrio</h2>
 <p>E Zeynep fa una cosa molto umana e molto poco onesta: continua a raccontarsi che è una questione di lavoro.</p>
 <p>Notate la differenza con la sorella. Quando a Yıldız arriva la proposta di Ender, Yıldız sa perfettamente cosa sta accettando. È una scelta sporca, ma è consapevole. Zeynep invece scivola. Un passo alla volta, e ogni passo ha una giustificazione ragionevole.</p>
 <p>⁠È il modo in cui le persone perbene finiscono nei guai: non con una decisione, con una serie di eccezioni.</p>
@@ -389,7 +439,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <p>Terzo passaggio. Hira, e la scoperta che cambia tutto.</p>
 <p>Arriva il momento in cui Zeynep trova Alihan con Hira. E qui la serie fa una cosa interessante: non le dà solo il dolore del tradimento. Le dà anche l&#x27;informazione che la sua amica è davvero innamorata di lui.</p>
 <p>Cioè Zeynep si ritrova a scegliere tra il proprio interesse e la lealtà verso qualcuno che le vuole bene.</p>
-<h2>Hira, e la scoperta che cambia tutto</h2>
+<h2 id="c4">Hira, e la scoperta che cambia tutto</h2>
 <p>Se questa serie fosse la favola che sembrava all&#x27;inizio, la sorella onesta farebbe un passo indietro.</p>
 <p>Non fa un passo indietro.</p>
 <p>E attenzione, non lo dico per condannarla. Lo dico perché è il punto in cui Zeynep smette di essere il personaggio buono e diventa un personaggio vero. Da qui in avanti non è più la sorella brava contrapposta a quella ambiziosa: sono due donne che vogliono la stessa cosa, e una delle due ha ancora la reputazione di non volerla.</p>
@@ -398,7 +448,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <p>Chi delle due sorelle è stata più onesta: Yıldız, che ha detto apertamente quello che voleva e si è presa la colpa di volerlo, oppure Zeynep, che voleva la stessa vita ma non l&#x27;ha mai ammesso nemmeno a se stessa?</p>
 <p>Scrivete YILDIZ oppure ZEYNEP. Una parola sola, così si capisce subito come la pensa la maggioranza.</p>
 <p>Quarto passaggio. Il finale che sembra un premio, e non lo è.</p>
-<h2>Il finale che sembra un premio</h2>
+<h2 id="c5">Il finale che sembra un premio</h2>
 <p>Zeynep e Alihan alla fine si sposano e partono per l&#x27;America.</p>
 <p>Sulla carta è il lieto fine. È quello che il pubblico chiedeva da stagioni.</p>
 <p>Ma fermatevi un secondo su cosa significa dentro questa storia.</p>
@@ -407,7 +457,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <p>L&#x27;America, in Forbidden Fruit, non è un premio. È il posto dove puoi ricominciare a essere quella brava, davanti a gente che non ti ha vista diventare l&#x27;altra.</p>
 <p>E qui c&#x27;è il paradosso che rende questa serie migliore di quello che sembra. Yıldız resta. Zeynep parte. Quella che secondo tutti aveva sbagliato tutto rimane a giocare a carte scoperte, e quella che aveva ragione ha bisogno di un oceano tra sé e i testimoni.</p>
 <p>Adesso, e lo dico chiaramente perché è l&#x27;unica parte non dimostrata di questa ricostruzione, le anticipazioni turche lasciano intendere che questo tipo di uscita di scena non chiude mai davvero un personaggio in queste produzioni. Un ritorno non è mai escluso. Ma è una possibilità, non un fatto, e non voglio vendervela per altro.</p>
-<h2>Chi resta e chi parte</h2>
+<h2 id="c6">Chi resta e chi parte</h2>
 <p>Quello che invece è un fatto è come Forbidden Fruit ha trattato le sue due protagoniste.</p>
 <p>Ha dato a Yıldız tutta la colpa e le ha lasciato la libertà.</p>
 <p>Ha dato a Zeynep tutta la simpatia del pubblico, e se l&#x27;è portata via su un aereo.</p>
@@ -418,19 +468,41 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=4dfY6Ntt54Y" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/4dfY6Ntt54Y/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>FORBIDDEN FRUIT: Feride accusa Yıldız davanti a Çağatay, il sospetto che distrugge tutto 😨</span></a></li><li><a href="https://www.youtube.com/watch?v=5V94fIjVobY" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/5V94fIjVobY/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>FORBIDDEN FRUIT: Yıldız senza un soldo punta a Çağatay come marito ricco 😱</span></a></li><li><a href="https://www.youtube.com/watch?v=2gHOtfw_n0A" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/2gHOtfw_n0A/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>FORBIDDEN FRUIT: HALIT MUORE Cadendo dalle Scale! Il Testamento Lascia Yildiz Senza Nulla 😱</span></a></li></ul></div>
   
+  <section class="correlati-serie"><h2>Altre anticipazioni di Forbidden Fruit</h2><div class="griglia"><article class="scheda">
+  <a href="/forbidden-fruit/forbidden-fruit-dal-31-agosto-il-conto-a-nome-di-halit-che-e-morto/"><div class="foto"><img src="/img/forbidden-fruit-dal-31-agosto-il-conto-a-nome-di-halit-che-e-morto.jpg" alt="Forbidden Fruit" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/forbidden-fruit.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Forbidden Fruit</span>
+    <h3><a href="/forbidden-fruit/forbidden-fruit-dal-31-agosto-il-conto-a-nome-di-halit-che-e-morto/">Forbidden Fruit Dal 31 Agosto: il conto a nome di Halit, che è morto</a></h3>
+    <div class="quando">31 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/forbidden-fruit/forbidden-fruit-che-fine-fa-zehra-perche-resta-lunica-libera/"><div class="foto"><img src="/img/forbidden-fruit-che-fine-fa-zehra-perche-resta-lunica-libera.jpg" alt="Forbidden Fruit" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/forbidden-fruit.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Forbidden Fruit</span>
+    <h3><a href="/forbidden-fruit/forbidden-fruit-che-fine-fa-zehra-perche-resta-lunica-libera/">Forbidden Fruit, che fine fa Zehra: perché resta l&#x27;unica libera mentre le altre finiscono in cella</a></h3>
+    <div class="quando">29 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/forbidden-fruit/forbidden-fruit-halit-e-vivo-o-e-morto-perche-al-funerale-si-sente-sono-vivo/"><div class="foto"><img src="/img/forbidden-fruit-halit-e-vivo-o-e-morto-perche-al-funerale-si-sente-sono-vivo.jpg" alt="Forbidden Fruit" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/forbidden-fruit.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Forbidden Fruit</span>
+    <h3><a href="/forbidden-fruit/forbidden-fruit-halit-e-vivo-o-e-morto-perche-al-funerale-si-sente-sono-vivo/">Forbidden Fruit, Halit è vivo o è morto: perché al funerale qualcuno sente «sono vivo»</a></h3>
+    <div class="quando">29 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=Forbidden Fruit: chi è davvero Zeynep, la sorella «per bene» che ha finito peggio di Yıldız — https://serietvfans.com/forbidden-fruit/forbidden-fruit-chi-e-davvero-zeynep-la-sorella-per-bene-che-ha-finito-peggio-di-yildiz/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/forbidden-fruit/forbidden-fruit-chi-e-davvero-zeynep-la-sorella-per-bene-che-ha-finito-peggio-di-yildiz/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/forbidden-fruit/forbidden-fruit-chi-e-davvero-zeynep-la-sorella-per-bene-che-ha-finito-peggio-di-yildiz/&text=Forbidden Fruit: chi è davvero Zeynep, la sorella «per bene» che ha finito peggio di Yıldız" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">Forbidden Fruit: chi è davvero Zeynep, la sorella «per bene» che ha finito peggio di Yıldız</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=oZ7UQzlz0uM">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di Forbidden Fruit</h3><ol class="numerata"><li><a href="/forbidden-fruit/forbidden-fruit-dal-31-agosto-il-conto-a-nome-di-halit-che-e-morto/">Forbidden Fruit Dal 31 Agosto: il conto a nome di Halit, che è morto</a></li><li><a href="/forbidden-fruit/forbidden-fruit-che-fine-fa-zehra-perche-resta-lunica-libera/">Forbidden Fruit, che fine fa Zehra: perché resta l&#x27;unica libera mentre le altre finiscono in cella</a></li><li><a href="/forbidden-fruit/forbidden-fruit-halit-e-vivo-o-e-morto-perche-al-funerale-si-sente-sono-vivo/">Forbidden Fruit, Halit è vivo o è morto: perché al funerale qualcuno sente «sono vivo»</a></li><li><a href="/forbidden-fruit/forbidden-fruit-cosa-dice-il-testamento-di-halit-la-quota-del-bambino-va-a-una-f/">Forbidden Fruit, cosa dice il testamento di Halit: la quota del bambino va a una fondazione, e Mert tradisce Kerim</a></li><li><a href="/forbidden-fruit/forbidden-fruit-ender-ha-mandato-lei-yildiz-da-suo-marito-e-ha-perso-tutto/">Forbidden Fruit: Ender ha mandato lei Yıldız da suo marito, e ha perso tutto</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>Ogni anticipazione, prima in video sul canale Serie TV Fans</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su Forbidden Fruit</h3><ul><li><a href="/forbidden-fruit/forbidden-fruit-dal-31-agosto-il-conto-a-nome-di-halit-che-e-morto/">Forbidden Fruit Dal 31 Agosto: il conto a nome di Halit, che è morto</a></li><li><a href="/forbidden-fruit/forbidden-fruit-che-fine-fa-zehra-perche-resta-lunica-libera/">Forbidden Fruit, che fine fa Zehra: perché resta l&#x27;unica libera mentre le altre finiscono in cella</a></li><li><a href="/forbidden-fruit/forbidden-fruit-halit-e-vivo-o-e-morto-perche-al-funerale-si-sente-sono-vivo/">Forbidden Fruit, Halit è vivo o è morto: perché al funerale qualcuno sente «sono vivo»</a></li><li><a href="/forbidden-fruit/forbidden-fruit-cosa-dice-il-testamento-di-halit-la-quota-del-bambino-va-a-una-f/">Forbidden Fruit, cosa dice il testamento di Halit: la quota del bambino va a una fondazione, e Mert tradisce Kerim</a></li><li><a href="/forbidden-fruit/forbidden-fruit-ender-ha-mandato-lei-yildiz-da-suo-marito-e-ha-perso-tutto/">Forbidden Fruit: Ender ha mandato lei Yıldız da suo marito, e ha perso tutto</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

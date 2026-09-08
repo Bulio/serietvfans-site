@@ -12,7 +12,7 @@
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Serie TV Fans">
 <meta property="og:url" content="https://serietvfans.com/terra-amara/chi-e-asmet-colak-il-cattivo-che-entra-in-scena-nellultima-parte-di-terra-amara/">
-<meta property="og:image" content="https://i.ytimg.com/vi/7No-HaXhWns/maxresdefault.jpg">
+<meta property="og:image" content="https://serietvfans.com/img/chi-e-asmet-colak-il-cattivo-che-entra-in-scena-nellultima-parte-di-terra-amara.jpg">
 <meta property="og:locale" content="it_IT">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#7b1e2b">
@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -318,12 +367,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7778653397776213" crossorigin="anonymous"></script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "96259d7e67ce47fba4573364859712a6"}'></script>
 <script>(function(){var f=0;function go(){if(f)return;f=1;(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","y3rpoig6jk");}["pointerdown","keydown","touchstart","scroll"].forEach(function(v){addEventListener(v,go,{once:1,passive:1})});setTimeout(go,2500)})();</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Chi è Çolak Çolak, il cattivo che entra in scena nell'ultima parte di Terra Amara: vent'anni di carcere alle spalle e un solo obiettivo, riprendersi la terra", "datePublished": "2026-08-14", "dateModified": "2026-09-04", "description": "Non arriva in punta di piedi: vuole che tutta Çukurova sappia che è tornato. E la prima cosa che fa è presentarsi da Züleyha per reclamare i terreni che sostiene gli siano stati sottratti da Demir.", "inLanguage": "it-IT", "mainEntityOfPage": "https://serietvfans.com/terra-amara/chi-e-asmet-colak-il-cattivo-che-entra-in-scena-nellultima-parte-di-terra-amara/", "image": ["https://i.ytimg.com/vi/7No-HaXhWns/maxresdefault.jpg"], "author": {"@type": "Organization", "name": "Serie TV Fans", "url": "https://serietvfans.com/chi-siamo/"}, "publisher": {"@type": "Organization", "name": "Serie TV Fans", "logo": {"@type": "ImageObject", "url": "https://serietvfans.com/favicon.svg"}}, "video": {"@type": "VideoObject", "name": "Terra Amara anticipazioni: chi è Çolak, il nuovo cattivo che vuole uccidere Züleyha", "description": "Non arriva in punta di piedi: vuole che tutta Çukurova sappia che è tornato. E la prima cosa che fa è presentarsi da Züleyha per reclamare i terreni che sostiene gli siano stati sottratti da Demir.", "thumbnailUrl": "https://i.ytimg.com/vi/7No-HaXhWns/maxresdefault.jpg", "uploadDate": "2026-08-14T12:00:00Z", "embedUrl": "https://www.youtube.com/embed/7No-HaXhWns"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Chi è Çolak Çolak, il cattivo che entra in scena nell'ultima parte di Terra Amara: vent'anni di carcere alle spalle e un solo obiettivo, riprendersi la terra", "datePublished": "2026-08-14", "dateModified": "2026-09-08", "description": "Non arriva in punta di piedi: vuole che tutta Çukurova sappia che è tornato. E la prima cosa che fa è presentarsi da Züleyha per reclamare i terreni che sostiene gli siano stati sottratti da Demir.", "inLanguage": "it-IT", "mainEntityOfPage": "https://serietvfans.com/terra-amara/chi-e-asmet-colak-il-cattivo-che-entra-in-scena-nellultima-parte-di-terra-amara/", "image": ["https://serietvfans.com/img/chi-e-asmet-colak-il-cattivo-che-entra-in-scena-nellultima-parte-di-terra-amara.jpg"], "author": {"@type": "Organization", "name": "Serie TV Fans", "url": "https://serietvfans.com/chi-siamo/"}, "publisher": {"@type": "Organization", "name": "Serie TV Fans", "logo": {"@type": "ImageObject", "url": "https://serietvfans.com/favicon.svg"}}, "video": {"@type": "VideoObject", "name": "Terra Amara anticipazioni: chi è Çolak, il nuovo cattivo che vuole uccidere Züleyha", "description": "Non arriva in punta di piedi: vuole che tutta Çukurova sappia che è tornato. E la prima cosa che fa è presentarsi da Züleyha per reclamare i terreni che sostiene gli siano stati sottratti da Demir.", "thumbnailUrl": "https://serietvfans.com/img/chi-e-asmet-colak-il-cattivo-che-entra-in-scena-nellultima-parte-di-terra-amara.jpg", "uploadDate": "2026-08-14T12:00:00Z", "embedUrl": "https://www.youtube.com/embed/7No-HaXhWns"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://serietvfans.com/"}, {"@type": "ListItem", "position": 2, "name": "Terra Amara", "item": "https://serietvfans.com/serie/terra-amara/"}, {"@type": "ListItem", "position": 3, "name": "Chi è Çolak Çolak, il cattivo che entra in scena nell'ultima parte di Terra Amara: vent'anni di carcere alle spalle e un solo obiettivo, riprendersi la terra"}]}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,19 +385,18 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/terra-amara/">Terra Amara</a> › Chi è Çolak Çolak, il cattivo che entra in scena nell&#x27;ultima parte di Terra Amara: vent&#x27;anni di carcere alle spalle e un solo obiettivo, riprendersi la terra</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/terra-amara/">Terra Amara</a>
   <h1>Chi è Çolak Çolak, il cattivo che entra in scena nell&#x27;ultima parte di Terra Amara: vent&#x27;anni di carcere alle spalle e un solo obiettivo, riprendersi la terra</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 8 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Non arriva in punta di piedi: vuole che tutta Çukurova sappia che è tornato. E la prima cosa che fa è presentarsi da Züleyha per reclamare i terreni che sostiene gli siano stati sottratti da Demir.</p><ol><li><a href="#c1">Da dove viene</a></li><li><a href="#c2">Cosa vuole</a></li><li><a href="#c3">Chi è Züleyha, la prima persona che Çolak va a cercare</a></li><li><a href="#c4">Perché arriva proprio adesso</a></li><li><a href="#c5">Çolak agisce da solo?</a></li><li><a href="#c6">L&#x27;attore: Altan Gördüm</a></li><li><a href="#c7">Perché conta: a Çukurova la proprietà torna a essere discutibile</a></li><li><a href="#c8">Come Çolak affronta Züleyha dopo l&#x27;uscita dal carcere</a></li><li><a href="#c9">Cosa nasconde Çolak dietro la sua violenza senza scrupoli</a></li><li><a href="#c10">Quale legame unisce Altan Gördüm alla storia di Terra Amara</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>Terra Amara</strong> — Serie conclusa in Italia · tutte le puntate su Mediaset Infinity</span></div>
-  
-  <p class="occhiello">Non arriva in punta di piedi: vuole che tutta Çukurova sappia che è tornato. E la prima cosa che fa è presentarsi da Züleyha per reclamare i terreni che sostiene gli siano stati sottratti da Demir.</p>
+  <figure class="copertina"><img src="/img/chi-e-asmet-colak-il-cattivo-che-entra-in-scena-nellultima-parte-di-terra-amara.jpg" alt="Terra Amara"><figcaption>Immagine d&#x27;ambiente — Terra Amara</figcaption></figure>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
     <button type="button" class="avvia" data-yt="7No-HaXhWns"
       aria-label="Riproduci il video: Chi è Çolak Çolak, il cattivo che entra in scena nell&#x27;ultima parte di Terra Amara: vent&#x27;anni di carcere alle spalle e un solo obiettivo, riprendersi la terra" onclick="ytGo(this)">
-      <img src="https://i.ytimg.com/vi/7No-HaXhWns/maxresdefault.jpg" alt="Chi è Çolak Çolak, il cattivo che entra in scena nell&#x27;ultima parte di Terra Amara: vent&#x27;anni di carcere alle spalle e un solo obiettivo, riprendersi la terra" width="1280" height="720"
-        srcset="https://i.ytimg.com/vi/7No-HaXhWns/hqdefault.jpg 480w, https://i.ytimg.com/vi/7No-HaXhWns/sddefault.jpg 640w, https://i.ytimg.com/vi/7No-HaXhWns/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+      <img src="/img/chi-e-asmet-colak-il-cattivo-che-entra-in-scena-nellultima-parte-di-terra-amara.jpg" alt="Chi è Çolak Çolak, il cattivo che entra in scena nell&#x27;ultima parte di Terra Amara: vent&#x27;anni di carcere alle spalle e un solo obiettivo, riprendersi la terra" width="1280" height="720"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/7No-HaXhWns/hqdefault.jpg&quot;, &quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,48 +407,70 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>A interpretarlo è Altan Gördüm, attore nato proprio ad Adana.</strong></p>
-  <h2>Da dove viene</h2>
+  <h2 id="c1">Da dove viene</h2>
 <p>Çolak Çolak arriva a Çukurova dopo vent&#x27;anni di carcere: era stato condannato a trenta per la morte di otto persone, in una vicenda nata da una disputa su un terreno, e la pena gli è stata poi ridotta. È proprio la brevità di quella detenzione, rispetto a quello che ha fatto, a far storcere la bocca a mezza città quando lo rivede in giro. Il personaggio è costruito per essere riconoscibile a colpo d&#x27;occhio: un uomo duro, calvo, con i baffi e uno sguardo che non concede niente.</p>
-<h2>Cosa vuole</h2>
+<h2 id="c2">Cosa vuole</h2>
 <p>Il suo obiettivo è dichiarato e non ha sfumature: tornare a essere l&#x27;uomo più ricco e potente di Çukurova, riprendersi tutte le terre che considera sue e presentare il conto a chiunque gli debba qualcosa. Per questo la prima persona che va a cercare è Züleyha — perché è lei, adesso, a rappresentare i Yaman. E non ha nessuna intenzione di trattare: la terra è l&#x27;unica cosa che ha in testa, e chiunque si metta in mezzo diventa automaticamente un problema da risolvere.</p>
-<h2>Chi è Züleyha, la prima persona che Çolak va a cercare</h2>
+<h2 id="c3">Chi è Züleyha, la prima persona che Çolak va a cercare</h2>
 <p>Per capire il peso di quella visita bisogna sapere chi si trova dall&#x27;altra parte del tavolo. Züleyha non è nata a Çukurova e non ci è arrivata da signora: è la donna che in quella terra è stata prima serva, poi moglie, poi vedova, e che alla fine si è ritrovata a guidare i Yaman in un posto dove il comando era sempre stato faccenda da uomini. Dopo Hünkar è la seconda a occupare quel ruolo, e ci è arrivata avendo già perso quasi tutto quello che c&#x27;era da perdere. È esattamente il tipo di avversario che un uomo come Çolak non mette in conto: qualcuno che non ha più molto da farsi togliere.</p>
-<h2>Perché arriva proprio adesso</h2>
+<h2 id="c4">Perché arriva proprio adesso</h2>
 <p>L&#x27;ingresso di un personaggio del genere nella parte finale della serie ha una funzione precisa: rimettere in discussione l&#x27;unica cosa che a Çukurova era rimasta stabile, cioè il possesso della terra. Con Demir fuori dai giochi e Züleyha alla guida, un uomo che rivendica proprietà con vent&#x27;anni di rancore alle spalle è la minaccia più concreta possibile — e non arriva da solo, perché per fare quello che ha in mente si porta dietro chi lo aiuta a farlo.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Çolak agisce da solo?</h2>
+<h2 id="c5">Çolak agisce da solo?</h2>
 <p>No, ed è la parte che rende il personaggio davvero pericoloso. Attorno a lui si muovono gli uomini che il traffico d&#x27;armi aveva già portato a Çukurova, e la sua è una violenza operativa più che rabbiosa: quando scopre chi ha piazzato un ordigno nell&#x27;auto di Hakan, lo elimina e lo seppellisce senza che la cosa arrivi a nessuno, con un solo testimone che sa di dover tacere. E soprattutto non è lui a scegliere sempre i bersagli: c&#x27;è chi, dentro la famiglia, ha interesse a spingerlo contro gli Yaman e a fargli comprare le proprietà giuste al momento giusto. Çolak crede di riprendersi la sua terra; in più di un&#x27;occasione sta eseguendo il piano di qualcun altro.</p>
-<h2>L&#x27;attore: Altan Gördüm</h2>
+<h2 id="c6">L&#x27;attore: Altan Gördüm</h2>
 <p>Dietro Çolak c&#x27;è Altan Gördüm, attore nato ad Adana e molto noto in Turchia, con una carriera lunga che parte dal teatro e arriva al cinema e alla televisione. C&#x27;è anche una curiosità che farà sorridere chi segue la serie: è stato sposato per oltre vent&#x27;anni con Vahide Perçin, cioè l&#x27;attrice che in Terra Amara interpreta Hünkar; oggi sono separati ma in ottimi rapporti. Loro figlia ha seguito le stesse orme ed è anche lei attrice. Sui social Gördüm mostra un lato agli antipodi del personaggio che interpreta: viaggi, natura e gatti.</p>
-<h2>Perché conta: a Çukurova la proprietà torna a essere discutibile</h2>
+<h2 id="c7">Perché conta: a Çukurova la proprietà torna a essere discutibile</h2>
 <p>L&#x27;arrivo di un uomo così rimette in discussione l&#x27;unica cosa che in quella storia era sempre stata data per certa: che la terra appartenga a chi la tiene. Finché il conflitto era tra famiglie, i confini reggevano; con qualcuno che rivendica proprietà a partire da una disputa vecchia di vent&#x27;anni, ogni atto e ogni firma tornano contestabili. E cambia anche il ruolo di chi sta in mezzo: i braccianti, i sorveglianti, chi lavora nei campi degli Yaman scopre che il proprio posto dipende da una causa che non li riguarda. È il motivo per cui questo personaggio entra proprio nella parte finale della serie — serve qualcuno che minacci non le persone, ma il terreno su cui stanno in piedi.</p>
-<h2>Come Çolak affronta Züleyha dopo l&#x27;uscita dal carcere</h2>
+<h2 id="c8">Come Çolak affronta Züleyha dopo l&#x27;uscita dal carcere</h2>
 <p>L&#x27;uscita dal carcere dopo vent&#x27;anni segna l&#x27;inizio di una nuova fase di scontro a Çukurova, dove la presenza di Çolak provoca subito forte malumore tra i residenti. Condannato in origine a trent&#x27;anni per la morte di otto persone a causa di una disputa sulle terre, l&#x27;uomo beneficia di uno sconto di pena che la città considera ingiusto. Il suo aspetto rigido, caratterizzato dalla testa calva, dai baffi pronunciati e da uno sguardo privo di concessioni, rende immediatamente evidente la determinazione con cui intende muoversi. Non appena torna libero, Çolak sceglie di non nascondersi affatto, dichiarando aperto il confronto e andando dritto alla porta della famiglia Yaman per reclamare ciò che ritiene suo.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>A fare le veci della famiglia trova Züleyha, una figura che ha vissuto un&#x27;evoluzione complessa all&#x27;interno della tenuta, passando da semplice serva a moglie e poi a vedova. Dopo la scomparsa di Hünkar e con Demir ormai fuori dai giochi, la donna ha preso in mano la guida delle proprietà, dimostrando di potersi imporre in un contesto tradizionalmente maschile. Çolak la affronta convinto di trovarsi di fronte a un ostacolo facile da superare, senza valutare che Züleyha ha già perso quasi tutto nella vita e non ha intenzione di cedere i terreni rivendicati. La disputa si trasforma così in un duello diretto per il controllo economico dell&#x27;intera regione.</p>
-<h2>Cosa nasconde Çolak dietro la sua violenza senza scrupoli</h2>
+<h2 id="c9">Cosa nasconde Çolak dietro la sua violenza senza scrupoli</h2>
 <p>La pericolosità di Çolak non deriva soltanto dalla sua determinazione personale, ma anche dalla rete di contatti legati al traffico d&#x27;armi giunti in passato in città. Quando scopre l&#x27;identità del responsabile dell&#x27;ordigno collocato nell&#x27;automobile di Hakan, il villain agisce con spietata efficienza operativa: elimina l&#x27;uomo e lo fa seppellire nell&#x27;ombra, lasciando un unico testimone spaventato e costretto al silenzio. Questo episodio mostra come la sua violenza sia calcolata e priva di scatti emotivi, pensata per mantenere il pieno controllo senza attirare inutili attenzioni ufficiali. Chiunque cerchi di ostacolare i suoi progetti legati al possesso della terra diventa un bersaglio da eliminare rapidamente.</p>
 <p>Oltre alla forza bruta, la strategia di Çolak viene influenzata da un elemento interno alla famiglia Yaman, che lo spinge ad agire secondo un disegno ben preciso. C&#x27;è infatti chi sfrutta il suo livore e la sua sete di potere per spingerlo a rilevare le proprietà ritenute strategiche nel momento più opportuno. Convinto di muoversi in autonomia per diventare l&#x27;uomo più ricco e potente di Çukurova, il nuovo arrivato finisce per eseguire le manovre di altri, destabilizzando la vita dei braccianti e dei lavoratori dei campi. Questo intreccio mette in discussione contratti e atti di vendita, trasformando ogni certezza sui confini terrieri in un motivo di costante tensione.</p>
-<h2>Quale legame unisce Altan Gördüm alla storia di Terra Amara</h2>
+<h2 id="c10">Quale legame unisce Altan Gördüm alla storia di Terra Amara</h2>
 <p>Dietro la figura cupa e minacciosa di Çolak c&#x27;è il lavoro dell&#x27;attore Altan Gördüm, un volto celebre dello spettacolo turco nato proprio ad Adana, luogo in cui è ambientata la vicenda. Con una carriera consolidata che spazia dal teatro al cinema fino ai successi televisivi, l&#x27;interprete offre una recitazione intensa che contrasta fortemente con la sua vita privata. Chi lo segue sui canali social scopre infatti una personalità solare, appassionata di viaggi, natura e gatti, lontanissima dalla spietatezza mostrata sullo schermo. La sua capacità di trasformarsi rende il personaggio ancora più incisivo, portando sul set una figura capace di stravolgere gli equilibri narrativi.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>La presenza di Gördüm nel cast racchiude anche un dettaglio curioso che lega la sua vita reale al set della celebre soap opera. L&#x27;attore è stato infatti sposato per oltre vent&#x27;anni con Vahide Perçin, l&#x27;attrice che presta il volto alla storica matrona Hünkar Yaman, e dai due è nata una figlia che ha intrapreso la medesima carriera artistica. Nonostante la separazione, i due ex coniugi mantengono ottimi rapporti, creando un intreccio singolare tra realtà e finzione all&#x27;interno della stessa produzione. Il suo personaggio giunge nel finale di stagione proprio per destabilizzare la terra guidata da Züleyha, portando a compimento le dinamiche legate alla proprietà dei campi.</p>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=KP9waZKOH9Y" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/KP9waZKOH9Y/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TERRA AMARA Anticipazioni 23-24 Novembre: Demir accecato dall&#x27;ira vuole uccidere Fikret!</span></a></li><li><a href="https://www.youtube.com/watch?v=h89zSaILrkg" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/h89zSaILrkg/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TERRA AMARA Anticipazioni: Assalto alla villa, Demir scompare! Hakan entra in scena!</span></a></li><li><a href="https://www.youtube.com/watch?v=Lna_nGY7yJU" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/Lna_nGY7yJU/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TERRA AMARA Anticipazioni: Arriva il padre di Umit in cerca di giustizia| Zuleyha rischia il ca</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Çolak riuscirà a mettere le mani sulle terre degli Yaman?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=7No-HaXhWns">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di Terra Amara</h2><div class="griglia"><article class="scheda">
+  <a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/"><div class="foto"><img src="/img/terra-amara-la-trama-completa-e-come-finisce.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></h3>
+    <div class="quando">30 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/"><div class="foto"><img src="https://i.ytimg.com/vi/_ypSJU-x7LY/hqdefault.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/"><div class="foto"><img src="https://i.ytimg.com/vi/B_MLx-0yh6M/hqdefault.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=Chi è Çolak Çolak, il cattivo che entra in scena nell&#x27;ultima parte di Terra Amara: vent&#x27;anni di carcere alle spalle e un solo obiettivo, riprendersi la terra — https://serietvfans.com/terra-amara/chi-e-asmet-colak-il-cattivo-che-entra-in-scena-nellultima-parte-di-terra-amara/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/terra-amara/chi-e-asmet-colak-il-cattivo-che-entra-in-scena-nellultima-parte-di-terra-amara/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/terra-amara/chi-e-asmet-colak-il-cattivo-che-entra-in-scena-nellultima-parte-di-terra-amara/&text=Chi è Çolak Çolak, il cattivo che entra in scena nell&#x27;ultima parte di Terra Amara: vent&#x27;anni di carcere alle spalle e un solo obiettivo, riprendersi la terra" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">Terra Amara anticipazioni: chi è Çolak, il nuovo cattivo che vuole uccidere Züleyha</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=7No-HaXhWns">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di Terra Amara</h3><ol class="numerata"><li><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></li><li><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></li><li><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></li><li><a href="/terra-amara/terra-amara-come-finisce-davvero-zuleyha-vince-tutto-e-resta-sola/">Terra Amara: come finisce davvero, Züleyha vince tutto e resta sola</a></li><li><a href="/terra-amara/terra-amara-come-muore-demir-yaman-chi-ha-dato-lordine-e-perche-doveva-essere-un-rapimento/">Terra Amara, come muore Demir Yaman: chi ha dato l&#x27;ordine e perché doveva essere un rapimento</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>Terra Amara anticipazioni: chi è Çolak, il nuovo cattivo che vuole uccidere Züleyha</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su Terra Amara</h3><ul><li><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></li><li><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></li><li><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></li><li><a href="/terra-amara/terra-amara-come-finisce-davvero-zuleyha-vince-tutto-e-resta-sola/">Terra Amara: come finisce davvero, Züleyha vince tutto e resta sola</a></li><li><a href="/terra-amara/terra-amara-come-muore-demir-yaman-chi-ha-dato-lordine-e-perche-doveva-essere-un-rapimento/">Terra Amara, come muore Demir Yaman: chi ha dato l&#x27;ordine e perché doveva essere un rapimento</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

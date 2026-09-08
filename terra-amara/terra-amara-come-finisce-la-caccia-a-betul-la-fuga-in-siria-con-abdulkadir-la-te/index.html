@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/terra-amara/">Terra Amara</a> › Terra Amara, come finisce la caccia a Betül: la fuga in Siria con Abdülkadir, la telefonata a Füsun che la tradisce e la condanna</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/terra-amara/">Terra Amara</a>
   <h1>Terra Amara, come finisce la caccia a Betül: la fuga in Siria con Abdülkadir, la telefonata a Füsun che la tradisce e la condanna</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Betül aveva puntato Züleyha e ha colpito la persona sbagliata. Da quel momento in poi la sua storia è una fuga che dura finché non fa l&#x27;unica cosa che non doveva fare: cercare qualcuno di casa.</p><ol><li><a href="#c1">L&#x27;errore che cambia tutto</a></li><li><a href="#c2">Chi è Betül, e perché voleva Züleyha fuori dai giochi</a></li><li><a href="#c3">La Siria</a></li><li><a href="#c4">Perché a morire è Hakan e non Züleyha</a></li><li><a href="#c5">La telefonata sbagliata</a></li><li><a href="#c6">La cattura e il processo</a></li><li><a href="#c7">Perché conta: Betül ha bruciato l&#x27;unica che l&#x27;aveva salvata</a></li><li><a href="#c8">Come Şermin perde la sola amica Füsun</a></li><li><a href="#c9">Cosa spinge Abdülkadir alla fuga con Betül</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>Terra Amara</strong> — Serie conclusa in Italia · tutte le puntate su Mediaset Infinity</span></div>
   
-  <p class="occhiello">Betül aveva puntato Züleyha e ha colpito la persona sbagliata. Da quel momento in poi la sua storia è una fuga che dura finché non fa l&#x27;unica cosa che non doveva fare: cercare qualcuno di casa.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: Terra Amara, come finisce la caccia a Betül: la fuga in Siria con Abdülkadir, la telefonata a Füsun che la tradisce e la condanna" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/9voKsYcanZc/maxresdefault.jpg" alt="Terra Amara, come finisce la caccia a Betül: la fuga in Siria con Abdülkadir, la telefonata a Füsun che la tradisce e la condanna" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/9voKsYcanZc/hqdefault.jpg 480w, https://i.ytimg.com/vi/9voKsYcanZc/sddefault.jpg 640w, https://i.ytimg.com/vi/9voKsYcanZc/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/9voKsYcanZc/hqdefault.jpg&quot;, &quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,27 +409,27 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>A consegnarla è la persona da cui si aspettava protezione.</strong></p>
-  <h2>L&#x27;errore che cambia tutto</h2>
+  <h2 id="c1">L&#x27;errore che cambia tutto</h2>
 <p>Il piano di Betül era chiarissimo: eliminare Züleyha. Come spesso accade con i piani troppo perfetti, salta tutto per un imprevisto — e a morire è Hakan. Betül capisce in un istante due cose: che quel gesto non resterà impunito e che non ha nessuna possibilità di cavarsela restando a Çukurova. Il panico la porta all&#x27;unica decisione possibile, scappare. Ma non può farlo da sola, e a quel punto entra in scena Abdülkadir.</p>
-<h2>Chi è Betül, e perché voleva Züleyha fuori dai giochi</h2>
+<h2 id="c2">Chi è Betül, e perché voleva Züleyha fuori dai giochi</h2>
 <p>Chi arriva adesso rischia di leggere un delitto passionale, e non lo è. Betül era tornata da Parigi in un momento in cui Demir aveva troppi fronti aperti e serviva qualcuno che reggesse l&#x27;azienda al posto suo: le firmò una procura e la rese direttrice ad interim, in attesa di riprendersi tutto. Lei non ha mai avuto la minima intenzione di restituire niente — la società la voleva per sé e per sua madre Şermin, senza lasciare una quota a nessun altro. Züleyha non era una rivale sentimentale: era l&#x27;unica firma rimasta tra Betül e un patrimonio. È da lì che si arriva a un&#x27;arma.</p>
-<h2>La Siria</h2>
+<h2 id="c3">La Siria</h2>
 <p>I due organizzano la fuga in fretta, sapendo che ogni ora in più aumenta il rischio, e scelgono una destinazione abbastanza remota da farli sparire: la Siria. Una volta arrivati, però, la realtà è molto diversa da come Betül se l&#x27;era immaginata — una cultura che non conosce, una lingua che non parla, nessun amico e nessuna famiglia su cui contare. Passa le giornate a ripensare a quello che ha lasciato e a chiedersi in quale punto esatto avrebbe potuto scegliere diversamente. Ma il tempo dei ripensamenti è finito.</p>
-<h2>Perché a morire è Hakan e non Züleyha</h2>
+<h2 id="c4">Perché a morire è Hakan e non Züleyha</h2>
 <p>Hakan era l&#x27;uomo accanto a Züleyha, e un uomo con un passato pesante alle spalle: un trafficante d&#x27;armi ricercato, abituato a leggere una stanza prima degli altri. Il proiettile era destinato a lei, e lui si è messo in mezzo. Per Betül è il peggior esito possibile, molto oltre il rimorso: uccidendo l&#x27;uomo che faceva scudo ha lasciato in vita l&#x27;unica persona con i mezzi, i motivi e la determinazione per venirla a prendere ovunque si nasconda — e le ha dato in più un lutto da vendicare.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>La telefonata sbagliata</h2>
+<h2 id="c5">La telefonata sbagliata</h2>
 <p>Quello che la incastra è un bisogno umanissimo: vuole che sua madre sappia che è viva. Chiamare direttamente casa è troppo rischioso, così telefona a Füsun, l&#x27;amica di sempre di Şermin, e le lascia un numero riservato da usare per i contatti futuri. Füsun però si trova davanti a una scelta che non aveva chiesto: coprire un&#x27;omicida o fare quello che ritiene giusto. Sceglie la seconda, e consegna tutto a Züleyha, numero di telefono compreso.</p>
-<h2>La cattura e il processo</h2>
+<h2 id="c6">La cattura e il processo</h2>
 <p>Con quel numero, Züleyha organizza la spedizione: parte per la Siria con un gruppo, localizza Betül e la fa catturare. A lei viene raccontato che a tradirla è stata la madre, ma Betül capisce benissimo chi è stata davvero. Rientra a Çukurova immobilizzata e imbavagliata, e ad accoglierla c&#x27;è mezzo paese: chi festeggia e chi, come Şermin, è disperata — al punto da sputare in faccia a Füsun davanti a tutti. Poi arriva il processo: gli avvocati provano a tenere in piedi qualcosa, ma i testimoni si susseguono e le prove sono schiaccianti. La sentenza dichiara Betül colpevole dell&#x27;omicidio di Hakan e Abdülkadir colpevole come mandante di un altro omicidio. Escono dall&#x27;aula diretti in carcere.</p>
-<h2>Perché conta: Betül ha bruciato l&#x27;unica che l&#x27;aveva salvata</h2>
+<h2 id="c7">Perché conta: Betül ha bruciato l&#x27;unica che l&#x27;aveva salvata</h2>
 <p>C&#x27;è un precedente che rende la cattura in Siria quasi una resa dei conti privata. Tempo prima, quando Çolak l&#x27;aveva sequestrata, era stata Züleyha — contro ogni logica e senza doverlo a nessuno — a entrare in quella casa e a tirarla fuori. La donna che ha guidato la spedizione fino in Siria è la stessa che una volta le aveva teso una mano: Betül non ha perso una guerra, ha esaurito l&#x27;unica persona disposta a farle credito. Il secondo prezzo lo paga Şermin, e non in tribunale: la telefonata che doveva rassicurare una madre le è costata Füsun, l&#x27;amica di una vita, umiliata in mezzo alla strada. Betül scappava per salvarsi e ha lasciato dietro di sé sua madre più sola di prima.</p>
-<h2>Come Şermin perde la sola amica Füsun</h2>
+<h2 id="c8">Come Şermin perde la sola amica Füsun</h2>
 <p>La figura di Şermin si rivela tra le più colpite al termine di questa drammatica vicenda, finendo per pagare un prezzo altissimo sul piano personale. Tutto comincia quando la figlia scappa in Siria dopo il delitto e cerca disperatamente di far avere sue notizie senza farsi rintracciare. Invece di chiamare a casa, cosa che avrebbe attirato subito le autorità, Betül sceglie di telefonare a Füsun, da sempre storica amica di sua madre. Tuttavia, questa mossa trasforma la posizione di Füsun, mettendola davanti a una scelta morale inevitabile tra la complicità e la lealtà verso la giustizia.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>Di fronte alla grave responsabilità di coprire un&#x27;omicida, Füsun sceglie infine di consegnare il contatto telefonico riservato direttamente a Züleyha, permettendo l&#x27;organizzazione della spedizione decisiva in Siria. La reazione di Şermin esplode al rientro della ragazza a Çukurova, quando la giovane viene mostrata a tutti immobilizzata e imbavagliata davanti alla gente del paese. Sopraffatta dalla disperazione, la madre non trattiene la furia per quello che considera un tradimento e sputa in faccia all&#x27;amica davanti all&#x27;intera comunità. Quel gesto segna la rottura definitiva e pubblica del loro storico legame, cancellando anni di profonda confidenza reciproca.</p>
 <p>La perdita dell&#x27;unica amica lascia Şermin del tutto priva di sostegno nel momento più difficile della sua vita. Mentre la figlia affronta le conseguenze legali all&#x27;interno del tribunale, la donna si ritrova completamente sola davanti al giudizio del paese. Quella telefonata, pensata da Betül solo per rassicurarla sulle proprie condizioni durante la latitanza, finisce invece per distruggere l&#x27;unico punto di riferimento rimasto a sua madre. Oltre ad assistere alla condanna della ragazza verso il carcere, la donna rimane del tutto isolata e abbandonata da chiunque, schiacciata dall&#x27;esito nefasto di una fuga finita nel peggiore dei modi.</p>
-<h2>Cosa spinge Abdülkadir alla fuga con Betül</h2>
+<h2 id="c9">Cosa spinge Abdülkadir alla fuga con Betül</h2>
 <p>La figura di Abdülkadir si lega a quella della giovane subito dopo lo sparo che trafigge Hakan al posto di Züleyha. Consapevole che rimanere a Çukurova significherebbe affrontare la resa dei conti immediata con le autorità e con la rivale, l&#x27;uomo organizza la rapida evacuazione oltre confine insieme alla complice. La Siria sembra offrire la garanzia di un nascondiglio lontano e sicuro per sfuggire alle ricerche. Tuttavia, per la ragazza l&#x27;impatto con la nuova realtà straniera si rivela durissimo, trasformando la latitanza in un incubo quotidiano fatto di un grande isolamento e di continue preoccupazioni.</p>
 <p>Nel rifugio siriano la fuggitiva si scontra con barriere insormontabili, trovandosi immersa in un contesto culturale sconosciuto e in una lingua che non comprende affatto. Senza poter contare sulla propria famiglia o sull&#x27;aiuto di amici fidati, la giovane passa le giornate a rimuginare sugli errori commessi e sulla decisione di usare l&#x27;arma per conquistare l&#x27;azienda. Abdülkadir condivide l&#x27;ansia di quell&#x27;isolamento, sapendo che la lontananza riduce ogni giorno le possibilità di salvarsi. La tensione costante finisce per logorare la resistenza della ragazza, spingendola infine al passo falso della telefonata riservata lasciata a Füsun.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
@@ -387,19 +437,41 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=JuHwgBPXMyg" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/JuHwgBPXMyg/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TERRA AMARA Anticipazioni: Fekeli caccia da casa Behice!</span></a></li><li><a href="https://www.youtube.com/watch?v=ORCPU6DxshY" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/ORCPU6DxshY/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TERRA AMARA Anticipazioni: Demir disperato sta per fare una pazzia, qualcuno riuscirà a fermarl</span></a></li><li><a href="https://www.youtube.com/watch?v=6UtNHv-Z5P4" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/6UtNHv-Z5P4/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TERRA AMARA Anticipazioni: La Svolta Drammatica nella Storia di Sermin</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Füsun ha fatto la cosa giusta?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=9voKsYcanZc">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di Terra Amara</h2><div class="griglia"><article class="scheda">
+  <a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/"><div class="foto"><img src="/img/terra-amara-la-trama-completa-e-come-finisce.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></h3>
+    <div class="quando">30 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/"><div class="foto"><img src="https://i.ytimg.com/vi/_ypSJU-x7LY/hqdefault.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/"><div class="foto"><img src="https://i.ytimg.com/vi/B_MLx-0yh6M/hqdefault.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=Terra Amara, come finisce la caccia a Betül: la fuga in Siria con Abdülkadir, la telefonata a Füsun che la tradisce e la condanna — https://serietvfans.com/terra-amara/terra-amara-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/terra-amara/terra-amara-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/terra-amara/terra-amara-la-trama-completa-e-come-finisce/&text=Terra Amara, come finisce la caccia a Betül: la fuga in Siria con Abdülkadir, la telefonata a Füsun che la tradisce e la condanna" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">Terra Amara anticipazioni: la caccia a Betül è finita, arrestata</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=9voKsYcanZc">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di Terra Amara</h3><ol class="numerata"><li><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></li><li><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></li><li><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></li><li><a href="/terra-amara/terra-amara-come-finisce-davvero-zuleyha-vince-tutto-e-resta-sola/">Terra Amara: come finisce davvero, Züleyha vince tutto e resta sola</a></li><li><a href="/terra-amara/terra-amara-come-muore-demir-yaman-chi-ha-dato-lordine-e-perche-doveva-essere-un-rapimento/">Terra Amara, come muore Demir Yaman: chi ha dato l&#x27;ordine e perché doveva essere un rapimento</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>Terra Amara anticipazioni: la caccia a Betül è finita, arrestata</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su Terra Amara</h3><ul><li><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></li><li><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></li><li><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></li><li><a href="/terra-amara/terra-amara-come-finisce-davvero-zuleyha-vince-tutto-e-resta-sola/">Terra Amara: come finisce davvero, Züleyha vince tutto e resta sola</a></li><li><a href="/terra-amara/terra-amara-come-muore-demir-yaman-chi-ha-dato-lordine-e-perche-doveva-essere-un-rapimento/">Terra Amara, come muore Demir Yaman: chi ha dato l&#x27;ordine e perché doveva essere un rapimento</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

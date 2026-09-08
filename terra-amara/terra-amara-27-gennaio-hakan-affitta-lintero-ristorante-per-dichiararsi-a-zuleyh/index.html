@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/terra-amara/">Terra Amara</a> › Terra Amara 27 gennaio, Hakan affitta l&#x27;intero ristorante per dichiararsi a Züleyha — e nello stesso pomeriggio il piccolo Adnan sale sul carro dei mercanti</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/terra-amara/">Terra Amara</a>
   <h1>Terra Amara 27 gennaio, Hakan affitta l&#x27;intero ristorante per dichiararsi a Züleyha — e nello stesso pomeriggio il piccolo Adnan sale sul carro dei mercanti</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>8 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">La puntata alterna il momento più romantico della stagione a quello che innescherà la sciagura successiva: un cancello lasciato aperto mentre alla villa si contratta con i venditori ambulanti.</p><ol><li><a href="#c1">Lo sputo in pasticceria</a></li><li><a href="#c2">Il picnic nel bosco</a></li><li><a href="#c3">«Mi sono innamorato di te»</a></li><li><a href="#c4">Il cancello rimasto aperto</a></li><li><a href="#c5">Come Gaffur e Raşit gestiscono il nuovo affare immobiliare</a></li><li><a href="#c6">Perché Betül spinge Fikret verso la trappola di Mersin</a></li><li><a href="#c7">Cosa spinge Hakan ad affittare l&#x27;intero ristorante per Züleyha</a></li><li><a href="#c8">Come il piccolo Adnan finisce sul carro dei mercanti</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>Terra Amara</strong> — Serie conclusa in Italia · tutte le puntate su Mediaset Infinity</span></div>
   
-  <p class="occhiello">La puntata alterna il momento più romantico della stagione a quello che innescherà la sciagura successiva: un cancello lasciato aperto mentre alla villa si contratta con i venditori ambulanti.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: Terra Amara 27 gennaio, Hakan affitta l&#x27;intero ristorante per dichiararsi a Züleyha — e nello stesso pomeriggio il piccolo Adnan sale sul carro dei mercanti" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/0VK-i6_ZXMg/maxresdefault.jpg" alt="Terra Amara 27 gennaio, Hakan affitta l&#x27;intero ristorante per dichiararsi a Züleyha — e nello stesso pomeriggio il piccolo Adnan sale sul carro dei mercanti" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/0VK-i6_ZXMg/hqdefault.jpg 480w, https://i.ytimg.com/vi/0VK-i6_ZXMg/sddefault.jpg 640w, https://i.ytimg.com/vi/0VK-i6_ZXMg/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/0VK-i6_ZXMg/hqdefault.jpg&quot;, &quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,45 +409,67 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>Nel frattempo Betül trascina Fikret in un albergo di Mersin a caccia di un uomo che non c&#x27;è.</strong></p>
-  <h2>Lo sputo in pasticceria</h2>
+  <h2 id="c1">Lo sputo in pasticceria</h2>
 <p>La giornata comincia con Gaffur e Raşit diretti al catasto: il terreno che hanno comprato è diventato edificabile e vale quattro volte tanto. Saniye si complimenta a modo suo — dopo una vita di scelte sbagliate, finalmente una giusta — e gli ricorda che ora quei soldi presi in prestito vanno restituiti. Quando Gaffur racconta tutto a Şermin, che a suo tempo aveva consigliato quell&#x27;acquisto per prendersi gioco di loro, lei chiama il catasto per verificare e poi va a cercare Füsun in pasticceria. La scena degenera: Şermin le sputa in faccia, la chiama serpente e arriva a minacciarla di morte. Füsun non si scompone, le risponde che la vera sciocca è lei e si rivolge alla gente accorsa per le urla, raccontando a tutti chi è davvero Şermin Yaman.</p>
-<h2>Il picnic nel bosco</h2>
+<h2 id="c2">Il picnic nel bosco</h2>
 <p>Züleyha va a casa di Fikret per riavvicinarlo: gli dice che la sua assenza pesa a tutti, lui le confessa la frustrazione di essere sempre respinto quando prova a proteggerla. Alla fine si chiariscono — lei ha bisogno di lui non come protettore ma come amico — e organizzano un picnic per i bambini in una radura, con l&#x27;altalena costruita per Adnan e il barbecue. È una delle poche giornate serene della stagione, e viene guastata solo da un dettaglio: qualcuno li osserva da lontano, nascosto tra gli alberi. Betül, esclusa dall&#x27;invito, corre a lamentarsi con la madre, che le ricorda l&#x27;obiettivo — tenersi Fikret, o dire addio al patrimonio di Fekeli.</p>
-<h2>«Mi sono innamorato di te»</h2>
+<h2 id="c3">«Mi sono innamorato di te»</h2>
 <p>Betül a quel punto informa Fikret che Hakan si troverebbe in un albergo di Mersin, e lo convince ad andare a controllare: l&#x27;hotel è fatiscente, la stanza vuota, e i due restano lì ad aspettare per ore, finendo per assistere a una rissa e a un arresto — con tanto di fotografo che scatta immagini di loro due insieme. Il giorno dopo si scoprirà che era un banale errore di trascrizione alla reception, un cognome simile. Nel frattempo il vero Hakan è tornato a Çukurova e ha invitato Züleyha a cena: ha affittato l&#x27;intero ristorante per loro due, con un violinista. Lei prova a spostare il discorso sul progetto edilizio, lui non risponde, poi si alza, le dice di essersi innamorato e la bacia. Züleyha gli risponde che non può ricambiare, che con l&#x27;amore ha chiuso e che ne ha paura; lui ribatte che l&#x27;amore non si controlla. Più tardi, da sola, ripensa a quelle parole — mentre lui guarda l&#x27;anello che ha comprato per lei.</p>
-<h2>Il cancello rimasto aperto</h2>
+<h2 id="c4">Il cancello rimasto aperto</h2>
 <p>Alla villa, intanto, arriva un gruppo di venditori ambulanti con i carri e Şermin li fa entrare per guardare la merce. Mentre contratta, il cancello resta aperto e incustodito. Adnan si avvicina incuriosito a un ragazzino che suona il tamburo e sale sul suo carro per suonare insieme a lui. Poco dopo Şermin finisce gli acquisti e i mercanti ripartono, senza sapere di avere il bambino a bordo.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Come Gaffur e Raşit gestiscono il nuovo affare immobiliare</h2>
+<h2 id="c5">Come Gaffur e Raşit gestiscono il nuovo affare immobiliare</h2>
 <p>La vicenda finanziaria che vede protagonisti Gaffur e Raşit prende una piega del tutto inaspettata quando i due si recano al catasto per verificare lo stato del terreno acquistato. Quello che inizialmente sembrava uno sprovveduto azzardo si trasforma in un grandissimo investimento, dato che il fondo è diventato improvvisamente edificabile e ha moltiplicato il proprio valore iniziale di ben quattro volte. La reazione di Saniye di fronte a questo successo inatteso riflette tutta la storia della coppia: con la solita schiettezza, la donna evidenzia come finalmente il marito sia riuscito a compiere un passo azzeccato dopo un&#x27;intera esistenza segnata da decisioni sbagliate. Tuttavia, il monito della donna resta fermo e concreto, ricordando immediatamente a Gaffur la necessità prioritaria di saldare tutti i debiti contratti per coprire il prestito utilizzato per l&#x27;operazione.</p>
 <p>L&#x27;aspetto più curioso dell&#x27;intera vicenda risiede nella genesi di questo acquisto, poiché era stata proprio Şermin ad aver suggerito la transazione a Gaffur. L&#x27;intento originale della donna era unicamente quello di prendersi gioco di loro, spingendoli a investire i propri fondi in un affare ritenuto privo di qualunque prospettiva futura. Quando Gaffur decide di condividere ingenuamente il grande successo con la stessa Şermin, l&#x27;incredulità e l&#x27;invidia prendono subito il sopravvento su di lei, costringendola a contattare immediatamente gli uffici del catasto per controllare personalmente la veridicità delle affermazioni. La scoperta dell&#x27;errore di valutazione scatena una rabbia incontrollabile che spinge la donna a cercare un confronto immediato nella pasticceria locale, dove la situazione degenera rapidamente sotto gli occhi di tutti i presenti.</p>
-<h2>Perché Betül spinge Fikret verso la trappola di Mersin</h2>
+<h2 id="c6">Perché Betül spinge Fikret verso la trappola di Mersin</h2>
 <p>Il calcolo cinico che muove le azioni di Betül trova una spiegazione diretta nelle pressioni ricevute da sua madre dopo essere stata esclusa dal picnic organizzato da Züleyha. La lezione impartita da Şermin è estremamente chiara e non ammette errori: l&#x27;unico modo per assicurarsi una posizione di rilievo e non rischiare di perdere definitivamente l&#x27;immenso patrimonio di Fekeli consiste nell&#x27;eseguire una strategia precisa per legare a sé Fikret. Per raggiungere questo obiettivo cruciale, la giovane sfrutta al massimo la fragilità del momento, manipolando le informazioni relative alla presenza di Hakan e spingendo il compagno ad intraprendere una trasferta improvvisa verso un albergo situato a Mersin. La prospettiva di cogliere sul fatto il rivale rappresenta un&#x27;esca perfetta alla quale Fikret non riesce minimamente a resistere.</p>
 <p>L&#x27;arrivo nella struttura recettiva rivela tuttavia una realtà ben diversa da quella ipotizzata, con un edificio fatiscente e una camera del tutto vuota che costringe i due ad un&#x27;attesa estenuante protrattasi per ore. Durante questo prolungato stazionamento si innescano una serie di eventi imprevedibili, segnati da una rissa improvvisa e dal successivo intervento delle forze dell&#x27;ordine che arrestano i presenti, mentre un fotografo immortala la coppia nello stesso luogo. Soltanto il giorno seguente emergerà che la presenza di Hakan in quella lista di ospiti era dovuta a un banale quanto sfortunato errore di trascrizione compiuto al momento della registrazione alla reception per via di un cognome del tutto simile. Il piano di ricerca si trasforma così in una trappola mediatica dalle conseguenze del tutto inattese per la reputazione dei due.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Cosa spinge Hakan ad affittare l&#x27;intero ristorante per Züleyha</h2>
+<h2 id="c7">Cosa spinge Hakan ad affittare l&#x27;intero ristorante per Züleyha</h2>
 <p>Rientrato a Çukurova dopo le recenti vicende, Hakan decide di organizzare un incontro memorabile con Züleyha, arrivando ad affittare l&#x27;intero locale ed ingaggiando persino un violinista per creare un&#x27;atmosfera del tutto romantica ed esclusiva. Di fronte a questo scenario attentamente preparato, la donna tenta inizialmente di mantenere le distanze e di deviare la conversazione verso argomenti strettamente professionali, chiedendo dettagli in merito al progetto edilizio in corso. Il rifiuto dell&#x27;uomo di rispondere alle questioni lavorative segna il punto di svolta della serata: Hakan sceglie infatti di alzarsi e di dichiarare apertamente i propri sentimenti, ammettendo di essersi innamorato di lei e suggellando la confessione con un bacio che coglie la protagonista del tutto di sorpresa di fronte alla forza del suo gesto.</p>
 <p>La reazione di Züleyha di fronte ad un gesto così esplicito rivela tutte le sue paure e le sue ferite personali ancora aperte, spingendola a respingere la dichiarazione d&#x27;amore ricevuta. La donna ribadisce fermamente di aver chiuso per sempre con i sentimenti e di provarne persino timore, ma la replica di Hakan rimane irremovibile, sostenendo come l&#x27;amore sia una forza impossibile da controllare con la sola ragione. L&#x27;impatto di questo momento romantico continua ad echeggiare anche nelle ore successive, quando Züleyha si ritrova da sola a ripensare intensamente alle parole udite durante la cena. Nel medesimo istante, Hakan si ritrova in solitudine ad osservare con attenzione l&#x27;anello acquistato appositamente per lei, lasciando intraprendere al loro legame una strada carica di forti tensioni emotive.</p>
-<h2>Come il piccolo Adnan finisce sul carro dei mercanti</h2>
+<h2 id="c8">Come il piccolo Adnan finisce sul carro dei mercanti</h2>
 <p>La tragica disattenzione che porta alla scomparsa del piccolo Adnan prende forma nel momento in cui un gruppo di venditori ambulanti giunge nei pressi della villa con i propri carri commerciali. Şermin accoglie la carovana e permette ai mercanti di entrare nel perimetro della proprietà per esaminare con calma la merce esposta, avviando una lunga trattativa sulle merci. Durante queste contrattazioni, il cancello principale della tenuta viene irresponsabilmente lasciato aperto e del tutto privo di custodia, creando le condizioni ideali per l&#x27;incidente imminente. La totale mancanza di sorveglianza sulla struttura lascia libero il passaggio verso l&#x27;esterno proprio mentre il bambino si aggira curioso nelle vicinanze del cortile, attirato dai suoni e dai colori delle merci portate dagli ambulanti giunti alla villa.</p>
 <p>Ad attirare irresistibilmente l&#x27;attenzione di Adnan è in particolare la figura di un giovane ragazzo appartenente alla carovana, intenzionato a suonare il tamburo per intrattenere i presenti. Incuriosito dal ritmo e dalla musica, il figlio di Züleyha si avvicina senza che nessuno se ne accorga ed esegue un gesto fatale, salendo direttamente a bordo del mezzo per suonare insieme al suo nuovo compagno di giochi. Conclusi gli acquisti e chiusa la trattativa con Şermin, i mercanti sistemano le proprie cose e ripartono con la carovana, completamente ignari di trasportare il bambino nascosto sul carro. La combinazione tra la superficialità della donna nel contrattare senza chiudere il cancello e la spensieratezza dei venditori spalanca così le porte a una tremenda sciagura.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=G5R9rvChMXI" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/G5R9rvChMXI/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>MINACCIA MORTALE ALLA VILLA, HAKAN E ZULEYHA IN PERICOLO! Anticipazioni Terra Amara 26 Aprile</span></a></li><li><a href="https://www.youtube.com/watch?v=HhfAdAJ24sM" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/HhfAdAJ24sM/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TERRA AMARA Anticipazioni 13 Gennaio: Hakan scopre chi ha ucciso Fekeli | Zuleyha stanca di Fik</span></a></li><li><a href="https://www.youtube.com/watch?v=KFM-R77eSw8" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/KFM-R77eSw8/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>PANICO ALLA VILLA, SPARITA HAMMINE&#x27;! ZULEYHA FURIOSA CON CEVRIYE -Anticipazioni Terra Amara 2 M</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Züleyha si lascerà andare con Hakan?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=0VK-i6_ZXMg">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di Terra Amara</h2><div class="griglia"><article class="scheda">
+  <a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/"><div class="foto"><img src="/img/terra-amara-la-trama-completa-e-come-finisce.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></h3>
+    <div class="quando">30 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/"><div class="foto"><img src="https://i.ytimg.com/vi/_ypSJU-x7LY/hqdefault.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/"><div class="foto"><img src="https://i.ytimg.com/vi/B_MLx-0yh6M/hqdefault.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=Terra Amara 27 gennaio, Hakan affitta l&#x27;intero ristorante per dichiararsi a Züleyha — e nello stesso pomeriggio il piccolo Adnan sale sul carro dei mercanti — https://serietvfans.com/terra-amara/terra-amara-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/terra-amara/terra-amara-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/terra-amara/terra-amara-la-trama-completa-e-come-finisce/&text=Terra Amara 27 gennaio, Hakan affitta l&#x27;intero ristorante per dichiararsi a Züleyha — e nello stesso pomeriggio il piccolo Adnan sale sul carro dei mercanti" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">Terra Amara anticipazioni 27 gennaio: Hakan si dichiara a Züleyha</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=0VK-i6_ZXMg">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di Terra Amara</h3><ol class="numerata"><li><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></li><li><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></li><li><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></li><li><a href="/terra-amara/terra-amara-come-finisce-davvero-zuleyha-vince-tutto-e-resta-sola/">Terra Amara: come finisce davvero, Züleyha vince tutto e resta sola</a></li><li><a href="/terra-amara/terra-amara-come-muore-demir-yaman-chi-ha-dato-lordine-e-perche-doveva-essere-un-rapimento/">Terra Amara, come muore Demir Yaman: chi ha dato l&#x27;ordine e perché doveva essere un rapimento</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>Terra Amara anticipazioni 27 gennaio: Hakan si dichiara a Züleyha</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su Terra Amara</h3><ul><li><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></li><li><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></li><li><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></li><li><a href="/terra-amara/terra-amara-come-finisce-davvero-zuleyha-vince-tutto-e-resta-sola/">Terra Amara: come finisce davvero, Züleyha vince tutto e resta sola</a></li><li><a href="/terra-amara/terra-amara-come-muore-demir-yaman-chi-ha-dato-lordine-e-perche-doveva-essere-un-rapimento/">Terra Amara, come muore Demir Yaman: chi ha dato l&#x27;ordine e perché doveva essere un rapimento</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

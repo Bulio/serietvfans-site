@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/endless-love/">Endless Love</a> › Endless Love 1-5 luglio, Emir finge un guasto all&#x27;auto e porta Nihan nella casetta di campagna: ha ricostruito una serata che lei aveva vissuto con Kemal</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/endless-love/">Endless Love</a>
   <h1>Endless Love 1-5 luglio, Emir finge un guasto all&#x27;auto e porta Nihan nella casetta di campagna: ha ricostruito una serata che lei aveva vissuto con Kemal</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">La settimana ruota attorno al progetto della scuola nell&#x27;area della centrale: è l&#x27;idea con cui Önder spera di ridare a sua figlia uno scopo, ed è anche il terreno su cui Emir gioca la sua partita. Quando capisce che Nihan ci si sta dedicando anima e corpo, la interrompe con la scusa di un guasto e la porta in una casetta di campagna, dove ha ricreato nei dettagli una serata del suo passato con Kemal.</p><ol><li><a href="#c1">Il progetto pensato per Nihan</a></li><li><a href="#c2">Le dimissioni ritirate</a></li><li><a href="#c3">La casetta di campagna</a></li><li><a href="#c4">Le due suocere e il tormento di Tufan</a></li><li><a href="#c5">Come Önder cerca di aiutare la figlia Nihan</a></li><li><a href="#c6">Cosa spinge Emir a condurre Nihan alla casetta</a></li><li><a href="#c7">Quale tormento spinge Tufan verso la vendetta di Asu</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>Endless Love</strong> — Serie conclusa in Italia · le puntate su Mediaset Infinity</span></div>
   
-  <p class="occhiello">La settimana ruota attorno al progetto della scuola nell&#x27;area della centrale: è l&#x27;idea con cui Önder spera di ridare a sua figlia uno scopo, ed è anche il terreno su cui Emir gioca la sua partita. Quando capisce che Nihan ci si sta dedicando anima e corpo, la interrompe con la scusa di un guasto e la porta in una casetta di campagna, dove ha ricreato nei dettagli una serata del suo passato con Kemal.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: Endless Love 1-5 luglio, Emir finge un guasto all&#x27;auto e porta Nihan nella casetta di campagna: ha ricostruito una serata che lei aveva vissuto con Kemal" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/HHLRGzv6AFI/maxresdefault.jpg" alt="Endless Love 1-5 luglio, Emir finge un guasto all&#x27;auto e porta Nihan nella casetta di campagna: ha ricostruito una serata che lei aveva vissuto con Kemal" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/HHLRGzv6AFI/hqdefault.jpg 480w, https://i.ytimg.com/vi/HHLRGzv6AFI/sddefault.jpg 640w, https://i.ytimg.com/vi/HHLRGzv6AFI/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/HHLRGzv6AFI/hqdefault.jpg&quot;, &quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,25 +409,25 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>Kemal ritira le dimissioni e si ritrova a lavorare di nuovo fianco a fianco con lei.</strong></p>
-  <h2>Il progetto pensato per Nihan</h2>
+  <h2 id="c1">Il progetto pensato per Nihan</h2>
 <p>Vedere la figlia consumarsi giorno dopo giorno è insopportabile per Önder, che decide di rispolverare un vecchio progetto mai realizzato — una scuola di belle arti nell&#x27;area della centrale termoelettrica — e di proporlo alla prossima assemblea. Non è solo un&#x27;operazione per l&#x27;azienda: spera che quell&#x27;impegno restituisca a Nihan uno scopo e magari la riavvicini all&#x27;unica persona che sembra saperle ridare serenità. Emir intercetta l&#x27;occasione e la trasforma in una sua mossa: le offre la direzione dell&#x27;iniziativa benefica. Nihan esita, perché sa che al progetto è legato anche Kemal, e cede solo quando lui le comunica che Kemal ha già presentato le dimissioni.</p>
-<h2>Le dimissioni ritirate</h2>
+<h2 id="c2">Le dimissioni ritirate</h2>
 <p>La certezza dura poco: convinto dal signor Hakkı, Kemal ritira le dimissioni e si ritrova a lavorare gomito a gomito con lei. Il sospetto che lo accompagna è pesante — teme che dietro un&#x27;iniziativa così apparentemente benefica Emir stia coprendo operazioni illecite della propria compagnia. Anche Nihan ha i suoi dubbi, ma di altro tipo: ha notato una confidenza eccessiva tra Zeynep e suo marito, e comincia a organizzare una trappola per verificare i propri sospetti.</p>
-<h2>La casetta di campagna</h2>
+<h2 id="c3">La casetta di campagna</h2>
 <p>Mentre Kemal e Leyla lavorano dietro le quinte per tappare le falle economiche del progetto — cercando donatori e nuove forme di finanziamento senza spegnere l&#x27;entusiasmo di Nihan — Emir agisce sul piano che gli riesce meglio. Con un pretesto interrompe la sua giornata di lavoro, insiste per riaccompagnarla e, fingendo un guasto all&#x27;auto, la porta in una remota casetta di campagna. Lì ha ricostruito nei minimi dettagli una serata che Nihan aveva vissuto tempo prima con Kemal: l&#x27;atmosfera intima, il piatto di pasta preparato da lui. Il gesto la spiazza e la irrita insieme, mentre lui spera che quei ricordi lavorino a suo favore e la distolgano dall&#x27;ossessione per la scuola.</p>
-<h2>Le due suocere e il tormento di Tufan</h2>
+<h2 id="c4">Le due suocere e il tormento di Tufan</h2>
 <p>La settimana si chiude con due scene molto diverse. Zeynep va dal ginecologo accompagnata dalla madre e dalla suocera, che pur essendo entrambe entusiaste del bambino in arrivo non perdono occasione per punzecchiarsi, lasciandola a fare da paciere in mezzo. E Tufan si confida con la madre ritrovata, mettendo a nudo il suo tormento: vorrebbe rendere felice Asu, ma non sopporta l&#x27;idea che finisca accanto a un altro uomo. La conclusione a cui arriva è pericolosa — l&#x27;unico modo per tenerla con sé è darle la vendetta che desidera.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Come Önder cerca di aiutare la figlia Nihan</h2>
+<h2 id="c5">Come Önder cerca di aiutare la figlia Nihan</h2>
 <p>La difficile condizione psicologica di Nihan spinge suo padre Önder ad agire per strapparla ad una sofferenza quotidiana diventata insopportabile. Vedere la figlia consumarsi giorno dopo giorno rappresenta per lui un dolore terribile, che lo convince a recuperare un vecchio progetto mai realizzato nel tempo. Si tratta di una scuola di belle arti nell&#x27;area della centrale termoelettrica. Proponendo questa iniziativa alla prossima assemblea, Önder non vuole solo aiutare l&#x27;azienda, ma spera che l&#x27;impegno restituisca a Nihan uno scopo e la riavvicini a Kemal, l&#x27;unico in grado di ridarle la giusta serenità.</p>
 <p>L&#x27;iniziativa di Önder viene subito intercettata da Emir, che decide di sfruttare l&#x27;occasione a proprio vantaggio. Il marito di Nihan le offre la direzione dell&#x27;iniziativa benefica, ma la donna esita sapendo che al progetto è legato anche Kemal. A convincerla interviene Emir, le cui parole rassicurano Nihan annunciandole che Kemal ha già presentato le sue dimissioni ufficiali. Pensando di non dover lavorare con lui, la donna accetta l&#x27;incarico. Tuttavia la certezza dura poco, perché la situazione prende presto una piega del tutto inaspettata per la protagonista e per l&#x27;intera gestione aziendale.</p>
 <p>Spinto dai consigli del signor Hakkı, Kemal ritira le dimissioni e si ritrova a lavorare di nuovo fianco a fianco con Nihan. Un pesante sospetto accompagna Kemal nel suo ritorno al lavoro: egli teme infatti che dietro un&#x27;iniziativa benefica Emir stia nascondendo operazioni illecite della propria compagnia. Anche Nihan nutre forti dubbi, ma di altra natura. La donna nota un&#x27;eccessiva ed insolita confidenza tra Zeynep e suo marito Emir, motivo per cui inizia subito a progettare una trappola specifica per verificare i propri sospetti ed eliminare ogni perplessità sulla vicenda.</p>
-<h2>Cosa spinge Emir a condurre Nihan alla casetta</h2>
+<h2 id="c6">Cosa spinge Emir a condurre Nihan alla casetta</h2>
 <p>Mentre Nihan cerca di far luce sul comportamento sospetto del marito, Kemal lavora instancabilmente dietro le quinte con Leyla per garantire un futuro al progetto della scuola. I due cercano donatori e nuove forme di finanziamento per coprire le falle economiche senza spegnere l&#x27;entusiasmo di Nihan. Nel frattempo Emir decide di agire sul piano della manipolazione, cogliendo l&#x27;occasione per interrompere la giornata lavorativa della moglie con un pretesto. Insistendo per riaccompagnarla a casa, il marito mette in atto una nuova mossa mirata a sottrarla agli impegni e alla presenza di Kemal.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>Fingendo un guasto improvviso all&#x27;automobile, Emir conduce Nihan in una remota ed isolata casetta di campagna. Lì il marito ha ricostruito nei minimi dettagli una serata intima che Nihan aveva vissuto tempo prima con Kemal, preparando persino lo stesso piatto di pasta di allora. L&#x27;atmosfera e il gesto spiazzano la donna, provocandole al tempo stesso una profonda irritazione. Emir spera che i ricordi evocati lavorino a suo favore e la distolgano dall&#x27;ossessione per la scuola di belle arti, mentre la moglie si ritrova costretta ad affrontare una situazione complessa e inaspettata.</p>
 <p>La messinscena organizzata da Emir mostra fino a che punto l&#x27;uomo sia disposto a spingersi pur di controllare le emozioni di Nihan. Ricreare quella specifica serata vissuta con Kemal rappresenta una mossa strategica per destabilizzarla e insinuarsi nei suoi pensieri più intimi. Nihan, pur rimanendo fortemente infastidita dalla trappola emotiva del marito, deve gestire la tensione creatasi in quella dimora isolata. Emir confida che la forza del passato possa indebolire la determinazione della moglie, allontanandola dalle sue ambizioni lavorative e dal legame professionale appena ritrovato con Kemal nell&#x27;ambito dell&#x27;iniziativa scolastica.</p>
-<h2>Quale tormento spinge Tufan verso la vendetta di Asu</h2>
+<h2 id="c7">Quale tormento spinge Tufan verso la vendetta di Asu</h2>
 <p>La settimana si arricchisce di momenti intensi anche sul piano familiare. Zeynep si reca dal ginecologo accompagnata sia dalla madre sia dalla suocera per una visita di controllo. Sebbene entrambe le donne siano visibilmente entusiaste all&#x27;idea del bambino in arrivo, la relazione tra loro si rivela piena di attriti. Le due suocere non perdono infatti occasione per punzecchiarsi continuamente durante l&#x27;incontro, costringendo Zeynep a fare continuamente da paciere in mezzo ai loro litigi. La giovane deve così gestire la tensione familiare in un momento delicato della propria attesa per la nascita.</p>
 <p>Nel frattempo Tufan vive un profondo tormento interiore e sceglie di confidarsi con la madre da poco ritrovata. Il giovane mette a nudo tutti i propri sentimenti più intimi e il desiderio sincero di rendere felice Asu. Tuttavia Tufan si ritrova tormentato dall&#x27;idea che la donna possa finire accanto a un altro uomo, una prospettiva che non riesce assolutamente ad accettare. Il confronto con la madre diventa così l&#x27;occasione per analizzare una situazione affettiva complessa e priva di facili soluzioni, portandolo ad elaborare una conclusione molto pericolosa per il futuro.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
@@ -385,19 +435,41 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=4MPdsPcXKXI" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/4MPdsPcXKXI/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>ASU ED EMIR TENGONO IN SCACCO KEMAL E NIHAN, RIUSCIRANNO A FARCELA? Anticipazioni Endless Love</span></a></li><li><a href="https://www.youtube.com/watch?v=Abcu3yTe9Po" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/Abcu3yTe9Po/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>KEMAL &quot;SEQUESTRA&quot; NIHAN:&quot;DIMMI PERCHE&#x27; HAI SPOSATO EMIR,DILLO!&quot; Endless Love Anticipazioni 20 A</span></a></li><li><a href="https://www.youtube.com/watch?v=Bb7Ta2Rz9cA" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/Bb7Ta2Rz9cA/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>EMIR E ASU UCCIDONO TUFAN! MA KEMAL E NIHAN SANNO CHE ASU...Anticipazioni Endless Love 2^ Stagi</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Il progetto della scuola salverà Nihan o diventerà l&#x27;ennesima arma di Emir?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=HHLRGzv6AFI">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di Endless Love</h2><div class="griglia"><article class="scheda">
+  <a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/"><div class="foto"><img src="https://i.ytimg.com/vi/DSiProJJ1ls/hqdefault.jpg" alt="Endless Love" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/"><div class="foto"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/"><div class="foto"><img src="https://i.ytimg.com/vi/uu2oAzTOWQU/hqdefault.jpg" alt="Endless Love" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></h3>
+    <div class="quando">25 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=Endless Love 1-5 luglio, Emir finge un guasto all&#x27;auto e porta Nihan nella casetta di campagna: ha ricostruito una serata che lei aveva vissuto con Kemal — https://soapoperaitalia.com/endless-love/endless-love-la-trama-completa-perche-nihan-sposa-emir-e-come-finisce/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://soapoperaitalia.com/endless-love/endless-love-la-trama-completa-perche-nihan-sposa-emir-e-come-finisce/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://soapoperaitalia.com/endless-love/endless-love-la-trama-completa-perche-nihan-sposa-emir-e-come-finisce/&text=Endless Love 1-5 luglio, Emir finge un guasto all&#x27;auto e porta Nihan nella casetta di campagna: ha ricostruito una serata che lei aveva vissuto con Kemal" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">KEMAL DURISSIMO CON NIHAN: «TUTTO È MORTO PER COLPA TUA»</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=HHLRGzv6AFI">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di Endless Love</h3><ol class="numerata"><li><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></li><li><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></li><li><a href="/endless-love/endless-love-chi-e-galip-kozcuoglu-le-due-volte-in-cui-nihan-e-stata-venduta/">Endless Love, chi è Galip Kozcuoğlu: le due volte in cui Nihan è stata venduta</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-zeynep-soydere-perche-emir-lha-scelta-e-cosa-ha-distrutto/">Endless Love, chi è davvero Zeynep Soydere: perché Emir l&#x27;ha scelta e cosa ha distrutto</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>KEMAL DURISSIMO CON NIHAN: «TUTTO È MORTO PER COLPA TUA»</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su Endless Love</h3><ul><li><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></li><li><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></li><li><a href="/endless-love/endless-love-chi-e-galip-kozcuoglu-le-due-volte-in-cui-nihan-e-stata-venduta/">Endless Love, chi è Galip Kozcuoğlu: le due volte in cui Nihan è stata venduta</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-zeynep-soydere-perche-emir-lha-scelta-e-cosa-ha-distrutto/">Endless Love, chi è davvero Zeynep Soydere: perché Emir l&#x27;ha scelta e cosa ha distrutto</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

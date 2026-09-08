@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/terra-amara/">Terra Amara</a> › Terra Amara, Züleyha cacciata dalla villa con i sigilli — mentre Müjdat rapisce Kerem Ali e chiede 10 milioni</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/terra-amara/">Terra Amara</a>
   <h1>Terra Amara, Züleyha cacciata dalla villa con i sigilli — mentre Müjdat rapisce Kerem Ali e chiede 10 milioni</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">L&#x27;episodio più amaro della stagione finale: l&#x27;ufficiale giudiziario mette i sigilli a villa Yaman e concede a Züleyha 15 minuti per andarsene, mentre il sedicente zio Müjdat trasforma il piccolo Kerem Ali in merce di scambio — tra falsi accordi, un rapimento e un riscatto da 10 milioni.</p><ol><li><a href="#c1">Müjdat e il prezzo di un bambino</a></li><li><a href="#c2">L&#x27;accordo, il finto avvocato e il rapimento</a></li><li><a href="#c3">Betül, Çolak e l&#x27;onore ferito</a></li><li><a href="#c4">I sigilli alla villa: quindici minuti per dire addio</a></li><li><a href="#c5">Come Fikret cerca di proteggere Kerem Ali</a></li><li><a href="#c6">Perche&#x27; Betül decide di abbandonare Çolak</a></li><li><a href="#c7">Cosa succede quando la villa viene sigillata</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>Terra Amara</strong> — Serie conclusa in Italia · tutte le puntate su Mediaset Infinity</span></div>
   
-  <p class="occhiello">L&#x27;episodio più amaro della stagione finale: l&#x27;ufficiale giudiziario mette i sigilli a villa Yaman e concede a Züleyha 15 minuti per andarsene, mentre il sedicente zio Müjdat trasforma il piccolo Kerem Ali in merce di scambio — tra falsi accordi, un rapimento e un riscatto da 10 milioni.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: Terra Amara, Züleyha cacciata dalla villa con i sigilli — mentre Müjdat rapisce Kerem Ali e chiede 10 milioni" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/CmvPQHERLkI/maxresdefault.jpg" alt="Terra Amara, Züleyha cacciata dalla villa con i sigilli — mentre Müjdat rapisce Kerem Ali e chiede 10 milioni" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/CmvPQHERLkI/hqdefault.jpg 480w, https://i.ytimg.com/vi/CmvPQHERLkI/sddefault.jpg 640w, https://i.ytimg.com/vi/CmvPQHERLkI/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/CmvPQHERLkI/hqdefault.jpg&quot;, &quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,25 +409,25 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>Şermin arriva perfino con la macchina fotografica per immortalare la caduta della rivale: la fine di un&#x27;era a Çukurova passa da quindici minuti concessi per fare le valigie.</strong></p>
-  <h2>Müjdat e il prezzo di un bambino</h2>
+  <h2 id="c1">Müjdat e il prezzo di un bambino</h2>
 <p>Il ricatto si presenta in giacca e cravatta: Müjdat, che si dichiara fratello di Müjgan e zio di Kerem Ali, si presenta all&#x27;impresa di Fikret offrendo di rinunciare a ogni pretesa sul bambino in cambio di una somma colossale — 10 milioni. Fikret gli ricorda l&#x27;accordo già siglato con Fekeli, ma l&#x27;uomo lo dichiara nullo dopo la scomparsa dell&#x27;anziano: il bambino è sotto la sua tutela legale, e senza pagamento entro 24 ore lo porterà in America. Fikret lo caccia accusandolo di mercificare il figlio della propria sorella — ma un avvocato conferma l&#x27;incubo: senza legami di sangue, Fikret non ha alcun diritto legale su Kerem Ali. È Züleyha, con la sua saggezza, a convincerlo: prima il futuro del bambino, poi l&#x27;orgoglio. E per raccogliere il denaro arriva a svuotare il portagioie, affidando i preziosi a Salih e Gaffur da vendere in giornata.</p>
-<h2>L&#x27;accordo, il finto avvocato e il rapimento</h2>
+<h2 id="c2">L&#x27;accordo, il finto avvocato e il rapimento</h2>
 <p>L&#x27;accordo si firma alla villa: Müjdat rinuncia a ogni pretesa in cambio della somma. Ma è una messinscena: uno dei suoi &quot;legali&quot;, allontanatosi con la scusa del bagno, sparisce nel nulla — e nella stanza di Kerem Ali la scena è agghiacciante: Fadik legata e imbavagliata, il bambino sparito, portato via da un uomo armato. Fikret si lancia all&#x27;inseguimento e scopre il piano completo: un secondo riscatto da 10 milioni, la fuga verso Istanbul, e la minaccia di abbandonare il piccolo in un luogo pubblico in caso di mancato pagamento. La corsa dei rapitori si arresta però in aeroporto, dove Hakan — con un&#x27;intuizione tempestiva — li intercetta e li mette alle strette.</p>
-<h2>Betül, Çolak e l&#x27;onore ferito</h2>
+<h2 id="c3">Betül, Çolak e l&#x27;onore ferito</h2>
 <p>Parallelamente si consuma la rottura tra Betül e Çolak: stanca dei pettegolezzi che la dipingono come la sua amante e la deridono in tutta Çukurova, la giovane fa le valigie in nome dell&#x27;onore — «è stata un&#x27;esperienza indimenticabile, ma è finita». Tornata da Şermin, incassa i commenti al vetriolo della madre sul mancato gesto di Çolak. E quando lui si presenta, la proposta è la più sbagliata possibile: vedersi di nascosto, lontano da occhi indiscreti. Betül e Şermin, che speravano in un matrimonio, restano attonite e deluse.</p>
-<h2>I sigilli alla villa: quindici minuti per dire addio</h2>
+<h2 id="c4">I sigilli alla villa: quindici minuti per dire addio</h2>
 <p>Il colpo finale arriva alla porta di casa: l&#x27;ufficiale giudiziario concede a Züleyha soltanto 15 minuti per raccogliere i suoi effetti personali. Le suppliche non servono; a rendere la scena ancora più crudele ci pensa Şermin, arrivata con la macchina fotografica per immortalare la caduta della rivale — fermata solo da uno scatto d&#x27;istinto di Züleyha. L&#x27;ultima immagine è un pugno nello stomaco: la famiglia — Züleyha, i bambini, la nonna Azize, Lütfiye e Fikret — che si allontana mentre i sigilli vengono applicati alla villa Yaman. La fine di un&#x27;era, e la promessa di una rinascita ancora tutta da scrivere.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Come Fikret cerca di proteggere Kerem Ali</h2>
+<h2 id="c5">Come Fikret cerca di proteggere Kerem Ali</h2>
 <p>Fikret affronta Müjdat direttamente presso la propria impresa dopo che l&#x27;uomo si presenta dichiarando di essere il fratello di Müjgan e lo zio di Kerem Ali. Müjdat sostiene che l&#x27;accordo precedentemente firmato con l&#x27;anziano Fekeli sia diventato del tutto nullo a causa della scomparsa di quest&#x27;ultimo. Affermando di essere il tutore legale del piccolo, Müjdat pretende una cifra enorme pari a dieci milioni entro ventiquattro ore, minacciando altrimenti di portare Kerem Ali negli Stati Uniti. Fikret reagisce duramente e lo caccia con sdegno, accusandolo di trattare il nipote come merce da vendere. Tuttavia, un avvocato gli conferma che, non avendo legami di sangue, Fikret non possiede alcun diritto legale.</p>
 <p>Di fronte al rischio di perdere il bambino e vederselo portare via oltreoceano, Fikret si trova in una posizione di totale impotenza giuridica. In questo momento critico interviene Züleyha con la sua saggezza, riuscendo a persuadere Fikret a mettere da parte l&#x27;orgoglio personale per concentrarsi esclusivamente sul bene e sul futuro di Kerem Ali. Per raccogliere rapidamente la cifra astronomica richiesta da Müjdat, Züleyha decide di svuotare completamente il proprio portagioie. La donna consegna tutti i suoi preziosi a Salih e Gaffur, incaricandoli di venderli nel giro di una sola giornata per ottenere i liquidi necessari al pagamento del riscatto.</p>
 <p>Dopo la firma del finto accordo alla villa, uno dei presunti legali di Müjdat si allontana fingendo di andare in bagno e scompare, consentendo a un uomo armato di rapire Kerem Ali e lasciare Fadik legata e imbavagliata nella stanza. Fikret si mette subito all&#x27;inseguimento dei fuggitivi, scoprendo il loro piano che prevede una seconda richiesta di dieci milioni, la fuga a Istanbul e la minaccia di abbandonare il piccolo in un luogo pubblico se non otterranno il denaro. La corsa dei rapitori si interrompe fortunatamente in aeroporto, dove Hakan intercetta la banda grazie a un&#x27;intuizione tempestiva e trae in salvo Kerem Ali.</p>
-<h2>Perche&#x27; Betül decide di abbandonare Çolak</h2>
+<h2 id="c6">Perche&#x27; Betül decide di abbandonare Çolak</h2>
 <p>Betül decide di interrompere la sua convivenza con Çolak a causa dell&#x27;insopportabile clima di pettegolezzi che si è creato in tutta Çukurova. La giovane non tollera più di essere ridicolizzata e dipinta da tutti come la semplice amante dell&#x27;uomo. Determinata a proteggere il proprio onore ferito, prepara le valigie e dichiara a Çolak che la loro storia è definitivamente conclusa, definendola un&#x27;esperienza indimenticabile ma ormai passata. Betül fa quindi ritorno dalla madre Şermin, la quale la accoglie rivolgendo commenti estremamente amari nei confronti di Çolak, criticando il fatto che l&#x27;uomo non abbia compiuto alcun gesto significativo per tutelare la figlia.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>La speranza di Betül e Şermin era quella di ottenere da Çolak un matrimonio riparatore che potesse riabilitare la loro posizione sociale agli occhi della comunità. Tuttavia, quando Çolak si presenta di persona per chiarire la situazione, formula una proposta del tutto inadeguata. L&#x27;uomo suggerisce infatti di continuare a vedersi in gran segreto, al riparo da sguardi indiscreti e lontano dai pettegolezzi del paese. Questa richiesta delude profondamente madre e figlia, che vedono sfumare la possibilità di una formalizzazione ufficiale della relazione e si sentono ulteriormente umiliate dal comportamento sconsiderato di Çolak.</p>
 <p>L&#x27;offerta di un legame clandestino lascia Betül e Şermin attonite, confermando la totale mancanza di rispetto da parte di Çolak verso le loro legittime aspettative. Invece di offrire la stabilità coniugale che entrambe speravano vivamente di ottenere, la scioccante proposta dell&#x27;uomo rischia soltanto di confinare Betül in una posizione sociale ancora più fragile e compromessa. Madre e figlia comprendono chiaramente che rimanere al suo fianco a queste condizioni umilianti non farebbe altro che alimentare ulteriormente le malelingue e le scherno di Çukurova. Senza il matrimonio riparatore che avevano fermamente pianificato, la rottura diventa inevitabile, lasciando entrambe le donne deluse e furiose di fronte al definitivo fallimento dei loro progetti.</p>
-<h2>Cosa succede quando la villa viene sigillata</h2>
+<h2 id="c7">Cosa succede quando la villa viene sigillata</h2>
 <p>Il momento più drammatico per gli abitanti della tenuta coincide con l&#x27;arrivo dell&#x27;ufficiale giudiziario, incaricato di eseguire il sequestro della proprietà. A Züleyha viene concesso un margine di soli quindici minuti per radunare gli effetti personali e abbandonare la struttura. Le accorate suppliche rivolte ai funzionari si rivelano del tutto inutili davanti al rigore della legge. In un lasso di tempo ridottissimo, Züleyha deve organizzare la partenza dell&#x27;intera famiglia, composta dai suoi bambini, dalla nonna Azize, da Lütfiye e da Fikret, che si trovano improvvisamente privati della loro dimora storica.</p>
 <p>Ad esacerbare la sofferenza della famiglia contribuisce la presenza provvisoria di Şermin, la quale si presenta sul posto munita di macchina fotografica per immortalare la rovina della sua rivale. Şermin intende documentare il momento esatto in cui Züleyha è costretta ad andarsene, festeggiando l&#x27;apparente fine della sua supremazia a Çukurova. Il suo intento malevolo viene però sventato dall&#x27;intervento immediato di Züleyha, che reagisce d&#x27;istinto per impedire alla donna di scattare le fotografie. Questo scontro accentua la tensione emotiva di un momento già estremamente doloroso per tutti i presenti.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
@@ -385,19 +435,41 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=3mK34UxxkgQ" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/3mK34UxxkgQ/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TERRA AMARA Anticipazioni Turche: Kerem Alì rapito, Villa Yaman pignorata! Non c&#x27;è pace per i Y</span></a></li><li><a href="https://www.youtube.com/watch?v=sJ_MX8Lma88" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/sJ_MX8Lma88/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TERRA AMARA Anticipazioni: Umit rapisce il piccolo Adnan, Zuleyha la uccide!</span></a></li><li><a href="https://www.youtube.com/watch?v=3OFQRpha-Wk" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/3OFQRpha-Wk/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TERRA AMARA - Puntate 28 Ago-1 Sett: Mujgan mette a rischio la vita di Kerem Alì! Yilmaz Furios</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Chi c&#x27;è davvero dietro Müjdat e il rapimento di Kerem Ali? E Züleyha riuscirà a riprendersi la villa?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=CmvPQHERLkI">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di Terra Amara</h2><div class="griglia"><article class="scheda">
+  <a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/"><div class="foto"><img src="/img/terra-amara-la-trama-completa-e-come-finisce.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></h3>
+    <div class="quando">30 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/"><div class="foto"><img src="https://i.ytimg.com/vi/_ypSJU-x7LY/hqdefault.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/"><div class="foto"><img src="https://i.ytimg.com/vi/B_MLx-0yh6M/hqdefault.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=Terra Amara, Züleyha cacciata dalla villa con i sigilli — mentre Müjdat rapisce Kerem Ali e chiede 10 milioni — https://serietvfans.com/terra-amara/terra-amara-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/terra-amara/terra-amara-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/terra-amara/terra-amara-la-trama-completa-e-come-finisce/&text=Terra Amara, Züleyha cacciata dalla villa con i sigilli — mentre Müjdat rapisce Kerem Ali e chiede 10 milioni" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">Terra Amara Anticipazioni 17 Marzo: Züleyha cacciata dalla villa con i sigilli</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=CmvPQHERLkI">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di Terra Amara</h3><ol class="numerata"><li><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></li><li><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></li><li><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></li><li><a href="/terra-amara/terra-amara-come-finisce-davvero-zuleyha-vince-tutto-e-resta-sola/">Terra Amara: come finisce davvero, Züleyha vince tutto e resta sola</a></li><li><a href="/terra-amara/terra-amara-come-muore-demir-yaman-chi-ha-dato-lordine-e-perche-doveva-essere-un-rapimento/">Terra Amara, come muore Demir Yaman: chi ha dato l&#x27;ordine e perché doveva essere un rapimento</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>Terra Amara Anticipazioni 17 Marzo: Züleyha cacciata dalla villa con i sigilli</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su Terra Amara</h3><ul><li><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></li><li><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></li><li><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></li><li><a href="/terra-amara/terra-amara-come-finisce-davvero-zuleyha-vince-tutto-e-resta-sola/">Terra Amara: come finisce davvero, Züleyha vince tutto e resta sola</a></li><li><a href="/terra-amara/terra-amara-come-muore-demir-yaman-chi-ha-dato-lordine-e-perche-doveva-essere-un-rapimento/">Terra Amara, come muore Demir Yaman: chi ha dato l&#x27;ordine e perché doveva essere un rapimento</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

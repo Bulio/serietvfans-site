@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/la-promessa/">La Promessa</a> › La Promessa 17-21 luglio, la copia del Don Chisciotte e la confessione di Jana a Curro: «Siamo fratelli»</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/la-promessa/">La Promessa</a>
   <h1>La Promessa 17-21 luglio, la copia del Don Chisciotte e la confessione di Jana a Curro: «Siamo fratelli»</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">La settimana ruota attorno a una rivelazione che il pubblico aspettava da mesi: aiutando Curro a cercare una preziosa copia del Don Chisciotte nella biblioteca del palazzo, Jana trova il momento e il coraggio per dirgli la verità — sono fratelli. Il ragazzo resta senza parole. Intanto il barone comincia a interessarsi a Teresa con complimenti sospetti che allarmano Pía, e Mauro non riesce a rinunciare a Leonor nonostante il ricatto di Rómulo.</p><ol><li><a href="#c1">La biblioteca, il libro e la verità</a></li><li><a href="#c2">Chi è Curro, e perché quella frase gli rovescia addosso vent&#x27;anni</a></li><li><a href="#c3">Il barone mette gli occhi su Teresa</a></li><li><a href="#c4">Perché i complimenti del barone allarmano Pía</a></li><li><a href="#c5">Il ricatto di Rómulo su Mauro</a></li><li><a href="#c6">Cruz insiste, Manuel dice no</a></li><li><a href="#c7">Perché conta: il segreto smette di essere di Cruz</a></li><li><a href="#c8">Come Jana svela la verita a Curro</a></li><li><a href="#c9">Perche Pia teme le attenzioni del barone</a></li><li><a href="#c10">Cosa rischia Mauro sfidando il ricatto</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>La Promessa</strong> — Rete 4 · in streaming su Mediaset Infinity</span></div>
   
-  <p class="occhiello">La settimana ruota attorno a una rivelazione che il pubblico aspettava da mesi: aiutando Curro a cercare una preziosa copia del Don Chisciotte nella biblioteca del palazzo, Jana trova il momento e il coraggio per dirgli la verità — sono fratelli. Il ragazzo resta senza parole. Intanto il barone comincia a interessarsi a Teresa con complimenti sospetti che allarmano Pía, e Mauro non riesce a rinunciare a Leonor nonostante il ricatto di Rómulo.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: La Promessa 17-21 luglio, la copia del Don Chisciotte e la confessione di Jana a Curro: «Siamo fratelli»" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/jkMC-Brgm3o/maxresdefault.jpg" alt="La Promessa 17-21 luglio, la copia del Don Chisciotte e la confessione di Jana a Curro: «Siamo fratelli»" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/jkMC-Brgm3o/hqdefault.jpg 480w, https://i.ytimg.com/vi/jkMC-Brgm3o/sddefault.jpg 640w, https://i.ytimg.com/vi/jkMC-Brgm3o/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/jkMC-Brgm3o/hqdefault.jpg&quot;, &quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,48 +409,70 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>Il timore di Pía è concreto: teme che il barone si comporti con Teresa come fece in passato con lei.</strong></p>
-  <h2>La biblioteca, il libro e la verità</h2>
+  <h2 id="c1">La biblioteca, il libro e la verità</h2>
 <p>Tutto nasce da una ricerca: Curro cerca una preziosa copia del Don Chisciotte custodita nella biblioteca del palazzo, e Jana si offre di aiutarlo. Le ore passate insieme tra gli scaffali creano l&#x27;intimità che serviva, e alla fine lei trova il coraggio di dirgli ciò che sa da sempre: sono fratelli. È un annuncio che spiazza completamente il giovane, costretto a rileggere da capo tutta la propria storia personale — chi è, da dove viene e perché è cresciuto lontano da chi avrebbe dovuto proteggerlo.</p>
-<h2>Chi è Curro, e perché quella frase gli rovescia addosso vent&#x27;anni</h2>
+<h2 id="c2">Chi è Curro, e perché quella frase gli rovescia addosso vent&#x27;anni</h2>
 <p>Per misurare il colpo bisogna sapere cosa credeva di essere. Curro è cresciuto dentro quelle mura con una famiglia assegnata e una versione delle proprie origini che non ha mai avuto motivo di verificare. La verità è un&#x27;altra: lui e Jana sono figli della stessa madre, Dolores, la giovane che serviva a palazzo e che fu fatta morire, e il bambino portato via da quella casa era lui. Jana quel nome lo cerca da anni: alla tenuta è arrivata come domestica, ma con un&#x27;identità che non le appartiene, per scoprire chi uccise sua madre e dove fosse finito il fratello. Quando dice «siamo fratelli» non sta confidando un sentimento, sta consegnando un&#x27;indagine.</p>
-<h2>Il barone mette gli occhi su Teresa</h2>
+<h2 id="c3">Il barone mette gli occhi su Teresa</h2>
 <p>Nello stesso periodo il barone convoca Teresa per complimentarsi del lavoro svolto nell&#x27;ultimo periodo. Un gesto che a chiunque sembrerebbe innocuo, ma non a Pía: conosce fin troppo bene quell&#x27;uomo e i suoi metodi, e teme che stia per esercitare sulla collega la stessa prepotenza usata contro di lei in passato. Il sospetto resta sospeso, ma chi ha seguito la serie sa dove quella strada porterà.</p>
-<h2>Perché i complimenti del barone allarmano Pía</h2>
+<h2 id="c4">Perché i complimenti del barone allarmano Pía</h2>
 <p>Perché non è la prima volta che li sente. Il barone è l&#x27;uomo che di lei ha abusato ripetutamente, e il suo metodo comincia sempre così: attenzioni, elogi per il lavoro, poi regali sempre più costosi. Teresa è giovane, è appena stata notata, e sta ricevendo esattamente le stesse premure nello stesso ordine. Quello che agli altri sembra un gesto signorile, a Pía sembra una scaletta già vista — ed è per questo che il suo timore non è un presentimento ma un riconoscimento.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Il ricatto di Rómulo su Mauro</h2>
+<h2 id="c5">Il ricatto di Rómulo su Mauro</h2>
 <p>Sotto le scale si consuma un&#x27;altra vicenda ad alto rischio: Rómulo ha scoperto la relazione clandestina tra Mauro e Leonor e non usa mezzi termini — se il primo cameriere non chiuderà per sempre con la giovane, riferirà tutto al barone, con la certezza che finirebbe cacciato dal palazzo per sempre. Mauro si ritrova con le spalle al muro, incapace di trovare una via d&#x27;uscita; ma la passione è più forte del buon senso, e i due continuano a vedersi rischiando di essere scoperti da qualunque altro membro della servitù.</p>
-<h2>Cruz insiste, Manuel dice no</h2>
+<h2 id="c6">Cruz insiste, Manuel dice no</h2>
 <p>Ai piani alti, intanto, Cruz continua a spingere per il matrimonio tra Manuel e Jimena, convinta che le nozze debbano celebrarsi il prima possibile. La reazione del figlio, però, non è quella che sperava: si rifiuta categoricamente di accettare quella prospettiva. Una resistenza destinata a durare poco — ma che in questa fase segna la distanza tra ciò che Manuel vuole per sé e ciò che la famiglia ha già deciso al posto suo.</p>
-<h2>Perché conta: il segreto smette di essere di Cruz</h2>
+<h2 id="c7">Perché conta: il segreto smette di essere di Cruz</h2>
 <p>Finché la verità sulla nascita di Curro l&#x27;aveva solo Jana, restava un&#x27;accusa senza peso: la parola di una cameriera contro quella dei padroni. Da questa settimana la sanno in due, e il secondo è un uomo di famiglia che vive sotto lo stesso tetto di chi ha interesse a soffocarla — perché Cruz è chiamata in causa sia per la morte di Dolores sia per la sparizione del bambino. Il rischio, però, cambia direzione anziché sparire: adesso Curro sa una cosa che non sa fingere di non sapere, e ogni domanda che farà in casa dirà a qualcuno che qualcuno ha parlato.</p>
-<h2>Come Jana svela la verita a Curro</h2>
+<h2 id="c8">Come Jana svela la verita a Curro</h2>
 <p>Jana e arrivata alla tenuta nascondendo la propria reale identita sotto i panni di una semplice domestica, mossa da un obiettivo preciso: scoprire chi ha ucciso sua madre Dolores e ritrovare il fratello scomparso anni prima. L&#x27;occasione decisiva si presenta quando Curro si mette a cercare una preziosa e rara copia del Don Chisciotte nella biblioteca del palazzo. Offrendosi di aiutarlo tra gli scaffali, Jana riesce a creare un clima di profonda intimita e fiducia. In quel luogo appartato, la giovane trova finalmente il momento e il coraggio per pronunciare le parole che custodiva da tempo, rivelando al ragazzo che sono fratelli e stravolgendo per sempre l&#x27;equilibrio della sua vita.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>La notizia lascia Curro totalmente spiazzato e privo di parole, costringendolo a riconsiderare l&#x27;intera storia personale che ha sempre creduto vera. Il giovane e cresciuto tra quelle mura con un&#x27;altra famiglia e una versione dei fatti manipolata, ignorando che sua madre fosse in realta la cameriera Dolores e che lui fosse il neonato strappato alla donna. Ora la verita non appartiene piu soltanto a Jana: da questo momento sono in due a condividere un segreto bruciante che chiama direttamente in causa Cruz, ritenuta responsabile sia per la tragica morte della serva sia per la sparizione del bambino avvenuta anni prima all&#x27;interno della residenza.</p>
-<h2>Perche Pia teme le attenzioni del barone</h2>
+<h2 id="c9">Perche Pia teme le attenzioni del barone</h2>
 <p>Quando il barone convoca Teresa per farle dei complimenti riguardo al lavoro svolto ultimamente, la cosa potrebbe sembrare a prima vista un normale ed encomiabile gesto di cortesia da parte del padrone. Tuttavia, agli occhi di Pia questa situazione assume immediatamente un significato sinistro e allarmante. La donna conosce fin troppo bene la vera natura del barone, avendone subito in passato gli abusi ripetuti, e sa esattamente come comincia la sua trappola. Quelli che appaiono come elogi disinteressati rappresentano infatti soltanto il primo passo di una precisa sequenza fatta di attenzioni mirate, lusinghe continue e regali sempre piu preziosi volti a sottomettere la vittima prescelta.</p>
 <p>Rivedere esattamente le medesime attenzioni rivolte a una giovane collega insospettita scatena in Pia una forte inquietudine e il terrore che la storia possa ripetersi identica. Teresa e infatti una persona giovane e ingenua, finora rimasta ai margini delle attenzioni dei padroni, che adesso rischia di cadere nell&#x27;inganno del nobile senza comprendere la reale minaccia che incombe su di lei. Per Pia non si tratta affatto di una semplice supposizione o di un sospetto infondato, ma del doloroso riconoscimento di un copione gia vissuto sulla propria pelle, che la spinge a temere il peggio per il futuro della ragazza all&#x27;interno del palazzo.</p>
-<h2>Cosa rischia Mauro sfidando il ricatto</h2>
+<h2 id="c10">Cosa rischia Mauro sfidando il ricatto</h2>
 <p>Negli ambienti riservati alla servitu la tensione raggiunge livelli altissimi a causa della storia d&#x27;amore segreta tra Mauro e la giovane Leonor. La relazione clandestina viene scoperta da Romulo, il quale decide di intervenire tempestivamente per evitare scandali che comprometterebbero l&#x27;intero palazzo. Romulo affronta Mauro senza mezzi termini, mettendolo di fronte a un ultimatum durissimo: se il primo cameriere non meottera la parola fine alla storia con Leonor, la faccenda verra immediatamente riferita al barone. Una minaccia concreta che significherebbe per Mauro la cacciata definitiva dalla tenuta, senza alcuna possibilita di trovare clemenza o di giustificare il proprio comportamento sconsiderato.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>Messo letteralmente con le spalle al muro, Mauro si ritrova costretto a valutare le pesanti conseguenze delle sue azioni, ma la passione viscerale che lo lega a Leonor si rivela del tutto incontrollabile. Nonostante il rischio elevatissimo di perdere il lavoro e di essere bandito per sempre, il ragazzo dimostra di non riuscire a rinunciare alla giovane nobile. I due continuano cosi a vedersi in gran segreto negli angoli piu nascosti della residenza, trasformando ogni singolo incontro in una scommessa pericolosa, dove la possibilita di venire sorpresi dagli altri membri della servitu o dai padroni resta una costante minaccia incombente.</p>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=uHwo0V4Mgqs" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/uHwo0V4Mgqs/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA - SPOILER SPAGNOLI -Jana racconta a Curro che sono Fratelli!</span></a></li><li><a href="https://www.youtube.com/watch?v=kqEumUkncKI" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/kqEumUkncKI/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni: Teresa scopre che Mauro l’ha tradita con Leonor</span></a></li><li><a href="https://www.youtube.com/watch?v=yU4nzRiacfQ" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/yU4nzRiacfQ/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni: Jana e Curro finalmente uniti come fratelli!</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Come reagirà Curro alla scoperta di avere una sorella? E Mauro dovrebbe cedere al ricatto di Rómulo o rischiare tutto per Leonor?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=jkMC-Brgm3o">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di La Promessa</h2><div class="griglia"><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/"><div class="foto"><img src="https://i.ytimg.com/vi/Rp8VhxDiDSk/hqdefault.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></h3>
+    <div class="quando">7 settembre 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/"><div class="foto"><img src="https://i.ytimg.com/vi/8JHt6ogwxQw/hqdefault.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Ángela beve tutto, Curro sfonda la porta</a></h3>
+    <div class="quando">6 settembre 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/"><div class="foto"><img src="/img/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Curro nasconde Ángela, Lorenzo furioso</a></h3>
+    <div class="quando">6 settembre 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=La Promessa 17-21 luglio, la copia del Don Chisciotte e la confessione di Jana a Curro: «Siamo fratelli» — https://serietvfans.com/la-promessa/la-promessa-17-21-luglio-la-copia-del-don-chisciotte-e-la-confessione-di-jana-a/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/la-promessa/la-promessa-17-21-luglio-la-copia-del-don-chisciotte-e-la-confessione-di-jana-a/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/la-promessa/la-promessa-17-21-luglio-la-copia-del-don-chisciotte-e-la-confessione-di-jana-a/&text=La Promessa 17-21 luglio, la copia del Don Chisciotte e la confessione di Jana a Curro: «Siamo fratelli»" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">LA PROMESSA Anticipazioni 17-21 Luglio: Mauro sedotto da Leonor, Teresa nel mirino del Barone</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=jkMC-Brgm3o">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di La Promessa</h3><ol class="numerata"><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Ángela beve tutto, Curro sfonda la porta</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Curro nasconde Ángela, Lorenzo furioso</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>LA PROMESSA Anticipazioni 17-21 Luglio: Mauro sedotto da Leonor, Teresa nel mirino del Barone</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su La Promessa</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-3-6-settembre-maria-affronta-la-gravidanza-da-sola/">La Promessa anticipazioni 3-6 settembre: Maria affronta la gravidanza da sola</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-carlo-arriva-maria-trema/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Carlo arriva, Maria trema</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/far-away/far-away-anticipazioni-dal-31-agosto-al-4-settembre-chi-ha-donato-il-fegato-a-nare/">Far Away, anticipazioni dal 31 agosto al 4 settembre: chi ha donato il fegato a Nare, e perché adesso sta male lui</a></li><li><a href="/far-away/far-away-dal-31-agosto-la-madre-di-alya-sapeva-tutto-non-ricordo/">Far Away Dal 31 Agosto: la madre di Alya sapeva tutto — «non ricordo»</a></li><li><a href="/forbidden-fruit/forbidden-fruit-dal-31-agosto-il-conto-a-nome-di-halit-che-e-morto/">Forbidden Fruit Dal 31 Agosto: il conto a nome di Halit, che è morto</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

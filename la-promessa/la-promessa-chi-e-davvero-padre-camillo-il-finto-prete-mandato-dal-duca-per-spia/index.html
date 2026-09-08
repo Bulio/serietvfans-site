@@ -12,7 +12,7 @@
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Serie TV Fans">
 <meta property="og:url" content="https://serietvfans.com/la-promessa/la-promessa-chi-e-davvero-padre-camillo-il-finto-prete-mandato-dal-duca-per-spia/">
-<meta property="og:image" content="https://i.ytimg.com/vi/VTMib9o6pKU/maxresdefault.jpg">
+<meta property="og:image" content="https://serietvfans.com/img/la-promessa-chi-e-davvero-padre-camillo-il-finto-prete-mandato-dal-duca-per-spia.jpg">
 <meta property="og:locale" content="it_IT">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#7b1e2b">
@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -318,12 +367,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7778653397776213" crossorigin="anonymous"></script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "96259d7e67ce47fba4573364859712a6"}'></script>
 <script>(function(){var f=0;function go(){if(f)return;f=1;(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","y3rpoig6jk");}["pointerdown","keydown","touchstart","scroll"].forEach(function(v){addEventListener(v,go,{once:1,passive:1})});setTimeout(go,2500)})();</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "La Promessa, chi è davvero padre padre Camilo: il finto prete mandato dal Duca per spiare i Luján — poi prende Lope in ostaggio con la pistola", "datePublished": "2026-08-14", "dateModified": "2026-09-04", "description": "Le domande insistenti, l'amicizia interessata con Petra, i tentativi di estorcere informazioni a Rómulo, Pía e Jana, perfino il nome dell'amante chiesto in confessione: l'atteggiamento di padre padre Camilo insospettisce tutti. La verità emerge quando arriva il Duca degli Infantes, che chiede di conoscerlo e si apparta con lui: è il padre di Jimena ad averlo mandato, per capire se Manuel sposa la figlia per amore o per interesse. E quando Catalina telefona alla diocesi e scopre che quel prete non esiste, l'uomo mostra il suo vero volto.", "inLanguage": "it-IT", "mainEntityOfPage": "https://serietvfans.com/la-promessa/la-promessa-chi-e-davvero-padre-camillo-il-finto-prete-mandato-dal-duca-per-spia/", "image": ["https://i.ytimg.com/vi/VTMib9o6pKU/maxresdefault.jpg"], "author": {"@type": "Organization", "name": "Serie TV Fans", "url": "https://serietvfans.com/chi-siamo/"}, "publisher": {"@type": "Organization", "name": "Serie TV Fans", "logo": {"@type": "ImageObject", "url": "https://serietvfans.com/favicon.svg"}}, "video": {"@type": "VideoObject", "name": "LA PROMESSA SPOILER Spagna: Don padre Camilo spia a La Promessa", "description": "Le domande insistenti, l'amicizia interessata con Petra, i tentativi di estorcere informazioni a Rómulo, Pía e Jana, perfino il nome dell'amante chiesto in confessione: l'atteggiamento di padre padre Camilo insospettisce tutti. La verità emerge quando arriva il Duca degli Infantes, che chiede di conoscerlo e si apparta con lui: è il padre di Jimena ad averlo mandato, per capire se Manuel sposa la figlia per amore o per interesse. E quando Catalina telefona alla diocesi e scopre che quel prete non esiste, l'uomo mostra il suo vero volto.", "thumbnailUrl": "https://i.ytimg.com/vi/VTMib9o6pKU/maxresdefault.jpg", "uploadDate": "2026-08-14T12:00:00Z", "embedUrl": "https://www.youtube.com/embed/VTMib9o6pKU"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "La Promessa, chi è davvero padre padre Camilo: il finto prete mandato dal Duca per spiare i Luján — poi prende Lope in ostaggio con la pistola", "datePublished": "2026-08-14", "dateModified": "2026-09-08", "description": "Le domande insistenti, l'amicizia interessata con Petra, i tentativi di estorcere informazioni a Rómulo, Pía e Jana, perfino il nome dell'amante chiesto in confessione: l'atteggiamento di padre padre Camilo insospettisce tutti. La verità emerge quando arriva il Duca degli Infantes, che chiede di conoscerlo e si apparta con lui: è il padre di Jimena ad averlo mandato, per capire se Manuel sposa la figlia per amore o per interesse. E quando Catalina telefona alla diocesi e scopre che quel prete non esiste, l'uomo mostra il suo vero volto.", "inLanguage": "it-IT", "mainEntityOfPage": "https://serietvfans.com/la-promessa/la-promessa-chi-e-davvero-padre-camillo-il-finto-prete-mandato-dal-duca-per-spia/", "image": ["https://serietvfans.com/img/la-promessa-chi-e-davvero-padre-camillo-il-finto-prete-mandato-dal-duca-per-spia.jpg"], "author": {"@type": "Organization", "name": "Serie TV Fans", "url": "https://serietvfans.com/chi-siamo/"}, "publisher": {"@type": "Organization", "name": "Serie TV Fans", "logo": {"@type": "ImageObject", "url": "https://serietvfans.com/favicon.svg"}}, "video": {"@type": "VideoObject", "name": "LA PROMESSA SPOILER Spagna: Don padre Camilo spia a La Promessa", "description": "Le domande insistenti, l'amicizia interessata con Petra, i tentativi di estorcere informazioni a Rómulo, Pía e Jana, perfino il nome dell'amante chiesto in confessione: l'atteggiamento di padre padre Camilo insospettisce tutti. La verità emerge quando arriva il Duca degli Infantes, che chiede di conoscerlo e si apparta con lui: è il padre di Jimena ad averlo mandato, per capire se Manuel sposa la figlia per amore o per interesse. E quando Catalina telefona alla diocesi e scopre che quel prete non esiste, l'uomo mostra il suo vero volto.", "thumbnailUrl": "https://serietvfans.com/img/la-promessa-chi-e-davvero-padre-camillo-il-finto-prete-mandato-dal-duca-per-spia.jpg", "uploadDate": "2026-08-14T12:00:00Z", "embedUrl": "https://www.youtube.com/embed/VTMib9o6pKU"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://serietvfans.com/"}, {"@type": "ListItem", "position": 2, "name": "La Promessa", "item": "https://serietvfans.com/serie/la-promessa/"}, {"@type": "ListItem", "position": 3, "name": "La Promessa, chi è davvero padre padre Camilo: il finto prete mandato dal Duca per spiare i Luján — poi prende Lope in ostaggio con la pistola"}]}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,19 +385,18 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/la-promessa/">La Promessa</a> › La Promessa, chi è davvero padre padre Camilo: il finto prete mandato dal Duca per spiare i Luján — poi prende Lope in ostaggio con la pistola</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/la-promessa/">La Promessa</a>
   <h1>La Promessa, chi è davvero padre padre Camilo: il finto prete mandato dal Duca per spiare i Luján — poi prende Lope in ostaggio con la pistola</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 8 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Le domande insistenti, l&#x27;amicizia interessata con Petra, i tentativi di estorcere informazioni a Rómulo, Pía e Jana, perfino il nome dell&#x27;amante chiesto in confessione: l&#x27;atteggiamento di padre padre Camilo insospettisce tutti. La verità emerge quando arriva il Duca degli Infantes, che chiede di conoscerlo e si apparta con lui: è il padre di Jimena ad averlo mandato, per capire se Manuel sposa la figlia per amore o per interesse. E quando Catalina telefona alla diocesi e scopre che quel prete non esiste, l&#x27;uomo mostra il suo vero volto.</p><ol><li><a href="#c1">Un prete che fa troppe domande</a></li><li><a href="#c2">Chi è Petra, e perché l&#x27;impostore ha puntato proprio lei</a></li><li><a href="#c3">La cena e il colloquio riservato col Duca</a></li><li><a href="#c4">La telefonata di Catalina alla diocesi</a></li><li><a href="#c5">Spari, ostaggi e la fuga di Catalina</a></li><li><a href="#c6">Perché conta: quel matrimonio nasce già sorvegliato</a></li><li><a href="#c7">Come padre Camilo ha ingannato la servitù</a></li><li><a href="#c8">Cosa provoca la drammatica scoperta di Catalina</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>La Promessa</strong> — Rete 4 · in streaming su Mediaset Infinity</span></div>
-  
-  <p class="occhiello">Le domande insistenti, l&#x27;amicizia interessata con Petra, i tentativi di estorcere informazioni a Rómulo, Pía e Jana, perfino il nome dell&#x27;amante chiesto in confessione: l&#x27;atteggiamento di padre padre Camilo insospettisce tutti. La verità emerge quando arriva il Duca degli Infantes, che chiede di conoscerlo e si apparta con lui: è il padre di Jimena ad averlo mandato, per capire se Manuel sposa la figlia per amore o per interesse. E quando Catalina telefona alla diocesi e scopre che quel prete non esiste, l&#x27;uomo mostra il suo vero volto.</p>
+  <figure class="copertina"><img src="/img/la-promessa-chi-e-davvero-padre-camillo-il-finto-prete-mandato-dal-duca-per-spia.jpg" alt="La Promessa"><figcaption>Immagine d&#x27;ambiente — La Promessa</figcaption></figure>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
     <button type="button" class="avvia" data-yt="VTMib9o6pKU"
       aria-label="Riproduci il video: La Promessa, chi è davvero padre padre Camilo: il finto prete mandato dal Duca per spiare i Luján — poi prende Lope in ostaggio con la pistola" onclick="ytGo(this)">
-      <img src="https://i.ytimg.com/vi/VTMib9o6pKU/maxresdefault.jpg" alt="La Promessa, chi è davvero padre padre Camilo: il finto prete mandato dal Duca per spiare i Luján — poi prende Lope in ostaggio con la pistola" width="1280" height="720"
-        srcset="https://i.ytimg.com/vi/VTMib9o6pKU/hqdefault.jpg 480w, https://i.ytimg.com/vi/VTMib9o6pKU/sddefault.jpg 640w, https://i.ytimg.com/vi/VTMib9o6pKU/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+      <img src="/img/la-promessa-chi-e-davvero-padre-camillo-il-finto-prete-mandato-dal-duca-per-spia.jpg" alt="La Promessa, chi è davvero padre padre Camilo: il finto prete mandato dal Duca per spiare i Luján — poi prende Lope in ostaggio con la pistola" width="1280" height="720"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/VTMib9o6pKU/hqdefault.jpg&quot;, &quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,42 +407,64 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>Il biglietto che tradisce tutto: «Sei stato lì troppo a lungo e non abbiamo ancora avuto tue notizie, abbiamo bisogno di risultati».</strong></p>
-  <h2>Un prete che fa troppe domande</h2>
+  <h2 id="c1">Un prete che fa troppe domande</h2>
 <p>Arrivato alla tenuta col pretesto di una breve sosta e rimasto grazie alla fiducia conquistata con Petra dopo un presunto pestaggio, padre padre Camilo comincia subito a comportarsi in modo insolito. Si avvicina alla devota cameriera per farsi raccontare le abitudini di tutti, prova senza successo a guadagnarsi Rómulo e donna Pía, ci prova anche con Jana. E si spinge oltre ogni limite quando, durante la confessione, insiste per farsi dire da Leonor il nome dell&#x27;uomo sposato con cui ha una relazione. Jana e Pía arrivano alla stessa conclusione: quell&#x27;uomo è lì per conto di qualcun altro.</p>
-<h2>Chi è Petra, e perché l&#x27;impostore ha puntato proprio lei</h2>
+<h2 id="c2">Chi è Petra, e perché l&#x27;impostore ha puntato proprio lei</h2>
 <p>Chi conosce la tenuta capisce subito che l&#x27;avvicinamento a Petra non è simpatia. Petra è la cameriera più rigida del piano di sotto, quella che sa a che ora ciascuno scende in cucina e quali porte restano chiuse: per un uomo arrivato lì a raccogliere informazioni è la migliore mappa disponibile in casa. Ed è anche l&#x27;unica con un punto cieco così esposto. La sua devozione è sincera, e davanti a un abito talare si abbassano difese che con chiunque altro resterebbero al loro posto. Il risultato si è già visto: al «prete» ha raccontato uno dei segreti più pesanti che circolano tra la servitù, la gravidanza nascosta di Pía. Non è un pettegolezzo da corridoio, è una notizia che può distruggere una donna. E adesso è nelle mani di qualcuno che non è mai stato un sacerdote.</p>
-<h2>La cena e il colloquio riservato col Duca</h2>
+<h2 id="c3">La cena e il colloquio riservato col Duca</h2>
 <p>La risposta arriva quando Manuel decide di chiedere ufficialmente la mano di Jimena ai Duchi degli Infantes. Alla tenuta viene allestita una grande cena, con Simona e Lope impegnati a curare ogni piatto. Ma appena mette piede in casa, il Duca mostra interesse per il sacerdote e chiede alla figlia di presentarglielo, poi accampa un «problema di fede» per restare solo con lui. Nel colloquio, padre Camilo riferisce che Jimena è ben voluta e che Manuel se ne prende cura con devozione: il compito è assolto. È per questo che, quando poco dopo Manuel si inginocchia con l&#x27;anello sotto lo sguardo gelosissimo di Jana, il Duca non oppone alcuna resistenza.</p>
-<h2>La telefonata di Catalina alla diocesi</h2>
+<h2 id="c4">La telefonata di Catalina alla diocesi</h2>
 <p>Il castello crolla per due motivi. Il primo è un biglietto intercettato — «hai avuto troppo tempo, servono risultati» — a cui l&#x27;uomo risponde chiedendo altri giorni: Jana capisce che non ci si può fidare. Il secondo è la mossa di Catalina, che telefona alla diocesi chiedendo notizie di lui e scopre la verità: nessun sacerdote con quel nome esiste. padre Camilo è un impostore, e il mandante è il padre di Jimena, che voleva sapere se il matrimonio nascesse da amore o da interesse.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Spari, ostaggi e la fuga di Catalina</h2>
+<h2 id="c5">Spari, ostaggi e la fuga di Catalina</h2>
 <p>Catalina avverte Alonso, che chiama il sergente Funes — ed è lì che l&#x27;uomo si rivela molto più pericoloso di un semplice ficcanaso: aggredisce il poliziotto ed estrae una pistola, terrorizzando l&#x27;intera casa. Al rumore degli spari, Martina, Cruz e Jimena si barricano nella camera di Manuel. Il finto prete lega e imbavaglia Alonso e Funes e prende Lope in ostaggio in cucina. Sarà Catalina, uscita dalla stanza per capire cosa stia succedendo, a trovare il padre e il sergente legati e a liberarli — mentre in cucina la vita del giovane cuoco resta appesa a un filo.</p>
-<h2>Perché conta: quel matrimonio nasce già sorvegliato</h2>
+<h2 id="c6">Perché conta: quel matrimonio nasce già sorvegliato</h2>
 <p>Quando la pistola sarà rimessa via, alla Promessa resteranno due conti aperti. Il primo riguarda le nozze: il padre della sposa non si è limitato a informarsi, ha piazzato un uomo dentro casa d&#x27;altri per mesi. Un fidanzamento che comincia con una sorveglianza non è un fidanzamento sereno, e la faccenda taglia in entrambe le direzioni, perché quel matrimonio per i Luján non è solo una questione di cuore: è anche un modo per tenere in piedi i conti della tenuta. Se adesso i duchi cominciano a guardare i registri con la stessa attenzione con cui hanno guardato Manuel, la scoperta dei debiti è questione di tempo. Il secondo conto è più sporco. Le confessioni raccolte in queste settimane non svaniscono con la fuga di chi le ha ottenute: il nome dell&#x27;uomo sposato che Leonor non voleva dire e il segreto di Pía sono usciti da questa casa. E il Duca, si scoprirà, quell&#x27;uomo lo conosceva molto bene.</p>
-<h2>Come padre Camilo ha ingannato la servitù</h2>
+<h2 id="c7">Come padre Camilo ha ingannato la servitù</h2>
 <p>L&#x27;arrivo di padre Camilo alla tenuta doveva essere soltanto una breve sosta di passaggio, ma l&#x27;uomo è riuscito subito a prolungare la sua permanenza facendo leva su un presunto pestaggio che ha suscitato la compassione di tutti. Approfittando di questa accoglienza, l&#x27;impostore ha individuato in Petra la figura ideale per infiltrarsi nelle dinamiche della casa. La cieca devozione della cameriera verso l&#x27;abito talare ha permesso al finto sacerdote di superare ogni diffidenza e di farsi raccontare i dettagli più intimi della servitù, compreso il pesantissimo segreto della gravidanza nascosta di donna Pía. Allo stesso tempo, l&#x27;uomo ha provato a carpire informazioni da Rómulo e Jana, spingendosi persino a pretendere da Leonor il nome dell&#x27;uomo sposato con cui ha una relazione segreta durante la confessione.</p>
 <p>L&#x27;atteggiamento invadente del finto prete ha finito per alimentare i sospetti di Jana e Pía, convinte che stesse agendo per conto di qualcuno. La conferma è arrivata intercettando un biglietto che gli intimava di ottenere risultati immediati. L&#x27;uomo ha risposto chiedendo altri giorni di tempo, ma la situazione è precipitata con la grande cena organizzata per Manuel e Jimena, dove Simona e Lope hanno curato ogni piatto. Lì il Duca degli Infantes ha preteso di conoscerlo e si è appartato con lui usando la scusa di un problema di fede. Durante quel colloquio riservato, Camilo ha confermato che Jimena era ben voluta e Manuel devoto, spingendo il Duca ad accettare la proposta di matrimonio avanzata da Manuel di fronte a una Jana profondamente gelosa.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Cosa provoca la drammatica scoperta di Catalina</h2>
+<h2 id="c8">Cosa provoca la drammatica scoperta di Catalina</h2>
 <p>La verità è venuta a galla quando Catalina ha deciso di fare una verifica telefonica con la diocesi, scoprendo che nessun sacerdote con quel nome era mai esistito. Capito che si trattava di un finto prete inviato dal padre di Jimena per spiare la tenuta, Catalina ha subito avvertito Alonso, che ha chiamato il sergente Funes. Vistosi scoperto, l&#x27;impostore ha mostrato la sua reale pericolosità aggredendo il poliziotto ed estraendo una pistola con cui ha sparato diversi colpi nel palazzo. Il rumore delle detonazioni ha gettato nell&#x27;incubo l&#x27;intera residenza, spingendo Martina, Cruz e Jimena a barricarsi per il terrore nella stanza di Manuel. Nel frattempo, l&#x27;aggressore ha legato e imbavagliato Alonso e Funes, prendendo poi la strada verso la cucina.</p>
 <p>Raggiunta la cucina, il finto prete ha preso in ostaggio Lope minacciandolo con l&#x27;arma da fuoco, mentre la vita del giovane cuoco rimaneva sospesa a un filo. Nel momento di massima tensione, Catalina è uscita dalla camera per verificare la situazione, ha trovato Alonso e il sergente Funes immobilizzati e ha provveduto immediatamente a slegarli. Nonostante la liberazione dei due uomini, la fuga del falso sacerdote lascia conseguenze pesantissime sulla tenuta. Il matrimonio tra Manuel e Jimena comincia sotto l&#x27;ombra di uno spionaggio orchestrato dal Duca, col rischio che vengano a galla i debiti dei Luján, mentre i segreti di Pía e la relazione di Leonor con un uomo sposato rimangono ormai irrimediabilmente compromessi.</p>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=eZfduWKpv3Q" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/eZfduWKpv3Q/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni Spagna: Finalmente svelato il nome del padre di Jana, che è.....</span></a></li><li><a href="https://www.youtube.com/watch?v=x3IZXjDkdd4" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/x3IZXjDkdd4/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni 8-12 Gennaio: Jimena scopre la lettera d&#x27;amore di Manuel a Jana! Che </span></a></li><li><a href="https://www.youtube.com/watch?v=UwP7G2B71W4" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/UwP7G2B71W4/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni Spagna: Jana lascia Manuel: &quot;Te ne sei andatoa quando avevo bisogno d</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Il Duca sapeva di aver mandato alla tenuta un uomo così pericoloso? E Lope riuscirà a cavarsela?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=VTMib9o6pKU">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di La Promessa</h2><div class="griglia"><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/"><div class="foto"><img src="https://i.ytimg.com/vi/Rp8VhxDiDSk/hqdefault.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></h3>
+    <div class="quando">7 settembre 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/"><div class="foto"><img src="https://i.ytimg.com/vi/8JHt6ogwxQw/hqdefault.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Ángela beve tutto, Curro sfonda la porta</a></h3>
+    <div class="quando">6 settembre 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/"><div class="foto"><img src="/img/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Curro nasconde Ángela, Lorenzo furioso</a></h3>
+    <div class="quando">6 settembre 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=La Promessa, chi è davvero padre padre Camilo: il finto prete mandato dal Duca per spiare i Luján — poi prende Lope in ostaggio con la pistola — https://serietvfans.com/la-promessa/la-promessa-chi-e-davvero-padre-camillo-il-finto-prete-mandato-dal-duca-per-spia/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/la-promessa/la-promessa-chi-e-davvero-padre-camillo-il-finto-prete-mandato-dal-duca-per-spia/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/la-promessa/la-promessa-chi-e-davvero-padre-camillo-il-finto-prete-mandato-dal-duca-per-spia/&text=La Promessa, chi è davvero padre padre Camilo: il finto prete mandato dal Duca per spiare i Luján — poi prende Lope in ostaggio con la pistola" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">LA PROMESSA SPOILER Spagna: Don padre Camilo spia a La Promessa</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=VTMib9o6pKU">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di La Promessa</h3><ol class="numerata"><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Ángela beve tutto, Curro sfonda la porta</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Curro nasconde Ángela, Lorenzo furioso</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>LA PROMESSA SPOILER Spagna: Don padre Camilo spia a La Promessa</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su La Promessa</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-3-6-settembre-maria-affronta-la-gravidanza-da-sola/">La Promessa anticipazioni 3-6 settembre: Maria affronta la gravidanza da sola</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-carlo-arriva-maria-trema/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Carlo arriva, Maria trema</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/far-away/far-away-anticipazioni-dal-31-agosto-al-4-settembre-chi-ha-donato-il-fegato-a-nare/">Far Away, anticipazioni dal 31 agosto al 4 settembre: chi ha donato il fegato a Nare, e perché adesso sta male lui</a></li><li><a href="/far-away/far-away-dal-31-agosto-la-madre-di-alya-sapeva-tutto-non-ricordo/">Far Away Dal 31 Agosto: la madre di Alya sapeva tutto — «non ricordo»</a></li><li><a href="/forbidden-fruit/forbidden-fruit-dal-31-agosto-il-conto-a-nome-di-halit-che-e-morto/">Forbidden Fruit Dal 31 Agosto: il conto a nome di Halit, che è morto</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

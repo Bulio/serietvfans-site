@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/la-promessa/">La Promessa</a> › La Promessa, Catalina fugge con i suoi figli, ma il Barone di Valladares la ferma: rischia di perderli per sempre</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/la-promessa/">La Promessa</a>
   <h1>La Promessa, Catalina fugge con i suoi figli, ma il Barone di Valladares la ferma: rischia di perderli per sempre</h1>
-  <div class="firma">Redazione Serie TV Fans · martedì 28 luglio 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-07-28">martedì 28 luglio 2026</time></span><span>aggiornato il 29 agosto 2026</span><span>8 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Catalina ha preparato tutto in silenzio: due valigie, i documenti dei bambini, un cocchio pronto all&#x27;alba. Non vuole più aspettare un giorno di più dentro quelle mura, perché sa che restare significa mettere a rischio la vita dei suoi figli. Ma.</p><ol><li><a href="#c1">Perché Catalina decide di fuggire dal palazzo di notte</a></li><li><a href="#c2">Quale scelta impone il Barone a Catalina</a></li><li><a href="#c3">Perché Leocadia potrebbe aver spinto Catalina alla fuga</a></li><li><a href="#c4">Cosa sa il Barone sui figli di Catalina</a></li><li><a href="#c5">Perché questa notte cambia il destino di Catalina</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>La Promessa</strong> — Rete 4 · in streaming su Mediaset Infinity</span></div>
   
-  <p class="occhiello">Catalina ha preparato tutto in silenzio: due valigie, i documenti dei bambini, un cocchio pronto all&#x27;alba. Non vuole più aspettare un giorno di più dentro quelle mura, perché sa che restare significa mettere a rischio la vita dei suoi figli. Ma.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: La Promessa, Catalina fugge con i suoi figli, ma il Barone di Valladares la ferma: rischia di perderli per sempre" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/4116hnPG2eI/maxresdefault.jpg" alt="La Promessa, Catalina fugge con i suoi figli, ma il Barone di Valladares la ferma: rischia di perderli per sempre" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/4116hnPG2eI/hqdefault.jpg 480w, https://i.ytimg.com/vi/4116hnPG2eI/sddefault.jpg 640w, https://i.ytimg.com/vi/4116hnPG2eI/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/4116hnPG2eI/hqdefault.jpg&quot;, &quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -360,42 +410,64 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
   <div class="corpo">
   <p><strong>Catalina ha preparato tutto in silenzio: due valigie, i documenti dei bambini, un cocchio pronto all&#x27;alba. Non vuole più aspettare un giorno di più dentro quelle mura, perché sa che restare significa mettere a rischio la vita dei suoi figli. Ma proprio mentre sta per lasciare per sempre il palazzo de La Promessa, una figura le sbarra la strada: il Barone di Valladares. E quello che le dice in quel momento non è solo una minaccia, è un avvertimento che potrebbe costarle tutto quello che ha di più caro.</strong></p>
   <p>Per capire fino in fondo perché Catalina sia arrivata a un passo così disperato, bisogna fare un passo indietro e ricordare cosa ha vissuto nelle ultime settimane a La Promessa. Catalina non è mai stata una donna che si arrende facilmente, ma il peso delle minacce, dei ricatti e delle bugie che si sono accumulate attorno a lei e ai suoi figli l&#x27;ha spinta a un punto di non ritorno. Ogni giorno che passa dentro il palazzo, per lei, non è più una giornata di lavoro o di quotidianità: è un giorno in più di paura, un giorno in più in cui i suoi bambini potrebbero pagare per colpe che non hanno mai avuto.</p>
-<h2>Perché Catalina decide di fuggire dal palazzo di notte</h2>
+<h2 id="c1">Perché Catalina decide di fuggire dal palazzo di notte</h2>
 <p>La decisione di fuggire non nasce dal nulla. Catalina ha capito che dentro le mura de La Promessa la sua famiglia non è più al sicuro, e che le persone che dovrebbero proteggerla sono in realtà quelle che la tengono prigioniera in una rete di segreti e ricatti sempre più stretta. Per questo, con il cuore in gola, organizza tutto nel massimo silenzio: prepara i documenti, avvisa solo chi è strettamente necessario, e sceglie l&#x27;ora più buia della notte per allontanarsi senza dare nell&#x27;occhio. Vuole solo una cosa: portare via i suoi figli e ricominciare lontano da lì, in un posto dove nessuno possa più farli del male.</p>
 <p>Ma proprio quando sembra che il piano stia per riuscire, succede l&#x27;imprevisto che cambia tutto. Il Barone di Valladares, che da tempo osserva ogni mossa di Catalina con un misto di sospetto e interesse personale, la intercetta proprio nel momento in cui sta per lasciare il palazzo. Non è un incontro casuale: il Barone sapeva, o forse sospettava da tempo, che Catalina stesse pianificando qualcosa del genere, e si è preparato ad affrontarla faccia a faccia prima che fosse troppo tardi.</p>
 <p>Il confronto tra i due è teso fin dalle prime parole. Il Barone non alza la voce, non ha bisogno di farlo: il suo tono calmo e calcolato è proprio ciò che rende le sue parole ancora più minacciose. Le fa capire, senza troppi giri di frase, che fuggire non è la soluzione che Catalina crede che sia. Al contrario, potrebbe essere l&#x27;errore che la condanna definitivamente, lei e i suoi figli. Il Barone di Valladares ha un potere che va ben oltre le mura del palazzo, e Catalina lo sa fin troppo bene: la sua influenza si estende a strade, a persone, a decisioni che una donna sola, con due bambini al seguito, non può in nessun modo controllare.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Quale scelta impone il Barone a Catalina</h2>
+<h2 id="c2">Quale scelta impone il Barone a Catalina</h2>
 <p>È qui che la tensione raggiunge il suo culmine: il Barone mette Catalina davanti a una scelta che sembra impossibile da accettare. O rinuncia alla fuga e resta, accettando di continuare a vivere sotto la minaccia costante che conosce fin troppo bene, oppure prosegue per la sua strada, ma rischiando concretamente di perdere per sempre la custodia dei suoi figli, se non addirittura qualcosa di ancora più grave. Non è chiaro fino a che punto il Barone sia disposto a spingersi per fermarla, ma il modo in cui pronuncia certe parole lascia intendere che non si tratti affatto di un bluff.</p>
 <p>Catalina si ritrova quindi paralizzata in mezzo alla strada, con le valigie ancora in mano e i suoi figli che aspettano nel cocchio, ignari di quello che sta succedendo pochi passi più in là. Il freddo della notte, il silenzio rotto solo dalla voce ferma del Barone, e la consapevolezza che ogni istante di esitazione potrebbe cambiare per sempre il destino della sua famiglia: tutto contribuisce a rendere questo il momento più difficile che Catalina abbia mai dovuto affrontare da quando è arrivata a La Promessa. Ogni secondo che passa sembra un&#x27;eternità: deve decidere se fidarsi del proprio istinto materno, che le grida di scappare il prima possibile, oppure ascoltare la voce fredda e razionale del Barone, che le ricorda quanto poco possa davvero contare la volontà di una donna sola contro un uomo con il suo potere.</p>
 <p>Quello che rende questa scena ancora più drammatica è il fatto che Catalina non sa fino in fondo di chi potersi fidare all&#x27;interno del palazzo. Negli ultimi giorni ha imparato a muoversi con estrema cautela, a controllare ogni parola prima di pronunciarla, a osservare ogni volto per capire se nasconda davvero le migliori intenzioni. Questa continua tensione l&#x27;ha resa più forte, ma l&#x27;ha anche isolata sempre di più, lasciandola sola proprio nel momento in cui avrebbe avuto più bisogno di un appoggio sincero. Negli ultimi tempi ha scoperto che alleanze che credeva solide si sono rivelate fragili, e persone che pensava fossero dalla sua parte hanno mostrato un volto diverso quando si è trattato di proteggere i propri interessi. Questo isolamento è proprio ciò che il Barone sfrutta a suo vantaggio: sa che Catalina, in questo momento, non ha davvero nessuno su cui contare, ed è proprio per questo che la sua minaccia pesa così tanto.</p>
-<h2>Perché Leocadia potrebbe aver spinto Catalina alla fuga</h2>
+<h2 id="c3">Perché Leocadia potrebbe aver spinto Catalina alla fuga</h2>
 <p>Va anche considerato il ruolo che Leocadia potrebbe aver avuto in questa vicenda, anche solo indirettamente. Le tensioni tra Leocadia e Catalina non sono mai state un segreto per chi segue la soap, e non è escluso che proprio l&#x27;ennesimo scontro tra le due donne abbia contribuito a spingere Catalina verso questa decisione estrema. Se davvero Leocadia avesse in qualche modo alimentato la paura di Catalina, magari senza volerlo, o peggio ancora con l&#x27;intenzione precisa di destabilizzarla, la responsabilità di questa notte disperata potrebbe estendersi ben oltre la sola figura del Barone di Valladares.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>Nel frattempo, dentro il palazzo, la sua assenza inizia a farsi notare. Chi si accorge per primo che Catalina non è al suo posto comincia a fare domande, e la voce di una possibile fuga rischia di diffondersi rapidamente tra le stanze e i corridoi. Se questo dovesse succedere prima che Catalina riesca a prendere una decisione, la situazione potrebbe sfuggirle completamente di mano, trasformando quella che doveva essere una fuga silenziosa in uno scandalo capace di coinvolgere l&#x27;intera famiglia.</p>
-<h2>Cosa sa il Barone sui figli di Catalina</h2>
+<h2 id="c4">Cosa sa il Barone sui figli di Catalina</h2>
 <p>C&#x27;è poi un dettaglio che i fan più attenti stanno già notando: il modo in cui il Barone di Valladares parla dei figli di Catalina non sembra soltanto una minaccia generica. Le sue parole lasciano intendere che sappia qualcosa di più specifico su di loro, qualcosa che potrebbe essere usato contro Catalina in un momento successivo, se lei decidesse comunque di andare fino in fondo con il suo piano di fuga. Questo apre uno scenario ancora più inquietante: e se il vero obiettivo del Barone non fosse solo fermarla questa notte, ma tenerla sotto controllo per molto più tempo, usando proprio i suoi figli come leva permanente?</p>
 <p>Va anche detto che Catalina non è donna da arrendersi facilmente, nemmeno davanti a una minaccia di questa portata. Chi la conosce sa che dietro la sua paura di madre si nasconde anche una determinazione fortissima, capace di farle trovare soluzioni anche nelle situazioni più disperate. È proprio questo a rendere l&#x27;esito di questo scontro così incerto: nessuno può davvero prevedere se Catalina sceglierà di cedere alla minaccia del Barone, o se troverà comunque un modo per portare a termine il suo piano, magari in circostanze ancora più rischiose di quanto avesse previsto.</p>
-<h2>Perché questa notte cambia il destino di Catalina</h2>
+<h2 id="c5">Perché questa notte cambia il destino di Catalina</h2>
 <p>C&#x27;è infine un ultimo elemento che rende questa notte ancora più carica di tensione: il modo in cui il Barone pronuncia il nome dei bambini di Catalina, quasi con familiarità, come se li conoscesse meglio di quanto lei stessa immagini. Non è un dettaglio da sottovalutare in una casata come quella de La Promessa, dove i legami di sangue e le eredità nascoste hanno già cambiato più volte gli equilibri di potere tra le famiglie del palazzo. Se il Barone possiede davvero informazioni che nemmeno Catalina conosce sui suoi stessi figli, allora questa notte potrebbe rivelarsi solo il primo capitolo di una storia molto più lunga e molto più dolorosa di quanto chiunque, in questo momento, riesca a immaginare.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>Mettendo insieme tutti questi elementi, quello che emerge è una delle notti più tese mai viste a La Promessa: una madre pronta a tutto pur di proteggere i suoi figli, un uomo di potere disposto a fermarla con qualsiasi mezzo, e un palazzo che, da un momento all&#x27;altro, potrebbe scoprire tutto. Qualunque cosa accada da qui in avanti, è chiaro che questa notte segnerà un punto di svolta nel destino di Catalina e della sua famiglia.</p>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=ZbNK7ziHSY8" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/ZbNK7ziHSY8/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>La Promessa: Catalina fugge con i figli ma il Barone di Valladares la blocca</span></a></li><li><a href="https://www.youtube.com/watch?v=iuQDWZvwNvc" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/iuQDWZvwNvc/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni: Jana sarà vittima di una vendetta e rischia la vita!</span></a></li><li><a href="https://www.youtube.com/watch?v=PK7F1Uz-wys" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/PK7F1Uz-wys/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni 30-31 Ottobre: Jana e Catalina riusciranno nell&#x27;intento?</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>E voi cosa ne pensate? Secondo voi Catalina dovrebbe fidarsi delle minacce del Barone di Valladares e restare, o pensate che a questo punto la fuga sia ormai l&#x27;unica strada possibile per proteggere davvero i suoi figli? E quanto credete che il Barone sappia realmente sui bambini di Catalina, abbastanza da usarli come vera e propria arma di ricatto?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=4116hnPG2eI">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di La Promessa</h2><div class="griglia"><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/"><div class="foto"><img src="https://i.ytimg.com/vi/Rp8VhxDiDSk/hqdefault.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></h3>
+    <div class="quando">7 settembre 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/"><div class="foto"><img src="https://i.ytimg.com/vi/8JHt6ogwxQw/hqdefault.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Ángela beve tutto, Curro sfonda la porta</a></h3>
+    <div class="quando">6 settembre 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/"><div class="foto"><img src="/img/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso.jpg" alt="La Promessa" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-promessa.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">La Promessa</span>
+    <h3><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Curro nasconde Ángela, Lorenzo furioso</a></h3>
+    <div class="quando">6 settembre 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=La Promessa, Catalina fugge con i suoi figli, ma il Barone di Valladares la ferma: rischia di perderli per sempre — https://serietvfans.com/la-promessa/la-promessa-catalina-fugge-con-i-suoi-figli-ma-il-barone-di-valladares-la-ferma/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/la-promessa/la-promessa-catalina-fugge-con-i-suoi-figli-ma-il-barone-di-valladares-la-ferma/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/la-promessa/la-promessa-catalina-fugge-con-i-suoi-figli-ma-il-barone-di-valladares-la-ferma/&text=La Promessa, Catalina fugge con i suoi figli, ma il Barone di Valladares la ferma: rischia di perderli per sempre" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">LA PROMESSA — Catalina fugge con i suoi figli, ma il Barone di Valladares la ferma: rischia di perderli per sempre</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=4116hnPG2eI">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di La Promessa</h3><ol class="numerata"><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-angela-beve-tutto-curro-sfonda-la-porta/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Ángela beve tutto, Curro sfonda la porta</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-curro-nasconde-angela-lorenzo-furioso/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Curro nasconde Ángela, Lorenzo furioso</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>LA PROMESSA — Catalina fugge con i suoi figli, ma il Barone di Valladares la ferma: rischia di perderli per sempre</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su La Promessa</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-3-6-settembre-maria-affronta-la-gravidanza-da-sola/">La Promessa anticipazioni 3-6 settembre: Maria affronta la gravidanza da sola</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-carlo-arriva-maria-trema/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Carlo arriva, Maria trema</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/far-away/far-away-anticipazioni-dal-31-agosto-al-4-settembre-chi-ha-donato-il-fegato-a-nare/">Far Away, anticipazioni dal 31 agosto al 4 settembre: chi ha donato il fegato a Nare, e perché adesso sta male lui</a></li><li><a href="/far-away/far-away-dal-31-agosto-la-madre-di-alya-sapeva-tutto-non-ricordo/">Far Away Dal 31 Agosto: la madre di Alya sapeva tutto — «non ricordo»</a></li><li><a href="/forbidden-fruit/forbidden-fruit-dal-31-agosto-il-conto-a-nome-di-halit-che-e-morto/">Forbidden Fruit Dal 31 Agosto: il conto a nome di Halit, che è morto</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

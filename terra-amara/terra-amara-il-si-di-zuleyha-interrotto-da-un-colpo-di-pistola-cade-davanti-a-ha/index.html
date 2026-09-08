@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/terra-amara/">Terra Amara</a> › Terra Amara, il «sì» di Züleyha interrotto da un colpo di pistola: cade davanti a Hakan mentre lui stava per confessarle il suo vero nome</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/terra-amara/">Terra Amara</a>
   <h1>Terra Amara, il «sì» di Züleyha interrotto da un colpo di pistola: cade davanti a Hakan mentre lui stava per confessarle il suo vero nome</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>8 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">La scena più crudele della stagione: Hakan porta Züleyha a cena e le chiede di sposarlo. Lei esita, poi dice sì — e proprio mentre lui inizia a confessarle che «Mehmet» non è il suo vero nome, un colpo di pistola rompe la notte e Züleyha crolla a terra. Il proiettile era destinato a lui, sparato da Vahap, il fratello di Abdülkadir. Mentre la donna lotta tra la vita e la morte, un uomo indebitato si autoaccusa per saldare il conto, Fikret rinuncia a Istanbul — e Betül trova la foto che smaschera tutto.</p><ol><li><a href="#c1">La proposta e lo sparo</a></li><li><a href="#c2">Il fidanzamento di Fikret e la notte del ladro</a></li><li><a href="#c3">Il colpevole sbagliato e la gelosia di Fikret</a></li><li><a href="#c4">La foto rubata: «L&#x27;uomo più ricercato è davanti a noi»</a></li><li><a href="#c5">Come Vahap ha sconvolto la vita alla villa</a></li><li><a href="#c6">Perché Fikret non riesce a dimenticare Züleyha</a></li><li><a href="#c7">Cosa scopre Betül sulla vera identità di Hakan</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>Terra Amara</strong> — Serie conclusa in Italia · tutte le puntate su Mediaset Infinity</span></div>
   
-  <p class="occhiello">La scena più crudele della stagione: Hakan porta Züleyha a cena e le chiede di sposarlo. Lei esita, poi dice sì — e proprio mentre lui inizia a confessarle che «Mehmet» non è il suo vero nome, un colpo di pistola rompe la notte e Züleyha crolla a terra. Il proiettile era destinato a lui, sparato da Vahap, il fratello di Abdülkadir. Mentre la donna lotta tra la vita e la morte, un uomo indebitato si autoaccusa per saldare il conto, Fikret rinuncia a Istanbul — e Betül trova la foto che smaschera tutto.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: Terra Amara, il «sì» di Züleyha interrotto da un colpo di pistola: cade davanti a Hakan mentre lui stava per confessarle il suo vero nome" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/Ltr_paTFtmk/maxresdefault.jpg" alt="Terra Amara, il «sì» di Züleyha interrotto da un colpo di pistola: cade davanti a Hakan mentre lui stava per confessarle il suo vero nome" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/Ltr_paTFtmk/hqdefault.jpg 480w, https://i.ytimg.com/vi/Ltr_paTFtmk/sddefault.jpg 640w, https://i.ytimg.com/vi/Ltr_paTFtmk/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/Ltr_paTFtmk/hqdefault.jpg&quot;, &quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,25 +409,25 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>La foto sul retro della quale Demir aveva scritto il nome: «Hakan Gümüşoğlu e io» — l&#x27;uomo più ricercato del Paese, seduto a cena nel salotto degli Yaman.</strong></p>
-  <h2>La proposta e lo sparo</h2>
+  <h2 id="c1">La proposta e lo sparo</h2>
 <p>La serata doveva essere quella della svolta: Hakan porta Züleyha a cena e le fa la domanda — «Vuoi sposarmi? Ti prometto che ti renderò molto felice». Lei si alza nervosamente, tarda a rispondere, poi dice sì. E allora lui decide che è il momento della verità: «Il mio nome non è Mehmet, il mio vero nome è...». La frase non finisce mai. Un colpo di pistola spezza il silenzio della notte e Züleyha cade a terra. Al volante di quell&#x27;agguato c&#x27;è Vahap, il fratello di Abdülkadir rimasto a Çukurova contro ogni ordine: il proiettile era destinato a Hakan. Züleyha finisce in ospedale in condizioni gravissime, con Hakan che piange amaramente accanto a lei.</p>
-<h2>Il fidanzamento di Fikret e la notte del ladro</h2>
+<h2 id="c2">Il fidanzamento di Fikret e la notte del ladro</h2>
 <p>Poche ore prima, alla villa si festeggiava il fidanzamento di Fikret e Betül — un Fikret tutt&#x27;altro che felice, tanto da confidare a Çetin di voler lasciare Çukurova: «Finché continuerò a vedere Züleyha non andrò avanti, non voglio ferirla», con l&#x27;idea di rilevare il cotonificio e trasferirsi a Istanbul. La festa viene spezzata da Raşit: Gaffur è stato accoltellato dal ladro entrato nella stanza di Züleyha — sempre Vahap. Lütfiye ringrazia Gaffur per il coraggio, mentre Saniye rumina sul vero volto di chi ha ingannato tutti. Quando arriva la notizia dell&#x27;agguato, Fikret crolla: e alla villa capiscono tutti, definitivamente, che è innamorato di Züleyha.</p>
-<h2>Il colpevole sbagliato e la gelosia di Fikret</h2>
+<h2 id="c3">Il colpevole sbagliato e la gelosia di Fikret</h2>
 <p>Hakan, fuori di sé, cerca Abdülkadir e arriva a dare fuoco alla capanna; il socio intanto architetta un piano per scaricare la colpa su un altro. E l&#x27;occasione arriva da sola: un uomo schiacciato dai debiti gira per Çukurova con un fucile autoaccusandosi dello sparo, e viene arrestato. In ospedale, Hakan non si stacca dal letto — «Sarò sempre qui per te» — e quando bacia la fronte di Züleyha, Fikret non riesce a trattenere la gelosia. Alla domanda «Chi sei tu per raccogliere le sue cose?», la risposta è gelida: «Sono il suo fidanzato». Züleyha si risveglia e il primo volto che vede è il suo. Fikret rinuncia a Istanbul e giura di aver accettato tutto — ma Lütfiye non gli crede.</p>
-<h2>La foto rubata: «L&#x27;uomo più ricercato è davanti a noi»</h2>
+<h2 id="c4">La foto rubata: «L&#x27;uomo più ricercato è davanti a noi»</h2>
 <p>Mentre tutta Çukurova parla degli affari illegali dell&#x27;uomo che la polizia sta braccando — nessuno ne conosce il volto — Hakan gioca col fuoco: guarda in salotto, insieme agli Yaman, il programma televisivo che promette di mostrarne la foto, e quando appare un&#x27;immagine di spalle scherza addirittura sulla somiglianza. Ma Betül trova nella villa la fotografia che Demir aveva conservato, con la dedica sul retro: «Hakan Gümüşoğlu e io». Il tentativo di Azize di riprendersela finisce male — la nonna cade all&#x27;indietro, batte la testa e resta a terra priva di sensi, con Betül terrorizzata di averla uccisa. Al club sociale, mentre Fikret annuncia la data delle nozze, Betül mostra la foto a Şermin: «L&#x27;uomo più ricercato del Paese è davanti a noi».</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Come Vahap ha sconvolto la vita alla villa</h2>
+<h2 id="c5">Come Vahap ha sconvolto la vita alla villa</h2>
 <p>La tranquillità apparentemente ritrovata nella dimora Yaman è crollata all&#x27;improvviso a causa delle azioni sconsiderate di Vahap. Il fratello di Abdülkadir ha deciso di rimanere a Çukurova sfidando ogni ordine ricevuto, trasformandosi in una minaccia costante e imprevedibile per tutti i presenti. Il suo gesto più audace si è consumato direttamente all&#x27;interno della residenza, quando si è introdotto di nascosto nella stanza di Züleyha per rubare. In quel momento drammatico, Gaffur ha dimostrato un coraggio straordinario cercando di fermare l&#x27;intruso, ma la situazione è precipitata rapidamente e il domestico è stato accoltellato dal malvivente prima che quest&#x27;ultimo riuscisse a fuggire senza lasciare tracce.</p>
 <p>L&#x27;irruzione del ferito ha completamente rovinato la festa organizzata per celebrare il fidanzamento tra Fikret e Betül. È stato Raşit a portare il drammatico annuncio ai presenti, interrompendo un momento di gioia apparente e gettando la tenuta nel panico generale. Di fronte a tanta dedizione, Lütfiye ha subito espresso profonda gratitudine verso Gaffur per aver rischiato la propria vita nel tentativo di proteggere la casa. Nel frattempo, Saniye ha iniziato a riflettere a fondo e a ruminare con rabbia sul reale volto di chi sta ingannando l&#x27;intera famiglia, mentre la tensione alla villa continuava a salire verso un punto di non ritorno.</p>
 <p>Tuttavia, la furia di Vahap non si è fermata alla rapina ed è sfociata nel terribile agguato notturno che ha cambiato il destino della storia. L&#x27;uomo si è messo al volante per compiere la sua missione ed era pronto a eliminare Hakan, sparando un colpo di pistola nel buio proprio mentre l&#x27;imprenditore stava cenando con Züleyha. Il proiettile, però, ha sbagliato bersaglio colpendo in pieno la donna e facendola crollare a terra al ristorante. Dopo il gravissimo attacco, Abdülkadir ha dovuto gestire il disastro causato dal fratello, cercando di evitare che la vendetta travolgesse entrambi e trovando un capro espiatorio.</p>
-<h2>Perché Fikret non riesce a dimenticare Züleyha</h2>
+<h2 id="c6">Perché Fikret non riesce a dimenticare Züleyha</h2>
 <p>Nonostante l&#x27;imminente matrimonio con Betül, i veri sentimenti di Fikret non sono mai cambiati e sono emersi chiaramente prima dell&#x27;attacco. Durante i festeggiamenti per il suo fidanzamento ufficiale, il giovane ha aperto il suo cuore soltanto all&#x27;amico Çetin, confessandogli tutta la sofferenza che prova nell&#x27;essere vicino alla donna che ama in segreto. Fikret ha spiegato che la presenza costante di Züleyha gli impedisce di andare avanti con la propria vita e che il suo desiderio più grande è non ferirla. Per questo motivo stava pianificando di rilevare il cotonificio e trasferirsi definitivamente a Istanbul, cercando una via di fuga lontano da Çukurova.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>La notizia dello sparo ha spazzato via ogni certezza e ha fatto crollare definitivamente la maschera di Fikret davanti agli occhi di tutti. Appena ha saputo che Züleyha lottava tra la vita e la morte in ospedale, l&#x27;uomo è sprofondato nella disperazione più totale, rendendo evidente la natura profonda dei suoi sentimenti. Più tardi, nei corridoi della struttura sanitaria, la gelosia ha preso il sopravvento quando ha visto Hakan rimanere accanto al letto della ferita e baciarle la fronte. Fikret ha affrontato il rivale chiedendogli con arroganza a quale titolo stesse raccogliendo gli effetti personali di Züleyha, ricevendo una risposta agghiacciante.</p>
 <p>Sentirsi dire da Hakan di essere il fidanzato ufficiale di Züleyha è stato un colpo durissimo per Fikret, costretto a presenziare al risveglio della donna con il suo rivale al suo fianco. Dopo quel momento, Fikret ha preso la decisione di rinunciare al trasferimento a Istanbul, giurando di aver ormai accettato la realtà delle cose e la felicità della coppia. Tuttavia, le sue rassicurazioni non hanno minimamente convinto Lütfiye, la quale rimane profondamente scettica sulla sua reale rassegnazione. La tensione resta altissima, soprattutto ora che Fikret ha annunciato la data delle nozze con Betül al club sociale.</p>
-<h2>Cosa scopre Betül sulla vera identità di Hakan</h2>
+<h2 id="c7">Cosa scopre Betül sulla vera identità di Hakan</h2>
 <p>L&#x27;intera regione di Çukurova si trova in uno stato di profonda agitazione a causa delle notizie sugli affari illegali del misterioso Hakan Gümüşoğlu. Sebbene la polizia stia dando la caccia all&#x27;uomo più ricercato del Paese, nessuno ne conosce davvero il volto, permettendogli di muoversi indisturbato. Hakan ha persino sfidato la sorte nella dimora degli Yaman, guardando insieme alla famiglia un programma televisivo incentrato sulla sua latitanza. Quando sul grande schermo è stata mostrata un&#x27;immagine dell&#x27;atteso ricercato ripreso unicamente di spalle, l&#x27;uomo ha persino scherzato con audacia sulla incredibile somiglianza tra sé e la figura apparsa in televisione.</p>
 <p>Il castello di bugie eretto da Hakan ha rischiato di crollare definitivamente quando Betül si è messa a frugare dentro la villa. La ragazza è riuscita a trovare la fotografia che Demir aveva conservato con cura, la quale recava sul retro la dedica fondamentale scritta di suo pugno: &quot;Hakan Gümüşoğlu e io&quot;. Azize ha sorpreso la giovane con lo scatto in mano e ha tentato disperatamente di riprendersi la preziosa immagine. Durante la colluttazione che ne è seguita, la nonna è caduta all&#x27;indietro battendo violentemente la testa e rimanendo a terra del tutto priva di sensi davanti allo sguardo terrorizzato di Betül.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
@@ -385,19 +435,41 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=gR7FJ2vwTX4" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/gR7FJ2vwTX4/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TERRA AMARA Anticipazioni: Colpo di Scena! Fikret e Zuleyha amanti?</span></a></li><li><a href="https://www.youtube.com/watch?v=Oz89gdRUYvc" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/Oz89gdRUYvc/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>Terra Amara Anticipazioni: Fikret e Cetin scoprono che Mehmet è Hakan, Come Reagiranno?</span></a></li><li><a href="https://www.youtube.com/watch?v=fl6wIEFi7d0" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/fl6wIEFi7d0/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>TERRA AMARA Anticipazioni 5-7 Febbraio: Zuleyha lotta tra la vita e la morte | Hakan brucia tut</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Se Hakan avesse confessato il suo nome un minuto prima, sarebbe cambiato qualcosa? E cosa faranno Betül e Şermin con quella foto: ricatto o denuncia?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=Ltr_paTFtmk">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di Terra Amara</h2><div class="griglia"><article class="scheda">
+  <a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/"><div class="foto"><img src="/img/terra-amara-la-trama-completa-e-come-finisce.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></h3>
+    <div class="quando">30 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/"><div class="foto"><img src="https://i.ytimg.com/vi/_ypSJU-x7LY/hqdefault.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/"><div class="foto"><img src="https://i.ytimg.com/vi/B_MLx-0yh6M/hqdefault.jpg" alt="Terra Amara" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/terra-amara.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Terra Amara</span>
+    <h3><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=Terra Amara, il «sì» di Züleyha interrotto da un colpo di pistola: cade davanti a Hakan mentre lui stava per confessarle il suo vero nome — https://serietvfans.com/terra-amara/terra-amara-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/terra-amara/terra-amara-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/terra-amara/terra-amara-la-trama-completa-e-come-finisce/&text=Terra Amara, il «sì» di Züleyha interrotto da un colpo di pistola: cade davanti a Hakan mentre lui stava per confessarle il suo vero nome" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">TERRA AMARA Anticipazioni: Züleyha viene colpita a morte di fronte a Mehmet!</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=Ltr_paTFtmk">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di Terra Amara</h3><ol class="numerata"><li><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></li><li><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></li><li><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></li><li><a href="/terra-amara/terra-amara-come-finisce-davvero-zuleyha-vince-tutto-e-resta-sola/">Terra Amara: come finisce davvero, Züleyha vince tutto e resta sola</a></li><li><a href="/terra-amara/terra-amara-come-muore-demir-yaman-chi-ha-dato-lordine-e-perche-doveva-essere-un-rapimento/">Terra Amara, come muore Demir Yaman: chi ha dato l&#x27;ordine e perché doveva essere un rapimento</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>TERRA AMARA Anticipazioni: Züleyha viene colpita a morte di fronte a Mehmet!</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su Terra Amara</h3><ul><li><a href="/terra-amara/terra-amara-la-trama-completa-e-come-finisce/">Terra Amara: la trama completa e come finisce</a></li><li><a href="/terra-amara/terra-amara-chi-e-ali-rahmet-fekeli-lunico-che-non-si-e-mai-vendicato/">Terra Amara: chi è Ali Rahmet Fekeli, l&#x27;unico che non si è mai vendicato</a></li><li><a href="/terra-amara/terra-amara-mujgan-aveva-ragione-su-behice-la-prima-ad-accusarla-e-nessuno-le-credette/">Terra Amara, Müjgan aveva ragione su Behice: fu la prima ad accusarla, e non le credette nessuno</a></li><li><a href="/terra-amara/terra-amara-come-finisce-davvero-zuleyha-vince-tutto-e-resta-sola/">Terra Amara: come finisce davvero, Züleyha vince tutto e resta sola</a></li><li><a href="/terra-amara/terra-amara-come-muore-demir-yaman-chi-ha-dato-lordine-e-perche-doveva-essere-un-rapimento/">Terra Amara, come muore Demir Yaman: chi ha dato l&#x27;ordine e perché doveva essere un rapimento</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

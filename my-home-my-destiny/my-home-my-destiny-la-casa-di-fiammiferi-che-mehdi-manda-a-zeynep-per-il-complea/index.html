@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/my-home-my-destiny/">My Home My Destiny</a> › My Home My Destiny, la casa di fiammiferi che Mehdi manda a Zeynep per il compleanno: «Bruciala, come hai fatto con noi»</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/my-home-my-destiny/">My Home My Destiny</a>
   <h1>My Home My Destiny, la casa di fiammiferi che Mehdi manda a Zeynep per il compleanno: «Bruciala, come hai fatto con noi»</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>8 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Dal carcere Mehdi passa la notte a scrivere e prepara un regalo per il compleanno di Zeynep: una casa costruita con i fiammiferi e una lettera che sembra un addio, ma che nel finale la accusa di aver distrutto il loro matrimonio e la invita a dare fuoco a quel modellino. Lei glielo fa restituire dall&#x27;avvocato — e quel rifiuto lo porta a prendere la decisione che aveva sempre respinto.</p><ol><li><a href="#c1">L&#x27;attacco di panico in auto</a></li><li><a href="#c2">La torta e l&#x27;irruzione di Bayram</a></li><li><a href="#c3">Il regalo consegnato da Cemile</a></li><li><a href="#c4">Il regalo che torna indietro</a></li><li><a href="#c5">Come Baris protegge Zeynep dopo i recenti traumi</a></li><li><a href="#c6">Cosa spinge Mehdi a proporre il matrimonio a Benal</a></li><li><a href="#c7">Perche Cemile tenta di giustificare l&#x27;operato di Mehdi</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>My Home My Destiny</strong> — Serie conclusa in Italia · le puntate su Mediaset Infinity</span></div>
   
-  <p class="occhiello">Dal carcere Mehdi passa la notte a scrivere e prepara un regalo per il compleanno di Zeynep: una casa costruita con i fiammiferi e una lettera che sembra un addio, ma che nel finale la accusa di aver distrutto il loro matrimonio e la invita a dare fuoco a quel modellino. Lei glielo fa restituire dall&#x27;avvocato — e quel rifiuto lo porta a prendere la decisione che aveva sempre respinto.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: My Home My Destiny, la casa di fiammiferi che Mehdi manda a Zeynep per il compleanno: «Bruciala, come hai fatto con noi»" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/Yhy9J2buqjk/maxresdefault.jpg" alt="My Home My Destiny, la casa di fiammiferi che Mehdi manda a Zeynep per il compleanno: «Bruciala, come hai fatto con noi»" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/Yhy9J2buqjk/hqdefault.jpg 480w, https://i.ytimg.com/vi/Yhy9J2buqjk/sddefault.jpg 640w, https://i.ytimg.com/vi/Yhy9J2buqjk/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/Yhy9J2buqjk/hqdefault.jpg&quot;, &quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,25 +409,25 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>Il giorno del compleanno rovinato dall&#x27;irruzione di Bayram ubriaco, che cade sulla torta.</strong></p>
-  <h2>L&#x27;attacco di panico in auto</h2>
+  <h2 id="c1">L&#x27;attacco di panico in auto</h2>
 <p>Al rientro al lavoro, Barış passa a prendere Zeynep in macchina. Durante il tragitto lei si accorge di non riuscire ad aprire il finestrino e va in panico: la mente torna al momento in cui era stata chiusa in auto da Mehdi. È Barış a calmarla e ad accompagnarla in ufficio. Poco prima, sul portone, Zeynep aveva incontrato Benal, e le aveva detto chiaramente cosa pensa dell&#x27;idea di un matrimonio con Mehdi; Benal, però, resta convinta che con lei quell&#x27;uomo sarebbe diverso.</p>
-<h2>La torta e l&#x27;irruzione di Bayram</h2>
+<h2 id="c2">La torta e l&#x27;irruzione di Bayram</h2>
 <p>In ufficio i colleghi hanno organizzato una festa a sorpresa per il compleanno di Zeynep, torta compresa. La giornata precipita quando irrompe Bayram ubriaco: prima l&#x27;abbraccia dicendosi felice che sia scampata al pericolo, poi comincia a urlare perché si sente rifiutato, e infine inciampa finendo addosso alla torta. Zeynep riesce a portarlo in disparte, ma la scena la umilia davanti a tutti. Se ne occupa l&#x27;uomo della sicurezza, mentre Barış chiude la questione a modo suo: gli dà del denaro, gli dice che non lo aiuterà in alcun modo e gli vieta di rimettere piede in ufficio.</p>
-<h2>Il regalo consegnato da Cemile</h2>
+<h2 id="c3">Il regalo consegnato da Cemile</h2>
 <p>Nel pomeriggio arriva Cemile con un pacco. Prima si scusa per tutto quello che Zeynep ha passato, poi difende comunque il fratello sostenendo che l&#x27;accusa di tentato omicidio sia sproporzionata; Zeynep, in lacrime, risponde che non c&#x27;è niente da giustificare. Rimasta sola apre la scatola: dentro c&#x27;è una casa costruita con i fiammiferi e una lettera. Mehdi la ringrazia per aver illuminato la sua vita e annuncia che cercherà di dimenticarla, poi però la accusa di essere lei la responsabile della fine del loro matrimonio, e le spiega che quella casetta rappresenta ciò che avevano — invitandola a bruciarla, come a suo dire ha fatto con il loro rapporto.</p>
-<h2>Il regalo che torna indietro</h2>
+<h2 id="c4">Il regalo che torna indietro</h2>
 <p>Il giorno dopo Mehdi viene chiamato per una visita e si presenta in sala colloqui convinto che sia Zeynep. Trova invece il suo avvocato, con in mano la casa di fiammiferi: gliel&#x27;ha restituita, definendo il gesto inopportuno e inquietante, e il legale gli consiglia di non ripetere iniziative simili — sia per la sua posizione giudiziaria, sia per non tormentare ulteriormente una donna già provata. Mehdi incassa senza obiettare. Poi chiama Cemile e le comunica di aver deciso di sposare Benal, con la cerimonia il giorno seguente. Peccato che, quando la sorella corre a dirglielo, sia Benal a rispondere che di sposarlo non ha alcuna intenzione.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Come Baris protegge Zeynep dopo i recenti traumi</h2>
+<h2 id="c5">Come Baris protegge Zeynep dopo i recenti traumi</h2>
 <p>Il rientro al lavoro per Zeynep si rivela subito particolarmente complesso a causa del peso emotivo che la ragazza continua a portarsi dietro dopo la terribile esperienza vissuta. Quando Barış passa a prenderla in macchina per accompagnarla in ufficio, un semplice imprevisto all&#x27;interno dell&#x27;abitacolo scatena in lei una reazione improvvisa e incontrollabile. Accorgendosi di non riuscire ad aprire il finestrino dell&#x27;auto, la giovane viene colta da un violento attacco di panico, poiché la sua mente torna immediatamente al drammatico momento in cui era stata rinchiusa nella vettura da Mehdi. In questa situazione di grande fragilità, l&#x27;intervento e la presenza rassicurante di Barış si rivelano fondamentali per aiutarla a ritrovare la calma e permetterle di raggiungere il posto di lavoro.</p>
 <p>Oltre a gestire il momento di sconforto durante il tragitto in macchina, Barış si trova costretto ad intervenire con determinazione anche più tardi, per mettere fine all&#x27;umiliazione subita da Zeynep in ufficio. L&#x27;irruzione improvvisa e molesta di Bayram ubriaco rischia infatti di rovinare completamente l&#x27;atmosfera creata dai colleghi con la festa a sorpresa. Vedendo la ragazza profondamente ferita e a disagio di fronte a tutti per il comportamento insensato del genitore, Barış decide di prendere in mano la situazione in modo drastico. Dopo l&#x27;intervento dell&#x27;addetto alla sicurezza, l&#x27;uomo consegna del denaro a Bayram, mettendo chiaramente in chiaro che non gli offrirà alcun sostegno futuro e vietandogli tassativamente di ripresentarsi nei locali della struttura aziendale.</p>
 <p>La fermezza mostrata da Barış rappresenta un riparo fondamentale per Zeynep in una giornata ricca di tensioni e ricordi dolorosi. Prima ancora di salire in auto con lui, la protagonista aveva vissuto un altro confronto delicato proprio sul portone di casa, dove aveva incontrato Benal. In quell&#x27;occasione Zeynep aveva spiegato senza mezzi termini quale fosse il suo pensiero reale riguardo all&#x27;ipotesi di un matrimonio tra l&#x27;altra donna e Mehdi. Nonostante le parole trasparenti di Zeynep sui pericoli e sui problemi di quel rapporto, Benal era rimasta ferma nelle sue convinzioni, mostrandosi persuasa che con lei al suo fianco l&#x27;uomo avrebbe rivelato un carattere del tutto diverso e decisamente migliore.</p>
-<h2>Cosa spinge Mehdi a proporre il matrimonio a Benal</h2>
+<h2 id="c6">Cosa spinge Mehdi a proporre il matrimonio a Benal</h2>
 <p>Chiuso in carcere, Mehdi trascorre una notte intera a scrivere ed elaborare un regalo dal significato ambiguo per il compleanno di Zeynep. L&#x27;uomo realizza con minuziosa cura un modellino di casa utilizzando esclusivamente dei fiammiferi, accompagnando l&#x27;oggetto con una lettera articolata. All&#x27;inizio del testo esprime parole di gratitudine verso la donna per aver illuminato la sua esistenza e dichiara la volontà di dimenticarla, ma il tono cambia rapidamente nel finale. Mehdi finisce infatti per accusare apertamente Zeynep di essere la sola responsabile della fine violenta del loro matrimonio, invitandola in modo provocatorio a dare fuoco alla casetta per simboleggiare la distruzione definitiva di ciò che avevano costruito insieme durante la loro storia d&#x27;amore.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>Il tentativo di manipolazione emotiva architettato da Mehdi non produce tuttavia l&#x27;effetto sperato, poiché Zeynep rifiuta categoricamente di accettare un simile dono. Quando l&#x27;uomo viene chiamato nella sala colloqui del carcere convinto di trovarsi finalmente di fronte all&#x27;ex moglie, trova ad attenderlo soltanto l&#x27;avvocato della donna. Il legale gli restituisce immediatamente la struttura di fiammiferi, definendo la trovata un gesto del tutto inopportuno e inquietante. Oltre a restituire il pacco, l&#x27;avvocato gli raccomanda con fermezza di evitare iniziative analoghe per il futuro, sia per non rischiare di peggiorare la sua complicata posizione giudiziaria, sia per evitare di arrecare ulteriore sofferenza ad una donna già duramente provata dai fatti recenti.</p>
 <p>La restituzione del regalo e il netto rifiuto trasmesso tramite il legale feriscono Mehdi nell&#x27;orgoglio e lo portano a prendere un&#x27;iniziativa che fino a quel momento aveva costantemente respinto. Senza obiettare alle parole dell&#x27;avvocato, l&#x27;uomo effettua una chiamata a sua sorella Cemile per annunciarle la decisione improvvisa di sposare Benal e di voler celebrare le nozze già il giorno seguente. Tuttavia, la svolta pianificata da Mehdi incontra subito un ostacolo imprevisto e insuperabile. Quando infatti Cemile si precipita ad informare la diretta interessata per organizzare i preparativi, è la stessa Benal a gelarla, dichiarando con fermezza di non avere più alcuna intenzione di unirsi in matrimonio con lui.</p>
-<h2>Perche Cemile tenta di giustificare l&#x27;operato di Mehdi</h2>
+<h2 id="c7">Perche Cemile tenta di giustificare l&#x27;operato di Mehdi</h2>
 <p>Il ruolo svolto da Cemile nella vicenda si rivela particolarmente complesso ed ambiguo durante la consegna del regalo destinato a Zeynep nel pomeriggio del suo compleanno. Presentandosi con il pacco inviato direttamente dal carcere, la donna ci tiene innanzitutto a rivolgere delle scuse sincere a Zeynep per tutti i dolori e le sofferenze che ha dovuto patire negli ultimi tempi. Ciononostante, non riesce a fare a meno di prendere le difese del fratello, arrivando a sostenere apertamente che l&#x27;imputazione di tentato omicidio mossa nei suoi confronti sia del tutto sproporzionata e ingiusta. Di fronte a queste parole, Zeynep reagisce scoppiando in lacrime e ribadendo con forza che non esiste alcuna scusante per i comportamenti assurdi del suo ex marito.</p>
 <p>La consegna del pacco da parte di Cemile anticipa un momento di profonda solitudine ed emotività per Zeynep, che si ritrova da sola ad aprire la scatola lasciata dalla cognata. Il contenuto rivela la casetta fatta di fiammiferi e lo scritto velenoso di Mehdi, trasformando il giorno del compleanno in un ulteriore incubo psicologico. Le parole amare del testo e la richiesta provocatoria di bruciare il modellino mettono in evidenza quanto l&#x27;uomo cerchi ancora di scaricare le colpe della rottura sulla compagna. Questo episodio spinge Zeynep a prendere una posizione definitiva e ad affidare l&#x27;intera questione al proprio avvocato, rifiutando qualsiasi tipo di contatto o di provocazione simbolica proveniente dall&#x27;uomo rinchiuso nella struttura detentiva.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
@@ -385,19 +435,41 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=A_21cg0B0Sg" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/A_21cg0B0Sg/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>MY HOME MY DESTINY Anticipazioni: Mehdi passa la notte con Nazli! Benal infuriata! Zeynep gelos</span></a></li><li><a href="https://www.youtube.com/watch?v=DqRUEzEsPwk" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/DqRUEzEsPwk/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>MY HOME MY DESTINY | Mentre Baris è sempre più vicino alla verità, Zeynep continua con le bugie</span></a></li><li><a href="https://www.youtube.com/watch?v=AU23uVLKPOQ" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/AU23uVLKPOQ/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>MY HOME MY DESTINY 18-19 Ottobre: Tragedia Immane per Mehdi! Un Addio Inaspettato e Doloroso.</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>La lettera di Mehdi era un addio sincero o l&#x27;ennesimo modo per farle del male?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=Yhy9J2buqjk">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di My Home My Destiny</h2><div class="griglia"><article class="scheda">
+  <a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/"><div class="foto"><img src="/img/my-home-my-destiny-la-trama-completa-e-come-finisce.jpg" alt="My Home My Destiny" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">My Home My Destiny</span>
+    <h3><a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/">My Home My Destiny: la trama completa e come finisce</a></h3>
+    <div class="quando">30 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/"><div class="foto"><img src="https://i.ytimg.com/vi/-djleIeCLQs/hqdefault.jpg" alt="My Home My Destiny" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">My Home My Destiny</span>
+    <h3><a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/">My Home My Destiny, Zeynep ferma l&#x27;aborto di Benal in sala operatoria senza sapere che il padre è Mehdi</a></h3>
+    <div class="quando">17 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/"><div class="foto"><img src="https://i.ytimg.com/vi/gxL0o63Nhqw/hqdefault.jpg" alt="My Home My Destiny" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/my-home-my-destiny.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">My Home My Destiny</span>
+    <h3><a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/">My Home My Destiny, anticipazioni del 17 novembre: Özlem indaga su Zeynep e scopre tutto, Nuh diventa autista di Barış e qualcuno manomette i macchinari di Bekir</a></h3>
+    <div class="quando">16 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=My Home My Destiny, la casa di fiammiferi che Mehdi manda a Zeynep per il compleanno: «Bruciala, come hai fatto con noi» — https://serietvfans.com/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://serietvfans.com/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://serietvfans.com/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/&text=My Home My Destiny, la casa di fiammiferi che Mehdi manda a Zeynep per il compleanno: «Bruciala, come hai fatto con noi»" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">MY HOME MY DESTINY Anticipazioni: Mehdi in carcere riflette mentre Zeynep soffre</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=Yhy9J2buqjk">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di My Home My Destiny</h3><ol class="numerata"><li><a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/">My Home My Destiny: la trama completa e come finisce</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/">My Home My Destiny, Zeynep ferma l&#x27;aborto di Benal in sala operatoria senza sapere che il padre è Mehdi</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/">My Home My Destiny, anticipazioni del 17 novembre: Özlem indaga su Zeynep e scopre tutto, Nuh diventa autista di Barış e qualcuno manomette i macchinari di Bekir</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-guida-alla-serie-chi-sono-demet-ozdemir-e-ibrahim-celikkol-qu/">My Home My Destiny: guida alla serie, il cast, i personaggi e quante puntate sono</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-1-dicembre-gli-spari-davanti-alla-vecchia-casa-zeynep-tra-le/">My Home My Destiny 1° dicembre, gli spari davanti alla vecchia casa: Zeynep tra le due madri quando l&#x27;uomo in moto estrae la pistola</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>MY HOME MY DESTINY Anticipazioni: Mehdi in carcere riflette mentre Zeynep soffre</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su My Home My Destiny</h3><ul><li><a href="/my-home-my-destiny/my-home-my-destiny-la-trama-completa-e-come-finisce/">My Home My Destiny: la trama completa e come finisce</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-zeynep-ferma-laborto-di-benal-in-sala-operatoria-senza-sapere/">My Home My Destiny, Zeynep ferma l&#x27;aborto di Benal in sala operatoria senza sapere che il padre è Mehdi</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-anticipazioni-del-17-novembre-ozlem-indaga-su-zeynep-e-scopre/">My Home My Destiny, anticipazioni del 17 novembre: Özlem indaga su Zeynep e scopre tutto, Nuh diventa autista di Barış e qualcuno manomette i macchinari di Bekir</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-guida-alla-serie-chi-sono-demet-ozdemir-e-ibrahim-celikkol-qu/">My Home My Destiny: guida alla serie, il cast, i personaggi e quante puntate sono</a></li><li><a href="/my-home-my-destiny/my-home-my-destiny-1-dicembre-gli-spari-davanti-alla-vecchia-casa-zeynep-tra-le/">My Home My Destiny 1° dicembre, gli spari davanti alla vecchia casa: Zeynep tra le due madri quando l&#x27;uomo in moto estrae la pistola</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>

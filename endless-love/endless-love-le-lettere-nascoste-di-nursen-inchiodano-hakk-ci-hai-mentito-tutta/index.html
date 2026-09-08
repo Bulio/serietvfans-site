@@ -143,12 +143,61 @@ main { padding: 26px 0 40px; }
   letter-spacing: .4px; }
 
 /* articolo */
-.articolo { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 40px; }
+.articolo { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 40px; }
 @media (max-width: 900px) { .articolo { grid-template-columns: minmax(0, 1fr); } }
 .articolo h1 { font-family: var(--serif); font-size: clamp(29px, 3.8vw, 38px);
   line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.01em; }
 .firma { font-size: 14px; color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
   padding-bottom: 14px; margin-bottom: 20px; }
+
+/* ── Pagina articolo, disegno Stitch «A» (8/09/2026, SITI_SOAP/STITCH.md §7) ──
+   Etichetta serie sopra il titolo, riga dati sotto, riquadro «In breve» prima
+   del video, correlati della serie come schede con miniatura nella colonna
+   centrale, barra laterale a 340 px con la lista numerata e il riquadro
+   YouTube scuro. Le misure sono quelle del mockup; i colori restano quelli di
+   DESIGN_<sito>.md (Stitch metteva lo sfondo rosato e i webfont: qui no). */
+.etichetta-serie { display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: #fff; background: var(--brand);
+  padding: 4px 9px; border-radius: 4px; margin: 0 0 12px; }
+.etichetta-serie:hover { text-decoration: none; background: var(--brand-dark); }
+.meta-articolo { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px;
+  color: var(--testo-tenue); border-bottom: 1px solid var(--bordo);
+  padding-bottom: 14px; margin: 0 0 20px; }
+.meta-articolo span::before { content: "•"; color: var(--brand); margin-right: 7px; }
+.meta-articolo span:first-child::before { content: none; }
+@media (max-width: 600px) { .meta-articolo { gap: 4px 12px; }
+  .meta-articolo span::before { content: none; } }
+.in-breve { background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 16px 20px 14px; margin: 0 0 22px; }
+.in-breve h2 { margin: 0 0 8px; font-family: inherit; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .7px; color: var(--brand); }
+.in-breve .sommario { margin: 0 0 12px; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.in-breve ol { margin: 0; padding-left: 22px; }
+.in-breve li { margin: 0 0 5px; font-size: 15.5px; line-height: 1.45; }
+.in-breve li:last-child { margin-bottom: 0; }
+.correlati-serie { margin: 30px 0 6px; padding-top: 22px; border-top: 1px solid var(--bordo); }
+.correlati-serie h2 { font-family: var(--serif); font-size: 23px; margin: 0 0 14px; }
+.correlati-serie .griglia { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.correlati-serie .scheda h3 { font-size: 17px; }
+aside .numerata { list-style: none; padding: 0; counter-reset: n; }
+aside .numerata li { counter-increment: n; display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--bordo); margin: 0; }
+aside .numerata li:last-child { border-bottom: 0; padding-bottom: 0; }
+aside .numerata li::before { content: counter(n); flex: 0 0 22px; height: 22px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+aside .numerata a { color: var(--testo); }
+aside .numerata a:hover { color: var(--brand); }
+aside .yt-box { background: #111; color: #fff; text-align: center; border-radius: 10px;
+  padding: 22px 18px 20px; margin-bottom: 22px; }
+aside .yt-box .tondo { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 10px;
+  border: 2px solid var(--brand); position: relative; }
+aside .yt-box .tondo::after { content: ""; position: absolute; left: 12px; top: 8px;
+  border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+aside .yt-box h3 { color: #fff; font-family: var(--serif); font-size: 19px; text-transform: none;
+  letter-spacing: 0; margin: 0 0 6px; }
+aside .yt-box p { font-size: 13.5px; color: #ffffffb8; margin: 0 0 14px; }
+aside .yt-box .bottone { display: block; }
 .copertina figcaption { font-size: 13px; color: var(--testo-tenue); padding: 8px 2px; }
 .occhiello { font-size: 19px; font-weight: 600; line-height: 1.55; margin: 0 0 22px; }
 .corpo h2 { font-family: var(--serif); font-size: 24px; margin: 34px 0 10px;
@@ -323,7 +372,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <span class="oggi">domenica 6 settembre 2026</span>
+  <span class="oggi">martedì 8 settembre 2026</span>
   
   <span class="cerca"><input type="search" id="q" placeholder="Cerca…" aria-label="Cerca nel sito"></span>
 </div></div>
@@ -336,11 +385,12 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 <div class="briciole"><a href="/">Home</a> › <a href="/serie/endless-love/">Endless Love</a> › Endless Love, le lettere nascoste di Nursen inchiodano Hakkı: «Ci hai mentito tutta la vita» — e Tufan riabbraccia la madre creduta morta</div>
 <div class="articolo">
 <article>
+  <a class="etichetta-serie" href="/serie/endless-love/">Endless Love</a>
   <h1>Endless Love, le lettere nascoste di Nursen inchiodano Hakkı: «Ci hai mentito tutta la vita» — e Tufan riabbraccia la madre creduta morta</h1>
-  <div class="firma">Redazione Serie TV Fans · venerdì 14 agosto 2026</div>
+  <div class="meta-articolo"><span><time datetime="2026-08-14">venerdì 14 agosto 2026</time></span><span>aggiornato il 4 settembre 2026</span><span>7 min di lettura</span><span>Redazione Serie TV Fans</span></div>
+  <div class="in-breve"><h2>In breve</h2><p class="sommario">Il segreto che riscrive l&#x27;infanzia di Asu e Tufan: Nursen, la madre di Tufan, non è mai morta — e Hakkı, l&#x27;uomo che li ha cresciuti, ha nascosto per anni le sue lettere. È Kemal, mantenendo una promessa fatta a Nursen, a orchestrare il ricongiungimento madre-figlio: un abbraccio che commuove ma che fa esplodere sospetti, accuse e una confessione d&#x27;amore inattesa.</p><ol><li><a href="#c1">La promessa di Kemal e la foto che riunisce una famiglia</a></li><li><a href="#c2">Le lettere nel cassetto: il tradimento di Hakkı</a></li><li><a href="#c3">Tufan accusa Asu — e le confessa il suo amore</a></li><li><a href="#c4">Il vero traditore è Zeynep — e Asu sceglie Kemal</a></li><li><a href="#c5">Come Kemal mantiene la promessa fatta a Nursen</a></li><li><a href="#c6">Perche&#x27; Asu affronta Hakki dopo il ritrovamento delle lettere</a></li><li><a href="#c7">Cosa spinge Tufan a confessare il suo amore per Asu</a></li></ol></div>
   <div class="onda"><span class="tv">📺</span><span><strong>Endless Love</strong> — Serie conclusa in Italia · le puntate su Mediaset Infinity</span></div>
   
-  <p class="occhiello">Il segreto che riscrive l&#x27;infanzia di Asu e Tufan: Nursen, la madre di Tufan, non è mai morta — e Hakkı, l&#x27;uomo che li ha cresciuti, ha nascosto per anni le sue lettere. È Kemal, mantenendo una promessa fatta a Nursen, a orchestrare il ricongiungimento madre-figlio: un abbraccio che commuove ma che fa esplodere sospetti, accuse e una confessione d&#x27;amore inattesa.</p>
   <div class="annuncio riservato"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="video">
   <div class="telaio">
@@ -348,7 +398,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
       aria-label="Riproduci il video: Endless Love, le lettere nascoste di Nursen inchiodano Hakkı: «Ci hai mentito tutta la vita» — e Tufan riabbraccia la madre creduta morta" onclick="ytGo(this)">
       <img src="https://i.ytimg.com/vi/bfmwsGZCjdM/maxresdefault.jpg" alt="Endless Love, le lettere nascoste di Nursen inchiodano Hakkı: «Ci hai mentito tutta la vita» — e Tufan riabbraccia la madre creduta morta" width="1280" height="720"
         srcset="https://i.ytimg.com/vi/bfmwsGZCjdM/hqdefault.jpg 480w, https://i.ytimg.com/vi/bfmwsGZCjdM/sddefault.jpg 640w, https://i.ytimg.com/vi/bfmwsGZCjdM/maxresdefault.jpg 1280w"
-        sizes="(max-width: 900px) calc(100vw - 36px), 804px"
+        sizes="(max-width: 900px) calc(100vw - 36px), 764px"
         decoding="async" fetchpriority="low" data-fb='[&quot;https://i.ytimg.com/vi/bfmwsGZCjdM/hqdefault.jpg&quot;, &quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)">
       <span class="tasto" aria-hidden="true"></span>
     </button>
@@ -359,25 +409,25 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
 </div>
   <div class="corpo">
   <p><strong>«Hai reso Tufan il tuo uomo mentendo. Stai usando anche me»: l&#x27;accusa di Asu a Hakkı incrina il legame con l&#x27;uomo che l&#x27;ha cresciuta — e la risposta suona come una minaccia: «Ti pentirai di quello che hai detto».</strong></p>
-  <h2>La promessa di Kemal e la foto che riunisce una famiglia</h2>
+  <h2 id="c1">La promessa di Kemal e la foto che riunisce una famiglia</h2>
 <p>Tutto parte dal senso dell&#x27;onore di Kemal: rintracciata Nursen — l&#x27;assistente di Müjgan, testimone del tentato omicidio di Galip — le aveva giurato che avrebbe ritrovato suo figlio. Attraverso una vecchia fotografia mantiene la parola, e la scoperta è clamorosa: quel figlio è Tufan, il braccio destro di Emir. Il ricongiungimento, dopo anni in cui entrambi avevano perso ogni speranza, è uno dei momenti più commoventi della stagione — e insieme una miccia.</p>
-<h2>Le lettere nel cassetto: il tradimento di Hakkı</h2>
+<h2 id="c2">Le lettere nel cassetto: il tradimento di Hakkı</h2>
 <p>Perché Tufan credeva la madre morta? La risposta è nelle lettere che Nursen ha scritto per anni — e che Hakkı ha nascosto. Quando Asu le trova, la resa dei conti è furibonda: «Mi hai mentito. Quante altre bugie ci sono ancora?». Le insinuazioni si fanno pesanti — Hakkı avrebbe «reso Tufan il suo uomo» con l&#x27;inganno, e starebbe usando anche lei — e lo zio, ferito dalla ragazza cresciuta come una figlia, risponde gelido: «Ti pentirai di quello che hai detto». La fiducia su cui è costruito il clan della vendetta è in frantumi.</p>
-<h2>Tufan accusa Asu — e le confessa il suo amore</h2>
+<h2 id="c3">Tufan accusa Asu — e le confessa il suo amore</h2>
 <p>Il sospetto avvelena anche il rapporto tra i due «fratelli» di vendetta: Tufan, travolto dall&#x27;emozione del ritrovamento, si convince che Asu sapesse della madre viva e abbia taciuto. Lei si difende — non sapeva nulla — ma il confronto degenera, finché Tufan, ferito da un&#x27;altra accusa ingiusta (quella di aver tradito la fuga di Kemal e Nihan), si lascia sfuggire la confessione che cambia tutto: è innamorato di Asu. Un sentimento che complica ogni piano e ogni alleanza.</p>
-<h2>Il vero traditore è Zeynep — e Asu sceglie Kemal</h2>
+<h2 id="c4">Il vero traditore è Zeynep — e Asu sceglie Kemal</h2>
 <p>Sul piano della guerra a Emir, le strade si dividono: Tufan vorrebbe colpire rivelando la nave della fuga di Kemal e Nihan, ma Asu lo ferma — «preferisco perdere l&#x27;amore di Kemal piuttosto che rischiare la sua vita». Un passo indietro che concede alla coppia una tregua breve: perché a tradirli, con una telefonata a Emir che svela il nascondiglio di Nihan, sarà Zeynep. Tra bugie ventennali, promesse mantenute e amori confessati al momento sbagliato, la prima stagione corre verso la resa dei conti — e nessun legame, ormai, è più al sicuro.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<h2>Come Kemal mantiene la promessa fatta a Nursen</h2>
+<h2 id="c5">Come Kemal mantiene la promessa fatta a Nursen</h2>
 <p>Kemal si contraddistingue per il suo incrollabile senso dell&#x27;onore e dimostra ancora una volta la propria determinazione quando decide di aiutare Nursen. La donna, che in passato era stata l&#x27;assistente personale di Müjgan e preziosa testimone del drammatico tentato omicidio compiuto da Galip, aveva espresso la propria disperazione per la lontananza dal figlio. Con profonda empatia, Kemal le aveva fatto una promessa solenne: avrebbe fatto tutto il possibile pur di rintracciare quell&#x27;uomo e consentirle di riabbracciarlo. Un impegno morale importante che spinge il protagonista a indagare a fondo, senza lasciarsi scoraggiare dalle apparenti difficoltà dell&#x27;impresa e mettendo insieme ogni elemento utile.</p>
 <p>Il punto di svolta decisivo nell&#x27;indagine avviene grazie al ritrovamento di una vecchia fotografia che permette a Kemal di risalire all&#x27;identità del giovane scomparso. La scoperta si rivela del tutto clamorosa, poiché quel bambino ormai adulto è Tufan, noto a tutti per essere il fidato braccio destro di Emir. Quando la madre e il figlio si ritrovano finalmente l&#x27;uno di fronte all&#x27;altra, dopo tantissimi anni trascorsi nell&#x27;incertezza e nel dolore di essersi persi per sempre, scatta un abbraccio ad altissima intensità emotiva. Questo commovente ricongiungimento segna un punto di non ritorno per entrambi, spazzando via le certezze su cui era stata costruita la vita del giovane manovrato dagli intrighi della famiglia.</p>
 <p>Il momento del ritrovamento tra la ex assistente di Müjgan e suo figlio non rappresenta soltanto la conclusione di una vicenda personale, ma si trasforma immediatamente in una potente miccia pronta a far esplodere vecchi equilibri. Nursen ha finalmente la possibilità di riassaporare l&#x27;affetto materno, ma la consapevolezza di essere stata privata per così tanto tempo di suo figlio solleva inevitabilmente interrogativi e dubbi devastanti. Tufan, comprensibilmente travolto da una tempesta di emozioni contrastanti, inizia a riconsiderare tutto il suo passato e le dinamiche che lo hanno spinto ad agire negli anni, aprendo la strada a sospetti e tensioni destinati a stravolgere la rete di alleanze costruita fino a quel momento.</p>
-<h2>Perche&#x27; Asu affronta Hakki dopo il ritrovamento delle lettere</h2>
+<h2 id="c6">Perche&#x27; Asu affronta Hakki dopo il ritrovamento delle lettere</h2>
 <p>L&#x27;inganno che ha segnato l&#x27;esistenza di Tufan emerge in tutta la sua gravità nel momento in cui vengono ritrovate le lettere che sua madre Nursen gli ha spedito con costanza per lunghissimo tempo. Hakki aveva tenuto nascoste quelle missive all&#x27;interno di un cassetto, lasciando deliberatamente che il ragazzo crescesse nella convinzione che la genitrice fosse ormai morta. È Asu a rinvenire quegli scritti mai consegnati, comprendendo in un attimo la portata del tradimento perpetrato dall&#x27;uomo che l&#x27;ha cresciuta come una figlia. Il ritrovamento della corrispondenza cancella anni di cieca devozione e fa crollare istantaneamente il castello di menzogne edificato dal capo famiglia per manipolare i suoi protetti.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 <p>La scoperta porta a un durissimo confronto faccia a faccia tra la ragazza e lo zio, con Asu che sfoga tutta la sua rabbia chiedendogli conto di quante altre bugie siano state raccontate nel corso degli anni. L&#x27;accusa si fa pesantissima quando la giovane afferma con decisione che Hakki ha reso Tufan il suo uomo fidato attraverso il costante ricorso all&#x27;inganno e alla manipolazione. La tensione sale alle stelle quando Asu si rende conto di essere stata usata a sua volta, contestando apertamente le motivazioni profonde dell&#x27;uomo. Le sue parole feriscono profondamente il mentore, il quale non accetta di vedere messa in discussione la propria autorità e la propria figura.</p>
 <p>Di fronte a contestazioni così dirette e dettagliate, la reazione di Hakki si rivela gelida e minacciosa, priva di qualsiasi tentativo di giustificazione affettuosa nei confronti della nipote. L&#x27;uomo risponde alle accuse preannunciando un pentimento futuro per le affermazioni fatte dalla ragazza, pronunciando una frase che suona come un chiaro avvertimento per chiunque osi ostacolare la sua volontà. Questo scontro verbale incrina definitivamente il legame di affetto e rispetto reciproco, spazzando via la fiducia sulla quale era stato edificato l&#x27;intero clan fondato sulla vendetta. I sospetti diffusi e la rabbia accumulata rendono la struttura familiare fragile, esponendo tutti i membri a inevitabili conseguenze distruttive.</p>
-<h2>Cosa spinge Tufan a confessare il suo amore per Asu</h2>
+<h2 id="c7">Cosa spinge Tufan a confessare il suo amore per Asu</h2>
 <p>La travolgente scoperta sulla reale sorte di Nursen instilla un veleno sotterraneo anche all&#x27;interno della relazione tra Tufan e Asu, cresciuti l&#x27;uno accanto all&#x27;altra come fratelli d&#x27;armi legati dallo stesso piano di vendetta. Sopraffatto dalla carica emotiva del momento e smarrito di fronte a una realtà completamente riscritta, il braccio destro di Emir si convince che Asu fosse a conoscenza del fatto che sua madre fosse viva e che gli avesse nascosto la verità. Nonostante le accorate difese della ragazza, che ribadisce con fermezza la propria totale estraneità e ignoranza sulla vicenda delle lettere nascoste, il clima di reciproca diffidenza finisce per avvelenare irreparabilmente ogni dialogo.</p>
 <p>Il drammatico confronto tra i due degenera ulteriormente quando Tufan viene travolto da un&#x27;altra pesante e ingiusta accusa, ovvero quella di aver tradito la tentata fuga pianificata da Kemal e Nihan. Sentendosi completamente incompreso, messo all&#x27;angolo ed esausto per i continui attacchi da parte della donna che ha sempre cercato di proteggere, il giovane perde il controllo della situazione. È proprio nel bel mezzo di questo acceso e sofferto scontro verbale che si lascia sfuggire la verità sul proprio animo, rivelando a sorpresa di essere profondamente innamorato di Asu. Questa inattesa confessione sentimentale spiazza completamente la ragazza e stravolge radicalmente i parametri del loro legame.</p>
 <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
@@ -385,19 +435,41 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=JXUtvrXL_iE" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/JXUtvrXL_iE/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>KEMAL SCONVOLGE TUFAN: &quot;TUA MADRE E&#x27; VIVA, TI PORTO DA LEI!&quot; Anticipazioni Endless Love 15 Giug</span></a></li><li><a href="https://www.youtube.com/watch?v=FGn5NsuuKG8" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/FGn5NsuuKG8/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>CRUDELE EMIR: &quot;TUFAN, UCCIDI KEMAL O AMMAZZO TUA MADRE!&quot; -Anticipazioni Endless Love Turchia</span></a></li><li><a href="https://www.youtube.com/watch?v=JY6JdF1IhFQ" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/JY6JdF1IhFQ/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LEYLA, KEMAL SCOPRE IL SEGRETO NASCOSTO PER 30 ANNI - Endless Love Anticipazioni 6 Aprile</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Hakkı ha mentito per proteggere o per controllare? E la confessione d&#x27;amore di Tufan ad Asu può sopravvivere alla rete di vendette in cui sono cresciuti?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=bfmwsGZCjdM">Dite la vostra nei commenti al video</a>.</p></div>
+  <section class="correlati-serie"><h2>Altre anticipazioni di Endless Love</h2><div class="griglia"><article class="scheda">
+  <a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/"><div class="foto"><img src="https://i.ytimg.com/vi/DSiProJJ1ls/hqdefault.jpg" alt="Endless Love" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/"><div class="foto"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></h3>
+    <div class="quando">27 agosto 2026</div>
+  </div>
+</article><article class="scheda">
+  <a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/"><div class="foto"><img src="https://i.ytimg.com/vi/uu2oAzTOWQU/hqdefault.jpg" alt="Endless Love" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)"></div></a>
+  <div class="corpo">
+    <span class="serie">Endless Love</span>
+    <h3><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></h3>
+    <div class="quando">25 agosto 2026</div>
+  </div>
+</article></div></section>
   <div class="condividi"><span>Condividi</span>
   <a class="wa" href="https://wa.me/?text=Endless Love, le lettere nascoste di Nursen inchiodano Hakkı: «Ci hai mentito tutta la vita» — e Tufan riabbraccia la madre creduta morta — https://soapoperaitalia.com/endless-love/endless-love-la-trama-completa-perche-nihan-sposa-emir-e-come-finisce/" rel="nofollow noopener" target="_blank">WhatsApp</a>
   <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https://soapoperaitalia.com/endless-love/endless-love-la-trama-completa-perche-nihan-sposa-emir-e-come-finisce/" rel="nofollow noopener" target="_blank">Facebook</a>
   <a class="tg" href="https://t.me/share/url?url=https://soapoperaitalia.com/endless-love/endless-love-la-trama-completa-perche-nihan-sposa-emir-e-come-finisce/&text=Endless Love, le lettere nascoste di Nursen inchiodano Hakkı: «Ci hai mentito tutta la vita» — e Tufan riabbraccia la madre creduta morta" rel="nofollow noopener" target="_blank">Telegram</a>
 </div>
-  <p><a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale YouTube</a></p>
 </article>
 <aside>
-  <div class="box"><h3>Il video di questa settimana</h3>
-    <p style="font-size:15px;margin:0 0 12px">ASU SCONVOLTA DA HAKKI: &quot;CI HAI MENTITO TUTTA LA VITA!&quot; - Endless Love</p>
-    <a class="bottone" href="https://www.youtube.com/watch?v=bfmwsGZCjdM">Guarda su YouTube</a>
+  <div class="box"><h3>Ultime di Endless Love</h3><ol class="numerata"><li><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></li><li><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></li><li><a href="/endless-love/endless-love-chi-e-galip-kozcuoglu-le-due-volte-in-cui-nihan-e-stata-venduta/">Endless Love, chi è Galip Kozcuoğlu: le due volte in cui Nihan è stata venduta</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-zeynep-soydere-perche-emir-lha-scelta-e-cosa-ha-distrutto/">Endless Love, chi è davvero Zeynep Soydere: perché Emir l&#x27;ha scelta e cosa ha distrutto</a></li></ol></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-21-27-settembre-carlo-torna-maria-nasconde-tutto/">LA PROMESSA ANTICIPAZIONI 21-27 SETTEMBRE: Carlo torna, Maria nasconde tutto</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-kaan-si-taglia-per-susen/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Kaan si taglia per Süsen</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-14-20-settembre-tolga-isola-cemile-omer-licenziato/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 14-20 SETTEMBRE: Tolga isola Cemile, Ömer licenziato</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-5-11-settembre-akif-nasconde-melisa-a-ginevra/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 5-11 SETTEMBRE: Akif nasconde Melisa a Ginevra 😱</a></li></ul></div>
+  <div class="yt-box"><div class="tondo" aria-hidden="true"></div>
+    <h3>Seguici su YouTube</h3>
+    <p>ASU SCONVOLTA DA HAKKI: &quot;CI HAI MENTITO TUTTA LA VITA!&quot; - Endless Love</p>
+    <a class="bottone" href="https://www.youtube.com/channel/UCwgtJLcJWxO5p_VAILE4sdA?sub_confirmation=1">Iscriviti al canale</a>
   </div>
-  <div class="box"><h3>Ancora su Endless Love</h3><ul><li><a href="/endless-love/endless-love-che-fine-ha-fatto-kemal-burak-ozcivit-ha-lasciato-il-melodramma-per-osman-gazi/">Endless Love, che fine ha fatto Kemal: Burak Özçivit ha lasciato il melodramma per Osman Gazi</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-deniz-la-bambina-che-ogni-adulto-ha-usato/">Endless Love, chi è davvero Deniz: la bambina che ogni adulto ha usato</a></li><li><a href="/endless-love/endless-love-il-metodo-di-emir-kozcuoglu-le-quattro-persone-che-ha-usato-al-posto-della-pi/">Endless Love, il metodo di Emir Kozcuoğlu: le quattro persone che ha usato al posto della pistola</a></li><li><a href="/endless-love/endless-love-chi-e-galip-kozcuoglu-le-due-volte-in-cui-nihan-e-stata-venduta/">Endless Love, chi è Galip Kozcuoğlu: le due volte in cui Nihan è stata venduta</a></li><li><a href="/endless-love/endless-love-chi-e-davvero-zeynep-soydere-perche-emir-lha-scelta-e-cosa-ha-distrutto/">Endless Love, chi è davvero Zeynep Soydere: perché Emir l&#x27;ha scelta e cosa ha distrutto</a></li></ul></div><div class="box"><h3>Dalle altre serie</h3><ul><li><a href="/la-promessa/la-promessa-anticipazioni-14-20-settembre-enora-confessa-tono-distrutto/">LA PROMESSA ANTICIPAZIONI 14-20 SETTEMBRE: Enora confessa, Toño distrutto</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-6-12-settembre-maria-confessa-il-passato-con-samuel/">LA PROMESSA ANTICIPAZIONI 6-12 SETTEMBRE: Maria confessa il passato con Samuel</a></li><li><a href="/tutto-per-la-mia-famiglia/tutto-per-la-mia-famiglia-anticipazioni-12-18-settembre-nebahat-cade-la-colpa-e-di-akif/">TUTTO PER LA MIA FAMIGLIA ANTICIPAZIONI 12-18 SETTEMBRE: Nebahat cade, la colpa è di Akif</a></li><li><a href="/la-promessa/la-promessa-anticipazioni-13-settembre-angela-non-risponde-piu/">LA PROMESSA ANTICIPAZIONI 13 SETTEMBRE: Ángela non risponde più 😱</a></li></ul></div>
   <aside class="affiliato"><h2>Un regalo per i nipoti a Halloween</h2><p>Li pubblichiamo noi: <strong>80 disegni</strong> a linea spessa, pagine grandi 21,6&nbsp;cm e <strong>stampa solo fronte</strong>, così i pennarelli non passano sul disegno dopo. Per bambini dai 4 anni — e per chi vuole colorare con loro.</p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG2WTM8T?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Halloween</a></p><p><a class="bottone-affiliato" href="https://www.amazon.it/dp/B0HG6K5Q4M?tag=kdplibri-21&ascsubtag=sito-stf" rel="sponsored nofollow noopener" target="_blank">Dinosauri di Natale</a></p><p class="nota-affiliato">In qualità di Affiliato Amazon, riceviamo un guadagno dagli acquisti idonei. Il prezzo per te non cambia. <a href="/privacy/">Come funziona</a>.</p></aside>
   <div class="annuncio"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7778653397776213" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="box"><h3>Le serie che seguiamo</h3><ul>
