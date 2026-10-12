@@ -303,6 +303,19 @@ aside li { margin-bottom: 9px; font-size: 15px; line-height: 1.4; }
 .bottone:hover { background: var(--brand-dark); text-decoration: none;
   box-shadow: 0 4px 14px rgba(0,0,0,.18); }
 
+/* riquadro del nostro libro (12/10/2026): dentro l'articolo, leggero, senza Tailwind */
+.libro-box { display: flex; gap: 14px; align-items: center; border: 1px solid var(--bordo);
+  border-left: 4px solid var(--accento); border-radius: 8px; padding: 14px 16px; margin: 22px 0;
+  background: #fcfcfc; }
+.libro-box img { width: 72px; height: auto; flex: none; border-radius: 3px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.25); }
+.libro-box p { margin: 0 0 8px; font-size: 15.5px; line-height: 1.45; }
+.libro-box .libro-arrivo { font-size: 13.5px; color: var(--testo-tenue); margin: 8px 0 0; }
+.libro-box .libro-bt { display: inline-block; background: #b3262e; color: #fff; padding: 10px 16px;
+  border-radius: 6px; font-weight: 700; font-size: 15px; }
+.libro-box .libro-bt:hover { background: #98202a; text-decoration: none; }
+.libro-box.breve { margin: 22px 0 6px; }
+@media (max-width: 480px) { .libro-box { flex-direction: column; text-align: center; } }
 /* archivio completo: la scala che porta il crawler in fondo al catalogo */
 .archivio { max-width: 900px; }
 .archivio .salti { display: flex; flex-wrap: wrap; gap: 8px 10px; margin: 18px 0 30px;
@@ -395,6 +408,7 @@ if(l.length){el.src=l.shift();el.dataset.fb=JSON.stringify(l)}else{el.onerror=nu
   <div class="corpo">
   
   <p>Curro scopre l&#x27;angoscia segreta di Ángela per le nozze con Lorenzo. Ángela confida tutto a Martina. Petra scopre che dietro Madame Cocotte si nasconde Santos. Santos aggredisce Petra davanti alla servitù. Curro difende Petra e affronta Santos.</p>
+<div class="libro-box"><img src="/img/libro-natale-20-regioni-mini.jpg" alt="Copertina di Il Natale delle 20 Regioni" width="72" height="104" loading="lazy" decoding="async"><div><p><strong>Sostenete il nostro lavoro:</strong> è uscito il nostro libro «Il Natale delle 20 Regioni». 31 ricette dalla Vigilia all&#x27;Epifania, le ricette delle nonne di tutte le regioni, con una foto per ogni piatto.</p><a class="libro-bt" href="https://www.amazon.it/dp/B0HMRR78YV" rel="sponsored noopener" target="_blank">Compralo su Amazon</a><p class="libro-arrivo">In arrivo: le ricette delle soap turche.</p></div></div>
 <p>La trovate ogni sera su Rete quattro, verso le diciannove e cinquanta, nella puntata di sabato ventisei settembre: queste sono le trame spagnole, già andate in onda in Spagna, tradotte e verificate prima che le vediate voi in italiano.</p>
 <p>E non è nemmeno la cosa peggiore della settimana. Quando Curro scoprirà fino in fondo cosa sta soffrendo Ángela, sfiderà apertamente il capitano Lorenzo, davanti a tutta la tenuta.</p>
 <p>Mettete un like se anche voi volete sapere se Curro riesce davvero a fermare le nozze di Ángela.</p>
@@ -427,6 +441,7 @@ if(l.length){el.src=l.shift();el.dataset.fb=JSON.stringify(l)}else{el.onerror=nu
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=vFhZwxDv-nQ" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/vFhZwxDv-nQ/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni: Eredità Barone, Curro tra Cruz e Lorenzo!</span></a></li><li><a href="https://www.youtube.com/watch?v=9UNQ989ZIEY" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/9UNQ989ZIEY/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni: Curro e Lorenzo Alleati! Jimena caccia Jana e Manuel lo scopre!</span></a></li><li><a href="https://www.youtube.com/watch?v=LoWXuQ4rM90" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/LoWXuQ4rM90/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA: Curro FERMA le Nozze e RIVELA &quot;Ángela è tua Figlia!&quot; La rivelazione che cambia tut</span></a></li></ul></div>
   
+  <div class="libro-box breve"><img src="/img/libro-natale-20-regioni-mini.jpg" alt="Copertina di Il Natale delle 20 Regioni" width="72" height="104" loading="lazy" decoding="async"><div><p><strong>Il nostro libro «Il Natale delle 20 Regioni»</strong>: ogni copia ci aiuta a continuare questo lavoro.</p><a class="libro-bt" href="https://www.amazon.it/dp/B0HMRR78YV" rel="sponsored noopener" target="_blank">Compralo su Amazon</a><p class="libro-arrivo">In arrivo: le ricette delle soap turche.</p></div></div>
   <section class="correlati-serie"><h2>Altre anticipazioni di La Promessa</h2><div class="griglia"><article class="scheda">
   <a href="/la-promessa/la-promessa-anticipazioni-28-settembre-manuel-offre-milioni-a-lorenzo-per-angela/"><div class="foto"></div></a>
   <div class="corpo">

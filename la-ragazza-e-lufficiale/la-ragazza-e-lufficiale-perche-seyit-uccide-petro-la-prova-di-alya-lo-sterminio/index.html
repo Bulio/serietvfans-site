@@ -303,6 +303,19 @@ aside li { margin-bottom: 9px; font-size: 15px; line-height: 1.4; }
 .bottone:hover { background: var(--brand-dark); text-decoration: none;
   box-shadow: 0 4px 14px rgba(0,0,0,.18); }
 
+/* riquadro del nostro libro (12/10/2026): dentro l'articolo, leggero, senza Tailwind */
+.libro-box { display: flex; gap: 14px; align-items: center; border: 1px solid var(--bordo);
+  border-left: 4px solid var(--accento); border-radius: 8px; padding: 14px 16px; margin: 22px 0;
+  background: #fcfcfc; }
+.libro-box img { width: 72px; height: auto; flex: none; border-radius: 3px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.25); }
+.libro-box p { margin: 0 0 8px; font-size: 15.5px; line-height: 1.45; }
+.libro-box .libro-arrivo { font-size: 13.5px; color: var(--testo-tenue); margin: 8px 0 0; }
+.libro-box .libro-bt { display: inline-block; background: #b3262e; color: #fff; padding: 10px 16px;
+  border-radius: 6px; font-weight: 700; font-size: 15px; }
+.libro-box .libro-bt:hover { background: #98202a; text-decoration: none; }
+.libro-box.breve { margin: 22px 0 6px; }
+@media (max-width: 480px) { .libro-box { flex-direction: column; text-align: center; } }
 /* archivio completo: la scala che porta il crawler in fondo al catalogo */
 .archivio { max-width: 900px; }
 .archivio .salti { display: flex; flex-wrap: wrap; gap: 8px 10px; margin: 18px 0 30px;
@@ -414,6 +427,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
   <p><strong>Alya arriva alla porta di Seyit con la verità in mano, lo vede sereno accanto a Mürvet e per un attimo esita: turbare quella pace o lasciare impunito uno sterminio?</strong></p>
   <h2 id="c1">L&#x27;amico che era il nemico: l&#x27;inganno lungo una serie</h2>
 <p>La beffa più crudele del finale è retrospettiva: Seyit aveva scoperto che Petro aveva orchestrato l&#x27;inganno del finto tradimento per separarlo da Şura, ma continuava a credere che dietro intrighi e trame ci fosse il capitano Billy. Il «più caro amico» sfuggiva a ogni sospetto. È questo il filo che le puntate conclusive tirano fino in fondo: quanto in alto arriva davvero la colpa di Petro?</p>
+<div class="libro-box"><img src="/img/libro-natale-20-regioni-mini.jpg" alt="Copertina di Il Natale delle 20 Regioni" width="72" height="104" loading="lazy" decoding="async"><div><p><strong>Sostenete il nostro lavoro:</strong> è uscito il nostro libro «Il Natale delle 20 Regioni». 31 ricette dalla Vigilia all&#x27;Epifania, le ricette delle nonne di tutte le regioni, con una foto per ogni piatto.</p><a class="libro-bt" href="https://www.amazon.it/dp/B0HMRR78YV" rel="sponsored noopener" target="_blank">Compralo su Amazon</a><p class="libro-arrivo">In arrivo: le ricette delle soap turche.</p></div></div>
 <h2 id="c2">La scelta di Alya: parlare o morire con il segreto</h2>
 <p>La risposta ce l&#x27;ha Alya: prove sconvolgenti che indicano Petro come mandante dell&#x27;omicidio dei genitori di Seyit e della sua intera famiglia. Corre a casa sua per dirglielo — ma alla porta vede Mürvet, la nuova serenità di Seyit, e si ferma: che diritto ha di distruggerla? L&#x27;esitazione dura poco: braccata, a rischio di essere uccisa o catturata dai soldati britannici, Alya sceglie di liberarsi del peso e rivela tutto. Le fondamenta delle certezze di Seyit crollano in un istante.</p>
 <h2 id="c3">Chi è Alya, e quanto le costa quella verità</h2>
@@ -438,6 +452,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
   </div>
   
   <div class="riquadro"><h3>E secondo voi?</h3><p>La vendetta di Seyit su Petro è giustizia o l&#x27;ha reso simile al suo carnefice? E l&#x27;augurio di Şura ai neosposi vi è sembrato grandezza d&#x27;animo o l&#x27;addio più triste della serie?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=yXLRo01o4uI">Dite la vostra nei commenti al video</a>.</p></div>
+  <div class="libro-box breve"><img src="/img/libro-natale-20-regioni-mini.jpg" alt="Copertina di Il Natale delle 20 Regioni" width="72" height="104" loading="lazy" decoding="async"><div><p><strong>Il nostro libro «Il Natale delle 20 Regioni»</strong>: ogni copia ci aiuta a continuare questo lavoro.</p><a class="libro-bt" href="https://www.amazon.it/dp/B0HMRR78YV" rel="sponsored noopener" target="_blank">Compralo su Amazon</a><p class="libro-arrivo">In arrivo: le ricette delle soap turche.</p></div></div>
   <section class="correlati-serie"><h2>Altre anticipazioni di La Ragazza e l&#x27;Ufficiale</h2><div class="griglia"><article class="scheda">
   <a href="/la-ragazza-e-lufficiale/la-ragazza-e-lufficiale-la-trama-completa-e-come-finisce/"><div class="foto"><img src="/img/la-ragazza-e-lufficiale-la-trama-completa-e-come-finisce.jpg" alt="La Ragazza e l&#x27;Ufficiale" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-ragazza-e-lufficiale.svg&quot;]' onerror="imgFb(this)"></div></a>
   <div class="corpo">

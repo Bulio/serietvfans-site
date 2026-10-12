@@ -303,6 +303,19 @@ aside li { margin-bottom: 9px; font-size: 15px; line-height: 1.4; }
 .bottone:hover { background: var(--brand-dark); text-decoration: none;
   box-shadow: 0 4px 14px rgba(0,0,0,.18); }
 
+/* riquadro del nostro libro (12/10/2026): dentro l'articolo, leggero, senza Tailwind */
+.libro-box { display: flex; gap: 14px; align-items: center; border: 1px solid var(--bordo);
+  border-left: 4px solid var(--accento); border-radius: 8px; padding: 14px 16px; margin: 22px 0;
+  background: #fcfcfc; }
+.libro-box img { width: 72px; height: auto; flex: none; border-radius: 3px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.25); }
+.libro-box p { margin: 0 0 8px; font-size: 15.5px; line-height: 1.45; }
+.libro-box .libro-arrivo { font-size: 13.5px; color: var(--testo-tenue); margin: 8px 0 0; }
+.libro-box .libro-bt { display: inline-block; background: #b3262e; color: #fff; padding: 10px 16px;
+  border-radius: 6px; font-weight: 700; font-size: 15px; }
+.libro-box .libro-bt:hover { background: #98202a; text-decoration: none; }
+.libro-box.breve { margin: 22px 0 6px; }
+@media (max-width: 480px) { .libro-box { flex-direction: column; text-align: center; } }
 /* archivio completo: la scala che porta il crawler in fondo al catalogo */
 .archivio { max-width: 900px; }
 .archivio .salti { display: flex; flex-wrap: wrap; gap: 8px 10px; margin: 18px 0 30px;
@@ -414,6 +427,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
   <p><strong>Da Çınar arriva l&#x27;unica indicazione utile: un palazzo di quattro piani, terzo piano, un uomo che quella notte c&#x27;era.</strong></p>
   <h2 id="c1">L&#x27;indirizzo dato in cella</h2>
 <p>Stanca del silenzio di Çınar, Ceylin sta per lasciare la cella quando lui finalmente parla: in un certo quartiere c&#x27;è un palazzo di quattro piani, e al terzo abita un uomo che la notte dell&#x27;omicidio era presente. Prima che esca aggiunge un dettaglio che la annienta — İnci ha sofferto molto prima di morire. Subito dopo entra Ilgaz, che non riesce più a trattenersi: mancano poche ore all&#x27;udienza, è convinto dell&#x27;innocenza del fratello e sospetta che quel mutismo sia dettato dalla paura di qualcuno, forse legato a un giro di droga. Çınar non conferma e non smentisce, e lui esce a mani vuote.</p>
+<div class="libro-box"><img src="/img/libro-natale-20-regioni-mini.jpg" alt="Copertina di Il Natale delle 20 Regioni" width="72" height="104" loading="lazy" decoding="async"><div><p><strong>Sostenete il nostro lavoro:</strong> è uscito il nostro libro «Il Natale delle 20 Regioni». 31 ricette dalla Vigilia all&#x27;Epifania, le ricette delle nonne di tutte le regioni, con una foto per ogni piatto.</p><a class="libro-bt" href="https://www.amazon.it/dp/B0HMRR78YV" rel="sponsored noopener" target="_blank">Compralo su Amazon</a><p class="libro-arrivo">In arrivo: le ricette delle soap turche.</p></div></div>
 <h2 id="c2">L&#x27;avvocata e il procuratore: perché indagano insieme senza potersi fidare</h2>
 <p>Chi apre la serie a questo punto vede due colleghi che si aiutano e non capisce da dove venga la tensione. In realtà siedono ai lati opposti dello stesso lutto. La ragazza uccisa, İnci, è la sorella di Ceylin, che di mestiere fa l&#x27;avvocato; il ragazzo chiuso in cella con l&#x27;accusa addosso, Çınar, è il fratello di Ilgaz, che di mestiere fa il magistrato ed è il tipo più rigido che si possa immaginare sulle regole. Non è un dettaglio caratteriale: è il motivo per cui, appena vede quello spazzolino uscire dalla casa del professore, la sua mano va da sola al cassonetto. E dietro di loro ci sono due padri, Metin e Zafer, che si conoscono da molto prima di questa storia.</p>
 <h2 id="c3">La visita al professore</h2>
@@ -435,6 +449,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
   </div>
   
   <div class="riquadro"><h3>E secondo voi?</h3><p>Chi ha ucciso İnci secondo voi?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=BRxPNp4LTrw">Dite la vostra nei commenti al video</a>.</p></div>
+  <div class="libro-box breve"><img src="/img/libro-natale-20-regioni-mini.jpg" alt="Copertina di Il Natale delle 20 Regioni" width="72" height="104" loading="lazy" decoding="async"><div><p><strong>Il nostro libro «Il Natale delle 20 Regioni»</strong>: ogni copia ci aiuta a continuare questo lavoro.</p><a class="libro-bt" href="https://www.amazon.it/dp/B0HMRR78YV" rel="sponsored noopener" target="_blank">Compralo su Amazon</a><p class="libro-arrivo">In arrivo: le ricette delle soap turche.</p></div></div>
   <section class="correlati-serie"><h2>Altre anticipazioni di Segreti di Famiglia</h2><div class="griglia"><article class="scheda">
   <a href="/segreti-di-famiglia/chi-ha-ucciso-engin-in-segreti-di-famiglia/"><div class="foto"><img src="/img/chi-ha-ucciso-engin-in-segreti-di-famiglia.jpg" alt="Segreti di Famiglia" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/segreti-di-famiglia.svg&quot;]' onerror="imgFb(this)"></div></a>
   <div class="corpo">

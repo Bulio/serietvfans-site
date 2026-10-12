@@ -303,6 +303,19 @@ aside li { margin-bottom: 9px; font-size: 15px; line-height: 1.4; }
 .bottone:hover { background: var(--brand-dark); text-decoration: none;
   box-shadow: 0 4px 14px rgba(0,0,0,.18); }
 
+/* riquadro del nostro libro (12/10/2026): dentro l'articolo, leggero, senza Tailwind */
+.libro-box { display: flex; gap: 14px; align-items: center; border: 1px solid var(--bordo);
+  border-left: 4px solid var(--accento); border-radius: 8px; padding: 14px 16px; margin: 22px 0;
+  background: #fcfcfc; }
+.libro-box img { width: 72px; height: auto; flex: none; border-radius: 3px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.25); }
+.libro-box p { margin: 0 0 8px; font-size: 15.5px; line-height: 1.45; }
+.libro-box .libro-arrivo { font-size: 13.5px; color: var(--testo-tenue); margin: 8px 0 0; }
+.libro-box .libro-bt { display: inline-block; background: #b3262e; color: #fff; padding: 10px 16px;
+  border-radius: 6px; font-weight: 700; font-size: 15px; }
+.libro-box .libro-bt:hover { background: #98202a; text-decoration: none; }
+.libro-box.breve { margin: 22px 0 6px; }
+@media (max-width: 480px) { .libro-box { flex-direction: column; text-align: center; } }
 /* archivio completo: la scala che porta il crawler in fondo al catalogo */
 .archivio { max-width: 900px; }
 .archivio .salti { display: flex; flex-wrap: wrap; gap: 8px 10px; margin: 18px 0 30px;
@@ -395,6 +408,7 @@ if(l.length){el.src=l.shift();el.dataset.fb=JSON.stringify(l)}else{el.onerror=nu
   <div class="corpo">
   
   <p>Martina aspetta il verdetto di Jacobo nel salone della Promessa. Jacobo ha convocato tutta la famiglia per decidere se perdonarla. Leocadia ha già in mano il riassunto scritto da Cristóbal. Cruz aspetta di leggerlo prima di tutti.</p>
+<div class="libro-box"><img src="/img/libro-natale-20-regioni-mini.jpg" alt="Copertina di Il Natale delle 20 Regioni" width="72" height="104" loading="lazy" decoding="async"><div><p><strong>Sostenete il nostro lavoro:</strong> è uscito il nostro libro «Il Natale delle 20 Regioni». 31 ricette dalla Vigilia all&#x27;Epifania, le ricette delle nonne di tutte le regioni, con una foto per ogni piatto.</p><a class="libro-bt" href="https://www.amazon.it/dp/B0HMRR78YV" rel="sponsored noopener" target="_blank">Compralo su Amazon</a><p class="libro-arrivo">In arrivo: le ricette delle soap turche.</p></div></div>
 <p>Nel salone, Martina chiede a Jacobo solo un po&#x27; di tempo. Martina vuole spiegare tutto quello che è successo con Adriano. Adriano, in piedi vicino alla porta, ascolta senza parlare. Cristóbal osserva la scena e stringe in mano il foglio di Leocadia.</p>
 <p>Curro entra ultimo e si ferma vicino a Manuel. Curro ha già parlato con Jacobo la notte prima. Alonso chiede il silenzio a tutti prima di cominciare.</p>
 <p>Mettete un like se anche voi volete sapere se Jacobo deciderà di perdonare Martina proprio oggi, davanti a tutta la famiglia riunita nel salone.</p>
@@ -448,6 +462,7 @@ if(l.length){el.src=l.shift();el.dataset.fb=JSON.stringify(l)}else{el.onerror=nu
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=ZVlZhU-ma2w" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/ZVlZhU-ma2w/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>ANTICIPAZIONI LA PROMESSA - Puntate Spagnole - Candela non perdona Simona! Perchè?</span></a></li><li><a href="https://www.youtube.com/watch?v=ddiMI7QD5G0" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/ddiMI7QD5G0/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni: Martina minacciata e in pericolo confessa il suo segreto!</span></a></li><li><a href="https://www.youtube.com/watch?v=oUNWBlBEiq4" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/oUNWBlBEiq4/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>LA PROMESSA Anticipazioni Spagnole: Martina incinta? | Lope lascia la Promessa</span></a></li></ul></div>
   
+  <div class="libro-box breve"><img src="/img/libro-natale-20-regioni-mini.jpg" alt="Copertina di Il Natale delle 20 Regioni" width="72" height="104" loading="lazy" decoding="async"><div><p><strong>Il nostro libro «Il Natale delle 20 Regioni»</strong>: ogni copia ci aiuta a continuare questo lavoro.</p><a class="libro-bt" href="https://www.amazon.it/dp/B0HMRR78YV" rel="sponsored noopener" target="_blank">Compralo su Amazon</a><p class="libro-arrivo">In arrivo: le ricette delle soap turche.</p></div></div>
   <section class="correlati-serie"><h2>Altre anticipazioni di La Promessa</h2><div class="griglia"><article class="scheda">
   <a href="/la-promessa/la-promessa-anticipazioni-28-settembre-manuel-offre-milioni-a-lorenzo-per-angela/"><div class="foto"></div></a>
   <div class="corpo">

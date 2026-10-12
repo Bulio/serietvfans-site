@@ -303,6 +303,19 @@ aside li { margin-bottom: 9px; font-size: 15px; line-height: 1.4; }
 .bottone:hover { background: var(--brand-dark); text-decoration: none;
   box-shadow: 0 4px 14px rgba(0,0,0,.18); }
 
+/* riquadro del nostro libro (12/10/2026): dentro l'articolo, leggero, senza Tailwind */
+.libro-box { display: flex; gap: 14px; align-items: center; border: 1px solid var(--bordo);
+  border-left: 4px solid var(--accento); border-radius: 8px; padding: 14px 16px; margin: 22px 0;
+  background: #fcfcfc; }
+.libro-box img { width: 72px; height: auto; flex: none; border-radius: 3px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.25); }
+.libro-box p { margin: 0 0 8px; font-size: 15.5px; line-height: 1.45; }
+.libro-box .libro-arrivo { font-size: 13.5px; color: var(--testo-tenue); margin: 8px 0 0; }
+.libro-box .libro-bt { display: inline-block; background: #b3262e; color: #fff; padding: 10px 16px;
+  border-radius: 6px; font-weight: 700; font-size: 15px; }
+.libro-box .libro-bt:hover { background: #98202a; text-decoration: none; }
+.libro-box.breve { margin: 22px 0 6px; }
+@media (max-width: 480px) { .libro-box { flex-direction: column; text-align: center; } }
 /* archivio completo: la scala che porta il crawler in fondo al catalogo */
 .archivio { max-width: 900px; }
 .archivio .salti { display: flex; flex-wrap: wrap; gap: 8px 10px; margin: 18px 0 30px;
@@ -414,6 +427,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
   <p><strong>Il biglietto sul marciapiede della stazione, accanto alle camelie: «Cerca il coraggio che non hai avuto di dirmi addio» — l&#x27;appuntamento con la decima stagione è già scritto.</strong></p>
   <h2 id="c1">Adelaide scopre il tradimento — e il silenzio di Marcello pesa quanto il complotto</h2>
 <p>Pensavamo di aver visto tutte le crepe della contessa, e invece il colpo più basso arriva dal sangue del suo sangue: Tancredi ha orchestrato il sabotaggio del Paradiso per alimentare la propria ascesa. Ma il dolore doppio è un altro: Marcello, l&#x27;uomo di cui Adelaide si fida di più, sapeva e taceva — spaventato dall&#x27;idea che la verità potesse spingerla a un gesto estremo, magari a vendere la sua quota pur di salvare l&#x27;orgoglio. Ogni parola taciuta allunga la distanza: quando la verità esplode, la sensazione di tradimento investe anche lui.</p>
+<div class="libro-box"><img src="/img/libro-natale-20-regioni-mini.jpg" alt="Copertina di Il Natale delle 20 Regioni" width="72" height="104" loading="lazy" decoding="async"><div><p><strong>Sostenete il nostro lavoro:</strong> è uscito il nostro libro «Il Natale delle 20 Regioni». 31 ricette dalla Vigilia all&#x27;Epifania, le ricette delle nonne di tutte le regioni, con una foto per ogni piatto.</p><a class="libro-bt" href="https://www.amazon.it/dp/B0HMRR78YV" rel="sponsored noopener" target="_blank">Compralo su Amazon</a><p class="libro-arrivo">In arrivo: le ricette delle soap turche.</p></div></div>
 <h2 id="c2">Adelaide, la contessa che dopo l&#x27;operazione al cuore ha smesso di coprire la famiglia</h2>
 <p>Adelaide comanda per abitudine più che per titolo: ha una quota del magazzino e l&#x27;ultima parola nella villa, e il suo modo di stare nelle stanze è lasciar parlare gli altri e intervenire quando gli altri hanno finito. L&#x27;intervento al cuore l&#x27;ha cambiata in un punto preciso — non accetta più di pagare con la propria onestà il decoro della famiglia, ed è da lì che nasce la scena con il nipote. Il resto della sua forza sta nelle persone che si è scelta: Umberto Guarnieri, il socio con cui i patti si rifanno a ogni cambio di convenienza, e Marcello Barbieri, l&#x27;uomo venuto dal nulla che lei aveva promosso a interlocutore. Tancredi, invece, non se l&#x27;era scelto: le è capitato in famiglia.</p>
 <h2 id="c3">Il faccia a faccia: perdonare o colpire</h2>
@@ -435,6 +449,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
   </div>
   
   <div class="riquadro"><h3>E secondo voi?</h3><p>Adelaide farà denunciare Tancredi o il legame di famiglia vincerà all&#x27;ultimo? E Marcello correrà fino a Roma per le sue camelie?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=5Xz0TUNxlB0">Dite la vostra nei commenti al video</a>.</p></div>
+  <div class="libro-box breve"><img src="/img/libro-natale-20-regioni-mini.jpg" alt="Copertina di Il Natale delle 20 Regioni" width="72" height="104" loading="lazy" decoding="async"><div><p><strong>Il nostro libro «Il Natale delle 20 Regioni»</strong>: ogni copia ci aiuta a continuare questo lavoro.</p><a class="libro-bt" href="https://www.amazon.it/dp/B0HMRR78YV" rel="sponsored noopener" target="_blank">Compralo su Amazon</a><p class="libro-arrivo">In arrivo: le ricette delle soap turche.</p></div></div>
   <section class="correlati-serie"><h2>Altre anticipazioni di Il Paradiso delle Signore</h2><div class="griglia"><article class="scheda">
   <a href="/il-paradiso-delle-signore/il-paradiso-delle-signore-10-si-sposta-alle-14-e-sfida-beautiful-la-mossa-piu-ri/"><div class="foto"><img src="/img/il-paradiso-delle-signore-10-si-sposta-alle-14-e-sfida-beautiful-la-mossa-piu-ri.jpg" alt="Il Paradiso delle Signore" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/il-paradiso-delle-signore.svg&quot;]' onerror="imgFb(this)"></div></a>
   <div class="corpo">

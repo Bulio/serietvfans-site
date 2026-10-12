@@ -303,6 +303,19 @@ aside li { margin-bottom: 9px; font-size: 15px; line-height: 1.4; }
 .bottone:hover { background: var(--brand-dark); text-decoration: none;
   box-shadow: 0 4px 14px rgba(0,0,0,.18); }
 
+/* riquadro del nostro libro (12/10/2026): dentro l'articolo, leggero, senza Tailwind */
+.libro-box { display: flex; gap: 14px; align-items: center; border: 1px solid var(--bordo);
+  border-left: 4px solid var(--accento); border-radius: 8px; padding: 14px 16px; margin: 22px 0;
+  background: #fcfcfc; }
+.libro-box img { width: 72px; height: auto; flex: none; border-radius: 3px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.25); }
+.libro-box p { margin: 0 0 8px; font-size: 15.5px; line-height: 1.45; }
+.libro-box .libro-arrivo { font-size: 13.5px; color: var(--testo-tenue); margin: 8px 0 0; }
+.libro-box .libro-bt { display: inline-block; background: #b3262e; color: #fff; padding: 10px 16px;
+  border-radius: 6px; font-weight: 700; font-size: 15px; }
+.libro-box .libro-bt:hover { background: #98202a; text-decoration: none; }
+.libro-box.breve { margin: 22px 0 6px; }
+@media (max-width: 480px) { .libro-box { flex-direction: column; text-align: center; } }
 /* archivio completo: la scala che porta il crawler in fondo al catalogo */
 .archivio { max-width: 900px; }
 .archivio .salti { display: flex; flex-wrap: wrap; gap: 8px 10px; margin: 18px 0 30px;
@@ -413,6 +426,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
   <div class="corpo">
   <p><strong>Dopo lo shock del ritorno di Halit, che si è presentato davanti a tutta la famiglia Argun portandosi via il bambino senza dire una parola, a Forbidden Fruit sta per succedere qualcosa che nessuno aveva davvero messo in conto: il fragile patto che teneva insieme Yıldız, Ender e Şahika sta per crollare, e le anticipazioni raccontano che tutte e tre potrebbero finire in cella. Un rovesciamento totale, che trasforma tre donne convinte di aver chiuso i conti con Halit Argun nelle vere accusate della sua scomparsa.</strong></p>
   <p>Per capire la portata di questa svolta, bisogna ripartire da dove eravamo rimasti a Forbidden Fruit: Halit Argun, il patriarca che teneva in pugno l&#x27;intera famiglia, era dato per morto, e proprio attorno a questa &quot;morte&quot; si era costruito un equilibrio fatto di silenzi, sospetti e alleanze di convenienza tra Yıldız, Ender e Şahika. Tre donne che, fino a poco tempo fa, si guardavano più come rivali che come alleate, si erano ritrovate a stringere un patto non scritto, tenuto insieme dalla paura e dalla necessità di proteggersi a vicenda da quello che sapevano, o che sospettavano, sulla fine di Halit.</p>
+<div class="libro-box"><img src="/img/libro-natale-20-regioni-mini.jpg" alt="Copertina di Il Natale delle 20 Regioni" width="72" height="104" loading="lazy" decoding="async"><div><p><strong>Sostenete il nostro lavoro:</strong> è uscito il nostro libro «Il Natale delle 20 Regioni». 31 ricette dalla Vigilia all&#x27;Epifania, le ricette delle nonne di tutte le regioni, con una foto per ogni piatto.</p><a class="libro-bt" href="https://www.amazon.it/dp/B0HMRR78YV" rel="sponsored noopener" target="_blank">Compralo su Amazon</a><p class="libro-arrivo">In arrivo: le ricette delle soap turche.</p></div></div>
 <h2 id="c1">Cosa succede alle tre donne dopo il ritorno di Halit</h2>
 <p>Ma le anticipazioni di Forbidden Fruit sono chiare: quel patto, già fragile in partenza, non resiste al ritorno di Halit. Vederlo comparire vivo, capace di riprendersi il bambino davanti a tutta la famiglia senza che nessuno riuscisse a fermarlo, ha mandato in frantumi l&#x27;equilibrio precario che le tre donne erano riuscite a costruire. E quando un patto basato sulla paura crolla, quello che resta non è quasi mai una semplice discussione tra le parti coinvolte: è un&#x27;accusa, un sospetto reciproco, la sensazione che ognuna delle tre possa aver tradito le altre pur di salvarsi.</p>
 <p>Le anticipazioni raccontano che questa frattura porterà Yıldız, Ender e Şahika dritte in cella. Un dettaglio pesantissimo, perché significa che le indagini sulla scomparsa di Halit, riaperte proprio dopo il suo ritorno, si concentrano ora su di loro come le principali responsabili di quello che, fino a ieri, sembrava un omicidio. Il paradosso è evidente: Halit è vivo, cammina di nuovo tra la sua famiglia, eppure le tre donne rischiano di pagare per una morte che non è mai avvenuta davvero, o che comunque non è avvenuta nel modo in cui tutti credevano.</p>
@@ -438,6 +452,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=Fkpf_Jxwk0c" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/Fkpf_Jxwk0c/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>FORBIDDEN FRUIT: il patto tra YILDIZ, ENDER e ŞAHIKA crolla — tutte tradite 😨</span></a></li><li><a href="https://www.youtube.com/watch?v=pC9iUim1Hs4" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/pC9iUim1Hs4/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>Forbidden Fruit: Halit torna e si porta via il bambino davanti a tutti</span></a></li><li><a href="https://www.youtube.com/watch?v=kpRsXx8lZjk" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/kpRsXx8lZjk/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>Forbidden Fruit: Halit torna e si porta via il bambino davanti a tutti</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>E voi cosa ne pensate? Tra Yıldız, Ender e Şahika, chi credete tradirà per prima le altre due pur di salvarsi dalla cella? E secondo voi Halit, ora che è tornato così potente, userà la sua influenza per far pagare tutte e tre, oppure proteggerà qualcuna di loro per un motivo che ancora non conosciamo?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=iFem-1ygTJY">Dite la vostra nei commenti al video</a>.</p></div>
+  <div class="libro-box breve"><img src="/img/libro-natale-20-regioni-mini.jpg" alt="Copertina di Il Natale delle 20 Regioni" width="72" height="104" loading="lazy" decoding="async"><div><p><strong>Il nostro libro «Il Natale delle 20 Regioni»</strong>: ogni copia ci aiuta a continuare questo lavoro.</p><a class="libro-bt" href="https://www.amazon.it/dp/B0HMRR78YV" rel="sponsored noopener" target="_blank">Compralo su Amazon</a><p class="libro-arrivo">In arrivo: le ricette delle soap turche.</p></div></div>
   <section class="correlati-serie"><h2>Altre anticipazioni di Forbidden Fruit</h2><div class="griglia"><article class="scheda">
   <a href="/forbidden-fruit/forbidden-fruit-dal-31-agosto-il-conto-a-nome-di-halit-che-e-morto/"><div class="foto"><img src="/img/forbidden-fruit-dal-31-agosto-il-conto-a-nome-di-halit-che-e-morto.jpg" alt="Forbidden Fruit" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/forbidden-fruit.svg&quot;]' onerror="imgFb(this)"></div></a>
   <div class="corpo">

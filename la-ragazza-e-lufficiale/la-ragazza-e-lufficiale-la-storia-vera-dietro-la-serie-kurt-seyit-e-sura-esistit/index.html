@@ -303,6 +303,19 @@ aside li { margin-bottom: 9px; font-size: 15px; line-height: 1.4; }
 .bottone:hover { background: var(--brand-dark); text-decoration: none;
   box-shadow: 0 4px 14px rgba(0,0,0,.18); }
 
+/* riquadro del nostro libro (12/10/2026): dentro l'articolo, leggero, senza Tailwind */
+.libro-box { display: flex; gap: 14px; align-items: center; border: 1px solid var(--bordo);
+  border-left: 4px solid var(--accento); border-radius: 8px; padding: 14px 16px; margin: 22px 0;
+  background: #fcfcfc; }
+.libro-box img { width: 72px; height: auto; flex: none; border-radius: 3px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.25); }
+.libro-box p { margin: 0 0 8px; font-size: 15.5px; line-height: 1.45; }
+.libro-box .libro-arrivo { font-size: 13.5px; color: var(--testo-tenue); margin: 8px 0 0; }
+.libro-box .libro-bt { display: inline-block; background: #b3262e; color: #fff; padding: 10px 16px;
+  border-radius: 6px; font-weight: 700; font-size: 15px; }
+.libro-box .libro-bt:hover { background: #98202a; text-decoration: none; }
+.libro-box.breve { margin: 22px 0 6px; }
+@media (max-width: 480px) { .libro-box { flex-direction: column; text-align: center; } }
 /* archivio completo: la scala che porta il crawler in fondo al catalogo */
 .archivio { max-width: 900px; }
 .archivio .salti { display: flex; flex-wrap: wrap; gap: 8px 10px; margin: 18px 0 30px;
@@ -414,6 +427,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
   <p><strong>Il dettaglio che la serie non racconta: dopo la separazione, Seyit e Şura continuarono per un certo periodo a scriversi lettere.</strong></p>
   <h2 id="c1">Un romanzo scritto da chi porta quel sangue</h2>
 <p>La serie nasce dall&#x27;opera di Nermin Bezmen, che di Kurt Seyit è la nipote: una circostanza che cambia tutto. Non si tratta di una ricostruzione a distanza, ma di una storia raccontata da dentro la famiglia, con dettagli inediti sulla vita dei protagonisti e con le testimonianze dirette raccolte dalla nonna Murka, la seconda moglie di Seyit. È questa la ragione per cui i personaggi risultano così credibili: dietro ogni scelta narrativa c&#x27;è il ricordo di qualcuno che quelle persone le ha conosciute, con le loro gioie e le loro sofferenze.</p>
+<div class="libro-box"><img src="/img/libro-natale-20-regioni-mini.jpg" alt="Copertina di Il Natale delle 20 Regioni" width="72" height="104" loading="lazy" decoding="async"><div><p><strong>Sostenete il nostro lavoro:</strong> è uscito il nostro libro «Il Natale delle 20 Regioni». 31 ricette dalla Vigilia all&#x27;Epifania, le ricette delle nonne di tutte le regioni, con una foto per ogni piatto.</p><a class="libro-bt" href="https://www.amazon.it/dp/B0HMRR78YV" rel="sponsored noopener" target="_blank">Compralo su Amazon</a><p class="libro-arrivo">In arrivo: le ricette delle soap turche.</p></div></div>
 <h2 id="c2">Chi erano, nella realtà, l&#x27;ufficiale e la nobile russa</h2>
 <p>Prima di misurare le distanze tra romanzo e fiction conviene sapere di chi stiamo parlando. Kurt Seyit Eminof portava la divisa della Guardia Imperiale dello zar; era tataro di Crimea, figlio di gente agiata, e apparteneva a due mondi che sarebbero crollati quasi insieme. Lei si chiamava Alexandra Verjenskaya, veniva da una famiglia della nobiltà russa ed era l&#x27;ultima delle figlie. Si incontrano dentro un impero agli sgoccioli, e per questo la loro vicenda non è mai soltanto sentimentale. Anche l&#x27;adattamento televisivo ha dati anagrafici precisi: titolo originale Kurt Seyit ve Şura, produzione Ay Yapım, regia di Hilal Saral, sceneggiatura di Ece Yörenç, uscita in Turchia nel 2014 sul canale Star TV, ventuno puntate distribuite su due stagioni. Ventuno puntate per una vita intera: già il conteggio spiega quante cose la sceneggiatura ha dovuto stringere.</p>
 <h2 id="c3">Cosa cambia rispetto alla realtà</h2>
@@ -435,6 +449,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
   </div>
   
   <div class="riquadro"><h3>E secondo voi?</h3><p>Sapevate che Kurt Seyit e Şura erano persone realmente esistite? E preferite il finale della serie o la verità storica raccontata dal romanzo?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=JH10C9aVPjQ">Dite la vostra nei commenti al video</a>.</p></div>
+  <div class="libro-box breve"><img src="/img/libro-natale-20-regioni-mini.jpg" alt="Copertina di Il Natale delle 20 Regioni" width="72" height="104" loading="lazy" decoding="async"><div><p><strong>Il nostro libro «Il Natale delle 20 Regioni»</strong>: ogni copia ci aiuta a continuare questo lavoro.</p><a class="libro-bt" href="https://www.amazon.it/dp/B0HMRR78YV" rel="sponsored noopener" target="_blank">Compralo su Amazon</a><p class="libro-arrivo">In arrivo: le ricette delle soap turche.</p></div></div>
   <section class="correlati-serie"><h2>Altre anticipazioni di La Ragazza e l&#x27;Ufficiale</h2><div class="griglia"><article class="scheda">
   <a href="/la-ragazza-e-lufficiale/la-ragazza-e-lufficiale-la-trama-completa-e-come-finisce/"><div class="foto"><img src="/img/la-ragazza-e-lufficiale-la-trama-completa-e-come-finisce.jpg" alt="La Ragazza e l&#x27;Ufficiale" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/la-ragazza-e-lufficiale.svg&quot;]' onerror="imgFb(this)"></div></a>
   <div class="corpo">

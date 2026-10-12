@@ -303,6 +303,19 @@ aside li { margin-bottom: 9px; font-size: 15px; line-height: 1.4; }
 .bottone:hover { background: var(--brand-dark); text-decoration: none;
   box-shadow: 0 4px 14px rgba(0,0,0,.18); }
 
+/* riquadro del nostro libro (12/10/2026): dentro l'articolo, leggero, senza Tailwind */
+.libro-box { display: flex; gap: 14px; align-items: center; border: 1px solid var(--bordo);
+  border-left: 4px solid var(--accento); border-radius: 8px; padding: 14px 16px; margin: 22px 0;
+  background: #fcfcfc; }
+.libro-box img { width: 72px; height: auto; flex: none; border-radius: 3px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.25); }
+.libro-box p { margin: 0 0 8px; font-size: 15.5px; line-height: 1.45; }
+.libro-box .libro-arrivo { font-size: 13.5px; color: var(--testo-tenue); margin: 8px 0 0; }
+.libro-box .libro-bt { display: inline-block; background: #b3262e; color: #fff; padding: 10px 16px;
+  border-radius: 6px; font-weight: 700; font-size: 15px; }
+.libro-box .libro-bt:hover { background: #98202a; text-decoration: none; }
+.libro-box.breve { margin: 22px 0 6px; }
+@media (max-width: 480px) { .libro-box { flex-direction: column; text-align: center; } }
 /* archivio completo: la scala che porta il crawler in fondo al catalogo */
 .archivio { max-width: 900px; }
 .archivio .salti { display: flex; flex-wrap: wrap; gap: 8px 10px; margin: 18px 0 30px;
@@ -414,6 +427,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
   <p><strong>Nel frattempo, a villa Guarnieri, Adelaide rientra un attimo prima.</strong></p>
   <h2 id="c1">Il treno per Torino</h2>
 <p>Marcello lascia Milano in silenzio, con la lettera di Rita tra le mani: la ragazza ammette per iscritto di essere stata assoldata da Tancredi di Sant&#x27;Erasmo per sottrarre il figurino disegnato da Botteri e passarlo alla concorrenza. Lui però sa che una lettera non basta e vuole una testimonianza detta a voce, lontano dagli occhi di Milano. A Porta Nuova la incontra in un piccolo caffè, e Rita — divorata dal rimorso — gli consegna qualcosa che non si aspettava: un nastro magnetico con registrata la conversazione in cui Tancredi le promette una busta di soldi e un volo per Parigi in cambio del furto. Marcello capisce che quell&#x27;audio può inchiodarlo, e che tornare indietro con quella prova lo metterà nel mirino dei Sant&#x27;Erasmo. Decide comunque di rischiare, e le fa prenotare il primo treno del mattino per una deposizione davanti a un notaio.</p>
+<div class="libro-box"><img src="/img/libro-natale-20-regioni-mini.jpg" alt="Copertina di Il Natale delle 20 Regioni" width="72" height="104" loading="lazy" decoding="async"><div><p><strong>Sostenete il nostro lavoro:</strong> è uscito il nostro libro «Il Natale delle 20 Regioni». 31 ricette dalla Vigilia all&#x27;Epifania, le ricette delle nonne di tutte le regioni, con una foto per ogni piatto.</p><a class="libro-bt" href="https://www.amazon.it/dp/B0HMRR78YV" rel="sponsored noopener" target="_blank">Compralo su Amazon</a><p class="libro-arrivo">In arrivo: le ricette delle soap turche.</p></div></div>
 <h2 id="c2">Rita Marengo, la falla dentro il Paradiso</h2>
 <p>Rita è una commessa che in negozio non ha mai alzato la voce, ed è stata per mesi il buco da cui il Paradiso perdeva: è lei ad aver fatto uscire il disegno di Botteri e ad averlo consegnato alla concorrenza. È anche l&#x27;ex compagna di Tancredi, il che rende la sua accusa insieme la più informata e la più attaccabile — qualsiasi avvocato la ridurrebbe al rancore di una donna lasciata. E non agiva da sola: Marcello l&#x27;ha già pedinata fino a un bar di periferia e fotografata mentre passava una cartella a un uomo estraneo al magazzino, mentre Odile ha sentito Giulia Furlan bisbigliare nomi e cifre con Lucia Giorgi. Rita sta dentro un giro molto più grande di lei — e nei giri grandi le pedine piccole sono le prime a cambiare versione.</p>
 <h2 id="c3">Il dettaglio notato da Botteri</h2>
@@ -435,6 +449,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
   </div>
   
   <div class="riquadro"><h3>E secondo voi?</h3><p>Marcello deve consegnare il nastro o trattare?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=XHt5awyy5xo">Dite la vostra nei commenti al video</a>.</p></div>
+  <div class="libro-box breve"><img src="/img/libro-natale-20-regioni-mini.jpg" alt="Copertina di Il Natale delle 20 Regioni" width="72" height="104" loading="lazy" decoding="async"><div><p><strong>Il nostro libro «Il Natale delle 20 Regioni»</strong>: ogni copia ci aiuta a continuare questo lavoro.</p><a class="libro-bt" href="https://www.amazon.it/dp/B0HMRR78YV" rel="sponsored noopener" target="_blank">Compralo su Amazon</a><p class="libro-arrivo">In arrivo: le ricette delle soap turche.</p></div></div>
   <section class="correlati-serie"><h2>Altre anticipazioni di Il Paradiso delle Signore</h2><div class="griglia"><article class="scheda">
   <a href="/il-paradiso-delle-signore/il-paradiso-delle-signore-10-si-sposta-alle-14-e-sfida-beautiful-la-mossa-piu-ri/"><div class="foto"><img src="/img/il-paradiso-delle-signore-10-si-sposta-alle-14-e-sfida-beautiful-la-mossa-piu-ri.jpg" alt="Il Paradiso delle Signore" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/il-paradiso-delle-signore.svg&quot;]' onerror="imgFb(this)"></div></a>
   <div class="corpo">

@@ -303,6 +303,19 @@ aside li { margin-bottom: 9px; font-size: 15px; line-height: 1.4; }
 .bottone:hover { background: var(--brand-dark); text-decoration: none;
   box-shadow: 0 4px 14px rgba(0,0,0,.18); }
 
+/* riquadro del nostro libro (12/10/2026): dentro l'articolo, leggero, senza Tailwind */
+.libro-box { display: flex; gap: 14px; align-items: center; border: 1px solid var(--bordo);
+  border-left: 4px solid var(--accento); border-radius: 8px; padding: 14px 16px; margin: 22px 0;
+  background: #fcfcfc; }
+.libro-box img { width: 72px; height: auto; flex: none; border-radius: 3px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.25); }
+.libro-box p { margin: 0 0 8px; font-size: 15.5px; line-height: 1.45; }
+.libro-box .libro-arrivo { font-size: 13.5px; color: var(--testo-tenue); margin: 8px 0 0; }
+.libro-box .libro-bt { display: inline-block; background: #b3262e; color: #fff; padding: 10px 16px;
+  border-radius: 6px; font-weight: 700; font-size: 15px; }
+.libro-box .libro-bt:hover { background: #98202a; text-decoration: none; }
+.libro-box.breve { margin: 22px 0 6px; }
+@media (max-width: 480px) { .libro-box { flex-direction: column; text-align: center; } }
 /* archivio completo: la scala che porta il crawler in fondo al catalogo */
 .archivio { max-width: 900px; }
 .archivio .salti { display: flex; flex-wrap: wrap; gap: 8px 10px; margin: 18px 0 30px;
@@ -413,6 +426,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
   <div class="corpo">
   <p><strong>Mentre tutti sono ancora concentrati sul lutto per Rosa Camilli e sugli addii pesantissimi di Irene e Tancredi, c&#x27;è una figura che sta lavorando nell&#x27;ombra più di chiunque altro, e che nella stagione 11 del Paradiso delle Signore rischia di diventare la vera protagonista dei colpi di scena più inaspettati: Odile. Le anticipazioni sono chiare su un punto, che porta alla luce segreti destinati a intrecciarsi con le vicende di più famiglie del grande magazzino, tutte insieme, nello stesso momento.</strong></p>
   <p>Per capire perché Odile sia destinata a diventare così centrale in questa stagione 11, bisogna ricordare che tipo di personaggio è stata fino ad oggi al Paradiso delle Signore. Non è mai stata una figura di secondo piano, né tantomeno un personaggio facile da inquadrare in un unico ruolo: nelle stagioni precedenti si è già ritrovata al centro di dinamiche complesse, spesso capace di muoversi con un&#x27;abilità sorprendente tra gli intrighi della Galleria Milano Moda e i giochi di potere del Circolo. Chi la conosce bene sa che raramente le sue mosse sono innocenti: dietro ogni suo gesto, anche il più piccolo, si nasconde quasi sempre un calcolo preciso.</p>
+<div class="libro-box"><img src="/img/libro-natale-20-regioni-mini.jpg" alt="Copertina di Il Natale delle 20 Regioni" width="72" height="104" loading="lazy" decoding="async"><div><p><strong>Sostenete il nostro lavoro:</strong> è uscito il nostro libro «Il Natale delle 20 Regioni». 31 ricette dalla Vigilia all&#x27;Epifania, le ricette delle nonne di tutte le regioni, con una foto per ogni piatto.</p><a class="libro-bt" href="https://www.amazon.it/dp/B0HMRR78YV" rel="sponsored noopener" target="_blank">Compralo su Amazon</a><p class="libro-arrivo">In arrivo: le ricette delle soap turche.</p></div></div>
 <h2 id="c1">Quali segreti porterà alla luce Odile</h2>
 <p>Ora, secondo le anticipazioni più recenti, Odile diventerà protagonista assoluta di nuovi segreti, e non si tratterà di rivelazioni isolate che riguardano solo lei o una singola famiglia del grande magazzino. Al contrario, le informazioni che porterà alla luce sembrano destinate a intrecciarsi con le vicende di più nuclei familiari contemporaneamente, creando un effetto domino capace di travolgere equilibri che sembravano ormai consolidati da anni.</p>
 <p>Questo arriva in un momento particolarmente delicato per il Paradiso delle Signore. La stagione si apre già con un carico emotivo pesantissimo: la morte di Rosa Camilli ha lasciato Marcello Barbieri distrutto dal dolore, mentre gli addii di Irene e Tancredi hanno privato la narrazione di due punti fermi che il pubblico aveva imparato a conoscere e ad amare negli anni. In un contesto già così scosso, l&#x27;arrivo di segreti capaci di coinvolgere più famiglie insieme rischia di essere la scintilla che fa esplodere definitivamente tensioni rimaste sopite fino ad ora.</p>
@@ -436,6 +450,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
   </div>
   
   <div class="riquadro"><h3>E secondo voi?</h3><p>E voi cosa ne pensate? Quale famiglia del Paradiso credete rischi di più dai segreti di Odile: quella della Contessa Adelaide, quella dei Guarnieri, o qualcun altro che ancora non sospettiamo? E secondo voi Odile userà queste informazioni per il proprio tornaconto personale, o per proteggere qualcuno a cui tiene davvero?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=1z-_T1e1mNY">Dite la vostra nei commenti al video</a>.</p></div>
+  <div class="libro-box breve"><img src="/img/libro-natale-20-regioni-mini.jpg" alt="Copertina di Il Natale delle 20 Regioni" width="72" height="104" loading="lazy" decoding="async"><div><p><strong>Il nostro libro «Il Natale delle 20 Regioni»</strong>: ogni copia ci aiuta a continuare questo lavoro.</p><a class="libro-bt" href="https://www.amazon.it/dp/B0HMRR78YV" rel="sponsored noopener" target="_blank">Compralo su Amazon</a><p class="libro-arrivo">In arrivo: le ricette delle soap turche.</p></div></div>
   <section class="correlati-serie"><h2>Altre anticipazioni di Il Paradiso delle Signore</h2><div class="griglia"><article class="scheda">
   <a href="/il-paradiso-delle-signore/il-paradiso-delle-signore-10-si-sposta-alle-14-e-sfida-beautiful-la-mossa-piu-ri/"><div class="foto"><img src="/img/il-paradiso-delle-signore-10-si-sposta-alle-14-e-sfida-beautiful-la-mossa-piu-ri.jpg" alt="Il Paradiso delle Signore" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/il-paradiso-delle-signore.svg&quot;]' onerror="imgFb(this)"></div></a>
   <div class="corpo">

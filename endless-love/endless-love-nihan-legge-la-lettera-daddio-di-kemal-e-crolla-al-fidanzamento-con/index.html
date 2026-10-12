@@ -303,6 +303,19 @@ aside li { margin-bottom: 9px; font-size: 15px; line-height: 1.4; }
 .bottone:hover { background: var(--brand-dark); text-decoration: none;
   box-shadow: 0 4px 14px rgba(0,0,0,.18); }
 
+/* riquadro del nostro libro (12/10/2026): dentro l'articolo, leggero, senza Tailwind */
+.libro-box { display: flex; gap: 14px; align-items: center; border: 1px solid var(--bordo);
+  border-left: 4px solid var(--accento); border-radius: 8px; padding: 14px 16px; margin: 22px 0;
+  background: #fcfcfc; }
+.libro-box img { width: 72px; height: auto; flex: none; border-radius: 3px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.25); }
+.libro-box p { margin: 0 0 8px; font-size: 15.5px; line-height: 1.45; }
+.libro-box .libro-arrivo { font-size: 13.5px; color: var(--testo-tenue); margin: 8px 0 0; }
+.libro-box .libro-bt { display: inline-block; background: #b3262e; color: #fff; padding: 10px 16px;
+  border-radius: 6px; font-weight: 700; font-size: 15px; }
+.libro-box .libro-bt:hover { background: #98202a; text-decoration: none; }
+.libro-box.breve { margin: 22px 0 6px; }
+@media (max-width: 480px) { .libro-box { flex-direction: column; text-align: center; } }
 /* archivio completo: la scala che porta il crawler in fondo al catalogo */
 .archivio { max-width: 900px; }
 .archivio .salti { display: flex; flex-wrap: wrap; gap: 8px 10px; margin: 18px 0 30px;
@@ -414,6 +427,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
   <p><strong>La stessa notte, la trappola perfetta: la fuga di Ozan e Zeynep, orchestrata proprio da Emir con documenti falsi, finisce tra le sirene della polizia — e la colpa viene cucita addosso a Tarık.</strong></p>
   <h2 id="c1">L&#x27;anello sepolto e il fidanzamento organizzato in tempi record</h2>
 <p>Kemal chiude simbolicamente con il passato: sotterra l&#x27;anello di Nihan e chiede ad Asu di sposarlo. In casa Soydere esplode la gioia e la festa di fidanzamento viene organizzata a tempo di record nel giardino della villa. Emir, fiutando l&#x27;occasione di ferire il rivale, impone a una Nihan devastata di partecipare: ogni luce, ogni brindisi, ogni dettaglio della celebrazione le riporta alla mente i momenti felici con Kemal, mentre Asu — vedendola arrivare — si stringe al fidanzato temendo che quella presenza possa fargli cambiare idea.</p>
+<div class="libro-box"><img src="/img/libro-natale-20-regioni-mini.jpg" alt="Copertina di Il Natale delle 20 Regioni" width="72" height="104" loading="lazy" decoding="async"><div><p><strong>Sostenete il nostro lavoro:</strong> è uscito il nostro libro «Il Natale delle 20 Regioni». 31 ricette dalla Vigilia all&#x27;Epifania, le ricette delle nonne di tutte le regioni, con una foto per ogni piatto.</p><a class="libro-bt" href="https://www.amazon.it/dp/B0HMRR78YV" rel="sponsored noopener" target="_blank">Compralo su Amazon</a><p class="libro-arrivo">In arrivo: le ricette delle soap turche.</p></div></div>
 <h2 id="c2">Chi è Asu, la sposa che nessuno dei presenti conosce davvero</h2>
 <p>Nel giardino della villa quasi tutti brindano a una ragazza che non esiste. Alla società di Istanbul, Asu è la nipote dell&#x27;influente Hakkı, un cognome rispettabile e nessuna ombra alle spalle. La realtà è un&#x27;altra: è figlia di Galip, cresciuta lontano da casa dopo essere stata allontanata da bambina, e quindi sorella di Emir. Kemal, mentre le mette l&#x27;anello al dito, sta entrando senza saperlo dentro la famiglia che combatte da anni. Anche la proposta merita una precisazione, perché non nasce da un sentimento: è una mossa, il gesto di un uomo che ha deciso di chiudere una porta a chiave e getta via la chiave sotterrando l&#x27;anello dell&#x27;altra. Ecco perché la stretta di Asu al braccio del fidanzato, quando vede arrivare Nihan, non è gelosia da fidanzata insicura: è la paura di chi sa che il proprio posto poggia su un equivoco.</p>
 <h2 id="c3">La lettera, il bacio, il crollo</h2>
@@ -435,6 +449,7 @@ f.allowFullscreen=true;b.parentNode.replaceChild(f,b);f.focus()}</script>
   </div>
   <div class="altri-video"><h2>Guarda anche sul nostro canale</h2><ul><li><a href="https://www.youtube.com/watch?v=-O3zN_x5TGU" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/-O3zN_x5TGU/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>EMIR SI SFOGA CON ASU: &quot;NIHAN E&#x27; INCINTA DI KEMAL!&quot; - ASU SENZA PAROLE! Anticipazioni Endless L</span></a></li><li><a href="https://www.youtube.com/watch?v=ZSeGfnZ5aak" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/ZSeGfnZ5aak/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>KEMAL E NIHAN PRONTI ALLA GUERRA CONTRO EMIR!INTANTO TUFAN...Anticipazioni Endless Love 21-22 M</span></a></li><li><a href="https://www.youtube.com/watch?v=d8pXN6Gghdg" rel="noopener" target="_blank"><img src="https://i.ytimg.com/vi/d8pXN6Gghdg/mqdefault.jpg" alt="" width="160" height="90" loading="lazy" decoding="async"><span>NIHAN RIESCE A FUGGIRE DA EMIR E DA&#x27; ALLA LUCE DENIZ, FIGLIA DI KEMAL! Anticipazioni Endless Lo</span></a></li></ul></div>
   <div class="riquadro"><h3>E secondo voi?</h3><p>Quanto reggerà la bugia sulla gravidanza prima che Nihan — e Kemal — scoprano la verità? E qualcuno riuscirà mai a dimostrare la regia di Emir dietro l&#x27;arresto di Ozan?</p><p style="margin-top:8px"><a href="https://www.youtube.com/watch?v=XX73Wr5V4Yc">Dite la vostra nei commenti al video</a>.</p></div>
+  <div class="libro-box breve"><img src="/img/libro-natale-20-regioni-mini.jpg" alt="Copertina di Il Natale delle 20 Regioni" width="72" height="104" loading="lazy" decoding="async"><div><p><strong>Il nostro libro «Il Natale delle 20 Regioni»</strong>: ogni copia ci aiuta a continuare questo lavoro.</p><a class="libro-bt" href="https://www.amazon.it/dp/B0HMRR78YV" rel="sponsored noopener" target="_blank">Compralo su Amazon</a><p class="libro-arrivo">In arrivo: le ricette delle soap turche.</p></div></div>
   <section class="correlati-serie"><h2>Altre anticipazioni di Endless Love</h2><div class="griglia"><article class="scheda">
   <a href="/endless-love/endless-love-kemal-compra-la-casa-contesa-con-emir-e-la-bambina-dei-fazzoletti-s/"><div class="foto"><img src="/img/endless-love-kemal-compra-la-casa-contesa-con-emir-e-la-bambina-dei-fazzoletti-s.jpg" alt="Endless Love" loading="lazy" width="480" height="270" data-fb='[&quot;/fallback/endless-love.svg&quot;]' onerror="imgFb(this)"></div></a>
   <div class="corpo">
